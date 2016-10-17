@@ -36,14 +36,15 @@ tag:
 `npm install gulp-typescript`
 4. 建立gulpfile.js 
 
-        var gulp = require('gulp');
-        var tsc = require('gulp-typescript');
-        gulp.task('default', function() {     
-            return gulp.src('public/javascripts/**/*.ts')
-            .pipe(tsc())
-            .pipe(gulp.dest('public/javascripts/'));
-        });
-
+```javascript
+var gulp = require('gulp');
+var tsc = require('gulp-typescript');
+gulp.task('default', function() {     
+        return gulp.src('public/javascripts/**/*.ts')
+        .pipe(tsc())
+        .pipe(gulp.dest('public/javascripts/'));
+});
+```
 
 ### Typescript
 
@@ -57,7 +58,7 @@ tag:
 `npm install --save @types/jqueryui`
 
 5. 新增檔案 `todo.ts` ,將 [樣版](http://bootsnipp.com/index.php/snippets/featured/todo-example) 的 javascript 複製貼上 .   
-   _*註:因為 typescript 是 javascript 的 superset , 完全可以相容原生 javascript, 如果有任何錯後, TypeScript將會提示你_
+   _*註:因為 typescript 是 javascript 的 superset , 完全可以相容原生 javascript, 如果有任何錯誤, TypeScript將會提示你_
 
 6. todo.ts 引用 jquery 、jquery-ui 與 bootstrap 的 typescript 定義檔.  
         
