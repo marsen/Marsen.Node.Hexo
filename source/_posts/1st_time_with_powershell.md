@@ -1,5 +1,5 @@
 ---
-title: 第一次寫powershell 就上首(x)手(o)
+title: 第一次寫powershell 就上手
 tag:
   - powershell
   - Database
@@ -21,7 +21,7 @@ tag:
 
 ![](/images/102216_095355_PM.jpg)
 
-**重點**
+**簡記要點**
 - ***powershell 可以直接取用 .Net Framework 或 COM 元件***
 - ***宣告變用要用`$`字號***
 - ***`#` 是註解***
@@ -83,7 +83,7 @@ Write-Progress -Activity "BulkInsert" -Status "載入百分比: 100 %" -PercentC
 
 ### 產生報表
 
-```
+```powershell
 $datatable | export-csv C:\Reports\20161026.csv -Encoding UTF8
 ```
 
@@ -92,3 +92,7 @@ $datatable | export-csv C:\Reports\20161026.csv -Encoding UTF8
 ## 參考
 1. https://msdn.microsoft.com/en-us/powershell
 2. https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods
+3. https://cmatskas.com/execute-sql-query-with-powershell/
+4. https://blogs.technet.microsoft.com/heyscriptingguy/
+
+(fin)
