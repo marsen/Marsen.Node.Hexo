@@ -32,6 +32,8 @@ tag:
 $reader = New-Object System.io.streamreader(get-item $filePath)
 #使用`[]`建立靜態類別讀取檔案
 $file = [System.IO.File]::ReadAllLines($filePath)  
+#直接使用Get-Content讀取文檔
+$file = Get-Content  "C:\filepath\file"
 ```
 ### 連線資料庫與執行語法
 ```powershell
@@ -42,7 +44,7 @@ $connection.Open()
 $connection.Close()
 ```
 ### BulkInsert
-1. 從檔案建立DataTable
+- 從檔案建立DataTable
 
 ```powershell
 $table = New-Object System.Data.DataTable
@@ -64,7 +66,7 @@ foreach($file in $files){
 $table.Rows.Add($dr);
 ```
 
-2. 透過BulkCopy將DataTable寫入資料庫 
+- 透過BulkCopy將DataTable寫入資料庫 
 
 ```powershell
 $connection.Open()
@@ -80,6 +82,12 @@ Write-Progress -Activity "BulkInsert" -Status "載入百分比: 100 %" -PercentC
 ```
 
 ### 產生報表
+
+```
+$datatable | export-csv C:\Reports\20161026.csv -Encoding UTF8
+```
+
+
 
 ## 參考
 1. https://msdn.microsoft.com/en-us/powershell
