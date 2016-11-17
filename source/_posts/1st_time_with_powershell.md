@@ -1,5 +1,5 @@
 ---
-title: 第一次寫powershell 就上手
+title: [記錄]powershell 初體驗 
 tag:
   - powershell
   - Database
