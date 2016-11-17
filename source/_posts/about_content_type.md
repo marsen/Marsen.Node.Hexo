@@ -1,5 +1,5 @@
 ---
-title: 有關一點點HTTP Header Content-Type
+title: 有關 HTTP Header Content-Type
 date: 2016/10/28 12:54:55
 tag:
   - post
