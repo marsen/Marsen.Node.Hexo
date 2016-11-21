@@ -1,5 +1,6 @@
 ---
-title: [記錄]powershell 初體驗 
+title: "[記錄]powershell 初體驗"
+date: 2016/10/21 13:27:53 
 tag:
   - powershell
   - Database
