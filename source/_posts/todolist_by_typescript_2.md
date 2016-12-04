@@ -1,5 +1,6 @@
 ---
 title: '[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作'
+date: 2016/10/14 10:34:27
 tag: 
 - kata
 - typescript
