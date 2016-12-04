@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ASP.NET Thread Pool 與 Redis Timeout Exception | Marsen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
+Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
+官方說明
+爭用、 效能不佳、 和死結">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET Thread Pool 與 Redis Timeout Exception">
+<meta property="og:url" content="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/index.html">
+<meta property="og:site_name" content="Marsen">
+<meta property="og:description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
+Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
+官方說明
+爭用、 效能不佳、 和死結">
+<meta property="og:image" content="http://blog.marsen.me/images/workerthread_and_iothread/110416_103521_AM.jpg">
+<meta property="og:updated_time" content="2016-11-22T03:41:18.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASP.NET Thread Pool 與 Redis Timeout Exception">
+<meta name="twitter:description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
+Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
+官方說明
+爭用、 效能不佳、 和死結">
+<meta name="twitter:image" content="http://blog.marsen.me/images/workerthread_and_iothread/110416_103521_AM.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71201782-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Marsen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.marsen.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-aspdotnet_threadpool_and_redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/21/aspdotnet_threadpool_and_redis/" class="article-date">
+  <time datetime="2016-11-21T08:49:17.000Z" itemprop="datePublished">2016-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ASP.NET Thread Pool 與 Redis Timeout Exception
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><em>這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章</em><br><em>記錄著 Thread Pool 的機制如何影響 Redis</em></p>
+<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。</p>
+<h3 id="官方說明"><a href="#官方說明" class="headerlink" title="官方說明"></a>官方說明</h3><ul>
+<li><a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a></li>
+<li>machine.config</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">maxWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">maxIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">minIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">requestQueueLimit</span>=<span class="string">"5000"</span> <span class="attr">responseDeadlockInterval</span>=<span class="string">"00:03:00"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">httpRuntime</span> <span class="attr">minFreeThreads</span>=<span class="string">"xxx"</span> <span class="attr">minLocalRequestFreeThreads</span>=<span class="string">"xxx"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="建議的設定值"><a href="#建議的設定值" class="headerlink" title="建議的設定值"></a>建議的設定值</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
+<p>真正的原理如下:<br>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
+<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
+<h3 id="與CPU的關係"><a href="#與CPU的關係" class="headerlink" title="與CPU的關係"></a>與CPU的關係</h3><p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。  </p>
+<hr>
+<h3 id="System-TimeoutException"><a href="#System-TimeoutException" class="headerlink" title="System.TimeoutException"></a>System.TimeoutException</h3><p>當StackExchange.Redis在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>就會拋出類似以下的錯誤</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing SETEX Cache:Prod:WebAPI:Key:<span class="number">20161121152607</span>, inst: <span class="number">18</span>, mgr: ExecuteSelect, err: never,  </div><div class="line">queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">0</span>, ar: <span class="number">1</span>,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: TYO-MWEB</div></pre></td></tr></table></figure>
+<ul>
+<li>Redis Command - <a href="http://redis.io/commands" target="_blank" rel="external">參考</a>  </li>
+</ul>
+<p>拆解錯誤如下:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing &#123;&#123;Redis Command&#125;&#125; &#123;&#123;Redis Key&#125;&#125;, inst: &#123;&#123;inst&#125;&#125;, mgr:&#123;&#123;mgr&#125;&#125; , err: &#123;&#123;err&#125;&#125;,  </div><div class="line">queue: &#123;&#123;queue&#125;&#125;, qu: &#123;&#123;qu&#125;&#125;, qs: &#123;&#123;qs&#125;&#125;, qc: &#123;&#123;qc&#125;&#125;, wr: &#123;&#123;wr&#125;&#125;, wq: &#123;&#123;wq&#125;&#125;, <span class="keyword">in</span>: &#123;&#123;<span class="keyword">in</span>&#125;&#125;, ar: &#123;&#123;ar&#125;&#125;,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: &#123;&#123;clientName&#125;&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Redis Key - Redis Key</li>
+<li>其他參數說明</li>
+</ul>
+<p>範例<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </div><div class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </div><div class="line">IOCP: (Busy=<span class="number">6</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Details</th>
+<th>範例</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inst</td>
+<td>in the last time slice: 0 commands have been issued</td>
+<td>在最後時脈：已發出0個命令</td>
+<td>最後的時脈發出的命令個數</td>
+</tr>
+<tr>
+<td>mgr</td>
+<td>the socket manager is performing “socket.select”, <br>which means it is asking the OS to indicate a socket <br>that has something to do; <br> basically: the reader is not actively reading from <br>the network because it doesn’t think there<br> is anything to do</td>
+<td></td>
+<td>最後的操作命令</td>
+</tr>
+<tr>
+<td>queue</td>
+<td>there are 73 total in-progress operations</td>
+<td>73個正在排隊中的操作</td>
+<td>正在排隊中的操作</td>
+</tr>
+<tr>
+<td>qu</td>
+<td>6 of those are in unsent queue: they have not yet been written to the outbound network</td>
+<td>6個未發送的queue</td>
+<td>未發送的queue</td>
+</tr>
+<tr>
+<td>qs</td>
+<td>67 of those have been sent to the server but a response is not yet available.  The response could be: Not yet sent by the server sent by the server but not yet processed by the client.</td>
+<td>67個已發送的queue</td>
+<td>已發送的queue</td>
+</tr>
+<tr>
+<td>qc</td>
+<td>0 of those have seen replies but have not yet been marked as complete due to waiting on the completion loop</td>
+<td>0個已發送未標記完成的queue</td>
+<td>已發送未標記完成的queue</td>
+</tr>
+<tr>
+<td>wr</td>
+<td>there is an active writer (meaning - those 6 unsent are not being ignored) bytes/activewriters</td>
+<td>有 1 個啟用的writer,(意味著qu的工作並沒有被忽略) bytes/activewriters</td>
+<td>bytes/activewriters</td>
+</tr>
+<tr>
+<td>in</td>
+<td>there are no active readers and zero bytes are available to be read on the NIC bytes/activereaders</td>
+<td>0個reader</td>
+<td>bytes/activereaders</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="其它的-Redis-Error-情境"><a href="#其它的-Redis-Error-情境" class="headerlink" title="其它的 Redis Error 情境"></a>其它的 Redis Error 情境</h2><p>只作摘要式的翻譯。</p>
+<h3 id="Memory-pressure-記憶體壓力"><a href="#Memory-pressure-記憶體壓力" class="headerlink" title="Memory pressure (記憶體壓力)"></a>Memory pressure (記憶體壓力)</h3><p><code>Problem:</code><br>記憶體不足而開始讀取虛擬記憶體(磁碟)而導致特能低落。<br>Memory pressure on the client machine leads to all kinds of performance problems that can<br>delay processing of data that was sent by the Redis instance without any delay.<br>When memory pressure hits, the system typically has to page data from physical memory to<br>virtual memory which is on disk. This page faulting causes the system to slow down significantly.  </p>
+<p><code>Measurement:</code><br>Monitory memory usage on machine to make sure that it does not exceed available memory.<br>Monitor the Page Faults/Sec perf counter. Most systems will have some page faults even during<br>normal operation, so watch for spikes in this page faults perf counter which correspond with timeouts.  </p>
+<p><code>Resolution:</code><br>增加記憶體或是減少記憶體使用量<br>Upgrade to a larger client VM size with more memory or dig into your memory usage patterns<br>to reduce memory consuption.  </p>
+<hr>
+<h3 id="Burst-of-traffic"><a href="#Burst-of-traffic" class="headerlink" title="Burst of traffic"></a><span style="color:red;" id="burst_of_traffic">Burst of traffic</span></h3><p><code>Problem:</code><br>ThreadPool突然大量的工作湧入queue導致執行緒來不及建立。<br> Bursts of traffic combined with poor ThreadPool settings can result in delays in processing<br> data already sent by the Redis Server but not yet consumed on the client side.  </p>
+<p><code>測量:</code><br>可以用<a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="external">程式</a>監控 ThreadPool .<br>或是單純透過 TimeoutException 的訊息,觀察IOCP與WORKER的Busy值來判斷.<br><code>Measurement:</code><br>Monitor how your ThreadPool statistics change over time using code like <a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="external">this</a>.<br>You can also look at the TimeoutException message from StackExchange.Redis.<br>Here is an example :  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing EVAL, inst: <span class="number">8</span>, mgr: Inactive, queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">64221</span>, ar: <span class="number">0</span>, </div><div class="line">IOCP: (Busy=<span class="number">6</span>,Free=<span class="number">999</span>,Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure>
+<p>In the above message, there are several issues that are interesting:<br>Notice that in the “IOCP” section and the “WORKER” section you have a “Busy” value that is<br>greater than the “Min” value. This means that your threadpool settings need adjusting.<br>You can also see “in: 64221”. This indicates that 64211 bytes have been received at the kernel<br>socket layer but haven’t yet been read by the application (e.g. StackExchange.Redis).<br>This typically means that your application isn’t reading data from the network as quickly as<br>the server is sending it to you.  </p>
+<p><code>Resolution:</code><br>調整ThreadPool設定<br>Configure your ThreadPool Settings to make sure that your threadpool will scale up quickly under burst scenarios.</p>
+<hr>
+<h3 id="High-CPU-usage-CPU-過載"><a href="#High-CPU-usage-CPU-過載" class="headerlink" title="High CPU usage (CPU 過載)"></a>High CPU usage (CPU 過載)</h3><p><code>Problem:</code><br>High CPU usage on the client is an indication that the system cannot keep up with the work that it has been asked to perform. High CPU is a problem because the CPU is busy and it can’t keep up with the work the application is asking it to do. The response from Redis can come very quickly, but because the CPU isn’t keeping up with the workload, the response sits in the socket’s kernel buffer waiting to be processed. If the delay is long enough, a timeout occurs in spite of the requested data having already arrived from the server.</p>
+<p><code>Measurement:</code><br>Monitor the System Wide CPU usage through the azure portal or through the associated perf counter.<br>Be careful not to monitor process CPU because a single process can have low CPU usage at the same time that overall system CPU can be high.<br>Watch for spikes in CPU usage that correspond with timeouts. As a result of high CPU,<br>you may also see high “in: XXX” values in TimeoutException error messages as described above in the “Burst of traffic” section.<br>Note that in newer builds of StackExchange.Redis, the client-side CPU will be printed out in the timeout error message as long as the environment doesn’t block access to the CPU perf counter.</p>
+<p><code>Note:</code><br>StackExchange.Redis version 1.1.603 or later now prints out “local-cpu” usage when a timeout occurs to help understand when client-side CPU usage may be affecting performance.</p>
+<p><code>Resolution:</code><br>增加CPU或是找出CPU產生過載的原因<br>Upgrade to a larger VM size with more CPU capacity or investigate what is causing CPU spikes.</p>
+<hr>
+<h3 id="Client-Side-Bandwidth-Exceeded-頻寬不足"><a href="#Client-Side-Bandwidth-Exceeded-頻寬不足" class="headerlink" title="Client Side Bandwidth Exceeded (頻寬不足)"></a>Client Side Bandwidth Exceeded (頻寬不足)</h3><p><code>Problem:</code><br>Different sized client machines have limitations on how much network bandwidth they have available.<br>If the client exceeds the available bandwidth, then data will not be processed on the client side as quickly as the server is sending it. This can lead to timeouts.</p>
+<p><code>Measurement:</code><br>Monitor how your Bandwidth usage change over time using code like this. Note that this code may not run successfully in some environments with restricted permissions (like Azure WebSites).</p>
+<p><code>Resolution:</code><br>加大頻寬或減少使用量<br>Increase Client VM size or reduce network bandwidth consumption.</p>
+<hr>
+<h3 id="Large-Request-Response-Size-過大的請求-回應量"><a href="#Large-Request-Response-Size-過大的請求-回應量" class="headerlink" title="Large Request/Response Size (過大的請求/回應量)"></a>Large Request/Response Size (過大的請求/回應量)</h3><p><code>Problem:</code><br>如圖所示,A與B兩個Request都太過龐大,當同時發動請求時,<br>A 回應的時間過長, 導致 B 的Timeout<br>A large request/response can cause timeouts. As an example, suppose your timeout value configured is 1 second.<br>Your application requests two keys (e.g. ‘A’ and ‘B’) at the same time using the same physical network connection.<br>Most clients support “Pipelining” of requests, such that both requests ‘A’ and ‘B’ are sent on the wire to the server one after the other without waiting for the responses.<br>The server will send the responses back in the same order. If response ‘A’ is large enough it can eat up most of the timeout for subsequent requests.</p>
+<p>Below, I will try to demonstrate this. In this scenario, Request ‘A’ and ‘B’ are sent quickly,<br>the server starts sending responses ‘A’ and ‘B’ quickly, but because of data transfer times,<br>‘B’ get stuck behind the other request and times out even though the server responded quickly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|-------- 1 Second Timeout (A)----------|</div><div class="line">|-Request A-|</div><div class="line">     |-------- 1 Second Timeout (B) ----------|</div><div class="line">     |-Request B-|</div><div class="line">            |- Read Response A --------|</div><div class="line">                                       |- Read Response B-| (**TIMEOUT**)</div></pre></td></tr></table></figure>
+<p><code>Measurement:</code><br>This is a difficult one to measure. You basically have to instrument your client code to track large requests and responses.</p>
+<p><code>Resolution:</code><br>將所需要的資料分割成數個小片段 再分別取回<br>Redis is optimized for a large number of small values, rather than a few large values.<br>The preferred solution is to break up your data into related smaller values. See here for details around why smaller values are recommended.<br>Increase the size of your VM (for client and Redis Cache Server), to get higher bandwidth capabilities, reducing data transfer times for larger responses.<br>Note that getting more bandwidth on just the server or just on the client may not be enough.<br>Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.<br>Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool).<br>If you go this route, make sure that you don’t create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
+<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
+<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
+</ul>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciwawm31c000d38optwmu2gng" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thread/">Thread</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/28/dotnet_pdb_file/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          .NET PDB File 介紹
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/28/about_content_type/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">有關 HTTP Header Content-Type</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 10px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 15px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 15px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 15px;">kata</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/28/dotnet_pdb_file/">.NET PDB File 介紹</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/21/aspdotnet_threadpool_and_redis/">ASP.NET Thread Pool 與 Redis Timeout Exception</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/28/about_content_type/">有關 HTTP Header Content-Type</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/21/1st_time_with_powershell/">[記錄]powershell 初體驗</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/14/todolist_by_typescript_2/">[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Marsen L.<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'marsen';
+  
+  var disqus_url = 'http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
