@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-01-11T06:52:40.682Z</updated>
+  <updated>2017-01-15T15:54:27.044Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -16,11 +16,179 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
+    <published>2017-01-15T14:16:42.000Z</published>
+    <updated>2017-01-15T15:54:27.044Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄"><a href="#操作記錄" class="headerlink" title="操作記錄"></a>操作記錄</h2><ol>
+<li>下載並安裝Jenkins（記錄版本為2.32.1）</li>
+<li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><img src="https://i.imgur.com/ik5l0sq.jpg" alt=""></p>
+</li>
+<li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt=""></p>
+</li>
+</ol>
+<ol>
+<li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt=""></p>
+</li>
+<li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt=""><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt=""></p>
+</li>
+<li><p>登入後,管理 Jenkins &gt; 設定系統</p>
+<ol>
+<li>將執行程式數量設定為 1  (安裝完預設為2,其實可以不用修改)</li>
+<li><code>Shell</code> 設定為 <code>C:\Windows\system32\cmd.exe</code> </li>
+</ol>
+</li>
+<li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><img src="https://i.imgur.com/0xkci16.jpg" alt=""></p>
+</li>
+<li><p><strong>執行一次建置</strong>,這個步驟是為了產生work space 。<br>work space 路徑大致如下 <code>.\Jenkins\workspace\Project name</code></p>
+</li>
+<li><p>執行 console 並切換路徑至 work space </p>
+</li>
+<li><p>將 Openshift 上的 nodejs 應用程式 repo 設為 remote<br><code>&gt;git remote add prod ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p>
+</li>
+<li><p>回到Jenkins,作業 &gt; 組態 &gt; 建置 &gt; 新增「執行Windows批次指令」</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">REM 測試</span></div><div class="line">whoami</div><div class="line">git push prod HEAD^:master</div></pre></td></tr></table></figure>
+<ol>
+<li>額外處理事項:<br>直接在 Jenkins server 發 pr 給 openshift 時,發生 503 錯誤。<br>使用 ssh 登入 openshift 看 log ,發現<br><code>Node Sass does not yet support your current environment</code> 錯誤<br>必須登入執行以下語法修正模組問題 <code>npm rebuild node-sass</code> </li>
+</ol>
+</li>
+<li><p>建置作業,會得到錯誤訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">上略...</div><div class="line">19:44:46 Host key verification failed.</div><div class="line">19:44:46 fatal: Could not read from remote repository.</div><div class="line">下略...</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p>
+<p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">SSH原理与运用（一）：远程登录</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="external">SSH原理与运用（二）：远程操作与端口转发</a></li>
+<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="external">[Tip] Windows使用ssh對Github進行操作</a></li>
+<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="external">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
+</ul>
+<p>(fin)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
+    
+    </summary>
+    
+    
+      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
+    
+      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
+    <published>2017-01-15T14:16:42.000Z</published>
+    <updated>2017-01-15T15:35:27.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
+    
+    </summary>
+    
+    
+      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
+    
+      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CI/CD 環境建置筆記 - 前言&lt;目的&gt;</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins/</id>
+    <published>2017-01-15T13:54:00.000Z</published>
+    <updated>2017-01-15T14:47:15.037Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol>
+<li>Github</li>
+<li>Openshift<br>Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),<br>Github 則是單純的負責版本控制。<h3 id="開發流程"><a href="#開發流程" class="headerlink" title="開發流程"></a>開發流程</h3>作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。<br>原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,<br>這樣的流程雖然簡單,但是每次都要人工執行,因為其執行順序,其實都隱含著風險,<br>例如:上錯版本或是產品未進版控等等…,<br>而當進一步想要執行建置、編譯 、套件管理、測試、分析與產生報表時,<br>產品與源碼將會產生差異(ex:產品會包含壓縮的檔案而源碼則是未壓縮的檔案)</li>
+</ol>
+<h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點:"></a>缺點:</h4><ol>
+<li>在這樣的架構上容易不小心發佈還在開發中的功能。</li>
+<li>Prod的來源就是程式碼,無法確保與版控一致,如此就喪失版控的用意。</li>
+<li>難以擴展其他功能,如:建置、編譯 、套件管理、測試、分析與產生報表</li>
+</ol>
+<h4 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h4><p><img src="https://i.imgur.com/dHYRJKr.jpg" alt=""><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;現有架構&quot;&gt;&lt;a href=&quot;#現有架構&quot; class=&quot;headerlink&quot; title=&quot;現有架構&quot;&gt;&lt;/a&gt;現有架構&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/QLzPTrp.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=
+    
+    </summary>
+    
+    
+      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
+    
+      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[記錄]VS2015 StyleCop 誤判SA0102</title>
     <link href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/"/>
     <id>http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/</id>
     <published>2017-01-11T06:51:25.000Z</published>
-    <updated>2017-01-11T06:52:40.682Z</updated>
+    <updated>2017-01-15T13:52:28.031Z</updated>
     
     <content type="html"><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
 <li>作業系統:Windows 10</li>
@@ -82,7 +250,7 @@
     <link href="http://blog.marsen.me/2016/12/05/be_friend_with_time/"/>
     <id>http://blog.marsen.me/2016/12/05/be_friend_with_time/</id>
     <published>2016-12-04T17:54:34.000Z</published>
-    <updated>2017-01-11T06:55:06.490Z</updated>
+    <updated>2016-12-16T16:32:00.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="零、困境"><a href="#零、困境" class="headerlink" title="零、困境"></a>零、困境</h2><p><em>✖ 時間無法管理 能管理的只有你自已。</em></p>
 <h2 id="一、醒悟"><a href="#一、醒悟" class="headerlink" title="一、醒悟"></a>一、醒悟</h2><ul>
@@ -502,7 +670,7 @@
     <link href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/"/>
     <id>http://blog.marsen.me/2016/11/28/dotnet_pdb_file/</id>
     <published>2016-11-28T15:54:55.000Z</published>
-    <updated>2016-12-04T17:00:48.445Z</updated>
+    <updated>2016-12-04T17:22:31.206Z</updated>
     
     <content type="html"><![CDATA[<h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，<br>其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
 <h4 id="MSDN-這樣說"><a href="#MSDN-這樣說" class="headerlink" title="MSDN 這樣說"></a>MSDN 這樣說</h4><p>程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、<br>方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。</p>
@@ -573,7 +741,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/"/>
     <id>http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/</id>
     <published>2016-11-21T08:49:17.000Z</published>
-    <updated>2016-11-22T03:41:18.847Z</updated>
+    <updated>2016-12-04T16:43:46.992Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><em>這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章</em><br><em>記錄著 Thread Pool 的機制如何影響 Redis</em></p>
 <h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。</p>
@@ -707,9 +875,9 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
       <category term="IO" scheme="http://blog.marsen.me/tags/IO/"/>
     
-      <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
-    
       <category term="ASP.Net" scheme="http://blog.marsen.me/tags/ASP-Net/"/>
+    
+      <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
     
       <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
     
@@ -720,7 +888,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/28/about_content_type/"/>
     <id>http://blog.marsen.me/2016/10/28/about_content_type/</id>
     <published>2016-10-28T04:54:55.000Z</published>
-    <updated>2016-11-10T03:43:31.111Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
 <h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="external">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
@@ -771,7 +939,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/"/>
     <id>http://blog.marsen.me/2016/10/21/1st_time_with_powershell/</id>
     <published>2016-10-21T05:27:53.000Z</published>
-    <updated>2016-11-21T09:22:28.683Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
 <li>將指定的Log記錄,匯入資料庫,產生row data</li>
@@ -823,6 +991,8 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     </summary>
     
     
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
+    
       <category term="powershell" scheme="http://blog.marsen.me/tags/powershell/"/>
     
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
@@ -831,8 +1001,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
       <category term="BulkInsert" scheme="http://blog.marsen.me/tags/BulkInsert/"/>
     
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
-    
   </entry>
   
   <entry>
@@ -840,7 +1008,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/"/>
     <id>http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/</id>
     <published>2016-10-14T02:34:27.000Z</published>
-    <updated>2016-12-04T17:09:30.000Z</updated>
+    <updated>2016-12-04T17:22:31.221Z</updated>
     
     <content type="html"><![CDATA[<h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
 <li>顯示/新增/刪除 todolist </li>
@@ -893,7 +1061,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/"/>
     <id>http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/</id>
     <published>2016-10-08T02:34:27.000Z</published>
-    <updated>2016-12-04T17:08:50.252Z</updated>
+    <updated>2016-12-04T17:22:31.219Z</updated>
     
     <content type="html"><![CDATA[<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ol>
 <li>使用 typescript 開發</li>
@@ -982,7 +1150,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/09/04/http2%20by%20cloudflare/"/>
     <id>http://blog.marsen.me/2016/09/04/http2 by cloudflare/</id>
     <published>2016-09-03T17:12:15.000Z</published>
-    <updated>2016-12-04T17:05:32.865Z</updated>
+    <updated>2016-12-04T17:22:31.216Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
 <li>HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個<ul>
@@ -1062,7 +1230,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/"/>
     <id>http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/</id>
     <published>2016-08-29T09:24:55.000Z</published>
-    <updated>2016-12-04T17:11:06.600Z</updated>
+    <updated>2016-12-04T17:22:31.208Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
 <li>一個有權限寫入的MSSQLServer與SSMS管理工具</li>
@@ -1116,7 +1284,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/08/28/how_to_use_github_page/"/>
     <id>http://blog.marsen.me/2016/08/28/how_to_use_github_page/</id>
     <published>2016-08-27T20:56:27.000Z</published>
-    <updated>2016-12-04T17:03:32.179Z</updated>
+    <updated>2016-12-04T17:22:31.214Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul>
 <li>你要有一個github帳號</li>
@@ -1210,7 +1378,7 @@ username.xyz
     <link href="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/"/>
     <id>http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/</id>
     <published>2016-08-25T06:12:07.000Z</published>
-    <updated>2016-08-25T09:23:35.055Z</updated>
+    <updated>2016-12-04T16:43:46.992Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
 <li>你要有google帳號，並申請好你的google_analytics ID</li>
@@ -1250,7 +1418,7 @@ google_analytics:
     <link href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/"/>
     <id>http://blog.marsen.me/2016/08/21/setting_DNS_with_google/</id>
     <published>2016-08-21T14:12:53.000Z</published>
-    <updated>2016-12-04T17:07:44.522Z</updated>
+    <updated>2016-12-04T17:22:31.218Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
 <li>準備好你的google帳號。</li>
@@ -1313,7 +1481,7 @@ mydomain.me
     <link href="http://blog.marsen.me/2016/08/20/sites_todo_list/"/>
     <id>http://blog.marsen.me/2016/08/20/sites_todo_list/</id>
     <published>2016-08-19T18:09:07.000Z</published>
-    <updated>2016-10-08T18:07:46.353Z</updated>
+    <updated>2016-12-04T16:43:46.994Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li><del>github page &amp; hexo</del></li>
@@ -1342,7 +1510,7 @@ mydomain.me
     <link href="http://blog.marsen.me/2016/08/13/hello-world/"/>
     <id>http://blog.marsen.me/2016/08/13/hello-world/</id>
     <published>2016-08-13T03:32:15.000Z</published>
-    <updated>2016-12-04T17:02:05.522Z</updated>
+    <updated>2016-12-04T17:22:31.213Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>

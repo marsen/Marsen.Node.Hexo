@@ -74,6 +74,263 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-todolist_by_typescript_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/08/todolist_by_typescript_1/" class="article-date">
+  <time datetime="2016-10-08T02:34:27.000Z" itemprop="datePublished">2016-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/todolist_by_typescript_1/">[KATA]用typescript作一個簡易的todolist(一) - 前置作業</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ol>
+<li>使用 typescript 開發</li>
+<li>顯示/新增/刪除 todolist </li>
+</ol>
+<h2 id="功能分析"><a href="#功能分析" class="headerlink" title="功能分析"></a>功能分析</h2><ol>
+<li>只是練習,故不開發server side的程式</li>
+<li>暫時存在 cookie 上</li>
+<li>用 bootstrap 作簡單的樣式</li>
+</ol>
+<h2 id="實作記錄"><a href="#實作記錄" class="headerlink" title="實作記錄"></a>實作記錄</h2><h3 id="UI-使用-Bootstrap-沒有必要重新打造輪子-能用的就拿來用"><a href="#UI-使用-Bootstrap-沒有必要重新打造輪子-能用的就拿來用" class="headerlink" title="UI : 使用 Bootstrap 沒有必要重新打造輪子,能用的就拿來用"></a>UI : 使用 Bootstrap <em>沒有必要重新打造輪子,能用的就拿來用</em></h3><ul>
+<li>找到一個TODOLIST的<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="external">樣版</a>,內含 HTML 、 CSS 與 JS ,功能完整.</li>
+<li>取用<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="external">樣版</a>的HTML .     </li>
+<li>引用 bootstrap 3.3.5 CDN上的 css .</li>
+<li>建立一個 todo.css 直接引用<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="external">樣版</a>的 css 並加入頁面參考.</li>
+</ul>
+<h3 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h3><ol>
+<li>安裝 typescript<br><code>npm install typescript --save</code></li>
+<li>安裝 gulp<br><code>npm install gulp</code><br><code>npm install --global gulp</code> </li>
+<li>安裝 gulp-typescript<br><code>npm install gulp-typescript</code></li>
+<li>建立gulpfile.js </li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> tsc = <span class="built_in">require</span>(<span class="string">'gulp-typescript'</span>);</div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;     </div><div class="line">        <span class="keyword">return</span> gulp.src(<span class="string">'public/javascripts/**/*.ts'</span>)</div><div class="line">        .pipe(tsc())</div><div class="line">        .pipe(gulp.dest(<span class="string">'public/javascripts/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Typescript"><a href="#Typescript" class="headerlink" title="Typescript"></a>Typescript</h3><ol>
+<li><p>關於 typescript 的定義檔, 以前有 tsd 與 typings兩種管理工具,現在可以更簡便的合併到 npm 作管理 .</p>
+</li>
+<li><p>透過 <a href="http://microsoft.github.io/TypeSearch/" target="_blank" rel="external">TypeSearch</a> 可以找到 <a href="https://www.npmjs.com/package/@types/bootstrap" target="_blank" rel="external">bootstrap</a> 的 typescript 定義檔.</p>
+</li>
+<li><p>執行 <code>npm install --save @types/bootstrap</code> 安裝 bootstrap (目前的版本是 Bootstrap 3.3.5) , 因為相依於 jquery 所以也會一併安裝</p>
+</li>
+<li><p>安裝 jquery-ui 的定義檔<br><code>npm install --save @types/jqueryui</code></p>
+</li>
+<li><p>新增檔案 <code>todo.ts</code> ,將 <a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="external">樣版</a> 的 javascript 複製貼上 .<br><em>*註:因為 typescript 是 javascript 的 superset , 完全可以相容原生 javascript, 如果有任何錯誤, TypeScript將會提示你</em></p>
+</li>
+<li><p>todo.ts 引用 jquery 、jquery-ui 與 bootstrap 的 typescript 定義檔.  </p>
+<pre><code>/// &lt;reference path=&quot;../../../node_modules/@types/jquery/index.d.ts&quot;/&gt;  
+/// &lt;reference path=&quot;../../../node_modules/@types/bootstrap/index.d.ts&quot;/&gt;  
+/// &lt;reference path=&quot;../../../node_modules/@types/jqueryui/index.d.ts&quot;/&gt;
+</code></pre></li>
+<li><p>頁面載入對應的js檔,記得放置順序 jquery 要在最前面,並將放在<code>&lt;\body&gt;</code>之後  </p>
+<pre><code>&lt;script src=&quot;http://code.jquery.com/jquery-2.2.4.min.js&quot;   integrity=&quot;sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=&quot;   crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://code.jquery.com/ui/1.12.1/jquery-ui.min.js&quot;   integrity=&quot;sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=&quot;   crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>執行 <code>gulp</code> ,會產生todo.js</p>
+</li>
+<li><p>頁面載入js檔,記得要放在相依的js( jquery 、 bootstap 、 jqueryui)之後.</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/kata/todo.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+</ol>
+<h4 id="截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置"><a href="#截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置" class="headerlink" title="截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置"></a>截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置</h4><h4 id="接下來才要開始寫-typescript"><a href="#接下來才要開始寫-typescript" class="headerlink" title="接下來才要開始寫 typescript"></a>接下來才要開始寫 typescript</h4><p>(待續)</p>
+<h4 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h4><ol>
+<li><a href="http://blog.miniasp.com/post/2016/08/22/TypeScript-Future-Declaration-Files.aspx" target="_blank" rel="external">關於 TypeScript 2.0 之後的模組定義檔 ( Declaration Files ) ( *.d.ts )</a></li>
+<li><a href="http://bootsnipp.com/" target="_blank" rel="external">bootsnipp</a></li>
+<li><a href="http://com-brianflove.appspot.com/2016/03/29/typescript-express-node-js/" target="_blank" rel="external">TYPESCRIPT + EXPRESS + NODE.JS</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/" data-id="cixys1rjx002rl455vdf0xcsp" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kata/">kata</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http2 by cloudflare" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/04/http2 by cloudflare/" class="article-date">
+  <time datetime="2016-09-03T17:12:15.000Z" itemprop="datePublished">2016-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/04/http2 by cloudflare/">怎麼建立一個網站？(三) - 簡單讓網站升級使用HTTP/2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
+<li>HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個<ul>
+<li>HTTP/1.1 基於TCP，需要三方交握。</li>
+<li>HTTP/1.1本身存在得需多問題，安全性、效率等…。</li>
+</ul>
+</li>
+<li>HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容<ul>
+<li>主流的瀏覽器都開始支援了。  </li>
+<li>只要設定好Web Server，Client 端看使用的<a href="http://caniuse.com/#feat=http2" target="_blank" rel="external">瀏覽器支不支援</a>。</li>
+</ul>
+</li>
+<li>一流公司制定標準，二流作品牌，三流賣技術，四流作產品<ul>
+<li>HTTP/2 是源自Google的SPDY。</li>
+<li>Google下一代 QUIC推動中。</li>
+</ul>
+</li>
+<li>HTTP/2 並不強制加密(HTTPS)<ul>
+<li>在主流瀏覽器為了向下相容，保留了80 port的HTTP/1.1通訊協定，用443 port 實作HTTP/2。</li>
+<li>所以還是要走HTTPS，所以需要安全性憑証。</li>
+<li>安全性憑証要錢(現在也有免費的)。</li>
+<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>提供免費的安全性憑証。</li>
+</ul>
+</li>
+</ul>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
+<li>你要有<a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>帳號。</li>
+<li>看過我之網站的設定，簡單說就是一個github page 與 透過OpenShift 這個 PaaS服務建立的網站。<ul>
+<li><a href="https://blog.marsen.me/2016/08/21/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
+<li><a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">怎麼建立一個網站？(二)</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><img src="/images/090516_021242_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
+<li>設定Page-Rules，這個是為了開啟SSL<ol>
+<li>設定<code>SSL</code>為<code>Flexible</code>,輸入<code>*.username.com/*</code>。<br>這個時候你就可以瀏覽<code>https://blog.username.com/</code>,但同時也可以瀏覽<code>http://blog.username.com/</code> 。<br>我希望HTTP能自動跳轉HTTPS，這部份如果是Node建立的網站，我可以用程式作轉導，<br>但是如果是github page建立網站，就要再仰賴 <a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 了。</li>
+</ol>
+</li>
+<li>設定Page-Rules，這個是為了開啟SSL<ol>
+<li>設定<code>ALWAYS USE HTTPS</code>,輸入<code>http://*.username.com/*</code>。<br><img src="/images/090516_023252_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
+</ol>
+</li>
+</ol>
+<p>設定完大致如下，順利的話幾分鐘就生效了。<br><img src="/images/090516_023554_AM.jpg" alt=""></p>
+<p>這時候瀏覽<code>http://blog.username.com/</code>就會轉導到<code>https://blog.username.com/</code>了 。</p>
+<h2 id="檢驗"><a href="#檢驗" class="headerlink" title="檢驗"></a>檢驗</h2><p>使用support HTTP/2的瀏覽器，瀏覽網頁，觀察其protocol 。<br><img src="/images/090516_024550_AM.jpg" alt=""></p>
+<p>(fin)</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://simular.co/knowledge/site-build/68-about-http2-and-http11.html" target="_blank" rel="external">了解 HTTP/2 的特色與 HTTP/1.1 的差異</a></li>
+<li><a href="https://blog.alphacamp.co/2016/07/12/http2/" target="_blank" rel="external">你的網站升級到 HTTP/2 了嗎？</a></li>
+<li><a href="http://www.ithome.com.tw/voice/94371" target="_blank" rel="external">為什麼我們需要HTTP/2？</a></li>
+<li><a href="http://www.ithome.com.tw/voice/94520" target="_blank" rel="external">HTTP/2登場，邁向新的紀元</a></li>
+<li><a href="http://www.ithome.com.tw/news/95353" target="_blank" rel="external">Google：將推動QUIC成為網路標準</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="cixys1rjv002ql455q0lvtxvm" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/09/04/http2 by cloudflare/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP/">TCP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-file_rowdata_import_mssql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/29/file_rowdata_import_mssql/" class="article-date">
+  <time datetime="2016-08-29T09:24:55.000Z" itemprop="datePublished">2016-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/29/file_rowdata_import_mssql/">匯入文字資料到MSSQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
+<li>一個有權限寫入的MSSQLServer與SSMS管理工具</li>
+<li>準備好你的檔案資料(Row Data)</li>
+<li>這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)</li>
+</ol>
+<h2 id="步驟記錄"><a href="#步驟記錄" class="headerlink" title="步驟記錄"></a>步驟記錄</h2><ol>
+<li>開啟SSMS，連線測試SQL Server</li>
+<li>對測試資料庫右鍵&gt;工作&gt;匯入資料，開啟「SQL Server匯入匯出精靈」</li>
+<li>「開始畫面」&gt; 下一步</li>
+<li>「資料來源」選擇一般檔案來源，「檔案名稱」選取Row Data的檔案路徑</li>
+<li>請依實際狀況選擇下列欄位<ul>
+<li>「略過的標頭資料列數」: 預設為0，可透過設定此欄位略過 Row Data內含註解，標頭等資料</li>
+<li>「第一個資料列的資料行名稱」:若Row Data第一行為標頭，請勾選此欄位</li>
+<li>左側選單選擇「資料行」&gt;「資料列分隔符號」選擇「{CR}{LF}」、「資料行分隔符號」選擇「Tab鍵{t}」</li>
+</ul>
+</li>
+<li>左側選單選擇「預覽」確認匯入的資料無誤後，點擊下一步</li>
+<li>「目的地」請選擇「SqlServer」，設定ConnectionString<ul>
+<li>Data Source=1<strong>.*</strong>.<strong><em>.</em></strong>;Initial Catalog=TestDB;Persist Security Info=True;User ID=tester;Password=<strong><em>**</em></strong>;</li>
+</ul>
+</li>
+<li>「選取來源資料表和檢視畫面」確認無誤後，點擊下一步。</li>
+<li>「檢閱資料類型對應畫面」請忽略資料類型的警告，點擊下一步。</li>
+<li>「執行封裝畫面」勾選「立即執行」，點擊下一步。</li>
+<li>「完成精靈畫面」點選完成。</li>
+<li>執行時間長短，依Row Data大小而有所差異。</li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/" data-id="cixys1ric000il4557uhva23a" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DBA/">DBA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-how_to_use_github_page" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/28/how_to_use_github_page/" class="article-date">
@@ -169,7 +426,7 @@ username.xyz
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/28/how_to_use_github_page/" data-id="cixsle8kd000d7wopo2gi22t3" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/28/how_to_use_github_page/" data-id="cixys1rim000pl455yxdr0skw" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/28/how_to_use_github_page/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -225,7 +482,7 @@ google_analytics:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cixsle8jz00037wopg61nrmzs" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cixys1rii000nl4556ruot008" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -300,7 +557,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cixsle8kj000h7wop8mws4kwj" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cixys1rif000kl455y0f90vl1" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -346,7 +603,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cixsle8ki000g7wop6fwqydxs" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cixys1ria000fl455p7lh21iv" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/20/sites_todo_list/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -393,7 +650,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cixsle8kn000l7wop4sr4r9wq" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cixys1rik000ol4556srf3082" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/13/hello-world/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -421,7 +678,7 @@ mydomain.me
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
     </div>
   </div>
 
@@ -431,7 +688,7 @@ mydomain.me
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 10px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 15px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 15px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 15px;">kata</a> <a href="/tags/npm/" style="font-size: 15px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 13.33px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 10px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -453,23 +710,23 @@ mydomain.me
       <ul>
         
           <li>
+            <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/">[記錄]VS2015 StyleCop 誤判SA0102</a>
           </li>
         
           <li>
             <a href="/2016/12/05/be_friend_with_time/">[閱讀筆記]把時間當作朋友</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/28/dotnet_pdb_file/">.NET PDB File 介紹</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/21/aspdotnet_threadpool_and_redis/">ASP.NET Thread Pool 與 Redis Timeout Exception</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/28/about_content_type/">有關 HTTP Header Content-Type</a>
           </li>
         
       </ul>
