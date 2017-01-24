@@ -3,27 +3,60 @@
 <head>
   <meta charset="utf-8">
   
-  <title>有關 HTTP Header Content-Type | Marsen</title>
+  <title>IIS Tracing Log 設定 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言當我們對 Server 發出 request 的時候需要註明你 request 的 Content-Type以下簡單介紹一下這些格式  
-測試工具PostMan這套工具可以模擬不同的格式資料發動 request 到你的 Server
+  <meta name="description" content="緣由當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),可以透過開啟tracing log來作追蹤
+環境
+Windows Server 2012 R2
+IIS 8.5.9600.16384
 
-Content-Typeapplication/x-www-form-urlencoded常用的Content-Type,簡單說就是KEY-VALUE的方式如下">
+開啟 tracing log
+新增 Tracing Rules
+
+
+開啟網站 Tracing 功能
+
+調">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有關 HTTP Header Content-Type">
-<meta property="og:url" content="http://blog.marsen.me/2016/10/28/about_content_type/index.html">
+<meta property="og:title" content="IIS Tracing Log 設定">
+<meta property="og:url" content="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="引言當我們對 Server 發出 request 的時候需要註明你 request 的 Content-Type以下簡單介紹一下這些格式  
-測試工具PostMan這套工具可以模擬不同的格式資料發動 request 到你的 Server
+<meta property="og:description" content="緣由當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),可以透過開啟tracing log來作追蹤
+環境
+Windows Server 2012 R2
+IIS 8.5.9600.16384
 
-Content-Typeapplication/x-www-form-urlencoded常用的Content-Type,簡單說就是KEY-VALUE的方式如下">
-<meta property="og:updated_time" content="2016-11-10T03:43:31.111Z">
+開啟 tracing log
+新增 Tracing Rules
+
+
+開啟網站 Tracing 功能
+
+調">
+<meta property="og:image" content="https://i.imgur.com/4llAgOa.jpg">
+<meta property="og:image" content="https://i.imgur.com/BavVoWy.gif">
+<meta property="og:image" content="https://i.imgur.com/LUgbESR.jpg">
+<meta property="og:image" content="https://i.imgur.com/aKtgj5m.jpg">
+<meta property="og:image" content="https://i.imgur.com/4VsuQWp.jpg">
+<meta property="og:image" content="https://i.imgur.com/Lvnygqr.jpg">
+<meta property="og:image" content="https://i.imgur.com/H2F06OU.jpg">
+<meta property="og:image" content="https://i.imgur.com/biiX6w8.jpg">
+<meta property="og:updated_time" content="2017-01-24T06:51:47.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有關 HTTP Header Content-Type">
-<meta name="twitter:description" content="引言當我們對 Server 發出 request 的時候需要註明你 request 的 Content-Type以下簡單介紹一下這些格式  
-測試工具PostMan這套工具可以模擬不同的格式資料發動 request 到你的 Server
+<meta name="twitter:title" content="IIS Tracing Log 設定">
+<meta name="twitter:description" content="緣由當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),可以透過開啟tracing log來作追蹤
+環境
+Windows Server 2012 R2
+IIS 8.5.9600.16384
 
-Content-Typeapplication/x-www-form-urlencoded常用的Content-Type,簡單說就是KEY-VALUE的方式如下">
+開啟 tracing log
+新增 Tracing Rules
+
+
+開啟網站 Tracing 功能
+
+調">
+<meta name="twitter:image" content="https://i.imgur.com/4llAgOa.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -85,10 +118,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-about_content_type" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-iis_tracing_log_setting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/10/28/about_content_type/" class="article-date">
-  <time datetime="2016-10-28T04:54:55.000Z" itemprop="datePublished">2016-10-28</time>
+    <a href="/2017/01/24/iis_tracing_log_setting/" class="article-date">
+  <time datetime="2017-01-24T06:27:12.000Z" itemprop="datePublished">2017-01-24</time>
 </a>
     
   </div>
@@ -99,7 +132,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      有關 HTTP Header Content-Type
+      IIS Tracing Log 設定
     </h1>
   
 
@@ -107,41 +140,41 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
-<h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="external">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
-<hr>
-<h2 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h2><h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a><code>application/x-www-form-urlencoded</code></h3><p>常用的Content-Type,簡單說就是KEY-VALUE的方式<br>如下, KEY firstname 的值是 marsen<br>lastname 是由使用者輸入</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line">  First name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span> <span class="attr">value</span>=<span class="string">"marsen"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  Last name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>同時資料會作一次url encoded,<br>產生類似下列的資料<br>firstname=marsen&amp;lastname=lin&amp;key%5b1%5d=value%5b1%5d</p>
-<hr>
-<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a><code>multipart/form-data</code></h3><p>PostMan中的選項 <code>binary</code> 其實就是包成這種格式<br>上傳檔案會使用這種Content-Type,<br>這通常表示你的html element包含有 <code>&lt;input type=&quot;file&quot;&gt;</code> </p>
-<hr>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>PostMan中的選項 <code>raw</code>,可以用字串組合成任意Content-Type,<br>參考<a href="http://www.freeformatter.com/mime-types-list.html" target="_blank" rel="external">Content-Type Table</a>  </p>
-<ul>
-<li><code>application/json</code><br>目前主流的API會用輕巧的JSON作為傳遞資訊的媒介  </li>
-<li><code>text/xml</code>、<code>application/xml</code><br>早期標準的Web服務通常會透過xml作為交換資訊的媒介  </li>
-<li><code>text/plain</code><br>有些email或debug的情況會使用text/plain作為Content-Type,但是一般的Request情況不建議使用  </li>
-<li>更多請參考<a href="https://www.w3.org/TR/html5/forms.html#text/plain-encoding-algorithm" target="_blank" rel="external">Spec</a>   </li>
-</ul>
-<hr>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="external">https://imququ.com/post/four-ways-to-post-data-in-http.html</a></li>
-<li><a href="https://codeforgeek.com/2014/09/handle-get-post-request-express-4/" target="_blank" rel="external">https://codeforgeek.com/2014/09/handle-get-post-request-express-4/</a></li>
-<li><a href="https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters" target="_blank" rel="external">https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters</a></li>
-<li><a href="http://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack" target="_blank" rel="external">http://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack</a></li>
-<li><a href="http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean" target="_blank" rel="external">http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean</a></li>
-</ul>
+        <h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),<br>可以透過開啟tracing log來作追蹤</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ol>
+<li>Windows Server 2012 R2</li>
+<li>IIS 8.5.9600.16384</li>
+</ol>
+<h2 id="開啟-tracing-log"><a href="#開啟-tracing-log" class="headerlink" title="開啟 tracing log"></a>開啟 tracing log</h2><ol>
+<li>新增 Tracing Rules<br><img src="https://i.imgur.com/4llAgOa.jpg" alt=""><br><img src="https://i.imgur.com/BavVoWy.gif" alt=""></li>
+</ol>
+<ol>
+<li>開啟網站 Tracing 功能<br><img src="https://i.imgur.com/LUgbESR.jpg" alt=""><br><img src="https://i.imgur.com/aKtgj5m.jpg" alt=""></li>
+</ol>
+<h2 id="調整-IE-Security-層級"><a href="#調整-IE-Security-層級" class="headerlink" title="調整 IE Security 層級"></a>調整 IE Security 層級</h2><ol>
+<li><p>使用 IE 開啟 Log，因 Security 設定無法套用版型<br><img src="https://i.imgur.com/4VsuQWp.jpg" alt=""></p>
+</li>
+<li><p>調整ie enhanced security</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/Lvnygqr.jpg" alt=""></p>
+<ol>
+<li><p>開啟IE &gt; 點選小齒輪，選擇  Internet Options &gt; 點選 Security 頁籤 &gt; 將 Internet 的 Security Level 調整為 Medium-high<br><img src="https://i.imgur.com/H2F06OU.jpg" alt=""></p>
+</li>
+<li><p>完成<br><img src="https://i.imgur.com/biiX6w8.jpg" alt=""></p>
+</li>
+</ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="ciyb567kv0006ycopc0pvdpp7" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="ciyb567lm000nycop1uz2cikx" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2016/10/28/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIS/">IIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
 
     </footer>
   </div>
@@ -149,19 +182,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2016/11/21/aspdotnet_threadpool_and_redis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ASP.NET Thread Pool 與 Redis Timeout Exception
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/21/1st_time_with_powershell/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/15/ci_use_jenkins_on_windows/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">[記錄]powershell 初體驗</div>
+      <div class="article-nav-title">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</div>
     </a>
   
 </nav>
@@ -266,7 +290,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsen';
   
-  var disqus_url = 'http://blog.marsen.me/2016/10/28/about_content_type/';
+  var disqus_url = 'http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/';
   
   (function(){
     var dsq = document.createElement('script');
