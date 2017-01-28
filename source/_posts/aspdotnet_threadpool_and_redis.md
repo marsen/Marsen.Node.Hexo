@@ -10,35 +10,32 @@ tag:
 ---
 
 
-## 前情提要
-_這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章_  
-_記錄著 Thread Pool 的機制如何影響 Redis_
+## 概述
+_ASP.NET Thread Pool 的機制如何影響 Redis_
+
+## 案例
+
+線上維護的系統偶爾會發生 Redis Timeout Exception ,
+並在 elmah 發現以下的錯誤記錄
+
+```csharp
+Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: never,  
+queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 0, ar: 1,  
+IOCP: (Busy=0,Free=1000,Min=8,Max=1000), WORKER: (Busy=13,Free=32754,Min=8,Max=32767), clientName: TYO-MWEB 
+```
+
+## 解析
+
+這時當 StackExchange.Redis 在進行同步作業的時候,  
+如果超過 `synctimeout` 的設定值(預設是1000ms), 
+Redis 會佔用.NET的 workerthread 
+而在 .NET 底層隱含著一個機制,
+會導致錯誤。
 
 ### Thread Pool 500ms 的機制
 
-ASP.NET Thread Pool 的排隊機制與`minworkerthread` 設定值相關。
-可以透過調整 `machine.config` 來修正。
-### 官方說明
-- [爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務](https://support.microsoft.com/zh-tw/kb/821268)
-- machine.config
-
-```xml
-<system.web>
-    <processModel autoConfig="false" maxWorkerThreads="xxx" maxIoThreads="xxx" minWorkerThreads="xxx" minIoThreads="xxx" requestQueueLimit="5000" responseDeadlockInterval="00:03:00"/>
-    <httpRuntime minFreeThreads="xxx" minLocalRequestFreeThreads="xxx"/>
-</system.web>
-```
-
-### 建議的設定值 
-```xml
-<system.web>
-    <processModel autoConfig="false" minWorkerThreads="1" />
-</system.web>    
-```
-
 *一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」*  
 
-真正的原理如下:
 設定值 `minworkerthread` 就像是遊樂場*已經開啟*的閘門, 
 每當有一個遊客(Task)進來時,立即提供給它使用。
 但是當遊客(Task)變多的時候,就會開始排隊(Queue),
@@ -55,44 +52,35 @@ ThreadPool 需要大量的 Thread
 
 ![ASP.NET Thread Pool](/images/workerthread_and_iothread/110416_103521_AM.jpg)
 
+ASP.NET Thread Pool 的排隊機制與`minworkerthread` 設定值相關。  
+可以透過調整 `machine.config` 來修正。  
+參考([爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務](https://support.microsoft.com/zh-tw/kb/821268))。  
 
-### 與CPU的關係 
 `minworkerthread` 的預設值是 1 。  
 但是會與執行環境的CPU個數有關,  
-假設你是四核的主機,那就要乘上 4。  
+假設你是四核的主機,那就要乘上 4。
 
----
-
-### System.TimeoutException 
-當StackExchange.Redis在進行同步作業的時候,  
-如果超過 `synctimeout` 的設定值(預設是1000ms),  
-就會拋出類似以下的錯誤
-
-```csharp
-Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: never,  
-queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 0, ar: 1,  
-IOCP: (Busy=0,Free=1000,Min=8,Max=1000), WORKER: (Busy=13,Free=32754,Min=8,Max=32767), clientName: TYO-MWEB 
-```
-- Redis Command - [參考](http://redis.io/commands)  
-
-拆解錯誤如下:
-
-```csharp
-Timeout performing {{Redis Command}} {{Redis Key}}, inst: {{inst}}, mgr:{{mgr}} , err: {{err}},  
-queue: {{queue}}, qu: {{qu}}, qs: {{qs}}, qc: {{qc}}, wr: {{wr}}, wq: {{wq}}, in: {{in}}, ar: {{ar}},  
-IOCP: (Busy=0,Free=1000,Min=8,Max=1000), WORKER: (Busy=13,Free=32754,Min=8,Max=32767), clientName: {{clientName}}
+```xml
+<system.web>
+    <processModel autoConfig="false" minWorkerThreads="1" />
+</system.web>    
 ```
 
+### 範例
 
-- Redis Key - Redis Key
-- 其他參數說明
+當 Redis 發生 Timeout 時, 
+可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。
+在以下的例子可以看到 IOCP 與 WORKER 兩個值。
+這兩值表示 .Net ThreadPool 內的兩種執行緒,
+如果 Busy 值很高, 就有可能是 ThreadPool 來不及建立造成的錯誤。
 
-範例
 ```csharp
 System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641,  
 inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0  
-IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191) 
+IOCP: (Busy=0, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191) 
 ```
+
+### Error Code 說明
 
 |Error code|Details|範例|說明|
 |---|---|---|---|
@@ -104,6 +92,15 @@ IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=819
 |qc|0 of those have seen replies but have not yet been marked as complete due to waiting on the completion loop|0個已發送未標記完成的queue|已發送未標記完成的queue|
 |wr|there is an active writer (meaning - those 6 unsent are not being ignored) bytes/activewriters |有 1 個啟用的writer,(意味著qu的工作並沒有被忽略) bytes/activewriters|bytes/activewriters|
 |in|there are no active readers and zero bytes are available to be read on the NIC bytes/activereaders|0個reader|bytes/activereaders|
+
+## 參考
+- [Threading](https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx)
+- [Improving ASP.NET Performance](https://msdn.microsoft.com/en-us/library/ms998549.aspx)
+- [Programming the Thread Pool in the .NET Framework](https://msdn.microsoft.com/en-us/library/ms973903.aspx)
+- [DiagnoseRedisErrors-ClientSide](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2)
+- [ThreadPool](https://gist.github.com/JonCole/e65411214030f0d823cb)
+
+(fin)
 
 ---
 
@@ -236,13 +233,3 @@ Note that getting more bandwidth on just the server or just on the client may no
 Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.
 Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool). 
 If you go this route, make sure that you don't create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.
-
-
-## 參考
-- [Threading](https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx)
-- [Improving ASP.NET Performance](https://msdn.microsoft.com/en-us/library/ms998549.aspx)
-- [Programming the Thread Pool in the .NET Framework](https://msdn.microsoft.com/en-us/library/ms973903.aspx)
-- [DiagnoseRedisErrors-ClientSide](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2)
-- [ThreadPool](https://gist.github.com/JonCole/e65411214030f0d823cb)
-
-(fin)

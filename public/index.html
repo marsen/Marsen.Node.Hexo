@@ -74,6 +74,89 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-aspdotnet_threadpool_monitor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/28/aspdotnet_threadpool_monitor/" class="article-date">
+  <time datetime="2017-01-28T12:46:49.000Z" itemprop="datePublished">2017-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/28/aspdotnet_threadpool_monitor/">ASP.NET Thread Pool 監控</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="/2016/11/21/aspdotnet_threadpool_and_redis/">上一次</a>說明了 .NET Thread Pool 的機制如何影響 Redis,<br>.NET Thread Pool 的機制會貫穿任何與它互動的系統或服務,<br>所以這篇會簡單描述如何對 .NET Thread Pool <a href="https://msdn.microsoft.com/zh-tw/library/ff650682.aspx" target="_blank" rel="external">建立監控</a>。</p>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
+<li>建立監控記數器</li>
+<li>在系統寫入監控數值</li>
+<li>開啟效能計數器</li>
+</ol>
+<h2 id="建立監控記數器"><a href="#建立監控記數器" class="headerlink" title="建立監控記數器"></a>建立監控記數器</h2><table>
+<thead>
+<tr>
+<th>記數器</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Available Worker Threads</td>
+<td>目前在 thread-pool 可以使用的 worker threads</td>
+</tr>
+<tr>
+<td>Available IO Threads</td>
+<td>目前在 thread-pool 可以使用的 I/O threads</td>
+</tr>
+<tr>
+<td>Max Worker Threads</td>
+<td>最大可以建立的 worker threads 數量</td>
+</tr>
+<tr>
+<td>Max IO Threads</td>
+<td>最大可以建立的 I/O threads 數量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="建立一個-Console-應用程式"><a href="#建立一個-Console-應用程式" class="headerlink" title="建立一個 Console 應用程式"></a>建立一個 Console 應用程式</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Diagnostics;</div><div class="line"></div><div class="line"><span class="keyword">class</span> <span class="title">MyAspNetThreadCounters</span></div><div class="line">&#123;</div><div class="line">  [STAThread]</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">  &#123;</div><div class="line">    CreateCounters();</div><div class="line">    Console.WriteLine(<span class="string">"MyAspNetThreadCounters performance counter category "</span> +</div><div class="line">                      <span class="string">"is created. [Press Enter]"</span>);</div><div class="line">    Console.ReadLine();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CreateCounters</span>(<span class="params"></span>)</span></div><div class="line">  &#123;</div><div class="line">    CounterCreationDataCollection col =  </div><div class="line">      <span class="keyword">new</span> CounterCreationDataCollection();</div><div class="line"></div><div class="line">    <span class="comment">// Create custom counter objects</span></div><div class="line">    CounterCreationData counter1 = <span class="keyword">new</span> CounterCreationData();</div><div class="line">    counter1.CounterName = <span class="string">"Available Worker Threads"</span>;</div><div class="line">    counter1.CounterHelp = <span class="string">"The difference between the maximum number "</span> + </div><div class="line">                           <span class="string">"of thread pool worker threads and the "</span> +</div><div class="line">                           <span class="string">"number currently active."</span>;</div><div class="line">    counter1.CounterType = PerformanceCounterType.NumberOfItems32;</div><div class="line"></div><div class="line">    CounterCreationData counter2 = <span class="keyword">new</span> CounterCreationData();</div><div class="line">    counter2.CounterName = <span class="string">"Available IO Threads"</span>;</div><div class="line">    counter2.CounterHelp = <span class="string">"The difference between the maximum number of "</span> + </div><div class="line">                           <span class="string">"thread pool IO threads and the number "</span>+ </div><div class="line">                           <span class="string">"currently active."</span>;</div><div class="line">    counter2.CounterType = PerformanceCounterType.NumberOfItems32;</div><div class="line"></div><div class="line">    CounterCreationData counter3 = <span class="keyword">new</span> CounterCreationData();</div><div class="line">    counter3.CounterName = <span class="string">"Max Worker Threads"</span>;</div><div class="line">    counter3.CounterHelp = <span class="string">"The number of requests to the thread pool "</span>+ </div><div class="line">                           <span class="string">"that can be active concurrently. All "</span>+  </div><div class="line">                           <span class="string">"requests above that number remain queued until "</span> +</div><div class="line">                           <span class="string">"thread pool worker threads become available."</span>;</div><div class="line">    counter3.CounterType = PerformanceCounterType.NumberOfItems32;</div><div class="line"></div><div class="line">    CounterCreationData counter4 = <span class="keyword">new</span> CounterCreationData();</div><div class="line">    counter4.CounterName = <span class="string">"Max IO Threads"</span>;</div><div class="line">    counter4.CounterHelp = <span class="string">"The number of requests to the thread pool "</span> + </div><div class="line">                           <span class="string">"that can be active concurrently. All "</span>+  </div><div class="line">                           <span class="string">"requests above that number remain queued until "</span> +</div><div class="line">                           <span class="string">"thread pool IO threads become available."</span>;</div><div class="line">    counter4.CounterType = PerformanceCounterType.NumberOfItems32;</div><div class="line"></div><div class="line">    <span class="comment">// Add custom counter objects to CounterCreationDataCollection.</span></div><div class="line">    col.Add(counter1);</div><div class="line">    col.Add(counter2);</div><div class="line">    col.Add(counter3);</div><div class="line">    col.Add(counter4);</div><div class="line">    <span class="comment">// delete the category if it already exists</span></div><div class="line">    <span class="keyword">if</span>(PerformanceCounterCategory.Exists(<span class="string">"MyAspNetThreadCounters"</span>))</div><div class="line">    &#123;</div><div class="line">      PerformanceCounterCategory.Delete(<span class="string">"MyAspNetThreadCounters"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// bind the counters to the PerformanceCounterCategory</span></div><div class="line">    PerformanceCounterCategory category = </div><div class="line">            PerformanceCounterCategory.Create(<span class="string">"MyAspNetThreadCounters"</span>, </div><div class="line">                                              <span class="string">""</span>, col);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>編譯後並執行即可,<br>執行 <code>regedit</code> 開啟登錄編輯程式,<br>輸入機碼 <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services</code><br>將可以找到剛剛建立的 <code>MyAspNetThreadCounters</code> 記數器</p>
+<h2 id="在系統寫入監控數值"><a href="#在系統寫入監控數值" class="headerlink" title="在系統寫入監控數值"></a>在系統寫入監控數值</h2><p>在站台的 <code>Global.asax</code> 加入以下的程式碼</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">bool</span> MonitorThreadPoolEnabled = <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Application_Start</span>(<span class="params">Object sender, EventArgs e</span>)</span></div><div class="line">&#123;</div><div class="line">  Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadStart(RefreshCounters));</div><div class="line">  t.Start();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RefreshCounters</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">while</span> (MonitorThreadPoolEnabled)</div><div class="line">  &#123;</div><div class="line">    ASPNETThreadInfo t = GetThreadInfo();</div><div class="line">    ShowPerfCounters(t);</div><div class="line">    System.Threading.Thread.Sleep(<span class="number">500</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Application_End</span>(<span class="params">Object sender, EventArgs e</span>)</span></div><div class="line">&#123;</div><div class="line">  MonitorThreadPoolEnabled = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">struct</span> ASPNETThreadInfo</div><div class="line">&#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> MaxWorkerThreads;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> MaxIOThreads;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> MinFreeThreads;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> MinLocalRequestFreeThreads;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> AvailableWorkerThreads;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> AvailableIOThreads;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">bool</span> <span class="title">Equals</span>(<span class="params">ASPNETThreadInfo other</span>)</span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      MaxWorkerThreads == other.MaxWorkerThreads &amp;&amp;</div><div class="line">      MaxIOThreads == other.MaxIOThreads &amp;&amp;</div><div class="line">      MinFreeThreads == other.MinFreeThreads &amp;&amp;</div><div class="line">      MinLocalRequestFreeThreads == other.MinLocalRequestFreeThreads &amp;&amp;</div><div class="line">      AvailableWorkerThreads == other.AvailableWorkerThreads &amp;&amp;</div><div class="line">      AvailableIOThreads == other.AvailableIOThreads</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> ASPNETThreadInfo <span class="title">GetThreadInfo</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">  <span class="comment">// use ThreadPool to get the current status</span></div><div class="line">  <span class="keyword">int</span> availableWorker, availableIO;</div><div class="line">  <span class="keyword">int</span> maxWorker, maxIO;</div><div class="line"></div><div class="line">  ThreadPool.GetAvailableThreads( <span class="keyword">out</span> availableWorker, <span class="keyword">out</span> availableIO);</div><div class="line">  ThreadPool.GetMaxThreads(<span class="keyword">out</span> maxWorker, <span class="keyword">out</span> maxIO);</div><div class="line"></div><div class="line">  ASPNETThreadInfo threadInfo;</div><div class="line">  threadInfo.AvailableWorkerThreads = (Int16)availableWorker;</div><div class="line">  threadInfo.AvailableIOThreads = (Int16)availableIO;</div><div class="line">  threadInfo.MaxWorkerThreads = (Int16)maxWorker;</div><div class="line">  threadInfo.MaxIOThreads = (Int16)maxIO;</div><div class="line"> <span class="comment">// hard code for now; could get this from  machine.config</span></div><div class="line">  threadInfo.MinFreeThreads = <span class="number">8</span>;</div><div class="line">  threadInfo.MinLocalRequestFreeThreads = <span class="number">4</span>;</div><div class="line">  <span class="keyword">return</span> threadInfo;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ShowPerfCounters</span>(<span class="params">ASPNETThreadInfo t</span>)</span></div><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="comment">// get an instance of our Available Worker Threads counter</span></div><div class="line">  PerformanceCounter counter1 = <span class="keyword">new</span> PerformanceCounter();</div><div class="line">  counter1.CategoryName = <span class="string">"MyAspNetThreadCounters"</span>;</div><div class="line">  counter1.CounterName = <span class="string">"Available Worker Threads"</span>;</div><div class="line">  counter1.ReadOnly = <span class="literal">false</span>;</div><div class="line"></div><div class="line">  <span class="comment">// set the value of the counter</span></div><div class="line">  counter1.RawValue = t.AvailableWorkerThreads;</div><div class="line">  counter1.Close();</div><div class="line"></div><div class="line">  <span class="comment">// repeat for other counters</span></div><div class="line"></div><div class="line">  PerformanceCounter counter2 = <span class="keyword">new</span> PerformanceCounter();</div><div class="line">  counter2.CategoryName = <span class="string">"MyAspNetThreadCounters"</span>;</div><div class="line">  counter2.CounterName = <span class="string">"Available IO Threads"</span>;</div><div class="line">  counter2.ReadOnly = <span class="literal">false</span>;</div><div class="line">  counter2.RawValue = t.AvailableIOThreads;</div><div class="line">  counter2.Close();</div><div class="line"></div><div class="line">  PerformanceCounter counter3 = <span class="keyword">new</span> PerformanceCounter();</div><div class="line">  counter3.CategoryName = <span class="string">"MyAspNetThreadCounters"</span>;</div><div class="line">  counter3.CounterName = <span class="string">"Max Worker Threads"</span>;</div><div class="line">  counter3.ReadOnly = <span class="literal">false</span>;</div><div class="line">  counter3.RawValue = t.MaxWorkerThreads;</div><div class="line">  counter3.Close();</div><div class="line"></div><div class="line">  PerformanceCounter counter4 = <span class="keyword">new</span> PerformanceCounter();</div><div class="line">  counter4.CategoryName = <span class="string">"MyAspNetThreadCounters"</span>;</div><div class="line">  counter4.CounterName = <span class="string">"Max IO Threads"</span>;</div><div class="line">  counter4.ReadOnly = <span class="literal">false</span>;</div><div class="line">  counter4.RawValue = t.MaxIOThreads;</div><div class="line">  counter4.Close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>當你的站台重新啟動後,<br>就會定期將 Worker Thread 與  I/O Threads 的監控數值傳遞給系統。  </p>
+<h3 id="開啟效能計數器"><a href="#開啟效能計數器" class="headerlink" title="開啟效能計數器"></a>開啟效能計數器</h3><ol>
+<li>執行 <code>perfmon.exe</code> 開啟效能計數器</li>
+<li>新增效能計數器(點選綠色加符號)</li>
+<li>選取前面所建立監控記數器就能看到當前 ThreadPool 的使用狀況。<br><img src="https://i.imgur.com/HhlbNH2.jpg" alt=""></li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="ciyhk9t6x000650opybsvy7ab" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thread/">Thread</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-iis_tracing_log_setting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/24/iis_tracing_log_setting/" class="article-date">
@@ -125,12 +208,88 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="ciyb567lm000nycop1uz2cikx" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="ciyhk9t7v000r50op1jxyoin8" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIS/">IIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
+  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="ciyhk9t74000b50oppo6922os" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
 
     </footer>
   </div>
@@ -213,85 +372,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyb567la000fycopjknme1xc" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyhk9t78000d50opia7oeziy" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
-  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
-</ol>
-</li>
-<li><p>選擇新增作業</p>
-<ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
-</li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
-</li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="ciyb567l9000dycopj9nig115" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
@@ -340,7 +423,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyb567lu000tycopujzrlxzs" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyhk9t74000a50opz2c3mtbj" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -418,7 +501,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ciyb567l00007ycop2o8l5wno" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ciyhk9t72000850opz2vq2qzo" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -857,7 +940,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="ciyb567l7000bycop1nbxz8dz" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="ciyhk9t70000750opu7gozj6x" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/12/05/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -948,7 +1031,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="ciyb567lg000iycopjtzr0ndl" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="ciyhk9t7d000e50opj7mt1h9z" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -984,32 +1067,19 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><em>這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章</em><br><em>記錄著 Thread Pool 的機制如何影響 Redis</em></p>
-<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。</p>
-<h3 id="官方說明"><a href="#官方說明" class="headerlink" title="官方說明"></a>官方說明</h3><ul>
-<li><a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a></li>
-<li>machine.config</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">maxWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">maxIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">minIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">requestQueueLimit</span>=<span class="string">"5000"</span> <span class="attr">responseDeadlockInterval</span>=<span class="string">"00:03:00"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">httpRuntime</span> <span class="attr">minFreeThreads</span>=<span class="string">"xxx"</span> <span class="attr">minLocalRequestFreeThreads</span>=<span class="string">"xxx"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="建議的設定值"><a href="#建議的設定值" class="headerlink" title="建議的設定值"></a>建議的設定值</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
-<p>真正的原理如下:<br>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
-<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
-<h3 id="與CPU的關係"><a href="#與CPU的關係" class="headerlink" title="與CPU的關係"></a>與CPU的關係</h3><p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。  </p>
-<hr>
-<h3 id="System-TimeoutException"><a href="#System-TimeoutException" class="headerlink" title="System.TimeoutException"></a>System.TimeoutException</h3><p>當StackExchange.Redis在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>就會拋出類似以下的錯誤</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>ASP.NET Thread Pool 的機制如何影響 Redis</em></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>線上維護的系統偶爾會發生 Redis Timeout Exception ,<br>並在 elmah 發現以下的錯誤記錄</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing SETEX Cache:Prod:WebAPI:Key:<span class="number">20161121152607</span>, inst: <span class="number">18</span>, mgr: ExecuteSelect, err: never,  </div><div class="line">queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">0</span>, ar: <span class="number">1</span>,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: TYO-MWEB</div></pre></td></tr></table></figure>
-<ul>
-<li>Redis Command - <a href="http://redis.io/commands" target="_blank" rel="external">參考</a>  </li>
-</ul>
-<p>拆解錯誤如下:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing &#123;&#123;Redis Command&#125;&#125; &#123;&#123;Redis Key&#125;&#125;, inst: &#123;&#123;inst&#125;&#125;, mgr:&#123;&#123;mgr&#125;&#125; , err: &#123;&#123;err&#125;&#125;,  </div><div class="line">queue: &#123;&#123;queue&#125;&#125;, qu: &#123;&#123;qu&#125;&#125;, qs: &#123;&#123;qs&#125;&#125;, qc: &#123;&#123;qc&#125;&#125;, wr: &#123;&#123;wr&#125;&#125;, wq: &#123;&#123;wq&#125;&#125;, <span class="keyword">in</span>: &#123;&#123;<span class="keyword">in</span>&#125;&#125;, ar: &#123;&#123;ar&#125;&#125;,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: &#123;&#123;clientName&#125;&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Redis Key - Redis Key</li>
-<li>其他參數說明</li>
-</ul>
-<p>範例<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </div><div class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </div><div class="line">IOCP: (Busy=<span class="number">6</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure></p>
-<table>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>這時當 StackExchange.Redis 在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>Redis 會佔用.NET的 workerthread<br>而在 .NET 底層隱含著一個機制,<br>會導致錯誤。</p>
+<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
+<p>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
+<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
+<p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。<br>參考(<a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a>)。  </p>
+<p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>當 Redis 發生 Timeout 時,<br>可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。<br>在以下的例子可以看到 IOCP 與 WORKER 兩個值。<br>這兩值表示 .Net ThreadPool 內的兩種執行緒,<br>如果 Busy 值很高, 就有可能是 ThreadPool 來不及建立造成的錯誤。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </div><div class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </div><div class="line">IOCP: (Busy=<span class="number">0</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure>
+<h3 id="Error-Code-說明"><a href="#Error-Code-說明" class="headerlink" title="Error Code 說明"></a>Error Code 說明</h3><table>
 <thead>
 <tr>
 <th>Error code</th>
@@ -1069,6 +1139,14 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
 </tr>
 </tbody>
 </table>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
+<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
+<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
+</ul>
+<p>(fin)</p>
 <hr>
 <h2 id="其它的-Redis-Error-情境"><a href="#其它的-Redis-Error-情境" class="headerlink" title="其它的 Redis Error 情境"></a>其它的 Redis Error 情境</h2><p>只作摘要式的翻譯。</p>
 <h3 id="Memory-pressure-記憶體壓力"><a href="#Memory-pressure-記憶體壓力" class="headerlink" title="Memory pressure (記憶體壓力)"></a>Memory pressure (記憶體壓力)</h3><p><code>Problem:</code><br>記憶體不足而開始讀取虛擬記憶體(磁碟)而導致特能低落。<br>Memory pressure on the client machine leads to all kinds of performance problems that can<br>delay processing of data that was sent by the Redis instance without any delay.<br>When memory pressure hits, the system typically has to page data from physical memory to<br>virtual memory which is on disk. This page faulting causes the system to slow down significantly.  </p>
@@ -1095,19 +1173,11 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|-------- 1 Second Timeout (A)----------|</div><div class="line">|-Request A-|</div><div class="line">     |-------- 1 Second Timeout (B) ----------|</div><div class="line">     |-Request B-|</div><div class="line">            |- Read Response A --------|</div><div class="line">                                       |- Read Response B-| (**TIMEOUT**)</div></pre></td></tr></table></figure>
 <p><code>Measurement:</code><br>This is a difficult one to measure. You basically have to instrument your client code to track large requests and responses.</p>
 <p><code>Resolution:</code><br>將所需要的資料分割成數個小片段 再分別取回<br>Redis is optimized for a large number of small values, rather than a few large values.<br>The preferred solution is to break up your data into related smaller values. See here for details around why smaller values are recommended.<br>Increase the size of your VM (for client and Redis Cache Server), to get higher bandwidth capabilities, reducing data transfer times for larger responses.<br>Note that getting more bandwidth on just the server or just on the client may not be enough.<br>Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.<br>Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool).<br>If you go this route, make sure that you don’t create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.</p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
-<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
-<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
-</ul>
-<p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyb567l5000aycopwlh6nkez" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyhk9t6t000450op625yntvq" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1172,90 +1242,12 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="ciyb567kv0006ycopc0pvdpp7" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="ciyhk9t6c000050op5lczqudv" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/10/28/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1st_time_with_powershell" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/21/1st_time_with_powershell/" class="article-date">
-  <time datetime="2016-10-21T05:27:53.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/1st_time_with_powershell/">[記錄]powershell 初體驗</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
-<li>將指定的Log記錄,匯入資料庫,產生row data</li>
-<li>將row data 轉換成為需要的報表資料</li>
-<li>產生報表</li>
-</ol>
-<h2 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h2><ol>
-<li>powershell 讀取檔案</li>
-<li>powershell 連接資料庫</li>
-<li>powershell 執行SQL</li>
-<li>powershell 作BulkInsert</li>
-<li>powershell 寫入檔案</li>
-</ol>
-<p><img src="/images/102216_095355_PM.jpg" alt=""></p>
-<p><strong>簡記要點</strong></p>
-<ul>
-<li><strong><em>powershell 可以直接取用 .Net Framework 或 COM 元件</em></strong></li>
-<li><strong><em>宣告變用要用<code>$</code>字號</em></strong></li>
-<li><strong><em><code>#</code> 是註解</em></strong></li>
-</ul>
-<h3 id="讀取檔案"><a href="#讀取檔案" class="headerlink" title="讀取檔案"></a>讀取檔案</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#用New-Object 建立.Net StreamrReader 物件</span></div><div class="line"><span class="variable">$reader</span> = <span class="built_in">New-Object</span> System.io.streamreader(<span class="built_in">get-item</span> <span class="variable">$filePath</span>)</div><div class="line"><span class="comment">#使用`[]`建立靜態類別讀取檔案</span></div><div class="line"><span class="variable">$file</span> = [System.IO.File]::ReadAllLines(<span class="variable">$filePath</span>)  </div><div class="line"><span class="comment">#直接使用Get-Content讀取文檔</span></div><div class="line"><span class="variable">$file</span> = <span class="built_in">Get-Content</span>  <span class="string">"C:\filepath\file"</span></div></pre></td></tr></table></figure>
-<h3 id="連線資料庫與執行語法"><a href="#連線資料庫與執行語法" class="headerlink" title="連線資料庫與執行語法"></a>連線資料庫與執行語法</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$connection</span> = <span class="built_in">New-Object</span> System.Data.SQLClient.SQLConnection</div><div class="line"><span class="variable">$connection</span>.ConnectionString = <span class="string">"server='<span class="variable">$server</span>';database='<span class="variable">$database</span>';uid='<span class="variable">$user</span>'; pwd='<span class="variable">$pwd</span>';Integrated Security=False;"</span></div><div class="line"><span class="variable">$connection</span>.Open()</div><div class="line"><span class="comment"># do something </span></div><div class="line"><span class="variable">$connection</span>.Close()</div></pre></td></tr></table></figure>
-<h3 id="BulkInsert"><a href="#BulkInsert" class="headerlink" title="BulkInsert"></a>BulkInsert</h3><ul>
-<li>從檔案建立DataTable</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$table</span> = <span class="built_in">New-Object</span> System.Data.DataTable</div><div class="line"><span class="comment">#建立欄位</span></div><div class="line"><span class="variable">$col_title</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Title"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_title</span>);</div><div class="line"><span class="variable">$col_content</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Content"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_content</span>);</div><div class="line"><span class="variable">$col_author</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Author"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_author</span>);</div><div class="line"><span class="comment">#建立資料</span></div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$file</span> <span class="keyword">in</span> <span class="variable">$files</span>)&#123;</div><div class="line">  <span class="variable">$dr</span> = <span class="variable">$table</span>.NewRow();</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Title"</span>] = <span class="variable">$file</span>[<span class="string">"title"</span>]</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Content"</span>] = <span class="variable">$file</span>[<span class="string">"content"</span>]</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Author"</span>] = <span class="variable">$file</span>[<span class="string">"author"</span>]</div><div class="line">&#125;</div><div class="line"><span class="comment">#寫入資料表</span></div><div class="line"><span class="variable">$table</span>.Rows.Add(<span class="variable">$dr</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li>透過BulkCopy將DataTable寫入資料庫 </li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$connection</span>.Open()</div><div class="line"><span class="variable">$bulkCopy</span> = <span class="built_in">New-Object</span> (“Data.SqlClient.SqlBulkCopy”) -ArgumentList <span class="variable">$connection</span></div><div class="line"><span class="variable">$bulkCopy</span>.DestinationTableName = <span class="string">"tablename"</span></div><div class="line"><span class="variable">$bulkCopy</span>.WriteToServer(<span class="variable">$datatable</span>)</div><div class="line"><span class="variable">$connection</span>.Close()</div></pre></td></tr></table></figure>
-<h3 id="進度條"><a href="#進度條" class="headerlink" title="進度條"></a>進度條</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Write-Progress</span> -Activity <span class="string">"BulkInsert"</span> -Status <span class="string">"載入百分比: 100 %"</span> -PercentComplete <span class="number">100</span>;</div></pre></td></tr></table></figure>
-<h3 id="產生報表"><a href="#產生報表" class="headerlink" title="產生報表"></a>產生報表</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$datatable</span> | <span class="built_in">export-csv</span> C:\Reports\<span class="number">20161026</span>.csv -Encoding UTF8</div></pre></td></tr></table></figure>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://msdn.microsoft.com/en-us/powershell" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods</a></li>
-<li><a href="https://cmatskas.com/execute-sql-query-with-powershell/" target="_blank" rel="external">https://cmatskas.com/execute-sql-query-with-powershell/</a></li>
-<li><a href="https://blogs.technet.microsoft.com/heyscriptingguy/" target="_blank" rel="external">https://blogs.technet.microsoft.com/heyscriptingguy/</a></li>
-</ol>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="ciyb567l30008ycopx79guocc" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell/">powershell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
 
     </footer>
   </div>
@@ -1290,7 +1282,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 13.33px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 10px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 16.67px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 13.33px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1312,11 +1304,11 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <ul>
         
           <li>
-            <a href="/2017/01/24/iis_tracing_log_setting/">IIS Tracing Log 設定</a>
+            <a href="/2017/01/28/aspdotnet_threadpool_monitor/">ASP.NET Thread Pool 監控</a>
           </li>
         
           <li>
-            <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
+            <a href="/2017/01/24/iis_tracing_log_setting/">IIS Tracing Log 設定</a>
           </li>
         
           <li>
@@ -1324,11 +1316,11 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
           </li>
         
           <li>
-            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
+            <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
           </li>
         
           <li>
-            <a href="/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/">[記錄]VS2015 StyleCop 誤判SA0102</a>
+            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
           </li>
         
       </ul>

@@ -5,26 +5,23 @@
   
   <title>ASP.NET Thread Pool 與 Redis Timeout Exception | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
-Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
-官方說明
-爭用、 效能不佳、 和死結">
+  <meta name="description" content="概述ASP.NET Thread Pool 的機制如何影響 Redis
+案例線上維護的系統偶爾會發生 Redis Timeout Exception ,並在 elmah 發現以下的錯誤記錄
+123Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: neve">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASP.NET Thread Pool 與 Redis Timeout Exception">
 <meta property="og:url" content="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
-Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
-官方說明
-爭用、 效能不佳、 和死結">
+<meta property="og:description" content="概述ASP.NET Thread Pool 的機制如何影響 Redis
+案例線上維護的系統偶爾會發生 Redis Timeout Exception ,並在 elmah 發現以下的錯誤記錄
+123Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: neve">
 <meta property="og:image" content="http://blog.marsen.me/images/workerthread_and_iothread/110416_103521_AM.jpg">
-<meta property="og:updated_time" content="2016-11-22T03:41:18.847Z">
+<meta property="og:updated_time" content="2017-01-28T13:29:33.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASP.NET Thread Pool 與 Redis Timeout Exception">
-<meta name="twitter:description" content="前情提要這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章記錄著 Thread Pool 的機制如何影響 Redis
-Thread Pool 500ms 的機制ASP.NET Thread Pool 的排隊機制與minworkerthread 設定值相關。可以透過調整 machine.config 來修正。
-官方說明
-爭用、 效能不佳、 和死結">
+<meta name="twitter:description" content="概述ASP.NET Thread Pool 的機制如何影響 Redis
+案例線上維護的系統偶爾會發生 Redis Timeout Exception ,並在 elmah 發現以下的錯誤記錄
+123Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: neve">
 <meta name="twitter:image" content="http://blog.marsen.me/images/workerthread_and_iothread/110416_103521_AM.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
@@ -109,32 +106,19 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><em>這是一篇有關 ASP.NET Thread Pool 與 StackExchange.Redis 的文章</em><br><em>記錄著 Thread Pool 的機制如何影響 Redis</em></p>
-<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。</p>
-<h3 id="官方說明"><a href="#官方說明" class="headerlink" title="官方說明"></a>官方說明</h3><ul>
-<li><a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a></li>
-<li>machine.config</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">maxWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">maxIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"xxx"</span> <span class="attr">minIoThreads</span>=<span class="string">"xxx"</span> <span class="attr">requestQueueLimit</span>=<span class="string">"5000"</span> <span class="attr">responseDeadlockInterval</span>=<span class="string">"00:03:00"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">httpRuntime</span> <span class="attr">minFreeThreads</span>=<span class="string">"xxx"</span> <span class="attr">minLocalRequestFreeThreads</span>=<span class="string">"xxx"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="建議的設定值"><a href="#建議的設定值" class="headerlink" title="建議的設定值"></a>建議的設定值</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
-<p>真正的原理如下:<br>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
-<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
-<h3 id="與CPU的關係"><a href="#與CPU的關係" class="headerlink" title="與CPU的關係"></a>與CPU的關係</h3><p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。  </p>
-<hr>
-<h3 id="System-TimeoutException"><a href="#System-TimeoutException" class="headerlink" title="System.TimeoutException"></a>System.TimeoutException</h3><p>當StackExchange.Redis在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>就會拋出類似以下的錯誤</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>ASP.NET Thread Pool 的機制如何影響 Redis</em></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>線上維護的系統偶爾會發生 Redis Timeout Exception ,<br>並在 elmah 發現以下的錯誤記錄</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing SETEX Cache:Prod:WebAPI:Key:<span class="number">20161121152607</span>, inst: <span class="number">18</span>, mgr: ExecuteSelect, err: never,  </div><div class="line">queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">0</span>, ar: <span class="number">1</span>,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: TYO-MWEB</div></pre></td></tr></table></figure>
-<ul>
-<li>Redis Command - <a href="http://redis.io/commands" target="_blank" rel="external">參考</a>  </li>
-</ul>
-<p>拆解錯誤如下:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Timeout performing &#123;&#123;Redis Command&#125;&#125; &#123;&#123;Redis Key&#125;&#125;, inst: &#123;&#123;inst&#125;&#125;, mgr:&#123;&#123;mgr&#125;&#125; , err: &#123;&#123;err&#125;&#125;,  </div><div class="line">queue: &#123;&#123;queue&#125;&#125;, qu: &#123;&#123;qu&#125;&#125;, qs: &#123;&#123;qs&#125;&#125;, qc: &#123;&#123;qc&#125;&#125;, wr: &#123;&#123;wr&#125;&#125;, wq: &#123;&#123;wq&#125;&#125;, <span class="keyword">in</span>: &#123;&#123;<span class="keyword">in</span>&#125;&#125;, ar: &#123;&#123;ar&#125;&#125;,  </div><div class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: &#123;&#123;clientName&#125;&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Redis Key - Redis Key</li>
-<li>其他參數說明</li>
-</ul>
-<p>範例<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </div><div class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </div><div class="line">IOCP: (Busy=<span class="number">6</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure></p>
-<table>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>這時當 StackExchange.Redis 在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>Redis 會佔用.NET的 workerthread<br>而在 .NET 底層隱含著一個機制,<br>會導致錯誤。</p>
+<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
+<p>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
+<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
+<p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。<br>參考(<a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a>)。  </p>
+<p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>當 Redis 發生 Timeout 時,<br>可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。<br>在以下的例子可以看到 IOCP 與 WORKER 兩個值。<br>這兩值表示 .Net ThreadPool 內的兩種執行緒,<br>如果 Busy 值很高, 就有可能是 ThreadPool 來不及建立造成的錯誤。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </div><div class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </div><div class="line">IOCP: (Busy=<span class="number">0</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure>
+<h3 id="Error-Code-說明"><a href="#Error-Code-說明" class="headerlink" title="Error Code 說明"></a>Error Code 說明</h3><table>
 <thead>
 <tr>
 <th>Error code</th>
@@ -194,6 +178,14 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
+<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
+<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
+</ul>
+<p>(fin)</p>
 <hr>
 <h2 id="其它的-Redis-Error-情境"><a href="#其它的-Redis-Error-情境" class="headerlink" title="其它的 Redis Error 情境"></a>其它的 Redis Error 情境</h2><p>只作摘要式的翻譯。</p>
 <h3 id="Memory-pressure-記憶體壓力"><a href="#Memory-pressure-記憶體壓力" class="headerlink" title="Memory pressure (記憶體壓力)"></a>Memory pressure (記憶體壓力)</h3><p><code>Problem:</code><br>記憶體不足而開始讀取虛擬記憶體(磁碟)而導致特能低落。<br>Memory pressure on the client machine leads to all kinds of performance problems that can<br>delay processing of data that was sent by the Redis instance without any delay.<br>When memory pressure hits, the system typically has to page data from physical memory to<br>virtual memory which is on disk. This page faulting causes the system to slow down significantly.  </p>
@@ -220,19 +212,11 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">|-------- 1 Second Timeout (A)----------|</div><div class="line">|-Request A-|</div><div class="line">     |-------- 1 Second Timeout (B) ----------|</div><div class="line">     |-Request B-|</div><div class="line">            |- Read Response A --------|</div><div class="line">                                       |- Read Response B-| (**TIMEOUT**)</div></pre></td></tr></table></figure>
 <p><code>Measurement:</code><br>This is a difficult one to measure. You basically have to instrument your client code to track large requests and responses.</p>
 <p><code>Resolution:</code><br>將所需要的資料分割成數個小片段 再分別取回<br>Redis is optimized for a large number of small values, rather than a few large values.<br>The preferred solution is to break up your data into related smaller values. See here for details around why smaller values are recommended.<br>Increase the size of your VM (for client and Redis Cache Server), to get higher bandwidth capabilities, reducing data transfer times for larger responses.<br>Note that getting more bandwidth on just the server or just on the client may not be enough.<br>Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.<br>Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool).<br>If you go this route, make sure that you don’t create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.</p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
-<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
-<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
-</ul>
-<p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyb567l5000aycopwlh6nkez" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyhk9t6t000450op625yntvq" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -292,7 +276,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 13.33px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 10px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 16.67px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 13.33px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -314,11 +298,11 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2017/01/24/iis_tracing_log_setting/">IIS Tracing Log 設定</a>
+            <a href="/2017/01/28/aspdotnet_threadpool_monitor/">ASP.NET Thread Pool 監控</a>
           </li>
         
           <li>
-            <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
+            <a href="/2017/01/24/iis_tracing_log_setting/">IIS Tracing Log 設定</a>
           </li>
         
           <li>
@@ -326,11 +310,11 @@ ga('send', 'pageview');
           </li>
         
           <li>
-            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
+            <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
           </li>
         
           <li>
-            <a href="/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/">[記錄]VS2015 StyleCop 誤判SA0102</a>
+            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
           </li>
         
       </ul>
