@@ -33,10 +33,6 @@ HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容
 
 
 一流公司制定標準，二流作品牌，">
-<meta property="og:image" content="http://blog.marsen.me/images/090516_021242_AM.jpg">
-<meta property="og:image" content="http://blog.marsen.me/images/090516_023252_AM.jpg">
-<meta property="og:image" content="http://blog.marsen.me/images/090516_023554_AM.jpg">
-<meta property="og:image" content="http://blog.marsen.me/images/090516_024550_AM.jpg">
 <meta property="og:updated_time" content="2016-12-04T17:05:32.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎麼建立一個網站？(三) - 簡單讓網站升級使用HTTP/2">
@@ -52,7 +48,6 @@ HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容
 
 
 一流公司制定標準，二流作品牌，">
-<meta name="twitter:image" content="http://blog.marsen.me/images/090516_021242_AM.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -61,6 +56,9 @@ HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+    <link rel="amphtml" href="./amp/index.html">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -169,19 +167,19 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><img src="/images/090516_021242_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
+<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><p><amp-img src="/images/090516_021242_AM.jpg" width="796" height="461" layout="responsive"></amp-img></p></li>
 <li>設定Page-Rules，這個是為了開啟SSL<ol>
 <li>設定<code>SSL</code>為<code>Flexible</code>,輸入<code>*.username.com/*</code>。<br>這個時候你就可以瀏覽<code>https://blog.username.com/</code>,但同時也可以瀏覽<code>http://blog.username.com/</code> 。<br>我希望HTTP能自動跳轉HTTPS，這部份如果是Node建立的網站，我可以用程式作轉導，<br>但是如果是github page建立網站，就要再仰賴 <a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 了。</li>
 </ol>
 </li>
 <li>設定Page-Rules，這個是為了開啟SSL<ol>
-<li>設定<code>ALWAYS USE HTTPS</code>,輸入<code>http://*.username.com/*</code>。<br><img src="/images/090516_023252_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
+<li>設定<code>ALWAYS USE HTTPS</code>,輸入<code>http://*.username.com/*</code>。<br><p><amp-img src="/images/090516_023252_AM.jpg" width="797" height="459" layout="responsive"></amp-img></p></li>
 </ol>
 </li>
 </ol>
-<p>設定完大致如下，順利的話幾分鐘就生效了。<br><img src="/images/090516_023554_AM.jpg" alt=""></p>
+<p>設定完大致如下，順利的話幾分鐘就生效了。<br><p><amp-img src="/images/090516_023554_AM.jpg" width="956" height="215" layout="responsive"></amp-img></p></p>
 <p>這時候瀏覽<code>http://blog.username.com/</code>就會轉導到<code>https://blog.username.com/</code>了 。</p>
-<h2 id="檢驗"><a href="#檢驗" class="headerlink" title="檢驗"></a>檢驗</h2><p>使用support HTTP/2的瀏覽器，瀏覽網頁，觀察其protocol 。<br><img src="/images/090516_024550_AM.jpg" alt=""></p>
+<h2 id="檢驗"><a href="#檢驗" class="headerlink" title="檢驗"></a>檢驗</h2><p>使用support HTTP/2的瀏覽器，瀏覽網頁，觀察其protocol 。<br><p><amp-img src="/images/090516_024550_AM.jpg" width="1199" height="402" layout="responsive"></amp-img></p></p>
 <p>(fin)</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://simular.co/knowledge/site-build/68-about-http2-and-http11.html" target="_blank" rel="external">了解 HTTP/2 的特色與 HTTP/1.1 的差異</a></li>
@@ -194,7 +192,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="ciyx53wkd001r10opyur94f66" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="ciyx72a890014ocopjhp72ldr" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/09/04/http2 by cloudflare/#disqus_thread" class="article-comment-link">留言</a>
       
