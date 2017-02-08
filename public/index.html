@@ -74,6 +74,85 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-auto_add_trello_card" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/auto_add_trello_card/" class="article-date">
+  <time datetime="2017-02-08T15:52:27.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/auto_add_trello_card/">自動化 Trello 操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
+<h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
+<li>開啟 Menu &gt; More</li>
+<li>點選 Email-to-board Settings</li>
+<li>選擇你要產生卡片的 List 與 位置(頂部或底部)</li>
+</ol>
+<p><img src="https://i.imgur.com/PqDLtdO.gif" alt=""></p>
+<ol>
+<li>寄信，信件格式如下<ul>
+<li>email 的 subject 會成為卡片的標題</li>
+<li>email 的內容會成為卡片的描述</li>
+<li>如果有附加檔案在郵件中，會附加到卡片中</li>
+<li>在 subject 加入 <code>#label</code> 可以在卡片加入標籤(Labels)</li>
+<li>在 subject 加入 <code>@member</code> 可以在卡片加入成員(Members)</li>
+</ul>
+</li>
+</ol>
+<p>更多請<a href="http://help.trello.com/article/809-creating-cards-by-email" target="_blank" rel="external">參考</a>. </p>
+<h2 id="第二種方法-使用API"><a href="#第二種方法-使用API" class="headerlink" title="第二種方法,使用API"></a>第二種方法,使用API</h2><ol>
+<li>登入 Trello</li>
+<li>連線 <a href="https://developers.trello.com" target="_blank" rel="external">https://developers.trello.com</a><br>點選<code>Get your Application Key</code>. 連線到 <a href="https://trello.com/app-key" target="_blank" rel="external">https://trello.com/app-key</a></li>
+</ol>
+<h3 id="取得Key"><a href="#取得Key" class="headerlink" title="取得Key"></a>取得Key</h3><p><img src="https://i.imgur.com/bBoiUCr.jpg" alt=""></p>
+<h3 id="生成Token"><a href="#生成Token" class="headerlink" title="生成Token"></a>生成Token</h3><p><img src="https://i.imgur.com/gHsdYv8.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/bSXkChk.jpg" alt=""><br>點選allow後，就會顯示你的token，特別注意登入的身份權限，<br>並且千萬不要外洩你的token與key值。</p>
+<p>試打API,建立一張 Card 到指定的 List 中.<br>並且設定期限(due)與標籤(labels),<br>更多的API設定請<a href="https://developers.trello.com/advanced-reference" target="_blank" rel="external">參考</a>.<br><img src="https://i.imgur.com/yk6SZYm.jpg" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li>Email:<ul>
+<li>優點:簡單、方便、可以結合mail system 、附加檔案簡單</li>
+<li>缺點:部份功能無法實現(ex: 設定due date)</li>
+</ul>
+</li>
+<li>API:<ul>
+<li>優點:靈活、Resful的API可以實現大部份的功能</li>
+<li>缺點:實作比較麻煩</li>
+</ul>
+</li>
+</ul>
+<p>(fin)    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/02/08/auto_add_trello_card/" data-id="ciyx53wia000710opepu9ga7t" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-aspdotnet_threadpool_monitor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/28/aspdotnet_threadpool_monitor/" class="article-date">
@@ -143,7 +222,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="ciyhk9t6x000650opybsvy7ab" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="ciyx53wi7000610opqayyez7l" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -208,7 +287,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="ciyhk9t7v000r50op1jxyoin8" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="ciyx53wkc001q10opjcr476su" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -284,7 +363,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="ciyhk9t74000b50oppo6922os" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="ciyx53wk0001i10opfa5c0ha0" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -372,7 +451,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyhk9t78000d50opia7oeziy" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyx53wk2001j10opi36y7iny" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -423,7 +502,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyhk9t74000a50opz2c3mtbj" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyx53wju001e10op5i1byfmo" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -501,7 +580,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ciyhk9t72000850opz2vq2qzo" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ciyx53wjo001a10op1jze8orm" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -940,7 +1019,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="ciyhk9t70000750opu7gozj6x" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="ciyx53wjw001h10opzqpgscrh" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/12/05/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1031,7 +1110,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="ciyhk9t7d000e50opj7mt1h9z" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="ciyx53wjs001d10op5k5v9suc" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1177,7 +1256,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyhk9t6t000450op625yntvq" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="ciyx53wi2000410opqrko7rtf" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1191,75 +1270,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
 
 
   
-    <article id="post-about_content_type" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/28/about_content_type/" class="article-date">
-  <time datetime="2016-10-28T04:54:55.000Z" itemprop="datePublished">2016-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/about_content_type/">有關 HTTP Header Content-Type</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
-<h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="external">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
-<hr>
-<h2 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h2><h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a><code>application/x-www-form-urlencoded</code></h3><p>常用的Content-Type,簡單說就是KEY-VALUE的方式<br>如下, KEY firstname 的值是 marsen<br>lastname 是由使用者輸入</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line">  First name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span> <span class="attr">value</span>=<span class="string">"marsen"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  Last name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>同時資料會作一次url encoded,<br>產生類似下列的資料<br>firstname=marsen&amp;lastname=lin&amp;key%5b1%5d=value%5b1%5d</p>
-<hr>
-<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a><code>multipart/form-data</code></h3><p>PostMan中的選項 <code>binary</code> 其實就是包成這種格式<br>上傳檔案會使用這種Content-Type,<br>這通常表示你的html element包含有 <code>&lt;input type=&quot;file&quot;&gt;</code> </p>
-<hr>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>PostMan中的選項 <code>raw</code>,可以用字串組合成任意Content-Type,<br>參考<a href="http://www.freeformatter.com/mime-types-list.html" target="_blank" rel="external">Content-Type Table</a>  </p>
-<ul>
-<li><code>application/json</code><br>目前主流的API會用輕巧的JSON作為傳遞資訊的媒介  </li>
-<li><code>text/xml</code>、<code>application/xml</code><br>早期標準的Web服務通常會透過xml作為交換資訊的媒介  </li>
-<li><code>text/plain</code><br>有些email或debug的情況會使用text/plain作為Content-Type,但是一般的Request情況不建議使用  </li>
-<li>更多請參考<a href="https://www.w3.org/TR/html5/forms.html#text/plain-encoding-algorithm" target="_blank" rel="external">Spec</a>   </li>
-</ul>
-<hr>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="external">https://imququ.com/post/four-ways-to-post-data-in-http.html</a></li>
-<li><a href="https://codeforgeek.com/2014/09/handle-get-post-request-express-4/" target="_blank" rel="external">https://codeforgeek.com/2014/09/handle-get-post-request-express-4/</a></li>
-<li><a href="https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters" target="_blank" rel="external">https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters</a></li>
-<li><a href="http://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack" target="_blank" rel="external">http://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack</a></li>
-<li><a href="http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean" target="_blank" rel="external">http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="ciyhk9t6c000050op5lczqudv" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/10/28/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1272,7 +1286,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSSQL/">MSSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
     </div>
   </div>
 
@@ -1282,7 +1296,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 16.67px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 13.33px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 16.67px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 13.33px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MSSQL/" style="font-size: 10px;">MSSQL</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 10px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1291,7 +1305,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
     </div>
   </div>
 
@@ -1302,6 +1316,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/08/auto_add_trello_card/">自動化 Trello 操作</a>
+          </li>
         
           <li>
             <a href="/2017/01/28/aspdotnet_threadpool_monitor/">ASP.NET Thread Pool 監控</a>
@@ -1317,10 +1335,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
         
           <li>
             <a href="/2017/01/15/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a>
           </li>
         
       </ul>
