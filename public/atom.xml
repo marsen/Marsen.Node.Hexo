@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-01-28T18:18:29.250Z</updated>
+  <updated>2017-02-08T16:24:34.800Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -16,11 +16,70 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>自動化 Trello 操作</title>
+    <link href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/"/>
+    <id>http://blog.marsen.me/2017/02/08/auto_add_trello_card/</id>
+    <published>2017-02-08T15:52:27.000Z</published>
+    <updated>2017-02-08T16:24:34.800Z</updated>
+    
+    <content type="html"><![CDATA[<p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
+<h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
+<li>開啟 Menu &gt; More</li>
+<li>點選 Email-to-board Settings</li>
+<li>選擇你要產生卡片的 List 與 位置(頂部或底部)</li>
+</ol>
+<p><img src="https://i.imgur.com/PqDLtdO.gif" alt=""></p>
+<ol>
+<li>寄信，信件格式如下<ul>
+<li>email 的 subject 會成為卡片的標題</li>
+<li>email 的內容會成為卡片的描述</li>
+<li>如果有附加檔案在郵件中，會附加到卡片中</li>
+<li>在 subject 加入 <code>#label</code> 可以在卡片加入標籤(Labels)</li>
+<li>在 subject 加入 <code>@member</code> 可以在卡片加入成員(Members)</li>
+</ul>
+</li>
+</ol>
+<p>更多請<a href="http://help.trello.com/article/809-creating-cards-by-email" target="_blank" rel="external">參考</a>. </p>
+<h2 id="第二種方法-使用API"><a href="#第二種方法-使用API" class="headerlink" title="第二種方法,使用API"></a>第二種方法,使用API</h2><ol>
+<li>登入 Trello</li>
+<li>連線 <a href="https://developers.trello.com" target="_blank" rel="external">https://developers.trello.com</a><br>點選<code>Get your Application Key</code>. 連線到 <a href="https://trello.com/app-key" target="_blank" rel="external">https://trello.com/app-key</a></li>
+</ol>
+<h3 id="取得Key"><a href="#取得Key" class="headerlink" title="取得Key"></a>取得Key</h3><p><img src="https://i.imgur.com/bBoiUCr.jpg" alt=""></p>
+<h3 id="生成Token"><a href="#生成Token" class="headerlink" title="生成Token"></a>生成Token</h3><p><img src="https://i.imgur.com/gHsdYv8.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/bSXkChk.jpg" alt=""><br>點選allow後，就會顯示你的token，特別注意登入的身份權限，<br>並且千萬不要外洩你的token與key值。</p>
+<p>試打API,建立一張 Card 到指定的 List 中.<br>並且設定期限(due)與標籤(labels),<br>更多的API設定請<a href="https://developers.trello.com/advanced-reference" target="_blank" rel="external">參考</a>.<br><img src="https://i.imgur.com/yk6SZYm.jpg" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li>Email:<ul>
+<li>優點:簡單、方便、可以結合mail system 、附加檔案簡單</li>
+<li>缺點:部份功能無法實現(ex: 設定due date)</li>
+</ul>
+</li>
+<li>API:<ul>
+<li>優點:靈活、Resful的API可以實現大部份的功能</li>
+<li>缺點:實作比較麻煩</li>
+</ul>
+</li>
+</ul>
+<p>(fin)    </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Trello 是一個非常方便的工作管理工具,&lt;br&gt;最主要的功能只有 Boards 、 Lists 與 Cards,&lt;br&gt;確可以發揮相當大的綜效功能,&lt;br&gt;用來當作敏捷開發的白板、安排工作項目與進度,&lt;br&gt;作為協作的平台與工具。&lt;br&gt;也有相當多元的外掛可以供不同的情
+    
+    </summary>
+    
+    
+      <category term="Trello" scheme="http://blog.marsen.me/tags/Trello/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ASP.NET Thread Pool 監控</title>
     <link href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/"/>
     <id>http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/</id>
     <published>2017-01-28T12:46:49.000Z</published>
-    <updated>2017-01-28T18:18:29.250Z</updated>
+    <updated>2017-02-08T15:45:50.127Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="/2016/11/21/aspdotnet_threadpool_and_redis/">上一次</a>說明了 .NET Thread Pool 的機制如何影響 Redis,<br>.NET Thread Pool 的機制會貫穿任何與它互動的系統或服務,<br>所以這篇會簡單描述如何對 .NET Thread Pool <a href="https://msdn.microsoft.com/zh-tw/library/ff650682.aspx" target="_blank" rel="external">建立監控</a>。</p>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
@@ -1601,33 +1660,6 @@ mydomain.me
 &lt;li&gt;DNS 原理簡介&lt;/li&gt;
 &lt;li&gt;gulp學習筆記&lt;/li&gt;
 &lt;/ol&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://blog.marsen.me/2016/08/13/hello-world/"/>
-    <id>http://blog.marsen.me/2016/08/13/hello-world/</id>
-    <published>2016-08-13T03:32:15.000Z</published>
-    <updated>2016-12-04T17:02:05.522Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
     </summary>
     
