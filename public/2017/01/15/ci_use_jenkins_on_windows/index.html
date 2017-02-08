@@ -45,6 +45,13 @@ CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;
 登入後,管理 Jenkins &amp;gt; 設定系統
 
 將執行程式數量設定為 1  (安裝完預設為2,其實">
+<meta property="og:image" content="https://i.imgur.com/ik5l0sq.jpg">
+<meta property="og:image" content="https://i.imgur.com/dOad35P.jpg">
+<meta property="og:image" content="https://i.imgur.com/6FyGHPm.jpg">
+<meta property="og:image" content="https://i.imgur.com/AzHrJdu.jpg">
+<meta property="og:image" content="https://i.imgur.com/2ct8GiO.jpg">
+<meta property="og:image" content="https://i.imgur.com/0xkci16.jpg">
+<meta property="og:image" content="https://i.imgur.com/HSJoXJp.jpg">
 <meta property="og:updated_time" content="2017-01-15T16:12:04.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins">
@@ -66,6 +73,7 @@ CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;
 登入後,管理 Jenkins &amp;gt; 設定系統
 
 將執行程式數量設定為 1  (安裝完預設為2,其實">
+<meta name="twitter:image" content="https://i.imgur.com/ik5l0sq.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -74,9 +82,6 @@ CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-    <link rel="amphtml" href="./amp/index.html">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -157,15 +162,15 @@ ga('send', 'pageview');
 </ul>
 <h2 id="操作記錄"><a href="#操作記錄" class="headerlink" title="操作記錄"></a>操作記錄</h2><ol>
 <li>下載並安裝Jenkins（記錄版本為2.32.1）</li>
-<li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/ik5l0sq.jpg" alt="">--></p>
+<li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><img src="https://i.imgur.com/ik5l0sq.jpg" alt=""></p>
 </li>
-<li><p>安裝Plugins(這裡選擇預設)<br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/dOad35P.jpg" alt="">--></p>
+<li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt=""></p>
 </li>
 </ol>
 <ol>
-<li><p>安裝畫面<br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/6FyGHPm.jpg" alt="">--></p>
+<li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt=""></p>
 </li>
-<li><p>建立管理者帳號密碼<br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/AzHrJdu.jpg" alt="">--><br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/2ct8GiO.jpg" alt="">--></p>
+<li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt=""><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt=""></p>
 </li>
 <li><p>登入後,管理 Jenkins &gt; 設定系統</p>
 <ol>
@@ -173,7 +178,7 @@ ga('send', 'pageview');
 <li><code>Shell</code> 設定為 <code>C:\Windows\system32\cmd.exe</code> </li>
 </ol>
 </li>
-<li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/0xkci16.jpg" alt="">--></p>
+<li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><img src="https://i.imgur.com/0xkci16.jpg" alt=""></p>
 </li>
 <li><p><strong>執行一次建置</strong>,這個步驟是為了產生work space 。<br>work space 路徑大致如下 <code>.\Jenkins\workspace\Project name</code></p>
 </li>
@@ -191,7 +196,7 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">上略...</div><div class="line">19:44:46 Host key verification failed.</div><div class="line">19:44:46 fatal: Could not read from remote repository.</div><div class="line">下略...</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/HSJoXJp.jpg" alt="">--></p>
+<p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p>
 <p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">SSH原理与运用（一）：远程登录</a></li>
@@ -204,7 +209,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyx72a7f000nocopm7esafvp" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="ciyx95toy0013k0ope737vztu" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
       
