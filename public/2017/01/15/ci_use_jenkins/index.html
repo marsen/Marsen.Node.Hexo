@@ -17,6 +17,8 @@ OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Pr
 版本控制
 Github
 OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但是每次都要">
+<meta property="og:image" content="https://i.imgur.com/QLzPTrp.jpg">
+<meta property="og:image" content="https://i.imgur.com/dHYRJKr.jpg">
 <meta property="og:updated_time" content="2017-01-15T16:12:04.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI/CD 環境建置筆記 - 前言<目的>">
@@ -24,6 +26,7 @@ OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Pr
 版本控制
 Github
 OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但是每次都要">
+<meta name="twitter:image" content="https://i.imgur.com/QLzPTrp.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -32,9 +35,6 @@ OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Pr
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-    <link rel="amphtml" href="./amp/index.html">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -110,7 +110,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/QLzPTrp.jpg" alt="">--></p>
+        <h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p>
 <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol>
 <li>Github</li>
 <li>Openshift<br>Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),<br>Github 則是單純的負責版本控制。<h3 id="開發流程"><a href="#開發流程" class="headerlink" title="開發流程"></a>開發流程</h3>作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。<br>原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,<br>這樣的流程雖然簡單,但是每次都要人工執行,因為其執行順序,其實都隱含著風險,<br>例如:上錯版本或是產品未進版控等等…,<br>而當進一步想要執行建置、編譯 、套件管理、測試、分析與產生報表時,<br>產品與源碼將會產生差異(ex:產品會包含壓縮的檔案而源碼則是未壓縮的檔案)</li>
@@ -120,12 +120,12 @@ ga('send', 'pageview');
 <li>Prod的來源就是程式碼,無法確保與版控一致,如此就喪失版控的用意。</li>
 <li>難以擴展其他功能,如:建置、編譯 、套件管理、測試、分析與產生報表</li>
 </ol>
-<h4 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h4><p><!-- This img tag couldn't replace. : <img src="https://i.imgur.com/dHYRJKr.jpg" alt="">--><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>
+<h4 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h4><p><img src="https://i.imgur.com/dHYRJKr.jpg" alt=""><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyx72a71000iocop5soij2l1" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="ciyx95tor000zk0opydbkel25" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
