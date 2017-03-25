@@ -3,65 +3,81 @@
 <head>
   <meta charset="utf-8">
   
-  <title>[記錄]powershell 初體驗 | Marsen</title>
+  <title>[閱讀筆記]其實，你不是沒有時間 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求
-將指定的Log記錄,匯入資料庫,產生row data
-將row data 轉換成為需要的報表資料
-產生報表
-
-規劃
-powershell 讀取檔案
-powershell 連接資料庫
-powershell 執行SQL
-powershell 作BulkInsert
-powershell 寫入檔案
+  <meta name="description" content="六個工具與餐盤
+原則:工具簡單至上
+面對突發狀況
 
 
-簡記要點
+月計劃表 (google calendar)
+與自已約會(保留給自已的時間)^註1^
+工作與私人不要分開
+日期與期限 
 
-powershell 可以直接取用 .Net Framework 或 COM 元件">
+
+Todo List (inbox)
+提醒與集中管理
+每天都要檢查一遍^註2^ 
+
+
+日計劃表 (google calendar)
+當日約會 &amp;amp; 活動清單
+活動清單是你當天的籌碼 也是出現突發 
+
+
+隨手記 (筆記本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[記錄]powershell 初體驗">
-<meta property="og:url" content="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/index.html">
+<meta property="og:title" content="[閱讀筆記]其實，你不是沒有時間">
+<meta property="og:url" content="http://blog.marsen.me/2017/03/26/attack_your_day/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="需求
-將指定的Log記錄,匯入資料庫,產生row data
-將row data 轉換成為需要的報表資料
-產生報表
-
-規劃
-powershell 讀取檔案
-powershell 連接資料庫
-powershell 執行SQL
-powershell 作BulkInsert
-powershell 寫入檔案
+<meta property="og:description" content="六個工具與餐盤
+原則:工具簡單至上
+面對突發狀況
 
 
-簡記要點
+月計劃表 (google calendar)
+與自已約會(保留給自已的時間)^註1^
+工作與私人不要分開
+日期與期限 
 
-powershell 可以直接取用 .Net Framework 或 COM 元件">
-<meta property="og:image" content="http://blog.marsen.me/images/102216_095355_PM.jpg">
-<meta property="og:updated_time" content="2016-11-21T09:22:28.683Z">
+
+Todo List (inbox)
+提醒與集中管理
+每天都要檢查一遍^註2^ 
+
+
+日計劃表 (google calendar)
+當日約會 &amp;amp; 活動清單
+活動清單是你當天的籌碼 也是出現突發 
+
+
+隨手記 (筆記本">
+<meta property="og:updated_time" content="2017-03-25T16:33:33.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[記錄]powershell 初體驗">
-<meta name="twitter:description" content="需求
-將指定的Log記錄,匯入資料庫,產生row data
-將row data 轉換成為需要的報表資料
-產生報表
-
-規劃
-powershell 讀取檔案
-powershell 連接資料庫
-powershell 執行SQL
-powershell 作BulkInsert
-powershell 寫入檔案
+<meta name="twitter:title" content="[閱讀筆記]其實，你不是沒有時間">
+<meta name="twitter:description" content="六個工具與餐盤
+原則:工具簡單至上
+面對突發狀況
 
 
-簡記要點
+月計劃表 (google calendar)
+與自已約會(保留給自已的時間)^註1^
+工作與私人不要分開
+日期與期限 
 
-powershell 可以直接取用 .Net Framework 或 COM 元件">
-<meta name="twitter:image" content="http://blog.marsen.me/images/102216_095355_PM.jpg">
+
+Todo List (inbox)
+提醒與集中管理
+每天都要檢查一遍^註2^ 
+
+
+日計劃表 (google calendar)
+當日約會 &amp;amp; 活動清單
+活動清單是你當天的籌碼 也是出現突發 
+
+
+隨手記 (筆記本">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -123,10 +139,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-1st_time_with_powershell" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-attack_your_day" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/10/21/1st_time_with_powershell/" class="article-date">
-  <time datetime="2016-10-21T05:27:53.000Z" itemprop="datePublished">2016-10-21</time>
+    <a href="/2017/03/26/attack_your_day/" class="article-date">
+  <time datetime="2017-03-25T16:08:46.000Z" itemprop="datePublished">2017-03-26</time>
 </a>
     
   </div>
@@ -137,7 +153,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      [記錄]powershell 初體驗
+      [閱讀筆記]其實，你不是沒有時間
     </h1>
   
 
@@ -145,54 +161,76 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
-<li>將指定的Log記錄,匯入資料庫,產生row data</li>
-<li>將row data 轉換成為需要的報表資料</li>
-<li>產生報表</li>
-</ol>
-<h2 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h2><ol>
-<li>powershell 讀取檔案</li>
-<li>powershell 連接資料庫</li>
-<li>powershell 執行SQL</li>
-<li>powershell 作BulkInsert</li>
-<li>powershell 寫入檔案</li>
-</ol>
-<p><img src="/images/102216_095355_PM.jpg" alt=""></p>
-<p><strong>簡記要點</strong></p>
-<ul>
-<li><strong><em>powershell 可以直接取用 .Net Framework 或 COM 元件</em></strong></li>
-<li><strong><em>宣告變用要用<code>$</code>字號</em></strong></li>
-<li><strong><em><code>#</code> 是註解</em></strong></li>
+        <h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
+<li>原則:<strong>工具簡單至上</strong></li>
+<li>面對突發狀況</li>
 </ul>
-<h3 id="讀取檔案"><a href="#讀取檔案" class="headerlink" title="讀取檔案"></a>讀取檔案</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#用New-Object 建立.Net StreamrReader 物件</span></div><div class="line"><span class="variable">$reader</span> = <span class="built_in">New-Object</span> System.io.streamreader(<span class="built_in">get-item</span> <span class="variable">$filePath</span>)</div><div class="line"><span class="comment">#使用`[]`建立靜態類別讀取檔案</span></div><div class="line"><span class="variable">$file</span> = [System.IO.File]::ReadAllLines(<span class="variable">$filePath</span>)  </div><div class="line"><span class="comment">#直接使用Get-Content讀取文檔</span></div><div class="line"><span class="variable">$file</span> = <span class="built_in">Get-Content</span>  <span class="string">"C:\filepath\file"</span></div></pre></td></tr></table></figure>
-<h3 id="連線資料庫與執行語法"><a href="#連線資料庫與執行語法" class="headerlink" title="連線資料庫與執行語法"></a>連線資料庫與執行語法</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$connection</span> = <span class="built_in">New-Object</span> System.Data.SQLClient.SQLConnection</div><div class="line"><span class="variable">$connection</span>.ConnectionString = <span class="string">"server='<span class="variable">$server</span>';database='<span class="variable">$database</span>';uid='<span class="variable">$user</span>'; pwd='<span class="variable">$pwd</span>';Integrated Security=False;"</span></div><div class="line"><span class="variable">$connection</span>.Open()</div><div class="line"><span class="comment"># do something </span></div><div class="line"><span class="variable">$connection</span>.Close()</div></pre></td></tr></table></figure>
-<h3 id="BulkInsert"><a href="#BulkInsert" class="headerlink" title="BulkInsert"></a>BulkInsert</h3><ul>
-<li>從檔案建立DataTable</li>
+<ol>
+<li>月計劃表 (<code>google calendar</code>)<ul>
+<li>與自已約會(保留給自已的時間)^註1^</li>
+<li>工作與私人不要分開</li>
+<li>日期與期限 </li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$table</span> = <span class="built_in">New-Object</span> System.Data.DataTable</div><div class="line"><span class="comment">#建立欄位</span></div><div class="line"><span class="variable">$col_title</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Title"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_title</span>);</div><div class="line"><span class="variable">$col_content</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Content"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_content</span>);</div><div class="line"><span class="variable">$col_author</span> = <span class="built_in">New-Object</span> system.Data.DataColumn <span class="string">"Author"</span>,([string])</div><div class="line"><span class="variable">$table</span>.Columns.Add(<span class="variable">$col_author</span>);</div><div class="line"><span class="comment">#建立資料</span></div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$file</span> <span class="keyword">in</span> <span class="variable">$files</span>)&#123;</div><div class="line">  <span class="variable">$dr</span> = <span class="variable">$table</span>.NewRow();</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Title"</span>] = <span class="variable">$file</span>[<span class="string">"title"</span>]</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Content"</span>] = <span class="variable">$file</span>[<span class="string">"content"</span>]</div><div class="line">  <span class="variable">$dr</span>[<span class="string">"Author"</span>] = <span class="variable">$file</span>[<span class="string">"author"</span>]</div><div class="line">&#125;</div><div class="line"><span class="comment">#寫入資料表</span></div><div class="line"><span class="variable">$table</span>.Rows.Add(<span class="variable">$dr</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li>透過BulkCopy將DataTable寫入資料庫 </li>
+</li>
+<li>Todo List (<code>inbox</code>)<ul>
+<li>提醒與集中管理</li>
+<li>每天都要檢查一遍^註2^ </li>
 </ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$connection</span>.Open()</div><div class="line"><span class="variable">$bulkCopy</span> = <span class="built_in">New-Object</span> (“Data.SqlClient.SqlBulkCopy”) -ArgumentList <span class="variable">$connection</span></div><div class="line"><span class="variable">$bulkCopy</span>.DestinationTableName = <span class="string">"tablename"</span></div><div class="line"><span class="variable">$bulkCopy</span>.WriteToServer(<span class="variable">$datatable</span>)</div><div class="line"><span class="variable">$connection</span>.Close()</div></pre></td></tr></table></figure>
-<h3 id="進度條"><a href="#進度條" class="headerlink" title="進度條"></a>進度條</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Write-Progress</span> -Activity <span class="string">"BulkInsert"</span> -Status <span class="string">"載入百分比: 100 %"</span> -PercentComplete <span class="number">100</span>;</div></pre></td></tr></table></figure>
-<h3 id="產生報表"><a href="#產生報表" class="headerlink" title="產生報表"></a>產生報表</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$datatable</span> | <span class="built_in">export-csv</span> C:\Reports\<span class="number">20161026</span>.csv -Encoding UTF8</div></pre></td></tr></table></figure>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://msdn.microsoft.com/en-us/powershell" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods</a></li>
-<li><a href="https://cmatskas.com/execute-sql-query-with-powershell/" target="_blank" rel="external">https://cmatskas.com/execute-sql-query-with-powershell/</a></li>
-<li><a href="https://blogs.technet.microsoft.com/heyscriptingguy/" target="_blank" rel="external">https://blogs.technet.microsoft.com/heyscriptingguy/</a></li>
+</li>
+<li>日計劃表 (<code>google calendar</code>)<ul>
+<li>當日約會 &amp; 活動清單</li>
+<li>活動清單是你當天的籌碼 也是出現突發 </li>
+</ul>
+</li>
+<li>隨手記 (<code>筆記本&amp;Evernote</code>)<ul>
+<li>接受任務，再轉到其他工具之中^註3^     </li>
+</ul>
+</li>
+<li>隨身資料庫 (<code>google drive</code>)<ul>
+<li>將整理過的資料封存在隨手可得的地方<br>ex: 上課或分享的簡報、 專案記錄等…有大量圖片、文件等</li>
+</ul>
+</li>
+<li>溝通工具 (<code>line &amp; slack</code>)<ul>
+<li>一天檢查電子郵件3~6次就夠了</li>
+</ul>
+</li>
 </ol>
-<p>(fin)</p>
+<h2 id="把時間變空間-視覺化"><a href="#把時間變空間-視覺化" class="headerlink" title="把時間變空間(視覺化)"></a>把時間變空間(視覺化)</h2><ul>
+<li>個人、家庭、工作取得平衡</li>
+<li>安排30分鐘規劃一天的活動<ul>
+<li>創造性活動安排在精力最佳的時段</li>
+<li>安排獨處的時間</li>
+<li>安排恢復精力的時間</li>
+<li>預留時間給可能發生的突發事件</li>
+</ul>
+</li>
+<li>將所有的事情分為紅綠黃(灰)^註4^，綠色應該越多越好，灰色越少越好。<table><br><tr><td>6 am</td><td>7 am</td><td>8 am</td><td>9 am</td><td>10 am</td><td>11 am</td><td>12 am</td><td>1 pm</td></tr><br><tr><td>5 am</td><td colspan="3" rowspan="4" valign="top">本日活動</td><td colspan="3" rowspan="4" valign="top">隨手記</td><td>2 pm</td></tr><br><tr><td>4 am</td><td>3 pm</td></tr><br><tr><td>3 am</td><td>4 pm</td></tr><br><tr><td>2 am</td><td>5 pm</td></tr><br><tr><td>1 am</td><td>12 am</td><td>11 pm</td><td>10 pm</td><td>9 pm</td><td>8 pm</td><td>7 pm</td><td>6 pm</td></tr><br></table>
+
+</li>
+</ul>
+<h2 id="應變執行，計劃趕不上變化"><a href="#應變執行，計劃趕不上變化" class="headerlink" title="應變執行，計劃趕不上變化"></a>應變執行，計劃趕不上變化</h2><ul>
+<li>調整事情的順序</li>
+<li>養成習慣</li>
+<li>臨機應變</li>
+<li>小心多工</li>
+<li>保留風格</li>
+</ul>
+<h2 id="註"><a href="#註" class="headerlink" title="註"></a>註</h2><ol>
+<li>分別為聖的時間，請參考<code>與時間作朋友</code></li>
+<li>利用分別為聖的時間檢查</li>
+<li>餐盤中間的區塊可以用來作當日的活動清單 &amp; 隨手記</li>
+<li>可以參考四象限 重要-緊急(紅)、不重要-緊急(黃)、重要-不緊急(綠)、不重要-不緊急(灰)</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="cj0ph7zwy0001a4opguzqtqy4" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/03/26/attack_your_day/" data-id="cj0ph7zxl0006a4op4s1klaxi" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2017/03/26/attack_your_day/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell/">powershell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/時間管理/">時間管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
 
     </footer>
   </div>
@@ -200,19 +238,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2016/10/28/about_content_type/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          有關 HTTP Header Content-Type
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/14/todolist_by_typescript_2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/02/08/auto_add_trello_card/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作</div>
+      <div class="article-nav-title">自動化 Trello 操作</div>
     </a>
   
 </nav>
@@ -317,7 +346,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsen';
   
-  var disqus_url = 'http://blog.marsen.me/2016/10/21/1st_time_with_powershell/';
+  var disqus_url = 'http://blog.marsen.me/2017/03/26/attack_your_day/';
   
   (function(){
     var dsq = document.createElement('script');

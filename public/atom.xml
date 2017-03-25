@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-02-08T16:24:34.800Z</updated>
+  <updated>2017-03-25T16:33:33.307Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[閱讀筆記]其實，你不是沒有時間</title>
+    <link href="http://blog.marsen.me/2017/03/26/attack_your_day/"/>
+    <id>http://blog.marsen.me/2017/03/26/attack_your_day/</id>
+    <published>2017-03-25T16:08:46.000Z</published>
+    <updated>2017-03-25T16:33:33.307Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
+<li>原則:<strong>工具簡單至上</strong></li>
+<li>面對突發狀況</li>
+</ul>
+<ol>
+<li>月計劃表 (<code>google calendar</code>)<ul>
+<li>與自已約會(保留給自已的時間)^註1^</li>
+<li>工作與私人不要分開</li>
+<li>日期與期限 </li>
+</ul>
+</li>
+<li>Todo List (<code>inbox</code>)<ul>
+<li>提醒與集中管理</li>
+<li>每天都要檢查一遍^註2^ </li>
+</ul>
+</li>
+<li>日計劃表 (<code>google calendar</code>)<ul>
+<li>當日約會 &amp; 活動清單</li>
+<li>活動清單是你當天的籌碼 也是出現突發 </li>
+</ul>
+</li>
+<li>隨手記 (<code>筆記本&amp;Evernote</code>)<ul>
+<li>接受任務，再轉到其他工具之中^註3^     </li>
+</ul>
+</li>
+<li>隨身資料庫 (<code>google drive</code>)<ul>
+<li>將整理過的資料封存在隨手可得的地方<br>ex: 上課或分享的簡報、 專案記錄等…有大量圖片、文件等</li>
+</ul>
+</li>
+<li>溝通工具 (<code>line &amp; slack</code>)<ul>
+<li>一天檢查電子郵件3~6次就夠了</li>
+</ul>
+</li>
+</ol>
+<h2 id="把時間變空間-視覺化"><a href="#把時間變空間-視覺化" class="headerlink" title="把時間變空間(視覺化)"></a>把時間變空間(視覺化)</h2><ul>
+<li>個人、家庭、工作取得平衡</li>
+<li>安排30分鐘規劃一天的活動<ul>
+<li>創造性活動安排在精力最佳的時段</li>
+<li>安排獨處的時間</li>
+<li>安排恢復精力的時間</li>
+<li>預留時間給可能發生的突發事件</li>
+</ul>
+</li>
+<li>將所有的事情分為紅綠黃(灰)^註4^，綠色應該越多越好，灰色越少越好。<table><br><tr><td>6 am</td><td>7 am</td><td>8 am</td><td>9 am</td><td>10 am</td><td>11 am</td><td>12 am</td><td>1 pm</td></tr><br><tr><td>5 am</td><td colspan="3" rowspan="4" valign="top">本日活動</td><td colspan="3" rowspan="4" valign="top">隨手記</td><td>2 pm</td></tr><br><tr><td>4 am</td><td>3 pm</td></tr><br><tr><td>3 am</td><td>4 pm</td></tr><br><tr><td>2 am</td><td>5 pm</td></tr><br><tr><td>1 am</td><td>12 am</td><td>11 pm</td><td>10 pm</td><td>9 pm</td><td>8 pm</td><td>7 pm</td><td>6 pm</td></tr><br></table>
+
+</li>
+</ul>
+<h2 id="應變執行，計劃趕不上變化"><a href="#應變執行，計劃趕不上變化" class="headerlink" title="應變執行，計劃趕不上變化"></a>應變執行，計劃趕不上變化</h2><ul>
+<li>調整事情的順序</li>
+<li>養成習慣</li>
+<li>臨機應變</li>
+<li>小心多工</li>
+<li>保留風格</li>
+</ul>
+<h2 id="註"><a href="#註" class="headerlink" title="註"></a>註</h2><ol>
+<li>分別為聖的時間，請參考<code>與時間作朋友</code></li>
+<li>利用分別為聖的時間檢查</li>
+<li>餐盤中間的區塊可以用來作當日的活動清單 &amp; 隨手記</li>
+<li>可以參考四象限 重要-緊急(紅)、不重要-緊急(黃)、重要-不緊急(綠)、不重要-不緊急(灰)</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;六個工具與餐盤&quot;&gt;&lt;a href=&quot;#六個工具與餐盤&quot; class=&quot;headerlink&quot; title=&quot;六個工具與餐盤&quot;&gt;&lt;/a&gt;六個工具與餐盤&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;原則:&lt;strong&gt;工具簡單至上&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;面對突發狀況&lt;/
+    
+    </summary>
+    
+    
+      <category term="時間管理" scheme="http://blog.marsen.me/tags/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="閱讀筆記" scheme="http://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
   
   <entry>
     <title>自動化 Trello 操作</title>
@@ -1152,8 +1236,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     </summary>
     
     
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
-    
       <category term="powershell" scheme="http://blog.marsen.me/tags/powershell/"/>
     
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
@@ -1161,6 +1243,8 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
     
       <category term="BulkInsert" scheme="http://blog.marsen.me/tags/BulkInsert/"/>
+    
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
     
   </entry>
   
@@ -1391,7 +1475,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/"/>
     <id>http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/</id>
     <published>2016-08-29T09:24:55.000Z</published>
-    <updated>2016-12-04T17:11:06.600Z</updated>
+    <updated>2017-03-25T16:25:35.580Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
 <li>一個有權限寫入的MSSQLServer與SSMS管理工具</li>
@@ -1436,7 +1520,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
       <category term="DBA" scheme="http://blog.marsen.me/tags/DBA/"/>
     
-      <category term="MSSQL" scheme="http://blog.marsen.me/tags/MSSQL/"/>
+      <category term="SQL Server" scheme="http://blog.marsen.me/tags/SQL-Server/"/>
     
   </entry>
   
@@ -1634,35 +1718,6 @@ mydomain.me
       <category term="domain" scheme="http://blog.marsen.me/tags/domain/"/>
     
       <category term="DNS" scheme="http://blog.marsen.me/tags/DNS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>這個網站的待辦事項</title>
-    <link href="http://blog.marsen.me/2016/08/20/sites_todo_list/"/>
-    <id>http://blog.marsen.me/2016/08/20/sites_todo_list/</id>
-    <published>2016-08-19T18:09:07.000Z</published>
-    <updated>2016-10-08T18:07:46.353Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><del>github page &amp; hexo</del></li>
-<li><del>nodejs express &amp; Openshift</del></li>
-<li>DNS 原理簡介</li>
-<li>gulp學習筆記</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;del&gt;github page &amp;amp; hexo&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;nodejs express &amp;amp; Openshift&lt;/del&gt;&lt;/li&gt;
-&lt;li&gt;DNS 原理簡介&lt;/li&gt;
-&lt;li&gt;gulp學習筆記&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
     
   </entry>
   
