@@ -3,33 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自動化 Trello 操作 | Marsen</title>
+  <title>Tag: SQL Server | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Trello 是一個非常方便的工作管理工具,最主要的功能只有 Boards 、 Lists 與 Cards,確可以發揮相當大的綜效功能,用來當作敏捷開發的白板、安排工作項目與進度,作為協作的平台與工具。也有相當多元的外掛可以供不同的情境使用,開發人員也可以自行串接API與系統作整合。簡單記錄自動化產生 Cards 的兩種方法。
-第一種方法,使用mail
-開啟 Menu &amp;gt; More
-點選 E">
-<meta property="og:type" content="article">
-<meta property="og:title" content="自動化 Trello 操作">
-<meta property="og:url" content="http://blog.marsen.me/2017/02/08/auto_add_trello_card/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Marsen">
+<meta property="og:url" content="http://blog.marsen.me/tags/SQL-Server/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="Trello 是一個非常方便的工作管理工具,最主要的功能只有 Boards 、 Lists 與 Cards,確可以發揮相當大的綜效功能,用來當作敏捷開發的白板、安排工作項目與進度,作為協作的平台與工具。也有相當多元的外掛可以供不同的情境使用,開發人員也可以自行串接API與系統作整合。簡單記錄自動化產生 Cards 的兩種方法。
-第一種方法,使用mail
-開啟 Menu &amp;gt; More
-點選 E">
-<meta property="og:image" content="https://i.imgur.com/PqDLtdO.gif">
-<meta property="og:image" content="https://i.imgur.com/bBoiUCr.jpg">
-<meta property="og:image" content="https://i.imgur.com/gHsdYv8.jpg">
-<meta property="og:image" content="https://i.imgur.com/bSXkChk.jpg">
-<meta property="og:image" content="https://i.imgur.com/yk6SZYm.jpg">
-<meta property="og:updated_time" content="2017-02-08T16:24:34.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自動化 Trello 操作">
-<meta name="twitter:description" content="Trello 是一個非常方便的工作管理工具,最主要的功能只有 Boards 、 Lists 與 Cards,確可以發揮相當大的綜效功能,用來當作敏捷開發的白板、安排工作項目與進度,作為協作的平台與工具。也有相當多元的外掛可以供不同的情境使用,開發人員也可以自行串接API與系統作整合。簡單記錄自動化產生 Cards 的兩種方法。
-第一種方法,使用mail
-開啟 Menu &amp;gt; More
-點選 E">
-<meta name="twitter:image" content="https://i.imgur.com/PqDLtdO.gif">
+<meta name="twitter:title" content="Marsen">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -91,110 +72,40 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-auto_add_trello_card" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/08/auto_add_trello_card/" class="article-date">
-  <time datetime="2017-02-08T15:52:27.000Z" itemprop="datePublished">2017-02-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      自動化 Trello 操作
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/08/29/file_rowdata_import_mssql/" class="archive-article-date">
+  <time datetime="2016-08-29T09:24:55.000Z" itemprop="datePublished">8月 29</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/08/29/file_rowdata_import_mssql/">匯入文字資料到MSSQL</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
-<h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
-<li>開啟 Menu &gt; More</li>
-<li>點選 Email-to-board Settings</li>
-<li>選擇你要產生卡片的 List 與 位置(頂部或底部)</li>
-</ol>
-<p><img src="https://i.imgur.com/PqDLtdO.gif" alt=""></p>
-<ol>
-<li>寄信，信件格式如下<ul>
-<li>email 的 subject 會成為卡片的標題</li>
-<li>email 的內容會成為卡片的描述</li>
-<li>如果有附加檔案在郵件中，會附加到卡片中</li>
-<li>在 subject 加入 <code>#label</code> 可以在卡片加入標籤(Labels)</li>
-<li>在 subject 加入 <code>@member</code> 可以在卡片加入成員(Members)</li>
-</ul>
-</li>
-</ol>
-<p>更多請<a href="http://help.trello.com/article/809-creating-cards-by-email" target="_blank" rel="external">參考</a>. </p>
-<h2 id="第二種方法-使用API"><a href="#第二種方法-使用API" class="headerlink" title="第二種方法,使用API"></a>第二種方法,使用API</h2><ol>
-<li>登入 Trello</li>
-<li>連線 <a href="https://developers.trello.com" target="_blank" rel="external">https://developers.trello.com</a><br>點選<code>Get your Application Key</code>. 連線到 <a href="https://trello.com/app-key" target="_blank" rel="external">https://trello.com/app-key</a></li>
-</ol>
-<h3 id="取得Key"><a href="#取得Key" class="headerlink" title="取得Key"></a>取得Key</h3><p><img src="https://i.imgur.com/bBoiUCr.jpg" alt=""></p>
-<h3 id="生成Token"><a href="#生成Token" class="headerlink" title="生成Token"></a>生成Token</h3><p><img src="https://i.imgur.com/gHsdYv8.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/bSXkChk.jpg" alt=""><br>點選allow後，就會顯示你的token，特別注意登入的身份權限，<br>並且千萬不要外洩你的token與key值。</p>
-<p>試打API,建立一張 Card 到指定的 List 中.<br>並且設定期限(due)與標籤(labels),<br>更多的API設定請<a href="https://developers.trello.com/advanced-reference" target="_blank" rel="external">參考</a>.<br><img src="https://i.imgur.com/yk6SZYm.jpg" alt=""></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li>Email:<ul>
-<li>優點:簡單、方便、可以結合mail system 、附加檔案簡單</li>
-<li>缺點:部份功能無法實現(ex: 設定due date)</li>
-</ul>
-</li>
-<li>API:<ul>
-<li>優點:靈活、Resful的API可以實現大部份的功能</li>
-<li>缺點:實作比較麻煩</li>
-</ul>
-</li>
-</ul>
-<p>(fin)    </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/02/08/auto_add_trello_card/" data-id="cj0ph7zyo000ka4opu0nsqqaf" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/03/26/attack_your_day/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          [閱讀筆記]其實，你不是沒有時間
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/01/28/aspdotnet_threadpool_monitor/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ASP.NET Thread Pool 監控</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
 </section>
         
           <aside id="sidebar">
@@ -286,13 +197,11 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsen';
   
-  var disqus_url = 'http://blog.marsen.me/2017/02/08/auto_add_trello_card/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
