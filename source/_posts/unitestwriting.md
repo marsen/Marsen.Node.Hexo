@@ -66,7 +66,7 @@ public void IncludeWhenLeftOpenRightClose()
 {
     var checker = new RangeChecker(Bound.Open,this.leftBound,Bound.Close,this.rightBound);
     bool expect = false;            
-    bool result = checker.IsContains(0);
+    bool result = checker.IsContains(testNum);
     Assert.IsTrue(result);
 }
 ```
