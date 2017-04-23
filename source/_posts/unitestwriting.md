@@ -5,11 +5,11 @@ tag:
   - Unit Test
 ---
 ## 應該知道的事:
-- C#
-- 如何使用 Vs
-- 基本數理(案例一)
+- 使用 C# , 但是其他語言也適用 
+- 使用 Visual Studio
+- 案例一有基本數理的專有名詞
     - 上界(Upper Bound)、下界(lower Bound)、左邊界(Left Bound)、右邊界(Right Bound)
-- 報名連結已結束:
+- 報名資訊(已結束)
 [Agile Meetup 2017/04 意外版: 單元測試這樣玩就對了](http://www.accupass.com/go/unitestwriting)
 
 
@@ -301,4 +301,6 @@ _如果連結失效,煩請告知._
 - [影片1](https://www.facebook.com/AgileCommunity.tw/videos/948509765286712/)
 - [影片2](https://www.facebook.com/AgileCommunity.tw/videos/948548118616210/)
 
+文章內容如有謬誤,煩請指正.
 
+(fin)
