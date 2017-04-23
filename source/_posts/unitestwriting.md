@@ -251,7 +251,7 @@ public class DateProviderStub : IDateProvider
 有興趣實作的人可以試試看.
 如果可以分享實作後的資訊給我更好XD
 ```
-Q:註冊發送郵件如何寫單元測試？如果
+Q:註冊發送郵件如何寫單元測試？
 ```
 
 ### 解析
