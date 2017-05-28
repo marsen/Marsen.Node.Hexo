@@ -74,6 +74,115 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how_to_use_github_page" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/28/how_to_use_github_page/" class="article-date">
+  <time datetime="2016-08-27T20:56:27.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/28/how_to_use_github_page/">怎麼建立一個網站？(二) - 簡單用github page 建立靜態網站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul>
+<li>你要有一個github帳號</li>
+</ul>
+<h2 id="建立github-page"><a href="#建立github-page" class="headerlink" title="建立github page"></a>建立github page</h2><p>如果不排斥看原文，可以直接<a href="https://pages.github.com/" target="_blank" rel="external">參考</a>  </p>
+<ol>
+<li>建立一個repository,並且命名為<code>username.github.io</code>,這裡的username請使用你的Github帳號的username.  </li>
+<li>clone <code>username.github.io</code> 到你的本機上.<pre><code>&gt; git clone https://github.com/username/username.github.io
+</code></pre></li>
+<li>建立一個靜態網頁 <code>index.html</code> , 隨便打點什麼。  <pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;HTML&gt;
+   &lt;HEAD&gt;
+      &lt;TITLE&gt;
+         Hello world
+      &lt;/TITLE&gt;
+   &lt;/HEAD&gt;
+&lt;BODY&gt;
+   &lt;H1&gt;Hello world&lt;/H1&gt;
+   &lt;P&gt;This is my github page&lt;/P&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</code></pre></li>
+<li>commit之後,push 到github上<pre><code>&gt; git add --all
+&gt; git commit -m &quot;Initial commit&quot;
+&gt; git push -u origin master
+</code></pre></li>
+<li>瀏覽  <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 即完成</li>
+</ol>
+<h2 id="使用自訂的domain"><a href="#使用自訂的domain" class="headerlink" title="使用自訂的domain"></a>使用自訂的domain</h2><ol>
+<li>首先準備好一個domain ex: username.xyz</li>
+<li>需要在根目錄底下，放入一個 CNAME file<br>檔案的內容只需要你的domain即可<br>ex:<pre><code>blog.username.xyz  
+username.xyz
+</code></pre></li>
+<li>在Name Servers (例如<a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>)上設定<code>CNAME</code>到github page,<br>將<code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>TYPE</th>
+<th>NAME</th>
+<th>VALUE</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNAME</td>
+<td>*</td>
+<td>username.xyz</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>blog</td>
+<td>username.github.io</td>
+<td>auto</td>
+</tr>
+</tbody>
+</table>
+<p>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
+<h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="external">官方中文文件</a> .</p>
+<ol>
+<li>重點在於<code>_config.yml</code>的設定<pre><code>deploy:
+  type: git
+  repository: https://github.com/username/username.github.io
+  branche: master
+</code></pre></li>
+<li>執行<code>hexo d</code>進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。</li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/08/28/how_to_use_github_page/" data-id="cj38c07gb000stcop39xd4jbn" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/08/28/how_to_use_github_page/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-add_google_analytics_to_hexo_blog_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/25/add_google_analytics_to_hexo_blog_1/" class="article-date">
@@ -116,7 +225,7 @@ google_analytics:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cj2vg1pt7000qj0opxpdt4g56" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cj38c07eu0006tcopmfehfm59" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -191,7 +300,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cj2vg1pv3001nj0oprovaazjf" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cj38c07gl0011tcop3wjn9vxe" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -237,7 +346,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cj2vg1pv0001mj0opysopdfge" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cj38c07h00017tcopg5y3gmyf" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/20/sites_todo_list/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -284,7 +393,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cj2vg1pul001dj0opl24e0g2a" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cj38c07gh000wtcopwqt1mrhh" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/13/hello-world/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -322,7 +431,7 @@ mydomain.me
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 16.67px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 13.33px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 16.67px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 16.67px;">Jenkins</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 13.33px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 13.33px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 13.33px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 13.33px;">kata</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 13.33px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 13.33px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/MsSQL/" style="font-size: 10px;">MsSQL</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 12.5px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 12.5px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -348,6 +457,10 @@ mydomain.me
           </li>
         
           <li>
+            <a href="/2017/04/29/ci_use_jenkins_on_two_windows/">CI/CD 環境建置筆記(二) - 在 windows 安裝 Jenkins 之旁門左道私有雲</a>
+          </li>
+        
+          <li>
             <a href="/2017/04/23/unitestwriting/">[活動筆記]單元測試這樣玩就對了</a>
           </li>
         
@@ -357,10 +470,6 @@ mydomain.me
         
           <li>
             <a href="/2017/02/08/auto_add_trello_card/">自動化 Trello 操作</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/28/aspdotnet_threadpool_monitor/">ASP.NET Thread Pool 監控</a>
           </li>
         
       </ul>
