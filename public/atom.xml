@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-05-19T06:04:03.652Z</updated>
+  <updated>2017-07-14T08:46:11.912Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[記錄]串接 GOOGLE API 取得資料-原由</title>
+    <link href="http://blog.marsen.me/2017/07/14/google_api_auth_0/"/>
+    <id>http://blog.marsen.me/2017/07/14/google_api_auth_0/</id>
+    <published>2017-07-14T07:14:27.000Z</published>
+    <updated>2017-07-14T08:46:11.912Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h2><p>最近看了一本書,「最有生產力的一年」. 書如其名,是一本有關生產力的書,作者用了一年的時間, </p>
+<p>以自已作實驗,測試各種方法並檢驗是否有效. </p>
+<p>作者認為,時間 x 專注力 x 精力 = 生產力, 在他眾多的方法之中, </p>
+<p>「黃金時間」與「精神力評鑑」是一組相關的方法. </p>
+<p>簡單的說,一個人的精力狀況,會隨著一天的生理、心理等客觀或主觀因素起起伏伏,</p>
+<p>就像潮汐一樣,而作者認為人應該在精力最好的時段,作最有價值的事.</p>
+<p>這個時段就被稱作「黃金時間」.</p>
+<p>有些人黃金時間在早上,有些人在晚上,每個人都不相同,</p>
+<p>因此需要記錄精神狀態來判斷.</p>
+<h2 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h2><p>於是我設計一組簡單的方法來記錄精神狀態</p>
+<p>透過google表單用來作記錄,</p>
+<p><img src="https://i.imgur.com/XjfNTZR.jpg" alt=""></p>
+<p>狀態我以10分制來作為評選, 再兩兩一組, 共分為五組「優、良、佳、可、劣」</p>
+<p>在評鑑時先以五分法判斷精力狀況, 再以感覺是好一點或差一點來選取分數. </p>
+<h3 id="行動化"><a href="#行動化" class="headerlink" title="行動化"></a>行動化</h3><p>以我個人的習慣, 手機其實是不離身的, 如果每次記錄都要在個人電腦上作業, 其實是很不方便的.</p>
+<p>所以我參考了電腦玩物的「<a href="http://www.playpcesor.com/2015/09/excel-google-sheet-form-account-book.html" target="_blank" rel="external">Excel 記帳雲端進化！ Google 表單比記帳 App 還好用</a>」</p>
+<p>將我的表單(偽)APP化</p>
+<p><img src="https://i.imgur.com/FW0VvjY.jpg" alt=""></p>
+<p>如此一來便完成了方便記錄的工具, 至於記錄下來的數據如何應用</p>
+<p>又是後話了. 不過順帶一提,我會透過整點報時的工具來提醒自已作記錄,</p>
+<p>另外我不像「最有生產力的一年」的作者特別準時睡覺,或是不喝咖啡,</p>
+<p>因為不準時睡覺跟嗜飲咖啡是我目前的習慣,我認為抱持平常的狀態去記錄才有意義.</p>
+<p>又或者當我戒掉咖啡或是開始早睡早起的習慣時,我就可以用記錄來評量這樣的行為是否有所改善.</p>
+<p>(fin)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;原由&quot;&gt;&lt;a href=&quot;#原由&quot; class=&quot;headerlink&quot; title=&quot;原由&quot;&gt;&lt;/a&gt;原由&lt;/h2&gt;&lt;p&gt;最近看了一本書,「最有生產力的一年」. 書如其名,是一本有關生產力的書,作者用了一年的時間, &lt;/p&gt;
+&lt;p&gt;以自已作實驗,測試各種方法並檢
+    
+    </summary>
+    
+    
+      <category term="Google API" scheme="http://blog.marsen.me/tags/Google-API/"/>
+    
+      <category term="最有生產力的一年" scheme="http://blog.marsen.me/tags/%E6%9C%80%E6%9C%89%E7%94%9F%E7%94%A2%E5%8A%9B%E7%9A%84%E4%B8%80%E5%B9%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>[活動筆記]測試即學習</title>
@@ -508,6 +555,67 @@
   </entry>
   
   <entry>
+    <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
+    <published>2017-01-15T14:16:42.000Z</published>
+    <updated>2017-01-15T16:12:04.053Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
+    
+    </summary>
+    
+    
+      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
+    
+      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</title>
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
@@ -562,67 +670,6 @@
 <li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="external">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
 </ul>
 <p>(fin)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
-    
-    </summary>
-    
-    
-      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
-    
-      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
-    
-      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
-    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
-    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
-    <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-01-15T16:12:04.053Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
-</ol>
-</li>
-<li><p>選擇新增作業</p>
-<ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
-</li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
-</li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
-</ol>
 ]]></content>
     
     <summary type="html">
@@ -1353,9 +1400,9 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
       <category term=".Net Framework" scheme="http://blog.marsen.me/tags/Net-Framework/"/>
     
-      <category term="ASP.Net" scheme="http://blog.marsen.me/tags/ASP-Net/"/>
-    
       <category term="IO" scheme="http://blog.marsen.me/tags/IO/"/>
+    
+      <category term="ASP.Net" scheme="http://blog.marsen.me/tags/ASP-Net/"/>
     
       <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
     
@@ -1471,6 +1518,8 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     </summary>
     
     
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
+    
       <category term="powershell" scheme="http://blog.marsen.me/tags/powershell/"/>
     
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
@@ -1478,8 +1527,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
     
       <category term="BulkInsert" scheme="http://blog.marsen.me/tags/BulkInsert/"/>
-    
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
     
   </entry>
   
@@ -1702,60 +1749,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <category term="HTTP/2" scheme="http://blog.marsen.me/tags/HTTP-2/"/>
     
       <category term="TCP" scheme="http://blog.marsen.me/tags/TCP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>匯入文字資料到MSSQL</title>
-    <link href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/"/>
-    <id>http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/</id>
-    <published>2016-08-29T09:24:55.000Z</published>
-    <updated>2017-03-25T16:25:35.580Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
-<li>一個有權限寫入的MSSQLServer與SSMS管理工具</li>
-<li>準備好你的檔案資料(Row Data)</li>
-<li>這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)</li>
-</ol>
-<h2 id="步驟記錄"><a href="#步驟記錄" class="headerlink" title="步驟記錄"></a>步驟記錄</h2><ol>
-<li>開啟SSMS，連線測試SQL Server</li>
-<li>對測試資料庫右鍵&gt;工作&gt;匯入資料，開啟「SQL Server匯入匯出精靈」</li>
-<li>「開始畫面」&gt; 下一步</li>
-<li>「資料來源」選擇一般檔案來源，「檔案名稱」選取Row Data的檔案路徑</li>
-<li>請依實際狀況選擇下列欄位<ul>
-<li>「略過的標頭資料列數」: 預設為0，可透過設定此欄位略過 Row Data內含註解，標頭等資料</li>
-<li>「第一個資料列的資料行名稱」:若Row Data第一行為標頭，請勾選此欄位</li>
-<li>左側選單選擇「資料行」&gt;「資料列分隔符號」選擇「{CR}{LF}」、「資料行分隔符號」選擇「Tab鍵{t}」</li>
-</ul>
-</li>
-<li>左側選單選擇「預覽」確認匯入的資料無誤後，點擊下一步</li>
-<li>「目的地」請選擇「SqlServer」，設定ConnectionString<ul>
-<li>Data Source=1<strong>.*</strong>.<strong><em>.</em></strong>;Initial Catalog=TestDB;Persist Security Info=True;User ID=tester;Password=<strong><em>**</em></strong>;</li>
-</ul>
-</li>
-<li>「選取來源資料表和檢視畫面」確認無誤後，點擊下一步。</li>
-<li>「檢閱資料類型對應畫面」請忽略資料類型的警告，點擊下一步。</li>
-<li>「執行封裝畫面」勾選「立即執行」，點擊下一步。</li>
-<li>「完成精靈畫面」點選完成。</li>
-<li>執行時間長短，依Row Data大小而有所差異。</li>
-</ol>
-<p>(fin)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前置作業&quot;&gt;&lt;a href=&quot;#前置作業&quot; class=&quot;headerlink&quot; title=&quot;前置作業&quot;&gt;&lt;/a&gt;前置作業&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;一個有權限寫入的MSSQLServer與SSMS管理工具&lt;/li&gt;
-&lt;li&gt;準備好你的檔案資料(Row Data
-    
-    </summary>
-    
-    
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
-    
-      <category term="DBA" scheme="http://blog.marsen.me/tags/DBA/"/>
-    
-      <category term="SQL Server" scheme="http://blog.marsen.me/tags/SQL-Server/"/>
     
   </entry>
   
