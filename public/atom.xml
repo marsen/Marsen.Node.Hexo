@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-07-14T08:46:11.912Z</updated>
+  <updated>2017-07-19T17:04:34.461Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -16,11 +16,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[記錄]串接 GOOGLE API 取得資料-原由</title>
-    <link href="http://blog.marsen.me/2017/07/14/google_api_auth_0/"/>
-    <id>http://blog.marsen.me/2017/07/14/google_api_auth_0/</id>
+    <title>[記錄]串接 GOOGLE API 取得資料(二)</title>
+    <link href="http://blog.marsen.me/2017/07/20/google_api_auth_2/"/>
+    <id>http://blog.marsen.me/2017/07/20/google_api_auth_2/</id>
+    <published>2017-07-19T17:04:14.000Z</published>
+    <updated>2017-07-19T17:04:34.461Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在<a href="https://blog.marsen.me/2017/07/14/google_api_auth_0/">前篇</a>說明為什麼我要作「精神力評鑑」 </p>
+<p>原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.</p>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>有了數據後, 就要看怎麼運用.<br>Google 的表單,可以自動產生回應結果試算表,<br>持之以恒的每天記錄,很快就有上百千筆的資料.</p>
+<p>我打算取得這些資料後,繪制成分佈圖<br>這樣就可以知道,我的黃金時間是在每一天的什麼時段.</p>
+<h3 id="如何透過-GOOGLE-Sheets-API-可以取得資料"><a href="#如何透過-GOOGLE-Sheets-API-可以取得資料" class="headerlink" title="如何透過 GOOGLE Sheets API 可以取得資料."></a>如何透過 <a href="https://developers.google.com/sheets/api/reference/rest/" target="_blank" rel="external">GOOGLE Sheets API</a> 可以取得資料.</h3><p>在<a href="https://cloud.google.com/?hl=zh-tw" target="_blank" rel="external">Google Cloud Platform</a>,建立起 Google API 的服務。</p>
+<ol>
+<li>前往<a href="https://console.developers.google.com/start/api?id=sheets.googleapis.com" target="_blank" rel="external">Google API Wizard</a>,建立或選擇專案。</li>
+<li>建立憑証,選擇OAuth Client ID<ul>
+<li>在這裡我會一次性的建立起所有環境(開發、測試、正式)的憑証 。</li>
+</ul>
+</li>
+<li>下載JSON放置專案的指定位置.</li>
+<li>如何取得授權與取得資料，請參考<a href="https://developers.google.com/sheets/api/quickstart/nodejs" target="_blank" rel="external">QuickStart</a><ul>
+<li>安全考量,我不會將client_secret.json與取回的token 加入版本控制</li>
+<li>以Google 試算表為例，如何取得<a href="https://developers.google.com/sheets/api/guides/concepts" target="_blank" rel="external">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ex:</div><div class="line">https://docs.google.com/spreadsheets/d/1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps/edit#gid=0</div><div class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3><p>以 QuickStart 的程式為例 ,<br>下載回來的檔案 <code>client_secret.json</code><br>可以提供 <code>clientSecret</code>、<code>clientId</code> 與授權後轉導的 url ,<br>當程式執行時, 便會透 <code>googleAuth</code> 去取得授權 ,<br>過程之中會需要使用者作驗証, 驗証完成即取得授權 ,<br>授權有一定的效期, 故一段時間之後需要重新取得授權 </p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li><p><code>client_secret.json</code> 是機敏資料, 不可以放入版本控制, 需要特殊的流程步驟上傳到你的 Web Server 的位置</p>
+<ul>
+<li>Openshift可以透過SSH或是SFTP登入來上傳<code>client_secret.json</code></li>
+<li>CI 以 JENKINS 為例 ; 可以使用 Publish over SSH 上傳檔案<br><img src="https://i.imgur.com/Fo4Ml5M.jpg" alt=""><ul>
+<li>需要注意 CI Server 要有 Web Server 的 SSH Key</li>
+<li>LINUX 複製資料夾語法 <code>cp -rf src/folder/. target/folder</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在正式公開的環境上可能會發生<code>Error: invalid_scope</code>的錯誤 ，可以<a href="https://support.google.com/code/contact/oauth_app_verification?id=705847791246&amp;client=705847791246-l20jeqj1ncv2vffaki70ing4c8cda2r1.apps.googleusercontent.com&amp;query=https://www.googleapis.com/auth/spreadsheets.readonly" target="_blank" rel="external">參考</a>。</p>
+<ul>
+<li>填寫表單作驗証</li>
+<li>個人測試可以加入<a href="https://groups.google.com/forum/#!forum/risky-access-by-unreviewed-apps" target="_blank" rel="external">Risky Access Permissions By Unreviewed Apps</a> 論壇</li>
+</ul>
+</li>
+<li><p>我最後是使用<a href="https://d3js.org/" target="_blank" rel="external">d3.js</a>作為繪圖的library , 因為網路上的資源相當的多 , 而且這次的著墨並不多 , 所以不在這裡介紹. </p>
+</li>
+</ol>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="https://i.imgur.com/8FYzhdg.gif" alt=""></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
+<li><a href="https://blog.openshift.com/using-filezilla-and-sftp-on-windows-with-openshift/" target="_blank" rel="external">Openshift SFPT</a></li>
+<li><a href="https://www.phpini.com/linux/cp-force-copy" target="_blank" rel="external">Linux CP</a></li>
+</ol>
+<p>(fin)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://blog.marsen.me/2017/07/14/google_api_auth_0/
+    
+    </summary>
+    
+    
+      <category term="Google API" scheme="http://blog.marsen.me/tags/Google-API/"/>
+    
+      <category term="OAuth" scheme="http://blog.marsen.me/tags/OAuth/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[記錄]串接 GOOGLE API 取得資料(一)</title>
+    <link href="http://blog.marsen.me/2017/07/14/google_api_auth_1/"/>
+    <id>http://blog.marsen.me/2017/07/14/google_api_auth_1/</id>
     <published>2017-07-14T07:14:27.000Z</published>
-    <updated>2017-07-14T08:46:11.912Z</updated>
+    <updated>2017-07-19T17:01:00.051Z</updated>
     
     <content type="html"><![CDATA[<h2 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h2><p>最近看了一本書,「最有生產力的一年」. 書如其名,是一本有關生產力的書,作者用了一年的時間, </p>
 <p>以自已作實驗,測試各種方法並檢驗是否有效. </p>
@@ -67,7 +135,7 @@
     <link href="http://blog.marsen.me/2017/05/19/testingislearning/"/>
     <id>http://blog.marsen.me/2017/05/19/testingislearning/</id>
     <published>2017-05-19T06:03:01.000Z</published>
-    <updated>2017-05-19T06:04:03.652Z</updated>
+    <updated>2017-07-15T16:28:11.468Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事:"></a>應該知道的事:</h2><ul>
 <li><p>報名資訊(已結束)<br><a href="http://www.accupass.com/go/testingislearning" target="_blank" rel="external">Agile Meetup 2017/05 (2): 測試即學習</a></p>
@@ -148,7 +216,7 @@
     <link href="http://blog.marsen.me/2017/04/29/ci_use_jenkins_on_two_windows/"/>
     <id>http://blog.marsen.me/2017/04/29/ci_use_jenkins_on_two_windows/</id>
     <published>2017-04-29T03:55:16.000Z</published>
-    <updated>2017-05-28T06:30:24.763Z</updated>
+    <updated>2017-04-29T05:17:33.520Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul>
 <li>Dropbox</li>
@@ -193,7 +261,7 @@
     <link href="http://blog.marsen.me/2017/04/23/unitestwriting/"/>
     <id>http://blog.marsen.me/2017/04/23/unitestwriting/</id>
     <published>2017-04-22T16:01:39.000Z</published>
-    <updated>2017-04-23T10:40:36.046Z</updated>
+    <updated>2017-04-29T05:18:22.199Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事:"></a>應該知道的事:</h2><ul>
 <li>使用 C# , 但是其他語言也適用 </li>
@@ -302,7 +370,7 @@
     <link href="http://blog.marsen.me/2017/03/26/attack_your_day/"/>
     <id>http://blog.marsen.me/2017/03/26/attack_your_day/</id>
     <published>2017-03-25T16:08:46.000Z</published>
-    <updated>2017-03-25T16:33:33.307Z</updated>
+    <updated>2017-04-29T05:18:22.198Z</updated>
     
     <content type="html"><![CDATA[<h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
 <li>原則:<strong>工具簡單至上</strong></li>
@@ -386,7 +454,7 @@
     <link href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/"/>
     <id>http://blog.marsen.me/2017/02/08/auto_add_trello_card/</id>
     <published>2017-02-08T15:52:27.000Z</published>
-    <updated>2017-02-08T16:24:34.800Z</updated>
+    <updated>2017-04-29T05:18:22.198Z</updated>
     
     <content type="html"><![CDATA[<p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
 <h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
@@ -445,7 +513,7 @@
     <link href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/"/>
     <id>http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/</id>
     <published>2017-01-28T12:46:49.000Z</published>
-    <updated>2017-02-08T15:45:50.127Z</updated>
+    <updated>2017-01-30T06:02:41.615Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="/2016/11/21/aspdotnet_threadpool_and_redis/">上一次</a>說明了 .NET Thread Pool 的機制如何影響 Redis,<br>.NET Thread Pool 的機制會貫穿任何與它互動的系統或服務,<br>所以這篇會簡單描述如何對 .NET Thread Pool <a href="https://msdn.microsoft.com/zh-tw/library/ff650682.aspx" target="_blank" rel="external">建立監控</a>。</p>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
@@ -512,7 +580,7 @@
     <link href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/"/>
     <id>http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/</id>
     <published>2017-01-24T06:27:12.000Z</published>
-    <updated>2017-01-24T06:51:47.731Z</updated>
+    <updated>2017-01-30T06:02:41.616Z</updated>
     
     <content type="html"><![CDATA[<h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),<br>可以透過開啟tracing log來作追蹤</p>
 <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ol>
@@ -559,7 +627,7 @@
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
     <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-01-15T16:12:04.053Z</updated>
+    <updated>2017-01-15T15:35:27.631Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
 <li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
@@ -620,7 +688,7 @@
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
     <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-01-15T16:12:04.055Z</updated>
+    <updated>2017-01-15T15:54:27.044Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
 <li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
@@ -693,7 +761,7 @@
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins/</id>
     <published>2017-01-15T13:54:00.000Z</published>
-    <updated>2017-01-15T16:12:04.052Z</updated>
+    <updated>2017-01-15T14:47:15.037Z</updated>
     
     <content type="html"><![CDATA[<h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p>
 <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol>
@@ -727,7 +795,7 @@
     <link href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/"/>
     <id>http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/</id>
     <published>2017-01-11T06:51:25.000Z</published>
-    <updated>2017-01-11T06:52:40.682Z</updated>
+    <updated>2017-01-15T13:52:28.031Z</updated>
     
     <content type="html"><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
 <li>作業系統:Windows 10</li>
@@ -789,7 +857,7 @@
     <link href="http://blog.marsen.me/2016/12/05/be_friend_with_time/"/>
     <id>http://blog.marsen.me/2016/12/05/be_friend_with_time/</id>
     <published>2016-12-04T17:54:34.000Z</published>
-    <updated>2017-01-11T06:55:06.490Z</updated>
+    <updated>2016-12-16T16:32:00.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="零、困境"><a href="#零、困境" class="headerlink" title="零、困境"></a>零、困境</h2><p><em>✖ 時間無法管理 能管理的只有你自已。</em></p>
 <h2 id="一、醒悟"><a href="#一、醒悟" class="headerlink" title="一、醒悟"></a>一、醒悟</h2><ul>
@@ -1209,7 +1277,7 @@
     <link href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/"/>
     <id>http://blog.marsen.me/2016/11/28/dotnet_pdb_file/</id>
     <published>2016-11-28T15:54:55.000Z</published>
-    <updated>2016-12-04T17:00:48.445Z</updated>
+    <updated>2016-12-04T17:22:31.206Z</updated>
     
     <content type="html"><![CDATA[<h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，<br>其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
 <h4 id="MSDN-這樣說"><a href="#MSDN-這樣說" class="headerlink" title="MSDN 這樣說"></a>MSDN 這樣說</h4><p>程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、<br>方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。</p>
@@ -1280,7 +1348,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/"/>
     <id>http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/</id>
     <published>2016-11-21T08:49:17.000Z</published>
-    <updated>2017-01-28T13:29:33.416Z</updated>
+    <updated>2017-01-30T06:02:41.615Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>ASP.NET Thread Pool 的機制如何影響 Redis</em></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>線上維護的系統偶爾會發生 Redis Timeout Exception ,<br>並在 elmah 發現以下的錯誤記錄</p>
@@ -1415,7 +1483,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/28/about_content_type/"/>
     <id>http://blog.marsen.me/2016/10/28/about_content_type/</id>
     <published>2016-10-28T04:54:55.000Z</published>
-    <updated>2016-11-10T03:43:31.111Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
 <h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="external">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
@@ -1466,7 +1534,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/"/>
     <id>http://blog.marsen.me/2016/10/21/1st_time_with_powershell/</id>
     <published>2016-10-21T05:27:53.000Z</published>
-    <updated>2016-11-21T09:22:28.683Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
 <li>將指定的Log記錄,匯入資料庫,產生row data</li>
@@ -1535,7 +1603,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/"/>
     <id>http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/</id>
     <published>2016-10-14T02:34:27.000Z</published>
-    <updated>2016-12-04T17:09:30.000Z</updated>
+    <updated>2016-12-04T17:22:31.221Z</updated>
     
     <content type="html"><![CDATA[<h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
 <li>顯示/新增/刪除 todolist </li>
@@ -1588,7 +1656,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/"/>
     <id>http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/</id>
     <published>2016-10-08T02:34:27.000Z</published>
-    <updated>2016-12-04T17:08:50.252Z</updated>
+    <updated>2016-12-04T17:22:31.219Z</updated>
     
     <content type="html"><![CDATA[<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ol>
 <li>使用 typescript 開發</li>
@@ -1669,86 +1737,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <category term="jquery" scheme="http://blog.marsen.me/tags/jquery/"/>
     
       <category term="jquery-ui" scheme="http://blog.marsen.me/tags/jquery-ui/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎麼建立一個網站？(三) - 簡單讓網站升級使用HTTP/2</title>
-    <link href="http://blog.marsen.me/2016/09/04/http2%20by%20cloudflare/"/>
-    <id>http://blog.marsen.me/2016/09/04/http2 by cloudflare/</id>
-    <published>2016-09-03T17:12:15.000Z</published>
-    <updated>2016-12-04T17:05:32.865Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
-<li>HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個<ul>
-<li>HTTP/1.1 基於TCP，需要三方交握。</li>
-<li>HTTP/1.1本身存在得需多問題，安全性、效率等…。</li>
-</ul>
-</li>
-<li>HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容<ul>
-<li>主流的瀏覽器都開始支援了。  </li>
-<li>只要設定好Web Server，Client 端看使用的<a href="http://caniuse.com/#feat=http2" target="_blank" rel="external">瀏覽器支不支援</a>。</li>
-</ul>
-</li>
-<li>一流公司制定標準，二流作品牌，三流賣技術，四流作產品<ul>
-<li>HTTP/2 是源自Google的SPDY。</li>
-<li>Google下一代 QUIC推動中。</li>
-</ul>
-</li>
-<li>HTTP/2 並不強制加密(HTTPS)<ul>
-<li>在主流瀏覽器為了向下相容，保留了80 port的HTTP/1.1通訊協定，用443 port 實作HTTP/2。</li>
-<li>所以還是要走HTTPS，所以需要安全性憑証。</li>
-<li>安全性憑証要錢(現在也有免費的)。</li>
-<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>提供免費的安全性憑証。</li>
-</ul>
-</li>
-</ul>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
-<li>你要有<a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>帳號。</li>
-<li>看過我之網站的設定，簡單說就是一個github page 與 透過OpenShift 這個 PaaS服務建立的網站。<ul>
-<li><a href="https://blog.marsen.me/2016/08/21/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
-<li><a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">怎麼建立一個網站？(二)</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><img src="/images/090516_021242_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
-<li>設定Page-Rules，這個是為了開啟SSL<ol>
-<li>設定<code>SSL</code>為<code>Flexible</code>,輸入<code>*.username.com/*</code>。<br>這個時候你就可以瀏覽<code>https://blog.username.com/</code>,但同時也可以瀏覽<code>http://blog.username.com/</code> 。<br>我希望HTTP能自動跳轉HTTPS，這部份如果是Node建立的網站，我可以用程式作轉導，<br>但是如果是github page建立網站，就要再仰賴 <a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 了。</li>
-</ol>
-</li>
-<li>設定Page-Rules，這個是為了開啟SSL<ol>
-<li>設定<code>ALWAYS USE HTTPS</code>,輸入<code>http://*.username.com/*</code>。<br><img src="/images/090516_023252_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
-</ol>
-</li>
-</ol>
-<p>設定完大致如下，順利的話幾分鐘就生效了。<br><img src="/images/090516_023554_AM.jpg" alt=""></p>
-<p>這時候瀏覽<code>http://blog.username.com/</code>就會轉導到<code>https://blog.username.com/</code>了 。</p>
-<h2 id="檢驗"><a href="#檢驗" class="headerlink" title="檢驗"></a>檢驗</h2><p>使用support HTTP/2的瀏覽器，瀏覽網頁，觀察其protocol 。<br><img src="/images/090516_024550_AM.jpg" alt=""></p>
-<p>(fin)</p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://simular.co/knowledge/site-build/68-about-http2-and-http11.html" target="_blank" rel="external">了解 HTTP/2 的特色與 HTTP/1.1 的差異</a></li>
-<li><a href="https://blog.alphacamp.co/2016/07/12/http2/" target="_blank" rel="external">你的網站升級到 HTTP/2 了嗎？</a></li>
-<li><a href="http://www.ithome.com.tw/voice/94371" target="_blank" rel="external">為什麼我們需要HTTP/2？</a></li>
-<li><a href="http://www.ithome.com.tw/voice/94520" target="_blank" rel="external">HTTP/2登場，邁向新的紀元</a></li>
-<li><a href="http://www.ithome.com.tw/news/95353" target="_blank" rel="external">Google：將推動QUIC成為網路標準</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;應該知道的事&quot;&gt;&lt;a href=&quot;#應該知道的事&quot; class=&quot;headerlink&quot; title=&quot;應該知道的事&quot;&gt;&lt;/a&gt;應該知道的事&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個&lt;ul&gt;
-&lt;li&gt;HTTP
-    
-    </summary>
-    
-    
-      <category term="HTTP/1.1" scheme="http://blog.marsen.me/tags/HTTP-1-1/"/>
-    
-      <category term="HTTP/2" scheme="http://blog.marsen.me/tags/HTTP-2/"/>
-    
-      <category term="TCP" scheme="http://blog.marsen.me/tags/TCP/"/>
     
   </entry>
   
