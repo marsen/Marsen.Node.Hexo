@@ -3,45 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>匯入文字資料到MSSQL | Marsen</title>
+  <title>[記錄]串接 GOOGLE API 取得資料(二) | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前置作業
-一個有權限寫入的MSSQLServer與SSMS管理工具
-準備好你的檔案資料(Row Data)
-這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)
-
-步驟記錄
-開啟SSMS，連線測試SQL Server
-對測試資料庫右鍵&amp;gt;工作&amp;gt;匯入資料，開啟「SQL Server匯入匯出精靈」
-「開始畫面」&amp;gt; 下一步
-「資料來源」選擇一般檔案來源，「檔">
+  <meta name="description" content="前情提要在前篇說明為什麼我要作「精神力評鑑」 
+原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.
+應用有了數據後, 就要看怎麼運用.Google 的表單,可以自動產生回應結果試算表,持之以恒的每天記錄,很快就有上百千筆的資料.
+我打算取得這些資料後,繪制成分佈圖這樣就可以知道,我的黃金時間是在每一天的什麼時段.
+如何透過 GOOGLE Sheets API 可以取得資料.在Go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="匯入文字資料到MSSQL">
-<meta property="og:url" content="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/index.html">
+<meta property="og:title" content="[記錄]串接 GOOGLE API 取得資料(二)">
+<meta property="og:url" content="http://blog.marsen.me/2017/07/20/google_api_auth_2/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="前置作業
-一個有權限寫入的MSSQLServer與SSMS管理工具
-準備好你的檔案資料(Row Data)
-這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)
-
-步驟記錄
-開啟SSMS，連線測試SQL Server
-對測試資料庫右鍵&amp;gt;工作&amp;gt;匯入資料，開啟「SQL Server匯入匯出精靈」
-「開始畫面」&amp;gt; 下一步
-「資料來源」選擇一般檔案來源，「檔">
-<meta property="og:updated_time" content="2017-04-29T05:18:22.199Z">
+<meta property="og:description" content="前情提要在前篇說明為什麼我要作「精神力評鑑」 
+原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.
+應用有了數據後, 就要看怎麼運用.Google 的表單,可以自動產生回應結果試算表,持之以恒的每天記錄,很快就有上百千筆的資料.
+我打算取得這些資料後,繪制成分佈圖這樣就可以知道,我的黃金時間是在每一天的什麼時段.
+如何透過 GOOGLE Sheets API 可以取得資料.在Go">
+<meta property="og:image" content="https://i.imgur.com/Fo4Ml5M.jpg">
+<meta property="og:image" content="https://i.imgur.com/8FYzhdg.gif">
+<meta property="og:updated_time" content="2017-07-19T17:04:34.461Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="匯入文字資料到MSSQL">
-<meta name="twitter:description" content="前置作業
-一個有權限寫入的MSSQLServer與SSMS管理工具
-準備好你的檔案資料(Row Data)
-這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)
-
-步驟記錄
-開啟SSMS，連線測試SQL Server
-對測試資料庫右鍵&amp;gt;工作&amp;gt;匯入資料，開啟「SQL Server匯入匯出精靈」
-「開始畫面」&amp;gt; 下一步
-「資料來源」選擇一般檔案來源，「檔">
+<meta name="twitter:title" content="[記錄]串接 GOOGLE API 取得資料(二)">
+<meta name="twitter:description" content="前情提要在前篇說明為什麼我要作「精神力評鑑」 
+原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.
+應用有了數據後, 就要看怎麼運用.Google 的表單,可以自動產生回應結果試算表,持之以恒的每天記錄,很快就有上百千筆的資料.
+我打算取得這些資料後,繪制成分佈圖這樣就可以知道,我的黃金時間是在每一天的什麼時段.
+如何透過 GOOGLE Sheets API 可以取得資料.在Go">
+<meta name="twitter:image" content="https://i.imgur.com/Fo4Ml5M.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -103,10 +91,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-file_rowdata_import_mssql" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-google_api_auth_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/29/file_rowdata_import_mssql/" class="article-date">
-  <time datetime="2016-08-29T09:24:55.000Z" itemprop="datePublished">2016-08-29</time>
+    <a href="/2017/07/20/google_api_auth_2/" class="article-date">
+  <time datetime="2017-07-19T17:04:14.000Z" itemprop="datePublished">2017-07-20</time>
 </a>
     
   </div>
@@ -117,7 +105,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      匯入文字資料到MSSQL
+      [記錄]串接 GOOGLE API 取得資料(二)
     </h1>
   
 
@@ -125,44 +113,62 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
-<li>一個有權限寫入的MSSQLServer與SSMS管理工具</li>
-<li>準備好你的檔案資料(Row Data)</li>
-<li>這份記錄僅供參考(DB版本使用Microsoft SQL Server 2014)</li>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在<a href="https://blog.marsen.me/2017/07/14/google_api_auth_0/">前篇</a>說明為什麼我要作「精神力評鑑」 </p>
+<p>原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.</p>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>有了數據後, 就要看怎麼運用.<br>Google 的表單,可以自動產生回應結果試算表,<br>持之以恒的每天記錄,很快就有上百千筆的資料.</p>
+<p>我打算取得這些資料後,繪制成分佈圖<br>這樣就可以知道,我的黃金時間是在每一天的什麼時段.</p>
+<h3 id="如何透過-GOOGLE-Sheets-API-可以取得資料"><a href="#如何透過-GOOGLE-Sheets-API-可以取得資料" class="headerlink" title="如何透過 GOOGLE Sheets API 可以取得資料."></a>如何透過 <a href="https://developers.google.com/sheets/api/reference/rest/" target="_blank" rel="external">GOOGLE Sheets API</a> 可以取得資料.</h3><p>在<a href="https://cloud.google.com/?hl=zh-tw" target="_blank" rel="external">Google Cloud Platform</a>,建立起 Google API 的服務。</p>
+<ol>
+<li>前往<a href="https://console.developers.google.com/start/api?id=sheets.googleapis.com" target="_blank" rel="external">Google API Wizard</a>,建立或選擇專案。</li>
+<li>建立憑証,選擇OAuth Client ID<ul>
+<li>在這裡我會一次性的建立起所有環境(開發、測試、正式)的憑証 。</li>
+</ul>
+</li>
+<li>下載JSON放置專案的指定位置.</li>
+<li>如何取得授權與取得資料，請參考<a href="https://developers.google.com/sheets/api/quickstart/nodejs" target="_blank" rel="external">QuickStart</a><ul>
+<li>安全考量,我不會將client_secret.json與取回的token 加入版本控制</li>
+<li>以Google 試算表為例，如何取得<a href="https://developers.google.com/sheets/api/guides/concepts" target="_blank" rel="external">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ex:</div><div class="line">https://docs.google.com/spreadsheets/d/1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps/edit#gid=0</div><div class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="步驟記錄"><a href="#步驟記錄" class="headerlink" title="步驟記錄"></a>步驟記錄</h2><ol>
-<li>開啟SSMS，連線測試SQL Server</li>
-<li>對測試資料庫右鍵&gt;工作&gt;匯入資料，開啟「SQL Server匯入匯出精靈」</li>
-<li>「開始畫面」&gt; 下一步</li>
-<li>「資料來源」選擇一般檔案來源，「檔案名稱」選取Row Data的檔案路徑</li>
-<li>請依實際狀況選擇下列欄位<ul>
-<li>「略過的標頭資料列數」: 預設為0，可透過設定此欄位略過 Row Data內含註解，標頭等資料</li>
-<li>「第一個資料列的資料行名稱」:若Row Data第一行為標頭，請勾選此欄位</li>
-<li>左側選單選擇「資料行」&gt;「資料列分隔符號」選擇「{CR}{LF}」、「資料行分隔符號」選擇「Tab鍵{t}」</li>
+<h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3><p>以 QuickStart 的程式為例 ,<br>下載回來的檔案 <code>client_secret.json</code><br>可以提供 <code>clientSecret</code>、<code>clientId</code> 與授權後轉導的 url ,<br>當程式執行時, 便會透 <code>googleAuth</code> 去取得授權 ,<br>過程之中會需要使用者作驗証, 驗証完成即取得授權 ,<br>授權有一定的效期, 故一段時間之後需要重新取得授權 </p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li><p><code>client_secret.json</code> 是機敏資料, 不可以放入版本控制, 需要特殊的流程步驟上傳到你的 Web Server 的位置</p>
+<ul>
+<li>Openshift可以透過SSH或是SFTP登入來上傳<code>client_secret.json</code></li>
+<li>CI 以 JENKINS 為例 ; 可以使用 Publish over SSH 上傳檔案<br><img src="https://i.imgur.com/Fo4Ml5M.jpg" alt=""><ul>
+<li>需要注意 CI Server 要有 Web Server 的 SSH Key</li>
+<li>LINUX 複製資料夾語法 <code>cp -rf src/folder/. target/folder</code></li>
 </ul>
 </li>
-<li>左側選單選擇「預覽」確認匯入的資料無誤後，點擊下一步</li>
-<li>「目的地」請選擇「SqlServer」，設定ConnectionString<ul>
-<li>Data Source=1<strong>.*</strong>.<strong><em>.</em></strong>;Initial Catalog=TestDB;Persist Security Info=True;User ID=tester;Password=<strong><em>**</em></strong>;</li>
 </ul>
 </li>
-<li>「選取來源資料表和檢視畫面」確認無誤後，點擊下一步。</li>
-<li>「檢閱資料類型對應畫面」請忽略資料類型的警告，點擊下一步。</li>
-<li>「執行封裝畫面」勾選「立即執行」，點擊下一步。</li>
-<li>「完成精靈畫面」點選完成。</li>
-<li>執行時間長短，依Row Data大小而有所差異。</li>
+<li><p>在正式公開的環境上可能會發生<code>Error: invalid_scope</code>的錯誤 ，可以<a href="https://support.google.com/code/contact/oauth_app_verification?id=705847791246&amp;client=705847791246-l20jeqj1ncv2vffaki70ing4c8cda2r1.apps.googleusercontent.com&amp;query=https://www.googleapis.com/auth/spreadsheets.readonly" target="_blank" rel="external">參考</a>。</p>
+<ul>
+<li>填寫表單作驗証</li>
+<li>個人測試可以加入<a href="https://groups.google.com/forum/#!forum/risky-access-by-unreviewed-apps" target="_blank" rel="external">Risky Access Permissions By Unreviewed Apps</a> 論壇</li>
+</ul>
+</li>
+<li><p>我最後是使用<a href="https://d3js.org/" target="_blank" rel="external">d3.js</a>作為繪圖的library , 因為網路上的資源相當的多 , 而且這次的著墨並不多 , 所以不在這裡介紹. </p>
+</li>
+</ol>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="https://i.imgur.com/8FYzhdg.gif" alt=""></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
+<li><a href="https://blog.openshift.com/using-filezilla-and-sftp-on-windows-with-openshift/" target="_blank" rel="external">Openshift SFPT</a></li>
+<li><a href="https://www.phpini.com/linux/cp-force-copy" target="_blank" rel="external">Linux CP</a></li>
 </ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/" data-id="cj5b966dy000xcs55amsd0in2" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/07/20/google_api_auth_2/" data-id="cj5b97pw90000o055oxbnspx7" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2017/07/20/google_api_auth_2/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DBA/">DBA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-API/">Google API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OAuth/">OAuth</a></li></ul>
 
     </footer>
   </div>
@@ -170,19 +176,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2016/09/04/http2 by cloudflare/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          怎麼建立一個網站？(三) - 簡單讓網站升級使用HTTP/2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/28/how_to_use_github_page/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/google_api_auth_1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">怎麼建立一個網站？(二) - 簡單用github page 建立靜態網站</div>
+      <div class="article-nav-title">[記錄]串接 GOOGLE API 取得資料(一)</div>
     </a>
   
 </nav>
@@ -287,7 +284,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsen';
   
-  var disqus_url = 'http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/';
+  var disqus_url = 'http://blog.marsen.me/2017/07/20/google_api_auth_2/';
   
   (function(){
     var dsq = document.createElement('script');
