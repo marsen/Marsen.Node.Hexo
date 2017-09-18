@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-08-16T08:27:27.813Z</updated>
+  <updated>2017-09-18T17:14:51.315Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -16,11 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SQL Compatibility Level 對MsSQL時間查詢的影響</title>
+    <link href="http://blog.marsen.me/2017/09/18/sql_compatibility_level_with_datetime2/"/>
+    <id>http://blog.marsen.me/2017/09/18/sql_compatibility_level_with_datetime2/</id>
+    <published>2017-09-18T03:30:13.000Z</published>
+    <updated>2017-09-18T17:14:51.315Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="大綱"><a href="#大綱" class="headerlink" title="大綱"></a>大綱</h2><p>這次透過Entity Framework(EF5)作了一個簡單的資料庫更新,<br>恰巧的是這次更新的Table因為某些需求,使用 datetime 作為 Key 值.<br>進而引發一連串的錯誤, 最後才找到 SQL Compatibility Level 對 MsSQL 時間查詢影響. </p>
+<h3 id="正式環境-SQL-版本-13-0-4422-0"><a href="#正式環境-SQL-版本-13-0-4422-0" class="headerlink" title="正式環境 SQL 版本 13.0.4422.0"></a>正式環境 SQL 版本 13.0.4422.0</h3><h3 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UpdateBatchUploadData</span>(<span class="params">BatchUploadDataEntity batchUploadDataEntity</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">using</span> (WebStoreDBEntitiesV2 context = <span class="keyword">this</span>.LifetimeScope.Resolve&lt;WebStoreDBEntitiesV2&gt;())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> item = (<span class="keyword">from</span> batchUploadData <span class="keyword">in</span> context.BatchUploadData.Valids()</div><div class="line">                    <span class="keyword">where</span> batchUploadData.BatchUploadData_Id == batchUploadDataEntity.BatchUploadData_Id</div><div class="line">                    <span class="keyword">select</span> batchUploadData).FirstOrDefault();</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.MapBatchUploadData(batchUploadDataEntity, item);</div><div class="line"></div><div class="line">        context.SaveChanges();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上面程式所示, <code>item</code> 是透過 Key 值 <code>BatchUploadData_Id</code> 取回來的物件.<br>而 <code>MapBatchUploadData</code> 是一段簡單的程式碼,<br>單純的將 <code>batchUploadDataEntity</code> 的值 mapping 到 item<br>再呼叫 SaveChanges , 卻引發了 <a href="https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbupdateconcurrencyexception(v=vs.103" target="_blank" rel="external">dbupdateconcurrencyexception</a>.aspx)</p>
+<h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/8kBIYRr.jpg" alt=""></p>
+<h3 id="錯誤訊息"><a href="#錯誤訊息" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">存放區更新、插入或刪除陳述式影響到非預期數目的資料列 (0)。</div><div class="line">這些實體載入之後可能被修改或刪除了。請重新整理 ObjectStateManager 實體。</div></pre></td></tr></table></figure>
+<p>這一段訊息的意思就是: Entity Framework 預期更新了<code>0</code>筆資料，與它所預期的不符, 所以拋出錯誤。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>透過用<strong>Sql Profiler</strong>我們錄製到了以下的SQL<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">exec sp_executesql N'<span class="keyword">update</span> [dbo].[BatchUploadData]</div><div class="line"><span class="keyword">set</span> [BatchUploadData_StatusDef] = @<span class="number">0</span>, [BatchUploadData_UpdatedTimes] = @<span class="number">1</span>, [BatchUploadData_UpdatedDateTime] = @<span class="number">2</span></div><div class="line"><span class="keyword">where</span> (([BatchUploadData_Id] = @<span class="number">3</span>) <span class="keyword">and</span> ([BatchUploadData_CreatedDateTime] = @<span class="number">4</span>))</div><div class="line"><span class="keyword">select</span> [BatchUploadData_Rowversion]</div><div class="line"><span class="keyword">from</span> [dbo].[BatchUploadData]</div><div class="line"><span class="keyword">where</span> @@ROWCOUNT &gt; <span class="number">0</span> <span class="keyword">and</span> [BatchUploadData_Id] = @<span class="number">3</span> <span class="keyword">and</span> [BatchUploadData_CreatedDateTime] = @<span class="number">4</span><span class="string">',N'</span>@<span class="number">0</span> <span class="built_in">varchar</span>(<span class="number">30</span>),@<span class="number">1</span> tinyint,@<span class="number">2</span> datetime2(<span class="number">7</span>),@<span class="number">3</span> <span class="built_in">bigint</span>,@<span class="number">4</span> datetime2(<span class="number">7</span>)<span class="string">',@0='</span>ProcessFailed<span class="string">',@1=1,@2='</span><span class="number">2017</span><span class="number">-09</span><span class="number">-16</span> <span class="number">11</span>:<span class="number">29</span>:<span class="number">35.3720061</span><span class="string">',@3=52,@4='</span><span class="number">2017</span><span class="number">-09</span><span class="number">-05</span> <span class="number">18</span>:<span class="number">53</span>:<span class="number">36.3530000</span><span class="string">'</span></div></pre></td></tr></table></figure></p>
+<p>請注意到 <strong>@4 datetime2(7) … @4=’2017-09-05 18:53:36.3530000’</strong><br>如果將 <code>datetime2(7)</code> 改為 <code>datetime</code>或是將查詢語句改為 <code>@4=&#39;2017-09-05 18:53:36.353</code> 就能正確更新資料.  </p>
+<p><img src="https://i.imgur.com/8pGTYL4.gif" alt=""></p>
+<h3 id="本機實測-SQL-版本-12-0-4459-0"><a href="#本機實測-SQL-版本-12-0-4459-0" class="headerlink" title="本機實測 (SQL 版本 12.0.4459.0)"></a>本機實測 (SQL 版本 12.0.4459.0)</h3><p>透過本機寫了一小段的SQL作測試,<br><img src="https://i.imgur.com/iJntV1i.gif" alt=""><br><strong>竟然不會有問題!!!</strong>  </p>
+<p>這跟 SQL Compatibility Level 有關,<br>mssql 2014 預設是 120, 2016 預設是130,<br>Datetime2 在 120 跟 130 的結果會不一樣.  </p>
+<h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><p>主要的查詢與更新 SQL 是 Entity Framework 產生的,<br>所以我無法透過修改 SQL 的方式解決這個問題,<br>而正式環境的 SQL Compatibility Level 調整將會牽一髮動全身<br>且基於版本演進, 往新的版本靠攏是合理的選擇<br>暫時的解法是透過修改 edmx ,<br>不讓 datetime 作為整個 table 的 Key值.<br>較好的解法是升級 Entity Framework<br>透過 Entity Framework 的機制, 指定查詢時間的精準度.<br>實作的部份未來再補上. </p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-compatibility-level" target="_blank" rel="external">ALTER DATABASE (Transact-SQL) Compatibility</a></li>
+<li><a href="https://social.msdn.microsoft.com/Forums/silverlight/en-US/de5dbf3e-8c95-40f4-9e31-b71f1f31983d/change-in-datetime2-implementation-in-sql-server-2016?forum=transactsql" target="_blank" rel="external">Change in datetime2 implementation in SQL Server 2016</a></li>
+<li><a href="https://docs.microsoft.com/zh-tw/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database" target="_blank" rel="external">檢視或變更資料庫的相容性層級</a></li>
+</ul>
+<p>(fin)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;大綱&quot;&gt;&lt;a href=&quot;#大綱&quot; class=&quot;headerlink&quot; title=&quot;大綱&quot;&gt;&lt;/a&gt;大綱&lt;/h2&gt;&lt;p&gt;這次透過Entity Framework(EF5)作了一個簡單的資料庫更新,&lt;br&gt;恰巧的是這次更新的Table因為某些需求,使用 date
+    
+    </summary>
+    
+    
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
+    
+      <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
+    
+      <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
+    
+      <category term="Entity Framework" scheme="http://blog.marsen.me/tags/Entity-Framework/"/>
+    
+  </entry>
+  
+  <entry>
     <title>將 Express 網站整合 Typescirpt 開發</title>
     <link href="http://blog.marsen.me/2017/08/16/express_with_typescript/"/>
     <id>http://blog.marsen.me/2017/08/16/express_with_typescript/</id>
     <published>2017-08-16T08:26:14.000Z</published>
-    <updated>2017-08-16T08:27:27.813Z</updated>
+    <updated>2017-09-18T17:22:09.214Z</updated>
     
     <content type="html"><![CDATA[<h2 id="原因與目的"><a href="#原因與目的" class="headerlink" title="原因與目的"></a>原因與目的</h2><ul>
 <li>目前我使用 express 作為網站開發</li>
@@ -117,7 +161,7 @@
     <link href="http://blog.marsen.me/2017/07/20/google_api_auth_2/"/>
     <id>http://blog.marsen.me/2017/07/20/google_api_auth_2/</id>
     <published>2017-07-19T17:04:14.000Z</published>
-    <updated>2017-08-14T10:39:47.510Z</updated>
+    <updated>2017-07-19T17:12:05.097Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在<a href="https://blog.marsen.me/2017/07/14/google_api_auth_1/">前篇</a>說明為什麼我要作「精神力評鑑」 </p>
 <p>原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.</p>
@@ -185,7 +229,7 @@
     <link href="http://blog.marsen.me/2017/07/14/google_api_auth_1/"/>
     <id>http://blog.marsen.me/2017/07/14/google_api_auth_1/</id>
     <published>2017-07-14T07:14:27.000Z</published>
-    <updated>2017-08-14T10:39:47.510Z</updated>
+    <updated>2017-07-19T17:01:00.051Z</updated>
     
     <content type="html"><![CDATA[<h2 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h2><p>最近看了一本書,「最有生產力的一年」. 書如其名,是一本有關生產力的書,作者用了一年的時間, </p>
 <p>以自已作實驗,測試各種方法並檢驗是否有效. </p>
@@ -232,7 +276,7 @@
     <link href="http://blog.marsen.me/2017/05/19/testingislearning/"/>
     <id>http://blog.marsen.me/2017/05/19/testingislearning/</id>
     <published>2017-05-19T06:03:01.000Z</published>
-    <updated>2017-05-19T06:04:03.652Z</updated>
+    <updated>2017-07-15T16:28:11.468Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事:"></a>應該知道的事:</h2><ul>
 <li><p>報名資訊(已結束)<br><a href="http://www.accupass.com/go/testingislearning" target="_blank" rel="external">Agile Meetup 2017/05 (2): 測試即學習</a></p>
@@ -313,7 +357,7 @@
     <link href="http://blog.marsen.me/2017/04/29/ci_use_jenkins_on_two_windows/"/>
     <id>http://blog.marsen.me/2017/04/29/ci_use_jenkins_on_two_windows/</id>
     <published>2017-04-29T03:55:16.000Z</published>
-    <updated>2017-05-28T06:30:24.763Z</updated>
+    <updated>2017-04-29T05:17:33.520Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul>
 <li>Dropbox</li>
@@ -358,7 +402,7 @@
     <link href="http://blog.marsen.me/2017/04/23/unitestwriting/"/>
     <id>http://blog.marsen.me/2017/04/23/unitestwriting/</id>
     <published>2017-04-22T16:01:39.000Z</published>
-    <updated>2017-04-23T10:40:36.046Z</updated>
+    <updated>2017-04-29T05:18:22.199Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事:"></a>應該知道的事:</h2><ul>
 <li>使用 C# , 但是其他語言也適用 </li>
@@ -467,7 +511,7 @@
     <link href="http://blog.marsen.me/2017/03/26/attack_your_day/"/>
     <id>http://blog.marsen.me/2017/03/26/attack_your_day/</id>
     <published>2017-03-25T16:08:46.000Z</published>
-    <updated>2017-03-25T16:33:33.307Z</updated>
+    <updated>2017-04-29T05:18:22.198Z</updated>
     
     <content type="html"><![CDATA[<h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
 <li>原則:<strong>工具簡單至上</strong></li>
@@ -551,7 +595,7 @@
     <link href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/"/>
     <id>http://blog.marsen.me/2017/02/08/auto_add_trello_card/</id>
     <published>2017-02-08T15:52:27.000Z</published>
-    <updated>2017-02-08T16:24:34.800Z</updated>
+    <updated>2017-04-29T05:18:22.198Z</updated>
     
     <content type="html"><![CDATA[<p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
 <h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
@@ -610,7 +654,7 @@
     <link href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/"/>
     <id>http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/</id>
     <published>2017-01-28T12:46:49.000Z</published>
-    <updated>2017-02-08T15:45:50.127Z</updated>
+    <updated>2017-01-30T06:02:41.615Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="/2016/11/21/aspdotnet_threadpool_and_redis/">上一次</a>說明了 .NET Thread Pool 的機制如何影響 Redis,<br>.NET Thread Pool 的機制會貫穿任何與它互動的系統或服務,<br>所以這篇會簡單描述如何對 .NET Thread Pool <a href="https://msdn.microsoft.com/zh-tw/library/ff650682.aspx" target="_blank" rel="external">建立監控</a>。</p>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
@@ -677,7 +721,7 @@
     <link href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/"/>
     <id>http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/</id>
     <published>2017-01-24T06:27:12.000Z</published>
-    <updated>2017-01-24T06:51:47.731Z</updated>
+    <updated>2017-01-30T06:02:41.616Z</updated>
     
     <content type="html"><![CDATA[<h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),<br>可以透過開啟tracing log來作追蹤</p>
 <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ol>
@@ -720,11 +764,72 @@
   </entry>
   
   <entry>
+    <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
+    <published>2017-01-15T14:16:42.000Z</published>
+    <updated>2017-01-15T15:35:27.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
+    
+    </summary>
+    
+    
+      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
+    
+      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</title>
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
     <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-01-15T16:12:04.055Z</updated>
+    <updated>2017-01-15T15:54:27.044Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
 <li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
@@ -793,72 +898,11 @@
   </entry>
   
   <entry>
-    <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
-    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
-    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
-    <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-01-15T16:12:04.053Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
-</ol>
-</li>
-<li><p>選擇新增作業</p>
-<ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
-</li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
-</li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
-    
-    </summary>
-    
-    
-      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
-    
-      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
-    
-      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CI/CD 環境建置筆記 - 前言&lt;目的&gt;</title>
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins/</id>
     <published>2017-01-15T13:54:00.000Z</published>
-    <updated>2017-01-15T16:12:04.052Z</updated>
+    <updated>2017-01-15T14:47:15.037Z</updated>
     
     <content type="html"><![CDATA[<h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p>
 <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol>
@@ -892,7 +936,7 @@
     <link href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/"/>
     <id>http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/</id>
     <published>2017-01-11T06:51:25.000Z</published>
-    <updated>2017-01-11T06:52:40.682Z</updated>
+    <updated>2017-01-15T13:52:28.031Z</updated>
     
     <content type="html"><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ul>
 <li>作業系統:Windows 10</li>
@@ -954,7 +998,7 @@
     <link href="http://blog.marsen.me/2016/12/05/be_friend_with_time/"/>
     <id>http://blog.marsen.me/2016/12/05/be_friend_with_time/</id>
     <published>2016-12-04T17:54:34.000Z</published>
-    <updated>2017-01-11T06:55:06.490Z</updated>
+    <updated>2016-12-16T16:32:00.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="零、困境"><a href="#零、困境" class="headerlink" title="零、困境"></a>零、困境</h2><p><em>✖ 時間無法管理 能管理的只有你自已。</em></p>
 <h2 id="一、醒悟"><a href="#一、醒悟" class="headerlink" title="一、醒悟"></a>一、醒悟</h2><ul>
@@ -1374,7 +1418,7 @@
     <link href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/"/>
     <id>http://blog.marsen.me/2016/11/28/dotnet_pdb_file/</id>
     <published>2016-11-28T15:54:55.000Z</published>
-    <updated>2016-12-04T17:00:48.445Z</updated>
+    <updated>2016-12-04T17:22:31.206Z</updated>
     
     <content type="html"><![CDATA[<h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，<br>其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
 <h4 id="MSDN-這樣說"><a href="#MSDN-這樣說" class="headerlink" title="MSDN 這樣說"></a>MSDN 這樣說</h4><p>程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、<br>方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。</p>
@@ -1445,7 +1489,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/"/>
     <id>http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/</id>
     <published>2016-11-21T08:49:17.000Z</published>
-    <updated>2017-01-28T13:29:33.416Z</updated>
+    <updated>2017-01-30T06:02:41.615Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>ASP.NET Thread Pool 的機制如何影響 Redis</em></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>線上維護的系統偶爾會發生 Redis Timeout Exception ,<br>並在 elmah 發現以下的錯誤記錄</p>
@@ -1565,11 +1609,11 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     
       <category term=".Net Framework" scheme="http://blog.marsen.me/tags/Net-Framework/"/>
     
+      <category term="IO" scheme="http://blog.marsen.me/tags/IO/"/>
+    
       <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
     
       <category term="ASP.Net" scheme="http://blog.marsen.me/tags/ASP-Net/"/>
-    
-      <category term="IO" scheme="http://blog.marsen.me/tags/IO/"/>
     
       <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
     
@@ -1580,7 +1624,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/28/about_content_type/"/>
     <id>http://blog.marsen.me/2016/10/28/about_content_type/</id>
     <published>2016-10-28T04:54:55.000Z</published>
-    <updated>2016-11-10T03:43:31.111Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
 <h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="external">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
@@ -1631,7 +1675,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     <link href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/"/>
     <id>http://blog.marsen.me/2016/10/21/1st_time_with_powershell/</id>
     <published>2016-10-21T05:27:53.000Z</published>
-    <updated>2016-11-21T09:22:28.683Z</updated>
+    <updated>2016-12-04T16:43:46.991Z</updated>
     
     <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
 <li>將指定的Log記錄,匯入資料庫,產生row data</li>
@@ -1683,6 +1727,8 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
     </summary>
     
     
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
+    
       <category term="powershell" scheme="http://blog.marsen.me/tags/powershell/"/>
     
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
@@ -1690,61 +1736,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
     
       <category term="BulkInsert" scheme="http://blog.marsen.me/tags/BulkInsert/"/>
-    
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作</title>
-    <link href="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/"/>
-    <id>http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/</id>
-    <published>2016-10-14T02:34:27.000Z</published>
-    <updated>2016-12-04T17:09:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
-<li>顯示/新增/刪除 todolist </li>
-<li>todolist 會是一堆todoItem的集合,所以要定義todoItem的形別<ul>
-<li>Content : todoItem 的內容</li>
-<li>Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉</li>
-</ul>
-</li>
-<li>主要的功能<ul>
-<li>建立todoItem</li>
-<li>完成todoItem</li>
-<li>繪製todoList到前端的畫面上</li>
-</ul>
-</li>
-</ol>
-<h2 id="自我分析"><a href="#自我分析" class="headerlink" title="自我分析"></a>自我分析</h2><p>跟 UI 耦合太高,Render 應該與 TodoService 分離 ,<br>DOM 註冊事件相依在 Service 裡面要抽離也不好抽 。<br>沒有先寫測試 , 要想一想怎麼與 UI 層作隔離。</p>
-<h2 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h2><h3 id="建立-BaseService"><a href="#建立-BaseService" class="headerlink" title="建立 BaseService"></a>建立 BaseService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> BaseService&lt;T&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>(private type: string) &#123;&#125;</div><div class="line">    </div><div class="line">    List:<span class="built_in">Array</span>&lt;T&gt; ;</div><div class="line"></div><div class="line">    Create(data: T) &#123;</div><div class="line">        <span class="keyword">this</span>.List.push(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: T)&#123;</div><div class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(data);</div><div class="line">        <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Render()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-todoItem-interface"><a href="#建立-todoItem-interface" class="headerlink" title="建立 todoItem interface"></a>建立 todoItem interface</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> todoItem &#123;</div><div class="line">    Content: <span class="built_in">string</span>;</div><div class="line">    Status: todoStatus;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-todoItem-Status-列舉"><a href="#建立-todoItem-Status-列舉" class="headerlink" title="建立 todoItem Status 列舉"></a>建立 todoItem Status 列舉</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> todoStatus&#123;</div><div class="line">    undo,</div><div class="line">    done,    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-TodoService"><a href="#建立-TodoService" class="headerlink" title="建立 TodoService"></a>建立 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TodoService extends BaseService&lt;todoItem&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"todoItem"</span>);        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Render() : <span class="built_in">void</span> &#123;</div><div class="line">        <span class="keyword">let</span> doneHtml = <span class="string">''</span>;</div><div class="line">        <span class="keyword">let</span> undoHtml = <span class="string">''</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">            <span class="keyword">if</span>(item.Status == todoStatus.done)&#123;</div><div class="line">                doneHtml += <span class="string">`&lt;li&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;button class="recover-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-share-alt"&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="remove-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-remove"&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;`</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (item.Status == todoStatus.undo)&#123;</div><div class="line">                undoHtml += <span class="string">`&lt;li class="ui-state-default"&gt;&lt;div class="checkbox"&gt;&lt;label&gt;&lt;input type="checkbox" value="" /&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;/label&gt;&lt;/div&gt;&lt;/li&gt;`</span> ;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        $(<span class="string">"#done-items"</span>).html(doneHtml);</div><div class="line">        $(<span class="string">'#sortable'</span>).html(undoHtml);</div><div class="line">        $(<span class="string">'.add-todo'</span>).val(<span class="string">''</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: todoItem)&#123;</div><div class="line">        data.Status = todoStatus.done ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    Init()&#123;</div><div class="line">        <span class="comment">//// todoList in localStorage         </span></div><div class="line">        <span class="keyword">var</span> list = <span class="built_in">window</span>.localStorage.getItem(<span class="string">"todoList"</span>);        </div><div class="line">        <span class="keyword">if</span>(!list)&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="keyword">new</span> <span class="built_in">Array</span>&lt;todoItem&gt;();</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="built_in">JSON</span>.parse(list);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">window</span>.onbeforeunload = (evt) =&gt; &#123;</div><div class="line">            <span class="built_in">window</span>.localStorage.setItem(<span class="string">"todoList"</span>,<span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.List));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">// mark task as done</span></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'change'</span>,<span class="string">'#sortable li input[type="checkbox"]'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> self = evt.target;</div><div class="line">            <span class="keyword">var</span> text = $(self).parent().text();</div><div class="line">            <span class="keyword">if</span>($(self).prop(<span class="string">'checked'</span>))&#123;</div><div class="line">                <span class="keyword">var</span> doneItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">                <span class="keyword">this</span>.Delete(doneItem);</div><div class="line">                <span class="keyword">this</span>.Render();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.add-todo'</span>).on(<span class="string">'keypress'</span>,(evt) =&gt; &#123;</div><div class="line">            evt.preventDefault</div><div class="line">            <span class="keyword">if</span> (evt.which == <span class="number">13</span>) &#123;</div><div class="line">                <span class="keyword">if</span>($(evt.target).val() != <span class="string">''</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> todo = $(evt.target).val();</div><div class="line">                    <span class="keyword">this</span>.Create(  &#123;</div><div class="line">                        Content : $(evt.target).val() ,</div><div class="line">                        Status : todoStatus.undo </div><div class="line">                    &#125;);</div><div class="line">                    <span class="keyword">this</span>.Render();                 </div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">// some validation</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>, <span class="string">'#done-items li button.recover-item'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> recoverItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            recoverItem.Status = todoStatus.undo ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>,<span class="string">'#done-items li button.remove-item'</span> ,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> removeItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(removeItem);</div><div class="line">            <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'#checkAll'</span>).on(<span class="string">'click'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">                item.Status = todoStatus.done;</div><div class="line">            &#125;);</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">//// Render</span></div><div class="line">        <span class="keyword">this</span>.Render();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用建立好的-TodoService"><a href="#使用建立好的-TodoService" class="headerlink" title="使用建立好的 TodoService"></a>使用建立好的 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> todoService = <span class="keyword">new</span> TodoService();</div><div class="line">todoService.Init();</div></pre></td></tr></table></figure>
-<p>(fin)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;設計理念&quot;&gt;&lt;a href=&quot;#設計理念&quot; class=&quot;headerlink&quot; title=&quot;設計理念&quot;&gt;&lt;/a&gt;設計理念&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;顯示/新增/刪除 todolist &lt;/li&gt;
-&lt;li&gt;todolist 會是一堆todoItem的集合,所以要
-    
-    </summary>
-    
-    
-      <category term="typescript" scheme="http://blog.marsen.me/tags/typescript/"/>
-    
-      <category term="kata" scheme="http://blog.marsen.me/tags/kata/"/>
-    
-      <category term="bootstrap" scheme="http://blog.marsen.me/tags/bootstrap/"/>
-    
-      <category term="npm" scheme="http://blog.marsen.me/tags/npm/"/>
-    
-      <category term="jquery" scheme="http://blog.marsen.me/tags/jquery/"/>
-    
-      <category term="jquery-ui" scheme="http://blog.marsen.me/tags/jquery-ui/"/>
     
   </entry>
   
