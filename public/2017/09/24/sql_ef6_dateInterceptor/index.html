@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Google API | Marsen</title>
+  <title>使用 DateInterceptor 攔截SQL 語法 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Marsen">
-<meta property="og:url" content="http://blog.marsen.me/tags/Google-API/index.html">
+  <meta name="description" content="前言在SQL Compatibility Level 對MsSQL時間查詢的影響這篇文章裡,遇到了一個令難以處理的問題, 簡單的複述一下,    我的資料表以一個 datetime 欄位當作 PK 我的SQL DB版本為 2016 以上 (Compatibility Level預設值為130)  這個時候我所有的 Entity Context 更新語法在呼叫 SaveChange 時會拋出錯誤;原">
+<meta name="keywords" content="Database,MsSQL,Entity Framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 DateInterceptor 攔截SQL 語法">
+<meta property="og:url" content="http://blog.marsen.me/2017/09/24/sql_ef6_dateInterceptor/index.html">
 <meta property="og:site_name" content="Marsen">
+<meta property="og:description" content="前言在SQL Compatibility Level 對MsSQL時間查詢的影響這篇文章裡,遇到了一個令難以處理的問題, 簡單的複述一下,    我的資料表以一個 datetime 欄位當作 PK 我的SQL DB版本為 2016 以上 (Compatibility Level預設值為130)  這個時候我所有的 Entity Context 更新語法在呼叫 SaveChange 時會拋出錯誤;原">
 <meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2017-09-24T16:40:40.901Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Marsen">
+<meta name="twitter:title" content="使用 DateInterceptor 攔截SQL 語法">
+<meta name="twitter:description" content="前言在SQL Compatibility Level 對MsSQL時間查詢的影響這篇文章裡,遇到了一個令難以處理的問題, 簡單的複述一下,    我的資料表以一個 datetime 欄位當作 PK 我的SQL DB版本為 2016 以上 (Compatibility Level預設值為130)  這個時候我所有的 Entity Context 更新語法在呼叫 SaveChange 時會拋出錯誤;原">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -73,59 +78,83 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/20/google_api_auth_2/" class="archive-article-date">
-  <time datetime="2017-07-19T17:04:14.000Z" itemprop="datePublished">7月 20</time>
+        <section id="main"><article id="post-sql_ef6_dateInterceptor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/24/sql_ef6_dateInterceptor/" class="article-date">
+  <time datetime="2017-09-24T02:55:30.000Z" itemprop="datePublished">2017-09-24</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/google_api_auth_2/">[記錄]串接 GOOGLE API 取得資料(二)</a>
+    <h1 class="article-title" itemprop="name">
+      使用 DateInterceptor 攔截SQL 語法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/14/google_api_auth_1/" class="archive-article-date">
-  <time datetime="2017-07-14T07:14:27.000Z" itemprop="datePublished">7月 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/google_api_auth_1/">[記錄]串接 GOOGLE API 取得資料(一)</a>
-    </h1>
-  
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://blog.marsen.me/2017/09/18/sql_compatibility_level_with_datetime2/">SQL Compatibility Level 對MsSQL時間查詢的影響</a>這篇文章裡,<br>遇到了一個令難以處理的問題, 簡單的複述一下,  </p>
+<ol>
+<li>我的資料表以一個 datetime 欄位當作 PK</li>
+<li>我的SQL DB版本為 2016 以上 (Compatibility Level預設值為130)</li>
+</ol>
+<p>這個時候我所有的 Entity Context 更新語法在呼叫 SaveChange 時會拋出錯誤;<br>原因在於 EF 所產生的 SQL Query 語法 , 會以 PK 值作為查詢條件,<br>而在這個時候 查詢時間的條件會精準到微秒(μs=1/1000000秒),<br>但是 datetime 欄位只會記錄到豪秒(ms=1/1000秒),<br>於是精準不足的部份就會補 0 ,<br>EX:<br><code>2017-09-24 11:55:35.3720000</code> 與 <code>2017-09-24 11:55:35.372</code><br>這會導致查無資料進而引發 <a href="https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.dbupdateconcurrencyexception(v=vs.103" target="_blank" rel="external">dbupdateconcurrencyexception</a>.aspx)</p>
+<h2 id="解決方針"><a href="#解決方針" class="headerlink" title="解決方針"></a>解決方針</h2><h3 id="修改資料欄位"><a href="#修改資料欄位" class="headerlink" title="修改資料欄位"></a>修改資料欄位</h3><p> 將資料庫的欄位datatype datetime 改成 datetime2 ,<br> 這或許是最理想的解法了, 你不需要更動程式碼,<br> 而且會提昇你資料的時間精準度.<br> 不過實務上,你必須考慮到你是否有dba的權限與即有的資料量,<br> 當產品的核心功能依賴著這張表的時候且有巨量資料存在時,<br> 更新欄位的資料型態的衝擊與風險或許是難以承受的.<br> 更不用說還要考慮到整個 DB Server Cluster 的架構之類的問題.</p>
+<h3 id="修改-SQL-Server-Compatibility-Level-從-130-至-120"><a href="#修改-SQL-Server-Compatibility-Level-從-130-至-120" class="headerlink" title="修改 SQL Server Compatibility Level 從 130 至 120"></a>修改 SQL Server Compatibility Level 從 130 至 120</h3><p>非常不建議的作法, 除了要考慮上述權限、衝擊與風險的問題外,<br>如果降轉 Compatibility Level<br>或許會使得其他有使用到 datetime2 型態的資料欄位發生異常,<br>或是是失去原本精度的意義. </p>
+<h3 id="使用-DateInterceptor-攔截SQL-語法"><a href="#使用-DateInterceptor-攔截SQL-語法" class="headerlink" title="使用 DateInterceptor 攔截SQL 語法"></a>使用 DateInterceptor 攔截SQL 語法</h3><p>在考量上述兩種情況, 為了不增加<del>DBA的工作量</del>無謂的風險與權責問題,<br>(其實是實務上我沒有DB Server的異動權限),<br>我們可以透過 <a href="https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.interception.idbcommandinterceptor(v=vs.113" target="_blank" rel="external">IDbInterceptor</a>.aspx) 來欄截 Entity Framework 對DB 存取時執行的 Query</p>
+<p>以下是個簡單的範例,</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateInterceptor</span> : <span class="title">IDbInterceptor</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ReaderExecuting</span>(<span class="params">DbCommand command,</span></span></div><div class="line"><span class="function"><span class="params">        DbCommandInterceptionContext&lt;DbDataReader&gt; interceptionContext</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">var</span> dateParameters = command.Parameters.OfType&lt;DbParameter&gt;()</div><div class="line">            .Where(p =&gt; p.DbType == DbType.DateTime2);</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> parameter <span class="keyword">in</span> dateParameters)</div><div class="line">        &#123;</div><div class="line">            parameter.DbType = DbType.DateTime;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我們實作了一個 IDbInterceptor 的類別,<br>用來將 datetime2 的資料型別轉型成 datetime,<br>接下要將它掛載在 Entity Context之中 </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">EF6Entities</span> : <span class="title">DbContext</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EF6Entities</span>(<span class="params"></span>)</span></div><div class="line"><span class="function">        : <span class="title">base</span>(<span class="params"><span class="string">"name=EF6Entities"</span></span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        DbInterception.Add(<span class="keyword">new</span> DateInterceptor());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnModelCreating</span>(<span class="params">DbModelBuilder modelBuilder</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnintentionalCodeFirstException();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> DbSet&lt;BatchUploadData&gt; BatchUploadData &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如此一來就會以 datetime 的精準度產生 SQL Query</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://github.com/marsen/EFDemo" target="_blank" rel="external">程式碼</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.interception.idbcommandinterceptor.aspx" target="_blank" rel="external">IDbInterceptor</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/system.data.entity.infrastructure.interception.idbcommandinterceptor.aspx" target="_blank" rel="external">IDbCommandInterceptor</a></li>
+<li><a href="https://stackoverflow.com/questions/46387565/how-to-change-how-entity-framework-generates-sql-precision-for-datetime" target="_blank" rel="external">How to change how Entity Framework generates SQL precision for Datetime</a></li>
+</ul>
+<p>(fin)</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/09/24/sql_ef6_dateInterceptor/" data-id="cj7yyq47r0014acopc35nuo2b" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/09/24/sql_ef6_dateInterceptor/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MsSQL/">MsSQL</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/18/sql_compatibility_level_with_datetime2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL Compatibility Level 對MsSQL時間查詢的影響</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -217,11 +246,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsen';
   
+  var disqus_url = 'http://blog.marsen.me/2017/09/24/sql_ef6_dateInterceptor/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
