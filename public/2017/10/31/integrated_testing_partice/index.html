@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>單元測試與重構記錄(一) | Marsen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前情提要有幸參與了一個跨國的專案,為了快速上線，決定將整套原本在台灣程式碼搬移到跨國專案上,上線後再依使用者的需求調整開發功能,而在搬移的過程中,有需多模組並未開啟。… 現況遺留代碼 → 跨國 遇到的問題  Copy Paste 最快卻不一定最適合 Copy Paste 最快卻不一定改得動 Copy Paste 最快但是有的地方沒Copy完  用明朝的劍，斬清朝的官 實務需求將本來跨國未開啟的折扣">
+<meta name="keywords" content="Unit Testing,Integrated Testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="單元測試與重構記錄(一)">
+<meta property="og:url" content="http://blog.marsen.me/2017/10/31/integrated_testing_partice/index.html">
+<meta property="og:site_name" content="Marsen">
+<meta property="og:description" content="前情提要有幸參與了一個跨國的專案,為了快速上線，決定將整套原本在台灣程式碼搬移到跨國專案上,上線後再依使用者的需求調整開發功能,而在搬移的過程中,有需多模組並未開啟。… 現況遺留代碼 → 跨國 遇到的問題  Copy Paste 最快卻不一定最適合 Copy Paste 最快卻不一定改得動 Copy Paste 最快但是有的地方沒Copy完  用明朝的劍，斬清朝的官 實務需求將本來跨國未開啟的折扣">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/pM36Joo.jpg">
+<meta property="og:image" content="https://i.imgur.com/NU0PqCh.jpg">
+<meta property="og:image" content="https://i.imgur.com/qleqGPb.jpg">
+<meta property="og:image" content="https://i.imgur.com/FioG5NG.jpg">
+<meta property="og:image" content="https://i.imgur.com/VQ10wY6.jpg">
+<meta property="og:updated_time" content="2017-10-30T18:52:48.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="單元測試與重構記錄(一)">
+<meta name="twitter:description" content="前情提要有幸參與了一個跨國的專案,為了快速上線，決定將整套原本在台灣程式碼搬移到跨國專案上,上線後再依使用者的需求調整開發功能,而在搬移的過程中,有需多模組並未開啟。… 現況遺留代碼 → 跨國 遇到的問題  Copy Paste 最快卻不一定最適合 Copy Paste 最快卻不一定改得動 Copy Paste 最快但是有的地方沒Copy完  用明朝的劍，斬清朝的官 實務需求將本來跨國未開啟的折扣">
+<meta name="twitter:image" content="https://i.imgur.com/pM36Joo.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71201782-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Marsen</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.marsen.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-integrated_testing_partice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/31/integrated_testing_partice/" class="article-date">
+  <time datetime="2017-10-30T16:42:10.000Z" itemprop="datePublished">2017-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      單元測試與重構記錄(一)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>有幸參與了一個跨國的專案,<br>為了快速上線，決定將整套原本在台灣程式碼搬移到跨國專案上,<br>上線後再依使用者的需求調整開發功能,<br>而在搬移的過程中,有需多模組並未開啟。<br>…</p>
+<h2 id="現況"><a href="#現況" class="headerlink" title="現況"></a>現況</h2><p>遺留代碼 → 跨國 遇到的問題</p>
+<ol>
+<li>Copy Paste 最快卻不一定最適合</li>
+<li>Copy Paste 最快卻不一定改得動</li>
+<li>Copy Paste 最快但是有的地方沒Copy完</li>
+</ol>
+<p><code>用明朝的劍，斬清朝的官</code></p>
+<h2 id="實務需求"><a href="#實務需求" class="headerlink" title="實務需求"></a>實務需求</h2><p>將本來跨國未開啟的<strong>折扣活動</strong>模組打開,<br>簡單的流程大致如下:<br>購物車 → 取得購物車資料 → 折扣活動 → 計算</p>
+<p>實務上,整個流程作了許多事<br><img src="https://i.imgur.com/pM36Joo.jpg" alt=""></p>
+<p>應該說作了太多事.<br><img src="https://i.imgur.com/NU0PqCh.jpg" alt=""></p>
+<p>程式碼有壞味道,確不能修改(重構).<br>因為沒有測試保護. </p>
+<p>單一的Process，複雜度過高的方法(12)</p>
+<p><code>CalculateShoppingCartPromotionDiscountV2Processor.Process()</code></p>
+<p><img src="https://i.imgur.com/qleqGPb.jpg" alt=""></p>
+<h3 id="目標與執行順序"><a href="#目標與執行順序" class="headerlink" title="目標與執行順序"></a>目標與執行順序</h3><ol>
+<li>由 PM 或 QA 補足整合測試情境到足夠<ul>
+<li>由實務上的需求來認定</li>
+</ul>
+</li>
+<li>刪除台灣的測試</li>
+<li>解析 <code>CalculateShoppingCartPromotionDiscountV2Processor</code> </li>
+<li>補上單元測試<ul>
+<li>Code Coverage(測試覆蓋率)</li>
+</ul>
+</li>
+<li>重構</li>
+</ol>
+<h2 id="最終的目標是重構"><a href="#最終的目標是重構" class="headerlink" title="最終的目標是重構"></a>最終的目標是重構</h2><ul>
+<li>心態:<a href="http://www.danielteng.com/2012/09/25/no-time-to-learn-perfect-excuse/" target="_blank" rel="external">沒有時間，完美的借口</a></li>
+<li>重構前要先作整合測試</li>
+<li>現有的整合測試的缺陷<ol>
+<li>測試項目不符合馬來西亞現狀</li>
+<li>測試項目未處理多語系</li>
+<li>測試項目未處理小數點</li>
+<li>測試項目難以閱讀</li>
+<li>測試項目有重覆的覆蓋範圍</li>
+</ol>
+</li>
+<li>RD與PM與QA合作</li>
+</ul>
+<h3 id="UAT-讓「人」讀得懂"><a href="#UAT-讓「人」讀得懂" class="headerlink" title="UAT 讓「人」讀得懂"></a>UAT 讓「人」讀得懂</h3><h4 id="原本的-UAT-RD"><a href="#原本的-UAT-RD" class="headerlink" title="原本的 UAT (RD)"></a>原本的 UAT (RD)</h4><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">場景: case37：商品活動+全店活動(有排除)；宅配，運費50元，滿350免運</div><div class="line">	．全店活動 / 有排除商品；滿額打折，多階(滿第1階)，跨溫層</div><div class="line">	．折扣條件：滿199元，打95折 / 滿299元，打89折 / 滿399元，打84折</div><div class="line">	．商品活動；滿件折現，單階，跨溫層</div><div class="line">	．折扣條件：滿2件，折45元</div><div class="line">	假設 購物車中溫層<span class="string">"Freezer"</span>商品為</div><div class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</div><div class="line">		|<span class="string"> 50         </span>|<span class="string"> 50               </span>|<span class="string"> 75    </span>|<span class="string"> 1   </span>|</div><div class="line">		|<span class="string"> 27         </span>|<span class="string"> 27               </span>|<span class="string"> 66    </span>|<span class="string"> 2   </span>|</div><div class="line">	並且 購物車中溫層<span class="string">"Refrigerator"</span>商品為</div><div class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</div><div class="line">		|<span class="string"> 26         </span>|<span class="string"> 26               </span>|<span class="string"> 55    </span>|<span class="string"> 2   </span>|</div><div class="line">	並且 購物車中溫層<span class="string">"Normal"</span>商品為</div><div class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</div><div class="line">		|<span class="string"> 25         </span>|<span class="string"> 25               </span>|<span class="string"> 2     </span>|<span class="string"> 2   </span>|</div><div class="line">	並且 活動<span class="string">"1"</span>範圍設定為</div><div class="line">		|<span class="string"> TargetType </span>|<span class="string"> TargetIdList </span>|</div><div class="line">		|<span class="string"> Shop       </span>|<span class="string"> 1            </span>|</div><div class="line">	並且 活動目標排除商品頁為</div><div class="line">		|<span class="string"> PromotionId </span>|<span class="string"> TargetExcludeSalePageList </span>|</div><div class="line">		|<span class="string"> 1           </span>|<span class="string"> 50          </span>|</div><div class="line">	並且  現折活動<span class="string">"1"</span>的折扣為</div><div class="line">		|<span class="string"> Id </span>|<span class="string"> TypeDef      </span>|<span class="string"> TotalPrice </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountRate </span>|</div><div class="line">		|<span class="string"> 1  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 199        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.95         </span>|</div><div class="line">		|<span class="string"> 2  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 299        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.89         </span>|</div><div class="line">		|<span class="string"> 3  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 399        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.84         </span>|</div><div class="line">	並且 活動<span class="string">"2"</span>範圍設定為</div><div class="line">		|<span class="string"> TargetType        </span>|<span class="string"> TargetIdList </span>|</div><div class="line">		|<span class="string"> PromotionSalePage </span>|<span class="string"> 0            </span>|</div><div class="line">	並且 活動目標商品頁為</div><div class="line">		|<span class="string"> PromotionId </span>|<span class="string"> TargetSalePageList </span>|</div><div class="line">		|<span class="string"> 2           </span>|<span class="string"> 50,25,26,27        </span>|</div><div class="line">	並且  現折活動<span class="string">"2"</span>的折扣為</div><div class="line">		|<span class="string"> Id </span>|<span class="string"> TypeDef    </span>|<span class="string"> TotalQty </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountPrice </span>|</div><div class="line">		|<span class="string"> 4  </span>|<span class="string"> TotalQtyV2 </span>|<span class="string"> 2        </span>|<span class="string"> DiscountPrice   </span>|<span class="string"> 45            </span>|</div><div class="line">	當 計算活動折扣</div><div class="line">	那麼 購物車商品折扣後為</div><div class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> PromotionDiscount </span>|</div><div class="line">		|<span class="string"> 50         </span>|<span class="string"> 50               </span>|<span class="string"> -12               </span>|</div><div class="line">		|<span class="string"> 27         </span>|<span class="string"> 27               </span>|<span class="string"> -25               </span>|</div><div class="line">		|<span class="string"> 26         </span>|<span class="string"> 26               </span>|<span class="string"> -19               </span>|</div><div class="line">		|<span class="string"> 25         </span>|<span class="string"> 25               </span>|<span class="string"> 0                 </span>|</div></pre></td></tr></table></figure>
+<h4 id="「人」寫的UAT"><a href="#「人」寫的UAT" class="headerlink" title="「人」寫的UAT"></a>「人」寫的UAT</h4><pre><code class="gherkin=">場景: 商品有兩檔活動，全店活動與商品活動；
+    ．第一檔是全店活動 / 排除商品B；滿額打折，
+    ．折扣條件：滿10元，打95折 / 滿20元，打89折 / 滿30元，打84折
+    ．第二檔是指定商品；滿件折現，單階，指定商品A 、商品B
+    ．折扣條件：滿2件，折3元
+
+當 購物車中的商品為&quot;商品A 與商品B&quot;
+        | Title | SalePageId | SaleProductSKUId | Price | Qty |
+        | 商品A   | 25         | 25               | 7.45  | 2   |
+        | 商品B   | 26         | 26               | 4.45  | 2   |
+
+並且 第&quot;1&quot;檔是全店活動 ,排除以下商品
+        | Title | SalePageId |
+        | 商品A   | 26         |
+
+而且 第&quot;1&quot;檔折扣條件是&quot;滿額打折,滿10元，打95折 / 滿20元，打89折 / 滿30元，打84折&quot;,如下
+    | Id | TypeDef      | TotalPrice | DiscountTypeDef | DiscountRate |
+    | 1  | TotalPriceV2 | 10         | DiscountRate    | 0.95         |
+    | 2  | TotalPriceV2 | 20         | DiscountRate    | 0.89         |
+    | 3  | TotalPriceV2 | 30         | DiscountRate    | 0.84         |
+
+並且 第&quot;2&quot;檔是指定商品,指定商品如下
+    | Title | SalePageId |
+    | 商品A   | 25         |
+    | 商品B   | 26         |
+    | 商品C   | 27         |
+    | 商品D   | 50         |
+
+而且 第&quot;2&quot;檔折扣條件是&quot;滿件折現,滿2件，折3元&quot;,如下
+    | Id | TypeDef    | TotalQty | DiscountTypeDef | DiscountPrice |
+    | 4  | TotalQtyV2 | 2        | DiscountPrice   | 3             |
+
+當 計算活動折扣
+
+那麼 購物車商品折扣金額及折扣後小計為 
+    | Title | SalePageId | Price | Qty | PromotionDiscount | TotalPayment |
+    | 商品A   | 25         | 7.45  | 2   | -2.55             | 12.35        |
+    | 商品B   | 26         | 4.45  | 2   | -1.11             | 7.79         |
+</code></pre>
+<p>與 PM 及 QA 討論後 , 寫的 UAT 可閱讀性提高了<br>這裡用到了一些小技巧 , 讓 Cucumber 文件的可讀性更高<br>而不會有太多的重複方法 , 比如說把描述性的文字當作參數傳遞<br>實際上測試不會使用到這些變數 ,但是可以增加可讀性 .</p>
+<h3 id="刪除台灣測試"><a href="#刪除台灣測試" class="headerlink" title="刪除台灣測試"></a>刪除台灣測試</h3><p>因為已經有了跨國所需要的測試 ,<br>台灣的測試便可以退場了.<br>實際上也不符合現況, 如多語系、時差與小數點等問題</p>
+<h3 id="解析-CalculateShoppingCartPromotionDiscountV2Processor"><a href="#解析-CalculateShoppingCartPromotionDiscountV2Processor" class="headerlink" title="解析 CalculateShoppingCartPromotionDiscountV2Processor"></a>解析 <code>CalculateShoppingCartPromotionDiscountV2Processor</code></h3><p><img src="https://i.imgur.com/FioG5NG.jpg" alt=""></p>
+<ol>
+<li>無折扣的情境</li>
+<li>新舊相容的情境</li>
+<li>排序</li>
+<li>計算折扣金額</li>
+<li>看見相依<ol>
+<li>程式碼中有 new 別的 class 的部份</li>
+<li>程式碼中有使用靜態方法的部份</li>
+</ol>
+</li>
+</ol>
+<h3 id="補上單元測試"><a href="#補上單元測試" class="headerlink" title="補上單元測試"></a>補上單元測試</h3><p>最簡單的重構,就是將整個方法內的四個邏輯<br>拆成四塊個子方法,並為他們加上單元測試.<br>修改的過程,如果有紅燈就要修改成綠燈,<br>而整個成品要保證整合測試與單元測試都是綠燈. </p>
+<p>此外,重構的過程中如果過到靜態方法,<br>或是 new 新物件, 都很有可能是種相依,<br>可以透過一些方法作解耦,<br>參考之前的文章<a href="/2017/04/23/unitestwriting/">單元測試這樣玩就對了</a> </p>
+<h3 id="重構"><a href="#重構" class="headerlink" title="重構"></a>重構</h3><p>最後一步就是大膽的重構了,<br>有了測試作保護,<br>可以作更大範圍的重構,<br>如下圖示,這裡揭露了在台灣原有的繼承結構,<br>而紅色的部份是在跨國用不到的類別.<br><img src="https://i.imgur.com/VQ10wY6.jpg" alt=""></p>
+<p>下一步，待續…</p>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/10/31/integrated_testing_partice/" data-id="cj9ej2mz60016hoop7l2jzb30" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/10/31/integrated_testing_partice/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/23/weekly_learn/20171023/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">20171023本周要聞/心得/學習擷錄</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-API/">Google API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expressjs/">expressjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最有生產力的一年/">最有生產力的一年</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 10px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 10px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 10px;">Kubernetes</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/31/integrated_testing_partice/">單元測試與重構記錄(一)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/23/weekly_learn/20171023/">20171023本周要聞/心得/學習擷錄</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/22/books/book_outliers_the_story_of_success/">[閱讀筆記]異數</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/24/sql_ef6_dateInterceptor/">使用 DateInterceptor 攔截SQL 語法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/18/sql_compatibility_level_with_datetime2/">SQL Compatibility Level 對MsSQL時間查詢的影響</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Marsen L.<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'marsen';
+  
+  var disqus_url = 'http://blog.marsen.me/2017/10/31/integrated_testing_partice/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
