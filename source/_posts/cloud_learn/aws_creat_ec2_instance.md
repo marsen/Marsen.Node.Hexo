@@ -39,7 +39,6 @@ windows AMI請用 `Powershell`
 8. 加硬碟
 ![](https://i.imgur.com/MP9igLc.jpg)
 
-
 9. 加tag
 ![](https://i.imgur.com/xDTx2nv.jpg)
 
