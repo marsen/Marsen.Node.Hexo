@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-12-08T11:13:03.164Z</updated>
+  <updated>2017-12-11T03:26:29.742Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Visual Studio 2017 MSTest Framework 異常修正</title>
+    <link href="http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/"/>
+    <id>http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/</id>
+    <published>2017-12-11T03:17:08.000Z</published>
+    <updated>2017-12-11T03:26:29.742Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul><li>這是踩雷筆記</li><li>2017的筆記可能會隨時間變得沒有參考價值</li><li>Visual Studio 2017的問題,並不一定適用其他版本</li></ul><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p><img src="https://i.imgur.com/FDDtc9V.jpg" alt="載入測試時發生例外狀況"><br>原本使用 Visual Studio 2015 建立的測試專案,<br>升級到 Visual Studio 2017 後, 發生以下錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[2017/12/11 上午 02:09:59 Error] 測試探索程式 &apos;SpecRunTestDiscoverer&apos; </div><div class="line">載入測試時發生例外狀況。例外狀況: 無法載入檔案或組件 </div><div class="line">&apos;Microsoft.VisualStudio.QualityTools.UnitTestFramework,</div><div class="line">Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&apos;</div><div class="line">或其相依性的其中之一。 系統找不到指定的檔案。</div></pre></td></tr></table></figure></p><h2 id="導致結果"><a href="#導致結果" class="headerlink" title="導致結果"></a>導致結果</h2><p><img src="https://i.imgur.com/2REPRzG.jpg" alt="原本的測試數量為1942,變成459,遺失了7成5的測試案例."></p><ol><li>測試專案會找不到測試,或是測試數量不正確.</li><li>可以使用 Visual Studio 2015 重新執行探測索測試,即可排除問題.</li></ol><h2 id="VS2015-已移除或未安裝該怎麼辦？"><a href="#VS2015-已移除或未安裝該怎麼辦？" class="headerlink" title="VS2015 已移除或未安裝該怎麼辦？"></a>VS2015 已移除或未安裝該怎麼辦？</h2><p>透過MsTest直接加入<br><code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code><br>的參考已經是舊的方法了, </p><h4 id="在-vs2017-建議的解決方案如下"><a href="#在-vs2017-建議的解決方案如下" class="headerlink" title="在 vs2017 建議的解決方案如下:"></a>在 vs2017 建議的解決方案如下:</h4><ul><li>移除方案中所有對 <code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code> 的參考</li><li>透過 Nuget 安裝 MSTest.TestAdapter </li><li>透過 Nuget 安裝 MSTest.TestFramework</li><li>關閉 vs2017</li><li>移除 <code>%temp%\VisualStudioTestExplorerExtensions</code>內所有檔案</li><li>重啟 vs2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 vs2017 並建置以觸發探索測試"></li></ul><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;應該要知道的事&quot;&gt;&lt;a href=&quot;#應該要知道的事&quot; class=&quot;headerlink&quot; title=&quot;應該要知道的事&quot;&gt;&lt;/a&gt;應該要知道的事&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;這是踩雷筆記&lt;/li&gt;
+&lt;li&gt;2017的筆記可能會隨時間變得沒有參考價值&lt;/li&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="MsTest" scheme="http://blog.marsen.me/tags/MsTest/"/>
+    
+      <category term="Visual Studio" scheme="http://blog.marsen.me/tags/Visual-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title>單元測試與重構記錄(二) 發問篇</title>
@@ -196,11 +224,11 @@
     </summary>
     
     
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
-    
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
     
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
+    
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
     
       <category term="Entity Framework" scheme="http://blog.marsen.me/tags/Entity-Framework/"/>
     
@@ -468,34 +496,6 @@
   </entry>
   
   <entry>
-    <title>CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</title>
-    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
-    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
-    <published>2017-01-15T14:16:42.000Z</published>
-    <updated>2017-09-24T08:07:22.897Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul><li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li></ul><h2 id="操作記錄"><a href="#操作記錄" class="headerlink" title="操作記錄"></a>操作記錄</h2><ol><li>下載並安裝Jenkins（記錄版本為2.32.1）</li><li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><img src="https://i.imgur.com/ik5l0sq.jpg" alt=""></p></li><li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt=""></p></li></ol><ol><li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt=""></p></li><li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt=""><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt=""></p></li><li><p>登入後,管理 Jenkins &gt; 設定系統</p><ol><li>將執行程式數量設定為 1  (安裝完預設為2,其實可以不用修改)</li><li><code>Shell</code> 設定為 <code>C:\Windows\system32\cmd.exe</code> </li></ol></li><li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><img src="https://i.imgur.com/0xkci16.jpg" alt=""></p></li><li><p><strong>執行一次建置</strong>,這個步驟是為了產生work space 。<br>work space 路徑大致如下 <code>.\Jenkins\workspace\Project name</code></p></li><li><p>執行 console 並切換路徑至 work space </p></li><li><p>將 Openshift 上的 nodejs 應用程式 repo 設為 remote<br><code>&gt;git remote add prod ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p></li><li><p>回到Jenkins,作業 &gt; 組態 &gt; 建置 &gt; 新增「執行Windows批次指令」</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">REM 測試</span></div><div class="line">whoami</div><div class="line">git push prod HEAD^:master</div></pre></td></tr></table></figure><ol><li>額外處理事項:<br>直接在 Jenkins server 發 pr 給 openshift 時,發生 503 錯誤。<br>使用 ssh 登入 openshift 看 log ,發現<br><code>Node Sass does not yet support your current environment</code> 錯誤<br>必須登入執行以下語法修正模組問題 <code>npm rebuild node-sass</code> </li></ol></li><li><p>建置作業,會得到錯誤訊息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">上略...</div><div class="line">19:44:46 Host key verification failed.</div><div class="line">19:44:46 fatal: Could not read from remote repository.</div><div class="line">下略...</div></pre></td></tr></table></figure></li></ol><p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p><p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录</a></li><li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="noopener">SSH原理与运用（二）：远程操作与端口转发</a></li><li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="noopener">[Tip] Windows使用ssh對Github進行操作</a></li><li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="noopener">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
-      
-    
-    </summary>
-    
-    
-      <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
-    
-      <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
-    
-      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</title>
     <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/"/>
     <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/</id>
@@ -524,20 +524,20 @@
   </entry>
   
   <entry>
-    <title>CI/CD 環境建置筆記 - 前言&lt;目的&gt;</title>
-    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/"/>
-    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins/</id>
-    <published>2017-01-15T13:54:00.000Z</published>
-    <updated>2017-09-24T08:07:22.896Z</updated>
+    <title>CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</title>
+    <link href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/"/>
+    <id>http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/</id>
+    <published>2017-01-15T14:16:42.000Z</published>
+    <updated>2017-09-24T08:07:22.897Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p><h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol><li>Github</li><li>Openshift<br>Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),<br>Github 則是單純的負責版本控制。<h3 id="開發流程"><a href="#開發流程" class="headerlink" title="開發流程"></a>開發流程</h3>作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。<br>原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,<br>這樣的流程雖然簡單,但是每次都要人工執行,因為其執行順序,其實都隱含著風險,<br>例如:上錯版本或是產品未進版控等等…,<br>而當進一步想要執行建置、編譯 、套件管理、測試、分析與產生報表時,<br>產品與源碼將會產生差異(ex:產品會包含壓縮的檔案而源碼則是未壓縮的檔案)</li></ol><h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點:"></a>缺點:</h4><ol><li>在這樣的架構上容易不小心發佈還在開發中的功能。</li><li>Prod的來源就是程式碼,無法確保與版控一致,如此就喪失版控的用意。</li><li>難以擴展其他功能,如:建置、編譯 、套件管理、測試、分析與產生報表</li></ol><h4 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h4><p><img src="https://i.imgur.com/dHYRJKr.jpg" alt=""><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul><li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li></ul><h2 id="操作記錄"><a href="#操作記錄" class="headerlink" title="操作記錄"></a>操作記錄</h2><ol><li>下載並安裝Jenkins（記錄版本為2.32.1）</li><li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><img src="https://i.imgur.com/ik5l0sq.jpg" alt=""></p></li><li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt=""></p></li></ol><ol><li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt=""></p></li><li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt=""><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt=""></p></li><li><p>登入後,管理 Jenkins &gt; 設定系統</p><ol><li>將執行程式數量設定為 1  (安裝完預設為2,其實可以不用修改)</li><li><code>Shell</code> 設定為 <code>C:\Windows\system32\cmd.exe</code> </li></ol></li><li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><img src="https://i.imgur.com/0xkci16.jpg" alt=""></p></li><li><p><strong>執行一次建置</strong>,這個步驟是為了產生work space 。<br>work space 路徑大致如下 <code>.\Jenkins\workspace\Project name</code></p></li><li><p>執行 console 並切換路徑至 work space </p></li><li><p>將 Openshift 上的 nodejs 應用程式 repo 設為 remote<br><code>&gt;git remote add prod ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p></li><li><p>回到Jenkins,作業 &gt; 組態 &gt; 建置 &gt; 新增「執行Windows批次指令」</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">REM 測試</span></div><div class="line">whoami</div><div class="line">git push prod HEAD^:master</div></pre></td></tr></table></figure><ol><li>額外處理事項:<br>直接在 Jenkins server 發 pr 給 openshift 時,發生 503 錯誤。<br>使用 ssh 登入 openshift 看 log ,發現<br><code>Node Sass does not yet support your current environment</code> 錯誤<br>必須登入執行以下語法修正模組問題 <code>npm rebuild node-sass</code> </li></ol></li><li><p>建置作業,會得到錯誤訊息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">上略...</div><div class="line">19:44:46 Host key verification failed.</div><div class="line">19:44:46 fatal: Could not read from remote repository.</div><div class="line">下略...</div></pre></td></tr></table></figure></li></ol><p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p><p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录</a></li><li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="noopener">SSH原理与运用（二）：远程操作与端口转发</a></li><li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="noopener">[Tip] Windows使用ssh對Github進行操作</a></li><li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="noopener">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li></ul><p>(fin)</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;現有架構&quot;&gt;&lt;a href=&quot;#現有架構&quot; class=&quot;headerlink&quot; title=&quot;現有架構&quot;&gt;&lt;/a&gt;現有架構&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/QLzPTrp.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/2017/01/15/ci_use_jenkins/&quot;&gt;CI/CD 環境建置筆記 - 前言&amp;
       
     
     </summary>
@@ -546,6 +546,8 @@
       <category term="CI" scheme="http://blog.marsen.me/tags/CI/"/>
     
       <category term="Jenkins" scheme="http://blog.marsen.me/tags/Jenkins/"/>
+    
+      <category term="Openshift" scheme="http://blog.marsen.me/tags/Openshift/"/>
     
   </entry>
   
