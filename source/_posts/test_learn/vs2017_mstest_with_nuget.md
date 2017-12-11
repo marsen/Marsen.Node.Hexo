@@ -45,3 +45,5 @@ Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 
 ## 參考
 - [Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions](https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html)
+
+(fin)

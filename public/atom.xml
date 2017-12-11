@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2017-12-11T03:26:29.742Z</updated>
+  <updated>2017-12-11T03:28:53.703Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/"/>
     <id>http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/</id>
     <published>2017-12-11T03:17:08.000Z</published>
-    <updated>2017-12-11T03:26:29.742Z</updated>
+    <updated>2017-12-11T03:28:53.703Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul><li>這是踩雷筆記</li><li>2017的筆記可能會隨時間變得沒有參考價值</li><li>Visual Studio 2017的問題,並不一定適用其他版本</li></ul><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p><img src="https://i.imgur.com/FDDtc9V.jpg" alt="載入測試時發生例外狀況"><br>原本使用 Visual Studio 2015 建立的測試專案,<br>升級到 Visual Studio 2017 後, 發生以下錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[2017/12/11 上午 02:09:59 Error] 測試探索程式 &apos;SpecRunTestDiscoverer&apos; </div><div class="line">載入測試時發生例外狀況。例外狀況: 無法載入檔案或組件 </div><div class="line">&apos;Microsoft.VisualStudio.QualityTools.UnitTestFramework,</div><div class="line">Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&apos;</div><div class="line">或其相依性的其中之一。 系統找不到指定的檔案。</div></pre></td></tr></table></figure></p><h2 id="導致結果"><a href="#導致結果" class="headerlink" title="導致結果"></a>導致結果</h2><p><img src="https://i.imgur.com/2REPRzG.jpg" alt="原本的測試數量為1942,變成459,遺失了7成5的測試案例."></p><ol><li>測試專案會找不到測試,或是測試數量不正確.</li><li>可以使用 Visual Studio 2015 重新執行探測索測試,即可排除問題.</li></ol><h2 id="VS2015-已移除或未安裝該怎麼辦？"><a href="#VS2015-已移除或未安裝該怎麼辦？" class="headerlink" title="VS2015 已移除或未安裝該怎麼辦？"></a>VS2015 已移除或未安裝該怎麼辦？</h2><p>透過MsTest直接加入<br><code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code><br>的參考已經是舊的方法了, </p><h4 id="在-vs2017-建議的解決方案如下"><a href="#在-vs2017-建議的解決方案如下" class="headerlink" title="在 vs2017 建議的解決方案如下:"></a>在 vs2017 建議的解決方案如下:</h4><ul><li>移除方案中所有對 <code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code> 的參考</li><li>透過 Nuget 安裝 MSTest.TestAdapter </li><li>透過 Nuget 安裝 MSTest.TestFramework</li><li>關閉 vs2017</li><li>移除 <code>%temp%\VisualStudioTestExplorerExtensions</code>內所有檔案</li><li>重啟 vs2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 vs2017 並建置以觸發探索測試"></li></ul><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul><li>這是踩雷筆記</li><li>2017的筆記可能會隨時間變得沒有參考價值</li><li>Visual Studio 2017的問題,並不一定適用其他版本</li></ul><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p><img src="https://i.imgur.com/FDDtc9V.jpg" alt="載入測試時發生例外狀況"><br>原本使用 Visual Studio 2015 建立的測試專案,<br>升級到 Visual Studio 2017 後, 發生以下錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[2017/12/11 上午 02:09:59 Error] 測試探索程式 &apos;SpecRunTestDiscoverer&apos; </div><div class="line">載入測試時發生例外狀況。例外狀況: 無法載入檔案或組件 </div><div class="line">&apos;Microsoft.VisualStudio.QualityTools.UnitTestFramework,</div><div class="line">Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&apos;</div><div class="line">或其相依性的其中之一。 系統找不到指定的檔案。</div></pre></td></tr></table></figure></p><h2 id="導致結果"><a href="#導致結果" class="headerlink" title="導致結果"></a>導致結果</h2><p><img src="https://i.imgur.com/2REPRzG.jpg" alt="原本的測試數量為1942,變成459,遺失了7成5的測試案例."></p><ol><li>測試專案會找不到測試,或是測試數量不正確.</li><li>可以使用 Visual Studio 2015 重新執行探測索測試,即可排除問題.</li></ol><h2 id="VS2015-已移除或未安裝該怎麼辦？"><a href="#VS2015-已移除或未安裝該怎麼辦？" class="headerlink" title="VS2015 已移除或未安裝該怎麼辦？"></a>VS2015 已移除或未安裝該怎麼辦？</h2><p>透過MsTest直接加入<br><code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code><br>的參考已經是舊的方法了, </p><h4 id="在-vs2017-建議的解決方案如下"><a href="#在-vs2017-建議的解決方案如下" class="headerlink" title="在 vs2017 建議的解決方案如下:"></a>在 vs2017 建議的解決方案如下:</h4><ul><li>移除方案中所有對 <code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code> 的參考</li><li>透過 Nuget 安裝 MSTest.TestAdapter </li><li>透過 Nuget 安裝 MSTest.TestFramework</li><li>關閉 vs2017</li><li>移除 <code>%temp%\VisualStudioTestExplorerExtensions</code>內所有檔案</li><li>重啟 vs2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 vs2017 並建置以觸發探索測試"></li></ul><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li></ul><p>(fin)</p>]]></content>
     
     <summary type="html">
     
@@ -224,11 +224,11 @@
     </summary>
     
     
+      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
+    
       <category term="Database" scheme="http://blog.marsen.me/tags/Database/"/>
     
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
-    
-      <category term="記錄" scheme="http://blog.marsen.me/tags/%E8%A8%98%E9%8C%84/"/>
     
       <category term="Entity Framework" scheme="http://blog.marsen.me/tags/Entity-Framework/"/>
     
@@ -255,9 +255,9 @@
     </summary>
     
     
-      <category term="expressjs" scheme="http://blog.marsen.me/tags/expressjs/"/>
-    
       <category term="typescript" scheme="http://blog.marsen.me/tags/typescript/"/>
+    
+      <category term="expressjs" scheme="http://blog.marsen.me/tags/expressjs/"/>
     
       <category term="gulp" scheme="http://blog.marsen.me/tags/gulp/"/>
     
@@ -464,9 +464,9 @@
     
       <category term=".Net Framework" scheme="http://blog.marsen.me/tags/Net-Framework/"/>
     
-      <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
-    
       <category term="ASP.Net" scheme="http://blog.marsen.me/tags/ASP-Net/"/>
+    
+      <category term="Thread" scheme="http://blog.marsen.me/tags/Thread/"/>
     
   </entry>
   
