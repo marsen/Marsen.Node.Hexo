@@ -5,6 +5,7 @@ tag:
   - Coding Standard
 ---
 ###### Coding Standard / Code Review / Pull Request & Delivery
+![](https://i.imgur.com/tssraf0.jpg)
 ## 故事背景
 1. 團隊的部署流程是 Github Flow 與 Git Flow 混用 , 給它起個名字叫 GG Flow 好了.
 2. GG Flow 的過程需要開發人員需要透過 **Pull Request** 將修改推送給產品 
