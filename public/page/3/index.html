@@ -75,10 +75,10 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iis_tracing_log_setting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
-  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
+    <a href="/2017/01/24/iis_tracing_log_setting/" class="article-date">
+  <time datetime="2017-01-24T06:27:12.000Z" itemprop="datePublished">2017-01-24</time>
 </a>
     
   </div>
@@ -89,7 +89,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+      <a class="article-title" href="/2017/01/24/iis_tracing_log_setting/">IIS Tracing Log 設定</a>
     </h1>
   
 
@@ -97,52 +97,41 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+        <h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>當你需要Trace送到IIS的每個Request的細節(包含在pipe line各個模組之間的input/output 與 傳入的參數、header等…),<br>可以透過開啟tracing log來作追蹤</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><ol>
+<li>Windows Server 2012 R2</li>
+<li>IIS 8.5.9600.16384</li>
 </ol>
-</li>
+<h2 id="開啟-tracing-log"><a href="#開啟-tracing-log" class="headerlink" title="開啟 tracing log"></a>開啟 tracing log</h2><ol>
+<li>新增 Tracing Rules<br><img src="https://i.imgur.com/4llAgOa.jpg" alt=""><br><img src="https://i.imgur.com/BavVoWy.gif" alt=""></li>
 </ol>
 <ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
+<li>開啟網站 Tracing 功能<br><img src="https://i.imgur.com/LUgbESR.jpg" alt=""><br><img src="https://i.imgur.com/aKtgj5m.jpg" alt=""></li>
 </ol>
+<h2 id="調整-IE-Security-層級"><a href="#調整-IE-Security-層級" class="headerlink" title="調整 IE Security 層級"></a>調整 IE Security 層級</h2><ol>
+<li><p>使用 IE 開啟 Log，因 Security 設定無法套用版型<br><img src="https://i.imgur.com/4VsuQWp.jpg" alt=""></p>
 </li>
-<li><p>選擇新增作業</p>
+<li><p>調整ie enhanced security</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/Lvnygqr.jpg" alt=""></p>
 <ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
+<li><p>開啟IE &gt; 點選小齒輪，選擇  Internet Options &gt; 點選 Security 頁籤 &gt; 將 Internet 的 Security Level 調整為 Medium-high<br><img src="https://i.imgur.com/H2F06OU.jpg" alt=""></p>
 </li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+<li><p>完成<br><img src="https://i.imgur.com/biiX6w8.jpg" alt=""></p>
 </li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
 </ol>
+<p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjce7gqs6000jyg55i5kojpjy" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="cjce7hknl001bts55h6ppv4qi" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIS/">IIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
 
     </footer>
   </div>
@@ -225,9 +214,85 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjce7gqsa000oyg554x0zfarg" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjce7hkn1000nts5517plisyw" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
+  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjce7hkmy000kts55ymq395yo" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
@@ -276,7 +341,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjce7gqs2000hyg55afewe7a3" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjce7hkmv000its55317nsz4y" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -354,7 +419,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjce7gqs0000eyg55p8fa6il0" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjce7hkmt000fts55vzh0nv99" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -793,7 +858,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjce7gqrx000byg55zhcufrpi" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjce7hkmp000bts554qk45v3d" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/12/05/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -884,7 +949,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjce7gqsc000ryg55tzxmu5c7" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjce7hkn2000pts55vpwdl024" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1030,7 +1095,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="cjce7gqrq0008yg55xs1kfz79" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="cjce7hkmj0008ts55a10tg0x9" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1095,7 +1160,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="cjce7gqrj0005yg55kvmh0y63" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="cjce7hkmb0004ts55sc6txjr4" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/10/28/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1173,73 +1238,12 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="cjce7gqri0004yg55mxhtsvan" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="cjce7hkma0003ts55sl1wbo03" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BulkInsert/">BulkInsert</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MsSQL/">MsSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell/">powershell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-todolist_by_typescript_2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/14/todolist_by_typescript_2/" class="article-date">
-  <time datetime="2016-10-14T02:34:27.000Z" itemprop="datePublished">2016-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/14/todolist_by_typescript_2/">[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
-<li>顯示/新增/刪除 todolist </li>
-<li>todolist 會是一堆todoItem的集合,所以要定義todoItem的形別<ul>
-<li>Content : todoItem 的內容</li>
-<li>Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉</li>
-</ul>
-</li>
-<li>主要的功能<ul>
-<li>建立todoItem</li>
-<li>完成todoItem</li>
-<li>繪製todoList到前端的畫面上</li>
-</ul>
-</li>
-</ol>
-<h2 id="自我分析"><a href="#自我分析" class="headerlink" title="自我分析"></a>自我分析</h2><p>跟 UI 耦合太高,Render 應該與 TodoService 分離 ,<br>DOM 註冊事件相依在 Service 裡面要抽離也不好抽 。<br>沒有先寫測試 , 要想一想怎麼與 UI 層作隔離。</p>
-<h2 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h2><h3 id="建立-BaseService"><a href="#建立-BaseService" class="headerlink" title="建立 BaseService"></a>建立 BaseService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> BaseService&lt;T&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>(private type: string) &#123;&#125;</div><div class="line">    </div><div class="line">    List:<span class="built_in">Array</span>&lt;T&gt; ;</div><div class="line"></div><div class="line">    Create(data: T) &#123;</div><div class="line">        <span class="keyword">this</span>.List.push(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: T)&#123;</div><div class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(data);</div><div class="line">        <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Render()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-todoItem-interface"><a href="#建立-todoItem-interface" class="headerlink" title="建立 todoItem interface"></a>建立 todoItem interface</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> todoItem &#123;</div><div class="line">    Content: <span class="built_in">string</span>;</div><div class="line">    Status: todoStatus;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-todoItem-Status-列舉"><a href="#建立-todoItem-Status-列舉" class="headerlink" title="建立 todoItem Status 列舉"></a>建立 todoItem Status 列舉</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> todoStatus&#123;</div><div class="line">    undo,</div><div class="line">    done,    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="建立-TodoService"><a href="#建立-TodoService" class="headerlink" title="建立 TodoService"></a>建立 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TodoService extends BaseService&lt;todoItem&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"todoItem"</span>);        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Render() : <span class="built_in">void</span> &#123;</div><div class="line">        <span class="keyword">let</span> doneHtml = <span class="string">''</span>;</div><div class="line">        <span class="keyword">let</span> undoHtml = <span class="string">''</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">            <span class="keyword">if</span>(item.Status == todoStatus.done)&#123;</div><div class="line">                doneHtml += <span class="string">`&lt;li&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;button class="recover-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-share-alt"&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="remove-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-remove"&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;`</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (item.Status == todoStatus.undo)&#123;</div><div class="line">                undoHtml += <span class="string">`&lt;li class="ui-state-default"&gt;&lt;div class="checkbox"&gt;&lt;label&gt;&lt;input type="checkbox" value="" /&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;/label&gt;&lt;/div&gt;&lt;/li&gt;`</span> ;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        $(<span class="string">"#done-items"</span>).html(doneHtml);</div><div class="line">        $(<span class="string">'#sortable'</span>).html(undoHtml);</div><div class="line">        $(<span class="string">'.add-todo'</span>).val(<span class="string">''</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: todoItem)&#123;</div><div class="line">        data.Status = todoStatus.done ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    Init()&#123;</div><div class="line">        <span class="comment">//// todoList in localStorage         </span></div><div class="line">        <span class="keyword">var</span> list = <span class="built_in">window</span>.localStorage.getItem(<span class="string">"todoList"</span>);        </div><div class="line">        <span class="keyword">if</span>(!list)&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="keyword">new</span> <span class="built_in">Array</span>&lt;todoItem&gt;();</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="built_in">JSON</span>.parse(list);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">window</span>.onbeforeunload = (evt) =&gt; &#123;</div><div class="line">            <span class="built_in">window</span>.localStorage.setItem(<span class="string">"todoList"</span>,<span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.List));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">// mark task as done</span></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'change'</span>,<span class="string">'#sortable li input[type="checkbox"]'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> self = evt.target;</div><div class="line">            <span class="keyword">var</span> text = $(self).parent().text();</div><div class="line">            <span class="keyword">if</span>($(self).prop(<span class="string">'checked'</span>))&#123;</div><div class="line">                <span class="keyword">var</span> doneItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">                <span class="keyword">this</span>.Delete(doneItem);</div><div class="line">                <span class="keyword">this</span>.Render();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.add-todo'</span>).on(<span class="string">'keypress'</span>,(evt) =&gt; &#123;</div><div class="line">            evt.preventDefault</div><div class="line">            <span class="keyword">if</span> (evt.which == <span class="number">13</span>) &#123;</div><div class="line">                <span class="keyword">if</span>($(evt.target).val() != <span class="string">''</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> todo = $(evt.target).val();</div><div class="line">                    <span class="keyword">this</span>.Create(  &#123;</div><div class="line">                        Content : $(evt.target).val() ,</div><div class="line">                        Status : todoStatus.undo </div><div class="line">                    &#125;);</div><div class="line">                    <span class="keyword">this</span>.Render();                 </div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">// some validation</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>, <span class="string">'#done-items li button.recover-item'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> recoverItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            recoverItem.Status = todoStatus.undo ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>,<span class="string">'#done-items li button.remove-item'</span> ,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> removeItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(removeItem);</div><div class="line">            <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'#checkAll'</span>).on(<span class="string">'click'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">                item.Status = todoStatus.done;</div><div class="line">            &#125;);</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">//// Render</span></div><div class="line">        <span class="keyword">this</span>.Render();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用建立好的-TodoService"><a href="#使用建立好的-TodoService" class="headerlink" title="使用建立好的 TodoService"></a>使用建立好的 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> todoService = <span class="keyword">new</span> TodoService();</div><div class="line">todoService.Init();</div></pre></td></tr></table></figure>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/" data-id="cjce7gqta001nyg55kxyprchr" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kata/">kata</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
 
     </footer>
   </div>
@@ -1304,15 +1308,15 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
           </li>
         
           <li>
+            <a href="/2018/01/01/2018/2017_learned/">2017年的學習回顧與展望</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
           <li>
             <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/08/cloud_learn/aws_creat_ec2_instance/">AWS EC2開機筆記</a>
           </li>
         
       </ul>
