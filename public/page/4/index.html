@@ -75,6 +75,67 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-todolist_by_typescript_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/14/todolist_by_typescript_2/" class="article-date">
+  <time datetime="2016-10-14T02:34:27.000Z" itemprop="datePublished">2016-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/14/todolist_by_typescript_2/">[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
+<li>顯示/新增/刪除 todolist </li>
+<li>todolist 會是一堆todoItem的集合,所以要定義todoItem的形別<ul>
+<li>Content : todoItem 的內容</li>
+<li>Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉</li>
+</ul>
+</li>
+<li>主要的功能<ul>
+<li>建立todoItem</li>
+<li>完成todoItem</li>
+<li>繪製todoList到前端的畫面上</li>
+</ul>
+</li>
+</ol>
+<h2 id="自我分析"><a href="#自我分析" class="headerlink" title="自我分析"></a>自我分析</h2><p>跟 UI 耦合太高,Render 應該與 TodoService 分離 ,<br>DOM 註冊事件相依在 Service 裡面要抽離也不好抽 。<br>沒有先寫測試 , 要想一想怎麼與 UI 層作隔離。</p>
+<h2 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h2><h3 id="建立-BaseService"><a href="#建立-BaseService" class="headerlink" title="建立 BaseService"></a>建立 BaseService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> BaseService&lt;T&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>(private type: string) &#123;&#125;</div><div class="line">    </div><div class="line">    List:<span class="built_in">Array</span>&lt;T&gt; ;</div><div class="line"></div><div class="line">    Create(data: T) &#123;</div><div class="line">        <span class="keyword">this</span>.List.push(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: T)&#123;</div><div class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(data);</div><div class="line">        <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Render()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="建立-todoItem-interface"><a href="#建立-todoItem-interface" class="headerlink" title="建立 todoItem interface"></a>建立 todoItem interface</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> todoItem &#123;</div><div class="line">    Content: <span class="built_in">string</span>;</div><div class="line">    Status: todoStatus;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="建立-todoItem-Status-列舉"><a href="#建立-todoItem-Status-列舉" class="headerlink" title="建立 todoItem Status 列舉"></a>建立 todoItem Status 列舉</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> todoStatus&#123;</div><div class="line">    undo,</div><div class="line">    done,    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="建立-TodoService"><a href="#建立-TodoService" class="headerlink" title="建立 TodoService"></a>建立 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TodoService extends BaseService&lt;todoItem&gt;&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"todoItem"</span>);        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Render() : <span class="built_in">void</span> &#123;</div><div class="line">        <span class="keyword">let</span> doneHtml = <span class="string">''</span>;</div><div class="line">        <span class="keyword">let</span> undoHtml = <span class="string">''</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">            <span class="keyword">if</span>(item.Status == todoStatus.done)&#123;</div><div class="line">                doneHtml += <span class="string">`&lt;li&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;button class="recover-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-share-alt"&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="remove-item btn btn-default btn-xs pull-right"&gt;&lt;span class="glyphicon glyphicon-remove"&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;`</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (item.Status == todoStatus.undo)&#123;</div><div class="line">                undoHtml += <span class="string">`&lt;li class="ui-state-default"&gt;&lt;div class="checkbox"&gt;&lt;label&gt;&lt;input type="checkbox" value="" /&gt;<span class="subst">$&#123;item.Content&#125;</span>&lt;/label&gt;&lt;/div&gt;&lt;/li&gt;`</span> ;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        $(<span class="string">"#done-items"</span>).html(doneHtml);</div><div class="line">        $(<span class="string">'#sortable'</span>).html(undoHtml);</div><div class="line">        $(<span class="string">'.add-todo'</span>).val(<span class="string">''</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Delete(data: todoItem)&#123;</div><div class="line">        data.Status = todoStatus.done ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    Init()&#123;</div><div class="line">        <span class="comment">//// todoList in localStorage         </span></div><div class="line">        <span class="keyword">var</span> list = <span class="built_in">window</span>.localStorage.getItem(<span class="string">"todoList"</span>);        </div><div class="line">        <span class="keyword">if</span>(!list)&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="keyword">new</span> <span class="built_in">Array</span>&lt;todoItem&gt;();</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">this</span>.List = <span class="built_in">JSON</span>.parse(list);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">window</span>.onbeforeunload = (evt) =&gt; &#123;</div><div class="line">            <span class="built_in">window</span>.localStorage.setItem(<span class="string">"todoList"</span>,<span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.List));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">// mark task as done</span></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'change'</span>,<span class="string">'#sortable li input[type="checkbox"]'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> self = evt.target;</div><div class="line">            <span class="keyword">var</span> text = $(self).parent().text();</div><div class="line">            <span class="keyword">if</span>($(self).prop(<span class="string">'checked'</span>))&#123;</div><div class="line">                <span class="keyword">var</span> doneItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">                <span class="keyword">this</span>.Delete(doneItem);</div><div class="line">                <span class="keyword">this</span>.Render();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.add-todo'</span>).on(<span class="string">'keypress'</span>,(evt) =&gt; &#123;</div><div class="line">            evt.preventDefault</div><div class="line">            <span class="keyword">if</span> (evt.which == <span class="number">13</span>) &#123;</div><div class="line">                <span class="keyword">if</span>($(evt.target).val() != <span class="string">''</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> todo = $(evt.target).val();</div><div class="line">                    <span class="keyword">this</span>.Create(  &#123;</div><div class="line">                        Content : $(evt.target).val() ,</div><div class="line">                        Status : todoStatus.undo </div><div class="line">                    &#125;);</div><div class="line">                    <span class="keyword">this</span>.Render();                 </div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="comment">// some validation</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>, <span class="string">'#done-items li button.recover-item'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> recoverItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            recoverItem.Status = todoStatus.undo ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'.todolist'</span>).on(<span class="string">'click'</span>,<span class="string">'#done-items li button.remove-item'</span> ,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">var</span> text = $(evt.target).parent().parent().text();</div><div class="line">            <span class="keyword">var</span> removeItem = <span class="keyword">this</span>.List.filter((i)=&gt;&#123;<span class="keyword">return</span> text == i.Content;&#125;)[<span class="number">0</span>];</div><div class="line">            <span class="keyword">var</span> index = <span class="keyword">this</span>.List.indexOf(removeItem);</div><div class="line">            <span class="keyword">this</span>.List.splice(index,<span class="number">1</span>) ;</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        $(<span class="string">'#checkAll'</span>).on(<span class="string">'click'</span>,(evt)=&gt;&#123;</div><div class="line">            <span class="keyword">this</span>.List.forEach((item)=&gt;&#123;</div><div class="line">                item.Status = todoStatus.done;</div><div class="line">            &#125;);</div><div class="line">            <span class="keyword">this</span>.Render();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">//// Render</span></div><div class="line">        <span class="keyword">this</span>.Render();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用建立好的-TodoService"><a href="#使用建立好的-TodoService" class="headerlink" title="使用建立好的 TodoService"></a>使用建立好的 TodoService</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> todoService = <span class="keyword">new</span> TodoService();</div><div class="line">todoService.Init();</div></pre></td></tr></table></figure>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/" data-id="cjce7hknr001hts55czq0zc2a" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2016/10/14/todolist_by_typescript_2/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery-ui/">jquery-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kata/">kata</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-todolist_by_typescript_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/08/todolist_by_typescript_1/" class="article-date">
@@ -156,7 +217,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/" data-id="cjce7gqt9001lyg557favnpei" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/" data-id="cjce7hknw001mts5596dec9f1" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/10/08/todolist_by_typescript_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -250,7 +311,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="cjce7gqsq0015yg55gxp4po5y" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="cjce7hknc0014ts55irmzj60j" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/09/04/http2 by cloudflare/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -318,7 +379,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/" data-id="cjce7gqsi000yyg550efjy6uy" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/" data-id="cjce7hkn4000sts55dm3tns5w" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/29/file_rowdata_import_mssql/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -427,7 +488,7 @@ username.xyz
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/28/how_to_use_github_page/" data-id="cjce7gqss0017yg550t689t14" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/28/how_to_use_github_page/" data-id="cjce7hkna0012ts55cqu1g2k2" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/28/how_to_use_github_page/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -483,7 +544,7 @@ google_analytics:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cjce7gqro0007yg55vduj5bfd" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/" data-id="cjce7hkmg0007ts55yohgrfis" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/25/add_google_analytics_to_hexo_blog_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -558,7 +619,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cjce7gqt3001fyg55zfp2j01v" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/" data-id="cjce7hkne0017ts5570pou8m5" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -604,7 +665,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cjce7gqt1001cyg55wj2t8xj7" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/20/sites_todo_list/" data-id="cjce7hknh0018ts5516xmcrd1" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/20/sites_todo_list/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -651,7 +712,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cjce7gqsm0013yg55wfoaps3u" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/08/13/hello-world/" data-id="cjce7hkn90010ts55qan36neq" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/08/13/hello-world/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -719,15 +780,15 @@ mydomain.me
           </li>
         
           <li>
+            <a href="/2018/01/01/2018/2017_learned/">2017年的學習回顧與展望</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
           <li>
             <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/08/cloud_learn/aws_creat_ec2_instance/">AWS EC2開機筆記</a>
           </li>
         
       </ul>
