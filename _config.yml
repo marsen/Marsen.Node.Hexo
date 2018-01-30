@@ -83,4 +83,4 @@ deploy:
   branche: master
 
 # Disqus Comments
-disqus_shortname: marsen
+disqus_shortname: marsenlin
