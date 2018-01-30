@@ -14,7 +14,7 @@
 <meta property="og:description" content="概述ASP.NET Thread Pool 的機制如何影響 Redis 案例線上維護的系統偶爾會發生 Redis Timeout Exception ,並在 elmah 發現以下的錯誤記錄 123Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: neve">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="http://blog.marsen.me/images/workerthread_and_iothread/110416_103521_AM.jpg">
-<meta property="og:updated_time" content="2017-01-30T06:02:41.615Z">
+<meta property="og:updated_time" content="2017-09-24T08:07:22.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASP.NET Thread Pool 與 Redis Timeout Exception">
 <meta name="twitter:description" content="概述ASP.NET Thread Pool 的機制如何影響 Redis 案例線上維護的系統偶爾會發生 Redis Timeout Exception ,並在 elmah 發現以下的錯誤記錄 123Timeout performing SETEX Cache:Prod:WebAPI:Key:20161121152607, inst: 18, mgr: ExecuteSelect, err: neve">
@@ -109,7 +109,7 @@ ga('send', 'pageview');
 <h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
 <p>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
 <p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
-<p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。<br>參考(<a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="external">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a>)。  </p>
+<p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。<br>參考(<a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="noopener">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a>)。  </p>
 <p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>當 Redis 發生 Timeout 時,<br>可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。<br>在以下的例子可以看到 IOCP 與 WORKER 兩個值。<br>這兩值表示 .Net ThreadPool 內的兩種執行緒,<br>如果 Busy 值很高, 就有可能是 ThreadPool 來不及建立造成的錯誤。</p>
@@ -175,11 +175,11 @@ ga('send', 'pageview');
 </tbody>
 </table>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="external">Threading</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="external">Improving ASP.NET Performance</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="external">Programming the Thread Pool in the .NET Framework</a></li>
-<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="external">DiagnoseRedisErrors-ClientSide</a></li>
-<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="external">ThreadPool</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="noopener">Threading</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="noopener">Improving ASP.NET Performance</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="noopener">Programming the Thread Pool in the .NET Framework</a></li>
+<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="noopener">DiagnoseRedisErrors-ClientSide</a></li>
+<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="noopener">ThreadPool</a></li>
 </ul>
 <p>(fin)</p>
 <hr>
@@ -189,7 +189,7 @@ ga('send', 'pageview');
 <p><code>Resolution:</code><br>增加記憶體或是減少記憶體使用量<br>Upgrade to a larger client VM size with more memory or dig into your memory usage patterns<br>to reduce memory consuption.  </p>
 <hr>
 <h3 id="Burst-of-traffic"><a href="#Burst-of-traffic" class="headerlink" title="Burst of traffic"></a><span style="color:red;" id="burst_of_traffic">Burst of traffic</span></h3><p><code>Problem:</code><br>ThreadPool突然大量的工作湧入queue導致執行緒來不及建立。<br> Bursts of traffic combined with poor ThreadPool settings can result in delays in processing<br> data already sent by the Redis Server but not yet consumed on the client side.  </p>
-<p><code>測量:</code><br>可以用<a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="external">程式</a>監控 ThreadPool .<br>或是單純透過 TimeoutException 的訊息,觀察IOCP與WORKER的Busy值來判斷.<br><code>Measurement:</code><br>Monitor how your ThreadPool statistics change over time using code like <a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="external">this</a>.<br>You can also look at the TimeoutException message from StackExchange.Redis.<br>Here is an example :  </p>
+<p><code>測量:</code><br>可以用<a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="noopener">程式</a>監控 ThreadPool .<br>或是單純透過 TimeoutException 的訊息,觀察IOCP與WORKER的Busy值來判斷.<br><code>Measurement:</code><br>Monitor how your ThreadPool statistics change over time using code like <a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="noopener">this</a>.<br>You can also look at the TimeoutException message from StackExchange.Redis.<br>Here is an example :  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.TimeoutException: Timeout performing EVAL, inst: <span class="number">8</span>, mgr: Inactive, queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">64221</span>, ar: <span class="number">0</span>, </div><div class="line">IOCP: (Busy=<span class="number">6</span>,Free=<span class="number">999</span>,Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</div></pre></td></tr></table></figure>
 <p>In the above message, there are several issues that are interesting:<br>Notice that in the “IOCP” section and the “WORKER” section you have a “Busy” value that is<br>greater than the “Min” value. This means that your threadpool settings need adjusting.<br>You can also see “in: 64221”. This indicates that 64211 bytes have been received at the kernel<br>socket layer but haven’t yet been read by the application (e.g. StackExchange.Redis).<br>This typically means that your application isn’t reading data from the network as quickly as<br>the server is sending it to you.  </p>
 <p><code>Resolution:</code><br>調整ThreadPool設定<br>Configure your ThreadPool Settings to make sure that your threadpool will scale up quickly under burst scenarios.</p>
@@ -212,7 +212,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="cjce7hkmj0008ts55a10tg0x9" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="cjd1v8qon001n18opxhp7f83c" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -313,13 +313,6 @@ ga('send', 'pageview');
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
-<<<<<<< HEAD
-          <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-=======
->>>>>>> 143f2eb897781e52eedd35bc412c51a3950feee6
       </ul>
     </div>
   </div>

@@ -14,7 +14,7 @@
 <meta property="og:description" content="需求 將指定的Log記錄,匯入資料庫,產生row data 將row data 轉換成為需要的報表資料 產生報表  規劃 powershell 讀取檔案 powershell 連接資料庫 powershell 執行SQL powershell 作BulkInsert powershell 寫入檔案   簡記要點  powershell 可以直接取用 .Net Framework 或 COM 元件">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="http://blog.marsen.me/images/102216_095355_PM.jpg">
-<meta property="og:updated_time" content="2016-12-04T16:43:46.991Z">
+<meta property="og:updated_time" content="2017-09-24T08:07:22.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[記錄]powershell 初體驗">
 <meta name="twitter:description" content="需求 將指定的Log記錄,匯入資料庫,產生row data 將row data 轉換成為需要的報表資料 產生報表  規劃 powershell 讀取檔案 powershell 連接資料庫 powershell 執行SQL powershell 作BulkInsert powershell 寫入檔案   簡記要點  powershell 可以直接取用 .Net Framework 或 COM 元件">
@@ -134,17 +134,17 @@ ga('send', 'pageview');
 <h3 id="進度條"><a href="#進度條" class="headerlink" title="進度條"></a>進度條</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Write-Progress</span> -Activity <span class="string">"BulkInsert"</span> -Status <span class="string">"載入百分比: 100 %"</span> -PercentComplete <span class="number">100</span>;</div></pre></td></tr></table></figure>
 <h3 id="產生報表"><a href="#產生報表" class="headerlink" title="產生報表"></a>產生報表</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$datatable</span> | <span class="built_in">export-csv</span> C:\Reports\<span class="number">20161026</span>.csv -Encoding UTF8</div></pre></td></tr></table></figure>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://msdn.microsoft.com/en-us/powershell" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods" target="_blank" rel="external">https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods</a></li>
-<li><a href="https://cmatskas.com/execute-sql-query-with-powershell/" target="_blank" rel="external">https://cmatskas.com/execute-sql-query-with-powershell/</a></li>
-<li><a href="https://blogs.technet.microsoft.com/heyscriptingguy/" target="_blank" rel="external">https://blogs.technet.microsoft.com/heyscriptingguy/</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/powershell" target="_blank" rel="noopener">https://msdn.microsoft.com/en-us/powershell</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods" target="_blank" rel="noopener">https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods</a></li>
+<li><a href="https://cmatskas.com/execute-sql-query-with-powershell/" target="_blank" rel="noopener">https://cmatskas.com/execute-sql-query-with-powershell/</a></li>
+<li><a href="https://blogs.technet.microsoft.com/heyscriptingguy/" target="_blank" rel="noopener">https://blogs.technet.microsoft.com/heyscriptingguy/</a></li>
 </ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="cjce7hkma0003ts55sl1wbo03" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/" data-id="cjd1v8qmv000c18opbvh8twa8" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/10/21/1st_time_with_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -245,13 +245,6 @@ ga('send', 'pageview');
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
-<<<<<<< HEAD
-          <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-=======
->>>>>>> 143f2eb897781e52eedd35bc412c51a3950feee6
       </ul>
     </div>
   </div>
