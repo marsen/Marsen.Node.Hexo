@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Marsen">
 <meta property="og:description" content="前情提要 CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;  操作記錄(失敗)目標: 在 Openshift 新增一個 Jenkins Server  失敗原因: 我找不到方法在 Openshift 上建置的 Jenkins Server   記錄: 登入OpenShift的web console Add Application 選擇 Jenkins Server，使用預設設定Create">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2017-01-15T15:35:27.631Z">
+<meta property="og:updated_time" content="2017-09-24T08:07:22.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI&#x2F;CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)">
 <meta name="twitter:description" content="前情提要 CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;  操作記錄(失敗)目標: 在 Openshift 新增一個 Jenkins Server  失敗原因: 我找不到方法在 Openshift 上建置的 Jenkins Server   記錄: 登入OpenShift的web console Add Application 選擇 Jenkins Server，使用預設設定Create">
@@ -110,9 +110,9 @@ ga('send', 'pageview');
 <li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
 </ul>
 <h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="noopener">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
 <li>取得帳號密碼<ol>
 <li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
 <li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
@@ -140,7 +140,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjce7hkmy000kts55ymq395yo" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjd1v8qnj000s18op4ywsxsme" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -241,13 +241,6 @@ ga('send', 'pageview');
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
-<<<<<<< HEAD
-          <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-=======
->>>>>>> 143f2eb897781e52eedd35bc412c51a3950feee6
       </ul>
     </div>
   </div>

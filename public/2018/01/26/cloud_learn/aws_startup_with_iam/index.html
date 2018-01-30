@@ -5,13 +5,13 @@
   
   <title>AWS 註冊到建立安全性帳戶 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VASA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),所以在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設">
+  <meta name="description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VISA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設定I">
 <meta name="keywords" content="AWS,IAM,Root User">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS 註冊到建立安全性帳戶">
 <meta property="og:url" content="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VASA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),所以在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設">
+<meta property="og:description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VISA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設定I">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://i.imgur.com/kRBApSO.jpg">
 <meta property="og:image" content="https://i.imgur.com/X3T5poV.jpg">
@@ -20,10 +20,10 @@
 <meta property="og:image" content="https://i.imgur.com/Ry9M2sj.jpg">
 <meta property="og:image" content="https://i.imgur.com/8DOmpsg.jpg">
 <meta property="og:image" content="https://i.imgur.com/ETV1LMR.jpg">
-<meta property="og:updated_time" content="2018-01-26T06:28:40.466Z">
+<meta property="og:updated_time" content="2018-01-30T16:59:00.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS 註冊到建立安全性帳戶">
-<meta name="twitter:description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VASA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),所以在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設">
+<meta name="twitter:description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論   創建帳號這段蠻簡單的,不贅敘特別一提的事可以使用有VISA的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度,金融卡可以更彈性,而且精準的控制預算. 另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),在註冊流程跳過付款方式的設定,實際上也是可以操作的AWS的(目前只有設定I">
 <meta name="twitter:image" content="https://i.imgur.com/kRBApSO.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
@@ -114,8 +114,9 @@ ga('send', 'pageview');
 <li>可能對你沒幫助</li>
 <li>有沒有幫助都歡迎你提出問題與討論 </li>
 </ol>
-<h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的,不贅敘<br>特別一提的事<code>可以使用有VASA的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度,<br>金融卡可以更彈性,而且精準的控制預算.</p>
-<p>另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),<br>所以在註冊流程跳過付款方式的設定,<br>實際上也是可以操作的AWS的(目前只有設定IAM).</p>
+<h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的,不贅敘<br>特別一提的事<code>可以使用有VISA的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度,<br>金融卡可以更彈性,而且精準的控制預算.</p>
+<p>另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),<br><del>在註冊流程跳過付款方式的設定,</del><br><del>實際上也是可以操作的AWS的(目前只有設定IAM).</del><br>(2018/01/31更新)<br>確定<code>可以使用有VISA的金融卡</code>開戶,<br>另外當要實際使用 AWS 的服務時 EX: EC2, Lambda etc…<br>需要綁定信用卡(VISA金融卡也可以)才能繼續使用.</p>
+<p>綁定的過程會需要輸入電話,<br>AWS 會撥一通電話給你,<br>螢幕上會出現4個數字,<br>照畫面輸入即可完成信用卡(VISA金融卡)的驗証.</p>
 <h2 id="權限控管"><a href="#權限控管" class="headerlink" title="權限控管"></a>權限控管</h2><h3 id="Root-User"><a href="#Root-User" class="headerlink" title="Root User"></a>Root User</h3><p><img src="https://i.imgur.com/kRBApSO.jpg" alt=""><br>完成註冊後,一開始只能使用email登入,這個帳號可以存取AWS所有服務.<br>AWS<strong>不建議使用Root User作為日常的管理帳戶, Root User 應該只被用來建立第一個IAM</strong></p>
 <h4 id="重點項目"><a href="#重點項目" class="headerlink" title="重點項目"></a>重點項目</h4><ol>
 <li><p>Root User 啟用 <a href="https://aws.amazon.com/iam/details/mfa/" target="_blank" rel="noopener">MFA</a><br><img src="https://i.imgur.com/X3T5poV.jpg" alt=""><br>首先要下載驗証程式(Google Authenticator),<br>然後下一步到以下畫面時, 用Authenticator掃瞄QR Code,<br><strong>連續輸入兩次授權碼(輸入完第一組後,等待新的授權碼出現再輸入)</strong><br><img src="https://i.imgur.com/viNBe2p.jpg" alt=""><br>可以在 <a href="https://console.aws.amazon.com/iam/home" target="_blank" rel="noopener">IAM Console</a> 檢查成功了沒<br><img src="https://i.imgur.com/JcC9NVz.jpg" alt=""></p>
@@ -140,7 +141,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/" data-id="cjd1uptzd0000boopm6rcqick" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/" data-id="cjd1v8qqz005q18opx2ti4mab" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -225,11 +226,11 @@ ga('send', 'pageview');
           </li>
         
           <li>
-            <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
+            <a href="/2018/01/01/2018/2017_learned/">2017年的學習回顧與展望</a>
           </li>
         
           <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
+            <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
       </ul>

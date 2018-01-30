@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.imgur.com/2ct8GiO.jpg">
 <meta property="og:image" content="https://i.imgur.com/0xkci16.jpg">
 <meta property="og:image" content="https://i.imgur.com/HSJoXJp.jpg">
-<meta property="og:updated_time" content="2017-01-15T15:54:27.044Z">
+<meta property="og:updated_time" content="2017-09-24T08:07:22.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI&#x2F;CD 環境建置筆記(一) - 在 windows 安裝 Jenkins">
 <meta name="twitter:description" content="前情提要 CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;  操作記錄 下載並安裝Jenkins（記錄版本為2.32.1） 連線localhost:8080,會要求輸入Administrator password  安裝Plugins(這裡選擇預設)    安裝畫面  建立管理者帳號密碼  登入後,管理 Jenkins &amp;gt; 設定系統  將執行程式數量設定為 1  (安裝完預設為2,其實">
@@ -150,17 +150,17 @@ ga('send', 'pageview');
 <p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p>
 <p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">SSH原理与运用（一）：远程登录</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="external">SSH原理与运用（二）：远程操作与端口转发</a></li>
-<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="external">[Tip] Windows使用ssh對Github進行操作</a></li>
-<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="external">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="noopener">SSH原理与运用（二）：远程操作与端口转发</a></li>
+<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="noopener">[Tip] Windows使用ssh對Github進行操作</a></li>
+<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="noopener">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjce7hkn1000nts5517plisyw" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjd1v8qnj000u18opje29lffq" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -261,13 +261,6 @@ ga('send', 'pageview');
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
-<<<<<<< HEAD
-          <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-=======
->>>>>>> 143f2eb897781e52eedd35bc412c51a3950feee6
       </ul>
     </div>
   </div>

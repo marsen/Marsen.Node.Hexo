@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://i.imgur.com/wximWw1.jpg">
 <meta property="og:image" content="https://i.imgur.com/6Y4fcOI.jpg">
 <meta property="og:image" content="https://i.imgur.com/fRhUafI.jpg">
-<meta property="og:updated_time" content="2018-01-03T16:39:41.122Z">
+<meta property="og:updated_time" content="2017-12-08T09:35:36.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS EC2開機筆記">
 <meta name="twitter:description" content="應該知道的事 這個是教育訓練的筆記 使用web console 建立ec2 使用cli 建立ec2 2017的筆記可能會隨時間變得沒有參考價值 關鍵參數都打馬賽克,沒有牽扯到EBS/S3/VPC 對你可能沒有幫助  Web Console login AWS  進入EC2  Launch Instance  選擇AMI(Amazon Machine Image )  選擇Instance Type">
@@ -148,14 +148,14 @@ ga('send', 'pageview');
 </ol>
 <h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications &quot;ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]&quot; --security-group-ids sg-XXXXXX --key-name marktest.japan.training</div></pre></td></tr></table></figure>
 <h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
-<li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="external">run-instances</a></li>
+<li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="noopener">run-instances</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/" data-id="cjce7hkq3005nts55f92da4x2" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/" data-id="cjd1v8qqr005j18opy97tbaf8" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -256,13 +256,6 @@ ga('send', 'pageview');
             <a href="/2017/12/11/test_learn/vs2017_mstest_with_nuget/">Visual Studio 2017 MSTest Framework 異常修正</a>
           </li>
         
-<<<<<<< HEAD
-          <li>
-            <a href="/2017/12/08/test_learn/integrated_testing_partice2_question/">單元測試與重構記錄(二) 發問篇</a>
-          </li>
-        
-=======
->>>>>>> 143f2eb897781e52eedd35bc412c51a3950feee6
       </ul>
     </div>
   </div>
