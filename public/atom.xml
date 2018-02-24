@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-02-24T05:07:45.344Z</updated>
+  <updated>2018-02-24T05:14:20.562Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[翻譯]C# 的常見錯誤(一)</title>
+    <title>[翻譯]C# 的常見錯誤</title>
     <link href="http://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/"/>
     <id>http://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/</id>
     <published>2018-02-11T18:12:47.000Z</published>
-    <updated>2018-02-24T05:07:45.344Z</updated>
+    <updated>2018-02-24T05:14:20.562Z</updated>
     
     <content type="html"><![CDATA[<h2 id="出處"><a href="#出處" class="headerlink" title="出處"></a>出處</h2><p><a href="http://www.dotnetcurry.com/csharp/1417/csharp-common-mistakes" target="_blank" rel="external">http://www.dotnetcurry.com/csharp/1417/csharp-common-mistakes</a></p>
 <h2 id="線上工具"><a href="#線上工具" class="headerlink" title="線上工具"></a>線上工具</h2><p><a href="https://dotnetfiddle.net" target="_blank" rel="external">https://dotnetfiddle.net</a></p>
