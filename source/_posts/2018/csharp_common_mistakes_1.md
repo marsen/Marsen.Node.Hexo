@@ -161,7 +161,7 @@ shifted = shifted << 1;
 這跟運算子(operator)基本運算有關,在作位元運算的時候,  
 會拿第一個運算數除以第二個運算數後取餘數,  
 這導致我們只會拿 32 % 32 的結果 , 也就是 1 啦  
-(譯注:這段其實我不是很確定,如果錯誤請揪正)  
+(譯注:這段其實我不是很確定,如果錯誤請糾正)  
 
 > However, the bit shifting operators have a second operand.  
 > Instead of shifting to the left by 1 bit 32 times, we can shift left by 32 bits and get the same result.  
@@ -290,9 +290,9 @@ public class FailingClass
 並修改靜態屬性,重新實體化class呢？
 **答案是不行**
 
-一個靜態建構值,如果它拋出一個異常，  
-那麼無論何時你想創建一個實例或以任何其他方式訪問這個類，  
-這個異常都會被重新拋出。  
+一個靜態建構值,如果它拋出一個異常,  
+那麼無論何時你想創建一個實例或以任何其他方式訪問這個類,  
+這個異常都會被重新拋出.  
 
 ```csharp
 try
@@ -425,7 +425,7 @@ It’s
 ```
 ## 迭代器 Iterators
 
-小心 Iterators 的陷井
+小心 Iterators 的陷阱
 看看以下[代碼](https://dotnetfiddle.net/BxfF0d):
 
 
