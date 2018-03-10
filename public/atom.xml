@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-02-25T02:06:23.444Z</updated>
+  <updated>2018-02-28T09:33:56.323Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一年後的我想要什麼？</title>
+    <link href="http://blog.marsen.me/2018/02/12/2018/next_year/"/>
+    <id>http://blog.marsen.me/2018/02/12/2018/next_year/</id>
+    <published>2018-02-11T18:12:47.000Z</published>
+    <updated>2018-02-28T09:33:56.323Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="你的目標是什麼"><a href="#你的目標是什麼" class="headerlink" title="你的目標是什麼?"></a>你的目標是什麼?</h2><p><strong>自由</strong><br>什麼是自由？</p>
+<ol>
+<li>經濟上的自由</li>
+<li>情感上的自由</li>
+<li>時間上的自由</li>
+</ol>
+<p>一年後的我想要什麼?</p>
+<ol>
+<li>被動收入 -&gt; 我要更多的錢 去購買低風險</li>
+<li>更高的薪資</li>
+<li>更有成就感的工作</li>
+<li>更多的選擇</li>
+<li>健康的身體</li>
+<li>更多享受生活</li>
+</ol>
+<p>一年後的我想要什麼?</p>
+<ol>
+<li>更高的薪資<ol>
+<li>維持現狀 K (x)</li>
+<li>跳糟 K*1.3 </li>
+<li>爭取加薪 K*1.1</li>
+<li>獎金與分紅 </li>
+</ol>
+</li>
+<li>更有成就感的工作(什麼是成就感)？    <ol>
+<li>擁有可以引以為豪的產品<ol>
+<li>拆解單體為服務導向</li>
+<li>架構升級</li>
+<li>自動化測試</li>
+</ol>
+</li>
+<li>分享與教學<pre><code>1. Blog
+2. 內/外部sharing
+3. 單元測試導入        
+</code></pre></li>
+</ol>
+</li>
+<li>更多的選擇<ol>
+<li>技術轉移<ol>
+<li>Web 技術 轉移 為 Service導向技術<br> 1.</li>
+<li>container 技術</li>
+<li>cloud 技術        </li>
+</ol>
+</li>
+<li>技術提昇<br> 1.</li>
+</ol>
+</li>
+</ol>
+<p>而這些目標需要什麼才能爭取到?</p>
+<p>e.g.專業,經驗,技能,興趣,熱情,團隊合作,…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;你的目標是什麼&quot;&gt;&lt;a href=&quot;#你的目標是什麼&quot; class=&quot;headerlink&quot; title=&quot;你的目標是什麼?&quot;&gt;&lt;/a&gt;你的目標是什麼?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;自由&lt;/strong&gt;&lt;br&gt;什麼是自由？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;經濟上的自
+    
+    </summary>
+    
+    
+      <category term="C#" scheme="http://blog.marsen.me/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>[翻譯]C# 的常見錯誤</title>
@@ -196,7 +268,7 @@
     <link href="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/"/>
     <id>http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/</id>
     <published>2018-01-26T06:24:16.000Z</published>
-    <updated>2018-01-30T16:30:23.131Z</updated>
+    <updated>2018-02-28T10:30:00.786Z</updated>
     
     <content type="html"><![CDATA[<h2 id="該知道的事"><a href="#該知道的事" class="headerlink" title="該知道的事"></a>該知道的事</h2><ol>
 <li>僅作為學習 AWS 的過程記錄用</li>
@@ -204,8 +276,9 @@
 <li>可能對你沒幫助</li>
 <li>有沒有幫助都歡迎你提出問題與討論 </li>
 </ol>
-<h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的,不贅敘<br>特別一提的事<code>可以使用有VASA的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度,<br>金融卡可以更彈性,而且精準的控制預算.</p>
-<p>另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),<br>所以在註冊流程跳過付款方式的設定,<br>實際上也是可以操作的AWS的(目前只有設定IAM).</p>
+<h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的,不贅敘<br>特別一提的事<code>可以使用有VISA的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度,<br>金融卡可以更彈性,而且精準的控制預算.</p>
+<p>另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),<br><del>在註冊流程跳過付款方式的設定,</del><br><del>實際上也是可以操作的AWS的(目前只有設定IAM).</del><br>(2018/01/31更新)<br>確定<code>可以使用有VISA的金融卡</code>開戶,<br>另外當要實際使用 AWS 的服務時 EX: EC2, Lambda etc…<br>需要綁定信用卡(VISA金融卡也可以)才能繼續使用.</p>
+<p>綁定的過程會需要輸入電話,<br>AWS 會撥一通電話給你,<br>螢幕上會出現4個數字,<br>照畫面輸入即可完成信用卡(VISA金融卡)的驗証.</p>
 <h2 id="權限控管"><a href="#權限控管" class="headerlink" title="權限控管"></a>權限控管</h2><h3 id="Root-User"><a href="#Root-User" class="headerlink" title="Root User"></a>Root User</h3><p><img src="https://i.imgur.com/kRBApSO.jpg" alt=""><br>完成註冊後,一開始只能使用email登入,這個帳號可以存取AWS所有服務.<br>AWS<strong>不建議使用Root User作為日常的管理帳戶, Root User 應該只被用來建立第一個IAM</strong></p>
 <h4 id="重點項目"><a href="#重點項目" class="headerlink" title="重點項目"></a>重點項目</h4><ol>
 <li><p>Root User 啟用 <a href="https://aws.amazon.com/iam/details/mfa/" target="_blank" rel="external">MFA</a><br><img src="https://i.imgur.com/X3T5poV.jpg" alt=""><br>首先要下載驗証程式(Google Authenticator),<br>然後下一步到以下畫面時, 用Authenticator掃瞄QR Code,<br><strong>連續輸入兩次授權碼(輸入完第一組後,等待新的授權碼出現再輸入)</strong><br><img src="https://i.imgur.com/viNBe2p.jpg" alt=""><br>可以在 <a href="https://console.aws.amazon.com/iam/home" target="_blank" rel="external">IAM Console</a> 檢查成功了沒<br><img src="https://i.imgur.com/JcC9NVz.jpg" alt=""></p>
@@ -1494,91 +1567,6 @@
     
     
       <category term="Unit Test" scheme="http://blog.marsen.me/tags/Unit-Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[閱讀筆記]其實，你不是沒有時間</title>
-    <link href="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/"/>
-    <id>http://blog.marsen.me/2017/03/26/books/book_attack_your_day/</id>
-    <published>2017-03-25T16:08:46.000Z</published>
-    <updated>2018-01-30T16:29:44.618Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
-<li>原則:<strong>工具簡單至上</strong></li>
-<li>面對突發狀況</li>
-</ul>
-<ol>
-<li>月計劃表 (<code>google calendar</code>)<ul>
-<li>與自已約會(保留給自已的時間)^註1^</li>
-<li>工作與私人不要分開</li>
-<li>日期與期限 </li>
-</ul>
-</li>
-<li>Todo List (<code>inbox</code>)<ul>
-<li>提醒與集中管理</li>
-<li>每天都要檢查一遍^註2^ </li>
-</ul>
-</li>
-<li>日計劃表 (<code>google calendar</code>)<ul>
-<li>當日約會 &amp; 活動清單</li>
-<li>活動清單是你當天的籌碼 也是出現突發 </li>
-</ul>
-</li>
-<li>隨手記 (<code>筆記本&amp;Evernote</code>)<ul>
-<li>接受任務，再轉到其他工具之中^註3^     </li>
-</ul>
-</li>
-<li>隨身資料庫 (<code>google drive</code>)<ul>
-<li>將整理過的資料封存在隨手可得的地方<br>ex: 上課或分享的簡報、 專案記錄等…有大量圖片、文件等</li>
-</ul>
-</li>
-<li>溝通工具 (<code>line &amp; slack</code>)<ul>
-<li>一天檢查電子郵件3~6次就夠了</li>
-</ul>
-</li>
-</ol>
-<h2 id="把時間變空間-視覺化"><a href="#把時間變空間-視覺化" class="headerlink" title="把時間變空間(視覺化)"></a>把時間變空間(視覺化)</h2><ul>
-<li>個人、家庭、工作取得平衡</li>
-<li>安排30分鐘規劃一天的活動<ul>
-<li>創造性活動安排在精力最佳的時段</li>
-<li>安排獨處的時間</li>
-<li>安排恢復精力的時間</li>
-<li>預留時間給可能發生的突發事件</li>
-</ul>
-</li>
-<li>將所有的事情分為紅綠黃(灰)^註4^，綠色應該越多越好，灰色越少越好。<table><br><tr><td>6 am</td><td>7 am</td><td>8 am</td><td>9 am</td><td>10 am</td><td>11 am</td><td>12 am</td><td>1 pm</td></tr><br><tr><td>5 am</td><td colspan="3" rowspan="4" valign="top">本日活動</td><td colspan="3" rowspan="4" valign="top">隨手記</td><td>2 pm</td></tr><br><tr><td>4 am</td><td>3 pm</td></tr><br><tr><td>3 am</td><td>4 pm</td></tr><br><tr><td>2 am</td><td>5 pm</td></tr><br><tr><td>1 am</td><td>12 am</td><td>11 pm</td><td>10 pm</td><td>9 pm</td><td>8 pm</td><td>7 pm</td><td>6 pm</td></tr><br></table>
-
-</li>
-</ul>
-<h2 id="應變執行，計劃趕不上變化"><a href="#應變執行，計劃趕不上變化" class="headerlink" title="應變執行，計劃趕不上變化"></a>應變執行，計劃趕不上變化</h2><ul>
-<li>調整事情的順序</li>
-<li>養成習慣</li>
-<li>臨機應變</li>
-<li>小心多工</li>
-<li>保留風格</li>
-</ul>
-<h2 id="註"><a href="#註" class="headerlink" title="註"></a>註</h2><ol>
-<li>分別為聖的時間，請參考<code>與時間作朋友</code></li>
-<li>利用分別為聖的時間檢查</li>
-<li>餐盤中間的區塊可以用來作當日的活動清單 &amp; 隨手記</li>
-<li>可以參考四象限 重要-緊急(紅)、不重要-緊急(黃)、重要-不緊急(綠)、不重要-不緊急(灰)</li>
-</ol>
-<p>(fin)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;六個工具與餐盤&quot;&gt;&lt;a href=&quot;#六個工具與餐盤&quot; class=&quot;headerlink&quot; title=&quot;六個工具與餐盤&quot;&gt;&lt;/a&gt;六個工具與餐盤&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;原則:&lt;strong&gt;工具簡單至上&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;面對突發狀況&lt;/
-    
-    </summary>
-    
-    
-      <category term="閱讀筆記" scheme="http://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
-    
-      <category term="時間管理" scheme="http://blog.marsen.me/tags/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
