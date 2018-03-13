@@ -162,7 +162,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/" data-id="cjekqa4dj0063tw555erc1o9r" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/" data-id="cjepw3cjg005l3855cypyoont" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -241,7 +241,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/02/08/auto_add_trello_card/" data-id="cjekqa47z000btw554emxbimh" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/02/08/auto_add_trello_card/" data-id="cjepw3cfr000u3855obs2vtw5" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -324,7 +324,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="cjekqa47u000atw558jo98ej6" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="cjepw3cfn000s3855y2pkstie" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -389,88 +389,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="cjekqa4990014tw55d0xwc7mu" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="cjepw3cgk001l3855vhurea9j" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIS/">IIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
-  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
-</ol>
-</li>
-<li><p>選擇新增作業</p>
-<ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
-</li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
-</li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjekqa48o000ktw55h5opqnkw" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
 
     </footer>
   </div>
@@ -553,9 +477,85 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjekqa48q000ntw55u55jbvlo" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjepw3cg3001438559mxxowb5" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
+  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="external">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="external">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjepw3cg500163855r34l24z0" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
@@ -604,7 +604,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjekqa48m000itw55hq7ajmxm" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjepw3cg000113855k9hcfzs9" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -682,7 +682,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjekqa48l000ftw55pwty82wm" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjepw3cfy000z3855crmd5lsi" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1121,7 +1121,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjekqa48j000dtw556zpjpwd9" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjepw3cfw000w3855jp8msmek" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/12/05/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1212,7 +1212,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjekqa48r000otw55vtjte4wa" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjepw3ch700243855730a1o8i" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1252,7 +1252,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 12.5px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 15px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 10px;">Root User</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 12.5px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 10px;">Root User</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1274,10 +1274,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <ul>
         
           <li>
-            <a href="/2018/02/12/2018/next_year/">一年後的我想要什麼？</a>
-          </li>
-        
-          <li>
             <a href="/2018/02/12/2018/csharp_common_mistakes_1/">[翻譯]C# 的常見錯誤</a>
           </li>
         
@@ -1291,6 +1287,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
         
           <li>
             <a href="/2018/01/04/2018/coding_standard_and_coding_style_and_principle/">代碼審查與交付的戰爭ー標準、風格與原則</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/01/2018/next_year/">一年後的我想要什麼？</a>
           </li>
         
       </ul>
