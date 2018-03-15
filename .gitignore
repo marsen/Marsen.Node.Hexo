@@ -6,3 +6,4 @@ Thumbs.db
 .idea/
 coverage/
 yarn.lock
+\.deploy_git
