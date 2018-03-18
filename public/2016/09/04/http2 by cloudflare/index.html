@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://blog.marsen.me/images/090516_023252_AM.jpg">
 <meta property="og:image" content="http://blog.marsen.me/images/090516_023554_AM.jpg">
 <meta property="og:image" content="http://blog.marsen.me/images/090516_024550_AM.jpg">
-<meta property="og:updated_time" content="2016-12-04T17:22:31.216Z">
+<meta property="og:updated_time" content="2017-09-24T08:07:22.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎麼建立一個網站？(三) - 簡單讓網站升級使用HTTP&#x2F;2">
 <meta name="twitter:description" content="應該知道的事 HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個 HTTP/1.1 基於TCP，需要三方交握。 HTTP/1.1本身存在得需多問題，安全性、效率等…。   HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容 主流的瀏覽器都開始支援了。   只要設定好Web Server，Client 端看使用的瀏覽器支不支援。   一流公司制定標準，二流作品牌，">
@@ -113,7 +113,7 @@ ga('send', 'pageview');
 </li>
 <li>HTTP/2 可以有效改善HTTP/1.1的缺點，而且可以向下相容<ul>
 <li>主流的瀏覽器都開始支援了。  </li>
-<li>只要設定好Web Server，Client 端看使用的<a href="http://caniuse.com/#feat=http2" target="_blank" rel="external">瀏覽器支不支援</a>。</li>
+<li>只要設定好Web Server，Client 端看使用的<a href="http://caniuse.com/#feat=http2" target="_blank" rel="noopener">瀏覽器支不支援</a>。</li>
 </ul>
 </li>
 <li>一流公司制定標準，二流作品牌，三流賣技術，四流作產品<ul>
@@ -125,12 +125,12 @@ ga('send', 'pageview');
 <li>在主流瀏覽器為了向下相容，保留了80 port的HTTP/1.1通訊協定，用443 port 實作HTTP/2。</li>
 <li>所以還是要走HTTPS，所以需要安全性憑証。</li>
 <li>安全性憑証要錢(現在也有免費的)。</li>
-<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>提供免費的安全性憑証。</li>
+<li><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>提供免費的安全性憑証。</li>
 </ul>
 </li>
 </ul>
 <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
-<li>你要有<a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a>帳號。</li>
+<li>你要有<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>帳號。</li>
 <li>看過我之網站的設定，簡單說就是一個github page 與 透過OpenShift 這個 PaaS服務建立的網站。<ul>
 <li><a href="https://blog.marsen.me/2016/08/21/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
 <li><a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">怎麼建立一個網站？(二)</a></li>
@@ -138,9 +138,9 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><img src="/images/090516_021242_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
+<li><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a> 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。<br><img src="/images/090516_021242_AM.jpg" alt="設定為「DNS and HTTP Proxy(CDN)」"></li>
 <li>設定Page-Rules，這個是為了開啟SSL<ol>
-<li>設定<code>SSL</code>為<code>Flexible</code>,輸入<code>*.username.com/*</code>。<br>這個時候你就可以瀏覽<code>https://blog.username.com/</code>,但同時也可以瀏覽<code>http://blog.username.com/</code> 。<br>我希望HTTP能自動跳轉HTTPS，這部份如果是Node建立的網站，我可以用程式作轉導，<br>但是如果是github page建立網站，就要再仰賴 <a href="https://www.cloudflare.com/" target="_blank" rel="external">cloudflare</a> 了。</li>
+<li>設定<code>SSL</code>為<code>Flexible</code>,輸入<code>*.username.com/*</code>。<br>這個時候你就可以瀏覽<code>https://blog.username.com/</code>,但同時也可以瀏覽<code>http://blog.username.com/</code> 。<br>我希望HTTP能自動跳轉HTTPS，這部份如果是Node建立的網站，我可以用程式作轉導，<br>但是如果是github page建立網站，就要再仰賴 <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a> 了。</li>
 </ol>
 </li>
 <li>設定Page-Rules，這個是為了開啟SSL<ol>
@@ -153,17 +153,17 @@ ga('send', 'pageview');
 <h2 id="檢驗"><a href="#檢驗" class="headerlink" title="檢驗"></a>檢驗</h2><p>使用support HTTP/2的瀏覽器，瀏覽網頁，觀察其protocol 。<br><img src="/images/090516_024550_AM.jpg" alt=""></p>
 <p>(fin)</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://simular.co/knowledge/site-build/68-about-http2-and-http11.html" target="_blank" rel="external">了解 HTTP/2 的特色與 HTTP/1.1 的差異</a></li>
-<li><a href="https://blog.alphacamp.co/2016/07/12/http2/" target="_blank" rel="external">你的網站升級到 HTTP/2 了嗎？</a></li>
-<li><a href="http://www.ithome.com.tw/voice/94371" target="_blank" rel="external">為什麼我們需要HTTP/2？</a></li>
-<li><a href="http://www.ithome.com.tw/voice/94520" target="_blank" rel="external">HTTP/2登場，邁向新的紀元</a></li>
-<li><a href="http://www.ithome.com.tw/news/95353" target="_blank" rel="external">Google：將推動QUIC成為網路標準</a></li>
+<li><a href="https://simular.co/knowledge/site-build/68-about-http2-and-http11.html" target="_blank" rel="noopener">了解 HTTP/2 的特色與 HTTP/1.1 的差異</a></li>
+<li><a href="https://blog.alphacamp.co/2016/07/12/http2/" target="_blank" rel="noopener">你的網站升級到 HTTP/2 了嗎？</a></li>
+<li><a href="http://www.ithome.com.tw/voice/94371" target="_blank" rel="noopener">為什麼我們需要HTTP/2？</a></li>
+<li><a href="http://www.ithome.com.tw/voice/94520" target="_blank" rel="noopener">HTTP/2登場，邁向新的紀元</a></li>
+<li><a href="http://www.ithome.com.tw/news/95353" target="_blank" rel="noopener">Google：將推動QUIC成為網路標準</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="cjepw3cgi001i3855iuau265o" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/09/04/http2 by cloudflare/" data-id="cjewyq8lr00108gop6qmsh8u1" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/09/04/http2 by cloudflare/#disqus_thread" class="article-comment-link">留言</a>
       
