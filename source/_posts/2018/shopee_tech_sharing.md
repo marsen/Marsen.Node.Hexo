@@ -15,7 +15,7 @@ date: 2018/03/15 17:00:12
 - 63e Request / Day
 - 8G IO / Mins
 
-## 如何選擇?
+## 選擇
 - Native App / Web / Hybird / RN ?
 - Clound / Self machine ?
 - Php/ Nodejs / RoR / Django ?
@@ -25,50 +25,54 @@ date: 2018/03/15 17:00:12
 - SPA / MPA ?
 - Mesos / Kubernate ?
 
-## Qiz
+## Qiz & Ans
 
-> Q1
 > 用戶下單的時候, 先收錢還是先扣庫存?
 > 扣掉最後一件庫存後, 收錢失敗怎麼辦？
 > 你已經把「賣完」訊息發給了賣家, 怎麼辦？
 
-> Q2
 > 計算金額用整數還是浮點數？(浮點數不準)
 
-> Q3
 > Android 一共有幾種螢幕的 DPI ?
-> Android WebView 和 Chrome 的 Webkit 有何不同？
+> Android WebView 和 Chrome 的 Webkit 有何不同 ?
 
-> Q4
-> Web Service 花最多時間在處理什麼？ 
-> 如何壓搾最高的吞吐量？
+> Web Service 花最多時間在處理什麼 ? 
+> 如何壓搾最高的吞吐量 ?
 > IO, USE async
 
-> Q5
 > 什麼樣的情境適合增加伺服器數量來增進效能?
 > stateless
-> 那有狀態怎麼辦？ 
+> 那有狀態怎麼辦 ? 
+
+>  
  
-> Q6 
-> load balancer 效能到達瓶頸怎麼辦？
+> load balancer 效能到達瓶頸怎麼辦 ?
 > IP
 
-> Q7
-> 一天 25TB 的Log數量,怎麼不會查到天荒地老
+> 一天 25TB 的 Log 數量,怎麼不會查到天荒地老
 
-> Q8
 > Cache & 超賣問題
-> 什麼時候要清Cache ?
+> 什麼時候要清 Cache ?
+ 
+> Database Master 與 Slave 哪個壓力大 ?(Slave)
+> 增加 index 的代價為何 ?(Space)
+> Table 多大要 shard ?
+> Database 多大要分庫 ?
+> 分庫如何作 transaction ?
 
-## Ans
+## 實踐
 
 1. Prototype 簡單 Production 困難 (邊際效應/熵)
-2. Redis 的資料超過 64G 就無法用 [bgsave](http://redisdoc.com/server/bgsave.html) 有效存檔
-3. 在 Prodction 千萬別用 Redis 的 [key](https://redis.io/commands/keys) 指令
-4. 衡量的基準(benchmark)為何？
-5. 不要對邏輯下command(不要寫前因後果)
+2. 可靠:言出必行,作不到也要早點說(知難行易)
+3. Redis 的資料超過 64G 就無法用 [bgsave](http://redisdoc.com/server/bgsave.html) 有效存檔
+4. 在 Prodction 千萬別用 Redis 的 [key](https://redis.io/commands/keys) 指令
+5. 衡量的基準(benchmark)為何？
+6. 不要對邏輯下command(不要寫前因後果)
 	- Dont command How
 	- Command Why
+7. 道
+    - Collect your dots first
+    - Connecting the dots
 
 
 ## 持久發展的研發團隊
@@ -95,7 +99,7 @@ date: 2018/03/15 17:00:12
 	- contries PM
 	- fucntion PM
 - Scurm 是跑給老闆看的(!!?)
+- 馬來西亞不用小豬ICON(各地風俗民情不同)
 
 ## 參考
 - https://careers.shopee.com
-
