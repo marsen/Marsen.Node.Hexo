@@ -31,28 +31,34 @@ date: 2018/03/15 17:00:12
 > 扣掉最後一件庫存後, 收錢失敗怎麼辦？
 > 你已經把「賣完」訊息發給了賣家, 怎麼辦？
 
+
 > 計算金額用整數還是浮點數？(浮點數不準)
+
 
 > Android 一共有幾種螢幕的 DPI ?
 > Android WebView 和 Chrome 的 Webkit 有何不同 ?
+
 
 > Web Service 花最多時間在處理什麼 ? 
 > 如何壓搾最高的吞吐量 ?
 > IO, USE async
 
+
 > 什麼樣的情境適合增加伺服器數量來增進效能?
 > stateless
 > 那有狀態怎麼辦 ? 
-
->  
- 
+  
+  
 > load balancer 效能到達瓶頸怎麼辦 ?
 > IP
 
+
 > 一天 25TB 的 Log 數量,怎麼不會查到天荒地老
+
 
 > Cache & 超賣問題
 > 什麼時候要清 Cache ?
+
  
 > Database Master 與 Slave 哪個壓力大 ?(Slave)
 > 增加 index 的代價為何 ?(Space)
