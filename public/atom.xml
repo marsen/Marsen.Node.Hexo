@@ -117,7 +117,7 @@
     <link href="http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/"/>
     <id>http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/</id>
     <published>2018-03-15T09:00:12.000Z</published>
-    <updated>2018-03-19T17:55:03.316Z</updated>
+    <updated>2018-03-20T14:28:35.227Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該不用知道的事"><a href="#應該不用知道的事" class="headerlink" title="應該不用知道的事"></a>應該不用知道的事</h2><ol>
 <li>雖然是「技術分享會」實際上在徵才</li>
@@ -141,15 +141,31 @@
 <li>SPA / MPA ?</li>
 <li>Mesos / Kubernate ?</li>
 </ul>
-<h2 id="Qiz-amp-Ans"><a href="#Qiz-amp-Ans" class="headerlink" title="Qiz &amp; Ans"></a>Qiz &amp; Ans</h2><blockquote>
+<h2 id="Qiz-amp-Ans"><a href="#Qiz-amp-Ans" class="headerlink" title="Qiz &amp; Ans"></a>Qiz &amp; Ans</h2><h5 id="1"><a href="#1" class="headerlink" title="1"></a>1</h5><blockquote>
 <p>用戶下單的時候, 先收錢還是先扣庫存?<br>扣掉最後一件庫存後, 收錢失敗怎麼辦？<br>你已經把「賣完」訊息發給了賣家, 怎麼辦？</p>
+</blockquote>
+<h5 id="2"><a href="#2" class="headerlink" title="2"></a>2</h5><blockquote>
 <p>計算金額用整數還是浮點數？(浮點數不準)</p>
+</blockquote>
+<h5 id="3"><a href="#3" class="headerlink" title="3"></a>3</h5><blockquote>
 <p>Android 一共有幾種螢幕的 DPI ?<br>Android WebView 和 Chrome 的 Webkit 有何不同 ?</p>
+</blockquote>
+<h5 id="4"><a href="#4" class="headerlink" title="4"></a>4</h5><blockquote>
 <p>Web Service 花最多時間在處理什麼 ?<br>如何壓搾最高的吞吐量 ?<br>IO, USE async</p>
+</blockquote>
+<h5 id="5"><a href="#5" class="headerlink" title="5"></a>5</h5><blockquote>
 <p>什麼樣的情境適合增加伺服器數量來增進效能?<br>stateless<br>那有狀態怎麼辦 ? </p>
+</blockquote>
+<h5 id="6"><a href="#6" class="headerlink" title="6"></a>6</h5><blockquote>
 <p>load balancer 效能到達瓶頸怎麼辦 ?<br>IP</p>
+</blockquote>
+<h5 id="7"><a href="#7" class="headerlink" title="7"></a>7</h5><blockquote>
 <p>一天 25TB 的 Log 數量,怎麼不會查到天荒地老</p>
+</blockquote>
+<h5 id="8"><a href="#8" class="headerlink" title="8"></a>8</h5><blockquote>
 <p>Cache &amp; 超賣問題<br>什麼時候要清 Cache ?</p>
+</blockquote>
+<h5 id="9"><a href="#9" class="headerlink" title="9"></a>9</h5><blockquote>
 <p>Database Master 與 Slave 哪個壓力大 ?(Slave)<br>增加 index 的代價為何 ?(Space)<br>Table 多大要 shard ?<br>Database 多大要分庫 ?<br>分庫如何作 transaction ?</p>
 </blockquote>
 <h2 id="實踐"><a href="#實踐" class="headerlink" title="實踐"></a>實踐</h2><ol>
