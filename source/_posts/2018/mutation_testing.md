@@ -82,8 +82,6 @@ foo(x,y)
 - 移除代碼
 
 ### 先寫代碼再寫測試有問題是很正常的
-=> 測試寫了白寫 => 覺得測試沒用
-=> 測試很難寫,花時間,不準確 => 所以沒寫
 
 ## Kata-PokerHands 範例
 
@@ -146,3 +144,5 @@ Ex: mock 物件會取代互動實際的行為,導致變異測試失敗
 
 ## 參考
 1. [Mutation Testing(变异测试)](http://www.cnblogs.com/TongWee/p/4505289.html)
+
+(fin)
