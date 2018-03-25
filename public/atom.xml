@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-03-25T16:05:03.399Z</updated>
+  <updated>2018-03-25T16:12:01.776Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -20,10 +20,9 @@
     <link href="http://blog.marsen.me/2018/03/26/2018/linux_command_1/"/>
     <id>http://blog.marsen.me/2018/03/26/2018/linux_command_1/</id>
     <published>2018-03-25T16:23:01.000Z</published>
-    <updated>2018-03-25T16:05:03.399Z</updated>
+    <updated>2018-03-25T16:12:01.776Z</updated>
     
-    <content type="html"><![CDATA[<p># </p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+    <content type="html"><![CDATA[<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
 <li><a href="https://www.udemy.com/learn-shell-scripting-all-levels/" target="_blank" rel="external">Learn Shell Scripting all Levels</a></li>
 <li><a href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html" target="_blank" rel="external">umask 指令</a></li>
@@ -136,9 +135,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;# &lt;/p&gt;
-&lt;h2 id=&quot;參考&quot;&gt;&lt;a href=&quot;#參考&quot; class=&quot;headerlink&quot; title=&quot;參考&quot;&gt;&lt;/a&gt;參考&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_terminal_
+      &lt;h2 id=&quot;參考&quot;&gt;&lt;a href=&quot;#參考&quot; class=&quot;headerlink&quot; title=&quot;參考&quot;&gt;&lt;/a&gt;參考&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_terminal_online.php
     
     </summary>
     

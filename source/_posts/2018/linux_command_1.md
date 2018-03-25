@@ -7,10 +7,6 @@ tag:
   - Shell
 ---
 
-# 
-
-
-
 ## 參考
 - [Unix Terminal Online](https://www.tutorialspoint.com/unix_terminal_online.php)
 - [Learn Shell Scripting all Levels](https://www.udemy.com/learn-shell-scripting-all-levels/)
@@ -360,9 +356,7 @@ DESCRIPTION
 HELP -- Press RETURN for more, or q when done
 ```
 
-
 按`q`退出查詢畫面
-
 
 ### `banner`
 #### 輸出用#組成的大形文字
