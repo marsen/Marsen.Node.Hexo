@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-03-25T15:05:00.956Z</updated>
+  <updated>2018-03-25T16:05:03.399Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -14,6 +14,142 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[學習筆記] Linux 語法學習筆記 一</title>
+    <link href="http://blog.marsen.me/2018/03/26/2018/linux_command_1/"/>
+    <id>http://blog.marsen.me/2018/03/26/2018/linux_command_1/</id>
+    <published>2018-03-25T16:23:01.000Z</published>
+    <updated>2018-03-25T16:05:03.399Z</updated>
+    
+    <content type="html"><![CDATA[<p># </p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
+<li><a href="https://www.udemy.com/learn-shell-scripting-all-levels/" target="_blank" rel="external">Learn Shell Scripting all Levels</a></li>
+<li><a href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html" target="_blank" rel="external">umask 指令</a></li>
+</ul>
+<h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><h3 id="Clear"><a href="#Clear" class="headerlink" title="Clear"></a><code>Clear</code></h3><h4 id="清除目前-terminal-畫面"><a href="#清除目前-terminal-畫面" class="headerlink" title="清除目前 terminal 畫面"></a>清除目前 terminal 畫面</h4><h3 id="Cal"><a href="#Cal" class="headerlink" title="Cal"></a><code>Cal</code></h3><h4 id="產生當下的月曆"><a href="#產生當下的月曆" class="headerlink" title="產生當下的月曆"></a>產生當下的月曆</h4><blockquote>
+<p>$ cal                                                </p>
+<p>March 2018<br>Su Mo Tu We Th Fr Sa<br>             1  2  3<br> 4  5  6  7  8  9 10<br>11 12 13 14 15 16 17<br>18 19 20 21 22 23 24<br>25 26 27 28 29 30 31</p>
+<p>$ cal 2 1985</p>
+<p>   February 1985<br>Su Mo Tu We Th Fr Sa<br>                1  2<br> 3  4  5  6  7  8  9<br>10 11 12 13 14 15 16<br>17 18 19 20 21 22 23<br>24 25 26 27 28 </p>
+</blockquote>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a><code>Date</code></h3><h4 id="顯示日期與時間"><a href="#顯示日期與時間" class="headerlink" title="顯示日期與時間"></a>顯示日期與時間</h4><blockquote>
+<p>$ date</p>
+<p>Sat Mar 10 19:01:37 UTC 2018</p>
+<p>$ date  ‘+ %y-%m-%d %n %H:%M:%S:%N’</p>
+<p>18-03-10<br>19:06:24:126172657</p>
+</blockquote>
+<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a><code>pwd</code></h3><h4 id="目前所在的檔案路徑"><a href="#目前所在的檔案路徑" class="headerlink" title="目前所在的檔案路徑"></a>目前所在的檔案路徑</h4><h3 id="Touch"><a href="#Touch" class="headerlink" title="Touch"></a><code>Touch</code></h3><h4 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h4><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a><code>mkdir</code></h3><h4 id="建立資料夾"><a href="#建立資料夾" class="headerlink" title="建立資料夾"></a>建立資料夾</h4><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a><code>cat</code></h3><h4 id="寫檔案-cat-gt-filename"><a href="#寫檔案-cat-gt-filename" class="headerlink" title="寫檔案 cat &gt; filename"></a>寫檔案 <code>cat &gt; filename</code></h4><blockquote>
+<p>ctrl + d 可以離開編輯</p>
+</blockquote>
+<h4 id="讀檔案-cat-lt-filename"><a href="#讀檔案-cat-lt-filename" class="headerlink" title="讀檔案 cat &lt; filename"></a>讀檔案 <code>cat &lt; filename</code></h4><h4 id="合併檔案-cat-file1-file2-gt-merged-file"><a href="#合併檔案-cat-file1-file2-gt-merged-file" class="headerlink" title="合併檔案 cat file1 file2 &gt; merged_file"></a>合併檔案 <code>cat file1 file2 &gt; merged_file</code></h4><blockquote>
+<p>$ cat &gt; file1<br>this is file1<br>$ cat file1<br>this is file1<br>$ cat &gt; file2<br>this is file2<br>$ cat file2<br>this is file2<br>$ cat file1 file2 &gt; merged_file<br>$ cat merged_file<br>this is file1<br>this is file2</p>
+</blockquote>
+<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a><code>mv</code></h3><h4 id="重新命名檔案"><a href="#重新命名檔案" class="headerlink" title="重新命名檔案"></a>重新命名檔案</h4><blockquote>
+<p>mv origin_name new_name</p>
+</blockquote>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a><code>rm</code></h3><h4 id="刪除檔案或資料夾"><a href="#刪除檔案或資料夾" class="headerlink" title="刪除檔案或資料夾"></a>刪除檔案或資料夾</h4><blockquote>
+<p>$ rm file_name</p>
+<p>$ rm -r folder_name/</p>
+</blockquote>
+<h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a><code>rmdir</code></h3><h4 id="刪除資料夾"><a href="#刪除資料夾" class="headerlink" title="刪除資料夾"></a>刪除資料夾</h4><blockquote>
+<p>$ rmdir folder_name/</p>
+</blockquote>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a><code>cp</code></h3><h4 id="複製檔案"><a href="#複製檔案" class="headerlink" title="複製檔案"></a>複製檔案</h4><blockquote>
+<p>$ cp oldfile other_folder/newfile</p>
+</blockquote>
+<h3 id="ln"><a href="#ln" class="headerlink" title="ln"></a><code>ln</code></h3><h4 id="聯結檔案-hard-link"><a href="#聯結檔案-hard-link" class="headerlink" title="聯結檔案(hard link)"></a>聯結檔案(hard link)</h4><blockquote>
+<p>$ touch one<br>$ cat &lt; one<br>$ ln one two<br>$ ls<br>one  two<br>$ cat &gt; one<br>this is one<br>$ cat &lt; one<br>this is one<br>$ cat &lt; two<br>this is one                                            </p>
+</blockquote>
+<h4 id="ln-s-soft-link"><a href="#ln-s-soft-link" class="headerlink" title="ln -s soft link"></a><code>ln -s</code> soft link</h4><p>hard link 會產生實體檔案,soft link只是指標的轉向.<br>如果使用soft link,當刪除原始檔案時,link檔案將無法開啟.</p>
+<h3 id="檔案權限概觀"><a href="#檔案權限概觀" class="headerlink" title="檔案權限概觀"></a>檔案權限概觀</h3><h4 id="三種權限"><a href="#三種權限" class="headerlink" title="三種權限"></a>三種權限</h4><ul>
+<li>read / 讀 / 100 =&gt; 4</li>
+<li>write / 寫 / 010 =&gt; 2</li>
+<li>execute / 執行 / 001 =&gt; 1</li>
+</ul>
+<p>每個權限都有一個代號,<br>read 表示可讀權限, 意味著可以開啟檔案與看見內容,<br>代號為4,二進位表示為100<br>write 表示可以複寫其內容,<br>代號為2,二進位表示為010,<br>execute 代表可執行,適用可執行檔或shell script,<br>代號為1,二進位表示為001.<br>三種權限都有的話,權限為(111=&gt;7)</p>
+<h4 id="三種身份"><a href="#三種身份" class="headerlink" title="三種身份"></a>三種身份</h4><ul>
+<li>owner 開啟的帳號</li>
+<li>owner group 開啟的帳號所屬的群組</li>
+<li>other group 其它的群組</li>
+</ul>
+<p>新增一個檔案的時候,<br>預設只有讀寫,沒有執行的權限 (100|010=110=&gt;6) </p>
+<blockquote>
+<p>指令 umask 的設定值以三個八進位的數字“nnn”代表。<br>第一個設定數字給使用者自己（owner user），<br>第二個則是設定給用使用者所屬的群體（group），<br>第三個給不屬於同群體的其它使用者（other）。<br>每一位數字的設定值都是三項不同權限的數值加總，<br>read 權限數值為 4；write 權限數值為 2；execute 權限數值為 1。<br>結合了前三者的權限數值，單一的數字可設定的範圍是 0 ~ 7；<br>整體的可設定範圍是 000 ~ 777。<br>— 鳥哥的 Linux 私房菜</p>
+</blockquote>
+<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a><code>ls</code></h3><h4 id="列出資料夾中的所有檔案"><a href="#列出資料夾中的所有檔案" class="headerlink" title="列出資料夾中的所有檔案"></a>列出資料夾中的所有檔案</h4><h4 id="ls-foldername"><a href="#ls-foldername" class="headerlink" title="ls foldername"></a><code>ls foldername</code></h4><p>列出指定的資料夾中所有的檔案</p>
+<h4 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a><code>ls -l</code></h4><p>列出資料夾中的所有檔案與其權限資訊</p>
+<blockquote>
+<p>ls 最常被使用到的功能還是那個 -l 的選項，為此，很多 distribution 在預設的情況中， 已經將 ll (L 的小寫) 設定成為 ls -l 的意思了！其實，那個功能是 <a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="external">Bash shell</a> 的 <a href="http://linux.vbird.org/linux_basic/0320bash.php#alias" target="_blank" rel="external">alias</a> 功能呢<br>— 鳥哥的 Linux 私房菜</p>
+</blockquote>
+<h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a><code>chmod</code></h3><h4 id="修改檔案權限"><a href="#修改檔案權限" class="headerlink" title="修改檔案權限"></a>修改檔案權限</h4><blockquote>
+<p>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rw-r–r– 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 777 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rwxrwxrwx 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 444 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-r–r–r– 1 33581 33581   0 Mar 12 17:32 test</p>
+</blockquote>
+<h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a><code>uname</code></h3><h4 id="顯示系統相關的資訊"><a href="#顯示系統相關的資訊" class="headerlink" title="顯示系統相關的資訊"></a>顯示系統相關的資訊</h4><blockquote>
+<p>$ uname -a<br>Linux e955582759de 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC<br>2017 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p>選項與參數：<br>-a  ：所有系統相關的資訊，包括底下的資料都會被列出來；<br>-s  ：系統核心名稱<br>-r  ：核心的版本<br>-m  ：本系統的硬體名稱，例如 i686 或 x86_64 等；<br>-p  ：CPU 的類型，與 -m 類似，只是顯示的是 CPU 的類型！<br>-i  ：硬體的平台 (ix86)<br>— 鳥哥的 Linux 私房菜</p>
+</blockquote>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a><code>file</code></h3><h4 id="查詢檔案基本資料-類型"><a href="#查詢檔案基本資料-類型" class="headerlink" title="查詢檔案基本資料(類型)"></a>查詢檔案基本資料(類型)</h4><blockquote>
+<p>file *</p>
+<p>jazzy:  ASCII text<br>mark:   empty<br>marsen: directory</p>
+</blockquote>
+<h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a><code>wc</code></h3><h4 id="顯示檔案資訊"><a href="#顯示檔案資訊" class="headerlink" title="顯示檔案資訊"></a>顯示檔案資訊</h4><p>行數 字數 字元數 檔名</p>
+<blockquote>
+<p>$ wc jazzy</p>
+<p>3 10 39 jazzy</p>
+</blockquote>
+<h4 id="wc-l-filename"><a href="#wc-l-filename" class="headerlink" title="wc -l filename"></a><code>wc -l filename</code></h4><p>顯示檔案行數資訊</p>
+<h4 id="wc-w-filename"><a href="#wc-w-filename" class="headerlink" title="wc -w filename"></a><code>wc -w filename</code></h4><p>顯示檔案字數資訊</p>
+<h4 id="wc-c-filename"><a href="#wc-c-filename" class="headerlink" title="wc -c filename"></a><code>wc -c filename</code></h4><p>顯示檔案字元數資訊</p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a><code>sort</code></h3><h4 id="印出排序過後的結果-遞增"><a href="#印出排序過後的結果-遞增" class="headerlink" title="印出排序過後的結果(遞增)"></a>印出排序過後的結果(遞增)</h4><blockquote>
+<p>$ sort<br>owls<br>pigs<br>dogs<br>cats</p>
+<p>cats<br>dogs<br>owls<br>pigs</p>
+</blockquote>
+<h4 id="sort-filename"><a href="#sort-filename" class="headerlink" title="sort filename"></a><code>sort filename</code></h4><p>印出檔案內排序過後的結果(遞增)</p>
+<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a><code>cut</code></h3><h4 id="切割資料"><a href="#切割資料" class="headerlink" title="切割資料"></a>切割資料</h4><p>參數:<br>-d 分割字元<br>-f index (從1開始)</p>
+<p>範例</p>
+<blockquote>
+<p>cat &gt; filenames<br>Name-Sport-Age<br>Roger-Tennis-30<br>Nadal-Tennis-25<br>Tiger-Golf-37<br>Michael-Baseball-49</p>
+<p>$ cut -d”-“ -f 1,3 filenames<br>Name-Age<br>Roger-30<br>Nadal-25<br>Tiger-37<br>Michael-49</p>
+</blockquote>
+<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a><code>dd</code></h3><h4 id="資料處理、拷貝、備份、轉碼-更多"><a href="#資料處理、拷貝、備份、轉碼-更多" class="headerlink" title="資料處理、拷貝、備份、轉碼;更多"></a>資料處理、拷貝、備份、轉碼;<a href="https://blog.gtwang.org/linux/dd-command-examples/" target="_blank" rel="external">更多</a></h4><blockquote>
+<p>$ cat &gt; infile<br>this is the input file<br>$ cat infile<br>this is the input file</p>
+<p>$ dd if=infile of=outfile conv=ucase<br>0+1 records in<br>0+1 records out<br>23 bytes copied, 6.6972e-05 s, 343 kB/s<br>$ cat outfile<br>THIS IS THE INPUT FILE </p>
+</blockquote>
+<h3 id="man"><a href="#man" class="headerlink" title="man"></a><code>man</code></h3><h4 id="查詢其它指令用法"><a href="#查詢其它指令用法" class="headerlink" title="查詢其它指令用法"></a>查詢其它指令用法</h4><blockquote>
+<p>$ man ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">LS(1)	User Commands  LS(1)</div><div class="line">NAME	ls - list directory contents</div><div class="line">SYNOPSIS	ls [OPTION]... [FILE]...</div><div class="line"></div><div class="line">DESCRIPTION</div><div class="line">       List  information  about the FILEs (the current directory by default).  </div><div class="line">	   Sort entries alphabetically if none of</div><div class="line">       -cftuvSUX nor --sort is specified.</div><div class="line"></div><div class="line">       Mandatory arguments to long options are mandatory for short options too.</div><div class="line">       -a, --all</div><div class="line">              do not ignore entries starting with .</div><div class="line"></div><div class="line">       -A, --almost-all</div><div class="line">              do not list implied . and ..</div><div class="line"></div><div class="line">       --author</div><div class="line">              with -l, print the author of each file</div><div class="line"></div><div class="line">       -b, --escape</div><div class="line">              print C-style escapes for nongraphic characters</div><div class="line"> Manual page ls(1) line 1 (press h for help or q to quit)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>按<code>h</code>看更多訊息</p>
+<blockquote>
+<p>$ man ls<br>h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">                   SUMMARY OF LESS COMMANDS</div><div class="line"></div><div class="line">      Commands marked with * may be preceded by a number, N.</div><div class="line">      Notes in parentheses indicate the behavior if N is given.</div><div class="line"></div><div class="line">  h  H                 Display this help.</div><div class="line">  q  :q  Q  :Q  ZZ     Exit.</div><div class="line"> ---------------------------------------------------------------------------</div><div class="line"></div><div class="line">                           MOVING</div><div class="line"></div><div class="line">  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).</div><div class="line">  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).</div><div class="line">  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).</div><div class="line">  b  ^B  ESC-v      *  Backward one window (or N lines).</div><div class="line">  z                 *  Forward  one window (and set window to N).</div><div class="line">  w                 *  Backward one window (and set window to N).</div><div class="line">  ESC-SPACE         *  Forward  one window, but don&apos;t stop at end-of-file.</div><div class="line">  d  ^D             *  Forward  one half-window (and set half-window to N).</div><div class="line">  u  ^U             *  Backward one half-window (and set half-window to N).</div><div class="line">  ESC-)  RightArrow *  Left  one half screen width (or N positions).</div><div class="line">  ESC-(  LeftArrow  *  Right one half screen width (or N positions).</div><div class="line">  F                    Forward forever; like &quot;tail -f&quot;.</div><div class="line">  r  ^R  ^L            Repaint screen.</div><div class="line">HELP -- Press RETURN for more, or q when done</div></pre></td></tr></table></figure>
+<p>按<code>q</code>退出查詢畫面</p>
+<h3 id="banner"><a href="#banner" class="headerlink" title="banner"></a><code>banner</code></h3><h4 id="輸出用-組成的大形文字"><a href="#輸出用-組成的大形文字" class="headerlink" title="輸出用#組成的大形文字"></a>輸出用#組成的大形文字</h4><p>實測未出現,上網查了一下banner好像有蠻多不同的類型可以安裝?</p>
+<h3 id="compress"><a href="#compress" class="headerlink" title="compress"></a><code>compress</code></h3><h4 id="壓縮檔案"><a href="#壓縮檔案" class="headerlink" title="壓縮檔案"></a>壓縮檔案</h4><h3 id="zcat"><a href="#zcat" class="headerlink" title="zcat"></a><code>zcat</code></h3><h4 id="讀取壓縮檔案"><a href="#讀取壓縮檔案" class="headerlink" title="讀取壓縮檔案"></a>讀取壓縮檔案</h4><h3 id="uncompress"><a href="#uncompress" class="headerlink" title="uncompress"></a><code>uncompress</code></h3><h4 id="解壓縮檔案"><a href="#解壓縮檔案" class="headerlink" title="解壓縮檔案"></a>解壓縮檔案</h4><blockquote>
+<p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a href="http://www.gnu.org/" target="_blank" rel="external">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
+</blockquote>
+<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>以上是一些基本的 Linux Command ,<br>下一篇,我們會建立.sh檔,將 Linux Command 依照指定的順序執行<br>並使用 <code>sh</code> 命令執行<br>用以完成一些更進階的工作. </p>
+<p>(待續)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;# &lt;/p&gt;
+&lt;h2 id=&quot;參考&quot;&gt;&lt;a href=&quot;#參考&quot; class=&quot;headerlink&quot; title=&quot;參考&quot;&gt;&lt;/a&gt;參考&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.tutorialspoint.com/unix_terminal_
+    
+    </summary>
+    
+    
+      <category term="Unix" scheme="http://blog.marsen.me/tags/Unix/"/>
+    
+      <category term="Linux" scheme="http://blog.marsen.me/tags/Linux/"/>
+    
+      <category term="Shell" scheme="http://blog.marsen.me/tags/Shell/"/>
+    
+  </entry>
   
   <entry>
     <title>AWS EC2 學習筆記 AWS CLI 與 Login</title>
@@ -1697,74 +1833,6 @@
       <category term="gulp" scheme="http://blog.marsen.me/tags/gulp/"/>
     
       <category term="nodejs" scheme="http://blog.marsen.me/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[記錄]串接 GOOGLE API 取得資料(二)</title>
-    <link href="http://blog.marsen.me/2017/07/20/google_api_auth_2/"/>
-    <id>http://blog.marsen.me/2017/07/20/google_api_auth_2/</id>
-    <published>2017-07-19T17:04:14.000Z</published>
-    <updated>2017-07-19T17:12:05.097Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在<a href="https://blog.marsen.me/2017/07/14/google_api_auth_1/">前篇</a>說明為什麼我要作「精神力評鑑」 </p>
-<p>原因是為了記錄自已的精力,能更有效率使用時間,進而提昇個人的生產力.</p>
-<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>有了數據後, 就要看怎麼運用.<br>Google 的表單,可以自動產生回應結果試算表,<br>持之以恒的每天記錄,很快就有上百千筆的資料.</p>
-<p>我打算取得這些資料後,繪制成分佈圖<br>這樣就可以知道,我的黃金時間是在每一天的什麼時段.</p>
-<h3 id="如何透過-GOOGLE-Sheets-API-可以取得資料"><a href="#如何透過-GOOGLE-Sheets-API-可以取得資料" class="headerlink" title="如何透過 GOOGLE Sheets API 可以取得資料."></a>如何透過 <a href="https://developers.google.com/sheets/api/reference/rest/" target="_blank" rel="external">GOOGLE Sheets API</a> 可以取得資料.</h3><p>在<a href="https://cloud.google.com/?hl=zh-tw" target="_blank" rel="external">Google Cloud Platform</a>,建立起 Google API 的服務。</p>
-<ol>
-<li>前往<a href="https://console.developers.google.com/start/api?id=sheets.googleapis.com" target="_blank" rel="external">Google API Wizard</a>,建立或選擇專案。</li>
-<li>建立憑証,選擇OAuth Client ID<ul>
-<li>在這裡我會一次性的建立起所有環境(開發、測試、正式)的憑証 。</li>
-</ul>
-</li>
-<li>下載JSON放置專案的指定位置.</li>
-<li>如何取得授權與取得資料，請參考<a href="https://developers.google.com/sheets/api/quickstart/nodejs" target="_blank" rel="external">QuickStart</a><ul>
-<li>安全考量,我不會將client_secret.json與取回的token 加入版本控制</li>
-<li>以Google 試算表為例，如何取得<a href="https://developers.google.com/sheets/api/guides/concepts" target="_blank" rel="external">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ex:</div><div class="line">https://docs.google.com/spreadsheets/d/1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps/edit#gid=0</div><div class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3><p>以 QuickStart 的程式為例 ,<br>下載回來的檔案 <code>client_secret.json</code><br>可以提供 <code>clientSecret</code>、<code>clientId</code> 與授權後轉導的 url ,<br>當程式執行時, 便會透 <code>googleAuth</code> 去取得授權 ,<br>過程之中會需要使用者作驗証, 驗証完成即取得授權 ,<br>授權有一定的效期, 故一段時間之後需要重新取得授權 </p>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
-<li><p><code>client_secret.json</code> 是機敏資料, 不可以放入版本控制, 需要特殊的流程步驟上傳到你的 Web Server 的位置</p>
-<ul>
-<li>Openshift可以透過SSH或是SFTP登入來上傳<code>client_secret.json</code></li>
-<li>CI 以 JENKINS 為例 ; 可以使用 Publish over SSH 上傳檔案<br><img src="https://i.imgur.com/Fo4Ml5M.jpg" alt=""><ul>
-<li>需要注意 CI Server 要有 Web Server 的 SSH Key</li>
-<li>LINUX 複製資料夾語法 <code>cp -rf src/folder/. target/folder</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>在正式公開的環境上可能會發生<code>Error: invalid_scope</code>的錯誤 ，可以<a href="https://support.google.com/code/contact/oauth_app_verification?id=705847791246&amp;client=705847791246-l20jeqj1ncv2vffaki70ing4c8cda2r1.apps.googleusercontent.com&amp;query=https://www.googleapis.com/auth/spreadsheets.readonly" target="_blank" rel="external">參考</a>。</p>
-<ul>
-<li>填寫表單作驗証</li>
-<li>個人測試可以加入<a href="https://groups.google.com/forum/#!forum/risky-access-by-unreviewed-apps" target="_blank" rel="external">Risky Access Permissions By Unreviewed Apps</a> 論壇</li>
-</ul>
-</li>
-<li><p>我最後是使用<a href="https://d3js.org/" target="_blank" rel="external">d3.js</a>作為繪圖的library , 因為網路上的資源相當的多 , 而且這次的著墨並不多 , 所以不在這裡介紹. </p>
-</li>
-</ol>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="https://i.imgur.com/8FYzhdg.gif" alt=""></p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://blog.openshift.com/using-filezilla-and-sftp-on-windows-with-openshift/" target="_blank" rel="external">Openshift SFPT</a></li>
-<li><a href="https://www.phpini.com/linux/cp-force-copy" target="_blank" rel="external">Linux CP</a></li>
-</ol>
-<p>(fin)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://blog.marsen.me/2017/07/14/google_api_auth_1/
-    
-    </summary>
-    
-    
-      <category term="Google API" scheme="http://blog.marsen.me/tags/Google-API/"/>
-    
-      <category term="OAuth" scheme="http://blog.marsen.me/tags/OAuth/"/>
     
   </entry>
   
