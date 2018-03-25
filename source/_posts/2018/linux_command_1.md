@@ -386,4 +386,4 @@ HELP -- Press RETURN for more, or q when done
 
 
 
-(待續)
+(more..)

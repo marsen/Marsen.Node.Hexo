@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-03-25T16:12:01.776Z</updated>
+  <updated>2018-03-25T16:22:07.708Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.marsen.me/2018/03/26/2018/linux_command_1/"/>
     <id>http://blog.marsen.me/2018/03/26/2018/linux_command_1/</id>
     <published>2018-03-25T16:23:01.000Z</published>
-    <updated>2018-03-25T16:12:01.776Z</updated>
+    <updated>2018-03-25T16:22:07.708Z</updated>
     
     <content type="html"><![CDATA[<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
@@ -130,7 +130,7 @@
 <p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a href="http://www.gnu.org/" target="_blank" rel="external">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>以上是一些基本的 Linux Command ,<br>下一篇,我們會建立.sh檔,將 Linux Command 依照指定的順序執行<br>並使用 <code>sh</code> 命令執行<br>用以完成一些更進階的工作. </p>
-<p>(待續)</p>
+<p>(more..)</p>
 ]]></content>
     
     <summary type="html">
@@ -154,7 +154,7 @@
     <link href="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/"/>
     <id>http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/</id>
     <published>2018-03-25T15:01:24.000Z</published>
-    <updated>2018-03-25T15:05:00.956Z</updated>
+    <updated>2018-03-25T16:21:42.774Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安裝-AWS-CLI"><a href="#安裝-AWS-CLI" class="headerlink" title="安裝 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html" target="_blank" rel="external">安裝 AWS CLI</a></h2><h2 id="配置-AWS-CLI"><a href="#配置-AWS-CLI" class="headerlink" title="配置 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration" target="_blank" rel="external">配置 AWS CLI</a></h2><h2 id="EC2-開機"><a href="#EC2-開機" class="headerlink" title="EC2 開機"></a>EC2 開機</h2><p><img src="https://i.imgur.com/dNGygaT.jpg" alt=""></p>
 <ul>
@@ -184,6 +184,7 @@
 </li>
 <li><a href="https://www.gitbook.com/book/joshhu/dockercommands/details" target="_blank" rel="external">全面易懂的Docker指令大全</a></li>
 </ul>
+<p>(fin)</p>
 ]]></content>
     
     <summary type="html">
@@ -195,9 +196,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
-    
       <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
+    
+      <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
     
   </entry>
   
@@ -801,9 +802,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
-    
       <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
+    
+      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
     
   </entry>
   
