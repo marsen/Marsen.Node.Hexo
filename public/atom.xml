@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-03-25T16:22:07.708Z</updated>
+  <updated>2018-04-04T09:09:36.528Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[學習筆記]允許 IAM User 存取 AWS Billing Console</title>
+    <link href="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/"/>
+    <id>http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/</id>
+    <published>2018-04-04T09:08:44.000Z</published>
+    <updated>2018-04-04T09:09:36.528Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>設定了 IAM User Account 也給予了 Administrator 的權限,<br>不過仍然看不到 Billing 的頁面資訊 .  </p>
+<p><img src="https://i.imgur.com/1Ge6pGi.jpg" alt=""></p>
+<p>這帶來了很大的不方便, 因為如果要看 Billing 的資訊就要切換到 Root Account<br>而建立 Administrator IAM Account 的用意本來就是要儘可能不使用 Root Account 作登入.<br>檢查了權限,明明就有設定 Read Billing 但是仍然看不到.  </p>
+<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>實際上要進入 Billing Console 其實要有兩個步驟  </p>
+<ol>
+<li>權限要設定,更多細節可以參考這篇<a href="https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/" target="_blank" rel="external">文章</a>(2014)</li>
+<li>要透過 Root Account 在 <a href="https://console.aws.amazon.com/billing/home#/account" target="_blank" rel="external">Account Settings</a> 頁面設定, 允許 IAM user 存取 Billing Console  </li>
+</ol>
+<p><img src="https://i.imgur.com/yBXaLPJ.jpg" alt=""></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/" target="_blank" rel="external">Don’t Forget to Enable Access to the Billing Console!</a></li>
+</ul>
+<p>(fin)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;設定了 IAM User Account 也給予了 Administrator 的權限,&lt;br&gt;不過仍然看不到 Billin
+    
+    </summary>
+    
+    
+      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
+    
+  </entry>
   
   <entry>
     <title>[學習筆記] Linux 語法學習筆記 一</title>
@@ -150,11 +183,11 @@
   </entry>
   
   <entry>
-    <title>AWS EC2 學習筆記 AWS CLI 與 Login</title>
+    <title>[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login</title>
     <link href="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/"/>
     <id>http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/</id>
     <published>2018-03-25T15:01:24.000Z</published>
-    <updated>2018-03-25T16:21:42.774Z</updated>
+    <updated>2018-04-04T09:08:08.359Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安裝-AWS-CLI"><a href="#安裝-AWS-CLI" class="headerlink" title="安裝 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html" target="_blank" rel="external">安裝 AWS CLI</a></h2><h2 id="配置-AWS-CLI"><a href="#配置-AWS-CLI" class="headerlink" title="配置 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration" target="_blank" rel="external">配置 AWS CLI</a></h2><h2 id="EC2-開機"><a href="#EC2-開機" class="headerlink" title="EC2 開機"></a>EC2 開機</h2><p><img src="https://i.imgur.com/dNGygaT.jpg" alt=""></p>
 <ul>
@@ -196,9 +229,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
-    
       <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
+    
+      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
     
   </entry>
   
@@ -753,11 +786,11 @@
   </entry>
   
   <entry>
-    <title>AWS 註冊到建立安全性帳戶</title>
+    <title>[學習筆記]AWS 註冊到建立安全性帳戶</title>
     <link href="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/"/>
     <id>http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/</id>
     <published>2018-01-26T06:24:16.000Z</published>
-    <updated>2018-02-28T10:30:00.786Z</updated>
+    <updated>2018-04-04T09:08:15.930Z</updated>
     
     <content type="html"><![CDATA[<h2 id="該知道的事"><a href="#該知道的事" class="headerlink" title="該知道的事"></a>該知道的事</h2><ol>
 <li>僅作為學習 AWS 的過程記錄用</li>
@@ -802,9 +835,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
-    
       <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
+    
+      <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
     
   </entry>
   
@@ -1366,11 +1399,11 @@
   </entry>
   
   <entry>
-    <title>AWS EC2開機筆記</title>
+    <title>[學習筆記]AWS EC2開機筆記</title>
     <link href="http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/"/>
     <id>http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/</id>
     <published>2017-12-08T08:42:42.000Z</published>
-    <updated>2018-01-30T16:29:44.620Z</updated>
+    <updated>2018-04-04T09:08:12.393Z</updated>
     
     <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
 <li>這個是教育訓練的筆記</li>
@@ -1735,103 +1768,6 @@
       <category term="MsSQL" scheme="http://blog.marsen.me/tags/MsSQL/"/>
     
       <category term="Entity Framework" scheme="http://blog.marsen.me/tags/Entity-Framework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>將 Express 網站整合 Typescirpt 開發</title>
-    <link href="http://blog.marsen.me/2017/08/16/express_with_typescript/"/>
-    <id>http://blog.marsen.me/2017/08/16/express_with_typescript/</id>
-    <published>2017-08-16T08:26:14.000Z</published>
-    <updated>2018-01-30T16:29:44.621Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原因與目的"><a href="#原因與目的" class="headerlink" title="原因與目的"></a>原因與目的</h2><ul>
-<li>目前我使用 express 作為網站開發</li>
-<li>我是個 .NET 工程師,習慣用強型別語言作開發 (C#)</li>
-<li>網路上找的文章<ul>
-<li><a href="http://brianflove.com/2016/11/08/typescript-2-express-node/" target="_blank" rel="external">TypeScript 2 + Express + Node.js</a></li>
-<li><a href="http://brianflove.com/2016/03/29/typescript-express-node-js/" target="_blank" rel="external">TypeScript + Express + Node.js</a></li>
-</ul>
-</li>
-<li>這件事情理論上是可行的,而且又有人作過,又能讓我以自已比較習慣的方式作開發</li>
-</ul>
-<h2 id="技術問題"><a href="#技術問題" class="headerlink" title="技術問題"></a>技術問題</h2><ul>
-<li>grunt/gulp/webpack <ul>
-<li>選擇 gulp希望能切換到webpack</li>
-</ul>
-</li>
-<li>typescript</li>
-</ul>
-<h2 id="初期目標"><a href="#初期目標" class="headerlink" title="初期目標"></a>初期目標</h2><ul>
-<li>把所有js 改成 ts</li>
-<li>相同指令即可完成編譯與開啟站台</li>
-<li>可部署到正式環境</li>
-</ul>
-<h2 id="構想"><a href="#構想" class="headerlink" title="構想"></a>構想</h2><p><del>原本我是想把整個專案重新編譯至另外一個資料夾中,</del><br><del>再由該資料夾設為起始專案執行</del><br>在建立typescript資料夾，只編譯相關的ts檔;<br>至於哪些是<strong>相關的ts檔</strong>?</p>
-<ol>
-<li><code>app.ts</code>(編譯為<code>app.js</code>)<br> 在根目錄作為所有request入口的起始檔案,用來解析request需要對應的router<br> 這裡可能會有一些共用的商務/系統邏輯或是錯誤處理</li>
-<li>所有的router<br> 這是最接近使用者的 business logic code,影響返回的頁面與呈現的資料,<br> 通常這裡主要的目的是組合來自不同的service的資訊,再返回給view層,<br> 不過有時候也會處理一些顯示邏輯.</li>
-<li><p>所有的service<br> 這層擁最主要的商務邏輯,大多會依功能性作區分(ex:授權、會員、購物車等…)<br> 也有專門的service提供共用的方法及模組,<br> 並透過repository取得/更新資料</p>
-</li>
-<li><p>所有的repository<br> 這層最主要的功能是直接與資料庫作存取</p>
-</li>
-<li>其它<br> 例如:Interface, Class, Enum 或是一些框架所需要額外的方法.</li>
-</ol>
-<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>定義好需要修改的範圍後,我建立了一個typescript資料夾<br>裡面會建立相對應的<code>router</code>,<code>service</code>與<code>repository</code>資料夾<br>與一個<code>app.ts</code>檔案.</p>
-<p>一開始將所有js檔案依照相對的位置,照抄複製放入對應位置,並將副檔名改為<code>.ts</code><br>接下我將利用gulp幫執行相關的編譯行為.<br>我們可以預期編譯產生的<code>.js</code>檔可以執行,因為Typescript是Javascript的Super Set</p>
-<h3 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h3><ul>
-<li><p>安裝gulp<br><code>npm install gulp -g</code><br><code>npm install gulp --save</code><br><code>npm install gulp-typescript --save</code></p>
-</li>
-<li><p>安裝相關模組<br><code>npm install @types/node --save-dev</code><br><code>npm install --save @types/express</code><br><code>npm install --save @types/morgan</code><br><code>npm install --save @types/cookie-parser</code><br><code>npm install --save @types/httperr</code><br>實際安裝哪些模組與專案所需要的有關,通常只要在npm搜尋<code>npm @types module_name</code><br>就可以找得到,不過有時候也會有找不到情況<br>這個時候很苦惱了,我們想要ts的強型別即時除錯,但是自已刻又太自虐,<br>我的想法是只有自已寫的<code>router</code>,<code>service</code>與<code>repository</code>有需要即時除錯.<br>之後實務上有遇到再回來補充.</p>
-</li>
-<li><p>設定gulp file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line">var tsc = require(&apos;gulp-typescript&apos;); </div><div class="line"></div><div class="line">gulp.task(&apos;app&apos;, function() &#123;     </div><div class="line">        return gulp.src([&apos;typescript/app.ts&apos;,&apos;typescript/**/*.ts&apos;])        </div><div class="line">        .pipe(tsc(&#123;</div><div class="line">                target: &quot;es2017&quot;,                          /* Specify ECMAScript target version: &apos;ES3&apos; (default), &apos;ES5&apos;, &apos;ES2015&apos;, &apos;ES2016&apos;, &apos;ES2017&apos;, or &apos;ESNEXT&apos;. */</div><div class="line">                module: &quot;es2015&quot;,                     /* Specify module code generation: &apos;commonjs&apos;, &apos;amd&apos;, &apos;system&apos;, &apos;umd&apos;, &apos;es2015&apos;, or &apos;ESNext&apos;. */</div><div class="line">                lib: [&quot;es2015&quot;,&quot;dom&quot;],</div><div class="line">                noImplicitAny: false,</div><div class="line">            &#125;))</div><div class="line">        .pipe(gulp.dest(&apos;./&apos;));        </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>我們不需要<code>tsconfig.json</code>這個檔案,直接可以寫成json物件<br>另外記得設定src(ts所在的位置)與dest(輸出ts的位置)</p>
-<ul>
-<li><p>設定package.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;start&quot;: &quot;node ./bin/www&quot;,</div><div class="line">  &quot;dev&quot;: &quot;supervisor ./bin/www&quot;,</div><div class="line">  &quot;test&quot;: &quot;node_modules/.bin/nightwatch&quot;,</div><div class="line">  &quot;e2e&quot;: &quot;npm-run-all --parallel start test&quot;,</div><div class="line">  &quot;run&quot;: &quot;node ./bin/www&quot;,</div><div class="line">  &quot;ts&quot;: &quot;gulp app&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>執行 <code>npm run ts</code></p>
-</li>
-<li>檢查輸出的js,再說一次因為Typescript是Javascript的Super Set<br>所以可以預期會產生相同的檔案內容(副檔名變成.js)</li>
-<li>運行網站確定功能正常</li>
-</ul>
-<h3 id="修改ts檔"><a href="#修改ts檔" class="headerlink" title="修改ts檔"></a>修改ts檔</h3><p>雖然js檔已正常產生,但是其實這一切都是假的!<br>原因是我們的ts檔其實仍然在寫js<br><img src="https://i.imgur.com/5aCuXSy.jpg" alt=""><br>在執行gulp的過程當中,應該可以看到一些提示訊息.<br>由於有各種情況,就不一一說明了.<br>我在這此改版的疑難就附在下面,如果有遇到相同的問題,可以作為參考.<br>如果有不同問題,也可以留言討論喔(雖然我覺得是自行google會快一些) XD</p>
-<h3 id="疑難"><a href="#疑難" class="headerlink" title="疑難"></a>疑難</h3><ul>
-<li><p><a href="https://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require" target="_blank" rel="external">typescript getting error TS2304: cannot find name ‘require’</a></p>
-</li>
-<li><p><a href="https://stackoverflow.com/questions/28793098/express-and-typescript-error-stack-and-error-status-properties-do-not-exist" target="_blank" rel="external">Express and Typescript - Error.stack and Error.status properties do not exist</a>    </p>
-</li>
-<li><a href="https://github.com/Microsoft/vscode/issues/21968" target="_blank" rel="external">Error TS2693: ‘Promise’ only refers to a type, but is being used as a value here.</a></li>
-</ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html" target="_blank" rel="external">npm scripts 使用指南</a></li>
-<li><a href="https://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require" target="_blank" rel="external">typescript getting error TS2304: cannot find name ‘ require’
-</a></li>
-<li><a href="https://stackoverflow.com/questions/28793098/express-and-typescript-error-stack-and-error-status-properties-do-not-exist" target="_blank" rel="external">Express and Typescript - Error.stack and Error.status properties do not exist</a></li>
-<li><a href="https://github.com/ivogabe/gulp-typescript" target="_blank" rel="external">gulp-typescript</a></li>
-<li><a href="https://github.com/Microsoft/vscode/issues/21968" target="_blank" rel="external">Promise static method give error</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;原因與目的&quot;&gt;&lt;a href=&quot;#原因與目的&quot; class=&quot;headerlink&quot; title=&quot;原因與目的&quot;&gt;&lt;/a&gt;原因與目的&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;目前我使用 express 作為網站開發&lt;/li&gt;
-&lt;li&gt;我是個 .NET 工程師,習慣用強型別語言作
-    
-    </summary>
-    
-    
-      <category term="expressjs" scheme="http://blog.marsen.me/tags/expressjs/"/>
-    
-      <category term="typescript" scheme="http://blog.marsen.me/tags/typescript/"/>
-    
-      <category term="gulp" scheme="http://blog.marsen.me/tags/gulp/"/>
-    
-      <category term="nodejs" scheme="http://blog.marsen.me/tags/nodejs/"/>
     
   </entry>
   
