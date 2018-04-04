@@ -17,5 +17,5 @@ tag:
 ## 測試工具 `LinqPad`
 
 ## 參考
-- http://stackoverflow.com/questions/25097773/system-io-filestream-fileaccess-vs-fileshare
+- https://stackoverflow.com/questions/25097773/system-io-filestream-fileaccess-vs-fileshare
 - https://referencesource.microsoft.com/#q=FileStream

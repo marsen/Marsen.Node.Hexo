@@ -16,7 +16,8 @@ C#是個好棒棒的言語,但是它仍會有超乎你想像的行為,
 而且就算你是有經驗的開發者,你也要看一看這篇文章.  
 這篇文章不講幹話,還會給你代碼喔  
 
-![C# Quiz](http://www.dotnetcurry.com/images/csharp/basics/csharp-quiz.jpg)
+![C# Quiz](https://i.imgur.com/wXjvug6.jpg)
+
 
 ### Null Value
 
