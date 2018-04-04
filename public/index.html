@@ -75,6 +75,59 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-cloud_learn/aws_access_billing_console" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/cloud_learn/aws_access_billing_console/" class="article-date">
+  <time datetime="2018-04-04T09:08:44.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>設定了 IAM User Account 也給予了 Administrator 的權限,<br>不過仍然看不到 Billing 的頁面資訊 .  </p>
+<p><img src="https://i.imgur.com/1Ge6pGi.jpg" alt=""></p>
+<p>這帶來了很大的不方便, 因為如果要看 Billing 的資訊就要切換到 Root Account<br>而建立 Administrator IAM Account 的用意本來就是要儘可能不使用 Root Account 作登入.<br>檢查了權限,明明就有設定 Read Billing 但是仍然看不到.  </p>
+<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>實際上要進入 Billing Console 其實要有兩個步驟  </p>
+<ol>
+<li>權限要設定,更多細節可以參考這篇<a href="https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/" target="_blank" rel="external">文章</a>(2014)</li>
+<li>要透過 Root Account 在 <a href="https://console.aws.amazon.com/billing/home#/account" target="_blank" rel="external">Account Settings</a> 頁面設定, 允許 IAM user 存取 Billing Console  </li>
+</ol>
+<p><img src="https://i.imgur.com/yBXaLPJ.jpg" alt=""></p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/" target="_blank" rel="external">Don’t Forget to Enable Access to the Billing Console!</a></li>
+</ul>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/" data-id="cjfkvgs9i0060bs55cd4ggbud" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/">AWS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2018/linux_command_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/26/2018/linux_command_1/" class="article-date">
@@ -210,7 +263,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="cjf70hmoz005k345511t7d07o" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="cjfkvgsbp0068bs55qa1sif6a" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/26/2018/linux_command_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -238,7 +291,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/cloud_learn/aws_cli_login/">AWS EC2 學習筆記 AWS CLI 與 Login</a>
+      <a class="article-title" href="/2018/03/25/cloud_learn/aws_cli_login/">[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login</a>
     </h1>
   
 
@@ -279,7 +332,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/" data-id="cjf70hmpi00643455evhn5gu7" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/" data-id="cjfkvgs9l0061bs55jz2anykq" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -450,7 +503,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/22/2018/the_art_of_unit_testing_2nd_0/" data-id="cjf70hmp9005v3455eyhwfzg6" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/22/2018/the_art_of_unit_testing_2nd_0/" data-id="cjfkvgs9f005ybs55octtj1pt" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/22/2018/the_art_of_unit_testing_2nd_0/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -558,7 +611,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/20/2018/mutation_testing/" data-id="cjf70hmp2005n3455nmp30gij" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/20/2018/mutation_testing/" data-id="cjfkvgs94005pbs5544itiw2r" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/20/2018/mutation_testing/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -697,7 +750,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/" data-id="cjf70hmp6005s34559mveabmb" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/" data-id="cjfkvgs96005rbs55tk3xxhen" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -891,7 +944,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/" data-id="cjf70hmp0005m3455u4gd0fhz" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/" data-id="cjfkvgs99005sbs55nhlcdkkg" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -919,7 +972,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/26/cloud_learn/aws_startup_with_iam/">AWS 註冊到建立安全性帳戶</a>
+      <a class="article-title" href="/2018/01/26/cloud_learn/aws_startup_with_iam/">[學習筆記]AWS 註冊到建立安全性帳戶</a>
     </h1>
   
 
@@ -960,7 +1013,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/" data-id="cjf70hmpf00623455fdmozby2" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/" data-id="cjfkvgsax0064bs55mapaq71t" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1158,7 +1211,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/" data-id="cjf70hmp3005p3455cn57gh98" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/" data-id="cjfkvgsb20066bs55wb6v689g" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1292,156 +1345,13 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" data-id="cjf70hmoy005j3455ysn5g8bn" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" data-id="cjfkvgs92005obs55uf1fjw7q" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018/next_year" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/01/2018/next_year/" class="article-date">
-  <time datetime="2017-12-31T18:12:47.000Z" itemprop="datePublished">2018-01-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/2018/next_year/">一年後的我想要什麼？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="你的目標是什麼"><a href="#你的目標是什麼" class="headerlink" title="你的目標是什麼?"></a>你的目標是什麼?</h2><p><strong>自由</strong></p>
-<p>什麼是自由？</p>
-<ol>
-<li>情感上的自由</li>
-<li>時間上的自由</li>
-<li>經濟上的自由</li>
-</ol>
-<h2 id="經濟上的自由是一切的基礎"><a href="#經濟上的自由是一切的基礎" class="headerlink" title="經濟上的自由是一切的基礎"></a>經濟上的自由是一切的基礎</h2><ol>
-<li>更多的收入 <ol>
-<li>被動的收入</li>
-<li>更高的薪資</li>
-</ol>
-</li>
-<li>更有成就感的工作<ol>
-<li>被同事尊重</li>
-<li>被上司認可</li>
-<li>受人歡迎</li>
-</ol>
-</li>
-<li>更多的選擇<ol>
-<li>技術提昇</li>
-<li>領域擴展</li>
-<li>人脈</li>
-</ol>
-</li>
-<li>健康的身體</li>
-<li>更多享受生活</li>
-</ol>
-<h2 id="一年後的我想要什麼"><a href="#一年後的我想要什麼" class="headerlink" title="一年後的我想要什麼?"></a>一年後的我想要什麼?</h2><p>一年後的我想要什麼?</p>
-<ol>
-<li>更高的薪資<ol>
-<li>維持現狀 K (x)</li>
-<li>跳糟 K * 1.3 (x)</li>
-<li>爭取加薪 K * 1.1</li>
-<li>獎金與分紅 </li>
-</ol>
-</li>
-<li>更有成就感的工作(什麼是成就感)？    <ol>
-<li>擁有可以引以為豪的產品<ol>
-<li>拆解單體為服務導向</li>
-<li>架構升級        </li>
-</ol>
-</li>
-<li>分享與教學<pre><code>1. Blog
-2. 內/外部sharing
-3. 單元測試導入        
-</code></pre></li>
-</ol>
-</li>
-<li>更多的選擇<ol>
-<li>技術轉移<ol>
-<li>Web 技術 轉移 為 Service導向技術</li>
-<li>container 技術</li>
-<li>cloud 技術        </li>
-</ol>
-</li>
-<li>技術提昇<ol>
-<li>.Net </li>
-<li>Infra</li>
-<li>Domain know how</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="爭取加薪-K-1-1"><a href="#爭取加薪-K-1-1" class="headerlink" title="爭取加薪 K * 1.1"></a>爭取加薪 K * 1.1</h3><h2 id="而這些目標需要什麼才能爭取到"><a href="#而這些目標需要什麼才能爭取到" class="headerlink" title="而這些目標需要什麼才能爭取到?"></a>而這些目標需要什麼才能爭取到?</h2><p>分為三個面向,技術提昇、技術擴展與自我實現,  </p>
-<h3 id="技術提昇"><a href="#技術提昇" class="headerlink" title="技術提昇"></a>技術提昇</h3><p>首先目前我擁有的技術能力有</p>
-<ol>
-<li>.Net solution的 Web Developer能力</li>
-<li>同時兼顧有 DB 與 F2E 基礎進階能力 </li>
-</ol>
-<p>這與我過去的選擇有關, 一直以來都在 Web 深入研究<br>未來的一年仍要朝這個方向發展.<br>但是會改由 Web 導向轉變成服務導向,<br>而 Web 開發只是我本身所能提供給公司的一個服務而已,<br>跟著 .Net 的腳步我想把前台(包含大馬但不限於)昇級上一個版本,<br>包含目前使用的舊版 libary 與 Framework,<br>如此一來可以使用到新版 .Net 的語法,<br>同時也可以解開一些導入測試與微服務時遇到的困境.  </p>
-<h3 id="現有能力列表"><a href="#現有能力列表" class="headerlink" title="現有能力列表"></a>現有能力列表</h3><ol>
-<li>C# &amp; .Net Framework Solution (inculde Linq &amp; Entity Framework )</li>
-<li>javascript (jQuery &amp; Angular etc..)</li>
-<li>Database with Sql (MsSQL solution)</li>
-<li>Source Controle (Git)</li>
-<li></li>
-</ol>
-<h3 id="略懂"><a href="#略懂" class="headerlink" title="略懂"></a>略懂</h3><ol>
-<li>nodejs (with expressjs) &amp; php(codeigniter) &amp; ruby (RoR)</li>
-<li>Jenkins</li>
-<li></li>
-</ol>
-<h3 id="技術的擴展"><a href="#技術的擴展" class="headerlink" title="技術的擴展"></a>技術的擴展</h3><p>我認為公司的單體架構已經面臨到不得不拆的狀況,<br>公司也有意朝這個方向走那是最好不過的了,<br>但對現存的.NET 開發者而言,我認為人人都要有危機意識<br>我看到的現象</p>
-<ol>
-<li>頁面會被CMS取代</li>
-<li>大部份的API可以被Lambda取代</li>
-<li>主流程的部份在跨國的目標下會逐步變成微服務</li>
-</ol>
-<p>基於以上幾點, 除了.Net 的 solution 外,<br>更多情況是要使用別的 solution 或是混用,<br>對此我的視野必須有所提昇,  </p>
-<ol>
-<li>Linux Bash</li>
-<li>Container 技術</li>
-<li>Cloud (AWS/Azure/GCP)</li>
-<li>Node.js<br>在未來的一年開發流程或是維運流程會有很大很快的變化<br>要多聽多看多想多問,公司有很多人才要儘可能的跟他們學習.  </li>
-</ol>
-<h3 id="自我營銷"><a href="#自我營銷" class="headerlink" title="自我營銷"></a>自我營銷</h3><p>最後是自我實現的部份,<br>自我營銷是我很弱的一部份,<br>不善交際,不喜歡人群<br>這點我從去年就開始調整,<br>多參與公司內部的分享,不要害怕說錯<br>假裝自已是對的,再虛心接受別人的指點<br>不需要導師,因為人人都是我的導師<br>開始寫Blog並且貼到社群網站給人鞭<br>這是我目前的 <a href="https://blog.marsen.me">https://blog.marsen.me</a></p>
-<p>今年會繼續朝這個方向衝刺.<br>多分享 多犯錯 然後接受反饋學習.<br>兩個部份是我可以練習分享的機會<br>一個是測試的導入,<br>我們的遺留代碼,有很多可以分享的部份,<br>二是讀書會,<br>借由讀書會可以練習分享,<br>同時學習別人怎麼分享,<br>並且看完一本書,一舉數得.  </p>
-<h2 id="具體主管可以幫助我的部份"><a href="#具體主管可以幫助我的部份" class="headerlink" title="具體主管可以幫助我的部份"></a>具體主管可以幫助我的部份</h2><ol>
-<li>加薪(沒有比這個更務實的了)</li>
-<li>明確指出我的錯誤或是作的好的部份</li>
-</ol>
-<p>Do more do faster </p>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/01/2018/next_year/" data-id="cjf70hmp7005t3455av5haw7n" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2018/01/01/2018/next_year/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
     </footer>
   </div>
   
@@ -1475,7 +1385,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 12.5px;">Root User</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/integration-testing/" style="font-size: 10px;">integration testing</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/mutation-teseting/" style="font-size: 10px;">mutation teseting</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/testing/" style="font-size: 12.5px;">testing</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/unit-test/" style="font-size: 12.5px;">unit test</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 17.5px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 12.5px;">Root User</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/integration-testing/" style="font-size: 10px;">integration testing</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/mutation-teseting/" style="font-size: 10px;">mutation teseting</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/testing/" style="font-size: 12.5px;">testing</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/unit-test/" style="font-size: 12.5px;">unit test</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1484,7 +1394,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
     </div>
   </div>
 
@@ -1497,11 +1407,15 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/26/2018/linux_command_1/">[學習筆記] Linux 語法學習筆記 一</a>
           </li>
         
           <li>
-            <a href="/2018/03/25/cloud_learn/aws_cli_login/">AWS EC2 學習筆記 AWS CLI 與 Login</a>
+            <a href="/2018/03/25/cloud_learn/aws_cli_login/">[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login</a>
           </li>
         
           <li>
@@ -1510,10 +1424,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/15/2018/shopee_tech_sharing/">[活動筆記]蝦皮購物新加坡研發團隊技術分享會</a>
           </li>
         
       </ul>

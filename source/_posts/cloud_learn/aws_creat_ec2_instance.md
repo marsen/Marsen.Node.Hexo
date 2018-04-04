@@ -1,5 +1,5 @@
 ---
-title: "AWS EC2開機筆記"
+title: "[學習筆記]AWS EC2開機筆記"
 date: 2017/12/08 16:42:42
 tag:
   - AWS
