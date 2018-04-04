@@ -15,4 +15,4 @@ tag:
 
 ## 參考
 - [Threading](https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx)
-- http://stackoverflow.com/questions/4844637/what-is-the-difference-between-concurrency-parallelism-and-asynchronous-methods
+- https://stackoverflow.com/questions/4844637/what-is-the-difference-between-concurrency-parallelism-and-asynchronous-methods

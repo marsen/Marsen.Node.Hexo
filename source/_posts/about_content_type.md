@@ -65,7 +65,7 @@ PostMan中的選項 `raw`,可以用字串組合成任意Content-Type,
 - https://imququ.com/post/four-ways-to-post-data-in-http.html
 - https://codeforgeek.com/2014/09/handle-get-post-request-express-4/
 - https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
-- http://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&t=pack
-- http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean
+- https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&t=pack
+- https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean
 
 (fin)
