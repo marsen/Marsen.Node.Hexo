@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Linux | Marsen</title>
+  <title>[學習筆記]Linux 語法學習筆記 二 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Marsen">
-<meta property="og:url" content="http://blog.marsen.me/tags/Linux/index.html">
+  <meta name="description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
+<meta name="keywords" content="Unix,Linux,Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[學習筆記]Linux 語法學習筆記 二">
+<meta property="og:url" content="http://blog.marsen.me/2018/04/05/2018/linux_command_2/index.html">
 <meta property="og:site_name" content="Marsen">
+<meta property="og:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
 <meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2018-04-05T08:20:20.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Marsen">
+<meta name="twitter:title" content="[學習筆記]Linux 語法學習筆記 二">
+<meta name="twitter:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -73,59 +78,124 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/05/2018/linux_command_2/" class="archive-article-date">
-  <time datetime="2018-04-05T07:53:23.000Z" itemprop="datePublished">4月 5</time>
+        <section id="main"><article id="post-2018/linux_command_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/05/2018/linux_command_2/" class="article-date">
+  <time datetime="2018-04-05T07:53:23.000Z" itemprop="datePublished">2018-04-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/05/2018/linux_command_2/">[學習筆記]Linux 語法學習筆記 二</a>
+    <h1 class="article-title" itemprop="name">
+      [學習筆記]Linux 語法學習筆記 二
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/26/2018/linux_command_1/" class="archive-article-date">
-  <time datetime="2018-03-25T16:23:01.000Z" itemprop="datePublished">3月 26</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/2018/linux_command_1/">[學習筆記] Linux 語法學習筆記 一</a>
-    </h1>
-  
+        <p><a href="https://blog.marsen.me/2018/03/26/2018/linux_command_1/">上一篇</a>我們學會一些基本 linux command,<br>接下來我們將介紹更多的命令並組合它們到 shell script.<br>讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.  </p>
+<h2 id="補充指令"><a href="#補充指令" class="headerlink" title="補充指令"></a>補充指令</h2><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a><code>vim</code></h3><h4 id="開啟-vim-編輯器"><a href="#開啟-vim-編輯器" class="headerlink" title="開啟 vim 編輯器"></a>開啟 vim 編輯器</h4><h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a><code>echo</code></h3><h4 id="印出文字"><a href="#印出文字" class="headerlink" title="印出文字"></a>印出文字</h4><blockquote>
+<p>$ echo “text”<br>text</p>
+</blockquote>
+<h4 id="印出變數-echo"><a href="#印出變數-echo" class="headerlink" title="印出變數 echo $*"></a>印出變數 <code>echo $*</code></h4><h4 id="印出PID-Process-ID-echo"><a href="#印出PID-Process-ID-echo" class="headerlink" title="印出PID (Process ID) echo $$"></a>印出PID (Process ID) <code>echo $$</code></h4><h3 id="set"><a href="#set" class="headerlink" title="set"></a><code>set</code></h3><h4 id="設定變數"><a href="#設定變數" class="headerlink" title="設定變數"></a>設定變數</h4><blockquote>
+<p>$ set good morning marsen</p>
+</blockquote>
+<p>補充:使用 <code>echo</code> 印出變數,<strong>從1開始</strong><br><code>$*</code> 指所有變數</p>
+<blockquote>
+<p>$ echo $1<br>good<br>$ echo $2<br>morning<br>$ echo $3<br>marsen<br>$ echo $*<br>good morning marsen </p>
+</blockquote>
+<h4 id="進階使用-backticks-執行-cat-Command"><a href="#進階使用-backticks-執行-cat-Command" class="headerlink" title="進階使用 backticks 執行 cat Command"></a>進階使用 backticks 執行 <code>cat</code> Command</h4><blockquote>
+<p>$ cat &gt; testfile<br>hello world<br>^C<br>sh-4.4$ set <code>cat testfile</code><br>sh-4.4$ echo $*<br>hello world</p>
+</blockquote>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><ol>
+<li>建立檔案<blockquote>
+<p>$ cat &gt; helloworld.sh</p>
+</blockquote>
+</li>
+<li><p>編輯檔案</p>
+<blockquote>
+<p>$ vim helloworld.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#say hello</div><div class="line">echo &quot;hello world&quot;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>執行檔案</p>
+<blockquote>
+<p>$ sh helloworld.sh<br>hello world</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="變數-variable"><a href="#變數-variable" class="headerlink" title="變數 variable"></a>變數 variable</h3><ol>
+<li>大小寫有分</li>
+<li>使用 <code>read</code> 讀取 input 到變數中</li>
+<li>使用 <code>$</code>+變數名呼叫變數</li>
+</ol>
+<p>sample:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># this is a shell sample</div><div class="line">echo &quot;who are you?&quot;</div><div class="line">read name</div><div class="line">echo &quot;Hi, $name nice to see you.&quot;</div></pre></td></tr></table></figure></p>
+<p>executed:</p>
+<blockquote>
+<p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
+</blockquote>
+<h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># this is a shell sample</div><div class="line">echo &quot;keyin a filename&quot;</div><div class="line">read name</div><div class="line">mv $1 $name</div><div class="line">echo $name&quot;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>$ sh rename.sh file1<br>keyin a filename<br>newfile<br>newfile</p>
+</blockquote>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li><p>額外的 vim 問題排解 <code>E348: No string under cursor</code> 表示未輸入 i 進入 <code>Insert</code> mode</p>
+<ul>
+<li>ESC + : , 輸入 w filename (以filename保存)</li>
+<li>ESC + : , 輸入 wq (存儲並離開vim)</li>
+<li>ESC + : , 輸入 q! (不存儲並離開vim)</li>
+</ul>
+</li>
+<li><p>「<strong>`</strong>」 Backquote 或 backticks </p>
+</li>
+</ol>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
+<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
+<li><a href="https://itsfoss.com/how-to-exit-vim/" target="_blank" rel="external">離開Vim的<del>100種</del>方法</a></li>
+<li><a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="external">鳥哥的 Linux 私房菜—認識與學習BASH</a></li>
+</ol>
+<p>(fin)</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="cjfm86ehl0056rg555c9ggw9y" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2018/04/05/2018/linux_command_2/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unix/">Unix</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/04/cloud_learn/aws_access_billing_console/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[學習筆記]允許 IAM User 存取 AWS Billing Console</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -217,11 +287,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsenlin';
   
+  var disqus_url = 'http://blog.marsen.me/2018/04/05/2018/linux_command_2/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
