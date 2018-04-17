@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://i.imgur.com/1Ge6pGi.jpg">
 <meta property="og:image" content="https://i.imgur.com/yBXaLPJ.jpg">
-<meta property="og:updated_time" content="2018-04-04T09:09:36.528Z">
+<meta property="og:updated_time" content="2018-04-17T03:12:39.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[學習筆記]允許 IAM User 存取 AWS Billing Console">
 <meta name="twitter:description" content="前情提要設定了 IAM User Account 也給予了 Administrator 的權限,不過仍然看不到 Billing 的頁面資訊 .    這帶來了很大的不方便, 因為如果要看 Billing 的資訊就要切換到 Root Account而建立 Administrator IAM Account 的用意本來就是要儘可能不使用 Root Account 作登入.檢查了權限,明明就有設定 Re">
@@ -108,19 +108,19 @@ ga('send', 'pageview');
 <p>這帶來了很大的不方便, 因為如果要看 Billing 的資訊就要切換到 Root Account<br>而建立 Administrator IAM Account 的用意本來就是要儘可能不使用 Root Account 作登入.<br>檢查了權限,明明就有設定 Read Billing 但是仍然看不到.  </p>
 <h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>實際上要進入 Billing Console 其實要有兩個步驟  </p>
 <ol>
-<li>權限要設定,更多細節可以參考這篇<a href="https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/" target="_blank" rel="external">文章</a>(2014)</li>
-<li>要透過 Root Account 在 <a href="https://console.aws.amazon.com/billing/home#/account" target="_blank" rel="external">Account Settings</a> 頁面設定, 允許 IAM user 存取 Billing Console  </li>
+<li>權限要設定,更多細節可以參考這篇<a href="https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/" target="_blank" rel="noopener">文章</a>(2014)</li>
+<li>要透過 Root Account 在 <a href="https://console.aws.amazon.com/billing/home#/account" target="_blank" rel="noopener">Account Settings</a> 頁面設定, 允許 IAM user 存取 Billing Console  </li>
 </ol>
 <p><img src="https://i.imgur.com/yBXaLPJ.jpg" alt=""></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/" target="_blank" rel="external">Don’t Forget to Enable Access to the Billing Console!</a></li>
+<li><a href="https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/" target="_blank" rel="noopener">Don’t Forget to Enable Access to the Billing Console!</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/" data-id="cjfkwrf220060pw5582aoiebh" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/" data-id="cjg3421r5001fy8vxj8anm0s3" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -132,6 +132,15 @@ ga('send', 'pageview');
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/04/17/2018/new_pc_install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [實作筆記]重灌開發環境
+        
+      </div>
+    </a>
   
   
     <a href="/2018/03/26/2018/linux_command_1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -161,6 +170,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/04/17/2018/new_pc_install/">[實作筆記]重灌開發環境</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
           </li>
         
@@ -176,10 +189,6 @@ ga('send', 'pageview');
             <a href="/2018/03/22/2018/the_art_of_unit_testing_2nd_0/">[讀書會]單元測試的藝術 - 導讀、序與第一章</a>
           </li>
         
-          <li>
-            <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -189,7 +198,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

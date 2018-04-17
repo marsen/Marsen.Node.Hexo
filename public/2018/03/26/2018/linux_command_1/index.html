@@ -5,18 +5,18 @@
   
   <title>[學習筆記] Linux 語法學習筆記 一 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                 March 2018Su Mo Tu We Th Fr Sa">
+  <meta name="description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                   March 2018Su Mo Tu We Th Fr Sa">
 <meta name="keywords" content="Unix,Linux,Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[學習筆記] Linux 語法學習筆記 一">
 <meta property="og:url" content="http://blog.marsen.me/2018/03/26/2018/linux_command_1/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                 March 2018Su Mo Tu We Th Fr Sa">
+<meta property="og:description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                   March 2018Su Mo Tu We Th Fr Sa">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2018-03-25T16:22:07.708Z">
+<meta property="og:updated_time" content="2018-04-17T03:12:39.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[學習筆記] Linux 語法學習筆記 一">
-<meta name="twitter:description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                 March 2018Su Mo Tu We Th Fr Sa">
+<meta name="twitter:description" content="參考 Unix Terminal Online Learn Shell Scripting all Levels umask 指令  學習筆記Clear清除目前 terminal 畫面Cal產生當下的月曆 $ cal                                                   March 2018Su Mo Tu We Th Fr Sa">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -101,20 +101,32 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
-<li><a href="https://www.udemy.com/learn-shell-scripting-all-levels/" target="_blank" rel="external">Learn Shell Scripting all Levels</a></li>
-<li><a href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html" target="_blank" rel="external">umask 指令</a></li>
+<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="noopener">Unix Terminal Online</a></li>
+<li><a href="https://www.udemy.com/learn-shell-scripting-all-levels/" target="_blank" rel="noopener">Learn Shell Scripting all Levels</a></li>
+<li><a href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html" target="_blank" rel="noopener">umask 指令</a></li>
 </ul>
 <h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><h3 id="Clear"><a href="#Clear" class="headerlink" title="Clear"></a><code>Clear</code></h3><h4 id="清除目前-terminal-畫面"><a href="#清除目前-terminal-畫面" class="headerlink" title="清除目前 terminal 畫面"></a>清除目前 terminal 畫面</h4><h3 id="Cal"><a href="#Cal" class="headerlink" title="Cal"></a><code>Cal</code></h3><h4 id="產生當下的月曆"><a href="#產生當下的月曆" class="headerlink" title="產生當下的月曆"></a>產生當下的月曆</h4><blockquote>
 <p>$ cal                                                </p>
+</blockquote>
+<blockquote>
 <p>March 2018<br>Su Mo Tu We Th Fr Sa<br>             1  2  3<br> 4  5  6  7  8  9 10<br>11 12 13 14 15 16 17<br>18 19 20 21 22 23 24<br>25 26 27 28 29 30 31</p>
+</blockquote>
+<blockquote>
 <p>$ cal 2 1985</p>
+</blockquote>
+<blockquote>
 <p>   February 1985<br>Su Mo Tu We Th Fr Sa<br>                1  2<br> 3  4  5  6  7  8  9<br>10 11 12 13 14 15 16<br>17 18 19 20 21 22 23<br>24 25 26 27 28 </p>
 </blockquote>
 <h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a><code>Date</code></h3><h4 id="顯示日期與時間"><a href="#顯示日期與時間" class="headerlink" title="顯示日期與時間"></a>顯示日期與時間</h4><blockquote>
 <p>$ date</p>
+</blockquote>
+<blockquote>
 <p>Sat Mar 10 19:01:37 UTC 2018</p>
+</blockquote>
+<blockquote>
 <p>$ date  ‘+ %y-%m-%d %n %H:%M:%S:%N’</p>
+</blockquote>
+<blockquote>
 <p>18-03-10<br>19:06:24:126172657</p>
 </blockquote>
 <h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a><code>pwd</code></h3><h4 id="目前所在的檔案路徑"><a href="#目前所在的檔案路徑" class="headerlink" title="目前所在的檔案路徑"></a>目前所在的檔案路徑</h4><h3 id="Touch"><a href="#Touch" class="headerlink" title="Touch"></a><code>Touch</code></h3><h4 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h4><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a><code>mkdir</code></h3><h4 id="建立資料夾"><a href="#建立資料夾" class="headerlink" title="建立資料夾"></a>建立資料夾</h4><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a><code>cat</code></h3><h4 id="寫檔案-cat-gt-filename"><a href="#寫檔案-cat-gt-filename" class="headerlink" title="寫檔案 cat &gt; filename"></a>寫檔案 <code>cat &gt; filename</code></h4><blockquote>
@@ -128,6 +140,8 @@ ga('send', 'pageview');
 </blockquote>
 <h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a><code>rm</code></h3><h4 id="刪除檔案或資料夾"><a href="#刪除檔案或資料夾" class="headerlink" title="刪除檔案或資料夾"></a>刪除檔案或資料夾</h4><blockquote>
 <p>$ rm file_name</p>
+</blockquote>
+<blockquote>
 <p>$ rm -r folder_name/</p>
 </blockquote>
 <h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a><code>rmdir</code></h3><h4 id="刪除資料夾"><a href="#刪除資料夾" class="headerlink" title="刪除資料夾"></a>刪除資料夾</h4><blockquote>
@@ -158,22 +172,28 @@ ga('send', 'pageview');
 <h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a><code>ls</code></h3><h4 id="列出資料夾中的所有檔案"><a href="#列出資料夾中的所有檔案" class="headerlink" title="列出資料夾中的所有檔案"></a>列出資料夾中的所有檔案</h4><h4 id="ls-foldername"><a href="#ls-foldername" class="headerlink" title="ls foldername"></a><code>ls foldername</code></h4><p>列出指定的資料夾中所有的檔案</p>
 <h4 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a><code>ls -l</code></h4><p>列出資料夾中的所有檔案與其權限資訊</p>
 <blockquote>
-<p>ls 最常被使用到的功能還是那個 -l 的選項，為此，很多 distribution 在預設的情況中， 已經將 ll (L 的小寫) 設定成為 ls -l 的意思了！其實，那個功能是 <a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="external">Bash shell</a> 的 <a href="http://linux.vbird.org/linux_basic/0320bash.php#alias" target="_blank" rel="external">alias</a> 功能呢<br>— 鳥哥的 Linux 私房菜</p>
+<p>ls 最常被使用到的功能還是那個 -l 的選項，為此，很多 distribution 在預設的情況中， 已經將 ll (L 的小寫) 設定成為 ls -l 的意思了！其實，那個功能是 <a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="noopener">Bash shell</a> 的 <a href="http://linux.vbird.org/linux_basic/0320bash.php#alias" target="_blank" rel="noopener">alias</a> 功能呢<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a><code>chmod</code></h3><h4 id="修改檔案權限"><a href="#修改檔案權限" class="headerlink" title="修改檔案權限"></a>修改檔案權限</h4><blockquote>
 <p>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rw-r–r– 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 777 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rwxrwxrwx 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 444 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-r–r–r– 1 33581 33581   0 Mar 12 17:32 test</p>
 </blockquote>
 <h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a><code>uname</code></h3><h4 id="顯示系統相關的資訊"><a href="#顯示系統相關的資訊" class="headerlink" title="顯示系統相關的資訊"></a>顯示系統相關的資訊</h4><blockquote>
 <p>$ uname -a<br>Linux e955582759de 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC<br>2017 x86_64 x86_64 x86_64 GNU/Linux</p>
+</blockquote>
+<blockquote>
 <p>選項與參數：<br>-a  ：所有系統相關的資訊，包括底下的資料都會被列出來；<br>-s  ：系統核心名稱<br>-r  ：核心的版本<br>-m  ：本系統的硬體名稱，例如 i686 或 x86_64 等；<br>-p  ：CPU 的類型，與 -m 類似，只是顯示的是 CPU 的類型！<br>-i  ：硬體的平台 (ix86)<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="file"><a href="#file" class="headerlink" title="file"></a><code>file</code></h3><h4 id="查詢檔案基本資料-類型"><a href="#查詢檔案基本資料-類型" class="headerlink" title="查詢檔案基本資料(類型)"></a>查詢檔案基本資料(類型)</h4><blockquote>
 <p>file *</p>
+</blockquote>
+<blockquote>
 <p>jazzy:  ASCII text<br>mark:   empty<br>marsen: directory</p>
 </blockquote>
 <h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a><code>wc</code></h3><h4 id="顯示檔案資訊"><a href="#顯示檔案資訊" class="headerlink" title="顯示檔案資訊"></a>顯示檔案資訊</h4><p>行數 字數 字元數 檔名</p>
 <blockquote>
 <p>$ wc jazzy</p>
+</blockquote>
+<blockquote>
 <p>3 10 39 jazzy</p>
 </blockquote>
 <h4 id="wc-l-filename"><a href="#wc-l-filename" class="headerlink" title="wc -l filename"></a><code>wc -l filename</code></h4><p>顯示檔案行數資訊</p>
@@ -181,6 +201,8 @@ ga('send', 'pageview');
 <h4 id="wc-c-filename"><a href="#wc-c-filename" class="headerlink" title="wc -c filename"></a><code>wc -c filename</code></h4><p>顯示檔案字元數資訊</p>
 <h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a><code>sort</code></h3><h4 id="印出排序過後的結果-遞增"><a href="#印出排序過後的結果-遞增" class="headerlink" title="印出排序過後的結果(遞增)"></a>印出排序過後的結果(遞增)</h4><blockquote>
 <p>$ sort<br>owls<br>pigs<br>dogs<br>cats</p>
+</blockquote>
+<blockquote>
 <p>cats<br>dogs<br>owls<br>pigs</p>
 </blockquote>
 <h4 id="sort-filename"><a href="#sort-filename" class="headerlink" title="sort filename"></a><code>sort filename</code></h4><p>印出檔案內排序過後的結果(遞增)</p>
@@ -188,24 +210,28 @@ ga('send', 'pageview');
 <p>範例</p>
 <blockquote>
 <p>cat &gt; filenames<br>Name-Sport-Age<br>Roger-Tennis-30<br>Nadal-Tennis-25<br>Tiger-Golf-37<br>Michael-Baseball-49</p>
+</blockquote>
+<blockquote>
 <p>$ cut -d”-“ -f 1,3 filenames<br>Name-Age<br>Roger-30<br>Nadal-25<br>Tiger-37<br>Michael-49</p>
 </blockquote>
-<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a><code>dd</code></h3><h4 id="資料處理、拷貝、備份、轉碼-更多"><a href="#資料處理、拷貝、備份、轉碼-更多" class="headerlink" title="資料處理、拷貝、備份、轉碼;更多"></a>資料處理、拷貝、備份、轉碼;<a href="https://blog.gtwang.org/linux/dd-command-examples/" target="_blank" rel="external">更多</a></h4><blockquote>
+<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a><code>dd</code></h3><h4 id="資料處理、拷貝、備份、轉碼-更多"><a href="#資料處理、拷貝、備份、轉碼-更多" class="headerlink" title="資料處理、拷貝、備份、轉碼;更多"></a>資料處理、拷貝、備份、轉碼;<a href="https://blog.gtwang.org/linux/dd-command-examples/" target="_blank" rel="noopener">更多</a></h4><blockquote>
 <p>$ cat &gt; infile<br>this is the input file<br>$ cat infile<br>this is the input file</p>
+</blockquote>
+<blockquote>
 <p>$ dd if=infile of=outfile conv=ucase<br>0+1 records in<br>0+1 records out<br>23 bytes copied, 6.6972e-05 s, 343 kB/s<br>$ cat outfile<br>THIS IS THE INPUT FILE </p>
 </blockquote>
 <h3 id="man"><a href="#man" class="headerlink" title="man"></a><code>man</code></h3><h4 id="查詢其它指令用法"><a href="#查詢其它指令用法" class="headerlink" title="查詢其它指令用法"></a>查詢其它指令用法</h4><blockquote>
-<p>$ man ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">LS(1)	User Commands  LS(1)</div><div class="line">NAME	ls - list directory contents</div><div class="line">SYNOPSIS	ls [OPTION]... [FILE]...</div><div class="line"></div><div class="line">DESCRIPTION</div><div class="line">       List  information  about the FILEs (the current directory by default).  </div><div class="line">	   Sort entries alphabetically if none of</div><div class="line">       -cftuvSUX nor --sort is specified.</div><div class="line"></div><div class="line">       Mandatory arguments to long options are mandatory for short options too.</div><div class="line">       -a, --all</div><div class="line">              do not ignore entries starting with .</div><div class="line"></div><div class="line">       -A, --almost-all</div><div class="line">              do not list implied . and ..</div><div class="line"></div><div class="line">       --author</div><div class="line">              with -l, print the author of each file</div><div class="line"></div><div class="line">       -b, --escape</div><div class="line">              print C-style escapes for nongraphic characters</div><div class="line"> Manual page ls(1) line 1 (press h for help or q to quit)</div></pre></td></tr></table></figure></p>
+<p>$ man ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">LS(1)	User Commands  LS(1)</span><br><span class="line">NAME	ls - list directory contents</span><br><span class="line">SYNOPSIS	ls [OPTION]... [FILE]...</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">       List  information  about the FILEs (the current directory by default).  </span><br><span class="line">	   Sort entries alphabetically if none of</span><br><span class="line">       -cftuvSUX nor --sort is specified.</span><br><span class="line"></span><br><span class="line">       Mandatory arguments to long options are mandatory for short options too.</span><br><span class="line">       -a, --all</span><br><span class="line">              do not ignore entries starting with .</span><br><span class="line"></span><br><span class="line">       -A, --almost-all</span><br><span class="line">              do not list implied . and ..</span><br><span class="line"></span><br><span class="line">       --author</span><br><span class="line">              with -l, print the author of each file</span><br><span class="line"></span><br><span class="line">       -b, --escape</span><br><span class="line">              print C-style escapes for nongraphic characters</span><br><span class="line"> Manual page ls(1) line 1 (press h for help or q to quit)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>按<code>h</code>看更多訊息</p>
 <blockquote>
 <p>$ man ls<br>h</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">                   SUMMARY OF LESS COMMANDS</div><div class="line"></div><div class="line">      Commands marked with * may be preceded by a number, N.</div><div class="line">      Notes in parentheses indicate the behavior if N is given.</div><div class="line"></div><div class="line">  h  H                 Display this help.</div><div class="line">  q  :q  Q  :Q  ZZ     Exit.</div><div class="line"> ---------------------------------------------------------------------------</div><div class="line"></div><div class="line">                           MOVING</div><div class="line"></div><div class="line">  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).</div><div class="line">  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).</div><div class="line">  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).</div><div class="line">  b  ^B  ESC-v      *  Backward one window (or N lines).</div><div class="line">  z                 *  Forward  one window (and set window to N).</div><div class="line">  w                 *  Backward one window (and set window to N).</div><div class="line">  ESC-SPACE         *  Forward  one window, but don&apos;t stop at end-of-file.</div><div class="line">  d  ^D             *  Forward  one half-window (and set half-window to N).</div><div class="line">  u  ^U             *  Backward one half-window (and set half-window to N).</div><div class="line">  ESC-)  RightArrow *  Left  one half screen width (or N positions).</div><div class="line">  ESC-(  LeftArrow  *  Right one half screen width (or N positions).</div><div class="line">  F                    Forward forever; like &quot;tail -f&quot;.</div><div class="line">  r  ^R  ^L            Repaint screen.</div><div class="line">HELP -- Press RETURN for more, or q when done</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">                   SUMMARY OF LESS COMMANDS</span><br><span class="line"></span><br><span class="line">      Commands marked with * may be preceded by a number, N.</span><br><span class="line">      Notes in parentheses indicate the behavior if N is given.</span><br><span class="line"></span><br><span class="line">  h  H                 Display this help.</span><br><span class="line">  q  :q  Q  :Q  ZZ     Exit.</span><br><span class="line"> ---------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">                           MOVING</span><br><span class="line"></span><br><span class="line">  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).</span><br><span class="line">  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).</span><br><span class="line">  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).</span><br><span class="line">  b  ^B  ESC-v      *  Backward one window (or N lines).</span><br><span class="line">  z                 *  Forward  one window (and set window to N).</span><br><span class="line">  w                 *  Backward one window (and set window to N).</span><br><span class="line">  ESC-SPACE         *  Forward  one window, but don&apos;t stop at end-of-file.</span><br><span class="line">  d  ^D             *  Forward  one half-window (and set half-window to N).</span><br><span class="line">  u  ^U             *  Backward one half-window (and set half-window to N).</span><br><span class="line">  ESC-)  RightArrow *  Left  one half screen width (or N positions).</span><br><span class="line">  ESC-(  LeftArrow  *  Right one half screen width (or N positions).</span><br><span class="line">  F                    Forward forever; like &quot;tail -f&quot;.</span><br><span class="line">  r  ^R  ^L            Repaint screen.</span><br><span class="line">HELP -- Press RETURN for more, or q when done</span><br></pre></td></tr></table></figure>
 <p>按<code>q</code>退出查詢畫面</p>
 <h3 id="banner"><a href="#banner" class="headerlink" title="banner"></a><code>banner</code></h3><h4 id="輸出用-組成的大形文字"><a href="#輸出用-組成的大形文字" class="headerlink" title="輸出用#組成的大形文字"></a>輸出用#組成的大形文字</h4><p>實測未出現,上網查了一下banner好像有蠻多不同的類型可以安裝?</p>
 <h3 id="compress"><a href="#compress" class="headerlink" title="compress"></a><code>compress</code></h3><h4 id="壓縮檔案"><a href="#壓縮檔案" class="headerlink" title="壓縮檔案"></a>壓縮檔案</h4><h3 id="zcat"><a href="#zcat" class="headerlink" title="zcat"></a><code>zcat</code></h3><h4 id="讀取壓縮檔案"><a href="#讀取壓縮檔案" class="headerlink" title="讀取壓縮檔案"></a>讀取壓縮檔案</h4><h3 id="uncompress"><a href="#uncompress" class="headerlink" title="uncompress"></a><code>uncompress</code></h3><h4 id="解壓縮檔案"><a href="#解壓縮檔案" class="headerlink" title="解壓縮檔案"></a>解壓縮檔案</h4><blockquote>
-<p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a href="http://www.gnu.org/" target="_blank" rel="external">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
+<p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a href="http://www.gnu.org/" target="_blank" rel="noopener">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>以上是一些基本的 Linux Command ,<br>下一篇,我們會建立.sh檔,將 Linux Command 依照指定的順序執行<br>並使用 <code>sh</code> 命令執行<br>用以完成一些更進階的工作. </p>
 <p>(more..)</p>
@@ -213,7 +239,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="cjfkwrf1r005ppw55lt0hufno" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="cjg3421qs0013y8vxmdlc9n6y" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/26/2018/linux_command_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -263,6 +289,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/04/17/2018/new_pc_install/">[實作筆記]重灌開發環境</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
           </li>
         
@@ -278,10 +308,6 @@ ga('send', 'pageview');
             <a href="/2018/03/22/2018/the_art_of_unit_testing_2nd_0/">[讀書會]單元測試的藝術 - 導讀、序與第一章</a>
           </li>
         
-          <li>
-            <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -291,7 +317,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
