@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.imgur.com/2ct8GiO.jpg">
 <meta property="og:image" content="https://i.imgur.com/0xkci16.jpg">
 <meta property="og:image" content="https://i.imgur.com/HSJoXJp.jpg">
-<meta property="og:updated_time" content="2017-01-15T15:54:27.044Z">
+<meta property="og:updated_time" content="2018-04-17T03:12:39.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI&#x2F;CD 環境建置筆記(一) - 在 windows 安裝 Jenkins">
 <meta name="twitter:description" content="前情提要 CI/CD 環境建置筆記 - 前言&amp;lt;目的&amp;gt;  操作記錄 下載並安裝Jenkins（記錄版本為2.32.1） 連線localhost:8080,會要求輸入Administrator password  安裝Plugins(這裡選擇預設)    安裝畫面  建立管理者帳號密碼  登入後,管理 Jenkins &amp;gt; 設定系統  將執行程式數量設定為 1  (安裝完預設為2,其實">
@@ -118,7 +118,7 @@ ga('send', 'pageview');
 <li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt=""></p>
 </li>
 </ol>
-<ol>
+<ol start="4">
 <li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt=""></p>
 </li>
 <li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt=""><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt=""></p>
@@ -138,29 +138,29 @@ ga('send', 'pageview');
 <li><p>將 Openshift 上的 nodejs 應用程式 repo 設為 remote<br><code>&gt;git remote add prod ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p>
 </li>
 <li><p>回到Jenkins,作業 &gt; 組態 &gt; 建置 &gt; 新增「執行Windows批次指令」</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">REM 測試</span></div><div class="line">whoami</div><div class="line">git push prod HEAD^:master</div></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">REM 測試</span></span><br><span class="line">whoami</span><br><span class="line">git push prod HEAD^:master</span><br></pre></td></tr></table></figure>
 <ol>
 <li>額外處理事項:<br>直接在 Jenkins server 發 pr 給 openshift 時,發生 503 錯誤。<br>使用 ssh 登入 openshift 看 log ,發現<br><code>Node Sass does not yet support your current environment</code> 錯誤<br>必須登入執行以下語法修正模組問題 <code>npm rebuild node-sass</code> </li>
 </ol>
 </li>
 <li><p>建置作業,會得到錯誤訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">上略...</div><div class="line">19:44:46 Host key verification failed.</div><div class="line">19:44:46 fatal: Could not read from remote repository.</div><div class="line">下略...</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上略...</span><br><span class="line">19:44:46 Host key verification failed.</span><br><span class="line">19:44:46 fatal: Could not read from remote repository.</span><br><span class="line">下略...</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt=""></p>
 <p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">SSH原理与运用（一）：远程登录</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="external">SSH原理与运用（二）：远程操作与端口转发</a></li>
-<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="external">[Tip] Windows使用ssh對Github進行操作</a></li>
-<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="external">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="noopener">SSH原理与运用（二）：远程操作与端口转发</a></li>
+<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="noopener">[Tip] Windows使用ssh對Github進行操作</a></li>
+<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="noopener">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjfkwrey5000mpw55ah1cb2jq" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjg3421p8000cy8vxg5ulskti" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -173,19 +173,19 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/24/iis_tracing_log_setting/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)
+          IIS Tracing Log 設定
         
       </div>
     </a>
   
   
-    <a href="/2017/01/15/ci_use_jenkins/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</div>
+      <div class="article-nav-title">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</div>
     </a>
   
 </nav>
@@ -210,6 +210,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/04/17/2018/new_pc_install/">[實作筆記]重灌開發環境</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
           </li>
         
@@ -225,10 +229,6 @@ ga('send', 'pageview');
             <a href="/2018/03/22/2018/the_art_of_unit_testing_2nd_0/">[讀書會]單元測試的藝術 - 導讀、序與第一章</a>
           </li>
         
-          <li>
-            <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -238,7 +238,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

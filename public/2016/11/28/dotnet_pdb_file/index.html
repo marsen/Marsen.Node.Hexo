@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Marsen">
 <meta property="og:description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:   A program database (.pdb) f">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2016-12-04T17:22:31.206Z">
+<meta property="og:updated_time" content="2018-04-17T03:12:39.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".NET PDB File 介紹">
 <meta name="twitter:description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:   A program database (.pdb) f">
@@ -120,10 +120,10 @@ ga('send', 'pageview');
 <h3 id="看看-pdb檔的內容"><a href="#看看-pdb檔的內容" class="headerlink" title="看看.pdb檔的內容"></a>看看.pdb檔的內容</h3><ol>
 <li>開啟 %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\DIA SDK\Samples\DIA2Dump\dia2dump.sln</li>
 </ol>
-<ol>
+<ol start="2">
 <li>執行以下命令<br><code>Dia2Dump pdbfilepath &gt;&gt; dumpfileName.txt</code><br>ex:<br><code>Dia2Dump C:\myproj\bin\debug\myproj.pdb &gt;&gt; myproj_dump.txt</code></li>
 </ol>
-<ol>
+<ol start="3">
 <li>輸出的結果大致如下 </li>
 </ol>
 <pre><code>Function       : In MetaData, [00001F16][0001:00001F16], len = 000000ED, GetBookList
@@ -145,17 +145,17 @@ line 46 at [00001F16][0001:00001F16], len = 0x1    D:\Repo\Mark_Lin\MYPROJ\WebAP
 line 47 at [00001F17][0001:00001F17], len = 0x6
 line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 
 </code></pre><h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><ul>
-<li><a href="http://anferneehardaway.pixnet.net/blog/post/6273453" target="_blank" rel="external">http://anferneehardaway.pixnet.net/blog/post/6273453</a></li>
-<li><a href="https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx" target="_blank" rel="external">https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx</a></li>
-<li><a href="http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know" target="_blank" rel="external">http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know</a></li>
-<li><a href="https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/" target="_blank" rel="external">https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/</a></li>
+<li><a href="http://anferneehardaway.pixnet.net/blog/post/6273453" target="_blank" rel="noopener">http://anferneehardaway.pixnet.net/blog/post/6273453</a></li>
+<li><a href="https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx</a></li>
+<li><a href="http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know" target="_blank" rel="noopener">http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/" target="_blank" rel="noopener">https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjfkwreyd000rpw55f3gzb7vx" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjg3421pa000ey8vx6d27chvi" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -205,6 +205,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <ul>
         
           <li>
+            <a href="/2018/04/17/2018/new_pc_install/">[實作筆記]重灌開發環境</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
           </li>
         
@@ -220,10 +224,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
             <a href="/2018/03/22/2018/the_art_of_unit_testing_2nd_0/">[讀書會]單元測試的藝術 - 導讀、序與第一章</a>
           </li>
         
-          <li>
-            <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -233,7 +233,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

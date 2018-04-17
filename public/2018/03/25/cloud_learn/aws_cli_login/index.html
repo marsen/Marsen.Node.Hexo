@@ -6,7 +6,7 @@
   <title>[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="安裝 AWS CLI配置 AWS CLIEC2 開機  直接開機跳過網路設定(也還沒有辦法設) 第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助  設定 Putty連線機器 ex:    ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com  預設連線帳戶 For Amaz">
-<meta name="keywords" content="AWS,docker,Root User">
+<meta name="keywords" content="AWS,Root User,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login">
 <meta property="og:url" content="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/index.html">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://i.imgur.com/dNGygaT.jpg">
 <meta property="og:image" content="https://i.imgur.com/xIQsEac.jpg">
-<meta property="og:updated_time" content="2018-04-04T09:08:08.359Z">
+<meta property="og:updated_time" content="2018-04-17T03:12:39.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login">
 <meta name="twitter:description" content="安裝 AWS CLI配置 AWS CLIEC2 開機  直接開機跳過網路設定(也還沒有辦法設) 第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助  設定 Putty連線機器 ex:    ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com  預設連線帳戶 For Amaz">
@@ -103,22 +103,22 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安裝-AWS-CLI"><a href="#安裝-AWS-CLI" class="headerlink" title="安裝 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html" target="_blank" rel="external">安裝 AWS CLI</a></h2><h2 id="配置-AWS-CLI"><a href="#配置-AWS-CLI" class="headerlink" title="配置 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration" target="_blank" rel="external">配置 AWS CLI</a></h2><h2 id="EC2-開機"><a href="#EC2-開機" class="headerlink" title="EC2 開機"></a>EC2 開機</h2><p><img src="https://i.imgur.com/dNGygaT.jpg" alt=""></p>
+        <h2 id="安裝-AWS-CLI"><a href="#安裝-AWS-CLI" class="headerlink" title="安裝 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html" target="_blank" rel="noopener">安裝 AWS CLI</a></h2><h2 id="配置-AWS-CLI"><a href="#配置-AWS-CLI" class="headerlink" title="配置 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration" target="_blank" rel="noopener">配置 AWS CLI</a></h2><h2 id="EC2-開機"><a href="#EC2-開機" class="headerlink" title="EC2 開機"></a>EC2 開機</h2><p><img src="https://i.imgur.com/dNGygaT.jpg" alt=""></p>
 <ul>
 <li>直接開機跳過網路設定(也還沒有辦法設)</li>
 <li>第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助</li>
 </ul>
-<h2 id="設定-Putty"><a href="#設定-Putty" class="headerlink" title="設定 Putty"></a>設定 <a href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console" target="_blank" rel="external">Putty</a></h2><h2 id="連線機器"><a href="#連線機器" class="headerlink" title="連線機器"></a>連線機器</h2><p><img src="https://i.imgur.com/xIQsEac.jpg" alt=""></p>
+<h2 id="設定-Putty"><a href="#設定-Putty" class="headerlink" title="設定 Putty"></a>設定 <a href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console" target="_blank" rel="noopener">Putty</a></h2><h2 id="連線機器"><a href="#連線機器" class="headerlink" title="連線機器"></a>連線機器</h2><p><img src="https://i.imgur.com/xIQsEac.jpg" alt=""></p>
 <p>ex:  </p>
 <blockquote>
-<p>ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</p>
+<p>ssh -i /path/my-key-pair.pem <a href="mailto:ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com" target="_blank" rel="noopener">ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</a></p>
 </blockquote>
 <h3 id="預設連線帳戶"><a href="#預設連線帳戶" class="headerlink" title="預設連線帳戶"></a>預設連線帳戶</h3><blockquote>
 <p>For Amazon Linux, the user name is <code>ec2-user</code>.<br>For Centos, the user name is <code>centos</code>.<br>For Debian, the user name is <code>admin</code> or <code>root</code>.<br>For Fedora, the user name is <code>ec2-user</code>.<br>For RHEL, the user name is <code>ec2-user</code> or <code>root</code>.<br>For SUSE, the user name is <code>ec2-user</code> or <code>root</code>.<br>For Ubuntu, the user name is <code>ubuntu</code> or <code>root</code>.<br>Otherwise, if <code>ec2-user</code> and <code>root</code> don’t work, check with your AMI provider.</p>
 </blockquote>
 <p>windows 好像是 Administrator ? 求補充</p>
-<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="安裝-docker"><a href="#安裝-docker" class="headerlink" title="安裝 docker"></a>安裝 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install docker</div></pre></td></tr></table></figure>
-<h3 id="啟動-Docker-服務，並讓它隨系統啟動自動載入"><a href="#啟動-Docker-服務，並讓它隨系統啟動自動載入" class="headerlink" title="啟動 Docker 服務，並讓它隨系統啟動自動載入"></a>啟動 Docker 服務，並讓它隨系統啟動自動載入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo service docker start</div><div class="line">$ sudo chkconfig docker on</div></pre></td></tr></table></figure>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="安裝-docker"><a href="#安裝-docker" class="headerlink" title="安裝 docker"></a>安裝 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker</span><br></pre></td></tr></table></figure>
+<h3 id="啟動-Docker-服務，並讓它隨系統啟動自動載入"><a href="#啟動-Docker-服務，並讓它隨系統啟動自動載入" class="headerlink" title="啟動 Docker 服務，並讓它隨系統啟動自動載入"></a>啟動 Docker 服務，並讓它隨系統啟動自動載入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure>
 <h3 id="雷包"><a href="#雷包" class="headerlink" title="雷包"></a>雷包</h3><ul>
 <li>重啟機器的話 public dns 會改變.(意味連線的命令參數會變)</li>
 <li><p>注意使用的AIM, 不同的 Linux OS 會有不同的套件執行命令</p>
@@ -127,16 +127,16 @@ ga('send', 'pageview');
 <li>CentOS <code>yum</code><h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3></li>
 </ul>
 </li>
-<li><p><a href="https://philipzheng.gitbooks.io/docker_practice" target="_blank" rel="external">Docker —— 從入門到實踐</a></p>
+<li><p><a href="https://philipzheng.gitbooks.io/docker_practice" target="_blank" rel="noopener">Docker —— 從入門到實踐</a></p>
 </li>
-<li><a href="https://www.gitbook.com/book/joshhu/dockercommands/details" target="_blank" rel="external">全面易懂的Docker指令大全</a></li>
+<li><a href="https://www.gitbook.com/book/joshhu/dockercommands/details" target="_blank" rel="noopener">全面易懂的Docker指令大全</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/" data-id="cjfkwrf270065pw55282vg3cu" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/" data-id="cjg3421ra001jy8vxzqedue65" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -186,6 +186,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/04/17/2018/new_pc_install/">[實作筆記]重灌開發環境</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
           </li>
         
@@ -201,10 +205,6 @@ ga('send', 'pageview');
             <a href="/2018/03/22/2018/the_art_of_unit_testing_2nd_0/">[讀書會]單元測試的藝術 - 導讀、序與第一章</a>
           </li>
         
-          <li>
-            <a href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -214,7 +214,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
