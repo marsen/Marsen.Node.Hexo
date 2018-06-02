@@ -6,11 +6,14 @@ tag:
   - Visual Studio
 ---
 ## 應該要知道的事
+
 - 這是踩雷筆記
 - 2017的筆記可能會隨時間變得沒有參考價值
 - Visual Studio 2017的問題,並不一定適用其他版本
+- 最後面會有不定時補充
 
 ## 情境
+
 ![載入測試時發生例外狀況](https://i.imgur.com/FDDtc9V.jpg)
 原本使用 Visual Studio 2015 建立的測試專案,
 升級到 Visual Studio 2017 後, 發生以下錯誤
@@ -47,3 +50,8 @@ Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 - [Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions](https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html)
 
 (fin)
+
+## 補充 
+- 2018/06/02 : 
+visual studio 2017 15.7.* 的版本之後 `%temp%\VisualStudioTestExplorerExtensions` 消失了,
+不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。
