@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Marsen">
 <meta property="og:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2018-04-05T08:20:20.484Z">
+<meta property="og:updated_time" content="2018-06-02T11:50:39.329Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[學習筆記]Linux 語法學習筆記 二">
 <meta name="twitter:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
@@ -122,7 +122,7 @@ ga('send', 'pageview');
 <li><p>編輯檔案</p>
 <blockquote>
 <p>$ vim helloworld.sh</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#say hello</div><div class="line">echo &quot;hello world&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>執行檔案</p>
@@ -136,12 +136,12 @@ ga('send', 'pageview');
 <li>使用 <code>read</code> 讀取 input 到變數中</li>
 <li>使用 <code>$</code>+變數名呼叫變數</li>
 </ol>
-<p>sample:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># this is a shell sample</div><div class="line">echo &quot;who are you?&quot;</div><div class="line">read name</div><div class="line">echo &quot;Hi, $name nice to see you.&quot;</div></pre></td></tr></table></figure></p>
+<p>sample:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure></p>
 <p>executed:</p>
 <blockquote>
 <p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
 </blockquote>
-<h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># this is a shell sample</div><div class="line">echo &quot;keyin a filename&quot;</div><div class="line">read name</div><div class="line">mv $1 $name</div><div class="line">echo $name&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "keyin a filename"</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name"</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>$ sh rename.sh file1<br>keyin a filename<br>newfile<br>newfile</p>
 </blockquote>
@@ -157,16 +157,16 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="external">Unix Terminal Online</a></li>
-<li><a href="https://itsfoss.com/how-to-exit-vim/" target="_blank" rel="external">離開Vim的<del>100種</del>方法</a></li>
-<li><a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="external">鳥哥的 Linux 私房菜—認識與學習BASH</a></li>
+<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="noopener">Unix Terminal Online</a></li>
+<li><a href="https://itsfoss.com/how-to-exit-vim/" target="_blank" rel="noopener">離開Vim的<del>100種</del>方法</a></li>
+<li><a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="noopener">鳥哥的 Linux 私房菜—認識與學習BASH</a></li>
 </ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="cjhqj9n4x005fr0553ojva3lx" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="cjhxcajqw003glwvx8dxfxr0f" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/04/05/2018/linux_command_2/#disqus_thread" class="article-comment-link">留言</a>
       
