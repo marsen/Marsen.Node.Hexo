@@ -53,5 +53,6 @@ Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 
 ## 補充 
 - 2018/06/02 : 
-visual studio 2017 15.7.* 的版本之後 `%temp%\VisualStudioTestExplorerExtensions` 消失了,
+visual studio 2017 15.7.* 的版本之後 ,
+`%temp%\VisualStudioTestExplorerExtensions` 消失了 ,
 不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。
