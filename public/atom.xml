@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-06-02T11:50:39.330Z</updated>
+  <updated>2018-06-02T13:23:12.724Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[活動筆記]有關海外工作的大小事</title>
+    <link href="http://blog.marsen.me/2018/06/02/2018/mit_job_event_log/"/>
+    <id>http://blog.marsen.me/2018/06/02/2018/mit_job_event_log/</id>
+    <published>2018-06-02T12:55:44.000Z</published>
+    <updated>2018-06-02T13:23:12.724Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="隨手記"><a href="#隨手記" class="headerlink" title="隨手記"></a>隨手記</h2><h3 id="讓企業買你的專業與合作能力-而不是買你的時間"><a href="#讓企業買你的專業與合作能力-而不是買你的時間" class="headerlink" title="讓企業買你的專業與合作能力;而不是買你的時間"></a>讓企業買你的專業與合作能力;而不是買你的時間</h3><h3 id="有關薪水"><a href="#有關薪水" class="headerlink" title="有關薪水"></a>有關薪水</h3><p>在<strong>台灣通常最後才談薪水</strong> , 在海外可以先提薪水<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在台灣也要先提啦 , 講那麼多最後薪水談不攏只是浪費時間</span><br></pre></td></tr></table></figure></p><p><strong>薪水是少數客觀的指標</strong> , 所以怎麼談很重要.<br>海外工作怎麼談薪水 ? 請考慮以下幾點:</p><ul><li>家庭移居(relocation)</li><li>津貼(allowance)</li><li>稅</li><li>健康保險(healthcare insurance)  </li></ul><p>而在海外工作的技能最重要的是語言與專業,<br>目前<strong>軟體工程</strong>最熱門,<strong>英文</strong>很基本<br>會<strong>中文</strong>其實也沒什麼.<br>另外注意簽証通常有最低薪保障,<br>在台灣年薪 250 以上才是獵頭的目標,<br>在選擇方面,建議考慮 <strong>個人成長 &gt; 公司賺不賺錢</strong><br>小公司或新創公司可能沒有很好的薪福;<br>可能有以下幾種選擇:  </p><ul><li>分紅</li><li>公司股票</li><li>選擇權</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有好有壞,要自已拿捏;  </span><br><span class="line">如果不是核心骨幹的話,拿到錢最重要  </span><br><span class="line">要不然很容易被大股東透過一些手段稀釋股權  </span><br><span class="line">有選擇當然更好,但是往往會變得更複雜</span><br></pre></td></tr></table></figure><p>薪資不應與前公司掛勾,你可以選擇不透露你的薪資<br>薪資保密,應該是指公司要替你保密,<br>你可以選擇讓誰知道,而非限制自已不得透露給任何人  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">台灣公司很常對內搞薪資保密,</span><br><span class="line">甚至視為禁語, 只能說弊大利</span><br><span class="line">徒生猜疑 惹人聯想是否不同工不同酬 .</span><br></pre></td></tr></table></figure><p>另外公司常用競業條款作一些轉職的限制,<br>為了自保應該有<strong>但書與對價關係</strong> .</p><h3 id="國際狀況"><a href="#國際狀況" class="headerlink" title="國際狀況"></a>國際狀況</h3><p>台灣青年的評價<strong>算肯吃苦,但是要求快速得到回報</strong><br>目前缺工的鄰近國家:中國、菲律賓、日本,<br>英/美/歐/澳算相對困難,瑞典有一些機會,<br>新加坡的所得稅很低.</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;隨手記&quot;&gt;&lt;a href=&quot;#隨手記&quot; class=&quot;headerlink&quot; title=&quot;隨手記&quot;&gt;&lt;/a&gt;隨手記&lt;/h2&gt;&lt;h3 id=&quot;讓企業買你的專業與合作能力-而不是買你的時間&quot;&gt;&lt;a href=&quot;#讓企業買你的專業與合作能力-而不是買你的時間&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記]穀倉效應 </title>
@@ -511,34 +532,6 @@
       <category term="Unit Testing" scheme="http://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="Integrated Testing" scheme="http://blog.marsen.me/tags/Integrated-Testing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[學習筆記]AWS EC2開機筆記</title>
-    <link href="http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/"/>
-    <id>http://blog.marsen.me/2017/12/08/cloud_learn/aws_creat_ec2_instance/</id>
-    <published>2017-12-08T08:42:42.000Z</published>
-    <updated>2018-04-17T03:12:39.613Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul><li>這個是教育訓練的筆記</li><li>使用web console 建立ec2</li><li>使用cli 建立ec2</li><li>2017的筆記可能會隨時間變得沒有參考價值</li><li>關鍵參數都打馬賽克,沒有牽扯到EBS/S3/VPC</li><li>對你可能沒有幫助</li></ul><h2 id="Web-Console"><a href="#Web-Console" class="headerlink" title="Web Console"></a>Web Console</h2><ol><li><p>login AWS</p></li><li><p>進入EC2<br><img src="https://i.imgur.com/hRFwjzr.jpg" alt=""></p></li><li><p>Launch Instance<br><img src="https://i.imgur.com/g9vlacA.jpg" alt=""></p></li><li><p>選擇AMI(Amazon Machine Image )<br><img src="https://i.imgur.com/dVKPsAp.jpg" alt=""></p></li><li><p>選擇Instance Type(有錢隨便選,沒錢選t2.nano)<br><img src="https://i.imgur.com/61gG2pd.jpg" alt=""></p></li><li><p>設定 Instance Details<br><img src="https://i.imgur.com/NkbKrzL.jpg" alt=""></p></li><li><p>如果想在開機的時候自動安裝一些程式,可以在<code>Advanced Details</code> 加語法<br>windows AMI請用 <code>Powershell</code><br><img src="https://i.imgur.com/bJxWlgd.jpg" alt=""></p></li><li><p>加硬碟<br><img src="https://i.imgur.com/MP9igLc.jpg" alt=""></p></li><li><p>加tag<br><img src="https://i.imgur.com/xDTx2nv.jpg" alt=""></p></li><li><p>設定Configure Security Group<br><img src="https://i.imgur.com/wximWw1.jpg" alt=""></p></li><li><p>預覽與啟動<br><img src="https://i.imgur.com/6Y4fcOI.jpg" alt=""></p></li><li><p>最後一步,選擇key-pair<br><img src="https://i.imgur.com/fRhUafI.jpg" alt=""></p></li></ol><h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications &quot;ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]&quot; --security-group-ids sg-XXXXXX --key-name marktest.japan.training</span><br></pre></td></tr></table></figure><h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul><li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="noopener">run-instances</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;應該知道的事&quot;&gt;&lt;a href=&quot;#應該知道的事&quot; class=&quot;headerlink&quot; title=&quot;應該知道的事&quot;&gt;&lt;/a&gt;應該知道的事&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;這個是教育訓練的筆記&lt;/li&gt;
-&lt;li&gt;使用web console 建立ec2&lt;/li&gt;
-&lt;li
-      
-    
-    </summary>
-    
-    
-      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
-    
-      <category term="EC2" scheme="http://blog.marsen.me/tags/EC2/"/>
     
   </entry>
   
