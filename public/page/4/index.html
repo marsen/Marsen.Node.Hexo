@@ -75,6 +75,313 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-unitestwriting" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/unitestwriting/" class="article-date">
+  <time datetime="2017-04-22T16:01:39.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/unitestwriting/">[活動筆記]單元測試這樣玩就對了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事:"></a>應該知道的事:</h2><ul>
+<li>使用 C# , 但是其他語言也適用 </li>
+<li>使用 Visual Studio</li>
+<li>案例一有基本數理的專有名詞<ul>
+<li>上界(Upper Bound)、下界(lower Bound)、左邊界(Left Bound)、右邊界(Right Bound)</li>
+</ul>
+</li>
+<li>報名資訊(已結束)<br><a href="http://www.accupass.com/go/unitestwriting" target="_blank" rel="noopener">Agile Meetup 2017/04 意外版: 單元測試這樣玩就對了</a></li>
+</ul>
+<h2 id="案例一、數值區間"><a href="#案例一、數值區間" class="headerlink" title="案例一、數值區間"></a>案例一、數值區間</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">假定給任一整數區間</span><br><span class="line">ex:</span><br><span class="line">(1,6] = &#123;2,3,4,5,6&#125; </span><br><span class="line">[-2,4) = &#123;-2,-1,0,1,2,3&#125;</span><br><span class="line">透過一個function(x)檢查x是否包含在整數區間內,</span><br><span class="line">並撰寫測試,驗証 function(x)是對的。</span><br></pre></td></tr></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>如上範例所示,<br>「(」「)」小括號(parentheses)表示<code>OPEN</code>(不包含,大於或小於)<br>「[」「]」中括號(square brackets)表示<code>CLOSE</code>(包含,大於等於或小於等於)<br> (1,6] , 代表這個區間大於1小於等於6,包含的整數有 2、3、4、5、6<br> [-2,4), 代表這個區間大於等於-2小於4,包含的整數有-2、-1、0、1、2、3</p>
+<p><img src="https://i.imgur.com/TDHhx0A.png" alt=""></p>
+<p>這題比較單純,只需要考慮所有的情況,<br>並且寫成單元測試即可。</p>
+<ol>
+<li>x 落在區間內</li>
+<li>x 落在左邊界外</li>
+<li>x 落在右邊界外</li>
+<li>x 落在左邊界上,左邊界為<code>OPEN</code></li>
+<li>x 落在左邊界上,左邊界為<code>CLOSE</code></li>
+<li>x 落在右邊界上,右邊界為<code>OPEN</code></li>
+<li>x 落在右邊界上,右邊界為<code>CLOSE</code></li>
+</ol>
+<p>有幾種特殊的情境,特別說明一下</p>
+<ol>
+<li>假設區間為(0,1),這個區間是不包含任何整數</li>
+<li>假設區間為(1,1),這個區間是不包含任何整數,且不包含任何數值</li>
+<li>假設區間為[1,1],這個區間恰巧包含1個整數,且只包含1這個整數</li>
+<li>假設”區間”為[2,1],或任何左邊界大右邊界的表示,這不是一個正確的區間,將要作例外處理。</li>
+</ol>
+<p>讓我們回歸單元測試,<br>這裡的重點是<strong>一個測試只作一件事</strong>,<br>只把一個情境釐清,並且在測試的程式碼中<br><strong>明確的表達測試目的</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> leftBound = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> rightBound = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> testNum = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">IncludeWhenLeftOpenRightClose</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> checker = <span class="keyword">new</span> RangeChecker(Bound.Open,<span class="keyword">this</span>.leftBound,Bound.Close,<span class="keyword">this</span>.rightBound);</span><br><span class="line">    <span class="keyword">bool</span> expect = <span class="literal">false</span>;            </span><br><span class="line">    <span class="keyword">bool</span> result = checker.IsContains(testNum);</span><br><span class="line">    Assert.IsTrue(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="案例二、現在時間轉字串"><a href="#案例二、現在時間轉字串" class="headerlink" title="案例二、現在時間轉字串"></a>案例二、現在時間轉字串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">寫一個方法GetNowString,不傳入任何參數,</span><br><span class="line">取得現在的時間字串,需要精準到豪秒。</span><br><span class="line">再寫一個測試去測試這個方法是對的‧</span><br></pre></td></tr></table></figure>
+<h3 id="版本1"><a href="#版本1" class="headerlink" title="版本1"></a>版本1</h3><p>最簡單的寫法:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateHelper</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> DateTime.Now.ToString(<span class="string">"yyyy-MM-dd hh:mm:ss ff"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>撰寫測試<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> </span><br><span class="line">	<span class="comment"><span class="doctag">///</span>/ 寫不下去,因為我們無法凍結系統的時間</span></span><br><span class="line">	<span class="keyword">string</span> expect = <span class="string">"2017-04-19 20:45:17.88"</span>;</span><br><span class="line">	<span class="keyword">string</span> result = dater.GetNowString();</span><br><span class="line">	Assert.AreEqual(expect, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><p><code>GetNowString</code>與系統的時間<code>DateTime.Now</code>,<br>是具有耦合性,要解耦需要透過一些IoC的手段去處理。</p>
+<h3 id="版本2"><a href="#版本2" class="headerlink" title="版本2"></a>版本2</h3><p>利用繼承的方法,作出假的類別<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateHelper</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">protected</span> DateTime now;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> DateTime <span class="title">GetNow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		now = DateTime.Now;</span><br><span class="line">		<span class="keyword">return</span> now;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		GetNow();</span><br><span class="line">		<span class="keyword">return</span> now.ToString(<span class="string">"yyyy-MM-dd HH:mm:ss.ff"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">StubDateHelper</span>: <span class="title">DateHelper</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> DateTime <span class="title">GetNow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> now;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetNow</span>(<span class="params">DateTime datetime</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		now = datetime;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>撰寫測試<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	StubDateHelper dateHelper = <span class="keyword">new</span> StubDateHelper();</span><br><span class="line">	<span class="keyword">var</span> fakeNow = <span class="keyword">new</span> DateTime(<span class="number">2017</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">45</span>,<span class="number">17</span>,<span class="number">880</span>);</span><br><span class="line">	dateHelper.SetNow(fakeNow);</span><br><span class="line">	<span class="keyword">string</span> expect = <span class="string">"2017-04-19 20:45:17.88"</span>;</span><br><span class="line">	<span class="keyword">string</span> result = dateHelper.GetNowString();</span><br><span class="line">	Assert.AreEqual(expect, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h3><p>基本上這樣就可以測試了,<br>原來的代碼,經過一定的重構,<br>透過<code>virtual</code>方法GetNow,<br>將<code>Datetime.Now</code>作了隔離<br>適當利用假類別,取代掉GetNow的方法。</p>
+<p>這樣夠好了,但是我們可以看看另一種作法</p>
+<h3 id="版本3"><a href="#版本3" class="headerlink" title="版本3"></a>版本3</h3><p>先看看我們的<code>DateHelper</code>,<br>在這裡我們將GetNow交由IDateProvider的類別去實作,<br>如此一來就斷開了耦合性。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateHelper</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">private</span> IDateProvider DateProvider;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DateHelper</span>(<span class="params">IDateProvider dateProvider</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.DateProvider = dateProvider;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> now = <span class="keyword">this</span>.DateProvider.GetNow();</span><br><span class="line">		<span class="keyword">return</span> now.ToString(<span class="string">"yyyy-MM-dd HH:mm:ss.ff"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>實作IDateProvider的類別,<br>在這裡其實不重要.<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateProviderV1</span> : <span class="title">IDateProvider</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DateTime <span class="title">GetNow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> DateTime.Now;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>讓我們看看測試,<br>在這裡我們透過一個假的<code>IDateProvider</code>的實作<code>DateProviderStub</code>,<br>完成了測試,<br>IDateProvider將<code>DateTime.Now</code>作了隔離,<br>並且提供更容易修改的假物件(僅僅需要實作觀注的方法即可,不用擔心繼承帶來的附作用)</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestMethod</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetNowString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	DateProviderStub dateProvider = <span class="keyword">new</span> DateProviderStub();</span><br><span class="line">	dateProvider.now = <span class="keyword">new</span> DateTime(<span class="number">2017</span>, <span class="number">4</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">45</span>, <span class="number">17</span>, <span class="number">880</span>);</span><br><span class="line">	<span class="keyword">var</span> dateHelper = <span class="keyword">new</span> DateHelper(dateProvider);</span><br><span class="line">	<span class="keyword">string</span> expect = <span class="string">"2017-04-19 20:45:17.88"</span>;</span><br><span class="line">	<span class="keyword">string</span> result = dateHelper.GetNowString();</span><br><span class="line">	Assert.AreEqual(expect, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DateProviderStub</span> : <span class="title">IDateProvider</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> DateTime now;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DateTime <span class="title">GetNow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> now;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="圖例解析"><a href="#圖例解析" class="headerlink" title="圖例解析"></a>圖例解析</h3><p>我們剛剛究竟幹了什麼？<br><img src="https://i.imgur.com/qeqzaoO.jpg" alt=""><br>看看原本的情況,本來的方法因為相依與<code>Datetime</code>而無法測試<br><img src="https://i.imgur.com/Mquk1Cm.png" alt=""><br>讓我們開始下刀,<br>先用一個新的方法<code>GetNow</code><br>將它與待測的方法作分割,<br>但是對整個類來說仍舊是耦合。<br><img src="https://i.imgur.com/c0Xg4vw.png" alt=""><br>繼續把這刀往下切,<br>我們墊一層介面,<br>待測方法不再直接呼叫<code>GetNow</code><br>而是透過介面執行,當然會有額外實作介面與注入的功(請參考程式碼,不在此處繪出了.)<br><img src="https://i.imgur.com/8dDlWi2.png" alt=""><br>最後,別忘了我們的目的<br>測試原本的待測方法,<br>我們可以透過一個<code>假的</code>類,<br>來操控他的行為(ex:凍結時間).<br>如此一來,就可進行測試了.<br><img src="https://i.imgur.com/c3mW59v.png" alt=""><br>另外,這種被待測方法呼叫後<br>會回傳一個假值的方法或類<br>被叫作<code>STUB</code><br><img src="https://i.imgur.com/KXvYMsx.png" alt=""></p>
+<h2 id="案例三、發送郵件"><a href="#案例三、發送郵件" class="headerlink" title="案例三、發送郵件"></a>案例三、發送郵件</h2><p>事先聲明,這題沒有程式碼,<br>有興趣實作的人可以試試看.<br>如果可以分享實作後的資訊給我更好XD<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Q:註冊發送郵件如何寫單元測試？</span><br></pre></td></tr></table></figure></p>
+<h3 id="解析-3"><a href="#解析-3" class="headerlink" title="解析"></a>解析</h3><p>很明顯的發送郵件需要依賴外部的郵件系統,<br>這裡就會有耦合性,我們可以參考案例2的方式解耦<br>不過發送郵件並不會有回傳值,<br>我們要如何驗証正確性呢？</p>
+<p>A:檢查調用次數、參數</p>
+<h3 id="圖例解析-1"><a href="#圖例解析-1" class="headerlink" title="圖例解析"></a>圖例解析</h3><p>在案例2的單元測試,<br>我們透過STUB偽造的回傳值完成測試<br>並執行驗証.<br>但是在沒有回傳的值的方法中(被稱作<code>MOCK</code>)<br>我們只能透過傳遞的參數(如果有多載)<br>與方法被調用的次數來進行驗証。</p>
+<p><img src="https://i.imgur.com/zbllutC.png" alt=""></p>
+<h2 id="重點摘要"><a href="#重點摘要" class="headerlink" title="重點摘要"></a>重點摘要</h2><ul>
+<li>單元測試要能清楚表達測試的目的(<strong>達意</strong>)<ul>
+<li>命名</li>
+<li>減少意外的細節</li>
+</ul>
+</li>
+<li>單元測試一次只作一件事 </li>
+<li>new 本身就是一種邏輯 一種偶合</li>
+<li>static 是一種高偶合</li>
+<li>繼承也是高偶合,能使用繼承的情境很少<ul>
+<li>A is a B 通常只有這種情境才適合繼承</li>
+</ul>
+</li>
+<li>STUB &amp; MOCK<ul>
+<li>STUB 會有回傳值,可以在 Unit Test 作驗証(ASSERT)</li>
+<li>MOCK 沒有回傳值,可以在 MOCK 本身中 作驗証(ASSERT)</li>
+</ul>
+</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>SLIM </li>
+<li>注入相依的幾種方式<ul>
+<li>Pool</li>
+<li>Constructor</li>
+<li>Property</li>
+</ul>
+</li>
+<li>書單 : XUnit Test Patterns</li>
+</ul>
+<h2 id="直播影片"><a href="#直播影片" class="headerlink" title="直播影片"></a>直播影片</h2><p><em>如果連結失效,煩請告知.</em></p>
+<ul>
+<li><a href="https://www.facebook.com/AgileCommunity.tw/videos/948509765286712/" target="_blank" rel="noopener">影片1</a></li>
+<li><a href="https://www.facebook.com/AgileCommunity.tw/videos/948548118616210/" target="_blank" rel="noopener">影片2</a></li>
+</ul>
+<p>文章內容如有謬誤,煩請指正.</p>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/04/23/unitestwriting/" data-id="cjhxca9uw000tjgvxer3set74" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/04/23/unitestwriting/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Test/">Unit Test</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-books/book_attack_your_day" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/26/books/book_attack_your_day/" class="article-date">
+  <time datetime="2017-03-25T16:08:46.000Z" itemprop="datePublished">2017-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/26/books/book_attack_your_day/">[閱讀筆記]其實，你不是沒有時間</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
+<li>原則:<strong>工具簡單至上</strong></li>
+<li>面對突發狀況</li>
+</ul>
+<ol>
+<li>月計劃表 (<code>google calendar</code>)<ul>
+<li>與自已約會(保留給自已的時間)^註1^</li>
+<li>工作與私人不要分開</li>
+<li>日期與期限 </li>
+</ul>
+</li>
+<li>Todo List (<code>inbox</code>)<ul>
+<li>提醒與集中管理</li>
+<li>每天都要檢查一遍^註2^ </li>
+</ul>
+</li>
+<li>日計劃表 (<code>google calendar</code>)<ul>
+<li>當日約會 &amp; 活動清單</li>
+<li>活動清單是你當天的籌碼 也是出現突發 </li>
+</ul>
+</li>
+<li>隨手記 (<code>筆記本&amp;Evernote</code>)<ul>
+<li>接受任務，再轉到其他工具之中^註3^     </li>
+</ul>
+</li>
+<li>隨身資料庫 (<code>google drive</code>)<ul>
+<li>將整理過的資料封存在隨手可得的地方<br>ex: 上課或分享的簡報、 專案記錄等…有大量圖片、文件等</li>
+</ul>
+</li>
+<li>溝通工具 (<code>line &amp; slack</code>)<ul>
+<li>一天檢查電子郵件3~6次就夠了</li>
+</ul>
+</li>
+</ol>
+<h2 id="把時間變空間-視覺化"><a href="#把時間變空間-視覺化" class="headerlink" title="把時間變空間(視覺化)"></a>把時間變空間(視覺化)</h2><ul>
+<li>個人、家庭、工作取得平衡</li>
+<li>安排30分鐘規劃一天的活動<ul>
+<li>創造性活動安排在精力最佳的時段</li>
+<li>安排獨處的時間</li>
+<li>安排恢復精力的時間</li>
+<li>預留時間給可能發生的突發事件</li>
+</ul>
+</li>
+<li>將所有的事情分為紅綠黃(灰)^註4^，綠色應該越多越好，灰色越少越好。<table><br><tr><td>6 am</td><td>7 am</td><td>8 am</td><td>9 am</td><td>10 am</td><td>11 am</td><td>12 am</td><td>1 pm</td></tr><br><tr><td>5 am</td><td colspan="3" rowspan="4" valign="top">本日活動</td><td colspan="3" rowspan="4" valign="top">隨手記</td><td>2 pm</td></tr><br><tr><td>4 am</td><td>3 pm</td></tr><br><tr><td>3 am</td><td>4 pm</td></tr><br><tr><td>2 am</td><td>5 pm</td></tr><br><tr><td>1 am</td><td>12 am</td><td>11 pm</td><td>10 pm</td><td>9 pm</td><td>8 pm</td><td>7 pm</td><td>6 pm</td></tr><br></table>
+
+</li>
+</ul>
+<h2 id="應變執行，計劃趕不上變化"><a href="#應變執行，計劃趕不上變化" class="headerlink" title="應變執行，計劃趕不上變化"></a>應變執行，計劃趕不上變化</h2><ul>
+<li>調整事情的順序</li>
+<li>養成習慣</li>
+<li>臨機應變</li>
+<li>小心多工</li>
+<li>保留風格</li>
+</ul>
+<h2 id="註"><a href="#註" class="headerlink" title="註"></a>註</h2><ol>
+<li>分別為聖的時間，請參考<code>與時間作朋友</code></li>
+<li>利用分別為聖的時間檢查</li>
+<li>餐盤中間的區塊可以用來作當日的活動清單 &amp; 隨手記</li>
+<li>可以參考四象限 重要-緊急(紅)、不重要-緊急(黃)、重要-不緊急(綠)、不重要-不緊急(灰)</li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/" data-id="cjhxca9xd0048jgvx3eudamzj" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/時間管理/">時間管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-auto_add_trello_card" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/auto_add_trello_card/" class="article-date">
+  <time datetime="2017-02-08T15:52:27.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/auto_add_trello_card/">自動化 Trello 操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
+<h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
+<li>開啟 Menu &gt; More</li>
+<li>點選 Email-to-board Settings</li>
+<li>選擇你要產生卡片的 List 與 位置(頂部或底部)</li>
+</ol>
+<p><img src="https://i.imgur.com/PqDLtdO.gif" alt=""></p>
+<ol>
+<li>寄信，信件格式如下<ul>
+<li>email 的 subject 會成為卡片的標題</li>
+<li>email 的內容會成為卡片的描述</li>
+<li>如果有附加檔案在郵件中，會附加到卡片中</li>
+<li>在 subject 加入 <code>#label</code> 可以在卡片加入標籤(Labels)</li>
+<li>在 subject 加入 <code>@member</code> 可以在卡片加入成員(Members)</li>
+</ul>
+</li>
+</ol>
+<p>更多請<a href="http://help.trello.com/article/809-creating-cards-by-email" target="_blank" rel="noopener">參考</a>. </p>
+<h2 id="第二種方法-使用API"><a href="#第二種方法-使用API" class="headerlink" title="第二種方法,使用API"></a>第二種方法,使用API</h2><ol>
+<li>登入 Trello</li>
+<li>連線 <a href="https://developers.trello.com" target="_blank" rel="noopener">https://developers.trello.com</a><br>點選<code>Get your Application Key</code>. 連線到 <a href="https://trello.com/app-key" target="_blank" rel="noopener">https://trello.com/app-key</a></li>
+</ol>
+<h3 id="取得Key"><a href="#取得Key" class="headerlink" title="取得Key"></a>取得Key</h3><p><img src="https://i.imgur.com/bBoiUCr.jpg" alt=""></p>
+<h3 id="生成Token"><a href="#生成Token" class="headerlink" title="生成Token"></a>生成Token</h3><p><img src="https://i.imgur.com/gHsdYv8.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/bSXkChk.jpg" alt=""><br>點選allow後，就會顯示你的token，特別注意登入的身份權限，<br>並且千萬不要外洩你的token與key值。</p>
+<p>試打API,建立一張 Card 到指定的 List 中.<br>並且設定期限(due)與標籤(labels),<br>更多的API設定請<a href="https://developers.trello.com/advanced-reference" target="_blank" rel="noopener">參考</a>.<br><img src="https://i.imgur.com/yk6SZYm.jpg" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li>Email:<ul>
+<li>優點:簡單、方便、可以結合mail system 、附加檔案簡單</li>
+<li>缺點:部份功能無法實現(ex: 設定due date)</li>
+</ul>
+</li>
+<li>API:<ul>
+<li>優點:靈活、Resful的API可以實現大部份的功能</li>
+<li>缺點:實作比較麻煩</li>
+</ul>
+</li>
+</ul>
+<p>(fin)    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/02/08/auto_add_trello_card/" data-id="cjhxca9ug0005jgvxvcxuhmzu" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/02/08/auto_add_trello_card/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-aspdotnet_threadpool_monitor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/28/aspdotnet_threadpool_monitor/" class="article-date">
@@ -144,7 +451,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="cjhxbq8jg0006fcvx2x8mtdi3" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/" data-id="cjhxca9uf0004jgvxyjl9lfo8" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/28/aspdotnet_threadpool_monitor/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -209,88 +516,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="cjhxbq8jp000kfcvxngwdl2pu" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/" data-id="cjhxca9uq000kjgvxzzgs7zqn" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/24/iis_tracing_log_setting/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIS/">IIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/記錄/">記錄</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
-  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
-<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
-</ul>
-<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
-<li>在 Openshift 新增一個 Jenkins Server</li>
-</ul>
-<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
-<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
-</ul>
-<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
-<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="noopener">web console</a></li>
-<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a></li>
-<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
-<li>取得帳號密碼<ol>
-<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
-<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
-<li>將執行程式數量設定為 1 </li>
-</ol>
-</li>
-<li><p>選擇新增作業</p>
-<ol>
-<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
-</ol>
-</li>
-<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
-</li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjhxbq8jh0008fcvxfdr30011" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
 
     </footer>
   </div>
@@ -373,9 +604,85 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjhxbq8jk000cfcvxrii0g82e" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/" data-id="cjhxca9uk000ajgvxao0jj8yg" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/15/ci_use_jenkins_on_openshfit/" class="article-date">
+  <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/15/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
+<li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
+</ul>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
+</ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="noopener">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
+<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
+<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
+<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/" data-id="cjhxca9uj0009jgvxkadgvb4a" class="article-share-link">Share</a>
+      
+        <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
@@ -424,7 +731,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjhxbq8ji0009fcvxq55r8918" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/15/ci_use_jenkins/" data-id="cjhxca9ui0008jgvx0tfq88kl" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/15/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -502,7 +809,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjhxbq8jf0005fcvxjekuurqg" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjhxca9uh0007jgvxu9lfm3d3" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2017/01/11/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -941,7 +1248,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjhxbq8jh0007fcvxbjyh1ukx" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2016/12/05/be_friend_with_time/" data-id="cjhxca9uh0006jgvxbtdunpnd" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2016/12/05/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -955,312 +1262,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-dotnet_pdb_file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/28/dotnet_pdb_file/" class="article-date">
-  <time datetime="2016-11-28T15:54:55.000Z" itemprop="datePublished">2016-11-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/28/dotnet_pdb_file/">.NET PDB File 介紹</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，<br>其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
-<h4 id="MSDN-這樣說"><a href="#MSDN-這樣說" class="headerlink" title="MSDN 這樣說"></a>MSDN 這樣說</h4><p>程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、<br>方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。</p>
-<p>原文: </p>
-<blockquote>
-<p><em>A program database (.pdb) file, also called a symbol file,</em><br><em>maps the identifiers that you create in source files for classes,</em><br><em>methods, and other code to the identifiers that are used in the</em><br><em>compiled executables of your project.</em></p>
-</blockquote>
-<h3 id="PDB-記什麼"><a href="#PDB-記什麼" class="headerlink" title="PDB 記什麼"></a>PDB 記什麼</h3><ul>
-<li>原始碼的檔案名稱 (source code file name)</li>
-<li>變數與行號 (lines and the local variable names.)</li>
-</ul>
-<h3 id="偵錯工具搜尋-pdb-檔案的順序？"><a href="#偵錯工具搜尋-pdb-檔案的順序？" class="headerlink" title="偵錯工具搜尋 .pdb 檔案的順序？"></a>偵錯工具搜尋 .pdb 檔案的順序？</h3><ol>
-<li>DLL 或可執行檔內部指定的位置</li>
-<li>可能和 DLL 或可執行檔存在相同資料夾中的 .pdb 檔案。</li>
-<li>任何本機符號快取資料夾。</li>
-<li>任何在像是 Microsoft 符號伺服器 (如果啟用) 等位置指定的網路、網際網路或本機符號伺服器和位置。</li>
-</ol>
-<h3 id="pdb-檔案與-dll-或可執行檔-需要完全符合"><a href="#pdb-檔案與-dll-或可執行檔-需要完全符合" class="headerlink" title=".pdb 檔案與.dll(或可執行檔)需要完全符合"></a>.pdb 檔案與.dll(或可執行檔)需要完全符合</h3><p>偵錯工具只會載入與可執行檔建置時所建立的 .pdb 檔案完全相同之可執行檔的 .pdb 檔案<br>*相同原始碼在不同機器建置的執行檔與PDB，偵錯工具將無法進行偵錯</p>
-<h3 id="看看-pdb檔的內容"><a href="#看看-pdb檔的內容" class="headerlink" title="看看.pdb檔的內容"></a>看看.pdb檔的內容</h3><ol>
-<li>開啟 %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\DIA SDK\Samples\DIA2Dump\dia2dump.sln</li>
-</ol>
-<ol>
-<li>執行以下命令<br><code>Dia2Dump pdbfilepath &gt;&gt; dumpfileName.txt</code><br>ex:<br><code>Dia2Dump C:\myproj\bin\debug\myproj.pdb &gt;&gt; myproj_dump.txt</code></li>
-</ol>
-<ol>
-<li>輸出的結果大致如下 </li>
-</ol>
-<pre><code>Function       : In MetaData, [00001F16][0001:00001F16], len = 000000ED, GetBookList
-Function attribute:
-Function info:
-
-
-//中略
-
-Function: [0001F71A][0001:0001F71A] GetSalePage b_231
-Function: [00001F16][0001:00001F16] GetBookList
-Function: [0001F4F0][0001:0001F4F0] GetLayoutByAd b_0
-
-//中略
-
-** GetBookList
-
-line 46 at [00001F16][0001:00001F16], len = 0x1    D:\Repo\Mark_Lin\MYPROJ\WebAPI\Controllers\BookController.cs
-line 47 at [00001F17][0001:00001F17], len = 0x6
-line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 
-</code></pre><h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><ul>
-<li><a href="http://anferneehardaway.pixnet.net/blog/post/6273453" target="_blank" rel="noopener">http://anferneehardaway.pixnet.net/blog/post/6273453</a></li>
-<li><a href="https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx</a></li>
-<li><a href="http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know" target="_blank" rel="noopener">http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know</a></li>
-<li><a href="https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/" target="_blank" rel="noopener">https://blogs.msdn.microsoft.com/jimgries/2007/07/06/why-does-visual-studio-require-debugger-symbol-files-to-exactly-match-the-binary-files-that-they-were-built-with/</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/" data-id="cjhxbq8jj000bfcvxcsjvtt6g" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/11/28/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-aspdotnet_threadpool_and_redis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/21/aspdotnet_threadpool_and_redis/" class="article-date">
-  <time datetime="2016-11-21T08:49:17.000Z" itemprop="datePublished">2016-11-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/21/aspdotnet_threadpool_and_redis/">ASP.NET Thread Pool 與 Redis Timeout Exception</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><em>ASP.NET Thread Pool 的機制如何影響 Redis</em></p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>線上維護的系統偶爾會發生 Redis Timeout Exception ,<br>並在 elmah 發現以下的錯誤記錄</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Timeout performing SETEX Cache:Prod:WebAPI:Key:<span class="number">20161121152607</span>, inst: <span class="number">18</span>, mgr: ExecuteSelect, err: never,  </span><br><span class="line">queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">0</span>, ar: <span class="number">1</span>,  </span><br><span class="line">IOCP: (Busy=<span class="number">0</span>,Free=<span class="number">1000</span>,Min=<span class="number">8</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">13</span>,Free=<span class="number">32754</span>,Min=<span class="number">8</span>,Max=<span class="number">32767</span>), clientName: TYO-MWEB</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>這時當 StackExchange.Redis 在進行同步作業的時候,<br>如果超過 <code>synctimeout</code> 的設定值(預設是1000ms),<br>Redis 會佔用.NET的 workerthread<br>而在 .NET 底層隱含著一個機制,<br>會導致錯誤。</p>
-<h3 id="Thread-Pool-500ms-的機制"><a href="#Thread-Pool-500ms-的機制" class="headerlink" title="Thread Pool 500ms 的機制"></a>Thread Pool 500ms 的機制</h3><p><em>一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」</em>  </p>
-<p>設定值 <code>minworkerthread</code> 就像是遊樂場<em>已經開啟</em>的閘門,<br>每當有一個遊客(Task)進來時,立即提供給它使用。<br>但是當遊客(Task)變多的時候,就會開始排隊(Queue),<br>ASP.NET Thread Pool 隱含著一個機制,<br>當它的隊伍(Queue)長達500豪秒沒有移動的話,<br>就會開啟新的閘門(建立新的Thread)。<br>而我的情境屬於<a href="#burst_of_traffic">Burst of traffic</a>,<br>突然大量 Task 湧入 Queue ,<br>ThreadPool 需要大量的 Thread<br>每個新的 Thread 都需要 500ms 的反應時間 ,<br>而累積的時間超過 Task 的 Timeout 設定值時 ,<br>就會拋出Exception. </p>
-<p><img src="/images/workerthread_and_iothread/110416_103521_AM.jpg" alt="ASP.NET Thread Pool"></p>
-<p>ASP.NET Thread Pool 的排隊機制與<code>minworkerthread</code> 設定值相關。<br>可以透過調整 <code>machine.config</code> 來修正。<br>參考(<a href="https://support.microsoft.com/zh-tw/kb/821268" target="_blank" rel="noopener">爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務</a>)。  </p>
-<p><code>minworkerthread</code> 的預設值是 1 。<br>但是會與執行環境的CPU個數有關,<br>假設你是四核的主機,那就要乘上 4。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">system.web</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">processModel</span> <span class="attr">autoConfig</span>=<span class="string">"false"</span> <span class="attr">minWorkerThreads</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">system.web</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p>當 Redis 發生 Timeout 時,<br>可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。<br>在以下的例子可以看到 IOCP 與 WORKER 兩個值。<br>這兩值表示 .Net ThreadPool 內的兩種執行緒,<br>如果 Busy 值很高, 就有可能是 ThreadPool 來不及建立造成的錯誤。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.TimeoutException: Timeout performing MGET <span class="number">2728</span>cc84<span class="number">-58</span>ae<span class="number">-406</span>b<span class="number">-8</span>ec8<span class="number">-3</span>f962419f641,  </span><br><span class="line">inst: <span class="number">1</span>,mgr: Inactive, queue: <span class="number">73</span>, qu=<span class="number">6</span>, qs=<span class="number">67</span>, qc=<span class="number">0</span>, wr=<span class="number">1</span>/<span class="number">1</span>, <span class="keyword">in</span>=<span class="number">0</span>/<span class="number">0</span>  </span><br><span class="line">IOCP: (Busy=<span class="number">0</span>, Free=<span class="number">999</span>, Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="Error-Code-說明"><a href="#Error-Code-說明" class="headerlink" title="Error Code 說明"></a>Error Code 說明</h3><table>
-<thead>
-<tr>
-<th>Error code</th>
-<th>Details</th>
-<th>範例</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>inst</td>
-<td>in the last time slice: 0 commands have been issued</td>
-<td>在最後時脈：已發出0個命令</td>
-<td>最後的時脈發出的命令個數</td>
-</tr>
-<tr>
-<td>mgr</td>
-<td>the socket manager is performing “socket.select”, <br>which means it is asking the OS to indicate a socket <br>that has something to do; <br> basically: the reader is not actively reading from <br>the network because it doesn’t think there<br> is anything to do</td>
-<td></td>
-<td>最後的操作命令</td>
-</tr>
-<tr>
-<td>queue</td>
-<td>there are 73 total in-progress operations</td>
-<td>73個正在排隊中的操作</td>
-<td>正在排隊中的操作</td>
-</tr>
-<tr>
-<td>qu</td>
-<td>6 of those are in unsent queue: they have not yet been written to the outbound network</td>
-<td>6個未發送的queue</td>
-<td>未發送的queue</td>
-</tr>
-<tr>
-<td>qs</td>
-<td>67 of those have been sent to the server but a response is not yet available.  The response could be: Not yet sent by the server sent by the server but not yet processed by the client.</td>
-<td>67個已發送的queue</td>
-<td>已發送的queue</td>
-</tr>
-<tr>
-<td>qc</td>
-<td>0 of those have seen replies but have not yet been marked as complete due to waiting on the completion loop</td>
-<td>0個已發送未標記完成的queue</td>
-<td>已發送未標記完成的queue</td>
-</tr>
-<tr>
-<td>wr</td>
-<td>there is an active writer (meaning - those 6 unsent are not being ignored) bytes/activewriters</td>
-<td>有 1 個啟用的writer,(意味著qu的工作並沒有被忽略) bytes/activewriters</td>
-<td>bytes/activewriters</td>
-</tr>
-<tr>
-<td>in</td>
-<td>there are no active readers and zero bytes are available to be read on the NIC bytes/activereaders</td>
-<td>0個reader</td>
-<td>bytes/activereaders</td>
-</tr>
-</tbody>
-</table>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx" target="_blank" rel="noopener">Threading</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms998549.aspx" target="_blank" rel="noopener">Improving ASP.NET Performance</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/ms973903.aspx" target="_blank" rel="noopener">Programming the Thread Pool in the .NET Framework</a></li>
-<li><a href="https://gist.github.com/JonCole/db0e90bedeb3fc4823c2" target="_blank" rel="noopener">DiagnoseRedisErrors-ClientSide</a></li>
-<li><a href="https://gist.github.com/JonCole/e65411214030f0d823cb" target="_blank" rel="noopener">ThreadPool</a></li>
-</ul>
-<p>(fin)</p>
-<hr>
-<h2 id="其它的-Redis-Error-情境"><a href="#其它的-Redis-Error-情境" class="headerlink" title="其它的 Redis Error 情境"></a>其它的 Redis Error 情境</h2><p>只作摘要式的翻譯。</p>
-<h3 id="Memory-pressure-記憶體壓力"><a href="#Memory-pressure-記憶體壓力" class="headerlink" title="Memory pressure (記憶體壓力)"></a>Memory pressure (記憶體壓力)</h3><p><code>Problem:</code><br>記憶體不足而開始讀取虛擬記憶體(磁碟)而導致特能低落。<br>Memory pressure on the client machine leads to all kinds of performance problems that can<br>delay processing of data that was sent by the Redis instance without any delay.<br>When memory pressure hits, the system typically has to page data from physical memory to<br>virtual memory which is on disk. This page faulting causes the system to slow down significantly.  </p>
-<p><code>Measurement:</code><br>Monitory memory usage on machine to make sure that it does not exceed available memory.<br>Monitor the Page Faults/Sec perf counter. Most systems will have some page faults even during<br>normal operation, so watch for spikes in this page faults perf counter which correspond with timeouts.  </p>
-<p><code>Resolution:</code><br>增加記憶體或是減少記憶體使用量<br>Upgrade to a larger client VM size with more memory or dig into your memory usage patterns<br>to reduce memory consuption.  </p>
-<hr>
-<h3 id="Burst-of-traffic"><a href="#Burst-of-traffic" class="headerlink" title="Burst of traffic"></a><span style="color:red;" id="burst_of_traffic">Burst of traffic</span></h3><p><code>Problem:</code><br>ThreadPool突然大量的工作湧入queue導致執行緒來不及建立。<br> Bursts of traffic combined with poor ThreadPool settings can result in delays in processing<br> data already sent by the Redis Server but not yet consumed on the client side.  </p>
-<p><code>測量:</code><br>可以用<a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="noopener">程式</a>監控 ThreadPool .<br>或是單純透過 TimeoutException 的訊息,觀察IOCP與WORKER的Busy值來判斷.<br><code>Measurement:</code><br>Monitor how your ThreadPool statistics change over time using code like <a href="https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs" target="_blank" rel="noopener">this</a>.<br>You can also look at the TimeoutException message from StackExchange.Redis.<br>Here is an example :  </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.TimeoutException: Timeout performing EVAL, inst: <span class="number">8</span>, mgr: Inactive, queue: <span class="number">0</span>, qu: <span class="number">0</span>, qs: <span class="number">0</span>, qc: <span class="number">0</span>, wr: <span class="number">0</span>, wq: <span class="number">0</span>, <span class="keyword">in</span>: <span class="number">64221</span>, ar: <span class="number">0</span>, </span><br><span class="line">IOCP: (Busy=<span class="number">6</span>,Free=<span class="number">999</span>,Min=<span class="number">2</span>,Max=<span class="number">1000</span>), WORKER: (Busy=<span class="number">7</span>,Free=<span class="number">8184</span>,Min=<span class="number">2</span>,Max=<span class="number">8191</span>)</span><br></pre></td></tr></table></figure>
-<p>In the above message, there are several issues that are interesting:<br>Notice that in the “IOCP” section and the “WORKER” section you have a “Busy” value that is<br>greater than the “Min” value. This means that your threadpool settings need adjusting.<br>You can also see “in: 64221”. This indicates that 64211 bytes have been received at the kernel<br>socket layer but haven’t yet been read by the application (e.g. StackExchange.Redis).<br>This typically means that your application isn’t reading data from the network as quickly as<br>the server is sending it to you.  </p>
-<p><code>Resolution:</code><br>調整ThreadPool設定<br>Configure your ThreadPool Settings to make sure that your threadpool will scale up quickly under burst scenarios.</p>
-<hr>
-<h3 id="High-CPU-usage-CPU-過載"><a href="#High-CPU-usage-CPU-過載" class="headerlink" title="High CPU usage (CPU 過載)"></a>High CPU usage (CPU 過載)</h3><p><code>Problem:</code><br>High CPU usage on the client is an indication that the system cannot keep up with the work that it has been asked to perform. High CPU is a problem because the CPU is busy and it can’t keep up with the work the application is asking it to do. The response from Redis can come very quickly, but because the CPU isn’t keeping up with the workload, the response sits in the socket’s kernel buffer waiting to be processed. If the delay is long enough, a timeout occurs in spite of the requested data having already arrived from the server.</p>
-<p><code>Measurement:</code><br>Monitor the System Wide CPU usage through the azure portal or through the associated perf counter.<br>Be careful not to monitor process CPU because a single process can have low CPU usage at the same time that overall system CPU can be high.<br>Watch for spikes in CPU usage that correspond with timeouts. As a result of high CPU,<br>you may also see high “in: XXX” values in TimeoutException error messages as described above in the “Burst of traffic” section.<br>Note that in newer builds of StackExchange.Redis, the client-side CPU will be printed out in the timeout error message as long as the environment doesn’t block access to the CPU perf counter.</p>
-<p><code>Note:</code><br>StackExchange.Redis version 1.1.603 or later now prints out “local-cpu” usage when a timeout occurs to help understand when client-side CPU usage may be affecting performance.</p>
-<p><code>Resolution:</code><br>增加CPU或是找出CPU產生過載的原因<br>Upgrade to a larger VM size with more CPU capacity or investigate what is causing CPU spikes.</p>
-<hr>
-<h3 id="Client-Side-Bandwidth-Exceeded-頻寬不足"><a href="#Client-Side-Bandwidth-Exceeded-頻寬不足" class="headerlink" title="Client Side Bandwidth Exceeded (頻寬不足)"></a>Client Side Bandwidth Exceeded (頻寬不足)</h3><p><code>Problem:</code><br>Different sized client machines have limitations on how much network bandwidth they have available.<br>If the client exceeds the available bandwidth, then data will not be processed on the client side as quickly as the server is sending it. This can lead to timeouts.</p>
-<p><code>Measurement:</code><br>Monitor how your Bandwidth usage change over time using code like this. Note that this code may not run successfully in some environments with restricted permissions (like Azure WebSites).</p>
-<p><code>Resolution:</code><br>加大頻寬或減少使用量<br>Increase Client VM size or reduce network bandwidth consumption.</p>
-<hr>
-<h3 id="Large-Request-Response-Size-過大的請求-回應量"><a href="#Large-Request-Response-Size-過大的請求-回應量" class="headerlink" title="Large Request/Response Size (過大的請求/回應量)"></a>Large Request/Response Size (過大的請求/回應量)</h3><p><code>Problem:</code><br>如圖所示,A與B兩個Request都太過龐大,當同時發動請求時,<br>A 回應的時間過長, 導致 B 的Timeout<br>A large request/response can cause timeouts. As an example, suppose your timeout value configured is 1 second.<br>Your application requests two keys (e.g. ‘A’ and ‘B’) at the same time using the same physical network connection.<br>Most clients support “Pipelining” of requests, such that both requests ‘A’ and ‘B’ are sent on the wire to the server one after the other without waiting for the responses.<br>The server will send the responses back in the same order. If response ‘A’ is large enough it can eat up most of the timeout for subsequent requests.</p>
-<p>Below, I will try to demonstrate this. In this scenario, Request ‘A’ and ‘B’ are sent quickly,<br>the server starts sending responses ‘A’ and ‘B’ quickly, but because of data transfer times,<br>‘B’ get stuck behind the other request and times out even though the server responded quickly.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|-------- 1 Second Timeout (A)----------|</span><br><span class="line">|-Request A-|</span><br><span class="line">     |-------- 1 Second Timeout (B) ----------|</span><br><span class="line">     |-Request B-|</span><br><span class="line">            |- Read Response A --------|</span><br><span class="line">                                       |- Read Response B-| (**TIMEOUT**)</span><br></pre></td></tr></table></figure>
-<p><code>Measurement:</code><br>This is a difficult one to measure. You basically have to instrument your client code to track large requests and responses.</p>
-<p><code>Resolution:</code><br>將所需要的資料分割成數個小片段 再分別取回<br>Redis is optimized for a large number of small values, rather than a few large values.<br>The preferred solution is to break up your data into related smaller values. See here for details around why smaller values are recommended.<br>Increase the size of your VM (for client and Redis Cache Server), to get higher bandwidth capabilities, reducing data transfer times for larger responses.<br>Note that getting more bandwidth on just the server or just on the client may not be enough.<br>Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.<br>Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool).<br>If you go this route, make sure that you don’t create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/" data-id="cjhxbq8jf0004fcvxl6b2zpy3" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/11/21/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framework/">.Net Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASP-Net/">ASP.Net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thread/">Thread</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-about_content_type" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/28/about_content_type/" class="article-date">
-  <time datetime="2016-10-28T04:54:55.000Z" itemprop="datePublished">2016-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/about_content_type/">有關 HTTP Header Content-Type</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
-<h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="noopener">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
-<hr>
-<h2 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h2><h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a><code>application/x-www-form-urlencoded</code></h3><p>常用的Content-Type,簡單說就是KEY-VALUE的方式<br>如下, KEY firstname 的值是 marsen<br>lastname 是由使用者輸入</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  First name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span> <span class="attr">value</span>=<span class="string">"marsen"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  Last name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>同時資料會作一次url encoded,<br>產生類似下列的資料<br>firstname=marsen&amp;lastname=lin&amp;key%5b1%5d=value%5b1%5d</p>
-<hr>
-<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a><code>multipart/form-data</code></h3><p>PostMan中的選項 <code>binary</code> 其實就是包成這種格式<br>上傳檔案會使用這種Content-Type,<br>這通常表示你的html element包含有 <code>&lt;input type=&quot;file&quot;&gt;</code> </p>
-<hr>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>PostMan中的選項 <code>raw</code>,可以用字串組合成任意Content-Type,<br>參考<a href="http://www.freeformatter.com/mime-types-list.html" target="_blank" rel="noopener">Content-Type Table</a>  </p>
-<ul>
-<li><code>application/json</code><br>目前主流的API會用輕巧的JSON作為傳遞資訊的媒介  </li>
-<li><code>text/xml</code>、<code>application/xml</code><br>早期標準的Web服務通常會透過xml作為交換資訊的媒介  </li>
-<li><code>text/plain</code><br>有些email或debug的情況會使用text/plain作為Content-Type,但是一般的Request情況不建議使用  </li>
-<li>更多請參考<a href="https://www.w3.org/TR/html5/forms.html#text/plain-encoding-algorithm" target="_blank" rel="noopener">Spec</a>   </li>
-</ul>
-<hr>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">https://imququ.com/post/four-ways-to-post-data-in-http.html</a></li>
-<li><a href="https://codeforgeek.com/2014/09/handle-get-post-request-express-4/" target="_blank" rel="noopener">https://codeforgeek.com/2014/09/handle-get-post-request-express-4/</a></li>
-<li><a href="https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters" target="_blank" rel="noopener">https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters</a></li>
-<li><a href="https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack" target="_blank" rel="noopener">https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack</a></li>
-<li><a href="https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean" target="_blank" rel="noopener">https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2016/10/28/about_content_type/" data-id="cjhxbq8je0002fcvx4lxlvpjs" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2016/10/28/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Content-Type/">Content-Type</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一頁 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一頁 &raquo;</a>
   </nav>
 </section>
         
@@ -1273,6 +1278,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
       <ul>
         
           <li>
+            <a href="/2018/05/29/books/the_silo_effect_7/">[閱讀筆記]穀倉效應 </a>
+          </li>
+        
+          <li>
             <a href="/2018/04/26/2018/windows_with_sass/">[實作筆記]在 Windows 環境編輯 SCSS</a>
           </li>
         
@@ -1281,15 +1290,11 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
           </li>
         
           <li>
-            <a href="/2018/04/04/cloud_learn/aws_access_billing_console/">[學習筆記]允許 IAM User 存取 AWS Billing Console</a>
+            <a href="/2018/04/08/2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/">[翻譯]為什麼IBM/Google/Microsoft都要在今年增加對台投資?</a>
           </li>
         
           <li>
-            <a href="/2018/03/26/2018/linux_command_1/">[學習筆記] Linux 語法學習筆記 一</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/25/cloud_learn/aws_cli_login/">[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login</a>
+            <a href="/2018/04/05/2018/linux_command_2/">[學習筆記]Linux 語法學習筆記 二</a>
           </li>
         
       </ul>
@@ -1301,7 +1306,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1311,7 +1316,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 17.5px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 12.5px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 10px;">Unix</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/integration-testing/" style="font-size: 10px;">integration testing</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/mutation-teseting/" style="font-size: 10px;">mutation teseting</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/testing/" style="font-size: 12.5px;">testing</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/unit-test/" style="font-size: 12.5px;">unit test</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 15px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 15px;">.Net Framework</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/ASP-Net/" style="font-size: 12.5px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 17.5px;">AWS</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CI/" style="font-size: 17.5px;">CI</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DBA/" style="font-size: 10px;">DBA</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 12.5px;">Entity Framework</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Google-API/" style="font-size: 12.5px;">Google API</a> <a href="/tags/HTTP-1-1/" style="font-size: 10px;">HTTP/1.1</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IBM/" style="font-size: 10px;">IBM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/IoT/" style="font-size: 10px;">IoT</a> <a href="/tags/Jenkins/" style="font-size: 17.5px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Microsoft/" style="font-size: 10px;">Microsoft</a> <a href="/tags/MsSQL/" style="font-size: 15px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 12.5px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 12.5px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Shell/" style="font-size: 12.5px;">Shell</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/Taiwan/" style="font-size: 10px;">Taiwan</a> <a href="/tags/Testing/" style="font-size: 10px;">Testing</a> <a href="/tags/Thread/" style="font-size: 12.5px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Unit-Test/" style="font-size: 10px;">Unit Test</a> <a href="/tags/Unit-Testing/" style="font-size: 12.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 12.5px;">Unix</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/expressjs/" style="font-size: 10px;">expressjs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google-analytics/" style="font-size: 10px;">google analytics</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/integration-testing/" style="font-size: 10px;">integration testing</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/jquery-ui/" style="font-size: 12.5px;">jquery-ui</a> <a href="/tags/kata/" style="font-size: 12.5px;">kata</a> <a href="/tags/mutation-teseting/" style="font-size: 10px;">mutation teseting</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 12.5px;">npm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/testing/" style="font-size: 12.5px;">testing</a> <a href="/tags/typescript/" style="font-size: 15px;">typescript</a> <a href="/tags/unit-test/" style="font-size: 12.5px;">unit test</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 10px;">時間管理</a> <a href="/tags/最有生產力的一年/" style="font-size: 10px;">最有生產力的一年</a> <a href="/tags/記錄/" style="font-size: 20px;">記錄</a> <a href="/tags/閱讀筆記/" style="font-size: 17.5px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1320,7 +1325,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-API/">Google API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expressjs/">expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/integration-testing/">integration testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mutation-teseting/">mutation teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最有生產力的一年/">最有生產力的一年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/">CI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBA/">DBA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-API/">Google API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-1-1/">HTTP/1.1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IBM/">IBM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IoT/">IoT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Microsoft/">Microsoft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Taiwan/">Taiwan</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expressjs/">expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google-analytics/">google analytics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/integration-testing/">integration testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery-ui/">jquery-ui</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kata/">kata</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mutation-teseting/">mutation teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unit-test/">unit test</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最有生產力的一年/">最有生產力的一年</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
