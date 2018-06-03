@@ -5,7 +5,7 @@ tag:
   - Windows
   - SCSS
   - Ruby
-  - Node.js
+  - Nodejs
 ---
 
 1. 安裝 Windows 套件管理工具 Chocolatey 

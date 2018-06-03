@@ -2,9 +2,8 @@
 title: 匯入文字資料到MSSQL
 date: 2016/08/29 17:24:55 
 tag:
-- DBA
+- Database
 - SQL Server
-- 記錄
 ---
 ## 前置作業
 1. 一個有權限寫入的MSSQLServer與SSMS管理工具

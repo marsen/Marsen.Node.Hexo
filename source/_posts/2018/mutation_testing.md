@@ -2,10 +2,10 @@
 title: "[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法"
 date: 2018/03/20 01:44:00
 tag:
-  - testing
+  - Testing
   - TDD
-  - unit test
-  - mutation teseting
+  - Unit Testing
+  - Mutation Teseting
 ---
 
 ## 應該知道的事

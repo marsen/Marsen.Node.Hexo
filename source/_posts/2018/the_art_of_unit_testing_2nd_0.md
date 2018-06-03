@@ -2,10 +2,9 @@
 title: "[讀書會]單元測試的藝術 - 導讀、序與第一章"
 date: 2018/03/22 01:20:12
 tag:
-  - testing
   - TDD
-  - unit test
-  - integration testing
+  - Unit Testing
+  - Integrated Testing
 ---
 
 ## 要知道的事

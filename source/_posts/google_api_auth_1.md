@@ -2,8 +2,9 @@
 title: "[記錄]串接 GOOGLE API 取得資料(一)"
 date: 2017/07/14 15:14:27
 tag:
-  - Google API
-  - 最有生產力的一年
+  - Google 
+  - API
+  - 時間管理
 ---
 ## 原由
 

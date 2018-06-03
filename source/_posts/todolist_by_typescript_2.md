@@ -2,12 +2,10 @@
 title: '[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作'
 date: 2016/10/14 10:34:27
 tag: 
-- kata
-- typescript
-- bootstrap
-- npm
-- jquery
-- jquery-ui
+- TypeScript
+- BootStrap
+- NPM
+- JQuery
 ---
 ## 設計理念
 1. 顯示/新增/刪除 todolist 
