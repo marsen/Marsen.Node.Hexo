@@ -2,8 +2,8 @@
 title: 如何讓google analytics追踪你的Hexo Blog
 date: 2016/08/25 14:12:07
 tag:
-  - blog
-  - google analytics
+  - Hexo
+  - Google
 ---
 ## 前置作業
 1. 你要有google帳號，並申請好你的google_analytics ID

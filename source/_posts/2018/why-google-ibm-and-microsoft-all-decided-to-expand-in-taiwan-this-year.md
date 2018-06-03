@@ -2,10 +2,7 @@
 title: "[翻譯]為什麼IBM/Google/Microsoft都要在今年增加對台投資?"
 date: 2018/04/08 23:22:20
 tag:
-  - IBM
-  - Google
-  - Microsoft
-  - Taiwan
+  - 產業趨勢
   - IoT
   - AI
   - Machine Learning
