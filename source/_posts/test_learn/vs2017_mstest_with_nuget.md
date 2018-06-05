@@ -36,15 +36,15 @@ Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 透過MsTest直接加入 
 `Microsoft.VisualStudio.QualityTools.UnitTestFramework` 
 的參考已經是舊的方法了, 
-#### 在 vs2017 建議的解決方案如下:
+#### 在 Visual Studio 2017 建議的解決方案如下:
 * 移除方案中所有對 `Microsoft.VisualStudio.QualityTools.UnitTestFramework` 的參考
-* 透過 Nuget 安裝 MSTest.TestAdapter 
-* 透過 Nuget 安裝 MSTest.TestFramework
-* 關閉 vs2017
+* 透過 `Nuget` 安裝 `MSTest.TestAdapter` 
+* 透過 `Nuget` 安裝 `MSTest.TestFramework`
+* 關閉 Visual Studio 2017
 * 移除 `%temp%\VisualStudioTestExplorerExtensions`內所有檔案
-* 重啟 vs2017 並建置以觸發探索測試
+* 重啟 Visual Studio 2017 並建置以觸發探索測試
 ![透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework](https://i.imgur.com/RPI77KN.jpg)
-![重啟 vs2017 並建置以觸發探索測試](https://i.imgur.com/JQ7zf2S.jpg)
+![重啟 Visual Studio 2017 並建置以觸發探索測試](https://i.imgur.com/JQ7zf2S.jpg)
 
 ## 參考
 - [Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions](https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html)
@@ -53,6 +53,6 @@ Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 
 ## 補充 
 - 2018/06/02 : 
-visual studio 2017 15.7.* 的版本之後 ,
+Visual Studio 2017 15.7.* 的版本之後 ,
 `%temp%\VisualStudioTestExplorerExtensions` 消失了 ,
 不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。

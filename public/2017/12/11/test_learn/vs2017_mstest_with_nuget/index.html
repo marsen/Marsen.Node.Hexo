@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://i.imgur.com/2REPRzG.jpg">
 <meta property="og:image" content="https://i.imgur.com/RPI77KN.jpg">
 <meta property="og:image" content="https://i.imgur.com/JQ7zf2S.jpg">
-<meta property="og:updated_time" content="2018-06-02T11:38:43.142Z">
+<meta property="og:updated_time" content="2018-06-05T09:49:25.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Visual Studio 2017 MSTest Framework 異常修正">
 <meta name="twitter:description" content="應該要知道的事 這是踩雷筆記 2017的筆記可能會隨時間變得沒有參考價值 Visual Studio 2017的問題,並不一定適用其他版本 最後面會有不定時補充  情境原本使用 Visual Studio 2015 建立的測試專案,升級到 Visual Studio 2017 後, 發生以下錯誤12345[2017/12/11 上午 02:09:59 Error] 測試探索程式 &amp;apos;Spe">
@@ -118,20 +118,20 @@ ga('send', 'pageview');
 <li>可以使用 Visual Studio 2015 重新執行探測索測試,即可排除問題.</li>
 </ol>
 <h2 id="VS2015-已移除或未安裝該怎麼辦？"><a href="#VS2015-已移除或未安裝該怎麼辦？" class="headerlink" title="VS2015 已移除或未安裝該怎麼辦？"></a>VS2015 已移除或未安裝該怎麼辦？</h2><p>透過MsTest直接加入<br><code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code><br>的參考已經是舊的方法了, </p>
-<h4 id="在-vs2017-建議的解決方案如下"><a href="#在-vs2017-建議的解決方案如下" class="headerlink" title="在 vs2017 建議的解決方案如下:"></a>在 vs2017 建議的解決方案如下:</h4><ul>
+<h4 id="在-Visual-Studio-2017-建議的解決方案如下"><a href="#在-Visual-Studio-2017-建議的解決方案如下" class="headerlink" title="在 Visual Studio 2017 建議的解決方案如下:"></a>在 Visual Studio 2017 建議的解決方案如下:</h4><ul>
 <li>移除方案中所有對 <code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code> 的參考</li>
-<li>透過 Nuget 安裝 MSTest.TestAdapter </li>
-<li>透過 Nuget 安裝 MSTest.TestFramework</li>
-<li>關閉 vs2017</li>
+<li>透過 <code>Nuget</code> 安裝 <code>MSTest.TestAdapter</code> </li>
+<li>透過 <code>Nuget</code> 安裝 <code>MSTest.TestFramework</code></li>
+<li>關閉 Visual Studio 2017</li>
 <li>移除 <code>%temp%\VisualStudioTestExplorerExtensions</code>內所有檔案</li>
-<li>重啟 vs2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 vs2017 並建置以觸發探索測試"></li>
+<li>重啟 Visual Studio 2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 Visual Studio 2017 並建置以觸發探索測試"></li>
 </ul>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li>
 </ul>
 <p>(fin)</p>
 <h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul>
-<li>2018/06/02 :<br>visual studio 2017 15.7.* 的版本之後 ,<br><code>%temp%\VisualStudioTestExplorerExtensions</code> 消失了 ,<br>不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。</li>
+<li>2018/06/02 :<br>Visual Studio 2017 15.7.* 的版本之後 ,<br><code>%temp%\VisualStudioTestExplorerExtensions</code> 消失了 ,<br>不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。</li>
 </ul>
 
       
