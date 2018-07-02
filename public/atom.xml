@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-06-10T16:01:19.449Z</updated>
+  <updated>2018-07-02T07:40:37.157Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[生活瑣事]徵工讀生有感</title>
+    <link href="http://blog.marsen.me/2018/07/02/2018/find_intern/"/>
+    <id>http://blog.marsen.me/2018/07/02/2018/find_intern/</id>
+    <published>2018-07-02T07:31:23.000Z</published>
+    <updated>2018-07-02T07:40:37.157Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h2><p>開發團隊需要找 二名工讀生， 請幫忙問問家裡有沒有專科大學含以上的小朋友，<br>有興趣來公司實習的， 條件可以到公司再談</p><p>我們希望你</p><ul><li>對電子商務有興趣、有熱忱， 喜歡解決問題</li><li>樂於溝通與分享</li><li>喜歡團隊合作</li></ul><p>工作內容</p><ul><li>協助專案開發， 修改前端 Javascript/CSS， HTML頁面調整</li><li>協助頁面功能測試</li></ul><p>條件</p><ol><li>熟悉HTML(接觸過JavaScript，CSS佳）</li><li>接觸過任意後端程式語言(C#，ASP。NET MVC佳）</li><li>具備網頁應用程式開發的概念或經驗佳</li><li>暑假期間7/1 ~ 8/31， 上班時間， 09:00 ~ 18:00 (edited)</li></ol><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>一眨眼也工作十年了，不說自已，<br>身邊年輕的朋友也不是小朋友了;<br>各種意義上也沒有小朋友;<br>視茫茫，髮蒼蒼，齒牙動搖;<br>身體平安，惟膀子疼痛厲害，轉身射門，諸多不便。</p><h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ol><li>薪資會優於勞基法加面議。</li><li>95% 的信賴區間下,可能會落在 150 左右,正負6個百分點。</li></ol><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;原文&quot;&gt;&lt;a href=&quot;#原文&quot; class=&quot;headerlink&quot; title=&quot;原文&quot;&gt;&lt;/a&gt;原文&lt;/h2&gt;&lt;p&gt;開發團隊需要找 二名工讀生， 請幫忙問問家裡有沒有專科大學含以上的小朋友，&lt;br&gt;有興趣來公司實習的， 條件可以到公司再談&lt;/p&gt;
+&lt;p&gt;我
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>[生活記事]五月身體異常</title>
@@ -492,34 +514,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Visual Studio 2017 MSTest Framework 異常修正</title>
-    <link href="http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/"/>
-    <id>http://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/</id>
-    <published>2017-12-11T03:17:08.000Z</published>
-    <updated>2018-06-05T09:49:25.043Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ul><li>這是踩雷筆記</li><li>2017的筆記可能會隨時間變得沒有參考價值</li><li>Visual Studio 2017的問題,並不一定適用其他版本</li><li>最後面會有不定時補充</li></ul><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p><img src="https://i.imgur.com/FDDtc9V.jpg" alt="載入測試時發生例外狀況"><br>原本使用 Visual Studio 2015 建立的測試專案,<br>升級到 Visual Studio 2017 後, 發生以下錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[2017/12/11 上午 02:09:59 Error] 測試探索程式 &apos;SpecRunTestDiscoverer&apos; </span><br><span class="line">載入測試時發生例外狀況。例外狀況: 無法載入檔案或組件 </span><br><span class="line">&apos;Microsoft.VisualStudio.QualityTools.UnitTestFramework,</span><br><span class="line">Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&apos;</span><br><span class="line">或其相依性的其中之一。 系統找不到指定的檔案。</span><br></pre></td></tr></table></figure></p><h2 id="導致結果"><a href="#導致結果" class="headerlink" title="導致結果"></a>導致結果</h2><p><img src="https://i.imgur.com/2REPRzG.jpg" alt="原本的測試數量為1942,變成459,遺失了7成5的測試案例."></p><ol><li>測試專案會找不到測試,或是測試數量不正確.</li><li>可以使用 Visual Studio 2015 重新執行探測索測試,即可排除問題.</li></ol><h2 id="VS2015-已移除或未安裝該怎麼辦？"><a href="#VS2015-已移除或未安裝該怎麼辦？" class="headerlink" title="VS2015 已移除或未安裝該怎麼辦？"></a>VS2015 已移除或未安裝該怎麼辦？</h2><p>透過MsTest直接加入<br><code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code><br>的參考已經是舊的方法了, </p><h4 id="在-Visual-Studio-2017-建議的解決方案如下"><a href="#在-Visual-Studio-2017-建議的解決方案如下" class="headerlink" title="在 Visual Studio 2017 建議的解決方案如下:"></a>在 Visual Studio 2017 建議的解決方案如下:</h4><ul><li>移除方案中所有對 <code>Microsoft.VisualStudio.QualityTools.UnitTestFramework</code> 的參考</li><li>透過 <code>Nuget</code> 安裝 <code>MSTest.TestAdapter</code> </li><li>透過 <code>Nuget</code> 安裝 <code>MSTest.TestFramework</code></li><li>關閉 Visual Studio 2017</li><li>移除 <code>%temp%\VisualStudioTestExplorerExtensions</code>內所有檔案</li><li>重啟 Visual Studio 2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 Visual Studio 2017 並建置以觸發探索測試"></li></ul><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li></ul><p>(fin)</p><h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul><li>2018/06/02 :<br>Visual Studio 2017 15.7.* 的版本之後 ,<br><code>%temp%\VisualStudioTestExplorerExtensions</code> 消失了 ,<br>不過正常情況建置後 , visual studio 探索測試仍然可以正確找到測試。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;應該要知道的事&quot;&gt;&lt;a href=&quot;#應該要知道的事&quot; class=&quot;headerlink&quot; title=&quot;應該要知道的事&quot;&gt;&lt;/a&gt;應該要知道的事&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;這是踩雷筆記&lt;/li&gt;
-&lt;li&gt;2017的筆記可能會隨時間變得沒有參考價值&lt;/li&gt;
-&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="MsTest" scheme="http://blog.marsen.me/tags/MsTest/"/>
-    
-      <category term="Visual Studio" scheme="http://blog.marsen.me/tags/Visual-Studio/"/>
     
   </entry>
   
