@@ -83,6 +83,7 @@ Scrum Master 要提醒個人，團隊是一個實體，比個人更重要
 	- Scrum Master 角色會被忽略
 	- Product Owner 控制所有事情
 	- 團隊缺乏自組織
+
 #### Scrum Master 是人事經理
 - con
 	- 團隊對 Scrum Master 缺乏信任
@@ -106,7 +107,21 @@ Scrum Master 要提醒個人，團隊是一個實體，比個人更重要
 	- Scrum Master 能累積更多經驗
 	- Scrum Master 在系統思考上表現較好
 	- 更有可能將 Scrum 應用於整個組織
-	
+
+###### 回饋
+```
+20180717 讀書會
+Q:Scrum Master 應該先成為觀察者的角色，
+再進一步作引導或指導，兼任多支團隊的情況下，
+可能會受限於環境，導致無法作第一線的觀察，而導致效果不佳。
+A:較成熟的團隊可以稍微放一下，多參與初心團隊，
+自組織的成熟團隊就不必要每件事。
+feedback:
+1. 不成熟的 Scrum Mater 應該跟著成熟的 Scrum Master 共事。
+2. 不成熟的團隊應由成熟的 Scrum Mater 帶領。
+3. 成熟的團隊 Scrum Mater 的角色仍在，但是可以淡出。 
+```
+
 ### Scrum Master 領導
 - Scrum Master要注重整個組織，非單一支 Scrum 團隊，
 - 關心長期目標與策略。
