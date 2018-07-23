@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-07-18T05:16:39.059Z</updated>
+  <updated>2018-07-23T10:49:41.052Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[閱讀筆記]The Great Scrum Master 第三章</title>
+    <link href="http://blog.marsen.me/2018/07/23/books/book_the_great_scurm_master_ch3/"/>
+    <id>http://blog.marsen.me/2018/07/23/books/book_the_great_scurm_master_ch3/</id>
+    <published>2018-07-23T10:49:19.000Z</published>
+    <updated>2018-07-23T10:49:41.052Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="ScrumMasterWay"><a href="#ScrumMasterWay" class="headerlink" title="#ScrumMasterWay"></a>#ScrumMasterWay</h6><h2 id="第一個層次-—-我的團隊"><a href="#第一個層次-—-我的團隊" class="headerlink" title="第一個層次 — 我的團隊"></a>第一個層次 — 我的團隊</h2><p>Scrum Master 只對開發團隊負責，<br><strong>「如何讓自已每天都發揮作用?」</strong><br>建立具有敏捷思維與 Scurm 價值觀的自組織團隊是個長期活動。<br>第一步是觀察，並抑制親力親為的衝動(具體建議/親自排解障礙)，</p><p>可能的問題在於，團隊缺乏理解、所有權、責任感與經驗;<br>或是團隊的抵制。  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">回饋:</span><br><span class="line">沒有主管並不會讓團隊自組織！給團隊解決不能只靠再想想</span><br><span class="line">https://www.facebook.com/91agile/posts/986977734810178</span><br></pre></td></tr></table></figure><h3 id="Scurm-的價值觀"><a href="#Scurm-的價值觀" class="headerlink" title="Scurm 的價值觀"></a>Scurm 的價值觀</h3><ul><li>承諾、專注、開放、尊重、勇氣<br>— ScrumAlliance 《Scaling Lean &amp; Agile Development》</li><li>誠實、開放、勇氣、尊重、專注、信任、授權和合作<br>—Kenneth S.Rubin《Essential Scrum》</li><li>謙虛、尊重、信任<br>— 《Debugging Teams: Better Productivity through Collaboration》<br><img src="https://i.imgur.com/INV1pyF.png" alt=""></li></ul><h2 id="第二個層次-—-關係"><a href="#第二個層次-—-關係" class="headerlink" title="第二個層次 — 關係"></a>第二個層次 — 關係</h2><ul><li>Scurm Team<ul><li>建立連貫、自信的團隊</li><li>將 PO 整合進入團隊 </li><li>建立三個角色平衡的關係</li></ul></li><li><p>利害關係人</p><ul><li>客戶、用戶、經理、銷售人員、維運人員、客服、其它團隊</li><li><p>將自組織用于參與的所有人員</p><p>這需要 Scurm Master 對 Scurm 定義、理解與解釋的能力，<br>不只是會議/角色或產出物，而是從文化、價值觀與思維方式對 Scurm 的內化。<br>在這層次下，需要建立靈活的虛擬團隊擁有所有權，承擔某些責任，<br>有些團隊在解決問題後就可以淡出，有的要維持一段時間。  </p></li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">開發團隊與 Scrum 團隊不是組織中唯一的團隊 ?</span><br><span class="line">持續存在的團隊 ? 專案團隊 ? DevOps ? </span><br><span class="line">短暫存在的團隊 ? 救火團 ? 跨專案團隊 ? </span><br><span class="line">這些團隊的資源從何而來 ?</span><br><span class="line">持續存在又特殊的團隊? 維運?</span><br><span class="line">花很多時間釐清問題，卻沒有辦法解決問題?</span><br><span class="line">受限於什麼原因 ? </span><br><span class="line">技術不足 ? 沒有人領導 ? 沒有所有權 ? 風險導向 ? 不受重視 ?</span><br></pre></td></tr></table></figure><h2 id="第三個層次—整個系統"><a href="#第三個層次—整個系統" class="headerlink" title="第三個層次—整個系統"></a>第三個層次—整個系統</h2><p>Scrum 是「一種生活方式」，成為生活哲學的一部份，改造整個系統(世界)。</p><h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul><li>先觀察</li><li>幫助團隊，讓團隊移除障礙</li><li>引導不是讀一本書或上一次課</li><li>教練法是提出問題的能力(<a href="http://www.books.com.tw/products/0010478689" target="_blank" rel="noopener">你會問問題嗎?</a>)</li><li>不要停留在開發層次，融入工作生活之中</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">太高大上了，跟不上…</span><br><span class="line">問個問題，如果障礙是組織內的要員或大主管呢 ?</span><br></pre></td></tr></table></figure><h2 id="Scrum-Master-小組"><a href="#Scrum-Master-小組" class="headerlink" title="Scrum Master 小組"></a>Scrum Master 小組</h2><p>如果要讓組織敏捷，核心是一個強大的 Scrum Master 小組。<br>如果組織在「第一個層次 — 我的團隊」中擁有一個強大的 Scrum Master 小組，<br>那麼 Scrum Master 只需要完善團隊就好了;<br>比起單獨創立完善一個 Scrum Team 或是依賴 Agile Couch，<br>Scrum Master 小組是改變組織最好的起點。  </p><h3 id="Scrum-Master-小組的目標"><a href="#Scrum-Master-小組的目標" class="headerlink" title="Scrum Master 小組的目標"></a>Scrum Master 小組的目標</h3><ul><li>替其它人作好系統層次的準備</li><li>關注整個系統</li><li>建立虛擬組織讓人參與並擁有所有權</li></ul><h3 id="挑戰"><a href="#挑戰" class="headerlink" title="挑戰"></a>挑戰</h3><ul><li>Scurm Master 否定 Scrum Master 小組的價值</li><li>防衛心理:<ul><li>缺乏同理心，從別的團隊角度觀察事情</li><li>缺乏系統觀點與思維</li><li>缺乏管理變革經驗</li></ul></li></ul><h2 id="組織即系統"><a href="#組織即系統" class="headerlink" title="組織即系統"></a>組織即系統</h2><p>將組織視為系統而非階層架構。</p><ul><li>系統思考，了解彼此的關系與動態</li><li>觀注 impact mapping</li></ul><h2 id="Cynefin-框架"><a href="#Cynefin-框架" class="headerlink" title="Cynefin 框架"></a>Cynefin 框架</h2><ul><li>簡單明確(Simple / Obvious)<br>  你只需要分類，選擇最佳解即可</li><li>人為/物理複雜(Complicated)<br>  像是組裝模型，你需要先分析計劃，<br>  當事情變得<strong>簡單明確</strong>即可。<br>  沒有最佳解，只有最適合的選擇</li><li>抽象/化學複雜(Complex)<br>  重複實驗評估，直到事情逐漸明確可以進行下一步，<br>  通常要大量的試錯才能有解答</li><li>混亂(Chaotic)<br>  你只能依賴直覺，先逃離危險，分析情況後再決定下一步</li><li>無序(Disorder / Confusion)<br>  如果你無法分辨情況，就是處理無序的狀態<br>  先搜集資訊，分析再前進<br><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cynefin_framework_by_Edwin_Stoop.jpg" alt=""></li></ul><h2 id="練習"><a href="#練習" class="headerlink" title="練習"></a>練習</h2><ol><li>Obvious : 多語抽換字串</li><li>Complicated : 整個 sprint 範圍多個頁面抽換;<br>RD彼此衝突 / Merge Before Build 造成的衝突與浪費</li><li>Complex : 風險控管多種理由不準上線</li><li>Chaotic : 上線後引發 SQL 問題當下是混亂的</li></ol><h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">組織或團隊會抗拒改變;</span><br><span class="line">又或者組識本身的價值觀與 Scurm 有所抵觸。</span><br><span class="line">以這個層面來說 Scurm Master 能作得很有限，</span><br><span class="line">所以又有 Agile Coach 的產生 ? → 說穿了就是顧問 ?</span><br><span class="line">第一現場的工作者給的問題，如果不虛心接受</span><br><span class="line">以現場角度思考，全盤歸疚於心態問題，是在逃避問題</span><br><span class="line">抱著過往成功不放，不願具體改變或聆聽異議，  </span><br><span class="line">由上而下獨幹而非由下而上改變，喊喊口號「速度感起來了!」  </span><br><span class="line">敏捷淪為口號，實踐就成了宗教儀式。</span><br><span class="line">不論是 Scurm Master 或是 Agile Coach 都是觀察者/顧問的角色，</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">轉型的路上我質疑一切</span><br><span class="line">質疑主管、質疑公司、質疑理論、質疑作法; </span><br><span class="line">甚至質疑我自已，然後我的心態還不能崩了，</span><br><span class="line">真是有病…</span><br><span class="line">要正心，保持陽光。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Unit Tests Team ?</span><br><span class="line">為什麼有這樣的想法 ? 單元測試很重要，卻沒有人寫。</span><br><span class="line">原因1. 沒有時間</span><br><span class="line">原因2. 流程內未包含寫單元測試與執行單元測試，</span><br><span class="line">Scurm 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Tests。</span><br><span class="line">原因3. 責任規屬不明? QA Team 專心作測試，RD Team 專心作開發</span><br><span class="line">沒有一個團隊專門來處理單元測試</span><br><span class="line">原因4. 導入失敗 </span><br><span class="line">- 跨領域 BeckEnd、F2E、IOS、Android 缺乏足夠知識</span><br><span class="line">- 跨專案開發資源就不夠了，怎麼寫測試 ?</span><br><span class="line">- 遺留代碼難以開發，技術水平不夠，缺乏領頭羊。</span><br><span class="line">- 讀書會成為逆向宣傳。</span><br><span class="line">- 沒有人專職導入，導入船過水無痕。</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/151g6vV.jpg" alt=""></p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://ruddyblog.wordpress.com/tag/scrum價值觀/" target="_blank" rel="noopener">Scurm的價值觀</a></li><li><a href="https://www.jianshu.com/p/1293bfe84446" target="_blank" rel="noopener">Scrum價值觀問題溯源</a></li><li><a href="https://en.wikipedia.org/wiki/Cynefin_framework" target="_blank" rel="noopener">Cynefin 框架</a></li><li><a href="https://www.hbrtaiwan.com/article_content_AR0000595.html" target="_blank" rel="noopener">決策於渾沌之中</a></li><li><a href="https://www.jianshu.com/p/a17aaadb4d80" target="_blank" rel="noopener">Stacey Matrix and Cynefin framework</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;ScrumMasterWay&quot;&gt;&lt;a href=&quot;#ScrumMasterWay&quot; class=&quot;headerlink&quot; title=&quot;#ScrumMasterWay&quot;&gt;&lt;/a&gt;#ScrumMasterWay&lt;/h6&gt;&lt;h2 id=&quot;第一個層次-—-我的團隊&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="閱讀筆記" scheme="http://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
+    
+      <category term="Scrum" scheme="http://blog.marsen.me/tags/Scrum/"/>
+    
+      <category term="Aglie" scheme="http://blog.marsen.me/tags/Aglie/"/>
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記]The Great Scrum Master 第一章/第二章</title>
@@ -500,30 +527,6 @@
     
     
       <category term="Coding Standard" scheme="http://blog.marsen.me/tags/Coding-Standard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一年後的我想要什麼？</title>
-    <link href="http://blog.marsen.me/2018/01/01/2018/next_year/"/>
-    <id>http://blog.marsen.me/2018/01/01/2018/next_year/</id>
-    <published>2017-12-31T18:12:47.000Z</published>
-    <updated>2018-04-17T03:12:39.593Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="你的目標是什麼"><a href="#你的目標是什麼" class="headerlink" title="你的目標是什麼?"></a>你的目標是什麼?</h2><p><strong>自由</strong></p><p>什麼是自由？</p><ol><li>情感上的自由</li><li>時間上的自由</li><li>經濟上的自由</li></ol><h2 id="經濟上的自由是一切的基礎"><a href="#經濟上的自由是一切的基礎" class="headerlink" title="經濟上的自由是一切的基礎"></a>經濟上的自由是一切的基礎</h2><ol><li>更多的收入 <ol><li>被動的收入</li><li>更高的薪資</li></ol></li><li>更有成就感的工作<ol><li>被同事尊重</li><li>被上司認可</li><li>受人歡迎</li></ol></li><li>更多的選擇<ol><li>技術提昇</li><li>領域擴展</li><li>人脈</li></ol></li><li>健康的身體</li><li>更多享受生活</li></ol><h2 id="一年後的我想要什麼"><a href="#一年後的我想要什麼" class="headerlink" title="一年後的我想要什麼?"></a>一年後的我想要什麼?</h2><p>一年後的我想要什麼?</p><ol><li>更高的薪資<ol><li>維持現狀 K (x)</li><li>跳糟 K * 1.3 (x)</li><li>爭取加薪 K * 1.1</li><li>獎金與分紅 </li></ol></li><li>更有成就感的工作(什麼是成就感)？    <ol><li>擁有可以引以為豪的產品<ol><li>拆解單體為服務導向</li><li>架構升級        </li></ol></li><li>分享與教學<pre><code>1. Blog2. 內/外部sharing3. 單元測試導入        </code></pre></li></ol></li><li>更多的選擇<ol><li>技術轉移<ol><li>Web 技術 轉移 為 Service導向技術</li><li>container 技術</li><li>cloud 技術        </li></ol></li><li>技術提昇<ol><li>.Net </li><li>Infra</li><li>Domain know how</li></ol></li></ol></li></ol><h3 id="爭取加薪-K-1-1"><a href="#爭取加薪-K-1-1" class="headerlink" title="爭取加薪 K * 1.1"></a>爭取加薪 K * 1.1</h3><h2 id="而這些目標需要什麼才能爭取到"><a href="#而這些目標需要什麼才能爭取到" class="headerlink" title="而這些目標需要什麼才能爭取到?"></a>而這些目標需要什麼才能爭取到?</h2><p>分為三個面向,技術提昇、技術擴展與自我實現,  </p><h3 id="技術提昇"><a href="#技術提昇" class="headerlink" title="技術提昇"></a>技術提昇</h3><p>首先目前我擁有的技術能力有</p><ol><li>.Net solution的 Web Developer能力</li><li>同時兼顧有 DB 與 F2E 基礎進階能力 </li></ol><p>這與我過去的選擇有關, 一直以來都在 Web 深入研究<br>未來的一年仍要朝這個方向發展.<br>但是會改由 Web 導向轉變成服務導向,<br>而 Web 開發只是我本身所能提供給公司的一個服務而已,<br>跟著 .Net 的腳步我想把前台(包含大馬但不限於)昇級上一個版本,<br>包含目前使用的舊版 libary 與 Framework,<br>如此一來可以使用到新版 .Net 的語法,<br>同時也可以解開一些導入測試與微服務時遇到的困境.  </p><h3 id="現有能力列表"><a href="#現有能力列表" class="headerlink" title="現有能力列表"></a>現有能力列表</h3><ol><li>C# &amp; .Net Framework Solution (inculde Linq &amp; Entity Framework )</li><li>javascript (jQuery &amp; Angular etc..)</li><li>Database with Sql (MsSQL solution)</li><li>Source Controle (Git)</li><li></li></ol><h3 id="略懂"><a href="#略懂" class="headerlink" title="略懂"></a>略懂</h3><ol><li>nodejs (with expressjs) &amp; php(codeigniter) &amp; ruby (RoR)</li><li>Jenkins</li><li></li></ol><h3 id="技術的擴展"><a href="#技術的擴展" class="headerlink" title="技術的擴展"></a>技術的擴展</h3><p>我認為公司的單體架構已經面臨到不得不拆的狀況,<br>公司也有意朝這個方向走那是最好不過的了,<br>但對現存的.NET 開發者而言,我認為人人都要有危機意識<br>我看到的現象</p><ol><li>頁面會被CMS取代</li><li>大部份的API可以被Lambda取代</li><li>主流程的部份在跨國的目標下會逐步變成微服務</li></ol><p>基於以上幾點, 除了.Net 的 solution 外,<br>更多情況是要使用別的 solution 或是混用,<br>對此我的視野必須有所提昇,  </p><ol><li>Linux Bash</li><li>Container 技術</li><li>Cloud (AWS/Azure/GCP)</li><li>Node.js<br>在未來的一年開發流程或是維運流程會有很大很快的變化<br>要多聽多看多想多問,公司有很多人才要儘可能的跟他們學習.  </li></ol><h3 id="自我營銷"><a href="#自我營銷" class="headerlink" title="自我營銷"></a>自我營銷</h3><p>最後是自我實現的部份,<br>自我營銷是我很弱的一部份,<br>不善交際,不喜歡人群<br>這點我從去年就開始調整,<br>多參與公司內部的分享,不要害怕說錯<br>假裝自已是對的,再虛心接受別人的指點<br>不需要導師,因為人人都是我的導師<br>開始寫Blog並且貼到社群網站給人鞭<br>這是我目前的 <a href="https://blog.marsen.me">https://blog.marsen.me</a></p><p>今年會繼續朝這個方向衝刺.<br>多分享 多犯錯 然後接受反饋學習.<br>兩個部份是我可以練習分享的機會<br>一個是測試的導入,<br>我們的遺留代碼,有很多可以分享的部份,<br>二是讀書會,<br>借由讀書會可以練習分享,<br>同時學習別人怎麼分享,<br>並且看完一本書,一舉數得.  </p><h2 id="具體主管可以幫助我的部份"><a href="#具體主管可以幫助我的部份" class="headerlink" title="具體主管可以幫助我的部份"></a>具體主管可以幫助我的部份</h2><ol><li>加薪(沒有比這個更務實的了)</li><li>明確指出我的錯誤或是作的好的部份</li></ol><p>Do more do faster </p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;你的目標是什麼&quot;&gt;&lt;a href=&quot;#你的目標是什麼&quot; class=&quot;headerlink&quot; title=&quot;你的目標是什麼?&quot;&gt;&lt;/a&gt;你的目標是什麼?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;自由&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;什麼是自由？&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;情
-      
-    
-    </summary>
-    
     
   </entry>
   
