@@ -20,12 +20,6 @@ tag:
         - Scrum Master 兼任多支團隊
     - Scrum Master 領導
         - 僕人式領導
-- 心態模式
-    - 教導和輔導
-    - 移除障礙
-    - 引導
-    - 教練
-    - 觀察
 
 ## CH1 Scrum Master 的角色與責任
 - 不是團隊的祕書
