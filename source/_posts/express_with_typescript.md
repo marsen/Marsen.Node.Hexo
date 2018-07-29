@@ -2,10 +2,10 @@
 title: "將 Express 網站整合 Typescirpt 開發"
 date: 2017/08/16 16:26:14
 tag:
-  - expressjs
-  - typescript
-  - gulp
-  - nodejs
+  - Expressjs
+  - TypeScript
+  - Gulpjs
+  - Nodejs
 ---
 ## 原因與目的
 - 目前我使用 express 作為網站開發
