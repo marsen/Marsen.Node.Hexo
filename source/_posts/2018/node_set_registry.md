@@ -6,7 +6,7 @@ tag:
   - Gulpjs   
 ---
 
-## Reason
+## 原因
 
 最近換了新電腦，在家工作時發生了 npm install Error;  
 錯誤訊息如下，明顯看到 npm 嚐試去連線 `http://npm.mycompany.io`  
@@ -27,7 +27,7 @@ npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
 npm ERR! A complete log of this run can be found in:
 npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log
 ```
-## solution
+## 解法
 
 一個簡單的方法是 VPN 回公司內部網路; 
 另一個方法是重新設定，

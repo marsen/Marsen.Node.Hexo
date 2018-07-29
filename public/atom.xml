@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-07-29T08:37:00.556Z</updated>
+  <updated>2018-07-29T09:18:50.535Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -21,23 +21,23 @@
     <link href="http://blog.marsen.me/2018/07/29/2018/node_set_registry/"/>
     <id>http://blog.marsen.me/2018/07/29/2018/node_set_registry/</id>
     <published>2018-07-29T08:21:22.000Z</published>
-    <updated>2018-07-29T08:37:00.556Z</updated>
+    <updated>2018-07-29T09:18:50.535Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a href="http://npm.mycompany.io" target="_blank" rel="noopener">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network 'proxy' config is set properly.  See: 'npm help config'</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure><h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>一個簡單的方法是 VPN 回公司內部網路;<br>另一個方法是重新設定，</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> npm get registry</span><br><span class="line">http://npm.mycompany.io</span><br><span class="line"><span class="meta">&gt;</span> npm set registry https://registry.npmjs.org</span><br><span class="line"><span class="meta">&gt;</span> npm get registry</span><br><span class="line">https://registry.npmjs.org</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a href="http://npm.mycompany.io" target="_blank" rel="noopener">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network 'proxy' config is set properly.  See: 'npm help config'</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>一個簡單的方法是 VPN 回公司內部網路;<br>另一個方法是重新設定，</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">http://npm.mycompany.io</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm <span class="built_in">set</span> registry https://registry.npmjs.org</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">https://registry.npmjs.org</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;Reason&quot;&gt;&lt;a href=&quot;#Reason&quot; class=&quot;headerlink&quot; title=&quot;Reason&quot;&gt;&lt;/a&gt;Reason&lt;/h2&gt;&lt;p&gt;最近換了新電腦，在家工作時發生了 npm install Error;&lt;br&gt;錯誤訊息如下，明顯看到 npm
+        &lt;h2 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot; title=&quot;原因&quot;&gt;&lt;/a&gt;原因&lt;/h2&gt;&lt;p&gt;最近換了新電腦，在家工作時發生了 npm install Error;&lt;br&gt;錯誤訊息如下，明顯看到 npm 嚐試去連線 &lt;code&gt;htt
       
     
     </summary>
     
     
-      <category term="Nodejs" scheme="http://blog.marsen.me/tags/Nodejs/"/>
-    
       <category term="Gulpjs" scheme="http://blog.marsen.me/tags/Gulpjs/"/>
+    
+      <category term="Nodejs" scheme="http://blog.marsen.me/tags/Nodejs/"/>
     
   </entry>
   
@@ -399,9 +399,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
-    
       <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
+    
+      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
     
   </entry>
   
@@ -535,9 +535,9 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
-      <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
-    
       <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
+    
+      <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
     
   </entry>
   
