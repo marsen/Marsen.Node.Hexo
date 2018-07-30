@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-07-29T09:18:50.535Z</updated>
+  <updated>2018-07-30T10:19:55.847Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[踩雷筆記]誰改了我的 package-lock.json ?</title>
+    <link href="http://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/"/>
+    <id>http://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/</id>
+    <published>2018-07-30T07:53:21.000Z</published>
+    <updated>2018-07-30T10:19:55.847Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><p>OS Windows 10<br>npm v6.2.0<br>node v8.11.1</p><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>承上篇<a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/">[實作筆記]設定 NPM Registry</a>，<br>後續發生的一些問題，<br>每當我執行 <code>npm install</code> 的時候都會異動到 <code>package-lock.json</code> 檔;<br>異動這個檔案並不意外，可以參考<a href="https://docs.npmjs.com/files/package-lock.json" target="_blank" rel="noopener">官方文件</a>的說法。  </p><p>奇怪的點是，異動竟然包含 Registry !?<br>全部都被置換成公司的 Domain , WTF ?<br><img src="https://i.imgur.com/KwwUqPV.jpg" alt=""></p><h2 id="原因與坑"><a href="#原因與坑" class="headerlink" title="原因與坑"></a>原因與坑</h2><p>當執行 <code>npm install</code> 的時候，<br>node 會去檢查你實際安裝的 node_modules，<br>並產生 <code>package-lock.json</code> 檔。<br>可以把 <code>package-lock.json</code> 想像成 node_modules 的映射。<br>而恰巧之前所安裝過的檔案，是在 Registry 為 <code>npm.mycompany</code> 時下載的;<br>這導致產生 <code>package-lock.json</code> 的時候會映射出 <code>npm.mycompany</code> 的資訊。</p><p>小心有坑!!<br>即使刪除了 node_modules 再重新 <code>npm install</code>，<br>仍然會產生錯誤的 <code>package-lock.json</code>;<br>這個原因是 npm 會有 <code>npm-cache</code>;<br>這個資料夾位在 <code>%Users%\AppData\Roaming</code>。  </p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><ol><li>設定 npm registry  <blockquote><p>npm set registry <a href="https://registry.npmjs.org" target="_blank" rel="noopener">https://registry.npmjs.org</a>  </p></blockquote></li><li>刪除專案底下的 node_modules 資料夾</li><li>刪除 npm-cache</li><li>重新執行 <code>npm install</code></li></ol><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;環境&quot;&gt;&lt;a href=&quot;#環境&quot; class=&quot;headerlink&quot; title=&quot;環境&quot;&gt;&lt;/a&gt;環境&lt;/h2&gt;&lt;p&gt;OS Windows 10&lt;br&gt;npm v6.2.0&lt;br&gt;node v8.11.1&lt;/p&gt;
+&lt;h2 id=&quot;問題&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+    
+      <category term="Nodejs" scheme="http://blog.marsen.me/tags/Nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記]設定 NPM Registry</title>
@@ -455,9 +479,9 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="http://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="Testing" scheme="http://blog.marsen.me/tags/Testing/"/>
+    
+      <category term="Unit Testing" scheme="http://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="TDD" scheme="http://blog.marsen.me/tags/TDD/"/>
     
@@ -508,36 +532,6 @@
     
     
       <category term="C#" scheme="http://blog.marsen.me/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[學習筆記]AWS 註冊到建立安全性帳戶</title>
-    <link href="http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/"/>
-    <id>http://blog.marsen.me/2018/01/26/cloud_learn/aws_startup_with_iam/</id>
-    <published>2018-01-26T06:24:16.000Z</published>
-    <updated>2018-04-17T03:12:39.620Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="該知道的事"><a href="#該知道的事" class="headerlink" title="該知道的事"></a>該知道的事</h2><ol><li>僅作為學習 AWS 的過程記錄用</li><li>可能對你有幫助</li><li>可能對你沒幫助</li><li>有沒有幫助都歡迎你提出問題與討論 </li></ol><h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的,不贅敘<br>特別一提的事<code>可以使用有VISA的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度,<br>金融卡可以更彈性,而且精準的控制預算.</p><p>另外說一下,現在AWS有一年的免費額度(已經有好一陣子了),<br><del>在註冊流程跳過付款方式的設定,</del><br><del>實際上也是可以操作的AWS的(目前只有設定IAM).</del><br>(2018/01/31更新)<br>確定<code>可以使用有VISA的金融卡</code>開戶,<br>另外當要實際使用 AWS 的服務時 EX: EC2, Lambda etc…<br>需要綁定信用卡(VISA金融卡也可以)才能繼續使用.</p><p>綁定的過程會需要輸入電話,<br>AWS 會撥一通電話給你,<br>螢幕上會出現4個數字,<br>照畫面輸入即可完成信用卡(VISA金融卡)的驗証.</p><h2 id="權限控管"><a href="#權限控管" class="headerlink" title="權限控管"></a>權限控管</h2><h3 id="Root-User"><a href="#Root-User" class="headerlink" title="Root User"></a>Root User</h3><p><img src="https://i.imgur.com/kRBApSO.jpg" alt=""><br>完成註冊後,一開始只能使用email登入,這個帳號可以存取AWS所有服務.<br>AWS<strong>不建議使用Root User作為日常的管理帳戶, Root User 應該只被用來建立第一個IAM</strong></p><h4 id="重點項目"><a href="#重點項目" class="headerlink" title="重點項目"></a>重點項目</h4><ol><li><p>Root User 啟用 <a href="https://aws.amazon.com/iam/details/mfa/" target="_blank" rel="noopener">MFA</a><br><img src="https://i.imgur.com/X3T5poV.jpg" alt=""><br>首先要下載驗証程式(Google Authenticator),<br>然後下一步到以下畫面時, 用Authenticator掃瞄QR Code,<br><strong>連續輸入兩次授權碼(輸入完第一組後,等待新的授權碼出現再輸入)</strong><br><img src="https://i.imgur.com/viNBe2p.jpg" alt=""><br>可以在 <a href="https://console.aws.amazon.com/iam/home" target="_blank" rel="noopener">IAM Console</a> 檢查成功了沒<br><img src="https://i.imgur.com/JcC9NVz.jpg" alt=""></p></li><li><p>建立 IAM User 與指定 Group 權限<br>AWS IAM 的權限觀念是透過 User 與 Group 來組合的,<br>權限是授與 Group , 而 User 隸屬於 Group 便擁有其權限,<br>同時 AWS 提供多組(347組)預設的 Policies, 讓人選擇<br>當然也可以建立自已的 Policy.<br><em>*不確定有沒有反向的 Policy ,</em><br><em>如果有當不同的 Group Policy 有衝突時該如何處理.</em></p></li></ol><p><img src="https://i.imgur.com/Ry9M2sj.jpg" alt=""><br>建立使用者時, 使用AutoGenerated Password時<br>要記得取得 password<br>在最後一步會按下show就會顯示<br><img src="https://i.imgur.com/8DOmpsg.jpg" alt=""></p><ol><li>設定 AWS Account ID 與 Alias<br><img src="https://i.imgur.com/ETV1LMR.jpg" alt=""></li></ol><h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><ol><li>如何禁用 Root user 登入 ? 可以停用而不刪除一個 user account 嗎？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root account 無法停用</span><br><span class="line">IAM User 可以透過 disable passwd 方式停用</span><br><span class="line">root account 基本的 practice</span><br><span class="line">1. 啟用 MFA</span><br><span class="line">2. 移除 Access Creditenail</span><br><span class="line">概念就跟 Winodws Administrator or Linux root 一樣</span><br><span class="line">需要時再用</span><br></pre></td></tr></table></figure></li></ol><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html" target="_blank" rel="noopener">Root User Account</a></li><li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users" target="_blank" rel="noopener">建立第一個IAM USER</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;該知道的事&quot;&gt;&lt;a href=&quot;#該知道的事&quot; class=&quot;headerlink&quot; title=&quot;該知道的事&quot;&gt;&lt;/a&gt;該知道的事&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;僅作為學習 AWS 的過程記錄用&lt;/li&gt;
-&lt;li&gt;可能對你有幫助&lt;/li&gt;
-&lt;li&gt;可能對你沒幫助&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
-    
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
-    
-      <category term="IAM" scheme="http://blog.marsen.me/tags/IAM/"/>
     
   </entry>
   
