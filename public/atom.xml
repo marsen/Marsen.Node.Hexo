@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-08-27T10:42:52.587Z</updated>
+  <updated>2018-08-28T08:49:21.040Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[異常記錄]多語系架構上線</title>
+    <link href="http://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/"/>
+    <id>http://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/</id>
+    <published>2018-08-28T06:27:21.000Z</published>
+    <updated>2018-08-28T08:49:21.040Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>很久很久很久以前，<br>【跨國語系基礎架構】上線了.<br>又過了很久很久 <strong>我們評估這多語系API需要上 CDN</strong><br><img src="https://i.imgur.com/0g5HL2z.jpg" alt=""></p><h3 id="Release項目與工作內容"><a href="#Release項目與工作內容" class="headerlink" title="Release項目與工作內容"></a>Release項目與工作內容</h3><ul><li>8/16 要 release 什麼?<br>  我們要將多語系開始開發的項目一次回台灣正式環境。</li><li>我們作了什麼  <ul><li>sp23/sp24/sp25/sp26/sp27</li><li>前端多語系底層架構的調整(含CDN)</li><li>國別設定</li><li>還有一大堆 Merge 解衝突的項目…</li></ul></li><li>為什麼要等這麼久才上線 ?<br>  風險考量，我們先上了基礎架構，<br>  在G3環境上觀察了一段時間確定沒有問題才上線。</li><li>講到風險，我們有多少保險 ?  <ul><li>只上基礎架構 (讓異動最小)</li><li>只上G3環境 (讓impact最小)</li><li>藍綠部署 (標配，讓壞掉的時間儘可能縮短)</li><li>Merge Before Build (讓原始碼不受影響，rollback時不會拔掉其它團隊的功能)</li></ul></li></ul><p><strong>講那麼多，還不是壞掉了。</strong></p><h2 id="錯誤原因"><a href="#錯誤原因" class="headerlink" title="錯誤原因"></a>錯誤原因</h2><h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/Etwq8nY.jpg" alt=""></p><h3 id="錯誤原因-1"><a href="#錯誤原因-1" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/Ujy0Z4v.jpg" alt=""></p><p>多語系 CDN 的 Response Header Access-Control-Allow-Origin Protocol 與主頁面不符;</p><h3 id="流程面"><a href="#流程面" class="headerlink" title="流程面"></a>流程面</h3><table><thead><tr><th>測試環境</th><th>測試結果</th></tr></thead><tbody><tr><td>QA8</td><td>OK</td></tr><tr><td>QA</td><td>OK</td></tr><tr><td>PP</td><td>OK</td></tr><tr><td>鎖Host測試</td><td>OK</td></tr><tr><td>半數機器上線</td><td>OK</td></tr><tr><td>全數機器上線</td><td>OK，好</td></tr></tbody></table><p>為什麼全數機器上線才發生異常。</p><ul><li>QA8 沒有 CDN</li><li>鎖Host/半數機器上線未開 CDN</li><li>QA / PP CND 設定與正式環境不一致<ul><li>RD 並未 Check 設定的一致性</li><li>RD 沒有權限</li></ul></li></ul><h3 id="技術細節"><a href="#技術細節" class="headerlink" title="技術細節"></a>技術細節</h3><ol><li>使用 Partial View 與 OutputCache</li><li>小心 Borwser Cache </li><li>站台上會有跨Domain的存取行為<ul><li>Service to Official </li><li>Service to CDN</li><li>Official to Service</li></ul></li><li>CDN &amp; Access-Control-Allow-Origin </li><li>稍微提一下 CORSModule</li></ol><h3 id="錯誤原因-2"><a href="#錯誤原因-2" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/GmBULAQ.jpg" alt=""></p><pre><code>TranslationCDN : 用來防止瞬間量對 Server 的 ImpactFingerprintTag : 一份Cache的時戳， 用以取得新版多語系 Json 檔    site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></pre><ol><li>Partial View 會有 OutputCache<br> → 保得了一時，保不了一世</li><li>為了 Borwser Cache ，F2E 在 QueryString 作了加工。</li><li>網站跨Domain的存取行為，歷史共業。</li><li>CDN &amp; Access-Control-Allow-Origin </li><li>CorsModule，有必要區分protocol嗎 ?</li></ol><p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt="">    </p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">"http:"</span>, <span class="string">"https:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="問題處理經過"><a href="#問題處理經過" class="headerlink" title="問題處理經過"></a>問題處理經過</h3><ol><li><p>第一時間 QA 有看到異常， 但是在 PO 的環境無法重現 ，<br>RD 初步判斷為快取的問題， 並嚐試重現錯誤 。</p></li><li><p>SRG 收到通報有<strong>客戶反應</strong>顯示異常，立即啟動藍綠部署，<strong>耗時 93 分鐘</strong>。  </p></li><li><p>縮小範圍至 CDN 與 Access-Control-Allow-Origin 異常，<br>但是仍然<strong>無法完整重現錯誤</strong>(時好時壞)</p></li><li><p><strong>申請 CDN 權限</strong>,確認各環境的設定值。  </p></li><li><p><strong>申請 QAn 測試用CDN</strong>,在 QA8 環境反覆測試，<br>發現<strong>頁面 OutputCache 會影響測試</strong></p></li></ol><p>關閉QA8 OutputCache<br>測試步驟如下:</p><pre><code>- Case1. http 強制更新後，連線 https     - http://8.qa.demo/index?r=t        - ts = 2387        - ao = http://8.qa.demo/index    - http://8.qa.demo/index        - ts = 2387        - ao = http://8.qa.demo/index    - https://8.qa.demo/index =&gt; **Error**        - ts = 2387        - ao = http://8.qa.demo/index- Case2. https 強制更新後，連線 http     - https://8.qa.demo/index?r=t        - ts = 8458        - ao = https://8.qa.demo/index    - http://8.qa.demo/index        - ts = 8458        - ao = https://8.qa.demo/index    - https://8.qa.demo/index =&gt; **Error**        - ts = 8458        - ao = https://8.qa.demo/index         </code></pre><ol><li><p>確認 Prod CDN 的 WhiteList Header 的設定有問題，<br>那為什麼 PP/G3 不會有問題呢 ?<br>=&gt; <strong>在 PP/G3 設定為 Referrer</strong> </p></li><li><p>測試過程發現 x-cache Header 常常<br><code>Miss from cloudfront</code>,<br>表示資料並非來自 CDN .<br>實際測試 Origin 比 Referrer 更適合</p></li></ol><h3 id="回饋與後續"><a href="#回饋與後續" class="headerlink" title="回饋與後續"></a>回饋與後續</h3><pre><code>1. 團隊評估欠缺數據 →2. 客戶反應異常。3. 藍綠部署異常回覆速度，耗時 93 分鐘 → `已有RD著手改善`4. 無法完整重現錯誤5. RD 沒有 CDN 權限 → `已申請`6. QAn 沒有設定 CDN → `沒有CDN的Issue沒必要特別設定(因為需要對外)`7. 頁面 OutputCache 會影響測試。8. PP / G3 與 Prod  CDN設定不一致 → `webapi/transalte/* 已調整一致`9. Release 三步驟 ， 最後一步才會開啟 CDN</code></pre><p>Q. 下次我們怎麼作 ?</p><h3 id="補充資料"><a href="#補充資料" class="headerlink" title="補充資料"></a>補充資料</h3><ul><li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt=""></p><p>  Server跟CDN就像工廠與便利店的關係， 你要買東西不用跑到工廠<br>  只要在離自已最近的便利店買就好了， 過期的商品(資料)會被丟掉<br>  重新跟工廠進貨(拉新資料)。</p></li><li>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</li><li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </li><li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></li><li><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;很久很久很久以前，&lt;br&gt;【跨國語系基礎架構】上線了.&lt;br&gt;又過了很久很久 &lt;strong&gt;我們評估這多語系API需要上 
+      
+    
+    </summary>
+    
+    
+      <category term="CDN" scheme="http://blog.marsen.me/tags/CDN/"/>
+    
+      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
+    
+  </entry>
   
   <entry>
     <title>[踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI </title>
@@ -513,29 +538,6 @@
       <category term="TDD" scheme="http://blog.marsen.me/tags/TDD/"/>
     
       <category term="Mutation Teseting" scheme="http://blog.marsen.me/tags/Mutation-Teseting/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[活動筆記]蝦皮購物新加坡研發團隊技術分享會</title>
-    <link href="http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/"/>
-    <id>http://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/</id>
-    <published>2018-03-15T09:00:12.000Z</published>
-    <updated>2018-04-17T03:12:39.593Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="應該不用知道的事"><a href="#應該不用知道的事" class="headerlink" title="應該不用知道的事"></a>應該不用知道的事</h2><ol><li>雖然是「技術分享會」實際上在徵才</li><li>不過還是有半場的技術分享</li><li>91app 至少去了10 個人(含前員工) </li><li>這篇文章對你應該沒有幫助</li></ol><h2 id="有關蝦皮"><a href="#有關蝦皮" class="headerlink" title="有關蝦皮"></a>有關蝦皮</h2><ul><li>屬於<a href="http://www.seagroup.com/home" target="_blank" rel="noopener">Sea 集團</a>的一部份</li><li>東南亞多國服務(新加坡、泰國、馬來西亞、印度、台灣、越南…)</li><li>63e Request / Day</li><li>8G IO / Mins</li></ul><h2 id="選擇"><a href="#選擇" class="headerlink" title="選擇"></a>選擇</h2><ul><li>Native App / Web / Hybird / RN ?</li><li>Clound / Self machine ?</li><li>Php/ Nodejs / RoR / Django ?</li><li>Apache / Ngnix ?</li><li>C ++ / Java / GoLang</li><li>Memcahed / Redis ?</li><li>SPA / MPA ?</li><li>Mesos / Kubernate ?</li></ul><h2 id="Qiz-amp-Ans"><a href="#Qiz-amp-Ans" class="headerlink" title="Qiz &amp; Ans"></a>Qiz &amp; Ans</h2><h5 id="1"><a href="#1" class="headerlink" title="1"></a>1</h5><blockquote><p>用戶下單的時候, 先收錢還是先扣庫存?<br>扣掉最後一件庫存後, 收錢失敗怎麼辦？<br>你已經把「賣完」訊息發給了賣家, 怎麼辦？</p></blockquote><h5 id="2"><a href="#2" class="headerlink" title="2"></a>2</h5><blockquote><p>計算金額用整數還是浮點數？(浮點數不準)</p></blockquote><h5 id="3"><a href="#3" class="headerlink" title="3"></a>3</h5><blockquote><p>Android 一共有幾種螢幕的 DPI ?<br>Android WebView 和 Chrome 的 Webkit 有何不同 ?</p></blockquote><h5 id="4"><a href="#4" class="headerlink" title="4"></a>4</h5><blockquote><p>Web Service 花最多時間在處理什麼 ?<br>如何壓搾最高的吞吐量 ?<br>IO, USE async</p></blockquote><h5 id="5"><a href="#5" class="headerlink" title="5"></a>5</h5><blockquote><p>什麼樣的情境適合增加伺服器數量來增進效能?<br>stateless<br>那有狀態怎麼辦 ? </p></blockquote><h5 id="6"><a href="#6" class="headerlink" title="6"></a>6</h5><blockquote><p>load balancer 效能到達瓶頸怎麼辦 ?<br>IP</p></blockquote><h5 id="7"><a href="#7" class="headerlink" title="7"></a>7</h5><blockquote><p>一天 25TB 的 Log 數量,怎麼不會查到天荒地老</p></blockquote><h5 id="8"><a href="#8" class="headerlink" title="8"></a>8</h5><blockquote><p>Cache &amp; 超賣問題<br>什麼時候要清 Cache ?</p></blockquote><h5 id="9"><a href="#9" class="headerlink" title="9"></a>9</h5><blockquote><p>Database Master 與 Slave 哪個壓力大 ?(Slave)<br>增加 index 的代價為何 ?(Space)<br>Table 多大要 shard ?<br>Database 多大要分庫 ?<br>分庫如何作 transaction ?</p></blockquote><h2 id="實踐"><a href="#實踐" class="headerlink" title="實踐"></a>實踐</h2><ol><li>Prototype 簡單 Production 困難 (邊際效應/熵)</li><li>可靠:言出必行,作不到也要早點說(知難行易)</li><li>Redis 的資料超過 64G 就無法用 <a href="http://redisdoc.com/server/bgsave.html" target="_blank" rel="noopener">bgsave</a> 有效存檔</li><li>在 Prodction 千萬別用 Redis 的 <a href="https://redis.io/commands/keys" target="_blank" rel="noopener">key</a> 指令</li><li>衡量的基準(benchmark)為何？</li><li>不要對邏輯下command(不要寫前因後果)<ul><li>Dont command How</li><li>Command Why</li></ul></li><li>道<ul><li>Collect your dots first</li><li>Connecting the dots</li></ul></li></ol><h2 id="持久發展的研發團隊"><a href="#持久發展的研發團隊" class="headerlink" title="持久發展的研發團隊"></a>持久發展的研發團隊</h2><ul><li>knowledge</li><li>保持開放</li><li>尊重事實</li><li>信任</li><li>可靠</li><li>找到根本原因(root cause)</li><li>分析 修復 記錄</li><li>Docs<ul><li>connection docs</li><li>collection docs</li></ul></li></ul><h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><ul><li>白箱測試</li><li>黑箱測試</li></ul><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul><li>Hypergraph</li><li>Tech Stack</li><li>Roles<ul><li>contries PM</li><li>fucntion PM</li></ul></li><li>Scurm 是跑給老闆看的(!!?)</li><li>馬來西亞不用小豬ICON(各地風俗民情不同)</li></ul><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://careers.shopee.com" target="_blank" rel="noopener">https://careers.shopee.com</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;應該不用知道的事&quot;&gt;&lt;a href=&quot;#應該不用知道的事&quot; class=&quot;headerlink&quot; title=&quot;應該不用知道的事&quot;&gt;&lt;/a&gt;應該不用知道的事&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;雖然是「技術分享會」實際上在徵才&lt;/li&gt;
-&lt;li&gt;不過還是有半場的技術分享&lt;/
-      
-    
-    </summary>
-    
     
   </entry>
   
