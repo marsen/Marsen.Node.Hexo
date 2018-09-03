@@ -2,7 +2,7 @@
 title: CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)
 date: 2017/01/15 22:16:42
 tag:
-  - CI
+  - CI/CD
   - Jenkins
   - Openshift
 ---

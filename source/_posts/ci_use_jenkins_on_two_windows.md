@@ -2,7 +2,7 @@
 title: CI/CD 環境建置筆記(二) - 在 windows 安裝 Jenkins 之旁門左道私有雲
 date: 2017/04/29 11:55:16
 tag:
-  - CI
+  - CI/CD
   - Jenkins
 ---
 
