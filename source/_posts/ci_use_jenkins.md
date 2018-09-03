@@ -2,7 +2,7 @@
 title: CI/CD 環境建置筆記 - 前言<目的>
 date: 2017/01/15 21:54:00
 tag:
-  - CI
+  - CI/CD
   - Jenkins
 ---
 
