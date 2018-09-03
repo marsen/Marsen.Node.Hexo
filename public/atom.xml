@@ -43,32 +43,6 @@
   </entry>
   
   <entry>
-    <title>[實作筆記]Jenkins Pipeline 與 Groovy 初體驗</title>
-    <link href="http://blog.marsen.me/2018/08/29/2018/ci_use_jenkins_pipeline_groovy/"/>
-    <id>http://blog.marsen.me/2018/08/29/2018/ci_use_jenkins_pipeline_groovy/</id>
-    <published>2018-08-29T03:42:27.000Z</published>
-    <updated>2018-08-30T08:08:49.183Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><ul><li><a href="https://jenkins.io/doc/book/pipeline/" target="_blank" rel="noopener">Jenkins Pipeline</a></li><li>Groovy</li></ul><p>Jenkins Pipeline 是 Jenkins 的一個 Plugin,<br>實現了 Pipeline as Code . 什麼是 Pipeline as Code ?</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;簡介&quot;&gt;&lt;a href=&quot;#簡介&quot; class=&quot;headerlink&quot; title=&quot;簡介&quot;&gt;&lt;/a&gt;簡介&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://jenkins.io/doc/book/pipeline/&quot; target=&quot;_blank&quot; 
-      
-    
-    </summary>
-    
-    
-      <category term="CI/CD" scheme="http://blog.marsen.me/tags/CI-CD/"/>
-    
-      <category term="Jenkis" scheme="http://blog.marsen.me/tags/Jenkis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>[異常記錄]多語系架構上線</title>
     <link href="http://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/"/>
     <id>http://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/</id>
@@ -527,9 +501,37 @@
     
       <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
+      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
+    
       <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
     
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
+  </entry>
+  
+  <entry>
+    <title>[讀書會]單元測試的藝術 - 導讀、序與第一章</title>
+    <link href="http://blog.marsen.me/2018/03/22/2018/the_art_of_unit_testing_2nd_0/"/>
+    <id>http://blog.marsen.me/2018/03/22/2018/the_art_of_unit_testing_2nd_0/</id>
+    <published>2018-03-21T17:20:12.000Z</published>
+    <updated>2018-06-03T13:14:03.719Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要知道的事"><a href="#要知道的事" class="headerlink" title="要知道的事"></a>要知道的事</h2><ol><li>這是<a href="http://www.books.com.tw/products/0010765689" target="_blank" rel="noopener">單元測試的藝術</a>的閱讀筆記</li><li>筆記的意思就是不一定會有心得</li><li>這篇主要是導讀</li></ol><h2 id="譯者序"><a href="#譯者序" class="headerlink" title="譯者序"></a>譯者序</h2><ul><li>TDD , Test First to Think First</li><li>什麼是好的單元測試？</li><li>單元測試三支柱:可信任 可讀性 可維護</li><li>綠色安全區域</li><li>實務上導入的指引</li></ul><h3 id="入門建議"><a href="#入門建議" class="headerlink" title="入門建議"></a>入門建議</h3><ul><li>了解如何隔離相依(Part II)</li><li>Stub 與 Mock 的差異,熟練隔離框架(NSubstitute)</li><li>如何撰寫優秀的單元測試(Part III)</li></ul><h3 id="進階建議"><a href="#進階建議" class="headerlink" title="進階建議"></a>進階建議</h3><ul><li>如何撰寫優秀的單元測試(Part III)</li><li>如何在組織中導入單元測試(Part IV)</li><li>針對遺留代碼的重構與測試,以及可測試性設計(Part IV)</li></ul><h3 id="避免"><a href="#避免" class="headerlink" title="避免"></a>避免</h3><ol><li>測試不穩定</li><li>過度指定</li><li>一次不只測一件事</li><li>測試程式重複過多</li><li>可讀性差</li></ol><h2 id="關於本書"><a href="#關於本書" class="headerlink" title="關於本書"></a>關於本書</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有寫測試, 也不保証專案成功,<br>一個失敗的單元測試案例,<br>作者歸納原因如下,  </p><ul><li>脆弱的測試(Prod改一點,測試就錯一大片)</li><li>不易維護</li><li>測試間相護依賴</li><li>可讀性差</li></ul><h3 id="作者推薦的框架"><a href="#作者推薦的框架" class="headerlink" title="作者推薦的框架"></a>作者推薦的框架</h3><ul><li><a href="http://nsubstitute.github.io" target="_blank" rel="noopener">NSubstitute</a></li><li><a href="https://github.com/FakeItEasy/FakeItEasy" target="_blank" rel="noopener">FakeItEasy</a></li></ul><h3 id="學習路線圖"><a href="#學習路線圖" class="headerlink" title="學習路線圖"></a>學習路線圖</h3><ul><li>Part I 基礎知識</li><li>Part II 測試框架</li><li>Part III 最佳實踐</li><li>Part IV 組識導入/遺留代碼/設計</li></ul><h2 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h2><ol><li>入門<ul><li>什麼是優秀的單元測試</li><li>單元測試與整合測試的分別</li><li>第一個單元測試</li></ul></li><li>核心技術<ul><li>Stub</li><li>IoC(DI)</li><li>值、狀態與互動</li><li>測試框架</li><li>事件</li><li>深入了解測試框架</li></ul></li><li>測試程式碼<ul><li>自動化</li><li>綠色安全區域</li><li>可信任/可維護/可讀性</li></ul></li><li>設計與流程<ul><li>組織導入</li><li>遺留代碼</li><li>設計與可測試性</li></ul></li></ol><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="定義單元測試"><a href="#定義單元測試" class="headerlink" title="定義單元測試"></a>定義單元測試</h3><h3 id="什麼是優秀的單元測試"><a href="#什麼是優秀的單元測試" class="headerlink" title="什麼是優秀的單元測試"></a>什麼是優秀的單元測試</h3><ol><li>自動化, 可重複執行</li><li>容易實現*</li><li>到第二天還有存在的意義(非臨時性的,ex:hotfix)</li><li>任何都可以一鍵執行</li><li>執行速度快</li><li>結果一致</li><li>可以完全控制(不與外部相依)</li><li>獨立於其他測試</li><li>失敗時,錯誤應該是明確的</li></ol><h3 id="整合測試"><a href="#整合測試" class="headerlink" title="整合測試"></a>整合測試</h3><ol><li>整合測試相依於真實物件</li><li>整合測試的結果不穩定</li><li>整合測試與單元測試應該被分開(見ch7.2.2)</li><li>整合測試執行時間長</li><li>依據現實狀況無法完全控制</li><li>缺點: 一次測試的東西太多</li></ol><h3 id="第一個單元測試"><a href="#第一個單元測試" class="headerlink" title="第一個單元測試"></a>第一個單元測試</h3><h3 id="理解測試趨動開發"><a href="#理解測試趨動開發" class="headerlink" title="理解測試趨動開發"></a>理解測試趨動開發</h3><ol><li>TDD 不保證產品會成功</li><li>步驟<ol><li>寫一個失敗的測試</li><li>寫一個符合測試預期的產品程式碼,以通過測試</li><li>重構</li></ol></li></ol><h3 id="TDD的核心技能"><a href="#TDD的核心技能" class="headerlink" title="TDD的核心技能"></a>TDD的核心技能</h3><ol><li>可維護、可讀、可靠(這本書的目的)</li><li>寫出可維護、可讀、可靠的測試不等於TDD,至於如何寫優秀的TDD,作者推薦閱讀<a href="https://www.tenlong.com.tw/products/9780321146533" target="_blank" rel="noopener">〈Test-Driven Development:by Example〉</a></li><li>就算執行TDD,也不保証能設計一個完善的系統,作者推薦閱讀<a href="http://tl.big5.zxhsd.com/kgsm/ts/big5/2010/07/30/1801246.shtml" target="_blank" rel="noopener">Growing Object-Oriented Software, Guided by Tests</a>與<a href="https://www.tenlong.com.tw/products/9789862017050" target="_blank" rel="noopener">無瑕的程式碼</a></li></ol><p>簡單說就是,</p><ul><li>寫好測試</li><li>測試先行(TDD)</li><li>設計</li></ul><p>作者認為這是三種技能, 同時學習三種技能門檻會相當的高, 最後導致放棄.</p><h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><ul><li>優秀的測試就是<ul><li>自動化</li><li>容易撰寫</li><li>執行快速</li><li>任何人都可以執行,並得到相同結果</li></ul></li></ul><h2 id="揪錯"><a href="#揪錯" class="headerlink" title="揪錯"></a>揪錯</h2><p><img src="https://i.imgur.com/olnQxQ2.jpg" alt=""></p><h2 id="本書資源"><a href="#本書資源" class="headerlink" title="本書資源"></a>本書資源</h2><ol><li><a href="https://github.com/royosherove/aout2" target="_blank" rel="noopener">Samples</a></li><li><a href="http://artofunittesting.com/" target="_blank" rel="noopener">The Art Of Unit Testing</a></li><li><a href="http://osherove.com/videos/" target="_blank" rel="noopener">Videos</a></li></ol><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;要知道的事&quot;&gt;&lt;a href=&quot;#要知道的事&quot; class=&quot;headerlink&quot; title=&quot;要知道的事&quot;&gt;&lt;/a&gt;要知道的事&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;這是&lt;a href=&quot;http://www.books.com.tw/products/00107656
+      
+    
+    </summary>
+    
+    
+      <category term="Unit Testing" scheme="http://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="Integrated Testing" scheme="http://blog.marsen.me/tags/Integrated-Testing/"/>
+    
+      <category term="TDD" scheme="http://blog.marsen.me/tags/TDD/"/>
     
   </entry>
   
