@@ -60,7 +60,7 @@ Ans: 使用 Lock ，
     - Server Id 與 Request 相同，更新 Cache Data 並回傳
     - Server Id 與 Request 不相同，直接回傳 Cache Data
 
-#### [Cache Double check Lock Pattern](https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14))
+#### [Cache Double check Lock Patter(https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)
 
 ```csharp=
 private static object _lock =  new object();
