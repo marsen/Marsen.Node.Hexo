@@ -3,22 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>代碼審查與交付的戰爭ー標準、風格與原則 | Marsen</title>
+  <title>最大公因數與最小公倍數 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding Standard / Code Review / Pull Request &amp;amp; Delivery 故事背景 團隊的部署流程是 Github Flow 與 Git Flow 混用 , 給它起個名字叫 GG Flow 好了. GG Flow 的過程需要開發人員需要透過 Pull Request 將修改推送給產品  擁有權限 Merge Pull Request 的成員被叫作 Re">
-<meta name="keywords" content="Coding Standard">
+  <meta name="description" content="簡介數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;然後在商業流程與資料流中穿梭，找蟲然後補丁 ;   這是最近在練習 Kata 的題目所用到的兩個國中數學，「最大公因數」與「最小公倍數」，還用程式實踐了「輾轉相除法」，真的是有點懷念啊 。 這是題外話，Rx(Reactive Functional Programing)感覺很有">
+<meta name="keywords" content="C#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代碼審查與交付的戰爭ー標準、風格與原則">
-<meta property="og:url" content="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/index.html">
+<meta property="og:title" content="最大公因數與最小公倍數">
+<meta property="og:url" content="http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="Coding Standard / Code Review / Pull Request &amp;amp; Delivery 故事背景 團隊的部署流程是 Github Flow 與 Git Flow 混用 , 給它起個名字叫 GG Flow 好了. GG Flow 的過程需要開發人員需要透過 Pull Request 將修改推送給產品  擁有權限 Merge Pull Request 的成員被叫作 Re">
+<meta property="og:description" content="簡介數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;然後在商業流程與資料流中穿梭，找蟲然後補丁 ;   這是最近在練習 Kata 的題目所用到的兩個國中數學，「最大公因數」與「最小公倍數」，還用程式實踐了「輾轉相除法」，真的是有點懷念啊 。 這是題外話，Rx(Reactive Functional Programing)感覺很有">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https://i.imgur.com/tssraf0.jpg">
-<meta property="og:updated_time" content="2018-04-17T03:12:39.583Z">
+<meta property="og:updated_time" content="2018-09-17T17:39:32.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代碼審查與交付的戰爭ー標準、風格與原則">
-<meta name="twitter:description" content="Coding Standard / Code Review / Pull Request &amp;amp; Delivery 故事背景 團隊的部署流程是 Github Flow 與 Git Flow 混用 , 給它起個名字叫 GG Flow 好了. GG Flow 的過程需要開發人員需要透過 Pull Request 將修改推送給產品  擁有權限 Merge Pull Request 的成員被叫作 Re">
-<meta name="twitter:image" content="https://i.imgur.com/tssraf0.jpg">
+<meta name="twitter:title" content="最大公因數與最小公倍數">
+<meta name="twitter:description" content="簡介數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;然後在商業流程與資料流中穿梭，找蟲然後補丁 ;   這是最近在練習 Kata 的題目所用到的兩個國中數學，「最大公因數」與「最小公倍數」，還用程式實踐了「輾轉相除法」，真的是有點懷念啊 。 這是題外話，Rx(Reactive Functional Programing)感覺很有">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -80,10 +78,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018/coding_standard_and_coding_style_and_principle" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2018/LCM_and_GCD" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" class="article-date">
-  <time datetime="2018-01-03T16:51:27.000Z" itemprop="datePublished">2018-01-04</time>
+    <a href="/2018/09/18/2018/LCM_and_GCD/" class="article-date">
+  <time datetime="2018-09-17T16:36:51.000Z" itemprop="datePublished">2018-09-18</time>
 </a>
     
   </div>
@@ -94,7 +92,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      代碼審查與交付的戰爭ー標準、風格與原則
+      最大公因數與最小公倍數
     </h1>
   
 
@@ -102,110 +100,33 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="Coding-Standard-Code-Review-Pull-Request-amp-Delivery"><a href="#Coding-Standard-Code-Review-Pull-Request-amp-Delivery" class="headerlink" title="Coding Standard / Code Review / Pull Request &amp; Delivery"></a>Coding Standard / Code Review / Pull Request &amp; Delivery</h6><p><img src="https://i.imgur.com/tssraf0.jpg" alt=""></p>
-<h2 id="故事背景"><a href="#故事背景" class="headerlink" title="故事背景"></a>故事背景</h2><ol>
-<li>團隊的部署流程是 Github Flow 與 Git Flow 混用 , 給它起個名字叫 GG Flow 好了.</li>
-<li>GG Flow 的過程需要開發人員需要透過 <strong>Pull Request</strong> 將修改推送給產品 </li>
-<li>擁有權限 Merge Pull Request 的成員被叫作 Reviewer</li>
-<li>Reviewer 通常由較資深人員或部門主管擔任,所以通常有比較多的<del>無用</del>會議要開</li>
-<li>Reviewer 在 Merge 之前需要作 <strong>Code Review</strong></li>
-<li>Reviewer 需要遵循 <strong>Coding Standard</strong> 作 Code Review</li>
-</ol>
-<h2 id="實務面臨的問題與副作用"><a href="#實務面臨的問題與副作用" class="headerlink" title="實務面臨的問題與副作用"></a>實務面臨的問題與副作用</h2><h4 id="Coding-Standard-並不能考慮到所有狀況"><a href="#Coding-Standard-並不能考慮到所有狀況" class="headerlink" title="Coding Standard 並不能考慮到所有狀況"></a>Coding Standard 並不能考慮到所有狀況</h4><ol>
-<li>所以 Reviewers 會定期針對不同的狀況開會討論 Coding Standard<ul>
-<li>Coding Standard 會<strong>不定期改變</strong> , 但是透過Reviewer佈達的方式,讓第一線的RD其實難以知道其全貌.</li>
-<li>Coding Standard 改變後不會全面的翻改程式,實務上是作到哪裡改到哪裡</li>
-<li>以上兩點導致 Source Code 裡面有很多符合不同時期的 Coding Standard 的 Code</li>
-<li>任一個時間點, 誰都無法保証完全符合最新的 Coding Standard </li>
+        <h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><p>數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，<br>不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;<br>然後在商業流程與資料流中穿梭，找蟲然後補丁 ;  </p>
+<p>這是最近在練習 <a href="https://www.hackerrank.com/challenges/between-two-sets/problem" target="_blank" rel="noopener">Kata 的題目</a>所用到的兩個國中數學，<br>「最大公因數」與「最小公倍數」，還用程式實踐了「輾轉相除法」，<br>真的是有點懷念啊 。</p>
+<p>這是題外話，Rx(Reactive Functional Programing)感覺很有趣<br>最近參與 functional programing 的讀書會，<br>裡面似乎有比現在開發模式更優雅的解決問題方式。<br>不過門檻有點高，需要具備的抽象思考能力，是種非常燒腦的開發方式。</p>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><pre><code class="csharp"><span class="comment"><span class="doctag">///</span>/ GCD</span>
+<span class="keyword">static</span> Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt; GCD = (numA, numB) =&gt; {
+        <span class="keyword">return</span> numB == <span class="number">0</span> ? numA : GCD(numB, numA % numB);
+    };
+<span class="comment"><span class="doctag">///</span>/ LCM</span>
+<span class="keyword">static</span> Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>,<span class="keyword">int</span>&gt; LCM = (numA,numB) =&gt; {
+            <span class="keyword">return</span> numA * numB / GCD(numA, numB);
+        } ;
+</code></pre>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a href="https://www.geeksforgeeks.org/gcd-two-array-numbers/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/gcd-two-array-numbers/</a></li>
+<li><a href="https://www.geeksforgeeks.org/lcm-of-given-array-elements/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/lcm-of-given-array-elements/</a></li>
 </ul>
-</li>
-<li>人性,開發者會<del>COPY/PASTE 方法開發</del>參考Legacy Code開發<ul>
-<li>Legacy Code 不符合新的 Coding Standard</li>
-<li>Reviewer 也是人, 所以 Code Review 時也會疏漏,而 Merge 進去不符合新的 Coding Standard 的 Code</li>
-<li>所以 Source Code 裡面還是有很多不同時期的 Coding Standard 的 Code</li>
-</ul>
-</li>
-<li>回歸一開始的問題 Coding Standard 並不能考慮到所有狀況 <ul>
-<li>還沒有開會前, 不同的 Reviewer 會有不同的想法</li>
-<li>開會後,在執行Code Review時, 不同的 Reviewer 會有不同的作法</li>
-<li>當一個 PR 有多人 Reviewer 時, 會有不同的意見 PR 因此被延遲 Merge</li>
-<li>結果,<strong>交付會變慢</strong>.</li>
-</ul>
-</li>
-</ol>
-<h2 id="反思-標準還是風格？"><a href="#反思-標準還是風格？" class="headerlink" title="反思,標準還是風格？"></a>反思,標準還是風格？</h2><p>思考一下,開發程式碼的目標與價值是什麼 ?<br>寫出 Clearn Code ?<br>還是交付產品 ?<br>這樣子的 Source Code 真的是 Clearn Code 嗎？</p>
-<h2 id="自問自答"><a href="#自問自答" class="headerlink" title="自問自答"></a>自問自答</h2><h4 id="Q1-我們該有標準嗎？"><a href="#Q1-我們該有標準嗎？" class="headerlink" title="Q1. 我們該有標準嗎？"></a>Q1. 我們該有標準嗎？</h4><p>A1. 當然要有標準,不過標準之所以為標準,應該有以下幾個特點. </p>
-<ul>
-<li>它應該要很簡單, 像是Class與欄位的命名規則</li>
-<li>它應放諸四海皆準, 不應該輕易被修改</li>
-<li>它應該可以被自動化的檢測<br>假設能作到這3點, 這件事應該可以被自動化工具處理掉 . </li>
-</ul>
-<h4 id="Q2-實務上就是很複雜-所以才需要討論制訂標準啊"><a href="#Q2-實務上就是很複雜-所以才需要討論制訂標準啊" class="headerlink" title="Q2. 實務上就是很複雜, 所以才需要討論制訂標準啊"></a>Q2. 實務上就是很複雜, 所以才需要討論制訂標準啊</h4><p>A2.<br>在實務上遇到很複雜的情況, 大多需要依賴約定成俗方式規範.<br>這是一種<strong>風格</strong>或<strong>原則</strong> ;<br>簡單的分類方法,<br>如果無法透過自動化工具作檢測,<br>就不應該歸類為<strong>標準</strong>.</p>
-<p><em>註:有機會再介紹自動化的檢測工具</em></p>
-<h4 id="Q3-風格或原則跟標準有何不同？"><a href="#Q3-風格或原則跟標準有何不同？" class="headerlink" title="Q3. 風格或原則跟標準有何不同？"></a>Q3. <strong>風格</strong>或<strong>原則</strong>跟<strong>標準</strong>有何不同？</h4><p>A3. 如上所說,標準應該能被自動化,<br>風格應該是團隊的文化自然形成的產物,<br>具體的實作可以透過讓開發者<strong>彼此之間作代碼審核</strong><br>或是<strong>結對編程</strong>培養出屬於團隊的風格,<br>風格要基於標準之上,但是不能違反原則;</p>
-<p>以下的原則可以作為參考</p>
-<ul>
-<li>可以建置並通過測試</li>
-<li>可讀性<ul>
-<li>self documenting</li>
-<li>有用的註解 </li>
-</ul>
-</li>
-<li>公開方法要可以被測試<ul>
-<li>小心使用靜態類別</li>
-<li>注意new Instance的時機</li>
-<li>重複的代碼應重構</li>
-</ul>
-</li>
-<li>保持 SOLID </li>
-</ul>
-<p>初期的可能會發生在「{」要不要換行之類的問題上揪結之類的蠢事,<br>如果可以自動化,就把它作成標準吧…<br>如果不行的話, 就別揪結了.  </p>
-<p>實務上可能遇到各種狀況,<br>把Reviewer的權限下放到各個開發者身上,<br>或是使用結對編程,<br>就讓團隊成員去討論與決定風格.  </p>
-<p>以標準為根基,原則為天,<br>踩穩腳步,不要超出天空,<br>就讓團隊自由發揮吧. </p>
-<p><strong>最後,持續交付會比每兩周花一個小時開會決定Style的細節好多了. 不是嗎？</strong></p>
-<h2 id="其它團隊分享的具體作法"><a href="#其它團隊分享的具體作法" class="headerlink" title="其它團隊分享的具體作法"></a>其它團隊分享的具體作法</h2><ol>
-<li>超過一定時間就讓成員擁Merge權限</li>
-<li>Release權限仍集中控管</li>
-<li>錯了再改就好(保持敏捷)</li>
-<li>給pair作code review與merge (避免一人思維陷井)</li>
-<li>兩個人無法解決時找第三方</li>
-<li>release 功能 優先於 一致的 coding standard</li>
-<li>品質由測試管控而非 reviewer</li>
-<li>先有測試才有重構</li>
-<li>可讀性 優於 枝微末節的coding standard實踐</li>
-<li>善用自動化工具( sonarqube / stylecop )</li>
-</ol>
 <p>(fin)</p>
-<h5 id="補充-社群觀點"><a href="#補充-社群觀點" class="headerlink" title="補充 社群觀點"></a>補充 <a href="https://www.facebook.com/groups/616369245163622/permalink/1225873964213144/" target="_blank" rel="noopener">社群觀點</a></h5><ul>
-<li>coding style一般不管的。</li>
-<li>class name／variable name，一定要叫有意義的名字。</li>
-<li>local scope variable，換多少行，indentation，這些是小事</li>
-<li>一個成熟的developer，隨時會被上司命令這些遠古火星文明（legacy system）去做考古工作</li>
-<li>coding style這些事，就像emacs和vim之戰一樣，戰到skynet出來了也不會戰完的</li>
-<li>如果要開會去討論coding style，最終很可能讓團隊口服心不服地去跟隨我的Coding Style。</li>
-<li>在Coding Style這種低層次的小事上用光了團隊成員之間互相容忍的能量，而在更重要的大事上無法好好合作。</li>
-<li>有很多事是比Coding Style重要的。<ul>
-<li>Object Modeling是否跟business logic一致？</li>
-<li>還是Object有這個attribute但是根本沒在用？</li>
-<li>Code Change是否有做好測試？</li>
-<li>系統架構是否合理</li>
-<li>有做好High-Avalibility嗎？</li>
-<li>有沒有Race Condition？</li>
-</ul>
-</li>
-<li>是其是，非其非。真正有道理的，你說了對方便自然會聽下去。</li>
-<li>「Senior」是代表自己在專業上懂得比別人多，而不是比別人身份高級。</li>
-</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" data-id="cjm6fxjsy003o38vx80xygd4q" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/" data-id="cjm6ige1c009o38vx5bym9u9m" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li></ul>
 
     </footer>
   </div>
@@ -213,19 +134,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2018/01/07/2018/six_strategies_for_application_deployment/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          [好文分享]應用部署的六種策略
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/01/2018/next_year/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/07/2018/l10n_i18n/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">一年後的我想要什麼？</div>
+      <div class="article-nav-title">i18n 與 l10n</div>
     </a>
   
 </nav>
@@ -330,7 +242,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsenlin';
   
-  var disqus_url = 'http://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/';
+  var disqus_url = 'http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/';
   
   (function(){
     var dsq = document.createElement('script');
