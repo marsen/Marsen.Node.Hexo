@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-09-17T15:24:01.346Z</updated>
+  <updated>2018-09-17T17:39:32.561Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最大公因數與最小公倍數</title>
+    <link href="http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/"/>
+    <id>http://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/</id>
+    <published>2018-09-17T16:36:51.000Z</published>
+    <updated>2018-09-17T17:39:32.561Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><p>數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，<br>不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;<br>然後在商業流程與資料流中穿梭，找蟲然後補丁 ;  </p><p>這是最近在練習 <a href="https://www.hackerrank.com/challenges/between-two-sets/problem" target="_blank" rel="noopener">Kata 的題目</a>所用到的兩個國中數學，<br>「最大公因數」與「最小公倍數」，還用程式實踐了「輾轉相除法」，<br>真的是有點懷念啊 。</p><p>這是題外話，Rx(Reactive Functional Programing)感覺很有趣<br>最近參與 functional programing 的讀書會，<br>裡面似乎有比現在開發模式更優雅的解決問題方式。<br>不過門檻有點高，需要具備的抽象思考能力，是種非常燒腦的開發方式。</p><h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><pre><code class="csharp"><span class="comment"><span class="doctag">///</span>/ GCD</span><span class="keyword">static</span> Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt; GCD = (numA, numB) =&gt; {        <span class="keyword">return</span> numB == <span class="number">0</span> ? numA : GCD(numB, numA % numB);    };<span class="comment"><span class="doctag">///</span>/ LCM</span><span class="keyword">static</span> Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>,<span class="keyword">int</span>&gt; LCM = (numA,numB) =&gt; {            <span class="keyword">return</span> numA * numB / GCD(numA, numB);        } ;</code></pre><h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul><li><a href="https://www.geeksforgeeks.org/gcd-two-array-numbers/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/gcd-two-array-numbers/</a></li><li><a href="https://www.geeksforgeeks.org/lcm-of-given-array-elements/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/lcm-of-given-array-elements/</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;簡介&quot;&gt;&lt;a href=&quot;#簡介&quot; class=&quot;headerlink&quot; title=&quot;簡介&quot;&gt;&lt;/a&gt;簡介&lt;/h2&gt;&lt;p&gt;數學系畢業後，在學寫程式雖然偶爾會用到一些數學特性來解題，&lt;br&gt;不過到了工作確不是那麼一回事，大多在處理商業流程，資料流 ;&lt;br&gt;然後在
+      
+    
+    </summary>
+    
+    
+      <category term="C#" scheme="http://blog.marsen.me/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>i18n 與 l10n</title>
@@ -498,33 +521,6 @@
       <category term="Linux" scheme="http://blog.marsen.me/tags/Linux/"/>
     
       <category term="Shell" scheme="http://blog.marsen.me/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[學習筆記]AWS EC2 學習筆記 AWS CLI 與 Login</title>
-    <link href="http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/"/>
-    <id>http://blog.marsen.me/2018/03/25/cloud_learn/aws_cli_login/</id>
-    <published>2018-03-25T15:01:24.000Z</published>
-    <updated>2018-04-17T03:12:39.610Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="安裝-AWS-CLI"><a href="#安裝-AWS-CLI" class="headerlink" title="安裝 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html" target="_blank" rel="noopener">安裝 AWS CLI</a></h2><h2 id="配置-AWS-CLI"><a href="#配置-AWS-CLI" class="headerlink" title="配置 AWS CLI"></a><a href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration" target="_blank" rel="noopener">配置 AWS CLI</a></h2><h2 id="EC2-開機"><a href="#EC2-開機" class="headerlink" title="EC2 開機"></a>EC2 開機</h2><p><img src="https://i.imgur.com/dNGygaT.jpg" alt=""></p><ul><li>直接開機跳過網路設定(也還沒有辦法設)</li><li>第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助</li></ul><h2 id="設定-Putty"><a href="#設定-Putty" class="headerlink" title="設定 Putty"></a>設定 <a href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console" target="_blank" rel="noopener">Putty</a></h2><h2 id="連線機器"><a href="#連線機器" class="headerlink" title="連線機器"></a>連線機器</h2><p><img src="https://i.imgur.com/xIQsEac.jpg" alt=""></p><p>ex:  </p><blockquote><p>ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com</p></blockquote><h3 id="預設連線帳戶"><a href="#預設連線帳戶" class="headerlink" title="預設連線帳戶"></a>預設連線帳戶</h3><blockquote><p>For Amazon Linux, the user name is <code>ec2-user</code>.<br>For Centos, the user name is <code>centos</code>.<br>For Debian, the user name is <code>admin</code> or <code>root</code>.<br>For Fedora, the user name is <code>ec2-user</code>.<br>For RHEL, the user name is <code>ec2-user</code> or <code>root</code>.<br>For SUSE, the user name is <code>ec2-user</code> or <code>root</code>.<br>For Ubuntu, the user name is <code>ubuntu</code> or <code>root</code>.<br>Otherwise, if <code>ec2-user</code> and <code>root</code> don’t work, check with your AMI provider.</p></blockquote><p>windows 好像是 Administrator ? 求補充</p><h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="安裝-docker"><a href="#安裝-docker" class="headerlink" title="安裝 docker"></a>安裝 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker</span><br></pre></td></tr></table></figure><h3 id="啟動-Docker-服務，並讓它隨系統啟動自動載入"><a href="#啟動-Docker-服務，並讓它隨系統啟動自動載入" class="headerlink" title="啟動 Docker 服務，並讓它隨系統啟動自動載入"></a>啟動 Docker 服務，並讓它隨系統啟動自動載入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service docker start</span><br><span class="line">$ sudo chkconfig docker on</span><br></pre></td></tr></table></figure><h3 id="雷包"><a href="#雷包" class="headerlink" title="雷包"></a>雷包</h3><ul><li>重啟機器的話 public dns 會改變.(意味連線的命令參數會變)</li><li><p>注意使用的AIM, 不同的 Linux OS 會有不同的套件執行命令</p><ul><li>ubuntu <code>apt-get</code></li><li>CentOS <code>yum</code><h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3></li></ul></li><li><p><a href="https://philipzheng.gitbooks.io/docker_practice" target="_blank" rel="noopener">Docker —— 從入門到實踐</a></p></li><li><a href="https://www.gitbook.com/book/joshhu/dockercommands/details" target="_blank" rel="noopener">全面易懂的Docker指令大全</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;安裝-AWS-CLI&quot;&gt;&lt;a href=&quot;#安裝-AWS-CLI&quot; class=&quot;headerlink&quot; title=&quot;安裝 AWS CLI&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://docs.aws.amazon.com/zh_cn/cli/latest/us
-      
-    
-    </summary>
-    
-    
-      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
-    
-      <category term="docker" scheme="http://blog.marsen.me/tags/docker/"/>
-    
-      <category term="Root User" scheme="http://blog.marsen.me/tags/Root-User/"/>
     
   </entry>
   
