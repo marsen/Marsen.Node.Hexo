@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記]Docker 起動 MongoDB Server Error"
+title: "[踩雷筆記]Docker 啟動 MongoDB Server Error"
 date: 2018/10/12 11:33:45
 tag:
   - Mongodb
