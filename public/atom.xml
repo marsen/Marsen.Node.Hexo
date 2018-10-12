@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-10-02T11:59:29.865Z</updated>
+  <updated>2018-10-12T03:34:19.520Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[踩雷筆記]Docker 起動 MongoDB Server Error</title>
+    <link href="http://blog.marsen.me/2018/10/12/2018/docker_error/"/>
+    <id>http://blog.marsen.me/2018/10/12/2018/docker_error/</id>
+    <published>2018-10-12T03:33:45.000Z</published>
+    <updated>2018-10-12T03:34:19.520Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="錯誤訊息"><a href="#錯誤訊息" class="headerlink" title="錯誤訊息"></a>錯誤訊息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-compose up db</span><br><span class="line">Starting marsen-mongodb ... error</span><br><span class="line">ERROR: for marsen-mongodb  Cannot start service db: driver failed programming external connectivity on endpoint marsen-mongodb (6f2be666a700187b7f30884478d7231cc210182e2650602e513c6627d0bc3e5a): Error starting userland proxy: mkdir /port/tcp:0.0.0.0:27017:tcp:172.18.0.2:27017: input/output error</span><br></pre></td></tr></table></figure><h2 id="除錯"><a href="#除錯" class="headerlink" title="除錯"></a>除錯</h2><p><strong>重啟 docker</strong></p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;錯誤訊息&quot;&gt;&lt;a href=&quot;#錯誤訊息&quot; class=&quot;headerlink&quot; title=&quot;錯誤訊息&quot;&gt;&lt;/a&gt;錯誤訊息&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+    
+      <category term="Mongodb" scheme="http://blog.marsen.me/tags/Mongodb/"/>
+    
+      <category term="Docker" scheme="http://blog.marsen.me/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記]拿破崙不是敗在滑鐵盧戰役而是金融戰爭</title>
@@ -501,29 +526,6 @@
       <category term="Linux" scheme="http://blog.marsen.me/tags/Linux/"/>
     
       <category term="Shell" scheme="http://blog.marsen.me/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[學習筆記]允許 IAM User 存取 AWS Billing Console</title>
-    <link href="http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/"/>
-    <id>http://blog.marsen.me/2018/04/04/cloud_learn/aws_access_billing_console/</id>
-    <published>2018-04-04T09:08:44.000Z</published>
-    <updated>2018-04-17T03:12:39.610Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>設定了 IAM User Account 也給予了 Administrator 的權限,<br>不過仍然看不到 Billing 的頁面資訊 .  </p><p><img src="https://i.imgur.com/1Ge6pGi.jpg" alt=""></p><p>這帶來了很大的不方便, 因為如果要看 Billing 的資訊就要切換到 Root Account<br>而建立 Administrator IAM Account 的用意本來就是要儘可能不使用 Root Account 作登入.<br>檢查了權限,明明就有設定 Read Billing 但是仍然看不到.  </p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>實際上要進入 Billing Console 其實要有兩個步驟  </p><ol><li>權限要設定,更多細節可以參考這篇<a href="https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/" target="_blank" rel="noopener">文章</a>(2014)</li><li>要透過 Root Account 在 <a href="https://console.aws.amazon.com/billing/home#/account" target="_blank" rel="noopener">Account Settings</a> 頁面設定, 允許 IAM user 存取 Billing Console  </li></ol><p><img src="https://i.imgur.com/yBXaLPJ.jpg" alt=""></p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/" target="_blank" rel="noopener">Don’t Forget to Enable Access to the Billing Console!</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;設定了 IAM User Account 也給予了 Administrator 的權限,&lt;br&gt;不過仍然看不到 Billin
-      
-    
-    </summary>
-    
-    
-      <category term="AWS" scheme="http://blog.marsen.me/tags/AWS/"/>
     
   </entry>
   
