@@ -3,20 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>[閱讀筆記]其實，你不是沒有時間 | Marsen</title>
+  <title>[實作筆記]Hexo Update 與 npm 修復漏洞 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="六個工具與餐盤 原則:工具簡單至上 面對突發狀況   月計劃表 (google calendar) 與自已約會(保留給自已的時間)^註1^ 工作與私人不要分開 日期與期限    Todo List (inbox) 提醒與集中管理 每天都要檢查一遍^註2^    日計劃表 (google calendar) 當日約會 &amp;amp; 活動清單 活動清單是你當天的籌碼 也是出現突發    隨手記 (筆記本">
-<meta name="keywords" content="閱讀筆記,時間管理">
+  <meta name="description" content="好久沒有作 hexo 更新了，本身這個 Blog 就是透過 hexo 與 Github 建置的 。眨眼也過了兩年，文筆仍然很差;說真的有很大的資訊焦慮，文章的內容也不夠充實，很多觀點無法忠實的記錄下來，更無法連貫成線;自已還要多方努力與學習。 如前面所說，這個 Blog 是透過 Github 作存放的空間，雖然 Github 最近被 Microsoft 收購了;不過它仍是開發人員最常使用的代碼托管">
+<meta name="keywords" content="Hexo,nodejs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[閱讀筆記]其實，你不是沒有時間">
-<meta property="og:url" content="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/index.html">
+<meta property="og:title" content="[實作筆記]Hexo Update 與 npm 修復漏洞">
+<meta property="og:url" content="http://blog.marsen.me/2018/10/20/2018/hexo_update/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="六個工具與餐盤 原則:工具簡單至上 面對突發狀況   月計劃表 (google calendar) 與自已約會(保留給自已的時間)^註1^ 工作與私人不要分開 日期與期限    Todo List (inbox) 提醒與集中管理 每天都要檢查一遍^註2^    日計劃表 (google calendar) 當日約會 &amp;amp; 活動清單 活動清單是你當天的籌碼 也是出現突發    隨手記 (筆記本">
+<meta property="og:description" content="好久沒有作 hexo 更新了，本身這個 Blog 就是透過 hexo 與 Github 建置的 。眨眼也過了兩年，文筆仍然很差;說真的有很大的資訊焦慮，文章的內容也不夠充實，很多觀點無法忠實的記錄下來，更無法連貫成線;自已還要多方努力與學習。 如前面所說，這個 Blog 是透過 Github 作存放的空間，雖然 Github 最近被 Microsoft 收購了;不過它仍是開發人員最常使用的代碼托管">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2018-04-17T03:12:39.605Z">
+<meta property="og:image" content="https://i.imgur.com/HYBh5vv.jpg">
+<meta property="og:updated_time" content="2018-10-20T13:32:16.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[閱讀筆記]其實，你不是沒有時間">
-<meta name="twitter:description" content="六個工具與餐盤 原則:工具簡單至上 面對突發狀況   月計劃表 (google calendar) 與自已約會(保留給自已的時間)^註1^ 工作與私人不要分開 日期與期限    Todo List (inbox) 提醒與集中管理 每天都要檢查一遍^註2^    日計劃表 (google calendar) 當日約會 &amp;amp; 活動清單 活動清單是你當天的籌碼 也是出現突發    隨手記 (筆記本">
+<meta name="twitter:title" content="[實作筆記]Hexo Update 與 npm 修復漏洞">
+<meta name="twitter:description" content="好久沒有作 hexo 更新了，本身這個 Blog 就是透過 hexo 與 Github 建置的 。眨眼也過了兩年，文筆仍然很差;說真的有很大的資訊焦慮，文章的內容也不夠充實，很多觀點無法忠實的記錄下來，更無法連貫成線;自已還要多方努力與學習。 如前面所說，這個 Blog 是透過 Github 作存放的空間，雖然 Github 最近被 Microsoft 收購了;不過它仍是開發人員最常使用的代碼托管">
+<meta name="twitter:image" content="https://i.imgur.com/HYBh5vv.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
   
@@ -78,10 +80,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-books/book_attack_your_day" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018/hexo_update" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/26/books/book_attack_your_day/" class="article-date">
-  <time datetime="2017-03-25T16:08:46.000Z" itemprop="datePublished">2017-03-26</time>
+    <a href="/2018/10/20/2018/hexo_update/" class="article-date">
+  <time datetime="2018-10-20T03:41:05.000Z" itemprop="datePublished">2018-10-20</time>
 </a>
     
   </div>
@@ -92,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      [閱讀筆記]其實，你不是沒有時間
+      [實作筆記]Hexo Update 與 npm 修復漏洞
     </h1>
   
 
@@ -100,77 +102,25 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="六個工具與餐盤"><a href="#六個工具與餐盤" class="headerlink" title="六個工具與餐盤"></a>六個工具與餐盤</h2><ul>
-<li>原則:<strong>工具簡單至上</strong></li>
-<li>面對突發狀況</li>
-</ul>
-<ol>
-<li>月計劃表 (<code>google calendar</code>)<ul>
-<li>與自已約會(保留給自已的時間)^註1^</li>
-<li>工作與私人不要分開</li>
-<li>日期與期限 </li>
-</ul>
-</li>
-<li>Todo List (<code>inbox</code>)<ul>
-<li>提醒與集中管理</li>
-<li>每天都要檢查一遍^註2^ </li>
-</ul>
-</li>
-<li>日計劃表 (<code>google calendar</code>)<ul>
-<li>當日約會 &amp; 活動清單</li>
-<li>活動清單是你當天的籌碼 也是出現突發 </li>
-</ul>
-</li>
-<li>隨手記 (<code>筆記本&amp;Evernote</code>)<ul>
-<li>接受任務，再轉到其他工具之中^註3^     </li>
-</ul>
-</li>
-<li>隨身資料庫 (<code>google drive</code>)<ul>
-<li>將整理過的資料封存在隨手可得的地方<br>ex: 上課或分享的簡報、 專案記錄等…有大量圖片、文件等</li>
-</ul>
-</li>
-<li>溝通工具 (<code>line &amp; slack</code>)<ul>
-<li>一天檢查電子郵件3~6次就夠了</li>
-</ul>
-</li>
-</ol>
-<h2 id="把時間變空間-視覺化"><a href="#把時間變空間-視覺化" class="headerlink" title="把時間變空間(視覺化)"></a>把時間變空間(視覺化)</h2><ul>
-<li>個人、家庭、工作取得平衡</li>
-<li>安排30分鐘規劃一天的活動<ul>
-<li>創造性活動安排在精力最佳的時段</li>
-<li>安排獨處的時間</li>
-<li>安排恢復精力的時間</li>
-<li>預留時間給可能發生的突發事件</li>
-</ul>
-</li>
-<li>將所有的事情分為紅綠黃(灰)^註4^，綠色應該越多越好，灰色越少越好。<table><br><tr><td>6 am</td><td>7 am</td><td>8 am</td><td>9 am</td><td>10 am</td><td>11 am</td><td>12 am</td><td>1 pm</td></tr><br><tr><td>5 am</td><td colspan="3" rowspan="4" valign="top">本日活動</td><td colspan="3" rowspan="4" valign="top">隨手記</td><td>2 pm</td></tr><br><tr><td>4 am</td><td>3 pm</td></tr><br><tr><td>3 am</td><td>4 pm</td></tr><br><tr><td>2 am</td><td>5 pm</td></tr><br><tr><td>1 am</td><td>12 am</td><td>11 pm</td><td>10 pm</td><td>9 pm</td><td>8 pm</td><td>7 pm</td><td>6 pm</td></tr><br></table>
-
-</li>
-</ul>
-<h2 id="應變執行，計劃趕不上變化"><a href="#應變執行，計劃趕不上變化" class="headerlink" title="應變執行，計劃趕不上變化"></a>應變執行，計劃趕不上變化</h2><ul>
-<li>調整事情的順序</li>
-<li>養成習慣</li>
-<li>臨機應變</li>
-<li>小心多工</li>
-<li>保留風格</li>
-</ul>
-<h2 id="註"><a href="#註" class="headerlink" title="註"></a>註</h2><ol>
-<li>分別為聖的時間，請參考<code>與時間作朋友</code></li>
-<li>利用分別為聖的時間檢查</li>
-<li>餐盤中間的區塊可以用來作當日的活動清單 &amp; 隨手記</li>
-<li>可以參考四象限 重要-緊急(紅)、不重要-緊急(黃)、重要-不緊急(綠)、不重要-不緊急(灰)</li>
-</ol>
+        <p>好久沒有作 hexo 更新了，<br>本身這個 Blog 就是透過 <a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">hexo 與 Github 建置</a>的 。<br>眨眼也過了兩年，文筆仍然很差;<br>說真的有很大的<a href="https://www.darencademy.com/article/view/id/16485" target="_blank" rel="noopener">資訊焦慮</a>，文章的內容也不夠充實，<br>很多觀點無法忠實的記錄下來，更無法連貫成線;<br>自已還要多方努力與學習。</p>
+<p>如前面所說，這個 Blog 是透過 Github 作存放的空間，<br>雖然 <a href="https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/" target="_blank" rel="noopener">Github 最近被 Microsoft 收購</a>了;<br>不過它仍是開發人員最常使用的代碼托管服務與社群，<br>而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  </p>
+<p>Github 一直以來都有一個很棒的功能，<br><a href="https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/" target="_blank" rel="noopener">GitHub’s security alerts for vulnerable dependencies</a></p>
+<p>它能夠對你的 Repo 提供安全警告，<br>如下圖，這是對我的個人 Blog 所使用的框架 Hexo 的相依性安全警告，<br>這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，<br>建議升級套件以解決這個問題。<br><img src="https://i.imgur.com/HYBh5vv.jpg" alt=""></p>
+<h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>使用 <a href="https://docs.npmjs.com/cli/update" target="_blank" rel="noopener"><code>npm update</code></a> , 這個命令會更新專案的 package 到最新版本  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure>
+<p>可能會看到類似以下的結果，同時提示你可以使用 <a href="https://docs.npmjs.com/cli/audit" target="_blank" rel="noopener"><code>npm audit fix</code></a> 更新有風險的 package 以修複這些漏洞  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.1.3: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo@3.8.0</span><br><span class="line">added 126 packages from 59 contributors, removed 80 packages, updated 21 packages, moved 14 packages and audited 3143 packages <span class="keyword">in</span> 25.064s</span><br><span class="line">found 68 vulnerabilities (21 low, 38 moderate, 9 high)</span><br><span class="line">run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/" data-id="cjngw7r3a006pw8vxxk5s8p60" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/10/20/2018/hexo_update/" data-id="cjngwafq00000jcvxhnbluhjr" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2017/03/26/books/book_attack_your_day/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://blog.marsen.me/2018/10/20/2018/hexo_update/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/時間管理/">時間管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
 
     </footer>
   </div>
@@ -178,19 +128,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2017/04/23/unitestwriting/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          [活動筆記]單元測試這樣玩就對了
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/08/auto_add_trello_card/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/17/2018/linkserver_with_sp_executesql/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">自動化 Trello 操作</div>
+      <div class="article-nav-title">[實作筆記]SQL Server 與 Linked Server 注意事項</div>
     </a>
   
 </nav>
@@ -295,7 +236,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'marsenlin';
   
-  var disqus_url = 'http://blog.marsen.me/2017/03/26/books/book_attack_your_day/';
+  var disqus_url = 'http://blog.marsen.me/2018/10/20/2018/hexo_update/';
   
   (function(){
     var dsq = document.createElement('script');
