@@ -65,9 +65,7 @@ UnDone 的工作項目有很多，這意味著半成品\(浪費\)。
 
 ### Done 、Undone & Debt
 
-＊建議先看影片(中文字幕支援:http://player.youku.com/embed/XMzMyNDIwMjYwOA)。
-
-原始影片完整 {% youtube IyNPeTn8fpo %}
+＊建議先看影片([中文字幕支援](http://player.youku.com/embed/XMzMyNDIwMjYwOA)，[原始影片](https://www.youtube.com/watch?v=IyNPeTn8fpo))。
 
 
 > 身為開發團隊，如果你有良好的開發工具，正確的工程實踐\(TDD、Code Review、Pair Programming etc…\)、
