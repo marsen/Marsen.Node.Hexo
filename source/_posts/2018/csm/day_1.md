@@ -67,9 +67,8 @@ UnDone 的工作項目有很多，這意味著半成品\(浪費\)。
 
 ＊建議先看影片([中文字幕支援](http://player.youku.com/embed/XMzMyNDIwMjYwOA)，[原始影片](https://www.youtube.com/watch?v=IyNPeTn8fpo))。
 
-
-> 身為開發團隊，如果你有良好的開發工具，正確的工程實踐\(TDD、Code Review、Pair Programming etc…\)、
-> 提昇 Domain Know How 、更新 Skill Set 、開發時總不受干擾進入心流、擁有足夠的權限與資源… 那麼你就每次迭代你就能交付增量。
+> 如果你有杰出的工程團隊、最好的開發工具、運用正確的工程實踐\(TDD、Code Review、Pair Programming etc…\)、、
+對 Business Domain 與 Tech Domain 有深入理解 ,開發時不受干擾，並且擁有足夠的資源
 
 {% blockquote style="info" %}
 太理想了嗎 ？
