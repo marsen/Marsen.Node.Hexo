@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-10-21T12:44:38.362Z</updated>
+  <updated>2018-10-27T16:19:23.731Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSM Day1(不知道會不會寫Day2)</title>
+    <link href="http://blog.marsen.me/2018/10/27/2018/csm/day_1/"/>
+    <id>http://blog.marsen.me/2018/10/27/2018/csm/day_1/</id>
+    <published>2018-10-27T13:10:01.000Z</published>
+    <updated>2018-10-27T16:19:23.731Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="課程簡介"><a href="#課程簡介" class="headerlink" title="課程簡介"></a>課程簡介</h4><ul><li>Scrum Master 認証課程</li><li>講師 ： <a href="https://blog.odd-e.com/yilv/" target="_blank" rel="noopener">呂毅(Lv Yi)</a></li><li>課前請看過 <a href="https://scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Simplified.pdf" target="_blank" rel="noopener">Scurm Guide</a> 與 <a href="http://scrumprimer.org/scrum_primer_cn.pdf" target="_blank" rel="noopener">Scurm Primer</a></li></ul><h4 id="燃盡圖的壞味道"><a href="#燃盡圖的壞味道" class="headerlink" title="燃盡圖的壞味道"></a>燃盡圖的壞味道</h4><p>如下，請忽略文字<br>上圖使用 Item 作為 y 軸單位 ，下圖使用 Task 作為 y 軸單位，<br>上圖直到最後一天，才瞬間完成所有 Item ，我稱之為跳崖式<br>下圖是在 Sprint 的過程中，Task 增加了，有可能是亂入也有可能是建立 Task 時不準確，我稱之為登山式。</p><p>下圖的例子還算是樂觀的，畢竟最後 Sprint 都完成了，實務上更多是 Sprint Failed 。</p><p><img src="./images/2018/csm/day_1/6B161347-8331-4BA7-89D2-61DA1DAD61B1.jpg" alt="&#x71C3;&#x76E1;&#x5716;&#x7684;&#x58DE;&#x5473;&#x9053;"></p><blockquote><p>我在 C 公司時是使用 Task ， N 公司是使用 Item ，在 N 公司與 Scrum Master 討論都建議使用 Item 繪製，<br>最主要立論都在於 Item 才有價值，而 Task 只細部的工作項而已。但對於我的角色而言(Team Member)，<br>能看見 Task 起伏很重要，往上爬待表 Task 變多了，可能的原因有插件、未預期的項目等…，可以作。  </p><p>一個大原則， PO 看 Item，Team 看 Task。  </p><p>Product Backlog 使用 Item 沒有問題，因為是 PO 在看的。<br>Sprint Backlog 可以兩種都用，Task 燃盡圖可以看見 Task 的增加，或許使用 Kanban 就足夠了。  </p><p><strong>重點是，看見後要作什麼 ？</strong></p></blockquote><h4 id="觀注點的不同"><a href="#觀注點的不同" class="headerlink" title="觀注點的不同"></a>觀注點的不同</h4><p><img src="./images/2018/csm/day_1/00795F54-2654-4581-94BE-27068D4486DD.jpg" alt="PO &#x89C0;&#x6CE8; WHY &amp; WHAT &#xFF1B;Team &#x89C0;&#x6CE8; WHAT &amp; HOW"></p><p>如上圖右下，在 Scrum 的角色中，PO 觀注 WHY &amp; WHAT ； Team 觀注 WHAT &amp; HOW ； 而 Scrum Master 觀注的點</p><blockquote><p>上圖中間的部份，則是我個人猜想，世界上大部份事情都可以被拆成 3+1；<br>恰巧這個 Context 符合我的猜想，就是市場、產品、錢，那個 1 我沒想到就順手先畫了下來。<br>PO 觀注產品，目的要儘快的丟到市場去作測試，而達到盈利(錢)的目標。所以他要思考市場反應背後的原因(WHY)，<br>設想策略，提供產品(WHAT)，最後才會 Break Down 成一個個 Product Log 再進到 Scrum 的循環之中，<br>當團隊成功的交付了可發佈的產品，PO 才有了武器去市場作戰，才有機會取得回饋。</p></blockquote><ul><li>Time<ul><li>PO 觀注 Sprint</li><li>Team 觀注 Daily</li></ul></li><li>Scope<ul><li>PO 觀注 Item</li><li>Team 觀注 Task</li></ul></li><li>Cost<ul><li>PO 觀注 Teams</li><li>Team 觀注 members</li></ul></li></ul><p>UnDone 的工作項目有很多，這意味著半成品(浪費)。</p><p><img src="./images/2018/csm/day_1/7D811AFE-A4C8-4FB4-BD90-B65FDFE0B6BE.jpg" alt="&#x5C08;&#x6848;&#x7BA1;&#x7406;&#x7684;&#x4E09;&#x500B;&#x7DAD;&#x5EA6;&#xFF0C;Time&#x3001;Cost &#x8207; Scope"></p><h3 id="Done-、Undone-amp-Debt"><a href="#Done-、Undone-amp-Debt" class="headerlink" title="Done 、Undone &amp; Debt"></a>Done 、Undone &amp; Debt</h3><p>＊建議先看影片(中文字幕支援:<a href="http://player.youku.com/embed/XMzMyNDIwMjYwOA)。" target="_blank" rel="noopener">http://player.youku.com/embed/XMzMyNDIwMjYwOA)。</a></p><p>原始影片完整 <div class="video-container"><iframe src="//www.youtube.com/embed/IyNPeTn8fpo" frameborder="0" allowfullscreen></iframe></div></p><blockquote><p>身為開發團隊，如果你有良好的開發工具，正確的工程實踐(TDD、Code Review、Pair Programming etc…)、<br>提昇 Domain Know How 、更新 Skill Set 、開發時總不受干擾進入心流、擁有足夠的權限與資源… 那麼你就每次迭代你就能交付增量。</p></blockquote><blockquote><p>太理想了嗎 ？</p><ul><li>在現實的考量中如何堅持開發者的良好實踐？ </li><li>在缺乏實踐的環境如何導入？ </li><li>在缺乏經驗的情況下如何學習 ？ </li><li>在焦油坑中如何實踐 ？ </li><li>你有說「不」的勇氣嗎？</li></ul><footer><strong>style=info</strong></footer></blockquote><p>回過頭來，如何定義完成，在 Scrum 的框架中對完成保留了很大的空間，PO 與 Team 的角度可能不儘相同，<br>所以由團隊來定義，模糊的空間很大。  </p><blockquote><p>同樣的定義用來指導開發團隊，讓團隊知道在短衝計劃會議中可以選擇多少產品待辦事項。<br>每一個短衝的目的是交付潛在可發佈的功能增量，而這些功能符合 Scrum 團隊目前對 「完成」之定義。</p></blockquote><blockquote><p>由 PO 主導的 DoD 會由商務與 PO 個人績效導向(如果有的話)，而工程上的重要實踐往往會被犧牲，<br>一方面是團隊成員對專業的堅持度不夠，一方面或許整體公司的開發文化就是如此。  </p><p>這些事項是不是該落入 Task 之中 呢？</p><ul><li>Retro 後產生的 Action Item </li><li>教育訓練 </li></ul><footer><strong>style=info</strong></footer></blockquote><p>Undone 的項目可是五花八門包羅萬像的，技術債、文件製作、修復錯誤等…，只要不符合完成的定義，是不是都算 Undone 呢 ？<br>但是有的時候的 Sprint Goal 是需要欠下一些債的，這中間是一個取捨與權衡的，所以記得保持透明；<br>你或許需要一個 Undone Sprint 來消弭這些 Undone Task。</p><p><img src="./images/2018/csm/day_1/undone_work.jpg" alt=""></p><p>注意 Undone 是會影響開發速率的，在 <strong>Scrum 之中開發速率應該是個關鍵指標</strong>，<br>不論你用 KPI、MBO 或 OKR 都應該觀注這個指標。<br>而速率是由經驗法則測得。當然有時為了快速交付，有些暫解是在所難免，要小心<a href="https://en.wikipedia.org/wiki/Talk%3AList_of_eponymous_laws#Proposal_to_add_LeBlanc&#39;s_law" target="_blank" rel="noopener"> LeBlanc’s Law</a>，<br>這些債務除了團隊反應之外，更可以透過觀察速率指標，評估適當的時機消除與改善。  </p><p>在 Time、Cost 與 Scope 都被鎖死的情況下，結果往往是犧牲了品質。<br><del>舉例說明： 這個東西 11 月底要，不能 Delay ，交由你們作(不準增加開發成本)，功能我全都要。</del>  </p><blockquote><p>品質的犧牲我竟然相對覺得還好…更可怕的是，「管理者」為了滿足那個鐵三角，而作出一些虛妄狡詐之事。<br>不僅僅是犧牲了品質，更給了高層錯誤訊息，甚至形成惡性循環，讓領導者作出錯誤判斷，更進一步的損耗品質。<br>最後成本提高、時間拉長與交付範圍不得不縮小，這不僅僅是鐵三角崩潰，連透明度與互信與也會失去。  </p></blockquote><p><strong>學習債 &amp; Cross Learning</strong>  </p><p>Scrum Team 的成員組成有個前提，團隊具備完成端到端的開發的所有技能。  </p><ul><li>開發團隊 3~9 人</li><li><strong>開發團隊是跨職能的，團隊擁有產出產品增量所需要的所有技能。</strong></li></ul><p>如果產品所需的 Skill Set 很大，<a href="https://zh.wikipedia.org/wiki/巴士因子" target="_blank" rel="noopener">巴士因子</a>就容易過低；<br>比如說一個七人的團隊，要製作一個包含 Web、App(包含 iOS 、 Android )的產品。<br>人力與能力配置假設如下，而且 DoD 的定義為所有載具的交付，那麼這個團隊的風險極高 ； 實際的經驗會變成 Mini Water Fall。<br>這也意味著每當工作移轉到某個職能的負責人身上，當下就形成瓶頸。  </p><table><thead><tr><th style="text-align:left">Alice</th><th style="text-align:left">Bob</th><th style="text-align:left">Carol</th><th style="text-align:left">Dave</th><th style="text-align:left">Eve</th><th style="text-align:left">Frank</th><th style="text-align:left">Grace</th></tr></thead><tbody><tr><td style="text-align:left">UI/UX</td><td style="text-align:left">Front-End</td><td style="text-align:left">Back-End</td><td style="text-align:left">iOS</td><td style="text-align:left">Android</td><td style="text-align:left">DBA</td><td style="text-align:left">Tester</td></tr></tbody></table><p>讓我們換個情境來說明，同樣的七個人，如果每個具備的 Skill Set 彼此能夠互相援助，巴士因子就提高了，而工作分配會更容易些，<br>較不易形成個人瓶頸(當然還是有可能，比如說這個 Sprint 的 Items 都落在 DBA 身上之類 …)，很明顯這樣的團隊組成更能適應變化。  </p><table><thead><tr><th style="text-align:left">Alice</th><th style="text-align:left">Bob</th><th style="text-align:left">Carol</th><th style="text-align:left">Dave</th><th style="text-align:left">Eve</th><th style="text-align:left">Frank</th><th style="text-align:left">Grace</th></tr></thead><tbody><tr><td style="text-align:left">UI/UX</td><td style="text-align:left">Front-End</td><td style="text-align:left">Back-End</td><td style="text-align:left">iOS</td><td style="text-align:left">Android</td><td style="text-align:left">DBA</td><td style="text-align:left">Tester</td></tr><tr><td style="text-align:left">Tester</td><td style="text-align:left">Back-End</td><td style="text-align:left">Front-End</td><td style="text-align:left">Android</td><td style="text-align:left">iOS</td><td style="text-align:left">Front-End</td><td style="text-align:left">Back-End</td></tr><tr><td style="text-align:left"></td><td style="text-align:left">UI/UX</td><td style="text-align:left">iOS</td><td style="text-align:left">Tester</td><td style="text-align:left">Back-End</td><td style="text-align:left"></td><td style="text-align:left">Android</td></tr></tbody></table><p><img src="./images/2018/csm/day_1/cross_learning.jpg" alt="&#x4F60;&#x4E0D;&#x7528;&#x6A23;&#x6A23;&#x7CBE;&#x901A;&#xFF0C;&#x4F46;&#x662F;&#x4F60;&#x6700;&#x597D;&#x662F;&#x7DF4;&#x5C71;&#x578B;&#x3002;"><br><blockquote><p>上面的團隊很理想，在人力市場上卻很難得到你想要的牌，所以才需要訓練，但是要花時間。<br>但在開花結果之前會發生什麼事呢 ？<br>人員可能會離職、團隊會異動、團隊中有成員認為專精勝於通才(強調一下，這沒有對錯，只是價值觀的不同)</p></blockquote></p><p>(以上為 Day 1， 不保証有 Day 2)</p><h3 id="心得小結"><a href="#心得小結" class="headerlink" title="心得小結"></a>心得小結</h3><ul><li>Scurm 跟生產力沒有關係</li><li>PO 與 Team 的觀注點是不同的</li><li>Scrum Master 更觀注過程</li><li>Scrum Master 要有意識的不作為</li><li>專任的 Scrum Master 能有更好的發揮，但在初期你也需要被培訓，並在實作中學習，你不見得會擁有那樣的環境。</li><li>更多時候是文化與組織架構的問題，你需要透過系統思考來審視</li><li>Cross-Learning：Scrum 對團隊的要求更高，但本身的設計也會促使團隊成長。</li><li>維持團隊的穩定，良好的工程實踐，維持交付速率，隨著經驗成長。</li><li>Change Your Company。</li><li>開發人員的陽光、空氣、水；陽光的心態、空間(權限與能力)、薪水。</li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;課程簡介&quot;&gt;&lt;a href=&quot;#課程簡介&quot; class=&quot;headerlink&quot; title=&quot;課程簡介&quot;&gt;&lt;/a&gt;課程簡介&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Scrum Master 認証課程&lt;/li&gt;
+&lt;li&gt;講師 ： &lt;a href=&quot;https://blog.od
+      
+    
+    </summary>
+    
+    
+      <category term="Scrum" scheme="http://blog.marsen.me/tags/Scrum/"/>
+    
+      <category term="Agile" scheme="http://blog.marsen.me/tags/Agile/"/>
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記]誰搬走我的乳酪? 堅持與PIVOT</title>
@@ -44,7 +71,7 @@
     <link href="http://blog.marsen.me/2018/10/20/2018/hexo_update/"/>
     <id>http://blog.marsen.me/2018/10/20/2018/hexo_update/</id>
     <published>2018-10-20T03:41:05.000Z</published>
-    <updated>2018-10-21T12:33:59.396Z</updated>
+    <updated>2018-10-21T12:43:26.170Z</updated>
     
     <content type="html"><![CDATA[<p>好久沒有作 hexo 更新了，<br>本身這個 Blog 就是透過 <a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">hexo 與 Github 建置</a>的 。<br>眨眼也過了兩年，文筆仍然很差;<br>說真的有很大的<a href="https://www.darencademy.com/article/view/id/16485" target="_blank" rel="noopener">資訊焦慮</a>，文章的內容也不夠充實，<br>很多觀點無法忠實的記錄下來，更無法連貫成線;<br>自已還要多方努力與學習。</p><p>如前面所說，這個 Blog 是透過 Github 作存放的空間，<br>雖然 <a href="https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/" target="_blank" rel="noopener">Github 最近被 Microsoft 收購</a>了;<br>不過它仍是開發人員最常使用的代碼托管服務與社群，<br>而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  </p><p>Github 一直以來都有一個很棒的功能，<br><a href="https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/" target="_blank" rel="noopener">GitHub’s security alerts for vulnerable dependencies</a></p><p>它能夠對你的 Repo 提供安全警告，<br>如下圖，這是對我的個人 Blog 所使用的框架 Hexo 的相依性安全警告，<br>這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，<br>建議升級套件以解決這個問題。<br><img src="https://i.imgur.com/HYBh5vv.jpg" alt=""></p><h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>使用 <a href="https://docs.npmjs.com/cli/update" target="_blank" rel="noopener"><code>npm update</code></a> , 這個命令會更新專案的 package 到最新版本  </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure><p>可能會看到類似以下的結果，同時提示你可以使用 <a href="https://docs.npmjs.com/cli/audit" target="_blank" rel="noopener"><code>npm audit fix</code></a> 更新有風險的 package 以修複這些漏洞  </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.1.3: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo@3.8.0</span><br><span class="line">added 126 packages from 59 contributors, removed 80 packages, updated 21 packages, moved 14 packages and audited 3143 packages <span class="keyword">in</span> 25.064s</span><br><span class="line">found 68 vulnerabilities (21 low, 38 moderate, 9 high)</span><br><span class="line">run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
     
@@ -491,37 +518,6 @@
     
     
       <category term="閱讀筆記" scheme="http://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記]在 Windows 環境編輯 SCSS</title>
-    <link href="http://blog.marsen.me/2018/04/26/2018/windows_with_sass/"/>
-    <id>http://blog.marsen.me/2018/04/26/2018/windows_with_sass/</id>
-    <published>2018-04-26T06:16:34.000Z</published>
-    <updated>2018-06-03T13:26:18.716Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>安裝 Windows 套件管理工具 Chocolatey <ul><li><a href="https://chocolatey.org" target="_blank" rel="noopener">https://chocolatey.org</a></li></ul></li><li><p>安裝 Node.js® </p><ul><li><a href="https://chocolatey.org/packages/nodejs" target="_blank" rel="noopener">https://chocolatey.org/packages/nodejs</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs -y</span><br></pre></td></tr></table></figure></li></ul></li><li><p>註冊公司內部 NPM Server</p><ul><li><a href="http://company.npm.server" target="_blank" rel="noopener">http://company.npm.server</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm set registry http://company.npm.server</span><br></pre></td></tr></table></figure></li></ul></li><li><p>安裝 RUBY</p><ul><li><a href="https://chocolatey.org/packages/ruby/2.5.1.1" target="_blank" rel="noopener">https://chocolatey.org/packages/ruby/2.5.1.1</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby -y</span><br></pre></td></tr></table></figure></li></ul></li><li><p>下載 RubyGems</p><ul><li><a href="https://rubygems.org/pages/download#formats" target="_blank" rel="noopener">https://rubygems.org/pages/download#formats</a></li><li>Download from above</li><li>Unpack into a directory and cd there</li><li>Install with: ruby setup.rb (you may need admin/root privilege)</li></ul></li><li><p>安裝 compass</p><ul><li><a href="https://rubygems.org/gems/compass/versions/1.0.3" target="_blank" rel="noopener">https://rubygems.org/gems/compass/versions/1.0.3</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install compass</span><br></pre></td></tr></table></figure></li></ul></li><li><p>檢查 PATH</p></li><li>重啟 CMD 與 Visual Studio 2017</li><li><p>執行 compass</p><ul><li><p>使用 Command Line</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp compass</span><br></pre></td></tr></table></figure></li><li><p>使用工作執行器總管</p><p>  <img src="https://i.imgur.com/2sEzAx5.jpg" alt=""></p></li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;安裝 Windows 套件管理工具 Chocolatey &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://chocolatey.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://chocolatey.org&lt;/a&gt;&lt;/l
-      
-    
-    </summary>
-    
-    
-      <category term="Nodejs" scheme="http://blog.marsen.me/tags/Nodejs/"/>
-    
-      <category term="Windows" scheme="http://blog.marsen.me/tags/Windows/"/>
-    
-      <category term="SCSS" scheme="http://blog.marsen.me/tags/SCSS/"/>
-    
-      <category term="Ruby" scheme="http://blog.marsen.me/tags/Ruby/"/>
     
   </entry>
   
