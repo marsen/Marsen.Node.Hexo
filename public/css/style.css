@@ -1350,6 +1350,12 @@ pre .javascript .function {
 .widget ol ol {
   list-style: decimal;
 }
+.widget img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
 .category-list-count,
 .tag-list-count,
 .archive-list-count {
