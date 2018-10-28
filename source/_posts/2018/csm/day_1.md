@@ -57,7 +57,6 @@ tag:
   * PO 觀注 Teams
   * Team 觀注 members
 
-UnDone 的工作項目有很多，這意味著半成品\(浪費\)。
 
 
 
@@ -96,6 +95,7 @@ UnDone 的工作項目有很多，這意味著半成品\(浪費\)。
 * 教育訓練 
 {% endblockquote %}
 
+UnDone 的工作項目有很多，這意味著半成品\(浪費\)。
 Undone 的項目可是五花八門包羅萬像的，技術債、文件製作、修復錯誤等…，只要不符合完成的定義，是不是都算 Undone 呢 ？  
 但是有的時候的 Sprint Goal 是需要欠下一些債的，這中間是一個取捨與權衡的，所以記得保持透明；  
 你或許需要一個 Undone Sprint 來消弭這些 Undone Task。
