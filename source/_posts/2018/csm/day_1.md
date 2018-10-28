@@ -161,4 +161,11 @@ Scrum Team 的成員組成有個前提，團隊具備完成端到端的開發的
 - Change Your Company。
 - 開發人員的陽光、空氣、水；陽光的心態、空間(權限與能力)、薪水。
 
+### 同場加映
+- [A同學筆記] 
+- [C同學筆記-CSPO](https://medium.com/@linchi/cspo-%E5%BF%83%E5%BE%97%E7%AD%86%E8%A8%98-53c1b80f7be7)
+- [D同學筆記-CSM](https://x790116.github.io/tags/csm/)
+- [D同學筆記-CSPO](https://x790116.github.io/tags/cspo/)
+- [F同學筆記](https://www.evernote.com/client/snv?noteGuid=22261834-28b5-4056-98fd-7cbde9071622&noteKey=ef7b52d4c68fffe3447051a0f2945c80&sn=https%3A%2F%2Fwww.evernote.com%2Fshard%2Fs246%2Fsh%2F22261834-28b5-4056-98fd-7cbde9071622%2Fef7b52d4c68fffe3447051a0f2945c80&title=CSM%252BCSM%2Bnote)
+
 (fin)
