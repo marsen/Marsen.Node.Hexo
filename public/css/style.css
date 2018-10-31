@@ -1351,10 +1351,10 @@ pre .javascript .function {
   list-style: decimal;
 }
 .widget img {
-  max-width: 100%;
+  max-width: 33.33%;
   height: auto;
   display: block;
-  margin: auto;
+  margin: 0;
 }
 .category-list-count,
 .tag-list-count,
