@@ -16,7 +16,7 @@ widgets:
 - tagcloud
 - tag
 - category
-- csm
+- badges
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
