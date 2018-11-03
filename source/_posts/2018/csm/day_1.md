@@ -1,5 +1,5 @@
 ---
-title: "CSM Day1(不知道會不會寫Day2)"
+title: "CSM Day1"
 date: 2018/10/27 21:10:01
 tag:
     - Scrum
@@ -19,10 +19,9 @@ tag:
 上圖直到最後一天，才瞬間完成所有 Item ，我稱之為跳崖式  
 下圖是在 Sprint 的過程中，Task 增加了，有可能是亂入也有可能是建立 Task 時不準確，我稱之為登山式。
 
-下圖的例子還算是樂觀的，畢竟最後 Sprint 都完成了，實務上更多是 Sprint Failed 。
-
-
 ![&#x71C3;&#x76E1;&#x5716;&#x7684;&#x58DE;&#x5473;&#x9053;](/images/2018/csm/day_1/6B161347-8331-4BA7-89D2-61DA1DAD61B1.jpg)
+
+上圖的例子還算是樂觀的，畢竟最後 Sprint 都完成了，實務上更多是 Sprint Failed 。
 
 > 我在 C 公司時是使用 Task ， N 公司是使用 Item ，在 N 公司與 Scrum Master 討論都建議使用 Item 繪製，  
 > 最主要立論都在於 Item 才有價值，而 Task 只細部的工作項而已。但對於我的角色而言\(Team Member\)，  
