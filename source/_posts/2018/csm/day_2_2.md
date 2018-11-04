@@ -59,7 +59,7 @@ tag:
 
 ![-](/images/2018/csm/day_2/done&accept.jpg)
 
-####  Retro
+#### Retrospective
 
 * 觀注我們是「怎麼\(How\)」作的
 * 圍繞著 Process 進行 Inspect 與 Adapt
