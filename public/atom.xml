@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-11-04T12:18:55.496Z</updated>
+  <updated>2018-11-18T16:12:37.970Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[N社筆記]敏捷路上跌倒站起來 2018/11/18</title>
+    <link href="http://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/"/>
+    <id>http://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/</id>
+    <published>2018-11-18T03:42:21.000Z</published>
+    <updated>2018-11-18T16:12:37.970Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="工程人員一定要分析後才能投點嗎-有關-Planning-會議很長"><a href="#工程人員一定要分析後才能投點嗎-有關-Planning-會議很長" class="headerlink" title="工程人員一定要分析後才能投點嗎 ?(有關 Planning 會議很長)"></a>工程人員一定要分析後才能投點嗎 ?(有關 Planning 會議很長)</h4><blockquote><p>記得設定 Timebox。<br>Scurm 是經驗法則，可以拿已經作過投點的 Item 作為比較基準。<br>如果有未知與風險，當下不要過度鑽入細節。<br>你可以</p><ul><li>開一個小的 Task 用來作調研與評估</li><li>開一個很大 Task 之後再用來 BreakDown</li><li>如果它是高價值又高風險，就優先作它吧</li></ul></blockquote><h4 id="如何加速會議進行"><a href="#如何加速會議進行" class="headerlink" title="如何加速會議進行?"></a>如何加速會議進行?</h4><blockquote><p>決議與會議之外。先讓人看見問題與目標，與可能的方向。<br>SM 應該更關注決定的過程，而非決定的本身。</p></blockquote><h4 id="焦點討論法-如何問問題"><a href="#焦點討論法-如何問問題" class="headerlink" title="焦點討論法(如何問問題)"></a>焦點討論法(如何問問題)</h4><p>O↓ 事實(每個人看到的都不一樣)<br>↑R 感受(相同的事實不同的人不同的感受) → 往複 OR ，取得共識(有共識才透明)<br>Interpretive 意義與價值觀<br>Decisional 決定</p><h4 id="Bussiness-DevOps"><a href="#Bussiness-DevOps" class="headerlink" title="Bussiness DevOps"></a>Bussiness DevOps</h4><p><img src="https://i.imgur.com/A04B5uG.jpg" alt=""></p><h4 id="迭代與增量真的有幫助嗎-Aglie-之前我們怎麼工作的-Scrum-真的好嗎"><a href="#迭代與增量真的有幫助嗎-Aglie-之前我們怎麼工作的-Scrum-真的好嗎" class="headerlink" title="迭代與增量真的有幫助嗎 ? (Aglie 之前我們怎麼工作的?/Scrum 真的好嗎 ?)"></a>迭代與增量真的有幫助嗎 ? (Aglie 之前我們怎麼工作的?/Scrum 真的好嗎 ?)</h4><p>看情境</p><blockquote><p>Aglie 適合應付變化，而目前的世界變化很大。<br>不要為了 Scurm 而 Scurm 。<br>那樣會變成盲從，看見你的需要，務實的變革。</p></blockquote><h4 id="用一個問題打敗一個問題-Ruddy老師引導法"><a href="#用一個問題打敗一個問題-Ruddy老師引導法" class="headerlink" title="用一個問題打敗一個問題(Ruddy老師引導法)"></a>用一個問題打敗一個問題(Ruddy老師引導法)</h4><p>找到核心的問題，然後問 「怎麼作 ?」<br>學員回答後，老師常常會說「這是一個方法」，然後給予回饋。</p><blockquote><p>這句話的潛台詞是「還有其它的方法」。</p></blockquote><h4 id="團隊成員恐懼端到端的開發-新手SM與新手團隊"><a href="#團隊成員恐懼端到端的開發-新手SM與新手團隊" class="headerlink" title="團隊成員恐懼端到端的開發(新手SM與新手團隊)"></a>團隊成員恐懼端到端的開發(新手SM與新手團隊)</h4><ul><li>讓 1 個 Sprint 先完成 1個最高優先級的Item (初期導入 Scurm 怎麼作?)</li></ul><blockquote><p>Scurm 對團隊的要求其實蠻高的，<br>但是我們不需要端到端的工程師，而是團隊。<br>巴士因子可以是個判斷指標。<br>另外限制理論[求補充]告訴我們瓶頸會跑來跑去，所以要持續觀注與改善。</p></blockquote><h4 id="團隊估點從-100-→-200-Data-Team-從沒有信心-Commit-到-…"><a href="#團隊估點從-100-→-200-Data-Team-從沒有信心-Commit-到-…" class="headerlink" title="團隊估點從 100 → 200 (Data Team 從沒有信心 Commit 到 $#@…)"></a>團隊估點從 100 → 200 (Data Team 從沒有信心 Commit 到 $#@…)</h4><blockquote><p>這個點數的增長不合理，而且還是以時數點數，<br>沒有任何東西可以讓一天變成 48 小時(喔…有人說，加班可以讓8小時變16小時)<br>持續觀注，如果失敗了就讓它失敗吧…<br>但是要失敗的有意義。</p></blockquote><h4 id="Scrum-的神奇魔力"><a href="#Scrum-的神奇魔力" class="headerlink" title="Scrum 的神奇魔力"></a>Scrum 的神奇魔力</h4><p><img src="https://i.imgur.com/T3BV4F3.png" alt=""></p><h4 id="當老闆就是-PO-PO-與-Scrum-Master-出現了階級關係"><a href="#當老闆就是-PO-PO-與-Scrum-Master-出現了階級關係" class="headerlink" title="當老闆就是 PO (PO 與 Scrum Master 出現了階級關係)"></a>當老闆就是 PO (PO 與 Scrum Master 出現了階級關係)</h4><ul><li>找一個小 PO (作 PO 真正該作的事)</li></ul><blockquote><p>正視真正的問題是「你沒有 PO」</p></blockquote><h4 id="當-Team-在兩個作法兩難的時候"><a href="#當-Team-在兩個作法兩難的時候" class="headerlink" title="當 Team 在兩個作法兩難的時候"></a>當 Team 在兩個作法兩難的時候</h4><ul><li>作一個 Check Point，保留可以回來重新審視的機會</li></ul><blockquote><p>現實中有遇到類似的狀況，<br>執行的當下會列出所有的優缺點，再作選擇。<br>作完之後問自已，再作一次你會怎麼選擇 ?</p></blockquote><h4 id="成員本來會多作優化，跑-Scurm-之後沒在-Task-之上的事不作了。ex-重構、優化…"><a href="#成員本來會多作優化，跑-Scurm-之後沒在-Task-之上的事不作了。ex-重構、優化…" class="headerlink" title="成員本來會多作優化，跑 Scurm 之後沒在 Task 之上的事不作了。ex:重構、優化…)"></a>成員本來會多作優化，跑 Scurm 之後沒在 Task 之上的事不作了。ex:重構、優化…)</h4><blockquote><p>在 DoD 應該可以解決這個問題，如果現況不會有問題，為什麼要作?<br>先作 Task 有列出來東西我覺得基本上是對的。<br>SM 的問題是「認為該作，但是沒有技術 Know How 所以不知道該列什麼?」<br>那還沒有跑 Scrum 前如何評量這個項目的效果呢?<br>至少在 Scrum 中我認為可以透過 Velocity 作為指標。<br>也可以透過 DoD 決定品質的程度(ex:)。<br>另外，重構不是重作，<br>重構應該是時時發生的，寫測試可以讓這件事被量化，<br>難以測試的代碼本身就有一定的壞味道(工程實踐與遇到的困難就以後再寫了…)。</p></blockquote><h4 id="Team-不該-Challenge-Item-Value-嗎-這樣跟以前需求來就作有什麼不同"><a href="#Team-不該-Challenge-Item-Value-嗎-這樣跟以前需求來就作有什麼不同" class="headerlink" title="Team 不該 Challenge Item Value 嗎 ?(這樣跟以前需求來就作有什麼不同?)"></a>Team 不該 Challenge Item Value 嗎 ?(這樣跟以前需求來就作有什麼不同?)</h4><blockquote><p>在 Scrum 中,<br>PO 觀注 Why ,觀注產品價值 ,觀注市場與策略<br>Team 可以決定怎麼作，與 PO 討論理解為什麼要這麼作，<br>並不是所謂的「需求來就作」，而把 PMO 的角色拿掉，<br>是為了減少隔閤，讓團隊更接近商務端。<br>聽起來這個情境，Team 與 PO 仍有抗拒心理…</p></blockquote><h4 id="身兼開發的-Scrum-Master"><a href="#身兼開發的-Scrum-Master" class="headerlink" title="身兼開發的 Scrum Master"></a>身兼開發的 Scrum Master</h4><p>Team(1+1+1+1…) x SM (0.9 or 1.1) = 生產力<br>讓 SM 成為乘數，而不要成為加數</p><blockquote><p>小地雷:如果乘數小於1(如何評量SM指數?)</p></blockquote><h4 id="業務單位的務實"><a href="#業務單位的務實" class="headerlink" title="業務單位的務實"></a>業務單位的務實</h4><blockquote><p>業務/老闆會說，我才不管什麼開發方法，<br>作出來就好了(黑貓白貓能抓老鼠就是好貓…)<br>很務實，但是很傷害團隊…，不要有機會讓團隊聽到這種話</p></blockquote><h4 id="結束就結束了。"><a href="#結束就結束了。" class="headerlink" title="結束就結束了。"></a>結束就結束了。</h4><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot;&gt;&lt;a href=&quot;#工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot; class=&quot;headerlink&quot; title=&quot;工程人員一定要分析後才能投點嗎 ?(有關 Plannin
+      
+    
+    </summary>
+    
+    
+      <category term="Scrum" scheme="http://blog.marsen.me/tags/Scrum/"/>
+    
+      <category term="Agile" scheme="http://blog.marsen.me/tags/Agile/"/>
+    
+  </entry>
   
   <entry>
     <title>CSM Day2-2 Daily Scrum 與 Sprint Review 與 Retrospective</title>
@@ -289,9 +314,9 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
-    
       <category term="Cache" scheme="http://blog.marsen.me/tags/Cache/"/>
+    
+      <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
     
   </entry>
   
@@ -502,27 +527,6 @@
       
         &lt;h2 id=&quot;原文&quot;&gt;&lt;a href=&quot;#原文&quot; class=&quot;headerlink&quot; title=&quot;原文&quot;&gt;&lt;/a&gt;原文&lt;/h2&gt;&lt;p&gt;開發團隊需要找 二名工讀生， 請幫忙問問家裡有沒有專科大學含以上的小朋友，&lt;br&gt;有興趣來公司實習的， 條件可以到公司再談&lt;/p&gt;
 &lt;p&gt;我
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[生活記事]五月身體異常</title>
-    <link href="http://blog.marsen.me/2018/06/10/2018/body_error/"/>
-    <id>http://blog.marsen.me/2018/06/10/2018/body_error/</id>
-    <published>2018-06-10T09:46:51.000Z</published>
-    <updated>2018-06-10T16:01:19.449Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="下玉山"><a href="#下玉山" class="headerlink" title="下玉山"></a>下玉山</h2><p>登玉山是我的年度計劃之一，至少已經規劃 3 年了<br>過程也是一波三折，如果不是身體發生的狀況<br>現在這篇文章應該是登玉山的甘苦談了，<br>簡單的說一下原因，我是帶著落枕上山的，<br>爬山的過程中，身體為了保護脖子，不自然的動作導致了肩膀也傷痛<br>目前還在復健中，這跟後來的病痛有沒有關係，我就不知道了</p><h2 id="5月9日晚上"><a href="#5月9日晚上" class="headerlink" title="5月9日晚上"></a>5月9日晚上</h2><p>當天晚上的計劃是閱讀<strong>單元測試的藝術</strong>，<br>這是在公司參加的讀書會，剛好下山後的那個禮拜就是我負責的章節，<br>因為身體還在很疲累的狀態，所以我只打算在床上稍作閱讀，<br>沒有計劃要刻 Code 。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">程式相關的書跟其它書籍最大的不同是，</span><br><span class="line">如果裡面有程式碼，你很容易去實踐書裡面的內容，</span><br><span class="line">有好有壞，它不像一些高大上的東西，說得到作不到(光說不練)(就是幹話)  </span><br><span class="line">程式寫下來，跑一下就可以很清楚作者要表達的東西。</span><br></pre></td></tr></table></figure><h3 id="症狀"><a href="#症狀" class="headerlink" title="症狀"></a>症狀</h3><p>一開始是看不清楚一兩個字，單純以為是眼花了而已。<br>隨即發現這跟平常的眼花並不一樣，左邊的視野完全消失了，<br>當下立即對自我作了一下檢查，不論是左眼右眼看到的東西是相同的，<br>就是左邊的視野是糢糊不清。<br><img src="https://i.imgur.com/czkqPZE.jpg" alt=""></p><p>當下時間已經是凌晨 1:00 多了，從來沒有這樣的症狀，<br>很害怕是視網膜剝離或是急性青光眼之類的，<br>真的是有想到各種失去視力的恐怖想像，<br>不過症狀卻隨著我到達醫院消失了，</p><p>當下醫生也只有量血壓，看起來也正常，<br>也沒有其它症狀，就被趕回家了……</p><p>回到家沒多久，先是視野又出現相同症狀，沒多久就開始頭痛<br>從右眼到到後腦勺的疼痛，有點類似吃太冰的東西引發的頭痛感覺<br>再一次去到了醫院，這次本來想就近看診所以選了西園<br>想不到西園沒有急診眼科就又去了台大一趟<br>醫生直接幫我抽血並給了我一個藥丸(止痛藥)<br>吃了藥後，症狀有所舒緩，在醫院等了幾個小時後，<br>終於有眼科醫生來作檢查，只有簡單的眼壓與視野檢查。  </p><p>預約了眼科與腦神經科的門診後，就回家了，<br>不過那時已經快過 11:00 了，在醫院忘了帶手機，<br>還麻煩了同事C代請假。 </p><h3 id="休息"><a href="#休息" class="headerlink" title="休息"></a>休息</h3><p>症狀發生後的當天是完全無力上班的，而門診時間是抓在二日後，<br>緊接著又是六日，所以直接請了 3 天的假<br>幾本上是睡了三天，當然門診那天也跑了很多地方，<br>雖然我姐陪我去看診，但是另人傻眼的是最後被丟包只能自已回家。<br>而整個過程當中他也只是在逛兒童醫院的小賣部，或是滑手機<br>事後想想，我自已去醫院說不定會更輕鬆一些。  </p><h3 id="檢查"><a href="#檢查" class="headerlink" title="檢查"></a>檢查</h3><p>門診後安排了檢查，另外就是一個月份量的止痛藥，<br>醫生開了「普拿疼」跟「羅莎疼」，備而不用能不吃就不吃，<br>之後的檢查分屬不同的時間，有時候是一個人去的;  </p><h3 id="MRI"><a href="#MRI" class="headerlink" title="MRI"></a>MRI</h3><p>MRI 是一個漫長的檢查，在電視上常常看到，可以透視你的腦與血管，<br>聽說輻射量會比較少，整個過程就是躺著聽噪音，<br>真的很吵，大概要 30 分鐘不能動，希望你們不會有這種體驗。  </p><h3 id="清醒期腦波"><a href="#清醒期腦波" class="headerlink" title="清醒期腦波"></a>清醒期腦波</h3><p>在頭上黏一堆電線(?)，檢查人員會跟你說話<br>或是要你呼吸，讓你看燈光，感覺上是為了觀察你的腦的反應，<br>算是輕鬆的檢查，可是用完後整個頭超黏，<br>強烈建議作完後去洗個頭，特別是入暑後的夏天。  </p><h3 id="視野檢查"><a href="#視野檢查" class="headerlink" title="視野檢查"></a>視野檢查</h3><p>單眼測試，要看視野中央的亮點，<br>手上會有一個按鈕，隨機出現一個亮點就按一下，<br>作完右眼換左眼，蠻快速簡單的，<br>唯一有點難過的事是外面跟一個大媽聊天，<br>好像是腦瘤造成視野異常，<br>「弟弟，我什麼亮點都看不到」「…」<br>「你有看到嗎?」<br>我真的不知道怎麼回答……<br>「阿姨，我們先走了…」  </p><h3 id="天使"><a href="#天使" class="headerlink" title="天使"></a>天使</h3><p>在公司基本上應該不要說這些私事的，<br>但是有些團隊成員在問，我又不想一直被問，<br>就直接濃縮成「眼睛看不到(清楚)，看了醫生還在等檢查…」<br>謝謝那些關心我的人，雖然我仍會感到不自在…<br>上午跟團隊報告，下午就被長官關心了，<br>嗯…那種感覺比較像「聽說有個零件壞掉，看一下，如果不行就換一個吧…」<br>不過還是有天使，謝謝同事R，不管是小紙條或是熱敷眼罩都很溫暖，<br>真的有種遇到天使的感覺，特別是在被家人丟包之後…<br><img src="https://i.imgur.com/MLNSfQS.jpg" alt=""></p><h3 id="Swing"><a href="#Swing" class="headerlink" title="Swing"></a>Swing</h3><p>很神奇的是在檢查完後的那個下午，<br>因為沒事可作，就到了華山，那邊有個 Swing 的跳舞活動，<br>之前就很感興趣，可惜19:00對我來說仍是個奢侈的下班時間。<br>活動蠻有趣的，社交場合所以大家的心態也比較開放，<br>可惜我完全不會跳，不過遇到了牧羊犬(如果我是羊，祂是牧羊人的話)<br>知道了彼此的身份後，我們一起禱告，  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我看到上帝將你的心捧在祂的手掌上，  </span><br><span class="line">細心的、仔細的在拼揍你破碎的心。  </span><br><span class="line">可能是過去從家人、朋友、職場…而來的傷害，  </span><br><span class="line">讓你的心碎成好幾塊，  </span><br><span class="line">但神說不要怕，放心交給祂…</span><br></pre></td></tr></table></figure><p>唔…我還要想一想，不過當下還有另一個男生說他想去教會<br>(os:有沒有這麼突然，你是不是想……?)<br>不過基於個人原則，有人想去教會我一定會帶他去的。<br>後續有什麼發展就等著瞧了……  </p><p>ps. 聽說有8:30的舞蹈教學時間，如果有 lv1 我應該會去參加。</p><h3 id="教會朋友家聚餐"><a href="#教會朋友家聚餐" class="headerlink" title="教會朋友家聚餐"></a>教會朋友家聚餐</h3><p>是一個好久不見的朋友，他在泰國，<br>所以我們大概一年只能見一次，<br>之前一直說要去泰國找他，總總因素總沒有成行，<br>很突然的一個邀約，大家帶一點吃的<br>我還剛踢完球，全身臭臭的，除了我大家都結婚生子了，<br>這種感覺是很尷尬的，某種程度上的，<br>不過因為我們也沒有團契，也沒有一起聚會(好啦，我知道是我沒去教會)<br>連繫上是很薄弱的，本來想說就好久不見的朋友，<br>後來一起唱了詩歌又一起禱告……<br>又把焦點作到我身上了，weeeeeee<br>或許需要恢復團契與聚會習慣吧。</p><p>不然我會止不住這些聲音的。</p><h2 id="記錄"><a href="#記錄" class="headerlink" title="記錄"></a>記錄</h2><p>我的 blog 本來是不打算記錄這些東西的，<br>不知道為什麼就想記下來，<br>或許有一天會用到吧，或許不會，<br>等著瞧了。</p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;下玉山&quot;&gt;&lt;a href=&quot;#下玉山&quot; class=&quot;headerlink&quot; title=&quot;下玉山&quot;&gt;&lt;/a&gt;下玉山&lt;/h2&gt;&lt;p&gt;登玉山是我的年度計劃之一，至少已經規劃 3 年了&lt;br&gt;過程也是一波三折，如果不是身體發生的狀況&lt;br&gt;現在這篇文章應該是登玉山的甘
       
     
     </summary>
