@@ -4,7 +4,7 @@ date: 2018/07/23 18:49:19
 tag:
   - Scrum
   - 閱讀筆記
-  - Aglie
+  - Agile
 ---
 
 ###### #ScrumMasterWay

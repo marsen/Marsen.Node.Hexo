@@ -3,7 +3,7 @@ title: 有關 HTTP Header Content-Type
 date: 2016/10/28 12:54:55
 tag:
   - post
-  - http
+  - HTTP
   - html
   - Content-Type
 ---
