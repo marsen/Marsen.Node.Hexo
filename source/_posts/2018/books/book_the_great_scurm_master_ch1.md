@@ -4,7 +4,7 @@ date: 2018/07/15 10:19:08
 tag:
   - Scrum
   - 閱讀筆記
-  - Aglie
+  - Agile
 ---
 
 #ScrumMasterWay
@@ -25,7 +25,7 @@ tag:
 - 不是團隊的祕書
 - 不是額外的開銷
 - 負責創造高績效團隊
-- Aglie 與 Scrum 思想的專家(信徒)
+- Agile 與 Scrum 思想的專家(信徒)
 
 
 ###### 質疑:

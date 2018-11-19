@@ -31,10 +31,10 @@ Decisional 決定
 #### Bussiness DevOps  
 ![](https://i.imgur.com/A04B5uG.jpg)
 
-#### 迭代與增量真的有幫助嗎 ? (Aglie 之前我們怎麼工作的?/Scrum 真的好嗎 ?)
+#### 迭代與增量真的有幫助嗎 ? (Agile 之前我們怎麼工作的?/Scrum 真的好嗎 ?)
 
 看情境
-> Aglie 適合應付變化，而目前的世界變化很大。
+> Agile 適合應付變化，而目前的世界變化很大。
 不要為了 Scurm 而 Scurm 。
 那樣會變成盲從，看見你的需要，務實的變革。
 
