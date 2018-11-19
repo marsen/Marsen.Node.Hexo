@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-11-18T16:12:37.970Z</updated>
+  <updated>2018-11-19T06:05:22.195Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[踩雷筆記] BDD 跑3個失敗就停止</title>
+    <link href="http://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/"/>
+    <id>http://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/</id>
+    <published>2018-11-19T03:40:45.000Z</published>
+    <updated>2018-11-19T06:05:22.195Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原文描述"><a href="#原文描述" class="headerlink" title="原文描述"></a>原文描述</h2><blockquote><p>Visual Studio 的 Test Explorer 在跑測試，<br>如果遇到失敗，會直接中斷，<br>比如說有 2000 個測試案例 跑到第 1300 個時測試失敗就會中斷<br>剩下的 700 個案例會不執行直接略過。</p></blockquote><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><h3 id="實際狀況"><a href="#實際狀況" class="headerlink" title="實際狀況"></a>實際狀況</h3><p>並不是一跑到錯誤就會中斷測試，而是跑了 3 個失敗後中斷測試，<br>另外執行的測試專案，是使用 SpecRun.Runner 撰寫 Cucumber 語法跑 BDD 測試。</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>當使用測試專案使用 SpecRun.Runner，預設 stopAfterFailures 是 3，<br>所以3個失敗就會略過。</p><h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>正常的測試都是會全跑完的。因為 Test Framework 標示 Test Method 的部份，<br>都是幫你內建 Try/Catch 攔下所有 Exception 的。</p><p>MsTest 的 [TestMethod] 或是 NUnit 的<a href="XUnit 是 [Fact]">Test</a>，其實就是層 Wrapper<br>你在方法裡面寫的內容，只要有引發 Exception 的例外，<br>都會被這層 Wrapper 攔下來，轉成測試結果的內容。</p><h2 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h2><p>測試專案根目錄應該有一份 <code>Default.srprofile</code> 檔，如下<br>將 <code>stopAfterFailures</code> 調整至適當的值(ex:500)，將會顯示所有失敗測試。<br>本案例開啟後，實際失敗的測試有 37 個</p><pre><code class="xml"><span class="tag">&lt;<span class="name">Execution</span> <span class="attr">stopAfterFailures</span>=<span class="string">"3"</span> <span class="attr">testThreadCount</span>=<span class="string">"1"</span> <span class="attr">testSchedulingMode</span>=<span class="string">"Sequential"</span> /&gt;</span></code></pre><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul><li><a href="https://groups.google.com/forum/#!topic/specrun/yR6VVH8bDKg" target="_blank" rel="noopener">SpecRun skipping testing rather than running them when executing more than 16</a></li><li><a href="https://specflow.org/plus/documentation/SpecFlowPlus-Runner-Profiles/" target="_blank" rel="noopener">SpecFlow+ Runner Profiles</a></li></ul><p>特別感謝 91、Green、余小章的協助</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;原文描述&quot;&gt;&lt;a href=&quot;#原文描述&quot; class=&quot;headerlink&quot; title=&quot;原文描述&quot;&gt;&lt;/a&gt;原文描述&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Visual Studio 的 Test Explorer 在跑測試，&lt;br&gt;如果遇到失敗，會直接
+      
+    
+    </summary>
+    
+    
+      <category term="Testing" scheme="http://blog.marsen.me/tags/Testing/"/>
+    
+  </entry>
   
   <entry>
     <title>[N社筆記]敏捷路上跌倒站起來 2018/11/18</title>
@@ -509,28 +533,6 @@
       <category term="Scrum" scheme="http://blog.marsen.me/tags/Scrum/"/>
     
       <category term="Aglie" scheme="http://blog.marsen.me/tags/Aglie/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[生活瑣事]徵工讀生有感</title>
-    <link href="http://blog.marsen.me/2018/07/02/2018/find_intern/"/>
-    <id>http://blog.marsen.me/2018/07/02/2018/find_intern/</id>
-    <published>2018-07-02T07:31:23.000Z</published>
-    <updated>2018-07-02T07:40:37.157Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h2><p>開發團隊需要找 二名工讀生， 請幫忙問問家裡有沒有專科大學含以上的小朋友，<br>有興趣來公司實習的， 條件可以到公司再談</p><p>我們希望你</p><ul><li>對電子商務有興趣、有熱忱， 喜歡解決問題</li><li>樂於溝通與分享</li><li>喜歡團隊合作</li></ul><p>工作內容</p><ul><li>協助專案開發， 修改前端 Javascript/CSS， HTML頁面調整</li><li>協助頁面功能測試</li></ul><p>條件</p><ol><li>熟悉HTML(接觸過JavaScript，CSS佳）</li><li>接觸過任意後端程式語言(C#，ASP。NET MVC佳）</li><li>具備網頁應用程式開發的概念或經驗佳</li><li>暑假期間7/1 ~ 8/31， 上班時間， 09:00 ~ 18:00 (edited)</li></ol><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>一眨眼也工作十年了，不說自已，<br>身邊年輕的朋友也不是小朋友了;<br>各種意義上也沒有小朋友;<br>視茫茫，髮蒼蒼，齒牙動搖;<br>身體平安，惟膀子疼痛厲害，轉身射門，諸多不便。</p><h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ol><li>薪資會優於勞基法加面議。</li><li>95% 的信賴區間下,可能會落在 150 左右,正負6個百分點。</li></ol><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;原文&quot;&gt;&lt;a href=&quot;#原文&quot; class=&quot;headerlink&quot; title=&quot;原文&quot;&gt;&lt;/a&gt;原文&lt;/h2&gt;&lt;p&gt;開發團隊需要找 二名工讀生， 請幫忙問問家裡有沒有專科大學含以上的小朋友，&lt;br&gt;有興趣來公司實習的， 條件可以到公司再談&lt;/p&gt;
-&lt;p&gt;我
-      
-    
-    </summary>
-    
     
   </entry>
   
