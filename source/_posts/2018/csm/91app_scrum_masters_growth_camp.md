@@ -29,6 +29,7 @@ Interpretive 意義與價值觀
 Decisional 決定
 
 #### Bussiness DevOps  
+![](https://imgur.com/x0imNlo.jpg)
 ![](https://i.imgur.com/A04B5uG.jpg)
 
 #### 迭代與增量真的有幫助嗎 ? (Agile 之前我們怎麼工作的?/Scrum 真的好嗎 ?)
@@ -112,5 +113,8 @@ Team(1+1+1+1...) x SM (0.9 or 1.1) = 生產力
 很務實，但是很傷害團隊…，不要有機會讓團隊聽到這種話
 
 #### 結束就結束了。
+
+## 參考
+- [[心得] ScrumMaster自我突破訓練營](https://medium.com/terryisbloggingonagile/%E5%BF%83%E5%BE%97-scrummaster%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-3ce6f7c8c6)
 
 (fin)
