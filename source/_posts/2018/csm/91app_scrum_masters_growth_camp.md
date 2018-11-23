@@ -116,5 +116,6 @@ Team(1+1+1+1...) x SM (0.9 or 1.1) = 生產力
 
 ## 參考
 - [[心得] ScrumMaster自我突破訓練營](https://medium.com/terryisbloggingonagile/%E5%BF%83%E5%BE%97-scrummaster%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-3ce6f7c8c6)
+- [ScrumMaster 自我突破訓練營 in 91APP ：ScrumMaster的生存之道](https://medium.com/@imfufu/scrummaster-%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-in-91app-scrummaster%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93-678f0774d967)
 
 (fin)
