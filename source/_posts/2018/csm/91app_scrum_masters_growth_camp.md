@@ -61,6 +61,14 @@ Decisional 決定
 持續觀注，如果失敗了就讓它失敗吧…
 但是要失敗的有意義。
 
+##### 後續
+11/23 團隊作的工作量實際上達到 254/3xx (Commit 3xx，完成254。)，
+sprint 是成功的，但是 Velocity 是失準的。
+> 小心得: 
+> 1. 所謂的 Commit 如果不是對自已 Commit 起不了激勵作用，  
+> 如果 Team 與 PO 不認為「我們是一個Team」，而還是分 PMO 與 R&D
+> 那麼 Commit 就會變成畫押背鍋的儀式。
+> 2. 氣象報告失準怎麼辦，颱風沒來大家都開心嗎？(從 100→254，是效率大爆發，還是浮報點數了？)
 
 #### Scrum 的神奇魔力
 ![](https://i.imgur.com/T3BV4F3.png)
@@ -117,5 +125,5 @@ Team(1+1+1+1...) x SM (0.9 or 1.1) = 生產力
 ## 參考
 - [[心得] ScrumMaster自我突破訓練營](https://medium.com/terryisbloggingonagile/%E5%BF%83%E5%BE%97-scrummaster%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-3ce6f7c8c6)
 - [ScrumMaster 自我突破訓練營 in 91APP ：ScrumMaster的生存之道](https://medium.com/@imfufu/scrummaster-%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-in-91app-scrummaster%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93-678f0774d967)
-
+- [ORID簡報- By 茶米](https://drive.google.com/file/d/1CmJJGP7dpnSUzUP3ZrA8nNO1a6aKxM0Z/view?usp=sharing)
 (fin)
