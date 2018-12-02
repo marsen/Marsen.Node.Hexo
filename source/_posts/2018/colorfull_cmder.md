@@ -35,7 +35,27 @@ date: 2018/11/25 17:58:59
 [lua](https://www.lua.org/) 也是一個程式語言，你大可開啟文字編輯器，看一下裡面作了什麼。  
 
 
+## 2018/12/02 補充
+
+追加讓 PowerShell 在 cmder 裡面也美美的方法
+
+### 步驟
+1. 下載[cmder-powershell-powerlin-prompt](https://github.com/AmrEldib/cmder-powershell-powerline-prompt)，選擇 Clone or download > Download ZIP
+2. 解壓縮 ZIP 檔
+3. 開啟 Cmder 所在的資料夾，如下圖 > 開啟 config 資料夾
+![](/images/2018/colorfull_cmder/cmder_folder.jpg)
+4. 將壓縮檔內的 `user_profile.ps1`，取代 config 內的 `user_profile.ps1`
+5. 將壓縮檔內的 `profile.d` 資料內的所有檔案，全數貼到 config 內的 `profile.d` 資料夾內，如果不存在就建立一個。
+6. 開啟 config\profile.d 資料夾，重新命名 goToFolder.config.example 為 goToFolder.config 
+    - 這個檔案內會設定一些目錄與 alias 。
+    - 使用方法，在使用 cmder 開啟 powershell 的情況下，輸入 g + `alias` 
+    - 比如說在 goToFolder.config 中，設定一組 `m, C:\User\Marsen`
+    - 在 cmder 輸入 `g m` 就會自動切到 `C:\User\Marsen` 的路徑底下
+7. 還有很多 Alias 請自行研究。
+8. 重啟 cmder 後就會載入新的設定，變成美美的 powershell 了
+
 ## 參考
 - 整篇都是參考[cmder-powerline-prompt](https://github.com/AmrEldib/cmder-powerline-prompt)的作法，原始 Repo 可能隨時會更新異動，不保証有效
+- [cmder-powershell-powerlin-prompt](https://github.com/AmrEldib/cmder-powershell-powerline-prompt)
 
 (fin)
