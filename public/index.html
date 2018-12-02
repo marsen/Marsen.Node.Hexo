@@ -114,15 +114,33 @@ ga('send', 'pageview');
 <li>將下載的所有 *.lua 檔放入 <code>Config</code> 資料夾  </li>
 </ol>
 <p>最後重啟 Cmder 就可以有一個美美的命令提示視窗了。<br><a href="https://www.lua.org/" target="_blank" rel="noopener">lua</a> 也是一個程式語言，你大可開啟文字編輯器，看一下裡面作了什麼。  </p>
+<h2 id="2018-12-02-補充"><a href="#2018-12-02-補充" class="headerlink" title="2018/12/02 補充"></a>2018/12/02 補充</h2><p>追加讓 PowerShell 在 cmder 裡面也美美的方法</p>
+<h3 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h3><ol>
+<li>下載<a href="https://github.com/AmrEldib/cmder-powershell-powerline-prompt" target="_blank" rel="noopener">cmder-powershell-powerlin-prompt</a>，選擇 Clone or download &gt; Download ZIP</li>
+<li>解壓縮 ZIP 檔</li>
+<li>開啟 Cmder 所在的資料夾，如下圖 &gt; 開啟 config 資料夾<br><img src="/images/2018/colorfull_cmder/cmder_folder.jpg" alt=""></li>
+<li>將壓縮檔內的 <code>user_profile.ps1</code>，取代 config 內的 <code>user_profile.ps1</code></li>
+<li>將壓縮檔內的 <code>profile.d</code> 資料內的所有檔案，全數貼到 config 內的 <code>profile.d</code> 資料夾內，如果不存在就建立一個。</li>
+<li>開啟 config\profile.d 資料夾，重新命名 goToFolder.config.example 為 goToFolder.config <ul>
+<li>這個檔案內會設定一些目錄與 alias 。</li>
+<li>使用方法，在使用 cmder 開啟 powershell 的情況下，輸入 g + <code>alias</code> </li>
+<li>比如說在 goToFolder.config 中，設定一組 <code>m, C:\User\Marsen</code></li>
+<li>在 cmder 輸入 <code>g m</code> 就會自動切到 <code>C:\User\Marsen</code> 的路徑底下</li>
+</ul>
+</li>
+<li>還有很多 Alias 請自行研究。</li>
+<li>重啟 cmder 後就會載入新的設定，變成美美的 powershell 了</li>
+</ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li>整篇都是參考<a href="https://github.com/AmrEldib/cmder-powerline-prompt" target="_blank" rel="noopener">cmder-powerline-prompt</a>的作法，原始 Repo 可能隨時會更新異動，不保証有效</li>
+<li><a href="https://github.com/AmrEldib/cmder-powershell-powerline-prompt" target="_blank" rel="noopener">cmder-powershell-powerlin-prompt</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cjp0rqhtn003c18vxov4jrn34" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cjp6owloy002te8vxytod0cxr" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/25/2018/colorfull_cmder/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -170,7 +188,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" data-id="cjp0rqhuh004i18vxezwfzorf" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" data-id="cjp6owlph003ke8vxx21f09hf" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -226,7 +244,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/" data-id="cjp0rqhtl003918vx4nbtl3d4" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/" data-id="cjp6owloq002ee8vxko88lcpf" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -337,7 +355,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/" data-id="cjp0rqhx8009518vx0fgo9y6i" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/" data-id="cjp6owlsp009ge8vxrt0k2564" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -498,7 +516,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/" data-id="cjp0rqhxb009818vx6i5z11d6" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/" data-id="cjp6owlsv009oe8vxkkkf476y" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -701,7 +719,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/04/2018/csm/day_2_2/" data-id="cjp0rqhxh009f18vxrc04en8t" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/04/2018/csm/day_2_2/" data-id="cjp6owlst009le8vx8trvee0b" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/04/2018/csm/day_2_2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -863,7 +881,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/03/2018/csm/day_2_1/" data-id="cjp0rqhxg009d18vx3lmk47g4" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/11/03/2018/csm/day_2_1/" data-id="cjp6owlsr009je8vxinescenw" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/11/03/2018/csm/day_2_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1068,7 +1086,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/10/27/2018/csm/day_1/" data-id="cjp0rqhxe009a18vxs7emo1hr" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/10/27/2018/csm/day_1/" data-id="cjp6owlsn009ee8vx56yx6szw" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/10/27/2018/csm/day_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1125,7 +1143,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/10/21/2018/books/who_moved_my_cheese/" data-id="cjp0rqhx2008v18vxumwu7v05" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/10/21/2018/books/who_moved_my_cheese/" data-id="cjp6owlsa008we8vxgvbkzk5h" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/10/21/2018/books/who_moved_my_cheese/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1174,7 +1192,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/10/20/2018/hexo_update/" data-id="cjp0rqhty003q18vxi68fmpkx" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2018/10/20/2018/hexo_update/" data-id="cjp6owlp3002ze8vxpkog86wn" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2018/10/20/2018/hexo_update/#disqus_thread" class="article-comment-link">留言</a>
       
