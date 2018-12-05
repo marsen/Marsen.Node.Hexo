@@ -437,9 +437,9 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
-    
       <category term="Cache" scheme="http://blog.marsen.me/tags/Cache/"/>
+    
+      <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
     
   </entry>
   
