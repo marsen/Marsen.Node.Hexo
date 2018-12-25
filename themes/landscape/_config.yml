@@ -11,6 +11,7 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
+- yandex  
 - recent_posts
 - archive
 - tagcloud
