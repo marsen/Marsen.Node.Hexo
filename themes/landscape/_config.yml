@@ -11,12 +11,12 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- yandex  
 - recent_posts
 - archive
 - tagcloud
 - tag
 - category
+- yandex  
 - badges
 
 # display widgets at the bottom of index pages (pagination == 2)
