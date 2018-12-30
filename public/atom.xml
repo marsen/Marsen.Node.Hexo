@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2018-12-30T07:19:53.311Z</updated>
+  <updated>2018-12-30T18:24:42.952Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記]用 Restclient GenCode</title>
+    <link href="http://blog.marsen.me/2018/12/30/2018/restclient_gencode/"/>
+    <id>http://blog.marsen.me/2018/12/30/2018/restclient_gencode/</id>
+    <published>2018-12-30T03:58:43.000Z</published>
+    <updated>2018-12-30T18:24:42.952Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/Huachao/vscode-restclient" target="_blank" rel="noopener">REST Client</a> 是一套 Visual Studio Code 的套件。<br>可以讓你不離開編輯器(Visual Studio Code)的情況下，發送一些 Request。<br>使用方法可以參考最後的聯結，本文僅介紹 Code Gen 的功能。</p><h2 id="作法"><a href="#作法" class="headerlink" title="作法"></a>作法</h2><h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>取得 Request 連結資訊，這個部份可以直接從瀏覽器取得</p><p>大致上如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https://***.****.com.my/Invoice/DownloadMyInvoicePdf?shopId=44&amp;tradesOrderGroupCode=MG180929L00002</span><br><span class="line">Cookie: ai_user=zazJ/|2018-04-11T10:01:21.161Z; _ga=GA1.3.1260482009.1526374223; __zlcmid=p9hkxHsXzC5Ka5; _ym_uid=15450340861049673384; _ym_d=1545034086; _gid=GA1.3.233068902.1545616884; _fbp=fb.2.1545992230107.2040829768; .AspNet.ApplicationCookie=1ly--ntvPSpcJIIDvk2PBFfuyy744Wvwx4ezT0c0BEl1t4Vw3ahOOMwSczzBezkE0dIPWBwQt12KPN8IrFj8eV2ZgfO6HYKuiw7cUNgS37Gr1FOH28o-l5EZuOYGd4uuqRduaBBPbZrJop5nUso1oPS4fOs-mFO0I17QWHtfB_BI2Lzd6rQQRl6_IevI_EPbsh0EDahqvR4wvF2QFMH2ycECSzR4pgEmm3hcQRJ9COWoc-DtZjxxa11yfghghmReLbe1cYtx1G7ST9zakc_qGmnMV0IyZoRFqEmHrzEb1b8fDO35UkxsiP2_mzGY-Oy4e3fV12Q0N7eGVblEkJYZkrtXADP8h9iGToPwAUI5rbnX2o32Z0_4zbg7x_GSF_HWsW22SWlkRCAZEKhvhEB9Qk56JPSRSJwqmpGDzm8a807-6lRP-JPOo_F43eYLgztH6k6imlUseUyDyYBTwJeIgF5gdyLKMUSivKs-SOivyPofDiLMf0HItB9IgzRg-M94FjZROtOWeGXOYW4wqBMyABTelYgjfjgNtoW05SN7npnSYKG1JZeRwrT5KgaRXJy7KHkguyN8vhoYTjSX0cG4VaOrJqgGY-jsQov1lJvZTok_YAkiDRbOhDu3ebdJdi313sGSkUjjkW73Fn9ztmpexLN3OxfmhUlDu0MHhEqgLJMg8koLWBJjpmVC0YdNPCXNofGgNECkiWCZHTZw8u9jnLhtP686CG_JTQFE33YTdh3mJOp7KwFdFvQefEX5Jb2vUXmfFXMBP3MhD5civiPg4Q0WLU4; ai_session=XYYeY|1545989192862|1545993911682</span><br></pre></td></tr></table></figure></p><h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>Ctrl+P，輸入 <code>&gt;</code>，找到 <code>Rest Client: Generate Code Snippet</code><br>選擇你的語言。</p><p><img src="/images/2018/restclient.gif" alt=""></p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client" target="_blank" rel="noopener">REST Client: 官方載點</a></li><li><a href="https://github.com/Huachao/vscode-restclient" target="_blank" rel="noopener">REST Client: Github 專案</a></li><li><a href="https://blog.rex-tsou.com/2017/10/vscode-%E5%AF%A6%E7%94%A8%E5%A5%97%E4%BB%B6-rest-client/" target="_blank" rel="noopener">VSCode 實用套件： REST Client</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://github.com/Huachao/vscode-restclient&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;REST Client&lt;/a&gt; 是一套 Visual Studio Code 的套件。&lt;br&gt;可以讓你
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CSM 之後 Scrum 總結</title>
@@ -494,32 +515,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>[內部分享]Cache 使用 Files 與 Redis</title>
-    <link href="http://blog.marsen.me/2018/09/03/2018/cache_files_and_redis/"/>
-    <id>http://blog.marsen.me/2018/09/03/2018/cache_files_and_redis/</id>
-    <published>2018-09-03T07:45:42.000Z</published>
-    <updated>2018-09-26T06:08:47.183Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Why-Cache"><a href="#Why-Cache" class="headerlink" title="Why Cache ?"></a>Why Cache ?</h2><ol><li>保護稀缺資源(database/disk io/server)</li><li>提高反應速度,減少延遲(Latency)</li></ol><h2 id="Cache-Point"><a href="#Cache-Point" class="headerlink" title="Cache Point"></a>Cache Point</h2><ol start="4"><li>資料即時性/如何除錯/如何更新</li><li>Hit Rate</li><li>High Availability(HA)</li><li>單位時間承載量</li></ol><h2 id="Our-Cache"><a href="#Our-Cache" class="headerlink" title="Our Cache"></a>Our Cache</h2><ol><li>CDN(Cloudfront)</li><li>OutputCache</li><li>Memory Cache</li><li>Redis Cache</li><li>File Cache</li></ol><h2 id="More-Cache-not-in-above"><a href="#More-Cache-not-in-above" class="headerlink" title="More Cache not in above"></a>More Cache not in above</h2><ol><li>Browser Cache</li><li>Database Execution Plan Cache (執行計劃快取)</li><li>Elastic Search</li></ol><h3 id="File-Cache"><a href="#File-Cache" class="headerlink" title="File Cache"></a>File Cache</h3><ul><li>pro<ul><li>簡單易用</li></ul></li><li>con<ul><li>咬檔</li><li>不會自動過期</li><li>自已要處理lock機制</li></ul></li></ul><h3 id="Redis-Cache"><a href="#Redis-Cache" class="headerlink" title="Redis Cache"></a>Redis Cache</h3><ul><li>pro<ul><li>會自動過期</li><li>有提供Queue的功能</li><li>高速(in memory)</li></ul></li><li>con<ul><li>單緖(Single Thread)</li><li>HA的機制費用高</li><li>Redis 承載量受限於記憶體大小</li><li>存儲的東西過大,會導致存取速度下降</li></ul></li></ul><h3 id="實踐問題-在大流量的站台，Cache-過期時如何避免大量-Request-同時更新同一份-Cache"><a href="#實踐問題-在大流量的站台，Cache-過期時如何避免大量-Request-同時更新同一份-Cache" class="headerlink" title="實踐問題:在大流量的站台，Cache 過期時如何避免大量 Request 同時更新同一份 Cache ?"></a>實踐問題:在大流量的站台，Cache 過期時如何避免大量 Request 同時更新同一份 Cache ?</h3><p>Ans: 使用 Lock ，<br>不要使用.NET的<code>lock</code> ;.NET Lock 的機制問題在於，Lock 會導致其它 Thread 排隊<br>當系統處於高流量的情境底下，會發生間歇性Latency提高，<br>而且難以追查問題，也難以重現(一般的壓測無法達到如此高量)。</p><p>使用共用的 Lock Key 作判斷標準:</p><ol><li>Lock Key 存在,回傳 Cache Data</li><li>Lock Key 不存在,建立 Lock Key(包含 Server Id)</li><li>重新取得 Lock Key 如果 <ul><li>Server Id 與 Request 相同，更新 Cache Data 並回傳</li><li>Server Id 與 Request 不相同，直接回傳 Cache Data</li></ul></li></ol><h4 id="Cache-Double-check-Lock-Patter-https-docs-microsoft-com-en-us-previous-versions-office-developer-sharepoint-2010-ee558270-v-3Doffice-14"><a href="#Cache-Double-check-Lock-Patter-https-docs-microsoft-com-en-us-previous-versions-office-developer-sharepoint-2010-ee558270-v-3Doffice-14" class="headerlink" title="[Cache Double check Lock Patter(https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)"></a>[Cache Double check Lock Patter(<a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)</a></h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">object</span> _lock =  <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CacheData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   SPListItemCollection oListItems;</span><br><span class="line">       oListItems = (SPListItemCollection)Cache[<span class="string">"ListItemCacheName"</span>];</span><br><span class="line">      <span class="keyword">if</span>(oListItems == <span class="literal">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">lock</span> (_lock) </span><br><span class="line">         &#123;</span><br><span class="line">              <span class="comment">// Ensure that the data was not loaded by a concurrent thread </span></span><br><span class="line">              <span class="comment">// while waiting for lock.</span></span><br><span class="line">              oListItems = (SPListItemCollection)Cache[<span class="string">"ListItemCacheName"</span>];</span><br><span class="line">              <span class="keyword">if</span> (oListItems == <span class="literal">null</span>)</span><br><span class="line">              &#123;</span><br><span class="line">                   oListItems = DoQueryToReturnItems();</span><br><span class="line">                   Cache.Add(<span class="string">"ListItemCacheName"</span>, oListItems, ..);</span><br><span class="line">              &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><ol><li>使用多執行緖時要小心處理Exception,不然會導致主程序被中斷<br>(File Cache 寫入真實案例,多緖的錯誤不佳會使得IIS無法處理錯誤,進而中斷程序(w3wp.exe))</li><li>AWS S3 是走 Https Protocal</li><li>Redis Delete/Backup 會 Lock Thread</li><li>Redis Command Timeout 極短，所以要注意單一　Cache　資料量大小 (建議資料要小於1k?)</li></ol><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://redis.io/" target="_blank" rel="noopener">Redis</a></li><li><a href="https://memcached.org/" target="_blank" rel="noopener">memcached</a></li><li><a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14" target="_blank" rel="noopener">Caching Data And Objects</a>#caching-data-and-objects)</li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Why-Cache&quot;&gt;&lt;a href=&quot;#Why-Cache&quot; class=&quot;headerlink&quot; title=&quot;Why Cache ?&quot;&gt;&lt;/a&gt;Why Cache ?&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;保護稀缺資源(database/disk io/server)&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Cache" scheme="http://blog.marsen.me/tags/Cache/"/>
-    
-      <category term="Redis" scheme="http://blog.marsen.me/tags/Redis/"/>
     
   </entry>
   
