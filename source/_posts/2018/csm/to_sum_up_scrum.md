@@ -219,7 +219,7 @@ Walking Skeleton 是一個非常好用的手法，在探索出你的商業策略
 更甚是組織內部寧可用便宜的人材，換掉好不容易養成的人材。  
 對此我深感無力，跨職能與自組織最後也是淪為口號。  
 
-![全貌](/images/2018/csm/overview.jpg)
+![全貌](/images/2018/csm/overview.JPG)
 
 以上，我仍在觀察、記錄…
 並且尋找機會，「Change Your Company」。  
