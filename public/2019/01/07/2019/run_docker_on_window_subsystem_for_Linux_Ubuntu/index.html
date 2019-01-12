@@ -14,8 +14,8 @@
 <meta property="og:description" content="前情提要最近開始學 Docker， 這個神器大概在 C 社時期就有聽過了，不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。 一開始有一個很天真的想法，我想在 Windows 內建的 Linux 子系統 Ubantu 安裝 Docker，沒想到最後是脫褲子放屁，不過過程蠻有趣的，稍微記錄一下。 操作步">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="http://blog.marsen.me/images/2019/1/docker.jpg">
-<meta property="og:image" content="http://blog.marsen.me/images/2019/1/run_docker_on_window_subsystem_for_Linux_Ubuntu.jpg">
-<meta property="og:updated_time" content="2019-01-12T07:16:47.066Z">
+<meta property="og:image" content="http://blog.marsen.me/images/2019/1/ubantu_docker.jpg">
+<meta property="og:updated_time" content="2019-01-12T07:25:01.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記]在 Windows Subsystem for Linux 執行 docker">
 <meta name="twitter:description" content="前情提要最近開始學 Docker， 這個神器大概在 C 社時期就有聽過了，不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。 一開始有一個很天真的想法，我想在 Windows 內建的 Linux 子系統 Ubantu 安裝 Docker，沒想到最後是脫褲子放屁，不過過程蠻有趣的，稍微記錄一下。 操作步">
@@ -143,7 +143,7 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker -H localhost:2375 images</span><br></pre></td></tr></table></figure>
 <p>如果不想每次指定的話…請參考以下命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export DOCKER_HOST=localhost:2375</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2019/1/run_docker_on_window_subsystem_for_Linux_Ubuntu.jpg" alt="執行結果"></p>
+<p><img src="/images/2019/1/ubantu_docker.jpg" alt="執行結果"></p>
 <h2 id="學到的事"><a href="#學到的事" class="headerlink" title="學到的事"></a>學到的事</h2><ul>
 <li>Docker 有 Host(Deamon) 與 Client 之分</li>
 <li>在 Windows 上的 VM(Ubantu) 再安裝 Docker Deamon 是行不通的(細節我並不清楚，求補充…)</li>
@@ -170,7 +170,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjqt533cf008j4svxe4h8z710" class="article-share-link">Share</a>
+      <a data-url="http://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjqt5d23x004gmsvxvtj93s4y" class="article-share-link">Share</a>
       
         <a href="http://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/#disqus_thread" class="article-comment-link">留言</a>
       

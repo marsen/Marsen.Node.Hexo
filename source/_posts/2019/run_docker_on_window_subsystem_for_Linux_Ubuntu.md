@@ -102,7 +102,7 @@ $ export DOCKER_HOST=localhost:2375
 ```
 
 
-![執行結果](/images/2019/1/run_docker_on_window_subsystem_for_Linux_Ubuntu.jpg)
+![執行結果](/images/2019/1/ubantu_docker.jpg)
 
 
 ## 學到的事
