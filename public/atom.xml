@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.marsen.me/"/>
-  <updated>2019-01-12T07:25:01.084Z</updated>
+  <updated>2019-01-14T02:59:20.885Z</updated>
   <id>http://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[上課筆記] 熱血 coding dojo</title>
+    <link href="http://blog.marsen.me/2019/04/26/2019/91_coding_dojo_log/"/>
+    <id>http://blog.marsen.me/2019/04/26/2019/91_coding_dojo_log/</id>
+    <published>2019-04-26T06:16:34.000Z</published>
+    <updated>2019-01-14T02:59:20.885Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="知道的事"><a href="#知道的事" class="headerlink" title="知道的事"></a>知道的事</h2><p>活動連結 - <a href="https://yihuode.io/activities/718?fbclid=IwAR3LPQ8HudKS72isCmeWzpe8BsTRNTTG17tChxSysXE66S3xSBypKrVzMs8" target="_blank" rel="noopener">熱血 Coding Dojo - 第一梯次</a><br>講師 : Joey Chen<br>範例語言 : C#</p><h2 id="上課隨筆"><a href="#上課隨筆" class="headerlink" title="上課隨筆"></a>上課隨筆</h2><h3 id="觀念"><a href="#觀念" class="headerlink" title="觀念"></a>觀念</h3><ul><li>不寫多餘的Products Code</li><li>害怕別人看你寫Code是一道門檻</li><li>程式腐壞的速度遠比想像中的快(大概給 3 個人寫過就開始爛了)</li><li>Pair 時不要一開始就寫 Code，先建立共識</li><li>當你碰到薪資天花板就只能轉成管理者(然後是彼得效應)</li><li>國際化的產品能提升自已的視野與能力</li><li>英文不夠好是一個門檻，特別在命名的時候</li><li>不要臉也是一種技能</li><li>先考慮正確性與可維護性 再考慮效能</li><li>你以為你在重構 但是代碼變得更難維護</li><li>看人家怎麼做？學怎麼想？</li><li>即時重構是很重要的，太晚重構會來不及(Side Effect會大到你無法克服心魔)</li><li>ATDD 與 TDD 的軟體工序與心魔</li><li>你已經具備 knowledge 但是缺乏 Couching 與實務訓練</li><li>代碼會反應開發當時的思緒 (不要在精神狀態不好的時候開發)</li><li>Poker Hand 91 大約2小時完成 (思考怎麼錄製與課後練習中…)</li><li>睡前練習可以增強肌肉記憶</li></ul><h3 id="實作技巧"><a href="#實作技巧" class="headerlink" title="實作技巧"></a>實作技巧</h3><ul><li>紅燈時不要重構</li><li>.if .var (C# in Visual Studio)</li><li>第一個test case 不要有判斷式</li><li>r n . (Vim in Visual Studio)</li><li>紅燈→綠燈→重構→綠燈 ; 要學會節奏與時機</li><li>F8 跳錯誤</li><li>一個變數活很久 最後可能被複寫 會容易產生side effects </li><li>zcc (Vim in Visual Studio)</li></ul><h3 id="壞味道"><a href="#壞味道" class="headerlink" title="壞味道"></a>壞味道</h3><ul><li>重構的壞味道，使用私有變數而非方法</li><li>if else if 簽章抽象相同是個壞味道(或是一個可以重構的 Pattern)</li><li><del>Q:請回饋這堂課好的地方 A:T社的HR</del></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;知道的事&quot;&gt;&lt;a href=&quot;#知道的事&quot; class=&quot;headerlink&quot; title=&quot;知道的事&quot;&gt;&lt;/a&gt;知道的事&lt;/h2&gt;&lt;p&gt;活動連結 - &lt;a href=&quot;https://yihuode.io/activities/718?fbclid=IwAR3
+      
+    
+    </summary>
+    
+    
+      <category term="Unit Testing" scheme="http://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="Testing" scheme="http://blog.marsen.me/tags/Testing/"/>
+    
+      <category term="TDD" scheme="http://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="重構" scheme="http://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記]在 Windows Subsystem for Linux 執行 docker</title>
@@ -491,37 +520,6 @@
       <category term="Mongodb" scheme="http://blog.marsen.me/tags/Mongodb/"/>
     
       <category term="Docker" scheme="http://blog.marsen.me/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[閱讀筆記]拿破崙不是敗在滑鐵盧戰役而是金融戰爭</title>
-    <link href="http://blog.marsen.me/2018/10/02/2018/books/book_history_of_finance/"/>
-    <id>http://blog.marsen.me/2018/10/02/2018/books/book_history_of_finance/</id>
-    <published>2018-10-02T02:22:43.000Z</published>
-    <updated>2018-10-02T11:59:29.865Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>猶太教典</p><ul><li>財富是要塞，貧苦是廢墟</li><li>金錢並非罪惡、並非詛咒，而是給予人的祝福</li><li>有三件事情會傷人:煩惱、爭吵、空錢包。其中尤以空錢包最為傷人</li></ul></li><li><p>伊斯蘭人</p><ul><li>發明複式簿記</li><li>損益表(銷售額與支出費用)</li><li>資產負債表(資產與負債)</li></ul></li><li><p>內克爾</p><ul><li>公開透明引發法國大革命</li></ul></li><li><p>第一艘蒸汽船停駛</p><ul><li>既得利益者(運河公司與船東)的反對</li></ul></li><li><p>緬甸因英國殖民政策引發種族問題</p><ul><li>社會地位，英國人 &gt; 中國/印度人 &gt; 克倫族(少數民族) &gt; 緬甸人</li><li>獨立後，克倫族反而持續遭受迫害至今</li></ul></li><li><p>猶太人待過的金融重鎮</p><ul><li>西班牙</li><li>荷蘭 阿姆斯特丹</li><li>英國 倫敦</li><li>美國 紐約</li></ul></li><li><p>一次大戰</p><ul><li>四打一的圍毆(英法俄美vs德)</li><li>德國的優勢，與土耳其建鐵路，與奧匈帝國相同語言，若統一會成為歐陸強國</li><li>美國產石油，英國產煤，能源革命導致需求轉向</li></ul></li><li><p>希特勒</p><ul><li>凡爾賽條約是個源頭</li><li>希特勒被提名過諾貝爾獎</li><li>一開始的「侵略」是「收復國土」</li></ul></li><li><p>二戰的好處</p><ul><li>亞非各國的獨立</li></ul></li><li><p>共產主義</p><ul><li>建立平等社會</li><li>平均分配財富</li><li>蘇聯未受大蕭條影響</li><li>短期的極權，有效;長期的極權，腐敗</li><li>蘇聯比其它國家更不平等</li><li>「當下有事情該作，只要沒納入事前計劃中就不能作;而當下發現沒必要作的事情，只要已經在計劃裡就非作不可，所以完全無法發揮第一線人員的創意」</li></ul></li><li><p>凱因斯</p><ul><li>二戰對德不合理條款的警告</li><li>對「廢除德匯兌保護條款」的警告</li><li>美元本位的警告</li></ul></li><li><p>亡國模式</p><ul><li>富人有逃(節)稅特權</li><li>國家對窮人課重稅</li><li>貧富差距變大</li></ul></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;猶太教典&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;財富是要塞，貧苦是廢墟&lt;/li&gt;
-&lt;li&gt;金錢並非罪惡、並非詛咒，而是給予人的祝福&lt;/li&gt;
-&lt;li&gt;有三件事情會傷人:煩惱、爭吵、空錢包。其中尤以空錢包最為傷人&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;伊斯蘭人
-      
-    
-    </summary>
-    
-    
-      <category term="閱讀筆記" scheme="http://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
