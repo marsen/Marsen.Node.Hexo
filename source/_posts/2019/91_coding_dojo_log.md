@@ -1,5 +1,5 @@
 ---
-title: "[上課筆記] 熱血 Coding Dojo"
+title: "[上課筆記] 熱血 Coding Dojo 第一梯次"
 date: 2019/01/13 11:17:16
 tag:
   - TDD
@@ -60,5 +60,7 @@ tag:
 
 **與善人居，如入芝蘭之室，久而不聞其香，即與之化矣；**  
 **與不善人居，如入鮑魚之肆，久而不聞其臭。**
+
+雖很想推[熱血 Coding Dojo - 第二梯次](https://yihuode.io/activities/767)，不過大概已經完售了。
 
 (fin)
