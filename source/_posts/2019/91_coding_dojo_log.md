@@ -1,5 +1,5 @@
 ---
-title: "[上課筆記] 熱血 coding dojo"
+title: "[上課筆記] 熱血 Coding Dojo"
 date: 2019/04/26 14:16:34
 tag:
   - TDD
@@ -17,7 +17,8 @@ tag:
 ## 上課隨筆
 
 ### 觀念
-- 不寫多餘的Products Code
+
+- 不要寫多餘的 Product Code
 - 害怕別人看你寫Code是一道門檻
 - 程式腐壞的速度遠比想像中的快(大概給 3 個人寫過就開始爛了)
 - Pair 時不要一開始就寫 Code，先建立共識
@@ -36,17 +37,19 @@ tag:
 - 睡前練習可以增強肌肉記憶
 
 ### 實作技巧
+
 - 紅燈時不要重構
 - .if .var (C# in Visual Studio)
 - 第一個test case 不要有判斷式
 - r n . (Vim in Visual Studio)
 - 紅燈→綠燈→重構→綠燈 ; 要學會節奏與時機
 - F8 跳錯誤
-- 一個變數活很久 最後可能被複寫 會容易產生side effects 
+- 一個變數活很久 最後可能被複寫 會容易產生side effects
 - zcc (Vim in Visual Studio)
 
 
 ### 壞味道
+
 - 重構的壞味道，使用私有變數而非方法
 - if else if 簽章抽象相同是個壞味道(或是一個可以重構的 Pattern)
 - ~~Q:請回饋這堂課好的地方 A:T社的HR~~
