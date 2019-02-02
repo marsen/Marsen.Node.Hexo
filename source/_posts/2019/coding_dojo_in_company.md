@@ -1,5 +1,5 @@
 ---
-title: "[N社筆記] Coding Dojo "
+title: "[N社筆記] 在公司小規模玩 Coding Dojo "
 date: 2019/01/30 01:41:17
 tag:
   - TDD
