@@ -2,12 +2,13 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
+  <meta property="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4"> 
   
   <title>Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Marsen">
-<meta property="og:url" content="http://blog.marsen.me/index.html">
+<meta property="og:url" content="https://blog.marsen.me/index.html">
 <meta property="og:site_name" content="Marsen">
 <meta property="og:locale" content="zh-TW">
 <meta name="twitter:card" content="summary">
@@ -50,10 +51,6 @@ ga('send', 'pageview');
         <a href="/" id="logo">Marsen</a>
       </h1>
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">無欲則剛</a>
-        </h2>
-      
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
@@ -71,13 +68,115 @@ ga('send', 'pageview');
         <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.marsen.me"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.marsen.me"></form>
       </div>
     </div>
   </div>
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-2019/coding_dojo_in_company" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/2019/coding_dojo_in_company/" class="article-date">
+  <time datetime="2019-01-29T17:41:17.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] Coding Dojo </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在上 91 大的(<a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/">熱血 Coding Dojo 第一梯次</a>)的課程中，<br>我一直在思索一件事，<strong>為什麼我作不到呢？</strong></p>
+<p><img src="/images/2019/1/be_a_star.jpg" alt="我什麼時候才能成角啊"></p>
+<p>我不希望只是上了課之後，「喔喔喔 我好興奮啊…」就結束了，<br>所以馬上找了一起上課的兩個同事開了個簡單的 Retro<br>我只有一個問題，<br>「如果你覺得這堂課有效的話，我們要作什麼 才能帶來改變呢 ?」  </p>
+<h2 id="開起小型-Dojo"><a href="#開起小型-Dojo" class="headerlink" title="開起小型 Dojo"></a>開起小型 Dojo</h2><p>我們簡單的作了一個決定，我們要在公司內部建立一個 Dojo<br>並且簡單的訂定了三個目標</p>
+<ol>
+<li>學習 Pair ，並透過 Pair 彼此學習</li>
+<li>學習 TDD ，並透過 TDD 學習重構</li>
+<li>學習 Vim，並提昇開發速度</li>
+</ol>
+<p>這三個東西都是在課堂上學習到的，幸運得是我們當中有兩位已經會基本的 Vim 指令，<br>當然也各有各的問題，ex: 不熟悉英打、沒有 Reshaper 、找不到共同的時間等…</p>
+<p>總而言之，我們就這樣開始了。</p>
+<h3 id="第一個-Kata"><a href="#第一個-Kata" class="headerlink" title="第一個 Kata"></a>第一個 Kata</h3><p>第一個 Kata 是很重要的，<a href="http://codingdojo.org/kata/" target="_blank" rel="noopener">Coding Dojo</a>提供我們一些選擇，<br>Tennis Game 與 Pocker Hand 都是很好的題目，<br>但是新手上路，我們選了一個簡單的 <a href="http://codingdojo.org/kata/FizzBuzz/" target="_blank" rel="noopener">Fizz Buzz</a> 當作練習題目。<br>Fizz Buzz 的需求分析是很簡單的，  </p>
+<ol>
+<li>傳入 1 數，可以被 3 整除，回傳 Fizz</li>
+<li>傳入 1 數，可以被 5 整除，回傳 Buzz</li>
+<li>傳入 1 數，可以被 3 整除，且可以被 5 整除，回傳 FizzBuzz</li>
+<li>不符合上述條件回傳原數值</li>
+</ol>
+<p>Sample Case:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 → 1</span><br><span class="line">2 → 2</span><br><span class="line">3 → Fizz</span><br><span class="line">4 → 4</span><br><span class="line">5 → Buzz</span><br><span class="line">6 → Fizz</span><br><span class="line">7 → 7</span><br><span class="line">8 → 8</span><br><span class="line">9 → Fizz</span><br><span class="line">10 → Buzz</span><br><span class="line">11 → 11</span><br><span class="line">12 → Fizz</span><br><span class="line">13 → 13</span><br><span class="line">14 → 14</span><br><span class="line">15 → FizzBuzz</span><br></pre></td></tr></table></figure></p>
+<h3 id="怎麼開始？"><a href="#怎麼開始？" class="headerlink" title="怎麼開始？"></a>怎麼開始？</h3><p>首先是時間，專案很忙碌，不是所有的人都有空，<br>我要怎麼擠出時間 ？  </p>
+<h3 id="利用-Timebox-與-Don’t-Break-The-chain"><a href="#利用-Timebox-與-Don’t-Break-The-chain" class="headerlink" title="利用 Timebox 與 Don’t Break The chain"></a>利用 Timebox 與 Don’t Break The chain</h3><p>每天都練習 KATA，每次 30 分鐘；<br>每天約定一個時間 30 分鐘，30 分鐘到就強制結束，<br>不論是中午的 30 分鐘，或是下班前的 30 分鐘，<br>找一個時間只要有兩個人的時間 OK 就進行 。<br>輪流當 Dirver 與 Navigator ，時間設定 5 分鐘，<br>一樣時間到就換手。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">嚴格執行 Timebox 真的是一件很折磨人的事情，  </span><br><span class="line">特別是有一些火花的討論出現時，</span><br><span class="line">但是隨著每次的 Timebox 的結束，</span><br><span class="line">看到的成果比上一次多時，  </span><br><span class="line">那種進步感是相同明顯的。</span><br></pre></td></tr></table></figure></p>
+<p>很幸運的，一直到過農曆年我們都沒有中斷，<br>設定 Timebox 也確實有讓參與的人提昇，<br>包含「重構的技巧」、「打字」、「TDD」與「Vim」，<br>也有人分享工具，或是小技巧，<br>這達到我們<strong>彼此學習</strong>的目的。  </p>
+<h3 id="回顧一下作得好的部份"><a href="#回顧一下作得好的部份" class="headerlink" title="回顧一下作得好的部份"></a>回顧一下作得好的部份</h3><ol>
+<li>雖然很困難，有線上的問題要處理，有工作項目，有一堆會議，但是我們仍然沒有中斷過一天。</li>
+<li>完成了兩個 Kata ，經典的 FizzBuzz 還有很類似的題目 FooBarQix。</li>
+<li>確實有從彼此身上學到東西，比如說在 Vim 裡面超好用的 <code>ci</code> 或是 AceJump 小工具。</li>
+<li>人數控制的很好，押在 3 到 5 人，也讓大家都能參與到。</li>
+<li>最重要的一點，看到了很多「真實」</li>
+</ol>
+<h3 id="作得不好的部份"><a href="#作得不好的部份" class="headerlink" title="作得不好的部份"></a>作得不好的部份</h3><ol>
+<li>環境有一些前期門檻在，ex: Reshaper、已配置過的 VimRC</li>
+<li>Timebox 有時候仍會超過，主因是討論太熱情了。</li>
+<li>整體成員都算有經驗的開發者，但是對重構仍然很弱，對壞味道麻痺(不在意重複等…)</li>
+<li>TDD 有時候沒辦法作到 Baby Step ，雖然重構是成功的，但過程有點跳躍；或是重構完才發現測試壞一大片，需要偵錯去修正。</li>
+<li>雖然有記錄一些問題，但是常常沒有去求解答</li>
+</ol>
+<h3 id="真實的部份"><a href="#真實的部份" class="headerlink" title="真實的部份"></a>真實的部份</h3><ol>
+<li>我們常常看到重複視而不見，特別是只有兩、三次的重複<ul>
+<li>這題成員的看法比較貼近大量重複再重構…我仍然有點持疑  </li>
+</ul>
+</li>
+<li>因為時間壓力，我們會把問題留給後人；我們不會去理解前人的設計<ul>
+<li>時間壓力可以換成任何理由</li>
+</ul>
+</li>
+<li>Navigator 如果沒有思考 Dirver 會開 Auto</li>
+</ol>
+<p>我們開發者真的太有自信，在 Kata 過程出現的問題，<br>如果放到開發現場的規模，基本上就是災難，<br>而實際上也是每天發生。</p>
+<p>在時限的壓力下，你不能作出多完美的設計，<br>但是你可以透過測試作出足夠好的設計，<br>測試的保護可以幫助你提早發現</p>
+<h2 id="下一步是-？"><a href="#下一步是-？" class="headerlink" title="下一步是 ？"></a>下一步是 ？</h2><p>一直以來有那麼多讀書會，上了那麼多課，<br>也有外訓內訓，結果卻是不了了之，<br>要怎麼証明理論有效 ？<br>要怎麼導入開發現場 ？</p>
+<p><a href="https://github.com/marsen/Coding_Dojo_Csharp" target="_blank" rel="noopener">我們的成果</a></p>
+<h2 id="寫在後面"><a href="#寫在後面" class="headerlink" title="寫在後面"></a>寫在後面</h2><p>我不是本科系畢業，但在軟體開發上也有 7、8 年的經驗，<br>軟體的經典書籍也看過不少，<br>不論是免費的社群活動或是上萬元的課程，<br>相關的課也上了不少。  </p>
+<p>學習單一語言的特性或是設計模式、物件導向到工程上的 Code Review、Pair Programming、TDD 諸如此類等…<br>不能說沒有幫助，但總覺得現實與書上的理想好遠啊…<br>我以為我懂了，其實我根本不懂。  </p>
+<p>技術不斷推陳出新，追不勝追，<br>常常工作完後研究或是練習到半夜，<br>但是沒什麼效果，或在實務上根本用不到<br>真得很有事倍功半的無力感。  </p>
+<p>在工作上的產品或專案永遠都有<strong>緊急又重要</strong>的事要作，<br>人家的艾森豪矩陣有四個象限，你永遠只有一個象限，<br>生活上各種的壓力與瑣事，變成了種惡性循環，<br>像個泥沼一般，無法提昇所以下沉，下沉了更無法提昇。  </p>
+<p>這個小小實驗，就像是整個開發現場的濃縮版，<br>現場很多問題不是沒有解答，<br>但是常常一句「理論上是，但是…」，然後就沒有然後了。<br>我們太習慣短解，太過自信，讓不好的事情重複發生，<br>然後覺得自已很忙碌，很有價值感，<br>但是沒有任何改變。</p>
+<p>這個實驗我會繼續下去，期待能有好的結果，並帶來一些變化。  </p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://github.com/marsen/Coding_Dojo_Csharp" target="_blank" rel="noopener">marsen/Coding_Dojo_Csharp</a></li>
+<li><a href="http://codingdojo.org/KataCatalogue/" target="_blank" rel="noopener">Coding Dojo</a></li>
+</ul>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjrm0jk0i0000msvxdfw8zzrm" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TDD/">TDD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重構/">重構</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-2019/91_coding_dojo_log" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -144,9 +243,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjqw8v57u0028n8vx5gmtyrz2" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjr4kvrqp0073nkvxp9dodcdm" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TDD/">TDD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Testing/">Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重構/">重構</a></li></ul>
@@ -243,9 +342,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjqw8v580002fn8vxfolx27lx" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjr4kvrqj006ynkvxh9momji1" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Container/">Container</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
@@ -294,9 +393,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjqw8v57z002dn8vx4jhwl9ss" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjr4kvrqr0076nkvxi9v7smj7" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2019/01/05/2019/reseed/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2019/01/05/2019/reseed/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
@@ -345,9 +444,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjqw8v5930044n8vxbcx6xnqw" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjr4kvrqc006mnkvxh6ru96oh" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/12/30/2018/restclient_gencode/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/#disqus_thread" class="article-comment-link">留言</a>
       
       
     </footer>
@@ -462,9 +561,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjqw8v5cx00a9n8vx0yvuybsb" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjr4kvrst00a4nkvx49ba8lwf" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agile/">Agile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrum/">Scrum</a></li></ul>
@@ -715,9 +814,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjqw8v5cw00a7n8vx7gyh2h62" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjr4kvrsq009znkvxq93gioy5" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/12/16/2018/csm/day_2_3/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agile/">Agile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrum/">Scrum</a></li></ul>
@@ -761,9 +860,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cjqw8v58c002yn8vxrcgljn3g" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cjr4kvrpu005wnkvxy6cgvjf0" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -869,9 +968,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cjqw8v5cz00acn8vx526o5xng" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cjr4kvrss00a1nkvxf175k65n" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agile/">Agile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scrum/">Scrum</a></li></ul>
@@ -948,61 +1047,11 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cjqw8v58d002zn8vxncqmw0lf" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cjr4kvrpo005pnkvx85yvkl6e" class="article-share-link">Share</a>
       
-        <a href="http://blog.marsen.me/2018/11/25/2018/colorfull_cmder/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018/powershell_found_subfolde_by_files_in_folder" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" class="article-date">
-  <time datetime="2018-11-23T05:43:00.000Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/">[實作筆記]用 Command Line 取得資料夾內包含特定檔案的子資料夾</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><ul>
-<li>OS : Windows 10</li>
-</ul>
-<p>在一個巨型的 Git Repo 當中，底下依專案分了許多專案資料夾，<br>參考下圖。<br><img src="https://i.imgur.com/IabNBFa.jpg" alt="擁有多個專案的Repo"></p>
-<p>而今天發生了一件事情，我需要更新某幾個子專案的 POCO 的 .tt 檔，<br>這裡不說明 POCO 是什麼；簡單的說，有的專案會有 .tt 檔，<br>有的專案會沒有，而每個專案的資料夾結構又不一定相同，<br>所以要找出這些 .tt 是有點麻煩的，另外我的目標並不是 .tt 檔，<br>而是所在的專案，再用 IDE 開啟進行修改，<br>為此我需要列出<strong>專案資料夾</strong>  </p>
-<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><p>用 Command Line 取得Repo資料夾內包含.tt檔案的專案資料夾名稱  </p>
-<h2 id="作法"><a href="#作法" class="headerlink" title="作法"></a>作法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\Repo\Taiwan\******.******.Repofolder</span><br><span class="line">λ Get-ChildItem -Path .\ -Filter *.tt -Recurse -File -Name | ForEach-Object &#123; $_.Split('\')[0] &#125; | Group &#123;$_&#125; | select name</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Name  </span><br><span class="line">----  </span><br><span class="line">FacebookShop  </span><br><span class="line">LineOrderFinish  </span><br><span class="line">LineOrderNotify  </span><br><span class="line">Mail  </span><br><span class="line">NMQMonitor  </span><br><span class="line">OrderMonitor  </span><br><span class="line">SyncImageToOthers</span><br></pre></td></tr></table></figure>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>總覺得寫得有點又臭又長，希望有更好的作法可以提供給我，<br>不限於 <code>powershell</code> 就算是 Linux 的語法也可以讓我參考一下。</p>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" data-id="cjqw8v58y003xn8vxysnzqj5e" class="article-share-link">Share</a>
-      
-        <a href="http://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell/">powershell</a></li></ul>
-
     </footer>
   </div>
   
@@ -1026,6 +1075,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] Coding Dojo </a>
+          </li>
+        
+          <li>
             <a href="/2019/01/13/2019/91_coding_dojo_log/">[上課筆記] 熱血 Coding Dojo 第一梯次</a>
           </li>
         
@@ -1041,10 +1094,6 @@ ga('send', 'pageview');
             <a href="/2018/12/30/2018/restclient_gencode/">[實作筆記]用 Restclient GenCode</a>
           </li>
         
-          <li>
-            <a href="/2018/12/27/2018/csm/to_sum_up_scrum/">CSM 之後 Scrum 總結</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1054,7 +1103,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1064,7 +1113,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Framework/" style="font-size: 12.5px;">.Net Framework</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 11.25px;">API</a> <a href="/tags/ASP-Net/" style="font-size: 11.25px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/Agile/" style="font-size: 20px;">Agile</a> <a href="/tags/BootStrap/" style="font-size: 11.25px;">BootStrap</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/CI-CD/" style="font-size: 13.75px;">CI/CD</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Container/" style="font-size: 10px;">Container</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 11.25px;">Entity Framework</a> <a href="/tags/Expressjs/" style="font-size: 10px;">Expressjs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Google/" style="font-size: 12.5px;">Google</a> <a href="/tags/Gulpjs/" style="font-size: 11.25px;">Gulpjs</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 11.25px;">Hexo</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/IoT/" style="font-size: 10px;">IoT</a> <a href="/tags/JQuery/" style="font-size: 11.25px;">JQuery</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 11.25px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/MsSQL/" style="font-size: 12.5px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Mutation-Teseting/" style="font-size: 10px;">Mutation Teseting</a> <a href="/tags/NPM/" style="font-size: 11.25px;">NPM</a> <a href="/tags/Nodejs/" style="font-size: 15px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 11.25px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 11.25px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 11.25px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL/" style="font-size: 11.25px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Scrum/" style="font-size: 20px;">Scrum</a> <a href="/tags/Shell/" style="font-size: 11.25px;">Shell</a> <a href="/tags/Specflow/" style="font-size: 10px;">Specflow</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TDD/" style="font-size: 12.5px;">TDD</a> <a href="/tags/Testing/" style="font-size: 13.75px;">Testing</a> <a href="/tags/Thread/" style="font-size: 11.25px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 13.75px;">TypeScript</a> <a href="/tags/Unit-Testing/" style="font-size: 17.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 11.25px;">Unix</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 11.25px;">powershell</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 11.25px;">時間管理</a> <a href="/tags/產業趨勢/" style="font-size: 10px;">產業趨勢</a> <a href="/tags/記錄/" style="font-size: 16.25px;">記錄</a> <a href="/tags/重構/" style="font-size: 10px;">重構</a> <a href="/tags/閱讀筆記/" style="font-size: 18.75px;">閱讀筆記</a>
+      <a href="/tags/Net-Framework/" style="font-size: 12.5px;">.Net Framework</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 11.25px;">API</a> <a href="/tags/ASP-Net/" style="font-size: 11.25px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/Agile/" style="font-size: 20px;">Agile</a> <a href="/tags/BootStrap/" style="font-size: 11.25px;">BootStrap</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.5px;">C#</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/CI-CD/" style="font-size: 13.75px;">CI/CD</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Container/" style="font-size: 10px;">Container</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 11.25px;">Entity Framework</a> <a href="/tags/Expressjs/" style="font-size: 10px;">Expressjs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Google/" style="font-size: 12.5px;">Google</a> <a href="/tags/Gulpjs/" style="font-size: 11.25px;">Gulpjs</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 11.25px;">Hexo</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.5px;">Integrated Testing</a> <a href="/tags/IoT/" style="font-size: 10px;">IoT</a> <a href="/tags/JQuery/" style="font-size: 11.25px;">JQuery</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 11.25px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/MsSQL/" style="font-size: 12.5px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Mutation-Teseting/" style="font-size: 10px;">Mutation Teseting</a> <a href="/tags/NPM/" style="font-size: 11.25px;">NPM</a> <a href="/tags/Nodejs/" style="font-size: 15px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 11.25px;">Openshift</a> <a href="/tags/Redis/" style="font-size: 11.25px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 11.25px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL/" style="font-size: 11.25px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Scrum/" style="font-size: 20px;">Scrum</a> <a href="/tags/Shell/" style="font-size: 11.25px;">Shell</a> <a href="/tags/Specflow/" style="font-size: 10px;">Specflow</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TDD/" style="font-size: 13.75px;">TDD</a> <a href="/tags/Testing/" style="font-size: 13.75px;">Testing</a> <a href="/tags/Thread/" style="font-size: 11.25px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 13.75px;">TypeScript</a> <a href="/tags/Unit-Testing/" style="font-size: 17.5px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 11.25px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 11.25px;">powershell</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 11.25px;">時間管理</a> <a href="/tags/產業趨勢/" style="font-size: 10px;">產業趨勢</a> <a href="/tags/記錄/" style="font-size: 16.25px;">記錄</a> <a href="/tags/重構/" style="font-size: 11.25px;">重構</a> <a href="/tags/閱讀筆記/" style="font-size: 18.75px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1073,7 +1122,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap/">BootStrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/">CI/CD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/">Container</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expressjs/">Expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulpjs/">Gulpjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IoT/">IoT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/">JQuery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mutation-Teseting/">Mutation Teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Specflow/">Specflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/產業趨勢/">產業趨勢</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重構/">重構</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap/">BootStrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/">CI/CD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/">Container</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expressjs/">Expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulpjs/">Gulpjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IoT/">IoT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/">JQuery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mutation-Teseting/">Mutation Teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Specflow/">Specflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/產業趨勢/">產業趨勢</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重構/">重構</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
