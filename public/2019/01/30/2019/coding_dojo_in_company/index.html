@@ -7,7 +7,7 @@
   <title>[N社筆記] 在公司小規模玩 Coding Dojo  | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前情提要在上 91 大的(熱血 Coding Dojo 第一梯次)的課程中，我一直在思索一件事，為什麼我作不到呢？  我不希望只是上了課之後，「喔喔喔 我好興奮啊…」就結束了，所以馬上找了一起上課的兩個同事開了個簡單的 Retro我只有一個問題，「如果你覺得這堂課有效的話，我們要作什麼 才能帶來改變呢 ?」   開起小型 Dojo我們簡單的作了一個決定，我們要在公司內部建立一個 Dojo並且簡單的">
-<meta name="keywords" content="Unit Testing,TDD,重構,Vim">
+<meta name="keywords" content="TDD,Unit Testing,重構,Vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[N社筆記] 在公司小規模玩 Coding Dojo ">
 <meta property="og:url" content="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/index.html">
@@ -15,7 +15,7 @@
 <meta property="og:description" content="前情提要在上 91 大的(熱血 Coding Dojo 第一梯次)的課程中，我一直在思索一件事，為什麼我作不到呢？  我不希望只是上了課之後，「喔喔喔 我好興奮啊…」就結束了，所以馬上找了一起上課的兩個同事開了個簡單的 Retro我只有一個問題，「如果你覺得這堂課有效的話，我們要作什麼 才能帶來改變呢 ?」   開起小型 Dojo我們簡單的作了一個決定，我們要在公司內部建立一個 Dojo並且簡單的">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://blog.marsen.me/images/2019/1/be_a_star.jpg">
-<meta property="og:updated_time" content="2019-02-02T11:45:16.587Z">
+<meta property="og:updated_time" content="2019-02-03T13:51:56.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[N社筆記] 在公司小規模玩 Coding Dojo ">
 <meta name="twitter:description" content="前情提要在上 91 大的(熱血 Coding Dojo 第一梯次)的課程中，我一直在思索一件事，為什麼我作不到呢？  我不希望只是上了課之後，「喔喔喔 我好興奮啊…」就結束了，所以馬上找了一起上課的兩個同事開了個簡單的 Retro我只有一個問題，「如果你覺得這堂課有效的話，我們要作什麼 才能帶來改變呢 ?」   開起小型 Dojo我們簡單的作了一個決定，我們要在公司內部建立一個 Dojo並且簡單的">
@@ -123,7 +123,8 @@ ga('send', 'pageview');
 </ol>
 <p>Sample Case:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 → 1</span><br><span class="line">2 → 2</span><br><span class="line">3 → Fizz</span><br><span class="line">4 → 4</span><br><span class="line">5 → Buzz</span><br><span class="line">6 → Fizz</span><br><span class="line">7 → 7</span><br><span class="line">8 → 8</span><br><span class="line">9 → Fizz</span><br><span class="line">10 → Buzz</span><br><span class="line">11 → 11</span><br><span class="line">12 → Fizz</span><br><span class="line">13 → 13</span><br><span class="line">14 → 14</span><br><span class="line">15 → FizzBuzz</span><br></pre></td></tr></table></figure></p>
 <h3 id="怎麼開始？"><a href="#怎麼開始？" class="headerlink" title="怎麼開始？"></a>怎麼開始？</h3><p>首先是時間，專案很忙碌，不是所有的人都有空，<br>我要怎麼擠出時間 ？  </p>
-<h3 id="利用-Timebox-與-Don’t-Break-The-chain"><a href="#利用-Timebox-與-Don’t-Break-The-chain" class="headerlink" title="利用 Timebox 與 Don’t Break The chain"></a>利用 Timebox 與 Don’t Break The chain</h3><p>每天都練習 KATA，每次 30 分鐘；<br>每天約定一個時間 30 分鐘，30 分鐘到就強制結束，<br>不論是中午的 30 分鐘，或是下班前的 30 分鐘，<br>找一個時間只要有兩個人的時間 OK 就進行 。<br>輪流當 Dirver 與 Navigator ，時間設定 5 分鐘，<br>一樣時間到就換手。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">嚴格執行 Timebox 真的是一件很折磨人的事情，  </span><br><span class="line">特別是有一些火花的討論出現時，</span><br><span class="line">但是隨著每次的 Timebox 的結束，</span><br><span class="line">看到的成果比上一次多時，  </span><br><span class="line">那種進步感是相同明顯的。</span><br></pre></td></tr></table></figure></p>
+<h3 id="利用-Timebox-與-Don’t-Break-The-chain"><a href="#利用-Timebox-與-Don’t-Break-The-chain" class="headerlink" title="利用 Timebox 與 Don’t Break The chain"></a>利用 Timebox 與 Don’t Break The chain</h3><p>每天都練習 KATA，每次 30 分鐘；<br>每天約定一個時間 30 分鐘，30 分鐘到就強制結束，<br>不論是中午的 30 分鐘，或是下班前的 30 分鐘，<br>找一個時間只要有兩個人的時間 OK 就進行 。<br>輪流當 Dirver 與 Navigator ，時間設定 5 分鐘，<br>一樣時間到就換手。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">嚴格執行 Timebox 真的是一件很折磨人的事情，  </span><br><span class="line">特別是有一些火花的討論出現時，</span><br><span class="line">但是隨著每次的 Timebox 的結束，</span><br><span class="line">看到的成果比上一次多時，  </span><br><span class="line">那種進步感是相同明顯的。</span><br></pre></td></tr></table></figure>
 <p>很幸運的，一直到過農曆年我們都沒有中斷，<br>設定 Timebox 也確實有讓參與的人提昇，<br>包含「重構的技巧」、「打字」、「TDD」與「Vim」，<br>也有人分享工具，或是小技巧，<br>這達到我們<strong>彼此學習</strong>的目的。  </p>
 <h3 id="回顧一下作得好的部份"><a href="#回顧一下作得好的部份" class="headerlink" title="回顧一下作得好的部份"></a>回顧一下作得好的部份</h3><ol>
 <li>雖然很困難，有線上的問題要處理，有工作項目，有一堆會議，但是我們仍然沒有中斷過一天。</li>
@@ -169,7 +170,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjrneuyhi005q1ovxl4vhmsw7" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjrp0wio2006wz8vxpd5l4d2b" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
       
