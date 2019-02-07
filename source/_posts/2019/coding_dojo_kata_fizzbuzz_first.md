@@ -620,6 +620,54 @@ public class FizzRule : IRule
 如果不在練習時下點苦功，在戰場上用得出來嗎？
 至少我的天賦而言，我應該是用不出來的。
 
+### 後記 1. 20190207
+
+#### Aggregate
+文章貼出後，同事的回饋，可以使用 `Aggregate` 取代 `Foreach`，  
+程式碼可以更加精鍊。
+
+```csharp
+public class FizzBuzz
+{
+    private readonly List<IRule> _rules = new List<IRule>
+    {
+        new FizzRule(),
+        new BuzzRule(),
+        new NormalRule()
+    };
+
+    public string GetResult(int number)
+    {
+        return _rules.Aggregate(string.Empty, (r, n) => n.Apply(number, r));
+    }
+}
+```
+
+#### 參數優化
+
+把 r、n 這類較沒意義的命名改成 input 與 rule，
+單純是為了讓 `Aggreate` 的可讀性較高一些。  
+接下來這個異動的幅度較大，實務上我不會這樣作，  
+讓 `Apply` 的方法簽章順序與 `Aggreate` 一樣把 `input` String 放在最前面，  
+真的真的非常沒有必要，因為會異動到介面。
+
+```csharp
+public class FizzBuzz
+{
+    private readonly List<IRule> _rules = new List<IRule>
+    {
+        new FizzRule(),
+        new BuzzRule(),
+        new NormalRule()
+    };
+
+    public string GetResult(int number)
+    {
+        return _rules.Aggregate(string.Empty, (input, rule) => rule.Apply(input, number));
+    }
+}
+```
+
 ## 參考
 - [Coding_Dojo_Csharp](https://github.com/marsen/Coding_Dojo_Csharp/tree/fizzbuzz/20190205/UnitTestProject6)
 - [Refactoring with Loops and Collection Pipelines](https://martinfowler.com/articles/refactoring-pipelines.html?fbclid=IwAR0uG0IXa_i6JoSRPtO6s-gXj-0jOAZDNrBYRmaHAJ2_RYFpiqcrbr4Z86k)
