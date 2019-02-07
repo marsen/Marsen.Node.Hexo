@@ -151,6 +151,10 @@ ga('send', 'pageview');
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FizzRule</span> : <span class="title">IRule</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Apply</span>(<span class="params"><span class="keyword">int</span> number, <span class="keyword">string</span> input</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number % <span class="number">3</span> == <span class="number">0</span> ? input += <span class="string">"Fizz"</span> : input;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>過程中一直考慮著想要拿掉所有<code>if</code>，或是套用職責鏈(Chain of Responsibility Pattern)的 Pattern，<br>現在想想都有點走歪了方向，一再忽視責職的歸屬而讓後面的重構有點吃力，<br>不過透過 TDD 仍然讓程式碼重構到了一定的程度。<br>如果重來一次的話，我會選擇提早分離職責，<br>不過當中的取捨可能需要練習更多的 KATA 吧。</p>
 <p>有人說這麼重構，會不會有點 Over Design 了，<br>我想說的是，反正是練習嘛，刻意練習到過頭也只是剛好而已，<br>如果不在練習時下點苦功，在戰場上用得出來嗎？<br>至少我的天賦而言，我應該是用不出來的。</p>
+<h3 id="後記-1-20190207"><a href="#後記-1-20190207" class="headerlink" title="後記 1. 20190207"></a>後記 1. 20190207</h3><h4 id="Aggregate"><a href="#Aggregate" class="headerlink" title="Aggregate"></a>Aggregate</h4><p>文章貼出後，同事的回饋，可以使用 <code>Aggregate</code> 取代 <code>Foreach</code>，<br>程式碼可以更加精鍊。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FizzBuzz</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> List&lt;IRule&gt; _rules = <span class="keyword">new</span> List&lt;IRule&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> FizzRule(),</span><br><span class="line">        <span class="keyword">new</span> BuzzRule(),</span><br><span class="line">        <span class="keyword">new</span> NormalRule()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetResult</span>(<span class="params"><span class="keyword">int</span> number</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _rules.Aggregate(<span class="keyword">string</span>.Empty, (r, n) =&gt; n.Apply(number, r));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="參數優化"><a href="#參數優化" class="headerlink" title="參數優化"></a>參數優化</h4><p>把 r、n 這類較沒意義的命名改成 input 與 rule，<br>單純是為了讓 <code>Aggreate</code> 的可讀性較高一些。<br>接下來這個異動的幅度較大，實務上我不會這樣作，<br>讓 <code>Apply</code> 的方法簽章順序與 <code>Aggreate</code> 一樣把 <code>input</code> String 放在最前面，<br>真的真的非常沒有必要，因為會異動到介面。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FizzBuzz</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> List&lt;IRule&gt; _rules = <span class="keyword">new</span> List&lt;IRule&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> FizzRule(),</span><br><span class="line">        <span class="keyword">new</span> BuzzRule(),</span><br><span class="line">        <span class="keyword">new</span> NormalRule()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetResult</span>(<span class="params"><span class="keyword">int</span> number</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _rules.Aggregate(<span class="keyword">string</span>.Empty, (input, rule) =&gt; rule.Apply(input, number));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://github.com/marsen/Coding_Dojo_Csharp/tree/fizzbuzz/20190205/UnitTestProject6" target="_blank" rel="noopener">Coding_Dojo_Csharp</a></li>
 <li><a href="https://martinfowler.com/articles/refactoring-pipelines.html?fbclid=IwAR0uG0IXa_i6JoSRPtO6s-gXj-0jOAZDNrBYRmaHAJ2_RYFpiqcrbr4Z86k" target="_blank" rel="noopener">Refactoring with Loops and Collection Pipelines</a></li>
@@ -159,7 +163,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjrspnc4j0061usvxaqythk0v" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjru8oh8i004a0wvx87hk93h5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -262,7 +266,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjrspnc4n0065usvx2x349y5a" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjru8oh8k004e0wvxieqn04fr" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -341,7 +345,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjrspnc4i0060usvx87vnfuog" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjru8oh8j004c0wvxfdfx5ner" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -440,7 +444,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjrspnc4w006ausvx6nwp3zyl" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjru8oh8n004j0wvx5yxf38tk" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -491,7 +495,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjrspnc4u0068usvxflhtqws9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjru8oh8l004g0wvx1x1vrv5t" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/05/2019/reseed/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -542,7 +546,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjrspnc4h005xusvx7cn061np" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjru8oh86003v0wvx1yimok62" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -659,7 +663,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjrspnc7l00afusvxq5ogwyg4" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjru8ohcd00b10wvxvnjckx24" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -912,7 +916,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjrspnc7a00a2usvxjh1l04pn" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjru8ohcb00az0wvxzwwbcf3t" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -958,7 +962,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cjrspnc3l004nusvxdswds0pz" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cjru8oh7p00390wvxpxi6bfm7" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1066,7 +1070,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cjrspnc7j00acusvx7t692sm2" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cjru8ohc900aw0wvxumttj3i6" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/#disqus_thread" class="article-comment-link">留言</a>
       
