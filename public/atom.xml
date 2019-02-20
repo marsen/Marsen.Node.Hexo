@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-02-07T06:26:24.945Z</updated>
+  <updated>2019-02-20T11:10:02.558Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記]使用 Windows PowerShell 批次上傳 AWS S3</title>
+    <link href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/"/>
+    <id>https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/</id>
+    <published>2019-02-20T11:09:18.000Z</published>
+    <updated>2019-02-20T11:10:02.558Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><p>相關服務要雲端化，要將站台、資料等…遷移至 AWS，<br>這個案例需要將大量在 File Server 上的檔案(報表/單據/報告書等…)上傳至 S3<br>因為檔案數量相當的大，所以開發一個簡單的指令來執行。</p><h3 id="Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具"><a href="#Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具" class="headerlink" title="Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具"></a>Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具</h3><ul><li><a href="https://aws.amazon.com/tw/powershell/" target="_blank" rel="noopener">下載適用於 Windows PowerShell 的 AWS 工具</a></li></ul><p><img src="/images/2019/2/awstools.jpg" alt="只需要安裝必要的程式"></p><h3 id="設定-aws-config"><a href="#設定-aws-config" class="headerlink" title="設定 aws config"></a>設定 aws config</h3><p>打開 terminal 執行以下語法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; aws configure</span><br></pre></td></tr></table></figure></p><p>依指示設定 <code>Access key ID</code> 與 <code>Secret access key</code>，<br>這個資料需要具備一定的權限才能取得，如果權限不足請向你的 AWS 服務管理員申請。</p><h3 id="撰寫-PowerShell-與執行"><a href="#撰寫-PowerShell-與執行" class="headerlink" title="撰寫 PowerShell 與執行"></a>撰寫 PowerShell 與執行</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bucketName</span> = <span class="string">"********************-your_bucket_name"</span></span><br><span class="line"><span class="variable">$path</span> = <span class="string">"Your\s3\path\"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> -Filter *.pdf |</span><br><span class="line"><span class="built_in">ForEach-Object</span> -Begin&#123;<span class="variable">$i</span>=<span class="number">0</span>&#125; &#123;  </span><br><span class="line">  <span class="variable">$i</span>++;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$path</span>+<span class="variable">$_</span> ;</span><br><span class="line">  <span class="comment">## 進度顯示</span></span><br><span class="line">  <span class="built_in">Write-Host</span> <span class="variable">$key</span> <span class="string">"(<span class="variable">$i</span>/1000)"</span>  -ForegroundColor Green ;</span><br><span class="line">  <span class="comment">## 上傳 S3</span></span><br><span class="line">  Write-S3Object -BucketName <span class="variable">$bucketName</span> -File <span class="variable">$_</span>.FullName -Key <span class="variable">$key</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;目標&quot;&gt;&lt;a href=&quot;#目標&quot; class=&quot;headerlink&quot; title=&quot;目標&quot;&gt;&lt;/a&gt;目標&lt;/h2&gt;&lt;p&gt;相關服務要雲端化，要將站台、資料等…遷移至 AWS，&lt;br&gt;這個案例需要將大量在 File Server 上的檔案(報表/單據/報告書等…)
+      
+    
+    </summary>
+    
+    
+      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
+    
+      <category term="PowerShell" scheme="https://blog.marsen.me/tags/PowerShell/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] Coding Dojo 第一個 Kata FizzBuzz</title>
@@ -36,11 +61,11 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -65,9 +90,9 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -94,11 +119,11 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -504,31 +529,6 @@
     
     
       <category term="閱讀筆記" scheme="https://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記]Hexo Update 與 npm 修復漏洞</title>
-    <link href="https://blog.marsen.me/2018/10/20/2018/hexo_update/"/>
-    <id>https://blog.marsen.me/2018/10/20/2018/hexo_update/</id>
-    <published>2018-10-20T03:41:05.000Z</published>
-    <updated>2018-10-21T12:43:26.170Z</updated>
-    
-    <content type="html"><![CDATA[<p>好久沒有作 hexo 更新了，<br>本身這個 Blog 就是透過 <a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">hexo 與 Github 建置</a>的 。<br>眨眼也過了兩年，文筆仍然很差;<br>說真的有很大的<a href="https://www.darencademy.com/article/view/id/16485" target="_blank" rel="noopener">資訊焦慮</a>，文章的內容也不夠充實，<br>很多觀點無法忠實的記錄下來，更無法連貫成線;<br>自已還要多方努力與學習。</p><p>如前面所說，這個 Blog 是透過 Github 作存放的空間，<br>雖然 <a href="https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/" target="_blank" rel="noopener">Github 最近被 Microsoft 收購</a>了;<br>不過它仍是開發人員最常使用的代碼托管服務與社群，<br>而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  </p><p>Github 一直以來都有一個很棒的功能，<br><a href="https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/" target="_blank" rel="noopener">GitHub’s security alerts for vulnerable dependencies</a></p><p>它能夠對你的 Repo 提供安全警告，<br>如下圖，這是對我的個人 Blog 所使用的框架 Hexo 的相依性安全警告，<br>這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，<br>建議升級套件以解決這個問題。<br><img src="https://i.imgur.com/HYBh5vv.jpg" alt=""></p><h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>使用 <a href="https://docs.npmjs.com/cli/update" target="_blank" rel="noopener"><code>npm update</code></a> , 這個命令會更新專案的 package 到最新版本  </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure><p>可能會看到類似以下的結果，同時提示你可以使用 <a href="https://docs.npmjs.com/cli/audit" target="_blank" rel="noopener"><code>npm audit fix</code></a> 更新有風險的 package 以修複這些漏洞  </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.1.3: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo@3.8.0</span><br><span class="line">added 126 packages from 59 contributors, removed 80 packages, updated 21 packages, moved 14 packages and audited 3143 packages <span class="keyword">in</span> 25.064s</span><br><span class="line">found 68 vulnerabilities (21 low, 38 moderate, 9 high)</span><br><span class="line">run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;好久沒有作 hexo 更新了，&lt;br&gt;本身這個 Blog 就是透過 &lt;a href=&quot;https://blog.marsen.me/2016/08/28/how_to_use_github_page/&quot;&gt;hexo 與 Github 建置&lt;/a&gt;的 。&lt;br&gt;眨眼也過了兩年，
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="https://blog.marsen.me/tags/Hexo/"/>
-    
-      <category term="nodejs" scheme="https://blog.marsen.me/tags/nodejs/"/>
     
   </entry>
   
