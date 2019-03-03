@@ -2,7 +2,6 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta property="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4"> 
   
   <title>[閱讀筆記] 重構---改善既有程式的設計,第一章 | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -48,6 +47,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
+  <meta property="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4"> 
 </head>
 </html>
 <body>
@@ -162,7 +162,7 @@ ga('send', 'pageview');
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一章的範例完成後的結果大致如下<br><img src="/images/2019/3/test_cover_100.jpg" alt="100%!!!"><br>很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，<br>而且完成了重構，根本是現場不可能出現的完全體程式碼!!!<br><img src="/images/2019/3/cell.jpg" alt="我有沒有可能讓它更好？或是找出他的缺陷呢？"><br>我有沒有可能讓它更好？或是找出他的缺陷呢？  </p>
 <p>這個時候我想起了<a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">變異測試</a><br>還沒有實作過，來玩看看好了。  </p>
 <p>首先要選擇測試工具，我使用<a href="https://stryker-mutator.io/" target="_blank" rel="noopener">Stryker Mutator</a>，<br>但是注意只能用在 .Net Core 的版本<br>照著官網安裝完成後執行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>dotnet stryker</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">dotnet stryker</span></span><br></pre></td></tr></table></figure>
 <p>跑下去竟然真的找到有存活的變異<br><img src="/images/2019/3/run_stryker.jpg" alt="存活的變異"><br>這兩個變異存活的原因是類似的，</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> result = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (daysRented &gt; <span class="number">2</span>)</span><br><span class="line">    result += (daysRented - <span class="number">2</span>) * <span class="number">1.5</span>;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
 <p>變異點發生在 <code>daysRented &gt; 2</code> 的判斷式之中，<br>現有的測試在變異發生(<code>daysRented &gt;= 2</code>)時，無法提出警訊，也就是測試上的不足。<br>不過依現有的邏輯，不論是進入 <code>if</code> 進行了加0運算，或是直接回傳 result，<br>都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，<br>如果有請讓我知道。</p>
@@ -209,7 +209,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjsr5r0ek00bna4vxe9upvqk9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjssgb01p00bupsvxhunrmwfa" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
