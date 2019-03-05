@@ -90,7 +90,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/01/2019/book/refactoring/refactoring_Ch1/">[閱讀筆記] 重構---改善既有程式的設計,第一章</a>
+      <a class="article-title" href="/2019/03/01/2019/book/refactoring/refactoring_Ch1/">[閱讀筆記] 重構---改善既有程式的設計，第一章</a>
     </h1>
   
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
 <h2 id="閱讀經典-重構—改善即有的程式設計"><a href="#閱讀經典-重構—改善即有的程式設計" class="headerlink" title="閱讀經典:重構—改善即有的程式設計"></a>閱讀經典:重構—改善即有的程式設計</h2><p><img src="https://i.stack.imgur.com/BrLmD.jpg" alt=""></p>
 <p>這是一本來自 Martin Fowler 的經典書籍，新版已經出了，而且是以 <code>JavaScript</code> 作為範例語言。<br>不過我手頭上借到的是以 <code>Java</code> 作為範例的板本。</p>
 <h3 id="CH1-重構，第一個案例"><a href="#CH1-重構，第一個案例" class="headerlink" title="CH1 重構，第一個案例"></a>CH1 重構，第一個案例</h3><p>第一個問題就是我找不到書中說的「線上範例」，<br>即使找到我也沒有 <code>Java</code> 的開發環境，所以心一橫就開始了改寫成 <code>C#</code> 的計劃<br>這部份比我想像中的簡單很多，兩個語言是相同類似的，<br><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/6e600db029fe2f62df724d0179b708c97a0b3313" target="_blank" rel="noopener">第1章，第一個案例</a></p>
-<p><strong>接下來只要照著書上一步一步作就會覺得越來越沒 fu …</strong><br>為什麼 ??? </p>
+<p><strong>接下來只要照著書上一步一步作就會…覺得越來越沒 fu …</strong><br>為什麼 ??? </p>
 <p>其實 Martin 大叔在書中有提到「為即將修改的程式建立可靠的測試…畢竟是人，可能會犯錯。所以我需要可靠的測試」。<br>沒fu的原因就是<strong>我沒加測試</strong>，即使重構了，我也不知道好壞。<br>沒有反饋是很糟糕的一件事。</p>
 <h3 id="CH1-重構，第一個案例，加上測試"><a href="#CH1-重構，第一個案例，加上測試" class="headerlink" title="CH1 重構，第一個案例，加上測試"></a>CH1 重構，第一個案例，加上測試</h3><p>那麼要怎麼加測試呢 ?<br>書上的案例我分析了一下，其實重構的目標只是一個單純的方法<br>會針對不同的情境回傳不同的字串。</p>
 <p>簡單的說，我只要讓測試覆蓋這個方法就可以開始重構了，<br>我選擇<a href="https://www.jetbrains.com/dotcover/" target="_blank" rel="noopener">dotCover</a>來檢驗我的覆蓋率。<br>選擇的原因很簡單，因為我有買<a href="https://www.jetbrains.com/resharper/?" target="_blank" rel="noopener">ReSharper</a>，<br>如果有更好用更便宜的工具也請介紹給我。</p>
@@ -151,13 +151,14 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一章的範例完成後的結果大致如下<br><img src="/images/2019/3/test_cover_100.jpg" alt="100%!!!"><br>很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，<br>而且完成了重構，根本是現場不可能出現的完全體程式碼!!!<br><img src="/images/2019/3/cell.jpg" alt="我有沒有可能讓它更好？或是找出他的缺陷呢？"><br>我有沒有可能讓它更好？或是找出他的缺陷呢？  </p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一章的範例完成後的結果大致如下<br><img src="/images/2019/3/test_cover_100.jpg" alt="100%!!!"><br>很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，<br>而且完成了重構，根本是現場不可能出現的完全體程式碼!!!<br>代碼的部份我會放在最後的參考區塊。</p>
+<p><img src="/images/2019/3/cell.jpg" alt="我有沒有可能讓它更好？或是找出他的缺陷呢？"><br>下一步，我有沒有可能讓它更好？或是找出他的缺陷呢？  </p>
 <p>這個時候我想起了<a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">變異測試</a><br>還沒有實作過，來玩看看好了。  </p>
-<p>首先要選擇測試工具，我使用<a href="https://stryker-mutator.io/" target="_blank" rel="noopener">Stryker Mutator</a>，<br>但是注意只能用在 .Net Core 的版本<br>照著官網安裝完成後執行</p>
+<p>首先要選擇測試工具，這裡使用了<a href="https://stryker-mutator.io/" target="_blank" rel="noopener">Stryker Mutator</a>，<br>但是注意只能用在 .Net Core 的版本<br>照著官網安裝完成後執行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">dotnet stryker</span></span><br></pre></td></tr></table></figure>
 <p>跑下去竟然真的找到有存活的變異<br><img src="/images/2019/3/run_stryker.jpg" alt="存活的變異"><br>這兩個變異存活的原因是類似的，</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> result = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (daysRented &gt; <span class="number">2</span>)</span><br><span class="line">    result += (daysRented - <span class="number">2</span>) * <span class="number">1.5</span>;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
-<p>變異點發生在 <code>daysRented &gt; 2</code> 的判斷式之中，<br>現有的測試在變異發生(<code>daysRented &gt;= 2</code>)時，無法提出警訊，也就是測試上的不足。<br>不過依現有的邏輯，不論是進入 <code>if</code> 進行了加0運算，或是直接回傳 result，<br>都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，<br>如果有請讓我知道。</p>
+<p>變異點發生在 <code>daysRented &gt; 2</code> 的判斷式之中，<br>現有的測試在變異發生(<code>daysRented &gt;= 2</code>)時，無法提出警訊，也就是測試上的不足。<br>不過依現有的邏輯，不論是進入 <code>if</code> 進行了加0運算，或是直接回傳 result，<br>都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，<br>希望有先進願意不嗇指點，實務上跟本沒在跑變異測試。</p>
 <h2 id="後記2"><a href="#後記2" class="headerlink" title="後記2"></a>後記2</h2><p>回歸一下我們當初 Kata 的目的:</p>
 <ul>
 <li>學習 Pair ，並透過 Pair 彼此學習</li>
@@ -188,20 +189,21 @@ ga('send', 'pageview');
 </ul>
 <p>彼此學習方面需要相當的軟技能，<br>溝通、尊重、謙虛…;這些一生的功課我就不贅言了。<br>Pair Programming 一半是 Pair 一半是 Progrmming；<br>而在進入 Progrmming 之前請搞懂你<strong>要作什麼</strong>。  </p>
 <p>同樣的在 TDD 的過程之中，我們沒有事先理好需求，<br>沒有想好作好需求分析，隨便選了測試案例就開始進行，<br>如果好好分析，是可以歸納出其中的邏輯，<br>甚至是理出 test case 的順序。</p>
-<p>重要的是過程，但是我們太在乎結果，以致程式快速的腐敗。<br>甚至到了難以修改的狀態，僅管有測試保護，卻無法重構。</p>
+<p>重要的是過程，但是<strong>我們太在乎結果，以致程式快速的腐敗。</strong><br>甚至到了難以修改的狀態，僅管有測試保護，卻無法重構。</p>
 <p>這是很好的一課，特別在這裡記錄一下。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://www.ratatype.com/" target="_blank" rel="noopener">Ratatype</a></li>
-<li><a href="https://www.tenlong.com.tw/products/9789861547534" target="_blank" rel="noopener">重構─改善既有程式的設計, 2/e (Refactoring: Improving The Design of Existing Code)</a></li>
+<li><a href="https://www.tenlong.com.tw/products/9789861547534" target="_blank" rel="noopener">重構─改善既有程式的設計， 2/e (Refactoring: Improving The Design of Existing Code)</a></li>
 <li><a href="https://www.jetbrains.com/dotcover/" target="_blank" rel="noopener">dotCover: A Code Coverage Tool for .NET by JetBrains</a> </li>
 <li><a href="https://stackoverflow.com/questions/13323099/java-inheritance-vs-c-sharp-inheritance" target="_blank" rel="noopener">Java inheritance vs. C# inheritance</a></li>
+<li><a href="https://github.com/marsen/Marsen.NetCore.Dojo/tree/Refactoring_Improving_The_Design_of_Existing_Code_With_Test" target="_blank" rel="noopener">marsen/Marsen.NetCore.Dojo</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjssgb01p00bupsvxhunrmwfa" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjsvz85u500br9gvxn7tu65el" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -250,7 +252,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjssgazxp004kpsvx4wfovjwh" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjsvz85nq001b9gvx7b9eyncb" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -351,7 +353,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjssgazxs004ppsvxt7nbtrgm" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjsvz85o0001r9gvxqjnbur6p" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -454,7 +456,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjssgazxv004tpsvx4x4yz0oa" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjsvz85ns001f9gvx6mzdrgh2" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -533,7 +535,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjssgazxr004npsvxrctmvfq9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjsvz85np001a9gvxcpxlppxq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -632,7 +634,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjssgazxw004vpsvx7qgz60q7" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/" data-id="cjsvz85nw001k9gvxf4sdbt6h" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/07/2019/run_docker_on_window_subsystem_for_Linux_Ubuntu/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -683,7 +685,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjssgazxu004spsvxcse2wpxg" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/05/2019/reseed/" data-id="cjsvz85nz001p9gvxd9tb15gy" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/05/2019/reseed/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -734,7 +736,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjssgazxf0043psvx79nhl9aq" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjsvz85ox00379gvxd7vy8wyb" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -851,7 +853,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjssgb01b00axpsvxxhx2pah2" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjsvz85te00aj9gvxlhe0lt2n" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1104,7 +1106,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjssgb01300aqpsvx27opoatk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjsvz85tb00af9gvxvpufc9li" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1134,7 +1136,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2019/03/01/2019/book/refactoring/refactoring_Ch1/">[閱讀筆記] 重構---改善既有程式的設計,第一章</a>
+            <a href="/2019/03/01/2019/book/refactoring/refactoring_Ch1/">[閱讀筆記] 重構---改善既有程式的設計，第一章</a>
           </li>
         
           <li>
