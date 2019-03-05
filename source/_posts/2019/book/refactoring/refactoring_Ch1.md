@@ -1,5 +1,5 @@
 ---
-title: "[閱讀筆記] 重構---改善既有程式的設計,第一章"
+title: "[閱讀筆記] 重構---改善既有程式的設計，第一章"
 date: 2019/03/01 11:17:16
 tag:
   - 重構  
@@ -14,7 +14,7 @@ tag:
 我們有測試，也通過測試，但是卻寸步難行，  
 在重構上我們非常的弱，這裡的重構不是指一次性的全面翻掉，  
 而是逐步的、可靠的前進，  
-我想習得這樣的技能，因為現場的代碼腐敗的更加嚴重， 
+我想習得這樣的技能，因為現場的代碼腐敗的更加嚴重，
 如果連 Kata 產生的代碼都不能優化，  
 那想對產品指手劃腳只不過是說幹話。
 
@@ -31,7 +31,7 @@ tag:
 這部份比我想像中的簡單很多，兩個語言是相同類似的，  
 [第1章，第一個案例](https://github.com/marsen/Marsen.NetCore.Dojo/commit/6e600db029fe2f62df724d0179b708c97a0b3313)
 
-**接下來只要照著書上一步一步作就會覺得越來越沒 fu …**
+**接下來只要照著書上一步一步作就會...覺得越來越沒 fu …**
 為什麼 ??? 
 
 其實 Martin 大叔在書中有提到「為即將修改的程式建立可靠的測試…畢竟是人，可能會犯錯。所以我需要可靠的測試」。  
@@ -89,13 +89,15 @@ tag:
 ![100%!!!](/images/2019/3/test_cover_100.jpg)  
 很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，  
 而且完成了重構，根本是現場不可能出現的完全體程式碼!!!  
+代碼的部份我會放在最後的參考區塊。
+
 ![我有沒有可能讓它更好？或是找出他的缺陷呢？](/images/2019/3/cell.jpg)  
-我有沒有可能讓它更好？或是找出他的缺陷呢？  
+下一步，我有沒有可能讓它更好？或是找出他的缺陷呢？  
 
 這個時候我想起了[變異測試](https://blog.marsen.me/2018/03/20/2018/mutation_testing/)  
 還沒有實作過，來玩看看好了。  
 
-首先要選擇測試工具，我使用[Stryker Mutator](https://stryker-mutator.io/)，  
+首先要選擇測試工具，這裡使用了[Stryker Mutator](https://stryker-mutator.io/)，  
 但是注意只能用在 .Net Core 的版本
 照著官網安裝完成後執行
 
@@ -117,7 +119,7 @@ return result;
 現有的測試在變異發生(`daysRented >= 2`)時，無法提出警訊，也就是測試上的不足。
 不過依現有的邏輯，不論是進入 `if` 進行了加0運算，或是直接回傳 result，  
 都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，  
-如果有請讓我知道。
+希望有先進願意不嗇指點，實務上跟本沒在跑變異測試。
 
 ## 後記2
 
@@ -155,16 +157,16 @@ Pair Programming 一半是 Pair 一半是 Progrmming；
 如果好好分析，是可以歸納出其中的邏輯，  
 甚至是理出 test case 的順序。
 
-重要的是過程，但是我們太在乎結果，以致程式快速的腐敗。  
+重要的是過程，但是**我們太在乎結果，以致程式快速的腐敗。**  
 甚至到了難以修改的狀態，僅管有測試保護，卻無法重構。
 
 這是很好的一課，特別在這裡記錄一下。
 
 ## 參考
 - [Ratatype](https://www.ratatype.com/)
-- [重構─改善既有程式的設計, 2/e (Refactoring: Improving The Design of Existing Code)](https://www.tenlong.com.tw/products/9789861547534)
+- [重構─改善既有程式的設計， 2/e (Refactoring: Improving The Design of Existing Code)](https://www.tenlong.com.tw/products/9789861547534)
 - [dotCover: A Code Coverage Tool for .NET by JetBrains](https://www.jetbrains.com/dotcover/) 
 - [Java inheritance vs. C# inheritance](https://stackoverflow.com/questions/13323099/java-inheritance-vs-c-sharp-inheritance)
-
+- [marsen/Marsen.NetCore.Dojo](https://github.com/marsen/Marsen.NetCore.Dojo/tree/Refactoring_Improving_The_Design_of_Existing_Code_With_Test)
 
 (fin)
