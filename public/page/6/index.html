@@ -76,6 +76,251 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-2018/mutation_testing" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/20/2018/mutation_testing/" class="article-date">
+  <time datetime="2018-03-19T17:44:00.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/20/2018/mutation_testing/">[活動筆記]變異測試 - 一種改進測試和代碼的 「新」 方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
+<li>範例使用Java</li>
+<li>這場活動使用人肉找尋變異</li>
+<li>實務上應使用工具</li>
+<li>但是不能完全相信工具</li>
+<li><a href="https://www.facebook.com/events/966762773499308/" target="_blank" rel="noopener">活動聯結</a></li>
+<li>講師是 Odd-e 的姚若舟</li>
+<li><a href="http://boolan.com/lecture/1000001089" target="_blank" rel="noopener">簡報preview版</a></li>
+</ul>
+<h2 id="什麼是變異"><a href="#什麼是變異" class="headerlink" title="什麼是變異 ?"></a>什麼是變異 ?</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想像一下產品(<code>Prodction</code>)就是你的身體,<br>我們可以透過健康檢查(<code>Unit Test</code>);<br>檢查你的身體有沒有異狀 ?  </p>
+<p>但是檢查真的可靠嗎 ?<br>比如說一般的流感的快篩只有50~60%的準確率,<br>我們的測試也無法達到100%準確率(這裡不是指覆蓋率喔).<br>如何抓到測試抓不到的<strong>漏網之魚</strong>就是變異測試的目的.  </p>
+<p>我們透過讓 Prodction 產生變異(Mutation)<br>來確認我們的 Unit Test 是否可靠.</p>
+<blockquote>
+<p>題外話,當大流行的時候會跳過快篩節省醫療資源,<br>因為可能有一半(50%)的患者都是流感,<br>而快篩準確率也只有50%,加上時間及醫材成本,<br>不如直接開克流感能有效抑止疫情</p>
+</blockquote>
+<h3 id="變異測試-Mutation-Testing"><a href="#變異測試-Mutation-Testing" class="headerlink" title="變異測試(Mutation Testing)"></a>變異測試(Mutation Testing)</h3><p>變異後導致測試失敗？<br><strong>yes , good</strong><br>應該要失敗,表示你的測試有覆蓋到這個變異</p>
+<p><strong>no , test not covered</strong><br>這表示你的測試並未</p>
+<h3 id="測試不一定能補捉變異"><a href="#測試不一定能補捉變異" class="headerlink" title="測試不一定能補捉變異"></a>測試不一定能補捉變異</h3><p>比如說 <code>邊際值</code> 或是 <code>隱含的互動</code>;<br>測試覆蓋率100%也不一定能補捉變異<br>要麼少了test case,<br>要麼多了無意義的代碼<br>看看以下例子<br>ex:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo(x,y)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/ logic here</span></span><br><span class="line">    sideeffct();</span><br><span class="line">    <span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>反思一下, 測試過了代碼就沒問題 ?<br>不能捉到變異的測試,<br>有發揮它的功能嗎 ?<br>一般來說如果透過 TDD 進行軟體開發,<br>我們的測試應該是會恰巧符合一項 Test Case<br>而如果是先寫代碼再寫測試,<br>將很難通過變異測試(容易產生多餘的代碼)</p>
+<h3 id="找到變異的幾個方向"><a href="#找到變異的幾個方向" class="headerlink" title="找到變異的幾個方向"></a>找到變異的幾個方向</h3><ul>
+<li>邊界條件(<code>&lt;</code> =&gt; <code>&lt;=</code>)</li>
+<li>反向條件(<code>&lt;</code> =&gt; <code>&gt;</code>)</li>
+<li>移除條件(永真/永偽)</li>
+<li>數學</li>
+<li>遞增/遞減</li>
+<li>常量</li>
+<li>返回值</li>
+<li>移除代碼</li>
+</ul>
+<h3 id="先寫代碼再寫測試有問題是很正常的"><a href="#先寫代碼再寫測試有問題是很正常的" class="headerlink" title="先寫代碼再寫測試有問題是很正常的"></a>先寫代碼再寫測試有問題是很正常的</h3><h2 id="Kata-PokerHands-範例"><a href="#Kata-PokerHands-範例" class="headerlink" title="Kata-PokerHands 範例"></a>Kata-PokerHands 範例</h2><h3 id="原碼-使用java"><a href="#原碼-使用java" class="headerlink" title="原碼(使用java)"></a><a href="https://github.com/JosephYao/Kata-PokerHands" target="_blank" rel="noopener">原碼(使用java)</a></h3><h3 id="變異實例"><a href="#變異實例" class="headerlink" title="變異實例"></a>變異實例</h3><p>有問題 ,反向測試案例不足</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span>	List&lt;Integer&gt; <span class="title">getPairCardRanks</span><span class="params">(List&lt;Integer&gt; cardRanks)</span> </span>&#123;</span><br><span class="line">         List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; CARD_COUNT - <span class="number">1</span>; index++)</span><br><span class="line">         	<span class="keyword">if</span> (isTwoNeighborCardRanksEquals(index, cardRanks))</span><br><span class="line">         		result.add(cardRanks.get(index));</span><br><span class="line">         <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有問題 , -1 但是預期中的行為<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span>   Integer   <span class="title">getThreeOfAKindCardRank</span><span class="params">(List&lt;Integer\&gt; cardRanks)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; CARD_COUNT - <span class="number">2</span>; index++)</span><br><span class="line">     	<span class="keyword">if</span> (isThreeNeighborCardRanksEquals(index, cardRanks))</span><br><span class="line">     		<span class="keyword">return</span>   cardRanks.get(index);</span><br><span class="line">     <span class="keyword">throw</span>   <span class="keyword">new</span>   IllegalStateException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ol>
+<li>沒有TDD 沒有單元測試,別跑變異測試</li>
+<li>至少要有行級別的覆蓋率(line coverage)</li>
+<li>分支覆蓋(Branch Coverage)好一點 仍不夠</li>
+<li>在需求不變的情況下，再作變異測試</li>
+<li>以變異測試的角度來說,覆蓋率100%是木有用的(testing coverage is useless)</li>
+<li>發現變異怎麼辦？<ul>
+<li>報告(記錄)</li>
+<li>重現 </li>
+<li>評估</li>
+<li>修改 或 補測試</li>
+</ul>
+</li>
+<li>依靠工具不要相信工具,上一步的評估<br>Ex: mock 物件會取代互動實際的行為,導致變異測試失敗</li>
+</ol>
+<h3 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h3><ul>
+<li><a href="http://pitest.org" target="_blank" rel="noopener">http://pitest.org</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mutation_testing" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Mutation_testing</a></li>
+<li>使用 Sonarqube with mulations test(應該不用錢)</li>
+<li>tudou.com/home/yaoruozhou</li>
+</ul>
+<h2 id="參與者心得"><a href="#參與者心得" class="headerlink" title="參與者心得"></a>參與者心得</h2><ol>
+<li><p><a href="https://medium.com/@loverjersey/變異測試-mutation-test-一種提高測試和代碼質量的-新-方法速記-35bde79a5c7a" target="_blank" rel="noopener">變異測試 (Mutation Test) — 一種提高測試和代碼質量的 ”新” 方法速記</a></p>
+</li>
+<li><p><a href="https://dotblogs.com.tw/im_sqz777/2018/03/15/004634" target="_blank" rel="noopener">Test - 變異(Mutation)測試之你的測試到底是寫爽的，還是有效的?</a></p>
+</li>
+</ol>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ol>
+<li>佩服當天就能寫出文章的人</li>
+<li>變異測試是好上加好的測試</li>
+<li>Odd-e 的講師真的很粉棒, 雖然不致到毀三觀 不過眼界大開</li>
+</ol>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
+<li><a href="http://www.cnblogs.com/TongWee/p/4505289.html" target="_blank" rel="noopener">Mutation Testing(变异测试)</a></li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2018/03/20/2018/mutation_testing/" data-id="cju4bahhk0064i4vxpvcdluag" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mutation-Teseting/">Mutation Teseting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TDD/">TDD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Testing/">Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018/shopee_tech_sharing" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/15/2018/shopee_tech_sharing/" class="article-date">
+  <time datetime="2018-03-15T09:00:12.000Z" itemprop="datePublished">2018-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/15/2018/shopee_tech_sharing/">[活動筆記]蝦皮購物新加坡研發團隊技術分享會</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="應該不用知道的事"><a href="#應該不用知道的事" class="headerlink" title="應該不用知道的事"></a>應該不用知道的事</h2><ol>
+<li>雖然是「技術分享會」實際上在徵才</li>
+<li>不過還是有半場的技術分享</li>
+<li>91app 至少去了10 個人(含前員工) </li>
+<li>這篇文章對你應該沒有幫助</li>
+</ol>
+<h2 id="有關蝦皮"><a href="#有關蝦皮" class="headerlink" title="有關蝦皮"></a>有關蝦皮</h2><ul>
+<li>屬於<a href="http://www.seagroup.com/home" target="_blank" rel="noopener">Sea 集團</a>的一部份</li>
+<li>東南亞多國服務(新加坡、泰國、馬來西亞、印度、台灣、越南…)</li>
+<li>63e Request / Day</li>
+<li>8G IO / Mins</li>
+</ul>
+<h2 id="選擇"><a href="#選擇" class="headerlink" title="選擇"></a>選擇</h2><ul>
+<li>Native App / Web / Hybird / RN ?</li>
+<li>Clound / Self machine ?</li>
+<li>Php/ Nodejs / RoR / Django ?</li>
+<li>Apache / Ngnix ?</li>
+<li>C ++ / Java / GoLang</li>
+<li>Memcahed / Redis ?</li>
+<li>SPA / MPA ?</li>
+<li>Mesos / Kubernate ?</li>
+</ul>
+<h2 id="Qiz-amp-Ans"><a href="#Qiz-amp-Ans" class="headerlink" title="Qiz &amp; Ans"></a>Qiz &amp; Ans</h2><h5 id="1"><a href="#1" class="headerlink" title="1"></a>1</h5><blockquote>
+<p>用戶下單的時候, 先收錢還是先扣庫存?<br>扣掉最後一件庫存後, 收錢失敗怎麼辦？<br>你已經把「賣完」訊息發給了賣家, 怎麼辦？</p>
+</blockquote>
+<h5 id="2"><a href="#2" class="headerlink" title="2"></a>2</h5><blockquote>
+<p>計算金額用整數還是浮點數？(浮點數不準)</p>
+</blockquote>
+<h5 id="3"><a href="#3" class="headerlink" title="3"></a>3</h5><blockquote>
+<p>Android 一共有幾種螢幕的 DPI ?<br>Android WebView 和 Chrome 的 Webkit 有何不同 ?</p>
+</blockquote>
+<h5 id="4"><a href="#4" class="headerlink" title="4"></a>4</h5><blockquote>
+<p>Web Service 花最多時間在處理什麼 ?<br>如何壓搾最高的吞吐量 ?<br>IO, USE async</p>
+</blockquote>
+<h5 id="5"><a href="#5" class="headerlink" title="5"></a>5</h5><blockquote>
+<p>什麼樣的情境適合增加伺服器數量來增進效能?<br>stateless<br>那有狀態怎麼辦 ? </p>
+</blockquote>
+<h5 id="6"><a href="#6" class="headerlink" title="6"></a>6</h5><blockquote>
+<p>load balancer 效能到達瓶頸怎麼辦 ?<br>IP</p>
+</blockquote>
+<h5 id="7"><a href="#7" class="headerlink" title="7"></a>7</h5><blockquote>
+<p>一天 25TB 的 Log 數量,怎麼不會查到天荒地老</p>
+</blockquote>
+<h5 id="8"><a href="#8" class="headerlink" title="8"></a>8</h5><blockquote>
+<p>Cache &amp; 超賣問題<br>什麼時候要清 Cache ?</p>
+</blockquote>
+<h5 id="9"><a href="#9" class="headerlink" title="9"></a>9</h5><blockquote>
+<p>Database Master 與 Slave 哪個壓力大 ?(Slave)<br>增加 index 的代價為何 ?(Space)<br>Table 多大要 shard ?<br>Database 多大要分庫 ?<br>分庫如何作 transaction ?</p>
+</blockquote>
+<h2 id="實踐"><a href="#實踐" class="headerlink" title="實踐"></a>實踐</h2><ol>
+<li>Prototype 簡單 Production 困難 (邊際效應/熵)</li>
+<li>可靠:言出必行,作不到也要早點說(知難行易)</li>
+<li>Redis 的資料超過 64G 就無法用 <a href="http://redisdoc.com/server/bgsave.html" target="_blank" rel="noopener">bgsave</a> 有效存檔</li>
+<li>在 Prodction 千萬別用 Redis 的 <a href="https://redis.io/commands/keys" target="_blank" rel="noopener">key</a> 指令</li>
+<li>衡量的基準(benchmark)為何？</li>
+<li>不要對邏輯下command(不要寫前因後果)<ul>
+<li>Dont command How</li>
+<li>Command Why</li>
+</ul>
+</li>
+<li>道<ul>
+<li>Collect your dots first</li>
+<li>Connecting the dots</li>
+</ul>
+</li>
+</ol>
+<h2 id="持久發展的研發團隊"><a href="#持久發展的研發團隊" class="headerlink" title="持久發展的研發團隊"></a>持久發展的研發團隊</h2><ul>
+<li>knowledge</li>
+<li>保持開放</li>
+<li>尊重事實</li>
+<li>信任</li>
+<li>可靠</li>
+<li>找到根本原因(root cause)</li>
+<li>分析 修復 記錄</li>
+<li>Docs<ul>
+<li>connection docs</li>
+<li>collection docs</li>
+</ul>
+</li>
+</ul>
+<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><ul>
+<li>白箱測試</li>
+<li>黑箱測試</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>Hypergraph</li>
+<li>Tech Stack</li>
+<li>Roles<ul>
+<li>contries PM</li>
+<li>fucntion PM</li>
+</ul>
+</li>
+<li>Scurm 是跑給老闆看的(!!?)</li>
+<li>馬來西亞不用小豬ICON(各地風俗民情不同)</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://careers.shopee.com" target="_blank" rel="noopener">https://careers.shopee.com</a></li>
+</ul>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/" data-id="cju4bahhs006ji4vx15h0mxcp" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2018/03/15/2018/shopee_tech_sharing/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2018/csharp_common_mistakes_1" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/12/2018/csharp_common_mistakes_1/" class="article-date">
@@ -258,7 +503,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/" data-id="cju4a561j001focvxp6ujr60o" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/" data-id="cju4bahh2005gi4vxnlipws48" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/02/12/2018/csharp_common_mistakes_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -327,7 +572,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/" data-id="cju4a5669009tocvx2v524pmk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/" data-id="cju4bahkq00a9i4vxuzku5o6p" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -525,7 +770,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/" data-id="cju4a562a002cocvxbjkvy249" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/" data-id="cju4bahhu006li4vxgmllq0rw" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/01/07/2018/six_strategies_for_application_deployment/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -659,7 +904,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" data-id="cju4a560l000vocvxm0pf1v12" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/" data-id="cju4bahh1005ei4vxhdpotkn0" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/01/04/2018/coding_standard_and_coding_style_and_principle/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -804,7 +1049,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/01/01/2018/next_year/" data-id="cju4a56220021ocvxr76jl513" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/01/01/2018/next_year/" data-id="cju4bahhn0067i4vxdeub1f1f" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/01/01/2018/next_year/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -877,7 +1122,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/01/01/2018/2017_learned/" data-id="cju4a560d000pocvx2mgei38y" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/01/01/2018/2017_learned/" data-id="cju4bahgr0056i4vxgyno70oq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/01/01/2018/2017_learned/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -943,7 +1188,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/" data-id="cju4a567800b5ocvxdk36qc9j" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/" data-id="cju4bahje009ci4vx2kukgzco" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -997,190 +1242,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/08/2017/test_learn/integrated_testing_partice2_question/" data-id="cju4a567500b3ocvx7w4hz08y" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/12/08/2017/test_learn/integrated_testing_partice2_question/" data-id="cju4bahja0099i4vxq3yz1w1a" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/12/08/2017/test_learn/integrated_testing_partice2_question/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018/cloud_learn/aws_creat_ec2_instance" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/" class="article-date">
-  <time datetime="2017-12-08T08:42:42.000Z" itemprop="datePublished">2017-12-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/">[學習筆記]AWS EC2開機筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="應該知道的事"><a href="#應該知道的事" class="headerlink" title="應該知道的事"></a>應該知道的事</h2><ul>
-<li>這個是教育訓練的筆記</li>
-<li>使用web console 建立ec2</li>
-<li>使用cli 建立ec2</li>
-<li>2017的筆記可能會隨時間變得沒有參考價值</li>
-<li>關鍵參數都打馬賽克,沒有牽扯到EBS/S3/VPC</li>
-<li>對你可能沒有幫助</li>
-</ul>
-<h2 id="Web-Console"><a href="#Web-Console" class="headerlink" title="Web Console"></a>Web Console</h2><ol>
-<li><p>login AWS</p>
-</li>
-<li><p>進入EC2<br><img src="https://i.imgur.com/hRFwjzr.jpg" alt=""></p>
-</li>
-<li><p>Launch Instance<br><img src="https://i.imgur.com/g9vlacA.jpg" alt=""></p>
-</li>
-<li><p>選擇AMI(Amazon Machine Image )<br><img src="https://i.imgur.com/dVKPsAp.jpg" alt=""></p>
-</li>
-<li><p>選擇Instance Type(有錢隨便選,沒錢選t2.nano)<br><img src="https://i.imgur.com/61gG2pd.jpg" alt=""></p>
-</li>
-<li><p>設定 Instance Details<br><img src="https://i.imgur.com/NkbKrzL.jpg" alt=""></p>
-</li>
-<li><p>如果想在開機的時候自動安裝一些程式,可以在<code>Advanced Details</code> 加語法<br>windows AMI請用 <code>Powershell</code><br><img src="https://i.imgur.com/bJxWlgd.jpg" alt=""></p>
-</li>
-<li><p>加硬碟<br><img src="https://i.imgur.com/MP9igLc.jpg" alt=""></p>
-</li>
-<li><p>加tag<br><img src="https://i.imgur.com/xDTx2nv.jpg" alt=""></p>
-</li>
-<li><p>設定Configure Security Group<br><img src="https://i.imgur.com/wximWw1.jpg" alt=""></p>
-</li>
-<li><p>預覽與啟動<br><img src="https://i.imgur.com/6Y4fcOI.jpg" alt=""></p>
-</li>
-<li><p>最後一步,選擇key-pair<br><img src="https://i.imgur.com/fRhUafI.jpg" alt=""></p>
-</li>
-</ol>
-<h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications &quot;ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]&quot; --security-group-ids sg-XXXXXX --key-name marktest.japan.training</span><br></pre></td></tr></table></figure>
-<h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
-<li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="noopener">run-instances</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/" data-id="cju4a566a009vocvx8ejnycrz" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EC2/">EC2</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2017/integrated_testing_partice" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/31/2017/integrated_testing_partice/" class="article-date">
-  <time datetime="2017-10-30T16:42:10.000Z" itemprop="datePublished">2017-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/31/2017/integrated_testing_partice/">單元測試與重構記錄(一)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>有幸參與了一個跨國的專案,<br>為了快速上線，決定將整套原本在台灣程式碼搬移到跨國專案上,<br>上線後再依使用者的需求調整開發功能,<br>而在搬移的過程中,有需多模組並未開啟。<br>…</p>
-<h2 id="現況"><a href="#現況" class="headerlink" title="現況"></a>現況</h2><p>遺留代碼 → 跨國 遇到的問題</p>
-<ol>
-<li>Copy Paste 最快卻不一定最適合</li>
-<li>Copy Paste 最快卻不一定改得動</li>
-<li>Copy Paste 最快但是有的地方沒Copy完</li>
-</ol>
-<p><code>用明朝的劍，斬清朝的官</code></p>
-<h2 id="實務需求"><a href="#實務需求" class="headerlink" title="實務需求"></a>實務需求</h2><p>將本來跨國未開啟的<strong>折扣活動</strong>模組打開,<br>簡單的流程大致如下:<br>購物車 → 取得購物車資料 → 折扣活動 → 計算</p>
-<p>實務上,整個流程作了許多事<br><img src="https://i.imgur.com/pM36Joo.jpg" alt=""></p>
-<p>應該說作了太多事.<br><img src="https://i.imgur.com/NU0PqCh.jpg" alt=""></p>
-<p>程式碼有壞味道,卻不能修改(重構).<br>因為沒有測試保護. </p>
-<p>單一的Process，複雜度過高的方法(12)</p>
-<p><code>CalculateShoppingCartPromotionDiscountV2Processor.Process()</code></p>
-<p><img src="https://i.imgur.com/qleqGPb.jpg" alt=""></p>
-<h3 id="目標與執行順序"><a href="#目標與執行順序" class="headerlink" title="目標與執行順序"></a>目標與執行順序</h3><ol>
-<li>由 PM 或 QA 補足整合測試情境到足夠<ul>
-<li>由實務上的需求來認定</li>
-</ul>
-</li>
-<li>刪除台灣的測試</li>
-<li>解析 <code>CalculateShoppingCartPromotionDiscountV2Processor</code> </li>
-<li>補上單元測試<ul>
-<li>Code Coverage(測試覆蓋率)</li>
-</ul>
-</li>
-<li>重構</li>
-</ol>
-<h2 id="最終的目標是重構"><a href="#最終的目標是重構" class="headerlink" title="最終的目標是重構"></a>最終的目標是重構</h2><ul>
-<li>心態:<a href="http://www.danielteng.com/2012/09/25/no-time-to-learn-perfect-excuse/" target="_blank" rel="noopener">沒有時間，完美的借口</a></li>
-<li>重構前要先作整合測試</li>
-<li>現有的整合測試的缺陷<ol>
-<li>測試項目不符合馬來西亞現狀</li>
-<li>測試項目未處理多語系</li>
-<li>測試項目未處理小數點</li>
-<li>測試項目難以閱讀</li>
-<li>測試項目有重覆的覆蓋範圍</li>
-</ol>
-</li>
-<li>RD與PM與QA合作</li>
-</ul>
-<h3 id="UAT-讓「人」讀得懂"><a href="#UAT-讓「人」讀得懂" class="headerlink" title="UAT 讓「人」讀得懂"></a>UAT 讓「人」讀得懂</h3><h4 id="原本的-UAT-RD"><a href="#原本的-UAT-RD" class="headerlink" title="原本的 UAT (RD)"></a>原本的 UAT (RD)</h4><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">場景: case37：商品活動+全店活動(有排除)；宅配，運費50元，滿350免運</span><br><span class="line">	．全店活動 / 有排除商品；滿額打折，多階(滿第1階)，跨溫層</span><br><span class="line">	．折扣條件：滿199元，打95折 / 滿299元，打89折 / 滿399元，打84折</span><br><span class="line">	．商品活動；滿件折現，單階，跨溫層</span><br><span class="line">	．折扣條件：滿2件，折45元</span><br><span class="line">	假設 購物車中溫層<span class="string">"Freezer"</span>商品為</span><br><span class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</span><br><span class="line">		|<span class="string"> 50         </span>|<span class="string"> 50               </span>|<span class="string"> 75    </span>|<span class="string"> 1   </span>|</span><br><span class="line">		|<span class="string"> 27         </span>|<span class="string"> 27               </span>|<span class="string"> 66    </span>|<span class="string"> 2   </span>|</span><br><span class="line">	並且 購物車中溫層<span class="string">"Refrigerator"</span>商品為</span><br><span class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</span><br><span class="line">		|<span class="string"> 26         </span>|<span class="string"> 26               </span>|<span class="string"> 55    </span>|<span class="string"> 2   </span>|</span><br><span class="line">	並且 購物車中溫層<span class="string">"Normal"</span>商品為</span><br><span class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</span><br><span class="line">		|<span class="string"> 25         </span>|<span class="string"> 25               </span>|<span class="string"> 2     </span>|<span class="string"> 2   </span>|</span><br><span class="line">	並且 活動<span class="string">"1"</span>範圍設定為</span><br><span class="line">		|<span class="string"> TargetType </span>|<span class="string"> TargetIdList </span>|</span><br><span class="line">		|<span class="string"> Shop       </span>|<span class="string"> 1            </span>|</span><br><span class="line">	並且 活動目標排除商品頁為</span><br><span class="line">		|<span class="string"> PromotionId </span>|<span class="string"> TargetExcludeSalePageList </span>|</span><br><span class="line">		|<span class="string"> 1           </span>|<span class="string"> 50          </span>|</span><br><span class="line">	並且  現折活動<span class="string">"1"</span>的折扣為</span><br><span class="line">		|<span class="string"> Id </span>|<span class="string"> TypeDef      </span>|<span class="string"> TotalPrice </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountRate </span>|</span><br><span class="line">		|<span class="string"> 1  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 199        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.95         </span>|</span><br><span class="line">		|<span class="string"> 2  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 299        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.89         </span>|</span><br><span class="line">		|<span class="string"> 3  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 399        </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.84         </span>|</span><br><span class="line">	並且 活動<span class="string">"2"</span>範圍設定為</span><br><span class="line">		|<span class="string"> TargetType        </span>|<span class="string"> TargetIdList </span>|</span><br><span class="line">		|<span class="string"> PromotionSalePage </span>|<span class="string"> 0            </span>|</span><br><span class="line">	並且 活動目標商品頁為</span><br><span class="line">		|<span class="string"> PromotionId </span>|<span class="string"> TargetSalePageList </span>|</span><br><span class="line">		|<span class="string"> 2           </span>|<span class="string"> 50,25,26,27        </span>|</span><br><span class="line">	並且  現折活動<span class="string">"2"</span>的折扣為</span><br><span class="line">		|<span class="string"> Id </span>|<span class="string"> TypeDef    </span>|<span class="string"> TotalQty </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountPrice </span>|</span><br><span class="line">		|<span class="string"> 4  </span>|<span class="string"> TotalQtyV2 </span>|<span class="string"> 2        </span>|<span class="string"> DiscountPrice   </span>|<span class="string"> 45            </span>|</span><br><span class="line">	當 計算活動折扣</span><br><span class="line">	那麼 購物車商品折扣後為</span><br><span class="line">		|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> PromotionDiscount </span>|</span><br><span class="line">		|<span class="string"> 50         </span>|<span class="string"> 50               </span>|<span class="string"> -12               </span>|</span><br><span class="line">		|<span class="string"> 27         </span>|<span class="string"> 27               </span>|<span class="string"> -25               </span>|</span><br><span class="line">		|<span class="string"> 26         </span>|<span class="string"> 26               </span>|<span class="string"> -19               </span>|</span><br><span class="line">		|<span class="string"> 25         </span>|<span class="string"> 25               </span>|<span class="string"> 0                 </span>|</span><br></pre></td></tr></table></figure>
-<h4 id="「人」寫的UAT"><a href="#「人」寫的UAT" class="headerlink" title="「人」寫的UAT"></a>「人」寫的UAT</h4><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">場景: 商品有兩檔活動，全店活動與商品活動；</span><br><span class="line">	．第一檔是全店活動 / 排除商品B；滿額打折，</span><br><span class="line">	．折扣條件：滿10元，打95折 / 滿20元，打89折 / 滿30元，打84折</span><br><span class="line">	．第二檔是指定商品；滿件折現，單階，指定商品A 、商品B</span><br><span class="line">	．折扣條件：滿2件，折3元</span><br><span class="line"></span><br><span class="line">當 購物車中的商品為<span class="string">"商品A 與商品B"</span></span><br><span class="line">		|<span class="string"> Title </span>|<span class="string"> SalePageId </span>|<span class="string"> SaleProductSKUId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|</span><br><span class="line">		|<span class="string"> 商品A   </span>|<span class="string"> 25         </span>|<span class="string"> 25               </span>|<span class="string"> 7.45  </span>|<span class="string"> 2   </span>|</span><br><span class="line">		|<span class="string"> 商品B   </span>|<span class="string"> 26         </span>|<span class="string"> 26               </span>|<span class="string"> 4.45  </span>|<span class="string"> 2   </span>|</span><br><span class="line">	</span><br><span class="line">並且 第<span class="string">"1"</span>檔是全店活動 ,排除以下商品</span><br><span class="line">	    |<span class="string"> Title </span>|<span class="string"> SalePageId </span>|</span><br><span class="line">	    |<span class="string"> 商品A   </span>|<span class="string"> 26         </span>|</span><br><span class="line"></span><br><span class="line">而且 第<span class="string">"1"</span>檔折扣條件是<span class="string">"滿額打折,滿10元，打95折 / 滿20元，打89折 / 滿30元，打84折"</span>,如下</span><br><span class="line">    |<span class="string"> Id </span>|<span class="string"> TypeDef      </span>|<span class="string"> TotalPrice </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountRate </span>|</span><br><span class="line">    |<span class="string"> 1  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 10         </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.95         </span>|</span><br><span class="line">    |<span class="string"> 2  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 20         </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.89         </span>|</span><br><span class="line">    |<span class="string"> 3  </span>|<span class="string"> TotalPriceV2 </span>|<span class="string"> 30         </span>|<span class="string"> DiscountRate    </span>|<span class="string"> 0.84         </span>|</span><br><span class="line"></span><br><span class="line">並且 第<span class="string">"2"</span>檔是指定商品,指定商品如下</span><br><span class="line">    |<span class="string"> Title </span>|<span class="string"> SalePageId </span>|</span><br><span class="line">    |<span class="string"> 商品A   </span>|<span class="string"> 25         </span>|</span><br><span class="line">    |<span class="string"> 商品B   </span>|<span class="string"> 26         </span>|</span><br><span class="line">    |<span class="string"> 商品C   </span>|<span class="string"> 27         </span>|</span><br><span class="line">    |<span class="string"> 商品D   </span>|<span class="string"> 50         </span>|</span><br><span class="line"></span><br><span class="line">而且 第<span class="string">"2"</span>檔折扣條件是<span class="string">"滿件折現,滿2件，折3元"</span>,如下</span><br><span class="line">    |<span class="string"> Id </span>|<span class="string"> TypeDef    </span>|<span class="string"> TotalQty </span>|<span class="string"> DiscountTypeDef </span>|<span class="string"> DiscountPrice </span>|</span><br><span class="line">    |<span class="string"> 4  </span>|<span class="string"> TotalQtyV2 </span>|<span class="string"> 2        </span>|<span class="string"> DiscountPrice   </span>|<span class="string"> 3             </span>|</span><br><span class="line"></span><br><span class="line">當 計算活動折扣</span><br><span class="line"></span><br><span class="line">那麼 購物車商品折扣金額及折扣後小計為 </span><br><span class="line">    |<span class="string"> Title </span>|<span class="string"> SalePageId </span>|<span class="string"> Price </span>|<span class="string"> Qty </span>|<span class="string"> PromotionDiscount </span>|<span class="string"> TotalPayment </span>|</span><br><span class="line">    |<span class="string"> 商品A   </span>|<span class="string"> 25         </span>|<span class="string"> 7.45  </span>|<span class="string"> 2   </span>|<span class="string"> -2.55             </span>|<span class="string"> 12.35        </span>|</span><br><span class="line">    |<span class="string"> 商品B   </span>|<span class="string"> 26         </span>|<span class="string"> 4.45  </span>|<span class="string"> 2   </span>|<span class="string"> -1.11             </span>|<span class="string"> 7.79         </span>|</span><br></pre></td></tr></table></figure>
-<p>與 PM 及 QA 討論後 , 寫的 UAT 可閱讀性提高了<br>這裡用到了一些小技巧 , 讓 Cucumber 文件的可讀性更高<br>而不會有太多的重複方法 , 比如說把描述性的文字當作參數傳遞<br>實際上測試不會使用到這些變數 ,但是可以增加可讀性 .</p>
-<h3 id="刪除台灣測試"><a href="#刪除台灣測試" class="headerlink" title="刪除台灣測試"></a>刪除台灣測試</h3><p>因為已經有了跨國所需要的測試 ,<br>台灣的測試便可以退場了.<br>實際上也不符合現況, 如多語系、時差與小數點等問題</p>
-<h3 id="解析-CalculateShoppingCartPromotionDiscountV2Processor"><a href="#解析-CalculateShoppingCartPromotionDiscountV2Processor" class="headerlink" title="解析 CalculateShoppingCartPromotionDiscountV2Processor"></a>解析 <code>CalculateShoppingCartPromotionDiscountV2Processor</code></h3><p><img src="https://i.imgur.com/FioG5NG.jpg" alt=""></p>
-<ol>
-<li>無折扣的情境</li>
-<li>新舊相容的情境</li>
-<li>排序</li>
-<li>計算折扣金額</li>
-<li>看見相依<ol>
-<li>程式碼中有 new 別的 class 的部份</li>
-<li>程式碼中有使用靜態方法的部份</li>
-</ol>
-</li>
-</ol>
-<h3 id="補上單元測試"><a href="#補上單元測試" class="headerlink" title="補上單元測試"></a>補上單元測試</h3><p>最簡單的重構,就是將整個方法內的四個邏輯<br>拆成四塊個子方法,並為他們加上單元測試.<br>修改的過程,如果有紅燈就要修改成綠燈,<br>而整個成品要保證整合測試與單元測試都是綠燈. </p>
-<p>此外,重構的過程中如果過到靜態方法,<br>或是 new 新物件, 都很有可能是種相依,<br>可以透過一些方法作解耦,<br>參考之前的文章<a href="/2017/04/23/unitestwriting/">單元測試這樣玩就對了</a> </p>
-<h3 id="重構"><a href="#重構" class="headerlink" title="重構"></a>重構</h3><p>最後一步就是大膽的重構了,<br>有了測試作保護,<br>可以作更大範圍的重構,<br>如下圖示,這裡揭露了在台灣原有的繼承結構,<br>而紅色的部份是在跨國用不到的類別.<br><img src="https://i.imgur.com/VQ10wY6.jpg" alt=""></p>
-<p>下一步，待續…</p>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/10/31/2017/integrated_testing_partice/" data-id="cju4a563j0047ocvxv5kmhi65" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2017/10/31/2017/integrated_testing_partice/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li></ul>
@@ -1208,6 +1272,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2019/04/12/2019/csproj_content_none/">[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/11/2019/tool_sites/">[實作筆記] 好用的線上工具</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/06/2019/aspdotnet_core_logging/">[實作筆記] ASP.Net Core Logger</a>
           </li>
         
@@ -1219,14 +1291,6 @@ ga('send', 'pageview');
             <a href="/2019/02/20/2019/Setting_up_aws_tools_for_powershell/">[實作筆記]使用 Windows PowerShell 批次上傳 AWS S3</a>
           </li>
         
-          <li>
-            <a href="/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/">[實作筆記] Coding Dojo 第一個 Kata FizzBuzz</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] 在公司小規模玩 Coding Dojo </a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1236,7 +1300,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
     </div>
   </div>
 
@@ -1246,7 +1310,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Net-Core/" style="font-size: 10px;">.Net Core</a> <a href="/tags/Net-Framework/" style="font-size: 12.86px;">.Net Framework</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 11.43px;">API</a> <a href="/tags/ASP-Net/" style="font-size: 11.43px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 17.14px;">AWS</a> <a href="/tags/Agile/" style="font-size: 20px;">Agile</a> <a href="/tags/BootStrap/" style="font-size: 11.43px;">BootStrap</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.86px;">C#</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/CI-CD/" style="font-size: 14.29px;">CI/CD</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Container/" style="font-size: 10px;">Container</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 11.43px;">Entity Framework</a> <a href="/tags/Expressjs/" style="font-size: 10px;">Expressjs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Google/" style="font-size: 12.86px;">Google</a> <a href="/tags/Gulpjs/" style="font-size: 11.43px;">Gulpjs</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 11.43px;">Hexo</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.86px;">Integrated Testing</a> <a href="/tags/IoT/" style="font-size: 10px;">IoT</a> <a href="/tags/JQuery/" style="font-size: 11.43px;">JQuery</a> <a href="/tags/Jenkins/" style="font-size: 14.29px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 11.43px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/MsSQL/" style="font-size: 12.86px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Mutation-Teseting/" style="font-size: 10px;">Mutation Teseting</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/Nodejs/" style="font-size: 15.71px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 11.43px;">Openshift</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 11.43px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 11.43px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Scrum/" style="font-size: 20px;">Scrum</a> <a href="/tags/Shell/" style="font-size: 11.43px;">Shell</a> <a href="/tags/Specflow/" style="font-size: 10px;">Specflow</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TDD/" style="font-size: 15.71px;">TDD</a> <a href="/tags/Testing/" style="font-size: 17.14px;">Testing</a> <a href="/tags/Thread/" style="font-size: 11.43px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 14.29px;">TypeScript</a> <a href="/tags/Unit-Testing/" style="font-size: 18.57px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 11.43px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 11.43px;">powershell</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 11.43px;">時間管理</a> <a href="/tags/產業趨勢/" style="font-size: 10px;">產業趨勢</a> <a href="/tags/記錄/" style="font-size: 17.14px;">記錄</a> <a href="/tags/重構/" style="font-size: 14.29px;">重構</a> <a href="/tags/閱讀筆記/" style="font-size: 18.57px;">閱讀筆記</a>
+      <a href="/tags/Net-Core/" style="font-size: 10px;">.Net Core</a> <a href="/tags/Net-Framework/" style="font-size: 14.29px;">.Net Framework</a> <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/API/" style="font-size: 11.43px;">API</a> <a href="/tags/ASP-Net/" style="font-size: 12.86px;">ASP.Net</a> <a href="/tags/AWS/" style="font-size: 17.14px;">AWS</a> <a href="/tags/Agile/" style="font-size: 20px;">Agile</a> <a href="/tags/BootStrap/" style="font-size: 11.43px;">BootStrap</a> <a href="/tags/BulkInsert/" style="font-size: 10px;">BulkInsert</a> <a href="/tags/C/" style="font-size: 12.86px;">C#</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/CI-CD/" style="font-size: 14.29px;">CI/CD</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Container/" style="font-size: 10px;">Container</a> <a href="/tags/Content-Type/" style="font-size: 10px;">Content-Type</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Entity-Framework/" style="font-size: 11.43px;">Entity Framework</a> <a href="/tags/Expressjs/" style="font-size: 10px;">Expressjs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Google/" style="font-size: 12.86px;">Google</a> <a href="/tags/Gulpjs/" style="font-size: 11.43px;">Gulpjs</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 11.43px;">Hexo</a> <a href="/tags/IAM/" style="font-size: 10px;">IAM</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 12.86px;">Integrated Testing</a> <a href="/tags/IoT/" style="font-size: 10px;">IoT</a> <a href="/tags/JQuery/" style="font-size: 11.43px;">JQuery</a> <a href="/tags/Jenkins/" style="font-size: 14.29px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 11.43px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/MsSQL/" style="font-size: 12.86px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Mutation-Teseting/" style="font-size: 10px;">Mutation Teseting</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/Nodejs/" style="font-size: 15.71px;">Nodejs</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/Openshift/" style="font-size: 11.43px;">Openshift</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 11.43px;">Redis</a> <a href="/tags/Root-User/" style="font-size: 11.43px;">Root User</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL/" style="font-size: 11.43px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Scrum/" style="font-size: 20px;">Scrum</a> <a href="/tags/Shell/" style="font-size: 11.43px;">Shell</a> <a href="/tags/Specflow/" style="font-size: 10px;">Specflow</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/TDD/" style="font-size: 15.71px;">TDD</a> <a href="/tags/Testing/" style="font-size: 17.14px;">Testing</a> <a href="/tags/Thread/" style="font-size: 11.43px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 14.29px;">TypeScript</a> <a href="/tags/Unit-Testing/" style="font-size: 18.57px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 11.43px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/domain/" style="font-size: 10px;">domain</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/powershell/" style="font-size: 11.43px;">powershell</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/時間管理/" style="font-size: 11.43px;">時間管理</a> <a href="/tags/產業趨勢/" style="font-size: 10px;">產業趨勢</a> <a href="/tags/記錄/" style="font-size: 17.14px;">記錄</a> <a href="/tags/重構/" style="font-size: 14.29px;">重構</a> <a href="/tags/閱讀筆記/" style="font-size: 18.57px;">閱讀筆記</a>
     </div>
   </div>
 
@@ -1255,7 +1319,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/">.Net Core</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap/">BootStrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/">CI/CD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/">Container</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expressjs/">Expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulpjs/">Gulpjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IoT/">IoT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/">JQuery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mutation-Teseting/">Mutation Teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/">PowerShell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Specflow/">Specflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/產業趨勢/">產業趨勢</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重構/">重構</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/">.Net Core</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/">.Net Framework</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASP-Net/">ASP.Net</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap/">BootStrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BulkInsert/">BulkInsert</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/">CI/CD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/">Container</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Content-Type/">Content-Type</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expressjs/">Expressjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulpjs/">Gulpjs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IAM/">IAM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/">Integrated Testing</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IoT/">IoT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/">JQuery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mutation-Teseting/">Mutation Teseting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/">PowerShell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Root-User/">Root User</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/">Scrum</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Specflow/">Specflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/">Testing</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/domain/">domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/">powershell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/website/">website</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/時間管理/">時間管理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/產業趨勢/">產業趨勢</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/記錄/">記錄</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重構/">重構</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/閱讀筆記/">閱讀筆記</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
