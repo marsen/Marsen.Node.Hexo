@@ -113,7 +113,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cju4bahhs006hi4vxtem7iws7" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/" data-id="cjvg9uf88005oy0vxnlc5bx9h" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/30/2018/restclient_gencode/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -230,7 +230,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cju4bahll00ati4vxvocrnq9e" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/" data-id="cjvg9ufci00b2y0vxs38elnqm" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -483,7 +483,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cju4bahle00aoi4vx7umc0abi" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/" data-id="cjvg9ufce00axy0vxun7cq0km" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/16/2018/csm/day_2_3/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -511,7 +511,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/12/2018/git_delete_remote_branch/">[實作筆記] Git 批次刪除遠端分支</a>
+      <a class="article-title" href="/2018/12/12/2018/git_delete_remote_branch/">[實作筆記] Git 批次刪除分支</a>
     </h1>
   
 
@@ -519,17 +519,31 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="易學難精的-Git-與-Flow"><a href="#易學難精的-Git-與-Flow" class="headerlink" title="易學難精的 Git 與 Flow"></a>易學難精的 Git 與 Flow</h2><p>在使用 Git 時，分支的策略往往比 Git 本身更複雜。<br>Git 在建立分支是成本非常低的一件事情，<br>也因此很容易開出一堆分支，<br>這與團隊規模和PR的流程有關，但是因為 Git 開分支實在太便宜了，<br>導致我的 Remote Repo 不知不覺中竟然有了破千的分支。<br>中間換過專案、團隊，甚至是 Issue System。<br>整個 Web 開發部門大約 50 個 RD，兩個 System 的編號都破3萬，<br>這還不包含有部份的「黑需求」，扯這麼多只是想說明軟體開發的模糊性有多高;<br>多容易迷失在需求大海之中。  </p>
-<p>回到正題，大量的需求意味著大量的開發，同時也代表著大量的分支<br>至少在我的 Remote 上是這樣，大概有破千的分支，<br>雖然不影響我作業，但是九成以上的分支都已功成身退了，<br>所以我想刪掉這些分支，但是一支一支刪就太慢了。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>找了一下方法，如下:<br>查詢：先看一下你要刪掉什麼分支，可以透過正規表示式查詢大量分支。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ '/\/feature\/BTS14/&#123;print $2&#125;'</span><br></pre></td></tr></table></figure></p>
-<p>刪除：同上的語法，但是後面　pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ &apos;/\/feature\/BTS14/&#123;print $2&#125;&apos;| xargs -I &#123;&#125; git push origin :&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="要知道的事"><a href="#要知道的事" class="headerlink" title="要知道的事"></a>要知道的事</h2><ul>
+<li>OS : Windows 10</li>
+</ul>
+<h2 id="易學難精的-Git-與-Flow"><a href="#易學難精的-Git-與-Flow" class="headerlink" title="易學難精的 Git 與 Flow"></a>易學難精的 Git 與 Flow</h2><p>在使用 Git 時，分支的策略往往比 Git 本身更複雜。<br>Git 在建立分支是成本非常低的一件事情，<br>也因此很容易開出一堆分支，<br>這與團隊規模和PR的流程有關，可以參考文末的分支策略聯結。<br>因為 Git 開分支實在太便宜了，<br>我的 Remote Repo 不知不覺中竟然有了破千的分支。<br>大量的分支意味著大量的需求，其實是好事，<br>但是大部份的分支都已經功成身該退了，<br>當我使用一些 GUI 工具，為了顯示這些分支時，<br>這樣的數量反而成了阻礙。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="大量刪除遠端分支的方法"><a href="#大量刪除遠端分支的方法" class="headerlink" title="大量刪除遠端分支的方法"></a>大量刪除遠端分支的方法</h3><p>Step1. 可以透過正規表示式查詢大量分支。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ '/\/feature\/BTS14/&#123;print $2&#125;'</span><br></pre></td></tr></table></figure>
+<p>Step2. 同上的語法，但是後面　pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ &apos;/\/feature\/BTS14/&#123;print $2&#125;&apos;| xargs -I &#123;&#125; git push origin :&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>特別看一下 <code>{} git push origin :{}</code> ，我們實際上是透過 push 語法刪除分支的。</p>
-<p>(fin)</p>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h4 id="2019-05-09"><a href="#2019-05-09" class="headerlink" title="2019/05/09"></a>2019/05/09</h4><h3 id="大量刪除本地分支的方法"><a href="#大量刪除本地分支的方法" class="headerlink" title="大量刪除本地分支的方法"></a>大量刪除本地分支的方法</h3><p>Step1. 可以透過正規表示式查詢大量分支。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep "pattern"</span><br></pre></td></tr></table></figure>
+<p>Step2. 同上的語法，但是後面　pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep "pattern" | xargs git branch -D</span><br></pre></td></tr></table></figure>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略 - 阮一峰的网络日志</a></li>
+<li><a href="http://nedwu13.blogspot.com/2014/01/tbd-what-is-trunk-based-development.html" target="_blank" rel="noopener">筆記：TBD是三小?—What is Trunk Based Development?</a><ul>
+<li>主幹開發主幹發佈/主幹開發分支發佈/分支開發主幹發佈<br>(fin)</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cju4bahh7005mi4vxu9xh4u10" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="cjvg9uf77004ry0vxbf853d4j" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -637,7 +651,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cju4bahlg00aqi4vxwnep55cz" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/" data-id="cjvg9ufca00asy0vx6b38ac32" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -716,7 +730,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cju4bahh5005ji4vxn8oc7klo" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/" data-id="cjvg9uf6u0049y0vx0ftegijn" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -764,7 +778,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" data-id="cju4bahho006ci4vx66w2w80t" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/" data-id="cjvg9uf7w005fy0vx7ehik7ox" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/11/23/2018/powershell_found_subfolde_by_files_in_folder/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -820,7 +834,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/" data-id="cju4bahgv0059i4vxxqkuj5s2" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/" data-id="cjvg9uf6i003zy0vx3d6jgs5h" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -931,7 +945,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/" data-id="cju4bahkt00abi4vxa7agd37q" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/" data-id="cjvg9ufby00agy0vxbz5jgf85" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1092,7 +1106,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/" data-id="cju4bahl800ali4vx9cda8ys7" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/" data-id="cjvg9ufci00b0y0vxvnnacvdc" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/#disqus_thread" class="article-comment-link">留言</a>
       
