@@ -6,14 +6,14 @@
   <title>[實作筆記] Unit Testing With TypeScript | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前情提要 難得有機會寫前端的東西 其實只有寫 JavaScript 我要用 TypeScript 寫 合理的軟體工序 TDD 所以我要寫測試 node 版本 v8.11.1 npm 版本 5.6.0 typescript 版本 3.3.3333  Context &amp;amp; User Stories來自前端的需求，在一個日曆工具要加入對可選日期判斷的邏輯。原始需求如下，g、h、i、j 可以透過修改">
-<meta name="keywords" content="TypeScript,Node.js,TDD,Unit Testing">
+<meta name="keywords" content="TypeScript,Node.js,Unit Testing,TDD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記] Unit Testing With TypeScript">
 <meta property="og:url" content="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/index.html">
 <meta property="og:site_name" content="Marsen">
 <meta property="og:description" content="前情提要 難得有機會寫前端的東西 其實只有寫 JavaScript 我要用 TypeScript 寫 合理的軟體工序 TDD 所以我要寫測試 node 版本 v8.11.1 npm 版本 5.6.0 typescript 版本 3.3.3333  Context &amp;amp; User Stories來自前端的需求，在一個日曆工具要加入對可選日期判斷的邏輯。原始需求如下，g、h、i、j 可以透過修改">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2019-05-16T05:32:30.577Z">
+<meta property="og:updated_time" content="2019-05-16T05:48:24.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記] Unit Testing With TypeScript">
 <meta name="twitter:description" content="前情提要 難得有機會寫前端的東西 其實只有寫 JavaScript 我要用 TypeScript 寫 合理的軟體工序 TDD 所以我要寫測試 node 版本 v8.11.1 npm 版本 5.6.0 typescript 版本 3.3.3333  Context &amp;amp; User Stories來自前端的需求，在一個日曆工具要加入對可選日期判斷的邏輯。原始需求如下，g、h、i、j 可以透過修改">
@@ -117,9 +117,9 @@ ga('send', 'pageview');
 </blockquote>
 <h2 id="測試環境準備"><a href="#測試環境準備" class="headerlink" title="測試環境準備"></a>測試環境準備</h2><h3 id="使用-Mocha-與-Chai"><a href="#使用-Mocha-與-Chai" class="headerlink" title="使用 Mocha 與 Chai"></a>使用 Mocha 與 Chai</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D chai mocha nyc ts-node typescript</span><br></pre></td></tr></table></figure>
 <h4 id="安裝-TypeScript"><a href="#安裝-TypeScript" class="headerlink" title="安裝 TypeScript"></a>安裝 <a href="https://www.typescriptlang.org" target="_blank" rel="noopener">TypeScript</a></h4><p>安裝至專案</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i -D typescript ts-node</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i -D typescript ts-node</span></span><br></pre></td></tr></table></figure>
 <p>安裝至全域</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i -g typescript</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i -g typescript</span></span><br></pre></td></tr></table></figure>
 <p>建立專案 <code>tsconfig.json</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tsc --init</span><br></pre></td></tr></table></figure></p>
 <h4 id="安裝-MochaJs"><a href="#安裝-MochaJs" class="headerlink" title="安裝 MochaJs"></a>安裝 <a href="https://mochajs.org/" target="_blank" rel="noopener">MochaJs</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D mocha @types/mocha</span><br></pre></td></tr></table></figure>
 <h4 id="安裝-Chai"><a href="#安裝-Chai" class="headerlink" title="安裝 Chai"></a>安裝 <a href="https://www.chaijs.com/" target="_blank" rel="noopener">Chai</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D Chai @types/chai</span><br></pre></td></tr></table></figure>
@@ -132,7 +132,7 @@ ga('send', 'pageview');
 <h2 id="測試覆蓋率"><a href="#測試覆蓋率" class="headerlink" title="測試覆蓋率"></a>測試覆蓋率</h2><p>// TODO</p>
 <h3 id="安裝-nyc"><a href="#安裝-nyc" class="headerlink" title="安裝 nyc"></a>安裝 nyc</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D nyc</span><br></pre></td></tr></table></figure>
 <h3 id="設定-scripts"><a href="#設定-scripts" class="headerlink" title="設定 scripts"></a>設定 scripts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;:&#123;    </span><br><span class="line">     &quot;testCover&quot;: &quot;nyc -r lcov -e .ts -x \&quot;*.test.ts\&quot; mocha -r ts-node/register tests/**/*.test.ts &amp;&amp; nyc report&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="執行"><a href="#執行" class="headerlink" title="執行"></a>執行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> npm run testCover</span><br></pre></td></tr></table></figure>
+<h3 id="執行"><a href="#執行" class="headerlink" title="執行"></a>執行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm run testCover</span></span><br></pre></td></tr></table></figure>
 <h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">略過測試部份</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br><span class="line">File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br><span class="line">All files               |      100 |      100 |    98.63 |      100 |                   |</span><br><span class="line"> src                    |      100 |      100 |     87.5 |      100 |                   |</span><br><span class="line">  Calculator.ts         |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  beforeShowDay.ts      |      100 |      100 |       80 |      100 |                   |</span><br><span class="line"> tests                  |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  beforeShowDay.test.ts |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  calculator.test.ts    |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br></pre></td></tr></table></figure>
 <h2 id="完整-Test-Cases"><a href="#完整-Test-Cases" class="headerlink" title="完整 Test Cases"></a>完整 Test Cases</h2><blockquote>
 <p> 今天是 2019/3/30 號星期六 12:05<br>   √ 日曆上 2019/4/02 星期二 出貨 可以選<br>   √ 日曆上 2019/4/02 星期二 設定為國定假日, 出貨 不可以選  </p>
@@ -150,6 +150,7 @@ ga('send', 'pageview');
 <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>能堅持「工序」是專業人士的表現，<br>我相信這是一種實務上能保持品質與速度的作法。<br>特別是越大規模越複雜的專案，<br>避免掉進焦油坑的方法就是一開始就別踩下去。  </p>
 <p>寫測試案例也是一種技能，在這次的 Case 中，<br>E2E測試是相對困難的，受限於時間與日期，<br>單元測試可以控制時間反而成了絕妙的工具。</p>
 <p>我一開始寫的測試並不優良，涵蓋的情境不夠(註:這裡並非指程式碼的函蓋率)，<br>但是與 PO 反覆確認之後，調試出的情境終於滿足了需求，<br>看來我還要增進一下寫測試案例的能力。</p>
+<p>最後，下次再試試用 <code>Jest</code> 寫寫看。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="http:// https://github.com/ChiragRupani/TSUnitTestsSetup" target="_blank" rel="noopener">TSUnitTestsSetup</a></li>
 <li><a href="https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40" target="_blank" rel="noopener">Writing unit tests in TypeScript</a></li>
@@ -159,7 +160,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjvq7pvmb003x2gvxmwg1xxsl" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjvq8gsli009t9cvxgh1gvwj3" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/#disqus_thread" class="article-comment-link">留言</a>
       
