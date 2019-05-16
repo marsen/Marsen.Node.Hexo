@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-04-12T09:11:11.523Z</updated>
+  <updated>2019-05-16T05:25:51.757Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記] Unit Testing With TypeScript</title>
+    <link href="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/"/>
+    <id>https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/</id>
+    <published>2019-05-16T05:18:16.000Z</published>
+    <updated>2019-05-16T05:25:51.757Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul><li>難得有機會寫前端的東西</li><li>其實只有寫 JavaScript</li><li>我要用 TypeScript 寫</li><li>合理的軟體工序 TDD</li><li>所以我要寫測試</li><li>node 版本 v8.11.1</li><li>npm 版本 5.6.0</li><li>typescript 版本 3.3.3333</li></ul><h2 id="Context-amp-User-Stories"><a href="#Context-amp-User-Stories" class="headerlink" title="Context &amp; User Stories"></a>Context &amp; User Stories</h2><p>來自前端的需求，在一個日曆工具要加入對可選日期判斷的邏輯。<br>原始需求如下，g、h、i、j 可以透過修改日曆元件選項調整，<br>而細微的日期與時間判斷需要撰寫新的方法作判斷。  </p><h3 id="原始需求"><a href="#原始需求" class="headerlink" title="原始需求"></a>原始需求</h3><blockquote><p>a. 每週一過中午12點不能選週二及以前的日期<br>b. 每週二過中午12點不能選週三及以前的日期<br>c. 每週三過中午12點不能選週四及以前的日期<br>d. 每週四過中午12點不能選週五及以前的日期<br>e. 每週五過中午12點不能選隔週一及以前的日期<br>f. 每週日都不能選<br>g. <del>90天以後的日期不能選</del><br>h. <del>需指導我們如何讓特定日期不能選，以因應遇到國定假日的狀況</del><br>i. <del>預設為選擇最近一個可以使用的日期</del><br>j. <del>改成中文</del>  </p></blockquote><h2 id="測試環境準備"><a href="#測試環境準備" class="headerlink" title="測試環境準備"></a>測試環境準備</h2><h3 id="使用-Mocha-與-Chai"><a href="#使用-Mocha-與-Chai" class="headerlink" title="使用 Mocha 與 Chai"></a>使用 Mocha 與 Chai</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D chai mocha nyc ts-node typescript</span><br></pre></td></tr></table></figure><h4 id="安裝-TypeScript"><a href="#安裝-TypeScript" class="headerlink" title="安裝 TypeScript"></a>安裝 <a href="https://www.typescriptlang.org" target="_blank" rel="noopener">TypeScript</a></h4><p>安裝至專案</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i -D typescript ts-node</span><br></pre></td></tr></table></figure><p>安裝至全域</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i -g typescript</span><br></pre></td></tr></table></figure><p>建立專案 <code>tsconfig.json</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tsc --init</span><br></pre></td></tr></table></figure></p><h4 id="安裝-MochaJs"><a href="#安裝-MochaJs" class="headerlink" title="安裝 MochaJs"></a>安裝 <a href="https://mochajs.org/" target="_blank" rel="noopener">MochaJs</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D mocha @types/mocha</span><br></pre></td></tr></table></figure><h4 id="安裝-Chai"><a href="#安裝-Chai" class="headerlink" title="安裝 Chai"></a>安裝 <a href="https://www.chaijs.com/" target="_blank" rel="noopener">Chai</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D Chai @types/chai</span><br></pre></td></tr></table></figure><h4 id="設定測試"><a href="#設定測試" class="headerlink" title="設定測試"></a>設定測試</h4><p>package.json\<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;:&#123;</span><br><span class="line">    &quot;test&quot;: &quot;mocha -r ts-node/register tests/**/*.test.ts&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h4 id="寫測試"><a href="#寫測試" class="headerlink" title="寫測試"></a>寫測試</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; expect &#125; from &apos;chai&apos;;</span><br><span class="line">import Calculator from &apos;../src/calculate&apos;;</span><br><span class="line"></span><br><span class="line">describe(&apos;calculate&apos;, function() &#123;</span><br><span class="line">  it(&apos;add&apos;, function() &#123;</span><br><span class="line">    let result = Calculator.Sum(5, 2);</span><br><span class="line">    expect(result).equal(7);</span><br><span class="line">  &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h4 id="實作代碼"><a href="#實作代碼" class="headerlink" title="實作代碼"></a>實作代碼</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export default class calculator &#123;</span><br><span class="line">    static Sum(a: number, b: number): number &#123;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h4 id="執行測試"><a href="#執行測試" class="headerlink" title="執行測試"></a>執行測試</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm t</span><br></pre></td></tr></table></figure><h4 id="修正代碼"><a href="#修正代碼" class="headerlink" title="修正代碼"></a>修正代碼</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export default class calculator &#123;</span><br><span class="line">    static Sum(a: number, b: number): number &#123;</span><br><span class="line">        let c = a + b;</span><br><span class="line">        eturn c;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h4 id="測試結果"><a href="#測試結果" class="headerlink" title="測試結果"></a>測試結果</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">calculate</span><br><span class="line">  √ add</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 passing (61ms)</span><br></pre></td></tr></table></figure><h2 id="測試覆蓋率"><a href="#測試覆蓋率" class="headerlink" title="測試覆蓋率"></a>測試覆蓋率</h2><p>// TODO</p><h3 id="安裝-nyc"><a href="#安裝-nyc" class="headerlink" title="安裝 nyc"></a>安裝 nyc</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D nyc</span><br></pre></td></tr></table></figure><h3 id="設定-scripts"><a href="#設定-scripts" class="headerlink" title="設定 scripts"></a>設定 scripts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;:&#123;    </span><br><span class="line">     &quot;testCover&quot;: &quot;nyc -r lcov -e .ts -x \&quot;*.test.ts\&quot; mocha -r ts-node/register tests/**/*.test.ts &amp;&amp; nyc report&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="執行"><a href="#執行" class="headerlink" title="執行"></a>執行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> npm run testCover</span><br></pre></td></tr></table></figure><h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">略過測試部份</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br><span class="line">File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br><span class="line">All files               |      100 |      100 |    98.63 |      100 |                   |</span><br><span class="line"> src                    |      100 |      100 |     87.5 |      100 |                   |</span><br><span class="line">  Calculator.ts         |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  beforeShowDay.ts      |      100 |      100 |       80 |      100 |                   |</span><br><span class="line"> tests                  |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  beforeShowDay.test.ts |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">  calculator.test.ts    |      100 |      100 |      100 |      100 |                   |</span><br><span class="line">------------------------|----------|----------|----------|----------|-------------------|</span><br></pre></td></tr></table></figure><h2 id="完整-Test-Cases"><a href="#完整-Test-Cases" class="headerlink" title="完整 Test Cases"></a>完整 Test Cases</h2><blockquote><p> 今天是 2019/3/30 號星期六 12:05<br>   √ 日曆上 2019/4/02 星期二 出貨 可以選<br>   √ 日曆上 2019/4/02 星期二 設定為國定假日, 出貨 不可以選  </p><p> 今天是 2019/3/24 號星期日 12:05<br>   √ 日曆上 2019/3/25 星期一 出貨 不可以選<br>   √ 日曆上 2019/3/26 星期二 出貨 可以選  </p><p> 今天是 2019/3/23 號星期六 12:05<br>   √ 日曆上 2019/3/25 星期一 出貨 不可以選<br>   √ 日曆上 2019/3/26 星期二 出貨 可以選  </p><p> 今天是 2019/3/22 號星期五 23:05<br>   √ 日曆上 2019/3/25 星期一 出貨 不可以選<br>   √ 日曆上 2019/3/26 星期二 出貨 可以選  </p><p> 今天是 2019/3/21 號星期四 01:30<br>   √ 日曆上 2019/3/21 星期四 出貨 不可以選<br>   √ 日曆上 2019/3/22 星期五 出貨 可以選  </p><p> 今天是 2019/3/22 號星期五 23:05<br>   √ 日曆上 2019/3/25 星期一 出貨 不可以選<br>   √ 日曆上 2019/3/26 星期二 出貨 可以選  </p><p> 今天是 2019/3/19 號星期二 23:05<br>   √ 日曆上 2019/3/21 星期四 出貨 可以選  </p><p> 今天是 2019/3/22 號星期五 12:59<br>   √ 日曆上 2019/3/22 星期五 出貨 不能選,因為現在時間超過 12 點<br>   √ 日曆上 2019/3/25 星期一 出貨 不能選,因為現在時間超過 12 點<br>   √ 日曆上 2019/3/26 星期二 出貨 可以選<br>   √ 日曆上 2019/4/1 星期一 出貨 可以選<br>   √ 日曆上 2019/3/23 星期六 出貨 不能選,因為現在時間超過 12 點  </p><p> 今天是 2019/3/21 號星期四 23:59<br>   √ 日曆上 2019/3/21 星期四 出貨 不能選,因為現在時間超過 12 點  </p><p> 今天是 2019/3/18 號星期一12:00<br>   √ 日曆上 2019/3/18 星期一 出貨 不能選,因為現在是12點<br>   √ 日曆上 2019/3/19 星期二 出貨 不能選,因為現在是12點<br>   √ 日曆上 2019/3/20 星期三 出貨 可以選<br>   √ 日曆上 2019/3/21 星期四 出貨 可以選  </p><p> 今天是 2019/3/18 號星期一10:00<br>   √ 日曆上 2019/3/24 星期日 出貨;不能選,因為週日都不能選<br>   √ 日曆上 2019/3/18 星期一 出貨 不可以選,因為當天不能選<br>   √ 日曆上 2019/3/19 星期二 出貨 可以選<br>   √ 日曆上 2019/3/20 星期三 出貨 可以選  </p></blockquote><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>能堅持「工序」是專業人士的表現，<br>我相信這是一種實務上能保持品質與速度的作法。<br>特別是越大規模越複雜的專案，<br>避免掉進焦油坑的方法就是一開始就別踩下去。  </p><p>寫測試案例也是一種技能，在這次的 Case 中，<br>E2E測試是相對困難的，受限於時間與日期，<br>單元測試可以控制時間反而成了絕妙的工具。</p><p>我一開始寫的測試並不優良，涵蓋的情境不夠(註:這裡並非指程式碼的函蓋率)，<br>但是與 PO 反覆確認之後，調試出的情境終於滿足了需求，<br>看來我還要增進一下寫測試案例的能力。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="http:// https://github.com/ChiragRupani/TSUnitTestsSetup" target="_blank" rel="noopener">TSUnitTestsSetup</a></li><li><a href="https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40" target="_blank" rel="noopener">Writing unit tests in TypeScript</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;難得有機會寫前端的東西&lt;/li&gt;
+&lt;li&gt;其實只有寫 JavaScript&lt;/li&gt;
+&lt;li&gt;我要用 TypeS
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://blog.marsen.me/tags/TypeScript/"/>
+    
+      <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="Node.js" scheme="https://blog.marsen.me/tags/Node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔</title>
@@ -44,11 +76,11 @@
   </entry>
   
   <entry>
-    <title>[實作筆記] 好用的線上工具</title>
+    <title>[筆記] 好用的線上工具</title>
     <link href="https://blog.marsen.me/2019/04/11/2019/tool_sites/"/>
     <id>https://blog.marsen.me/2019/04/11/2019/tool_sites/</id>
     <published>2019-04-11T03:16:21.000Z</published>
-    <updated>2019-04-12T09:12:01.368Z</updated>
+    <updated>2019-05-16T03:04:02.637Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Net-Config-Transformation-Online"><a href="#Net-Config-Transformation-Online" class="headerlink" title=".Net Config Transformation Online"></a>.Net Config Transformation Online</h2><p><a href="https://webconfigtransformationtester.apphb.com/" target="_blank" rel="noopener">Web.config Transformation Tester</a></p><h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="JSON-C-Class"><a href="#JSON-C-Class" class="headerlink" title="JSON C# Class"></a>JSON C# Class</h3><ul><li><a href="http://json2csharp.com/" target="_blank" rel="noopener">json2csharp - generate c# classes from json</a></li></ul><h3 id="JSON-Query-Online"><a href="#JSON-Query-Online" class="headerlink" title="JSON Query Online"></a>JSON Query Online</h3><ul><li><a href="http://www.jsonquerytool.com/" target="_blank" rel="noopener">Home - Online JSON Query Tester</a></li></ul><h3 id="JSON-Format"><a href="#JSON-Format" class="headerlink" title="JSON Format"></a>JSON Format</h3><ul><li><a href="https://jsonformatter.curiousconcept.com/" target="_blank" rel="noopener">JSON Formatter &amp; Validator</a></li><li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a></li></ul><h2 id="SQL-Format"><a href="#SQL-Format" class="headerlink" title="SQL Format"></a>SQL Format</h2><p><a href="https://sqlformat.org/" target="_blank" rel="noopener">Format SQL Statements Online - sqlformat.org</a></p><p>(fin)</p>]]></content>
     
@@ -110,9 +142,9 @@
     </summary>
     
     
-      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
-    
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
   </entry>
   
@@ -135,9 +167,9 @@
     </summary>
     
     
-      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
-    
       <category term="PowerShell" scheme="https://blog.marsen.me/tags/PowerShell/"/>
+    
+      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
     
   </entry>
   
@@ -161,13 +193,13 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
-      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
-    
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
   </entry>
   
@@ -190,11 +222,11 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="Vim" scheme="https://blog.marsen.me/tags/Vim/"/>
     
@@ -219,13 +251,13 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
-      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
-    
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
   </entry>
   
@@ -496,31 +528,6 @@
       
       
         &lt;h4 id=&quot;工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot;&gt;&lt;a href=&quot;#工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot; class=&quot;headerlink&quot; title=&quot;工程人員一定要分析後才能投點嗎 ?(有關 Plannin
-      
-    
-    </summary>
-    
-    
-      <category term="Scrum" scheme="https://blog.marsen.me/tags/Scrum/"/>
-    
-      <category term="Agile" scheme="https://blog.marsen.me/tags/Agile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[N社筆記]敏捷路上跌倒站起來 2018/10 月到 11 月</title>
-    <link href="https://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/"/>
-    <id>https://blog.marsen.me/2018/11/17/2018/csm/n_company_log_201810/</id>
-    <published>2018-11-17T06:05:08.000Z</published>
-    <updated>2018-11-28T06:05:52.332Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="2018-11-16"><a href="#2018-11-16" class="headerlink" title="2018/11/16"></a>2018/11/16</h2><h3 id="Bussiness-Feedback"><a href="#Bussiness-Feedback" class="headerlink" title="Bussiness Feedback"></a>Bussiness Feedback</h3><ul><li>T國全○國，農曆年前啟動</li><li>M國的， Mxxxx 有 SKA 等級</li><li>H市場，百家等待中<br>原訂 </li><li>KA MIRGRATION</li><li>KA 12月上線<br>順序可能會再調整…，<br>市場有反應是好的，<br>只是我們還沒有產品準備好（或是跨一國要準備好久好久…）</li></ul><h3 id="團隊"><a href="#團隊" class="headerlink" title="團隊"></a>團隊</h3><ul><li>抽一個 Scrum Team 的 Members 組成新的 Team ？</li><li>又變成 Project Team ，呂毅:「如果只有兩個月你還會關心團隊的成長嗎 ？」</li></ul><h2 id="2018-11-12"><a href="#2018-11-12" class="headerlink" title="2018/11/12"></a>2018/11/12</h2><ul><li>線上緊急狀況，周會取消、例會取消，如果一個會議可以隨時被取消，是否有必要開？</li><li>真實狀況是每個人都找到一個位置，讓事情發生;務實比「跑敏捷」重要</li><li>不儀式化，人性會躲避 ; 儀式化卻會導致效率低下(習慣成自然 or 麻痺)</li></ul><h2 id="2018-11-10"><a href="#2018-11-10" class="headerlink" title="2018/11/10"></a>2018/11/10</h2><blockquote><p>情境<br>團隊反應沒有時間 Code Review / 寫 Unit Test，<br>Pair Programming 隨你便，上級的反應說「有，最好」結果，「都沒有」　　</p><ul><li>要求很強的個體，卻沒有任何練習;這樣的團隊會強嗎 ？</li><li>擁有很強的個體，卻沒有任何協作;這樣的團隊會強嗎 ？</li></ul></blockquote><h2 id="2018-11-09"><a href="#2018-11-09" class="headerlink" title="2018/11/09"></a>2018/11/09</h2><h3 id="陶侃跟西西弗斯，兩個類似的故事"><a href="#陶侃跟西西弗斯，兩個類似的故事" class="headerlink" title="陶侃跟西西弗斯，兩個類似的故事"></a>陶侃跟西西弗斯，兩個類似的故事</h3><p>心態致勝? 還是自以為勝 ？</p><h2 id="2018-11-06"><a href="#2018-11-06" class="headerlink" title="2018/11/06"></a>2018/11/06</h2><h3 id="沒有創業精神錯了嗎"><a href="#沒有創業精神錯了嗎" class="headerlink" title="沒有創業精神錯了嗎?"></a>沒有創業精神錯了嗎?</h3><ul><li><p>成就感從何而來 ?</p><ul><li>把事情完成</li><li>把品質作好</li><li>作得快</li></ul></li><li><p>受雇階極一定要被激勵才能作好事嗎 ?</p></li><li>雇主與雇員的本質上的不同<ul><li>風險</li><li>獲利</li></ul></li></ul><h2 id="2018-11-02"><a href="#2018-11-02" class="headerlink" title="2018/11/02"></a>2018/11/02</h2><h3 id="時間"><a href="#時間" class="headerlink" title="時間"></a>時間</h3><ul><li>早上生病 約10:30到 </li><li>站立 到 10:50</li><li>1-1  到  12:00</li><li>午休 到 13:00</li><li>.Net Core 到 15:30</li><li>看 PR 到 16:12</li><li>開發 到 17:26</li><li>HOTFIX 討論 17:45</li><li>開發 到 19:50</li></ul><p>當會議吃掉了所有的時間…</p><h3 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h3><p>你很重要，Why ？ What ？ How ？　或只是暗示你 TTL(Time to leave)</p><h2 id="2018-11-01"><a href="#2018-11-01" class="headerlink" title="2018/11/01"></a>2018/11/01</h2><p>planning for <del>all day</del> half day</p><h3 id="不透明"><a href="#不透明" class="headerlink" title="不透明"></a>不透明</h3><ul><li>Item 拆成 Task 的過程中釐清，可能會因細節不清、沒有權限、左右兩難、等待資源、等待許可等…導致進度緩慢耗時</li><li>為了對焦開了會前會，但不包含 A Team PO，結果 Planning 後半 A Team 又增加許多項目反而失焦</li><li>很簡單的事，因為複雜的系統變得沒有勇氣(信心)去執行</li></ul><h3 id="如何測量"><a href="#如何測量" class="headerlink" title="如何測量 ?"></a>如何測量 ?</h3><h3 id="本日佳句"><a href="#本日佳句" class="headerlink" title="本日佳句"></a>本日佳句</h3><ul><li>這個不能作，不然會被罵喔</li></ul><h3 id="Action-Item"><a href="#Action-Item" class="headerlink" title="Action Item"></a>Action Item</h3><ul><li>開發祝武：<a href="http://www.inpad.com.tw/goods.php?act=view&amp;no=10441" target="_blank" rel="noopener">Filco Majestouch MINILA Air 67鍵無線藍芽機械式鍵盤|紅軸英文</a></li></ul><p>CSM 心得第二篇寫到 Sprint Backlog , 越寫看到越多實踐「怪怪的」地方…</p><h2 id="2018-10-31"><a href="#2018-10-31" class="headerlink" title="2018/10/31"></a>2018/10/31</h2><h3 id="Blue-Demo-Day"><a href="#Blue-Demo-Day" class="headerlink" title="Blue Demo Day"></a>Blue Demo Day</h3><ul><li>Demo 失敗</li><li>檢討</li></ul><h3 id="不透明-1"><a href="#不透明-1" class="headerlink" title="不透明"></a>不透明</h3><ul><li>分了 A Team / B Team ，Items 有 Dependcy ，導致工作互卡。</li><li>跨國團隊很多項目需要台灣 Tech Leader 決策</li></ul><p>Team sol:</p><ul><li>中間插入一個 Sync<ul><li>實務上跑起來不 Work ？</li></ul></li><li>大家一起站立<ul><li>→ 很花時間 </li></ul></li><li>由某一個 Team 全部領走整群的 Item<ul><li>→ 主流程難以被切分</li></ul></li><li>除了站立之外，團隊也要時時 Sync<ul><li>→ 當 member focus on Item 時，對其它人尋求協助的反應可能會變慢。</li></ul></li></ul><h3 id="Action-Item-1"><a href="#Action-Item-1" class="headerlink" title="Action Item"></a>Action Item</h3><ul><li><a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/" target="_blank" rel="noopener">Custom domains on GitHub Pages gain support for HTTPS</a></li></ul><h2 id="2018-10-30"><a href="#2018-10-30" class="headerlink" title="2018/10/30"></a>2018/10/30</h2><blockquote><p>為什麼無法跟團隊成員說明自已的想法，原因還是出自於不信任？<br>每個人（含主管）在面對什麼？　或許知道了也幫不上… </p></blockquote><blockquote><p>還有「主管」這種思維，不是一種文化不敏捷的味道；<br>表示著你還需要被管理，才知道該作什麼。</p></blockquote><h3 id="使命與遠景"><a href="#使命與遠景" class="headerlink" title="使命與遠景"></a>使命與遠景</h3><ul><li><del>8 億</del> : 開發者會覺得與我何干。所以我們調整成…○○？  </li><li>○○ : 開發者會覺得?  <ul><li>A. 太棒了，激勵人心  </li><li>B. 干我屁事  </li><li>C. 聽起來很棒，可是…  </li><li>D. 蛤？那是什麼，可以吃嗎？  <h4 id="抽樣調查"><a href="#抽樣調查" class="headerlink" title="抽樣調查"></a>抽樣調查</h4>L●●:整合線上線下讓客戶更容易銷售產品，消費者有更好體驗<br>A●●等3人:賺錢 x3<br>T●●:作出讓客戶達到業績的產品<br>A●●:改善現有線上電商的使用環境與體驗<br>R●●:開發良好的軟體改善客戶與使用者的體驗  </li></ul></li></ul><blockquote><p>小結:第一時間大部份是賺錢，或是不知道。少數第一時間說出來的，<br>又各不相同，每個人的目標不同，真的能有「使命感」？真的會有「成就感」？<br>沒有共識，何來透明？</p></blockquote><h3 id="OKR-與-DoD"><a href="#OKR-與-DoD" class="headerlink" title="OKR 與 DoD"></a>OKR 與 DoD</h3><ul><li>OKR 適合用在 Sprint 嗎 ？ </li><li>每個 Sprint 為了討論 KR 而放棄投點值得嗎 ？</li><li>KR 與 DoD 是否能結合 ？</li></ul><p>（fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;2018-11-16&quot;&gt;&lt;a href=&quot;#2018-11-16&quot; class=&quot;headerlink&quot; title=&quot;2018/11/16&quot;&gt;&lt;/a&gt;2018/11/16&lt;/h2&gt;&lt;h3 id=&quot;Bussiness-Feedback&quot;&gt;&lt;a href=&quot;#Bus
       
     
     </summary>

@@ -5,7 +5,7 @@ tag:
   - Expressjs
   - TypeScript
   - Gulpjs
-  - Nodejs
+  - Node.js
 ---
 ## 原因與目的
 - 目前我使用 express 作為網站開發
