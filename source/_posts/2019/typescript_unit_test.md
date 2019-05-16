@@ -234,6 +234,8 @@ E2E測試是相對困難的，受限於時間與日期，
 但是與 PO 反覆確認之後，調試出的情境終於滿足了需求，  
 看來我還要增進一下寫測試案例的能力。
 
+最後，下次再試試用 `Jest` 寫寫看。
+
 ## 參考
  - [TSUnitTestsSetup](http:// https://github.com/ChiragRupani/TSUnitTestsSetup)
  - [Writing unit tests in TypeScript](https://medium.com/@RupaniChirag/writing-unit-tests-in-typescript-d4719b8a0a40)
