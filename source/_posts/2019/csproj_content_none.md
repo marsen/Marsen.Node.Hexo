@@ -52,7 +52,7 @@ cd C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0
 執行建置
 
 ```sh
-λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=true;Pu blishProfile=Mall.QA.pubxml;MvcBuildViews=false;AutoVersion=True 
+λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=true;PublishProfile=Mall.QA.pubxml;MvcBuildViews=false;AutoVersion=True 
 ```
 
 執行後輸出的位置需要看你的部署檔 `*.pubxml` 如下範例  
