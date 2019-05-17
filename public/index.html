@@ -131,7 +131,7 @@ ga('send', 'pageview');
 </li>
 <li>啟動掃瞄，以 .Net Core 為例</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" begin /k:"marsen_&#123;project name&#125;" /o:&#123;group name&#125; /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"marsen_&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
 <ol>
@@ -143,7 +143,7 @@ ga('send', 'pageview');
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" end /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner for MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>
 <p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
@@ -158,7 +158,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjvroixmq004c4wvxtyxa000e" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjvru6vbq0077bwvxn4jt3swx" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -253,7 +253,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjvroixn3004w4wvxsqwnev0q" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjvru6vbw007gbwvxsq1undbt" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -304,7 +304,7 @@ ga('send', 'pageview');
 <h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>找到你的 MSBuild 版本</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin </span><br></pre></td></tr></table></figure>
 <p>執行建置</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=<span class="literal">true</span>;Pu blishProfile=Mall.QA.pubxml;MvcBuildViews=<span class="literal">false</span>;AutoVersion=True</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=<span class="literal">true</span>;PublishProfile=Mall.QA.pubxml;MvcBuildViews=<span class="literal">false</span>;AutoVersion=True</span><br></pre></td></tr></table></figure>
 <p>執行後輸出的位置需要看你的部署檔 <code>*.pubxml</code> 如下範例<br>可以在 <code>D:\Archives\QA\IsASolution</code> 找到我的輸出。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">此檔案是由您 Web 專案的發行/封裝處理程序所使用。您可以編輯此 MSBuild 檔案，</span></span><br><span class="line"><span class="comment">以自訂此處理程序的行為。若要深入了解，請造訪 http://go.microsoft.com/fwlink/?LinkID=208121。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Project</span> <span class="attr">ToolsVersion</span>=<span class="string">"4.0"</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/developer/msbuild/2003"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">PropertyGroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">WebPublishMethod</span>&gt;</span>FileSystem<span class="tag">&lt;/<span class="name">WebPublishMethod</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LastUsedBuildConfiguration</span>&gt;</span>QA<span class="tag">&lt;/<span class="name">LastUsedBuildConfiguration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LastUsedPlatform</span>&gt;</span>Any CPU<span class="tag">&lt;/<span class="name">LastUsedPlatform</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">SiteUrlToLaunchAfterPublish</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ExcludeApp_Data</span>&gt;</span>False<span class="tag">&lt;/<span class="name">ExcludeApp_Data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">publishUrl</span>&gt;</span>D:\Archives\QA\IsASolution<span class="tag">&lt;/<span class="name">publishUrl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DeleteExistingFiles</span>&gt;</span>True<span class="tag">&lt;/<span class="name">DeleteExistingFiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PrecompileBeforePublish</span>&gt;</span>True<span class="tag">&lt;/<span class="name">PrecompileBeforePublish</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">EnableUpdateable</span>&gt;</span>True<span class="tag">&lt;/<span class="name">EnableUpdateable</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DebugSymbols</span>&gt;</span>False<span class="tag">&lt;/<span class="name">DebugSymbols</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">WDPMergeOption</span>&gt;</span>DonotMerge<span class="tag">&lt;/<span class="name">WDPMergeOption</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">PropertyGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Project</span></span></span><br></pre></td></tr></table></figure>
 <p>(fin)</p>
@@ -312,7 +312,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjvroixmz004m4wvx0hxvpdje" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjvru6vc5007sbwvxc7gxk26t" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -365,7 +365,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjvroixmw004j4wvxvz04yhn8" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjvru6vby007ibwvxx5lspgq9" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/11/2019/tool_sites/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -501,7 +501,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjvroixmt004e4wvxdyh0fto8" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjvru6vbn0074bwvx4xg6mwho" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -642,7 +642,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjvroixrm00ci4wvxyd0hu5mz" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjvru6vf300btbwvxohr0xkya" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -691,7 +691,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjvroixmv004h4wvx4q54ni60" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjvru6vbj006xbwvx5luh6jgv" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -792,7 +792,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjvroixn2004r4wvxbcaselpk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjvru6vbp0076bwvx7icugyk6" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -895,7 +895,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjvroixmr004d4wvxpoewwsd0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjvru6vbm0072bwvxg18u05r5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -974,7 +974,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjvroixmn00474wvx94q4w95v" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjvru6vbk006zbwvx982wbfrq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
       
