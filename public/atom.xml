@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-05-16T05:48:24.277Z</updated>
+  <updated>2019-05-17T06:02:55.822Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記] 讓 SonarQube 檢查你的代碼 </title>
+    <link href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/"/>
+    <id>https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/</id>
+    <published>2019-05-16T09:13:18.000Z</published>
+    <updated>2019-05-17T06:02:55.822Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ol><li>SonarQube 是一個開源的代碼品質(Quality)管理系統</li><li>我目前的公司 N 社是自架 SonarQube Server 再與 CI 結合</li><li>能夠透過工具讓代碼品質提昇，我訂定的目標如下<ul><li>免費</li><li>能夠與 CI 結合，持續檢查代碼品質</li><li>與 Side Project 結合</li></ul></li></ol><h2 id="應該要知道的事"><a href="#應該要知道的事" class="headerlink" title="應該要知道的事"></a>應該要知道的事</h2><ol><li>掃瞄環境為 Windows</li><li>掃瞄專案為 .Net Core 2.2 版</li><li>使用 PowerShell 執行 Command</li><li>也許不需要知道</li></ol><h2 id="實作筆記"><a href="#實作筆記" class="headerlink" title="實作筆記"></a>實作筆記</h2><ol><li>申請<a href="https://sonarcloud.io" target="_blank" rel="noopener">SonarCloud</a>帳號，我直接使用 Github  <ul><li>需要允許 SonarCloud 存取 Github 的專案 Repo</li><li>建立一組 Token, 用來作身份驗証，可以重複使用請勿外流<ul><li>如果要刪除 Token 請至 My Account &gt; Security 找到並 Revoke</li></ul></li><li>下載 SonarQube 執行檔，請選擇你的語言</li></ul></li><li>執行掃瞄前的準備作業<ul><li>設定 Path (實務上我沒有設定)</li><li>切換到專案目錄底下</li></ul></li><li>啟動掃瞄，以 .Net Core 為例</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"marsen_&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure><p>輸出結果</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure><ol start="4"><li>建置專案</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet build</span><br></pre></td></tr></table></figure><p>輸出結果</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core</span><br><span class="line">Copyright (C) Microsoft Corporation. All rights reserved.</span><br><span class="line">中略...</span><br><span class="line">Build succeeded.</span><br></pre></td></tr></table></figure><ol start="5"><li>上傳結果</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure><p>輸出結果</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner for MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/" target="_blank" rel="noopener">Static Code Analysis of .NET Core Projects with SonarCloud</a></li><li><a href="https://zh.wikipedia.org/wiki/SonarQube" target="_blank" rel="noopener">SonarQube - 维基百科，自由的百科全书</a></li><li><a href="https://www.sonarqube.org/" target="_blank" rel="noopener">Continuous Inspection | SonarQube</a></li><li>(fin)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;SonarQube 是一個開源的代碼品質(Quality)管理系統&lt;/li&gt;
+&lt;li&gt;我目前的公司 N 社是自架
+      
+    
+    </summary>
+    
+    
+      <category term="Quality" scheme="https://blog.marsen.me/tags/Quality/"/>
+    
+      <category term=".Net Core" scheme="https://blog.marsen.me/tags/Net-Core/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] Unit Testing With TypeScript</title>
@@ -511,31 +538,6 @@
     
     
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[N社筆記]敏捷路上跌倒站起來 2018/11/18</title>
-    <link href="https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/"/>
-    <id>https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/</id>
-    <published>2018-11-18T03:42:21.000Z</published>
-    <updated>2018-12-30T07:15:45.122Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="工程人員一定要分析後才能投點嗎-有關-Planning-會議很長"><a href="#工程人員一定要分析後才能投點嗎-有關-Planning-會議很長" class="headerlink" title="工程人員一定要分析後才能投點嗎 ?(有關 Planning 會議很長)"></a>工程人員一定要分析後才能投點嗎 ?(有關 Planning 會議很長)</h4><blockquote><p>記得設定 Timebox。<br>Scurm 是經驗法則，可以拿已經作過投點的 Item 作為比較基準。<br>如果有未知與風險，當下不要過度鑽入細節。<br>你可以</p><ul><li>開一個小的 Task 用來作調研與評估</li><li>開一個很大 Task 之後再用來 BreakDown</li><li>如果它是高價值又高風險，就優先作它吧</li></ul></blockquote><h4 id="如何加速會議進行"><a href="#如何加速會議進行" class="headerlink" title="如何加速會議進行?"></a>如何加速會議進行?</h4><blockquote><p>決議與會議之外。先讓人看見問題與目標，與可能的方向。<br>SM 應該更關注決定的過程，而非決定的本身。</p></blockquote><h4 id="焦點討論法-如何問問題"><a href="#焦點討論法-如何問問題" class="headerlink" title="焦點討論法(如何問問題)"></a>焦點討論法(如何問問題)</h4><p>O↓ 事實(每個人看到的都不一樣)<br>↑R 感受(相同的事實不同的人不同的感受) → 往複 OR ，取得共識(有共識才透明)<br>Interpretive 意義與價值觀<br>Decisional 決定</p><h4 id="Bussiness-DevOps"><a href="#Bussiness-DevOps" class="headerlink" title="Bussiness DevOps"></a>Bussiness DevOps</h4><p><img src="https://imgur.com/x0imNlo.jpg" alt=""><br><img src="https://i.imgur.com/A04B5uG.jpg" alt=""></p><h4 id="迭代與增量真的有幫助嗎-Agile-之前我們怎麼工作的-Scrum-真的好嗎"><a href="#迭代與增量真的有幫助嗎-Agile-之前我們怎麼工作的-Scrum-真的好嗎" class="headerlink" title="迭代與增量真的有幫助嗎 ? (Agile 之前我們怎麼工作的?/Scrum 真的好嗎 ?)"></a>迭代與增量真的有幫助嗎 ? (Agile 之前我們怎麼工作的?/Scrum 真的好嗎 ?)</h4><p>看情境</p><blockquote><p>Agile 適合應付變化，而目前的世界變化很大。<br>不要為了 Scurm 而 Scurm 。<br>那樣會變成盲從，看見你的需要，務實的變革。</p></blockquote><h4 id="用一個問題打敗一個問題-Ruddy老師引導法"><a href="#用一個問題打敗一個問題-Ruddy老師引導法" class="headerlink" title="用一個問題打敗一個問題(Ruddy老師引導法)"></a>用一個問題打敗一個問題(Ruddy老師引導法)</h4><p>找到核心的問題，然後問 「怎麼作 ?」<br>學員回答後，老師常常會說「這是一個方法」，然後給予回饋。</p><blockquote><p>這句話的潛台詞是「還有其它的方法」。</p></blockquote><h4 id="團隊成員恐懼端到端的開發-新手SM與新手團隊"><a href="#團隊成員恐懼端到端的開發-新手SM與新手團隊" class="headerlink" title="團隊成員恐懼端到端的開發(新手SM與新手團隊)"></a>團隊成員恐懼端到端的開發(新手SM與新手團隊)</h4><ul><li>讓 1 個 Sprint 先完成 1個最高優先級的Item (初期導入 Scurm 怎麼作?)</li></ul><blockquote><p>Scurm 對團隊的要求其實蠻高的，<br>但是我們不需要端到端的工程師，而是團隊。<br>巴士因子可以是個判斷指標。<br>另外限制理論[求補充]告訴我們瓶頸會跑來跑去，所以要持續觀注與改善。</p></blockquote><h4 id="團隊估點從-100-→-200-Data-Team-從沒有信心-Commit-到-…"><a href="#團隊估點從-100-→-200-Data-Team-從沒有信心-Commit-到-…" class="headerlink" title="團隊估點從 100 → 200 (Data Team 從沒有信心 Commit 到 $#@…)"></a>團隊估點從 100 → 200 (Data Team 從沒有信心 Commit 到 $#@…)</h4><blockquote><p>這個點數的增長不合理，而且還是以時數點數，<br>沒有任何東西可以讓一天變成 48 小時(喔…有人說，加班可以讓8小時變16小時)<br>持續觀注，如果失敗了就讓它失敗吧…<br>但是要失敗的有意義。</p></blockquote><h5 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h5><p>11/23 團隊作的工作量實際上達到 254/3xx (Commit 3xx，完成254。)，<br>sprint 是成功的，但是 Velocity 是失準的。</p><blockquote><p>小心得: </p><ol><li>所謂的 Commit 如果不是對自已 Commit 起不了激勵作用，<br>如果 Team 與 PO 不認為「我們是一個Team」，而還是分 PMO 與 R&amp;D<br>那麼 Commit 就會變成畫押背鍋的儀式。</li><li>氣象報告失準怎麼辦，颱風沒來大家都開心嗎？(從 100→254，是效率大爆發，還是浮報點數了？)</li></ol></blockquote><h4 id="Scrum-的神奇魔力"><a href="#Scrum-的神奇魔力" class="headerlink" title="Scrum 的神奇魔力"></a>Scrum 的神奇魔力</h4><p><img src="https://i.imgur.com/T3BV4F3.png" alt=""></p><h4 id="當老闆就是-PO-PO-與-Scrum-Master-出現了階級關係"><a href="#當老闆就是-PO-PO-與-Scrum-Master-出現了階級關係" class="headerlink" title="當老闆就是 PO (PO 與 Scrum Master 出現了階級關係)"></a>當老闆就是 PO (PO 與 Scrum Master 出現了階級關係)</h4><ul><li>找一個小 PO (作 PO 真正該作的事)</li></ul><blockquote><p>正視真正的問題是「你沒有 PO」</p></blockquote><h4 id="當-Team-在兩個作法兩難的時候"><a href="#當-Team-在兩個作法兩難的時候" class="headerlink" title="當 Team 在兩個作法兩難的時候"></a>當 Team 在兩個作法兩難的時候</h4><ul><li>作一個 Check Point，保留可以回來重新審視的機會</li></ul><blockquote><p>現實中有遇到類似的狀況，<br>執行的當下會列出所有的優缺點，再作選擇。<br>作完之後問自已，再作一次你會怎麼選擇 ?</p></blockquote><h4 id="成員本來會多作優化，跑-Scurm-之後沒在-Task-之上的事不作了。ex-重構、優化…"><a href="#成員本來會多作優化，跑-Scurm-之後沒在-Task-之上的事不作了。ex-重構、優化…" class="headerlink" title="成員本來會多作優化，跑 Scurm 之後沒在 Task 之上的事不作了。ex:重構、優化…)"></a>成員本來會多作優化，跑 Scurm 之後沒在 Task 之上的事不作了。ex:重構、優化…)</h4><blockquote><p>在 DoD 應該可以解決這個問題，如果現況不會有問題，為什麼要作?<br>先作 Task 有列出來東西我覺得基本上是對的。<br>SM 的問題是「認為該作，但是沒有技術 Know How 所以不知道該列什麼?」<br>那還沒有跑 Scrum 前如何評量這個項目的效果呢?<br>至少在 Scrum 中我認為可以透過 Velocity 作為指標。<br>也可以透過 DoD 決定品質的程度(ex:)。<br>另外，重構不是重作，<br>重構應該是時時發生的，寫測試可以讓這件事被量化，<br>難以測試的代碼本身就有一定的壞味道(工程實踐與遇到的困難就以後再寫了…)。</p></blockquote><h4 id="Team-不該-Challenge-Item-Value-嗎-這樣跟以前需求來就作有什麼不同"><a href="#Team-不該-Challenge-Item-Value-嗎-這樣跟以前需求來就作有什麼不同" class="headerlink" title="Team 不該 Challenge Item Value 嗎 ?(這樣跟以前需求來就作有什麼不同?)"></a>Team 不該 Challenge Item Value 嗎 ?(這樣跟以前需求來就作有什麼不同?)</h4><blockquote><p>在 Scrum 中,<br>PO 觀注 Why ,觀注產品價值 ,觀注市場與策略<br>Team 可以決定怎麼作，與 PO 討論理解為什麼要這麼作，<br>並不是所謂的「需求來就作」，而把 PMO 的角色拿掉，<br>是為了減少隔閤，讓團隊更接近商務端。<br>聽起來這個情境，Team 與 PO 仍有抗拒心理…</p></blockquote><h4 id="身兼開發的-Scrum-Master"><a href="#身兼開發的-Scrum-Master" class="headerlink" title="身兼開發的 Scrum Master"></a>身兼開發的 Scrum Master</h4><p>Team(1+1+1+1…) x SM (0.9 or 1.1) = 生產力<br>讓 SM 成為乘數，而不要成為加數</p><blockquote><p>小地雷:如果乘數小於1(如何評量SM指數?)</p></blockquote><h4 id="業務單位的務實"><a href="#業務單位的務實" class="headerlink" title="業務單位的務實"></a>業務單位的務實</h4><blockquote><p>業務/老闆會說，我才不管什麼開發方法，<br>作出來就好了(黑貓白貓能抓老鼠就是好貓…)<br>很務實，但是很傷害團隊…，不要有機會讓團隊聽到這種話</p></blockquote><h4 id="結束就結束了。"><a href="#結束就結束了。" class="headerlink" title="結束就結束了。"></a>結束就結束了。</h4><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://medium.com/terryisbloggingonagile/%E5%BF%83%E5%BE%97-scrummaster%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-3ce6f7c8c6" target="_blank" rel="noopener">[心得] ScrumMaster自我突破訓練營</a></li><li><a href="https://medium.com/@imfufu/scrummaster-%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-in-91app-scrummaster%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93-678f0774d967" target="_blank" rel="noopener">ScrumMaster 自我突破訓練營 in 91APP ：ScrumMaster的生存之道</a></li><li><a href="https://drive.google.com/file/d/1CmJJGP7dpnSUzUP3ZrA8nNO1a6aKxM0Z/view?usp=sharing" target="_blank" rel="noopener">ORID簡報- By 茶米</a></li><li><a href="https://medium.com/@linchi/scrum-master%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-9846fa255a27" target="_blank" rel="noopener">Scrum Master自我突破訓練營 — 心得分享</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot;&gt;&lt;a href=&quot;#工程人員一定要分析後才能投點嗎-有關-Planning-會議很長&quot; class=&quot;headerlink&quot; title=&quot;工程人員一定要分析後才能投點嗎 ?(有關 Plannin
-      
-    
-    </summary>
-    
-    
-      <category term="Scrum" scheme="https://blog.marsen.me/tags/Scrum/"/>
-    
-      <category term="Agile" scheme="https://blog.marsen.me/tags/Agile/"/>
     
   </entry>
   
