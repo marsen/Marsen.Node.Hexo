@@ -2,9 +2,7 @@
 title: "[實作筆記] 讓 SonarQube 檢查你的代碼 "
 date: 2019/05/16 17:13:18
 tag:
-    - Quality
     - .Net Core
-    - 
 ---
 
 ## 前情提要
@@ -26,11 +24,14 @@ tag:
    -  需要允許 SonarCloud 存取 Github 的專案 Repo
    -  建立一組 Token, 用來作身份驗証，可以重複使用請勿外流
       -  如果要刪除 Token 請至 My Account > Security 找到並 Revoke
+        ![建立 token](/images/2019/5/sonarcloud_gen.jpg)  
+        ![建立 token2](/images/2019/5/sonarcloud_gentoken.jpg)  
    -  下載 SonarQube 執行檔，請選擇你的語言
-2. 執行掃瞄前的準備作業
+        ![執行命令](/images/2019/5/sonarcloud_command.jpg)  
+1. 執行掃瞄前的準備作業
    - 設定 Path (實務上我沒有設定)
    - 切換到專案目錄底下
-3. 啟動掃瞄，以 .Net Core 為例
+2. 啟動掃瞄，以 .Net Core 為例
 
 ```shell
 > dotnet "{path of sonar scanner}\SonarScanner.MSBuild.dll" begin /k:"marsen_{project name}" /o:{group name} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="{your token}"
@@ -45,7 +46,7 @@ Pre-processing started.
 16:40:31.855  Pre-processing succeeded.
 ```
 
-4. 建置專案
+1. 建置專案
 
 ```shell
 dotnet build
@@ -60,7 +61,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 Build succeeded.
 ```
 
-5. 上傳結果
+1. 上傳結果
 
 ```shell
 > dotnet "{path of sonar scanner}\SonarScanner.MSBuild.dll" end /d:sonar.login="{your token}"
@@ -82,6 +83,14 @@ INFO: Final Memory: 24M/72M
 INFO: ------------------------------------------------------------------------
 The SonarQube Scanner has finished
 ```
+
+最後到 SonarCloud 的網站上就可以看到報告結果，  
+下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI, 
+也有相同的文件與資源，我會試試看或是使用 Jenkins,
+如果有機會能更進一步，我想結合 [OpenShift](https://www.openshift.com/) ,
+讓部署的過程中結合代碼品質檢查。
+
+![結果上傳](/images/2019/5/sonarcloud_result.jpg)
 
 ## 參考
 - [Static Code Analysis of .NET Core Projects with SonarCloud](https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/)
