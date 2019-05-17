@@ -37,19 +37,19 @@ $ sudo apt-get install \
 
 加入 Docker 官方 GPG KEY
 
-```
+```shell
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
 然後可以驗証一下
 
-```
+```shell
 $ sudo apt-key fingerprint 0EBFCD88
 ```
 
 加入 Docker 的 apt-repository
 
-```
+```shell
 $ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
@@ -58,25 +58,25 @@ $ sudo add-apt-repository \
 
 再次更新 apt-get
 
-```
+```shell
 $ sudo apt-get update
 ```
 
 安裝 Docker CE
 
-```
+```shell
 $ sudo apt-get install docker-ce
 ```
 
 3. Run Docker 
 
-```
+```shell
 $ sudo docker container run hello-world
 ```
 
 我都會失敗如下
 
-```
+```shell
 docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 See 'docker run --help'.
 ```
@@ -91,13 +91,13 @@ See 'docker run --help'.
 
 指定 Docker Host 在路徑
 
-```
+```shell
 $ docker -H localhost:2375 images
 ```
 
 如果不想每次指定的話…請參考以下命令
 
-```
+```shell
 $ export DOCKER_HOST=localhost:2375
 ```
 

@@ -11,7 +11,7 @@ DBCC CHECKIDENT (yourtable)
 
 Example
 
-```
+```sql
 USE AdventureWorks2012;  
 GO  
 DBCC CHECKIDENT ('Person.AddressType');  
@@ -22,7 +22,7 @@ GO  DBCC CHECKIDENT (memberAccount)
 
 DBCC CHECKIDENT (yourtable, reseed, new index)
 
-```
+```sql
 USE AdventureWorks2012;  
 GO  
 DBCC CHECKIDENT ('Person.AddressType', RESEED, 10);  
