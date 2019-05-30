@@ -34,7 +34,7 @@ tag:
 2. 啟動掃瞄，以 .Net Core 為例
 
 ```shell
-> dotnet "{path of sonar scanner}\SonarScanner.MSBuild.dll" begin /k:"marsen_{project name}" /o:{group name} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="{your token}"
+> dotnet "{path of sonar scanner}\SonarScanner.MSBuild.dll" begin /k:"{project name}" /o:{group name} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="{your token}"
 ```
 
 輸出結果

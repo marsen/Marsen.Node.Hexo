@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2019/5/sonarcloud_gentoken.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2019/5/sonarcloud_command.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2019/5/sonarcloud_result.jpg">
-<meta property="og:updated_time" content="2019-05-17T08:35:52.907Z">
+<meta property="og:updated_time" content="2019-05-30T19:18:11.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記] 讓 SonarQube 檢查你的代碼 ">
 <meta name="twitter:description" content="前情提要 SonarQube 是一個開源的代碼品質(Quality)管理系統 我目前的公司 N 社是自架 SonarQube Server 再與 CI 結合 能夠透過工具讓代碼品質提昇，我訂定的目標如下 免費 能夠與 CI 結合，持續檢查代碼品質 與 Side Project 結合    應該要知道的事 掃瞄環境為 Windows 掃瞄專案為 .Net Core 2.2 版 使用 PowerShe">
@@ -139,7 +139,7 @@ ga('send', 'pageview');
 </li>
 <li>啟動掃瞄，以 .Net Core 為例</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"marsen_&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" begin /k:"&#123;project name&#125;" /o:&#123;group name&#125; /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
 <ol>
@@ -151,7 +151,7 @@ ga('send', 'pageview');
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" end /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner for MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>
 <p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
@@ -166,7 +166,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjvru6vbq0077bwvxn4jt3swx" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjwb0xo5f007bigvxajr3uyqq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/#disqus_thread" class="article-comment-link">留言</a>
       

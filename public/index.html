@@ -131,7 +131,7 @@ ga('send', 'pageview');
 </li>
 <li>啟動掃瞄，以 .Net Core 為例</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"marsen_&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" begin /k:"&#123;project name&#125;" /o:&#123;group name&#125; /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
 <ol>
@@ -143,7 +143,7 @@ ga('send', 'pageview');
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> dotnet "&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll" end /d:sonar.login="&#123;your token&#125;"</span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner for MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>
 <p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
@@ -158,7 +158,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjvru6vbq0077bwvxn4jt3swx" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjwb0xo5f007bigvxajr3uyqq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -253,7 +253,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjvru6vbw007gbwvxsq1undbt" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjwb0xo5s007sigvxtwe3gap1" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -312,7 +312,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjvru6vc5007sbwvxc7gxk26t" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjwb0xo5c0078igvxocknc241" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -359,13 +359,16 @@ ga('send', 'pageview');
 <li><a href="https://jsonformatter.curiousconcept.com/" target="_blank" rel="noopener">JSON Formatter &amp; Validator</a></li>
 <li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a></li>
 </ul>
+<h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><h3 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h3><ul>
+<li><a href="http://www.yamllint.com/" target="_blank" rel="noopener">YAMLlint - The YAML Validator</a></li>
+</ul>
 <h2 id="SQL-Format"><a href="#SQL-Format" class="headerlink" title="SQL Format"></a>SQL Format</h2><p><a href="https://sqlformat.org/" target="_blank" rel="noopener">Format SQL Statements Online - sqlformat.org</a></p>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjvru6vby007ibwvxx5lspgq9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjwb0xo5u007uigvxfhgvkn0g" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/11/2019/tool_sites/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -501,7 +504,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjvru6vbn0074bwvx4xg6mwho" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjwb0xo5l007iigvxhc9mtrpc" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -642,7 +645,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjvru6vf300btbwvxohr0xkya" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjwb0xo8y00bqigvxszm3fsfe" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -691,7 +694,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjvru6vbj006xbwvx5luh6jgv" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjwb0xo5b0076igvx2vexk9vv" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -792,7 +795,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjvru6vbp0076bwvx7icugyk6" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjwb0xo5j007gigvxvs9iynd5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -895,7 +898,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjvru6vbm0072bwvxg18u05r5" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjwb0xo5o007ligvxb09ttbcg" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -974,7 +977,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjvru6vbk006zbwvx982wbfrq" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/" data-id="cjwb0xo580072igvxglahb2s1" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/#disqus_thread" class="article-comment-link">留言</a>
       
