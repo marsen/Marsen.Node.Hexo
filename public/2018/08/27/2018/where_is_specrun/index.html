@@ -5,20 +5,20 @@
   
   <title>[踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI  | Marsen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，在今年與其它專案合併後，測試又從">
+  <meta name="description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，   在今年與其它專案合併後，測">
 <meta name="keywords" content="Unit Testing,Specflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI ">
 <meta property="og:url" content="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/index.html">
 <meta property="og:site_name" content="Marsen">
-<meta property="og:description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，在今年與其它專案合併後，測試又從">
+<meta property="og:description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，   在今年與其它專案合併後，測">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://i.imgur.com/nwl6xFp.jpg">
 <meta property="og:image" content="https://i.imgur.com/EyaFEFI.jpg">
 <meta property="og:updated_time" content="2018-08-27T10:42:52.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI ">
-<meta name="twitter:description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，在今年與其它專案合併後，測試又從">
+<meta name="twitter:description" content="前情提要 專案使用 Specflow 寫 BDD Visual Stuio 找不到測試所以才升級 SpecRun 與 Specflow Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試 SpecRun.Runner 升級(1.2 → 1.8.2)  去年12月跟 Visual Studio 折騰了許久，才讓專案的測試項目重見光明，   在今年與其它專案合併後，測">
 <meta name="twitter:image" content="https://i.imgur.com/nwl6xFp.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen" type="application/atom+xml">
@@ -82,7 +82,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018/where_is_specrun" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018/where_is_specrun" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/27/2018/where_is_specrun/" class="article-date">
   <time datetime="2018-08-27T10:42:16.000Z" itemprop="datePublished">2018-08-27</time>
@@ -110,9 +110,10 @@ ga('send', 'pageview');
 <li>Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試</li>
 <li>SpecRun.Runner 升級(1.2 → 1.8.2)</li>
 </ul>
-<p>去年12月跟 Visual Studio 折騰了許久，才讓專案的<a href="https://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/">測試項目重見光明</a>，<br>在今年與其它專案合併後，測試又從我們團隊的眼前消失了。</p>
-<h2 id="調整項目"><a href="#調整項目" class="headerlink" title="調整項目"></a>調整項目</h2><p>升級 Specflow 與 SpecRun 相關套件<br><img src="https://i.imgur.com/nwl6xFp.jpg" alt=""></p>
-<p>取得 SpecRun 位於專案的 <code>packages</code> 資料夾中。<br><img src="https://i.imgur.com/EyaFEFI.jpg" alt=""></p>
+<p>去年12月跟 Visual Studio 折騰了許久，才讓專案的<a href="https://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/">測試項目重見光明</a>，  
+在今年與其它專案合併後，測試又從我們團隊的眼前消失了。</p>
+<h2 id="調整項目"><a href="#調整項目" class="headerlink" title="調整項目"></a>調整項目</h2><p>升級 Specflow 與 SpecRun 相關套件<br><img src="https://i.imgur.com/nwl6xFp.jpg" alt></p>
+<p>取得 SpecRun 位於專案的 <code>packages</code> 資料夾中。<br><img src="https://i.imgur.com/EyaFEFI.jpg" alt></p>
 <h2 id="設定-CI"><a href="#設定-CI" class="headerlink" title="設定 CI"></a>設定 CI</h2><p>由於 SpecRun 版本不符會導致 CI Job Error , 需要設定以新的 SpecRun 執行 CI</p>
 <blockquote>
 <p>D:\SpecRun.Runner.1.8.2\tools\SpecRun.exe run D:\Project\Core.Test\bin\Debug\Core.Test.dll /baseFolder:Core.Test\bin\Prod /toolIntegration:vs201 0 /reportFile:Core.Test.TestResult.html</p>
@@ -148,7 +149,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/" data-id="cjwb0xo5p007nigvxc2h1w4lr" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/" data-id="cjwpa7kcv0032fkvx2gyvvl35" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -226,7 +227,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

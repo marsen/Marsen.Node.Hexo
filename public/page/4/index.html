@@ -76,7 +76,7 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-2018/LCM_and_GCD" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/LCM_and_GCD" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/18/2018/LCM_and_GCD/" class="article-date">
   <time datetime="2018-09-17T16:36:51.000Z" itemprop="datePublished">2018-09-18</time>
@@ -108,8 +108,7 @@ ga('send', 'pageview');
 <span class="comment"><span class="doctag">///</span>/ LCM</span>
 <span class="keyword">static</span> Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>,<span class="keyword">int</span>&gt; LCM = (numA,numB) =&gt; {
             <span class="keyword">return</span> numA * numB / GCD(numA, numB);
-        } ;    
-</code></pre>
+        } ;    </code></pre>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
 <li><a href="https://www.geeksforgeeks.org/gcd-two-array-numbers/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/gcd-two-array-numbers/</a></li>
 <li><a href="https://www.geeksforgeeks.org/lcm-of-given-array-elements/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/lcm-of-given-array-elements/</a></li>
@@ -119,7 +118,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/" data-id="cjwb0xo4s006ligvxxtk66f9b" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/" data-id="cjwpa7kbv001gfkvxv1y6sapc" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/09/18/2018/LCM_and_GCD/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -133,7 +132,7 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-2018/l10n_i18n" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/l10n_i18n" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/07/2018/l10n_i18n/" class="article-date">
   <time datetime="2018-09-07T03:51:45.000Z" itemprop="datePublished">2018-09-07</time>
@@ -156,8 +155,10 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="I18n-國際化"><a href="#I18n-國際化" class="headerlink" title="I18n 國際化"></a>I18n 國際化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| I | n | t | e | r | n | a | t | i | o | n | a | l | i | z | a | t | i | o | n |</span><br><span class="line">|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|</span><br><span class="line">|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10 |11 |12 |13 |14 |15 |16 |17 |18 |   |</span><br></pre></td></tr></table></figure>
+
 <p><code>Internationalization</code> 因為字首I到字尾N18個英文字  </p>
 <h2 id="L10n-在地化"><a href="#L10n-在地化" class="headerlink" title="L10n 在地化"></a>L10n 在地化</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| L | o | c | a | l | i | z | a | t | i | o | n |</span><br><span class="line">|---|---|---|---|---|---|---|---|---|---|---|---|</span><br><span class="line">|   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10 |   |</span><br></pre></td></tr></table></figure>
+
 <p><code>Localization</code> 因為字首L到字尾N共10個英文字</p>
 <h2 id="國際化-在地化常見問題"><a href="#國際化-在地化常見問題" class="headerlink" title="國際化/在地化常見問題"></a>國際化/在地化常見問題</h2><ul>
 <li>語言<ul>
@@ -166,6 +167,7 @@ ga('send', 'pageview');
 </li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">  [</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"af-ZA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Afrikaans - South Africa"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sq-AL"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Albanian - Albania"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-DZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Algeria"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-BH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Bahrain"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-EG"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Egypt"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-IQ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Iraq"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-JO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Jordan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-KW"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Kuwait"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-LB"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Lebanon"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-LY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Libya"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-MA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Morocco"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-OM"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Oman"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-QA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Qatar"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-SA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Saudi Arabia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-SY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Syria"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-TN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Tunisia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-AE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - United Arab Emirates"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ar-YE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Arabic - Yemen"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"hy-AM"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Armenian - Armenia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Cy-az-AZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Azeri (Cyrillic) - Azerbaijan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Lt-az-AZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Azeri (Latin) - Azerbaijan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"eu-ES"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Basque - Basque"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"be-BY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Belarusian - Belarus"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"bg-BG"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Bulgarian - Bulgaria"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ca-ES"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Catalan - Catalan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-CN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese - China"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-HK"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese - Hong Kong SAR"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-MO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese - Macau SAR"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-SG"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese - Singapore"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-TW"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese - Taiwan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-CHS"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese (Simplified)"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"zh-CHT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Chinese (Traditional)"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"hr-HR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Croatian - Croatia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"cs-CZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Czech - Czech Republic"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"da-DK"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Danish - Denmark"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"div-MV"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Dhivehi - Maldives"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"nl-BE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Dutch - Belgium"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"nl-NL"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Dutch - The Netherlands"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-AU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Australia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-BZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Belize"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-CA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Canada"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-CB"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Caribbean"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-IE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Ireland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-JM"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Jamaica"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-NZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - New Zealand"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-PH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Philippines"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-ZA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - South Africa"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-TT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Trinidad and Tobago"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-GB"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - United Kingdom"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-US"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - United States"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"en-ZW"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"English - Zimbabwe"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"et-EE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Estonian - Estonia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fo-FO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Faroese - Faroe Islands"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fa-IR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Farsi - Iran"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fi-FI"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Finnish - Finland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-BE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - Belgium"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-CA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - Canada"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-FR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - France"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-LU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - Luxembourg"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-MC"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - Monaco"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"fr-CH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"French - Switzerland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"gl-ES"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Galician - Galician"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ka-GE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Georgian - Georgia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"de-AT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"German - Austria"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"de-DE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"German - Germany"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"de-LI"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"German - Liechtenstein"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"de-LU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"German - Luxembourg"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"de-CH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"German - Switzerland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"el-GR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Greek - Greece"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"gu-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Gujarati - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"he-IL"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Hebrew - Israel"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"hi-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Hindi - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"hu-HU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Hungarian - Hungary"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"is-IS"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Icelandic - Iceland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"id-ID"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Indonesian - Indonesia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"it-IT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Italian - Italy"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"it-CH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Italian - Switzerland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ja-JP"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Japanese - Japan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"kn-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Kannada - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"kk-KZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Kazakh - Kazakhstan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"kok-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Konkani - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ko-KR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Korean - Korea"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ky-KZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Kyrgyz - Kazakhstan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"lv-LV"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Latvian - Latvia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"lt-LT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Lithuanian - Lithuania"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"mk-MK"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Macedonian (FYROM)"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ms-BN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Malay - Brunei"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ms-MY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Malay - Malaysia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"mr-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Marathi - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"mn-MN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Mongolian - Mongolia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"nb-NO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Norwegian (Bokmål) - Norway"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"nn-NO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Norwegian (Nynorsk) - Norway"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"pl-PL"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Polish - Poland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"pt-BR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Portuguese - Brazil"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"pt-PT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Portuguese - Portugal"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"pa-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Punjabi - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ro-RO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Romanian - Romania"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ru-RU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Russian - Russia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sa-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Sanskrit - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Cy-sr-SP"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Serbian (Cyrillic) - Serbia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Lt-sr-SP"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Serbian (Latin) - Serbia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sk-SK"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Slovak - Slovakia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sl-SI"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Slovenian - Slovenia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-AR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Argentina"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-BO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Bolivia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-CL"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Chile"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-CO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Colombia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-CR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Costa Rica"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-DO"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Dominican Republic"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-EC"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Ecuador"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-SV"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - El Salvador"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-GT"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Guatemala"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-HN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Honduras"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-MX"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Mexico"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-NI"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Nicaragua"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-PA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Panama"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-PY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Paraguay"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-PE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Peru"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-PR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Puerto Rico"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-ES"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Spain"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-UY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Uruguay"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"es-VE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Spanish - Venezuela"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sw-KE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Swahili - Kenya"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sv-FI"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Swedish - Finland"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"sv-SE"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Swedish - Sweden"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"syr-SY"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Syriac - Syria"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ta-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Tamil - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"tt-RU"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Tatar - Russia"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"te-IN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Telugu - India"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"th-TH"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Thai - Thailand"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"tr-TR"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Turkish - Turkey"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"uk-UA"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Ukrainian - Ukraine"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"ur-PK"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Urdu - Pakistan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Cy-uz-UZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Uzbek (Cyrillic) - Uzbekistan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"Lt-uz-UZ"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Uzbek (Latin) - Uzbekistan"</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">"LangCultureName"</span>: <span class="string">"vi-VN"</span>, <span class="attr">"DisplayName"</span>: <span class="string">"Vietnamese - Vietnam"</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>單位<ul>
 <li>貨幣</li>
@@ -194,7 +196,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/09/07/2018/l10n_i18n/" data-id="cjwb0xo4b0063igvx6tr7t31x" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/09/07/2018/l10n_i18n/" data-id="cjwpa7kcb0027fkvxbs7lxv9w" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/09/07/2018/l10n_i18n/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -206,7 +208,7 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-2018/cache_files_and_redis" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/cache_files_and_redis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/03/2018/cache_files_and_redis/" class="article-date">
   <time datetime="2018-09-03T07:45:42.000Z" itemprop="datePublished">2018-09-03</time>
@@ -289,6 +291,8 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h4 id="Cache-Double-check-Lock-Patter-https-docs-microsoft-com-en-us-previous-versions-office-developer-sharepoint-2010-ee558270-v-3Doffice-14"><a href="#Cache-Double-check-Lock-Patter-https-docs-microsoft-com-en-us-previous-versions-office-developer-sharepoint-2010-ee558270-v-3Doffice-14" class="headerlink" title="[Cache Double check Lock Patter(https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)"></a>[Cache Double check Lock Patter(<a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)</a></h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">object</span> _lock =  <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CacheData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   SPListItemCollection oListItems;</span><br><span class="line">       oListItems = (SPListItemCollection)Cache[<span class="string">"ListItemCacheName"</span>];</span><br><span class="line">      <span class="keyword">if</span>(oListItems == <span class="literal">null</span>)</span><br><span class="line">      &#123;</span><br><span class="line">         <span class="keyword">lock</span> (_lock) </span><br><span class="line">         &#123;</span><br><span class="line">              <span class="comment">// Ensure that the data was not loaded by a concurrent thread </span></span><br><span class="line">              <span class="comment">// while waiting for lock.</span></span><br><span class="line">              oListItems = (SPListItemCollection)Cache[<span class="string">"ListItemCacheName"</span>];</span><br><span class="line">              <span class="keyword">if</span> (oListItems == <span class="literal">null</span>)</span><br><span class="line">              &#123;</span><br><span class="line">                   oListItems = DoQueryToReturnItems();</span><br><span class="line">                   Cache.Add(<span class="string">"ListItemCacheName"</span>, oListItems, ..);</span><br><span class="line">              &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><ol>
 <li>使用多執行緖時要小心處理Exception,不然會導致主程序被中斷<br>(File Cache 寫入真實案例,多緖的錯誤不佳會使得IIS無法處理錯誤,進而中斷程序(w3wp.exe))</li>
 <li>AWS S3 是走 Https Protocal</li>
@@ -298,14 +302,14 @@ ga('send', 'pageview');
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://redis.io/" target="_blank" rel="noopener">Redis</a></li>
 <li><a href="https://memcached.org/" target="_blank" rel="noopener">memcached</a></li>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14" target="_blank" rel="noopener">Caching Data And Objects</a>#caching-data-and-objects)</li>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ee558270(v%3Doffice.14)#caching-data-and-objects" target="_blank" rel="noopener">Caching Data And Objects</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/09/03/2018/cache_files_and_redis/" data-id="cjwb0xo3w005migvxy3yi5kos" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/09/03/2018/cache_files_and_redis/" data-id="cjwpa7kc3001sfkvx7xsq9yyo" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/09/03/2018/cache_files_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -319,7 +323,7 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-2018/defect_release_cors_and_cdn" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/defect_release_cors_and_cdn" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/28/2018/defect_release_cors_and_cdn/" class="article-date">
   <time datetime="2018-08-28T06:27:21.000Z" itemprop="datePublished">2018-08-28</time>
@@ -341,7 +345,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>很久很久很久以前，<br>【跨國語系基礎架構】上線了.<br>又過了很久很久 <strong>我們評估這多語系API需要上 CDN</strong><br><img src="https://i.imgur.com/0g5HL2z.jpg" alt=""></p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>很久很久很久以前，<br>【跨國語系基礎架構】上線了.<br>又過了很久很久 <strong>我們評估這多語系API需要上 CDN</strong><br><img src="https://i.imgur.com/0g5HL2z.jpg" alt></p>
 <h3 id="Release項目與工作內容"><a href="#Release項目與工作內容" class="headerlink" title="Release項目與工作內容"></a>Release項目與工作內容</h3><ul>
 <li>8/16 要 release 什麼?<br>  我們要將多語系開始開發的項目一次回台灣正式環境。</li>
 <li>我們作了什麼  <ul>
@@ -361,8 +365,8 @@ ga('send', 'pageview');
 </li>
 </ul>
 <p><strong>講那麼多，還不是壞掉了。</strong></p>
-<h2 id="錯誤原因"><a href="#錯誤原因" class="headerlink" title="錯誤原因"></a>錯誤原因</h2><h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/Etwq8nY.jpg" alt=""></p>
-<h3 id="錯誤原因-1"><a href="#錯誤原因-1" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/Ujy0Z4v.jpg" alt=""></p>
+<h2 id="錯誤原因"><a href="#錯誤原因" class="headerlink" title="錯誤原因"></a>錯誤原因</h2><h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/Etwq8nY.jpg" alt></p>
+<h3 id="錯誤原因-1"><a href="#錯誤原因-1" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/Ujy0Z4v.jpg" alt></p>
 <p>多語系 CDN 的 Response Header Access-Control-Allow-Origin Protocol 與主頁面不符;</p>
 <h3 id="流程面"><a href="#流程面" class="headerlink" title="流程面"></a>流程面</h3><table>
 <thead>
@@ -371,8 +375,7 @@ ga('send', 'pageview');
 <th>測試結果</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>QA8</td>
 <td>OK</td>
 </tr>
@@ -396,8 +399,7 @@ ga('send', 'pageview');
 <td>全數機器上線</td>
 <td>OK，好</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>為什麼全數機器上線才發生異常。</p>
 <ul>
 <li>QA8 沒有 CDN</li>
@@ -420,19 +422,19 @@ ga('send', 'pageview');
 <li>CDN &amp; Access-Control-Allow-Origin </li>
 <li>稍微提一下 CORSModule</li>
 </ol>
-<h3 id="錯誤原因-2"><a href="#錯誤原因-2" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/GmBULAQ.jpg" alt=""></p>
+<h3 id="錯誤原因-2"><a href="#錯誤原因-2" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/GmBULAQ.jpg" alt></p>
 <pre><code>TranslationCDN : 用來防止瞬間量對 Server 的 Impact
 FingerprintTag : 一份Cache的時戳， 用以取得新版多語系 Json 檔    
-site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
-</code></pre><ol>
+site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></pre><ol>
 <li>Partial View 會有 OutputCache<br> → 保得了一時，保不了一世</li>
 <li>為了 Borwser Cache ，F2E 在 QueryString 作了加工。</li>
 <li>網站跨Domain的存取行為，歷史共業。</li>
 <li>CDN &amp; Access-Control-Allow-Origin </li>
 <li>CorsModule，有必要區分protocol嗎 ?</li>
 </ol>
-<p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt="">    </p>
+<p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt>    </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">"http:"</span>, <span class="string">"https:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="問題處理經過"><a href="#問題處理經過" class="headerlink" title="問題處理經過"></a>問題處理經過</h3><ol>
 <li><p>第一時間 QA 有看到異常， 但是在 PO 的環境無法重現 ，<br>RD 初步判斷為快取的問題， 並嚐試重現錯誤 。</p>
 </li>
@@ -467,11 +469,11 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
         - ao = https://8.qa.demo/index
     - https://8.qa.demo/index =&gt; **Error**
         - ts = 8458
-        - ao = https://8.qa.demo/index         
-</code></pre><ol start="6">
+        - ao = https://8.qa.demo/index         </code></pre><ol start="6">
 <li><p>確認 Prod CDN 的 WhiteList Header 的設定有問題，<br>那為什麼 PP/G3 不會有問題呢 ?<br>=&gt; <strong>在 PP/G3 設定為 Referrer</strong> </p>
 </li>
-<li><p>測試過程發現 x-cache Header 常常<br><code>Miss from cloudfront</code>,<br>表示資料並非來自 CDN .<br>實際測試 Origin 比 Referrer 更適合</p>
+<li><p>測試過程發現 x-cache Header 常常<br><code>Miss from cloudfront</code>,  
+表示資料並非來自 CDN .<br>實際測試 Origin 比 Referrer 更適合</p>
 </li>
 </ol>
 <h3 id="回饋與後續"><a href="#回饋與後續" class="headerlink" title="回饋與後續"></a>回饋與後續</h3><pre><code>1. 團隊評估欠缺數據 →
@@ -482,23 +484,26 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 6. QAn 沒有設定 CDN → `沒有CDN的Issue沒必要特別設定(因為需要對外)`
 7. 頁面 OutputCache 會影響測試。
 8. PP / G3 與 Prod  CDN設定不一致 → `webapi/transalte/* 已調整一致`
-9. Release 三步驟 ， 最後一步才會開啟 CDN
-</code></pre><p>Q. 下次我們怎麼作 ?</p>
+9. Release 三步驟 ， 最後一步才會開啟 CDN</code></pre><p>Q. 下次我們怎麼作 ?</p>
 <h3 id="補充資料"><a href="#補充資料" class="headerlink" title="補充資料"></a>補充資料</h3><ul>
-<li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt=""></p>
+<li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt></p>
 <p>  Server跟CDN就像工廠與便利店的關係， 你要買東西不用跑到工廠<br>  只要在離自已最近的便利店買就好了， 過期的商品(資料)會被丟掉<br>  重新跟工廠進貨(拉新資料)。</p>
 </li>
-<li>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</li>
-<li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </li>
-<li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></li>
-<li><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</p>
+</li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </p>
+</li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></p>
+</li>
+<li><p><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></p>
+</li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="cjwb0xo40005sigvxswja6n92" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="cjwpa7kc90023fkvxk2fjffds" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -512,7 +517,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/where_is_specrun" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/where_is_specrun" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/27/2018/where_is_specrun/" class="article-date">
   <time datetime="2018-08-27T10:42:16.000Z" itemprop="datePublished">2018-08-27</time>
@@ -540,9 +545,10 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 <li>Visual Studio 2017 升級到 15.8.1 後突然無法正常搜尋到測試</li>
 <li>SpecRun.Runner 升級(1.2 → 1.8.2)</li>
 </ul>
-<p>去年12月跟 Visual Studio 折騰了許久，才讓專案的<a href="https://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/">測試項目重見光明</a>，<br>在今年與其它專案合併後，測試又從我們團隊的眼前消失了。</p>
-<h2 id="調整項目"><a href="#調整項目" class="headerlink" title="調整項目"></a>調整項目</h2><p>升級 Specflow 與 SpecRun 相關套件<br><img src="https://i.imgur.com/nwl6xFp.jpg" alt=""></p>
-<p>取得 SpecRun 位於專案的 <code>packages</code> 資料夾中。<br><img src="https://i.imgur.com/EyaFEFI.jpg" alt=""></p>
+<p>去年12月跟 Visual Studio 折騰了許久，才讓專案的<a href="https://blog.marsen.me/2017/12/11/test_learn/vs2017_mstest_with_nuget/">測試項目重見光明</a>，  
+在今年與其它專案合併後，測試又從我們團隊的眼前消失了。</p>
+<h2 id="調整項目"><a href="#調整項目" class="headerlink" title="調整項目"></a>調整項目</h2><p>升級 Specflow 與 SpecRun 相關套件<br><img src="https://i.imgur.com/nwl6xFp.jpg" alt></p>
+<p>取得 SpecRun 位於專案的 <code>packages</code> 資料夾中。<br><img src="https://i.imgur.com/EyaFEFI.jpg" alt></p>
 <h2 id="設定-CI"><a href="#設定-CI" class="headerlink" title="設定 CI"></a>設定 CI</h2><p>由於 SpecRun 版本不符會導致 CI Job Error , 需要設定以新的 SpecRun 執行 CI</p>
 <blockquote>
 <p>D:\SpecRun.Runner.1.8.2\tools\SpecRun.exe run D:\Project\Core.Test\bin\Debug\Core.Test.dll /baseFolder:Core.Test\bin\Prod /toolIntegration:vs201 0 /reportFile:Core.Test.TestResult.html</p>
@@ -578,7 +584,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/" data-id="cjwb0xo5p007nigvxc2h1w4lr" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/" data-id="cjwpa7kcv0032fkvx2gyvvl35" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/08/27/2018/where_is_specrun/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -592,7 +598,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/package-lock_modify_after_npm_install" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/package-lock_modify_after_npm_install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/30/2018/package-lock_modify_after_npm_install/" class="article-date">
   <time datetime="2018-07-30T07:53:21.000Z" itemprop="datePublished">2018-07-30</time>
@@ -615,10 +621,15 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><p>OS Windows 10<br>npm v6.2.0<br>node v8.11.1</p>
-<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>承上篇<a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/">[實作筆記]設定 NPM Registry</a>，<br>後續發生的一些問題，<br>每當我執行 <code>npm install</code> 的時候都會異動到 <code>package-lock.json</code> 檔;<br>異動這個檔案並不意外，可以參考<a href="https://docs.npmjs.com/files/package-lock.json" target="_blank" rel="noopener">官方文件</a>的說法。  </p>
-<p>奇怪的點是，異動竟然包含 Registry !?<br>全部都被置換成公司的 Domain , WTF ?<br><img src="https://i.imgur.com/KwwUqPV.jpg" alt=""></p>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>承上篇<a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/">[實作筆記]設定 NPM Registry</a>，  
+後續發生的一些問題，<br>每當我執行 <code>npm install</code> 的時候都會異動到 <code>package-lock.json</code> 檔;<br>異動這個檔案並不意外，可以參考<a href="https://docs.npmjs.com/files/package-lock.json" target="_blank" rel="noopener">官方文件</a>的說法。  </p>
+<p>奇怪的點是，異動竟然包含 Registry !?<br>全部都被置換成公司的 Domain , WTF ?<br><img src="https://i.imgur.com/KwwUqPV.jpg" alt></p>
 <h2 id="原因與坑"><a href="#原因與坑" class="headerlink" title="原因與坑"></a>原因與坑</h2><p>當執行 <code>npm install</code> 的時候，<br>node 會去檢查你實際安裝的 node_modules，<br>並產生 <code>package-lock.json</code> 檔。<br>可以把 <code>package-lock.json</code> 想像成 node_modules 的映射。<br>而恰巧之前所安裝過的檔案，是在 Registry 為 <code>npm.mycompany</code> 時下載的;<br>這導致產生 <code>package-lock.json</code> 的時候會映射出 <code>npm.mycompany</code> 的資訊。</p>
-<p>小心有坑!!<br>即使刪除了 node_modules 再重新 <code>npm install</code>，<br>仍然會產生錯誤的 <code>package-lock.json</code>;<br>這個原因是 npm 會有 <code>npm-cache</code>;<br>這個資料夾位在 <code>%Users%\AppData\Roaming</code>。  </p>
+<p>小心有坑!!  
+即使刪除了 node_modules 再重新 <code>npm install</code>，  
+仍然會產生錯誤的 <code>package-lock.json</code>;  
+這個原因是 npm 會有 <code>npm-cache</code>; 
+這個資料夾位在 <code>%Users%\AppData\Roaming</code>。  </p>
 <h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><ol>
 <li>設定 npm registry  <blockquote>
 <p>npm set registry <a href="https://registry.npmjs.org" target="_blank" rel="noopener">https://registry.npmjs.org</a>  </p>
@@ -633,7 +644,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/" data-id="cjwb0xo4q006iigvx0l9ar3wo" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/" data-id="cjwpa7kco002rfkvx5sw4044c" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -647,7 +658,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/node_set_registry" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/node_set_registry" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/29/2018/node_set_registry/" class="article-date">
   <time datetime="2018-07-29T08:21:22.000Z" itemprop="datePublished">2018-07-29</time>
@@ -671,14 +682,16 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
       
         <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a href="http://npm.mycompany.io" target="_blank" rel="noopener">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network 'proxy' config is set properly.  See: 'npm help config'</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure>
+
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>一個簡單的方法是 VPN 回公司內部網路;<br>另一個方法是重新設定，</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">http://npm.mycompany.io</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm <span class="built_in">set</span> registry https://registry.npmjs.org</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/29/2018/node_set_registry/" data-id="cjwb0xo4l006eigvxusjyi25v" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/29/2018/node_set_registry/" data-id="cjwpa7kcp002tfkvxf35zubiq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -692,7 +705,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/books/book_the_great_scurm_master_ch2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/books/book_the_great_scurm_master_ch2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" class="article-date">
   <time datetime="2018-07-25T02:43:19.000Z" itemprop="datePublished">2018-07-25</time>
@@ -725,26 +738,31 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 </li>
 </ul>
 <h3 id="教導和輔導"><a href="#教導和輔導" class="headerlink" title="教導和輔導"></a>教導和輔導</h3><p>初期需要一再解釋為什麼要實施 Scrum 和 Agile 方法和如何運作，<br>團隊成熟後，共享經驗，並且更多的實踐</p>
-<h3 id="移除障礙"><a href="#移除障礙" class="headerlink" title="移除障礙"></a>移除障礙</h3><p>排除團隊的障礙，是將<strong>責任、活動和所有權</strong>都下放給團隊，讓團隊可以自行解決問題<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">實務上資安、權限和風險上的控管似乎不可行?</span><br><span class="line">雖然說信任團隊，但是上述的角度來看，這些限制是必要之惡。</span><br><span class="line">新創團隊怎麼作 ? 規模擴大後的團隊又該怎麼作 ? </span><br><span class="line">系統思考?</span><br></pre></td></tr></table></figure></p>
+<h3 id="移除障礙"><a href="#移除障礙" class="headerlink" title="移除障礙"></a>移除障礙</h3><p>排除團隊的障礙，是將<strong>責任、活動和所有權</strong>都下放給團隊，讓團隊可以自行解決問題</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">實務上資安、權限和風險上的控管似乎不可行?</span><br><span class="line">雖然說信任團隊，但是上述的角度來看，這些限制是必要之惡。</span><br><span class="line">新創團隊怎麼作 ? 規模擴大後的團隊又該怎麼作 ? </span><br><span class="line">系統思考?</span><br></pre></td></tr></table></figure>
+
 <h3 id="引導"><a href="#引導" class="headerlink" title="引導"></a>引導</h3><p>確保會議有效率，使每次談話有目標/結果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">開會前確認討論的主題與範圍，</span><br><span class="line">開會中確保有效討論與時間控制; </span><br><span class="line">開會完產出相對的決定/行為/文件。</span><br><span class="line">其中以行為最為重要，也是所謂的action item</span><br><span class="line">或是下一步清單。</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><a href="http://www.cheers.com.tw/blog/blogTopic.action?id=662&amp;nid=10065" target="_blank" rel="noopener">無效會議的3種狀況：會而不議、議而不決、決而不行</a></li>
+<li><a href="http://www.cheers.com.tw/blog/blogTopic.action?id=662&nid=10065" target="_blank" rel="noopener">無效會議的3種狀況：會而不議、議而不決、決而不行</a></li>
 </ul>
 <h3 id="教練"><a href="#教練" class="headerlink" title="教練"></a>教練</h3><p>Scrum Master 最重要技能之一，關注個人成長也關注團隊自組織、責任感與所有權</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">不知道這本書在供三小，知道的人請告訴我</span><br><span class="line">我比較推薦以下這篇的說法，教導是單向的，教練則是的迴圈</span><br><span class="line">教導比較像是說明、講解、指示;或許有點像上課、聽演講或是看一本書</span><br><span class="line">教練比較有互動性，除了上述所說也包含了給予回饋、示範與局部修正</span><br><span class="line">指導者與被指導者都會參與其中。</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><a href="https://www.projectidealism.com/posts/2010/03/difference-between-teaching-and.html" target="_blank" rel="noopener">The difference between teaching and coaching</a></li>
 </ul>
 <h3 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h3><p>觀察、聆聽而不是干預;保持耐心再採取行動。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">20180724讀書會回饋:</span><br><span class="line">1. Scurm Master 要有意識的不作為(Actively Doing Nothing)</span><br><span class="line">2. 移除障礙:還是先觀察，讓團隊自行解決問題，個人的問題或許不是團隊的問題; </span><br><span class="line">    站立會議是個人尋求團隊意見的好時機。</span><br><span class="line">3. 引導的方法就是問問題與對話。</span><br><span class="line">4. 引導分為個人與團隊</span><br><span class="line">    - 個人</span><br><span class="line">        引導作對方想作或是 Scurm Master 想作的事 </span><br><span class="line">    - 團隊</span><br><span class="line">        尋找一個目標，發散 → 收斂 → 執行</span><br><span class="line">        再找下一個目標，發散 → 收斂 → 執行</span><br><span class="line">        持續這樣的步驟，並隨時回頭看看效果如何，</span><br><span class="line">        有些想法或許會被錯過</span><br></pre></td></tr></table></figure>
+
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="教練的實例"><a href="#教練的實例" class="headerlink" title="教練的實例"></a>教練的實例</h3><p>提問篇<br><a href="https://www.youtube.com/watch?v=ucSdnwSTJSo" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ucSdnwSTJSo</a><br>解答篇<br><a href="https://www.youtube.com/watch?v=gJRMatocP7o" target="_blank" rel="noopener">https://www.youtube.com/watch?v=gJRMatocP7o</a><br>Coaching example : Kasatkina<br><a href="https://www.facebook.com/NextGenTPE/videos/450757555322367/" target="_blank" rel="noopener">https://www.facebook.com/NextGenTPE/videos/450757555322367/</a><br>Coaching example : 跆拳道<br><a href="https://www.youtube.com/watch?v=zcCm9QichHk" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zcCm9QichHk</a><br>Coaching example : 空手道<br><a href="https://youtu.be/ooAOc9Fwg0U" target="_blank" rel="noopener">https://youtu.be/ooAOc9Fwg0U</a></p>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" data-id="cjwb0xo7d009yigvxa4humquj" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" data-id="cjwpa7kha009tfkvx15auka6m" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -758,7 +776,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/books/book_the_great_scurm_master_ch3" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/books/book_the_great_scurm_master_ch3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/23/2018/books/book_the_great_scurm_master_ch3/" class="article-date">
   <time datetime="2018-07-23T10:49:19.000Z" itemprop="datePublished">2018-07-23</time>
@@ -783,13 +801,18 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
         <h6 id="ScrumMasterWay"><a href="#ScrumMasterWay" class="headerlink" title="#ScrumMasterWay"></a>#ScrumMasterWay</h6><h2 id="第一個層次-—-我的團隊"><a href="#第一個層次-—-我的團隊" class="headerlink" title="第一個層次 — 我的團隊"></a>第一個層次 — 我的團隊</h2><p>Scrum Master 只對開發團隊負責，<br><strong>「如何讓自已每天都發揮作用?」</strong><br>建立具有敏捷思維與 Scurm 價值觀的自組織團隊是個長期活動。<br>第一步是觀察，並抑制親力親為的衝動(具體建議/親自排解障礙)，</p>
 <p>可能的問題在於，團隊缺乏理解、所有權、責任感與經驗;<br>或是團隊的抵制。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">回饋:</span><br><span class="line">沒有主管並不會讓團隊自組織！給團隊解決不能只靠再想想</span><br><span class="line">https://www.facebook.com/91agile/posts/986977734810178</span><br></pre></td></tr></table></figure>
+
 <h3 id="Scurm-的價值觀"><a href="#Scurm-的價值觀" class="headerlink" title="Scurm 的價值觀"></a>Scurm 的價值觀</h3><ul>
-<li>承諾、專注、開放、尊重、勇氣<br>— ScrumAlliance 《Scaling Lean &amp; Agile Development》</li>
-<li>誠實、開放、勇氣、尊重、專注、信任、授權和合作<br>—Kenneth S.Rubin《Essential Scrum》</li>
-<li>謙虛、尊重、信任<br>— 《Debugging Teams: Better Productivity through Collaboration》<br><img src="https://i.imgur.com/INV1pyF.png" alt=""></li>
+<li>承諾、專注、開放、尊重、勇氣</li>
+<li>– ScrumAlliance 《Scaling Lean &amp; Agile Development》</li>
+<li>誠實、開放、勇氣、尊重、專注、信任、授權和合作</li>
+<li>–Kenneth S.Rubin《Essential Scrum》</li>
+<li>謙虛、尊重、信任</li>
+<li>– 《Debugging Teams: Better Productivity through Collaboration》<br><img src="https://i.imgur.com/INV1pyF.png" alt></li>
 </ul>
 <h2 id="第二個層次-—-關係"><a href="#第二個層次-—-關係" class="headerlink" title="第二個層次 — 關係"></a>第二個層次 — 關係</h2><ul>
-<li>Scurm Team<ul>
+<li><p>Scurm Team</p>
+<ul>
 <li>建立連貫、自信的團隊</li>
 <li>將 PO 整合進入團隊 </li>
 <li>建立三個角色平衡的關係</li>
@@ -797,7 +820,8 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 </li>
 <li><p>利害關係人</p>
 <ul>
-<li>客戶、用戶、經理、銷售人員、維運人員、客服、其它團隊</li>
+<li><p>客戶、用戶、經理、銷售人員、維運人員、客服、其它團隊</p>
+</li>
 <li><p>將自組織用于參與的所有人員</p>
 <p>這需要 Scurm Master 對 Scurm 定義、理解與解釋的能力，<br>不只是會議/角色或產出物，而是從文化、價值觀與思維方式對 Scurm 的內化。<br>在這層次下，需要建立靈活的虛擬團隊擁有所有權，承擔某些責任，<br>有些團隊在解決問題後就可以淡出，有的要維持一段時間。  </p>
 </li>
@@ -805,6 +829,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">開發團隊與 Scrum 團隊不是組織中唯一的團隊 ?</span><br><span class="line">持續存在的團隊 ? 專案團隊 ? DevOps ? </span><br><span class="line">短暫存在的團隊 ? 救火團 ? 跨專案團隊 ? </span><br><span class="line">這些團隊的資源從何而來 ?</span><br><span class="line">持續存在又特殊的團隊? 維運?</span><br><span class="line">花很多時間釐清問題，卻沒有辦法解決問題?</span><br><span class="line">受限於什麼原因 ? </span><br><span class="line">技術不足 ? 沒有人領導 ? 沒有所有權 ? 風險導向 ? 不受重視 ?</span><br></pre></td></tr></table></figure>
+
 <h2 id="第三個層次—整個系統"><a href="#第三個層次—整個系統" class="headerlink" title="第三個層次—整個系統"></a>第三個層次—整個系統</h2><p>Scrum 是「一種生活方式」，成為生活哲學的一部份，改造整個系統(世界)。</p>
 <h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul>
 <li>先觀察</li>
@@ -814,6 +839,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 <li>不要停留在開發層次，融入工作生活之中</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">太高大上了，跟不上…</span><br><span class="line">問個問題，如果障礙是組織內的要員或大主管呢 ?</span><br></pre></td></tr></table></figure>
+
 <h2 id="Scrum-Master-小組"><a href="#Scrum-Master-小組" class="headerlink" title="Scrum Master 小組"></a>Scrum Master 小組</h2><p>如果要讓組織敏捷，核心是一個強大的 Scrum Master 小組。<br>如果組織在「第一個層次 — 我的團隊」中擁有一個強大的 Scrum Master 小組，<br>那麼 Scrum Master 只需要完善團隊就好了;<br>比起單獨創立完善一個 Scrum Team 或是依賴 Agile Couch，<br>Scrum Master 小組是改變組織最好的起點。  </p>
 <h3 id="Scrum-Master-小組的目標"><a href="#Scrum-Master-小組的目標" class="headerlink" title="Scrum Master 小組的目標"></a>Scrum Master 小組的目標</h3><ul>
 <li>替其它人作好系統層次的準備</li>
@@ -839,7 +865,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 <li>人為/物理複雜(Complicated)<br>  像是組裝模型，你需要先分析計劃，<br>  當事情變得<strong>簡單明確</strong>即可。<br>  沒有最佳解，只有最適合的選擇</li>
 <li>抽象/化學複雜(Complex)<br>  重複實驗評估，直到事情逐漸明確可以進行下一步，<br>  通常要大量的試錯才能有解答</li>
 <li>混亂(Chaotic)<br>  你只能依賴直覺，先逃離危險，分析情況後再決定下一步</li>
-<li>無序(Disorder / Confusion)<br>  如果你無法分辨情況，就是處理無序的狀態<br>  先搜集資訊，分析再前進<br><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cynefin_framework_by_Edwin_Stoop.jpg" alt=""></li>
+<li>無序(Disorder / Confusion)<br>  如果你無法分辨情況，就是處理無序的狀態<br>  先搜集資訊，分析再前進<br><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Cynefin_framework_by_Edwin_Stoop.jpg" alt></li>
 </ul>
 <h2 id="練習"><a href="#練習" class="headerlink" title="練習"></a>練習</h2><ol>
 <li>Obvious : 多語抽換字串</li>
@@ -848,9 +874,12 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 <li>Chaotic : 上線後引發 SQL 問題當下是混亂的</li>
 </ol>
 <h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">組織或團隊會抗拒改變;</span><br><span class="line">又或者組識本身的價值觀與 Scurm 有所抵觸。</span><br><span class="line">以這個層面來說 Scurm Master 能作得很有限，</span><br><span class="line">所以又有 Agile Coach 的產生 ? → 說穿了就是顧問 ?</span><br><span class="line">第一現場的工作者給的問題，如果不虛心接受</span><br><span class="line">以現場角度思考，全盤歸疚於心態問題，是在逃避問題</span><br><span class="line">抱著過往成功不放，不願具體改變或聆聽異議，  </span><br><span class="line">由上而下獨幹而非由下而上改變，喊喊口號「速度感起來了!」  </span><br><span class="line">敏捷淪為口號，實踐就成了宗教儀式。</span><br><span class="line">不論是 Scurm Master 或是 Agile Coach 都是觀察者/顧問的角色，</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">轉型的路上我質疑一切</span><br><span class="line">質疑主管、質疑公司、質疑理論、質疑作法; </span><br><span class="line">甚至質疑我自已，然後我的心態還不能崩了，</span><br><span class="line">真是有病…</span><br><span class="line">要正心，保持陽光。</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Unit Tests Team ?</span><br><span class="line">為什麼有這樣的想法 ? 單元測試很重要，卻沒有人寫。</span><br><span class="line">原因1. 沒有時間</span><br><span class="line">原因2. 流程內未包含寫單元測試與執行單元測試，</span><br><span class="line">Scurm 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Tests。</span><br><span class="line">原因3. 責任規屬不明? QA Team 專心作測試，RD Team 專心作開發</span><br><span class="line">沒有一個團隊專門來處理單元測試</span><br><span class="line">原因4. 導入失敗 </span><br><span class="line">	- 跨領域 BeckEnd、F2E、IOS、Android 缺乏足夠知識</span><br><span class="line">	- 跨專案開發資源就不夠了，怎麼寫測試 ?</span><br><span class="line">	- 遺留代碼難以開發，技術水平不夠，缺乏領頭羊。</span><br><span class="line">	- 讀書會成為逆向宣傳。</span><br><span class="line">	- 沒有人專職導入，導入船過水無痕。</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/151g6vV.jpg" alt=""></p>
+
+<p><img src="https://i.imgur.com/151g6vV.jpg" alt></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://ruddyblog.wordpress.com/tag/scrum價值觀/" target="_blank" rel="noopener">Scurm的價值觀</a></li>
 <li><a href="https://www.jianshu.com/p/1293bfe84446" target="_blank" rel="noopener">Scrum價值觀問題溯源</a></li>
@@ -862,7 +891,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/" data-id="cjwb0xo7h00a3igvxj6l2xn1a" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/" data-id="cjwpa7khg00a0fkvxgmkfwycs" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -876,7 +905,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 
 
   
-    <article id="post-2018/books/book_the_great_scurm_master_ch1" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2018/books/book_the_great_scurm_master_ch1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/15/2018/books/book_the_great_scurm_master_ch1/" class="article-date">
   <time datetime="2018-07-15T02:19:08.000Z" itemprop="datePublished">2018-07-15</time>
@@ -924,6 +953,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 <li>Agile 與 Scrum 思想的專家(信徒)</li>
 </ul>
 <h6 id="質疑"><a href="#質疑" class="headerlink" title="質疑:"></a>質疑:</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我一直認為盲信是相當危險的，這個世界與其說*沒有銀子彈*，</span><br><span class="line">不如說沒有狼人，或是說你面對的永遠不只是狼人，而是未知。</span><br><span class="line">現場看到太多的 Scrum But(我比較喜歡叫 Scrum Buffet 或敏捷自助餐)</span><br><span class="line">當人人都說「敏捷大法好」的時候，我分不清邪教大典/直銷與敏捷的差別了…</span><br><span class="line">還是鬼島就是神祕力量能將好東西質變成孬東西呢？</span><br></pre></td></tr></table></figure>
+
 <h3 id="自組織"><a href="#自組織" class="headerlink" title="自組織"></a>自組織</h3><p><strong>我們應該如何組織我們自已，達成目標?</strong></p>
 <ul>
 <li>決定誰作什麼</li>
@@ -992,7 +1022,8 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 </li>
 </ul>
 <h4 id="Scrum-Master-兼任多支團隊"><a href="#Scrum-Master-兼任多支團隊" class="headerlink" title="Scrum Master 兼任多支團隊"></a>Scrum Master 兼任多支團隊</h4><ul>
-<li>con<ul>
+<li><p>con</p>
+<ul>
 <li>Scrum Master 缺乏時間</li>
 <li>不同團隊同時發生問題時無法即時引導</li>
 <li>通常兼任超過三支團隊會缺乏足夠訊息</li>
@@ -1013,6 +1044,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 </li>
 </ul>
 <h6 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">20180717 讀書會</span><br><span class="line">Q:Scrum Master 應該先成為觀察者的角色，</span><br><span class="line">再進一步作引導或指導，兼任多支團隊的情況下，</span><br><span class="line">可能會受限於環境，導致無法作第一線的觀察，而導致效果不佳。</span><br><span class="line">A:較成熟的團隊可以稍微放一下，多參與初心團隊，</span><br><span class="line">自組織的成熟團隊就不必要每件事。</span><br><span class="line">feedback:</span><br><span class="line">1. 不成熟的 Scrum Mater 應該跟著成熟的 Scrum Master 共事。</span><br><span class="line">2. 不成熟的團隊應由成熟的 Scrum Mater 帶領。</span><br><span class="line">3. 成熟的團隊 Scrum Mater 的角色仍在，但是可以淡出。</span><br></pre></td></tr></table></figure>
+
 <h3 id="Scrum-Master-領導"><a href="#Scrum-Master-領導" class="headerlink" title="Scrum Master 領導"></a>Scrum Master 領導</h3><ul>
 <li>Scrum Master要注重整個組織，非單一支 Scrum 團隊，</li>
 <li>關心長期目標與策略。</li>
@@ -1035,7 +1067,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/" data-id="cjwb0xo77009qigvx69w0f1fk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/" data-id="cjwpa7kha009vfkvxvq58h2wr" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1093,7 +1125,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

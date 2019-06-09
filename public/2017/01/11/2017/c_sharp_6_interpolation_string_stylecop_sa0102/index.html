@@ -85,7 +85,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2017/c_sharp_6_interpolation_string_stylecop_sa0102" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2017/c_sharp_6_interpolation_string_stylecop_sa0102" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/" class="article-date">
   <time datetime="2017-01-11T06:51:25.000Z" itemprop="datePublished">2017-01-11</time>
@@ -114,14 +114,15 @@ ga('send', 'pageview');
 </ul>
 <h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p>當使用C# 6 的<code>INTERPOLATION STRING</code>組合字串時，在StyleCop 4.7會誤判並回報SA0102的警告。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">return new ExcelResult</span><br><span class="line">&#123;</span><br><span class="line">	Data = exportData,</span><br><span class="line">	FileName = $&quot;&#123;shopId&#125;_Code_&#123;DateTime.Now.ToString(&quot;yyyyMMddHHmm&quot;)&#125;&quot;,</span><br><span class="line">	SheetName = &quot;ECouponCode&quot;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h2 id="修正目標"><a href="#修正目標" class="headerlink" title="修正目標"></a>修正目標</h2><ol>
 <li>將 StyleCop 4.7 更新至 StyleCop 5.0</li>
 <li>編輯客製化的StyleCop Rules(直接將4.7的設定檔覆蓋VS會報錯)</li>
 </ol>
 <h2 id="修正記錄"><a href="#修正記錄" class="headerlink" title="修正記錄"></a>修正記錄</h2><ol>
-<li><p>移除 StyleCop<br>控制台 &gt; 新增移除程式<br><img src="https://i.imgur.com/PCYZxIK.png" alt=""></p>
+<li><p>移除 StyleCop<br>控制台 &gt; 新增移除程式<br><img src="https://i.imgur.com/PCYZxIK.png" alt></p>
 </li>
-<li><p>移除 Visual Studio 上的 StyleCop<br>工具 &gt; 擴充功能和更新<br><img src="https://i.imgur.com/1HdVoko.png" alt=""></p>
+<li><p>移除 Visual Studio 上的 StyleCop<br>工具 &gt; 擴充功能和更新<br><img src="https://i.imgur.com/1HdVoko.png" alt></p>
 </li>
 <li><p>自你的程式碼移除所有對StyleCop的參考<br><code>我的程式碼中並不包含對StyleCop的參考，故略過此步驟</code></p>
 </li>
@@ -129,15 +130,16 @@ ga('send', 'pageview');
 </li>
 <li><p>重新安裝 <a href="https://marketplace.visualstudio.com/items?itemName=ChristopheHEISER.VisualStyleCop" target="_blank" rel="noopener">StyleCop Visual Studio Extension</a></p>
 <ol>
-<li><p>安裝完成檢視安裝記錄檔<br><img src="https://i.imgur.com/Kny5aU9.png" alt=""></p>
+<li><p>安裝完成檢視安裝記錄檔<br><img src="https://i.imgur.com/Kny5aU9.png" alt></p>
 </li>
-<li><p>可以透過安裝記錄檔取得安裝路徑<br><img src="https://i.imgur.com/edSDREN.png" alt=""></p>
+<li><p>可以透過安裝記錄檔取得安裝路徑<br><img src="https://i.imgur.com/edSDREN.png" alt></p>
 </li>
 </ol>
 </li>
 </ol>
 <ol start="6">
-<li>客製修改StyleCop設定檔<br> 5-2的步驟可以找到<code>Settings</code>子資料夾，內含預設StyleCop設定檔，<br> 複制這個檔案到上一層，重新命名為<code>Settings.StyleCop</code>,<br> 透過<code>StyleCop.SettingsEditor</code>開啟<code>Settings.StyleCop</code>調整設定值。<br> <img src="https://i.imgur.com/DJjoEYJ.gif" alt=""></li>
+<li>客製修改StyleCop設定檔<br> 5-2的步驟可以找到<code>Settings</code>子資料夾，內含預設StyleCop設定檔，<br> 複制這個檔案到上一層，重新命名為<code>Settings.StyleCop</code>,
+ 透過<code>StyleCop.SettingsEditor</code>開啟<code>Settings.StyleCop</code>調整設定值。<br> <img src="https://i.imgur.com/DJjoEYJ.gif" alt></li>
 </ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://github.com/StyleCop" target="_blank" rel="noopener">Github StyleCop</a></li>
@@ -149,7 +151,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjwb0xo16001qigvx3mnw5kwd" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="cjwpa7ket0067fkvxsjdvozkj" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -227,7 +229,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

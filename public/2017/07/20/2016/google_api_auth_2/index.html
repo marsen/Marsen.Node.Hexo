@@ -82,7 +82,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2016/google_api_auth_2" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2016/google_api_auth_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/20/2016/google_api_auth_2/" class="article-date">
   <time datetime="2017-07-19T17:04:14.000Z" itemprop="datePublished">2017-07-20</time>
@@ -119,6 +119,7 @@ ga('send', 'pageview');
 <li>如何取得授權與取得資料，請參考<a href="https://developers.google.com/sheets/api/quickstart/nodejs" target="_blank" rel="noopener">QuickStart</a><ul>
 <li>安全考量,我不會將client_secret.json與取回的token 加入版本控制</li>
 <li>以Google 試算表為例，如何取得<a href="https://developers.google.com/sheets/api/guides/concepts" target="_blank" rel="noopener">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex:</span><br><span class="line">https://docs.google.com/spreadsheets/d/1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps/edit#gid=0</span><br><span class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 </li>
@@ -128,14 +129,14 @@ ga('send', 'pageview');
 <li><p><code>client_secret.json</code> 是機敏資料, 不可以放入版本控制, 需要特殊的流程步驟上傳到你的 Web Server 的位置</p>
 <ul>
 <li>Openshift可以透過SSH或是SFTP登入來上傳<code>client_secret.json</code></li>
-<li>CI 以 JENKINS 為例 ; 可以使用 Publish over SSH 上傳檔案<br><img src="https://i.imgur.com/Fo4Ml5M.jpg" alt=""><ul>
+<li>CI 以 JENKINS 為例 ; 可以使用 Publish over SSH 上傳檔案<br><img src="https://i.imgur.com/Fo4Ml5M.jpg" alt><ul>
 <li>需要注意 CI Server 要有 Web Server 的 SSH Key</li>
 <li>LINUX 複製資料夾語法 <code>cp -rf src/folder/. target/folder</code></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>在正式公開的環境上可能會發生<code>Error: invalid_scope</code>的錯誤 ，可以<a href="https://support.google.com/code/contact/oauth_app_verification?id=705847791246&amp;client=705847791246-l20jeqj1ncv2vffaki70ing4c8cda2r1.apps.googleusercontent.com&amp;query=https://www.googleapis.com/auth/spreadsheets.readonly" target="_blank" rel="noopener">參考</a>。</p>
+<li><p>在正式公開的環境上可能會發生<code>Error: invalid_scope</code>的錯誤 ，可以<a href="https://support.google.com/code/contact/oauth_app_verification?id=705847791246&client=705847791246-l20jeqj1ncv2vffaki70ing4c8cda2r1.apps.googleusercontent.com&query=https://www.googleapis.com/auth/spreadsheets.readonly" target="_blank" rel="noopener">參考</a>。</p>
 <ul>
 <li>填寫表單作驗証</li>
 <li>個人測試可以加入<a href="https://groups.google.com/forum/#!forum/risky-access-by-unreviewed-apps" target="_blank" rel="noopener">Risky Access Permissions By Unreviewed Apps</a> 論壇</li>
@@ -144,7 +145,7 @@ ga('send', 'pageview');
 <li><p>我最後是使用<a href="https://d3js.org/" target="_blank" rel="noopener">d3.js</a>作為繪圖的library , 因為網路上的資源相當的多 , 而且這次的著墨並不多 , 所以不在這裡介紹. </p>
 </li>
 </ol>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="https://i.imgur.com/8FYzhdg.gif" alt=""></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><img src="https://i.imgur.com/8FYzhdg.gif" alt></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
 <li><a href="https://blog.openshift.com/using-filezilla-and-sftp-on-windows-with-openshift/" target="_blank" rel="noopener">Openshift SFPT</a></li>
 <li><a href="https://www.phpini.com/linux/cp-force-copy" target="_blank" rel="noopener">Linux CP</a></li>
@@ -154,7 +155,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/07/20/2016/google_api_auth_2/" data-id="cjwb0xo0s001aigvx3y05knev" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/07/20/2016/google_api_auth_2/" data-id="cjwpa7kbl0017fkvxxodrkwhh" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/07/20/2016/google_api_auth_2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -232,7 +233,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
