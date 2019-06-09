@@ -76,7 +76,7 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-2016/file_rowdata_import_mssql" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2016/file_rowdata_import_mssql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/29/2016/file_rowdata_import_mssql/" class="article-date">
   <time datetime="2016-08-29T09:24:55.000Z" itemprop="datePublished">2016-08-29</time>
@@ -116,7 +116,7 @@ ga('send', 'pageview');
 </li>
 <li>左側選單選擇「預覽」確認匯入的資料無誤後，點擊下一步</li>
 <li>「目的地」請選擇「SqlServer」，設定ConnectionString<ul>
-<li>Data Source=1<strong>.*</strong>.<strong><em>.</em></strong>;Initial Catalog=TestDB;Persist Security Info=True;User ID=tester;Password=<strong><em>**</em></strong>;</li>
+<li>Data Source=1<strong>.*</strong>.<strong><em>.</em></strong>;Initial Catalog=TestDB;Persist Security Info=True;User ID=tester;Password=<strong>****</strong>;</li>
 </ul>
 </li>
 <li>「選取來源資料表和檢視畫面」確認無誤後，點擊下一步。</li>
@@ -130,7 +130,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/29/2016/file_rowdata_import_mssql/" data-id="cjwb0xo0j0010igvxz08i1kz0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/29/2016/file_rowdata_import_mssql/" data-id="cjwpa7kbf000zfkvx7owzm5c7" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/29/2016/file_rowdata_import_mssql/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -144,7 +144,7 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-2016/how_to_use_github_page" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2016/how_to_use_github_page" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/28/2016/how_to_use_github_page/" class="article-date">
   <time datetime="2016-08-27T20:56:27.000Z" itemprop="datePublished">2016-08-28</time>
@@ -172,8 +172,7 @@ ga('send', 'pageview');
 <h2 id="建立github-page"><a href="#建立github-page" class="headerlink" title="建立github page"></a>建立github page</h2><p>如果不排斥看原文，可以直接<a href="https://pages.github.com/" target="_blank" rel="noopener">參考</a>  </p>
 <ol>
 <li>建立一個repository,並且命名為<code>username.github.io</code>,這裡的username請使用你的Github帳號的username.  </li>
-<li>clone <code>username.github.io</code> 到你的本機上.<pre><code>&gt; git clone https://github.com/username/username.github.io
-</code></pre></li>
+<li>clone <code>username.github.io</code> 到你的本機上.<pre><code>&gt; git clone https://github.com/username/username.github.io</code></pre></li>
 <li>建立一個靜態網頁 <code>index.html</code> , 隨便打點什麼。  <pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
 &lt;HTML&gt;
    &lt;HEAD&gt;
@@ -185,53 +184,25 @@ ga('send', 'pageview');
    &lt;H1&gt;Hello world&lt;/H1&gt;
    &lt;P&gt;This is my github page&lt;/P&gt;
 &lt;/BODY&gt;
-&lt;/HTML&gt;
-</code></pre></li>
+&lt;/HTML&gt;</code></pre></li>
 <li>commit之後,push 到github上<pre><code>&gt; git add --all
 &gt; git commit -m &quot;Initial commit&quot;
-&gt; git push -u origin master
-</code></pre></li>
+&gt; git push -u origin master</code></pre></li>
 <li>瀏覽  <a href="http://username.github.io" target="_blank" rel="noopener">http://username.github.io</a> 即完成</li>
 </ol>
 <h2 id="使用自訂的domain"><a href="#使用自訂的domain" class="headerlink" title="使用自訂的domain"></a>使用自訂的domain</h2><ol>
 <li>首先準備好一個domain ex: username.xyz</li>
 <li>需要在根目錄底下，放入一個 CNAME file<br>檔案的內容只需要你的domain即可<br>ex:<pre><code>blog.username.xyz  
-username.xyz
-</code></pre></li>
+username.xyz</code></pre></li>
 <li>在Name Servers (例如<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>)上設定<code>CNAME</code>到github page,<br>將<code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th>TYPE</th>
-<th>NAME</th>
-<th>VALUE</th>
-<th>TTL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CNAME</td>
-<td>*</td>
-<td>username.xyz</td>
-<td>auto</td>
-</tr>
-<tr>
-<td>CNAME</td>
-<td>blog</td>
-<td>username.github.io</td>
-<td>auto</td>
-</tr>
-</tbody>
-</table>
-<p>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
+<p>| TYPE | NAME | VALUE | TTL |<br>|—|—|—|—|—|<br>| CNAME  | * | username.xyz | auto |<br>| CNAME  | blog | username.github.io | auto |<br>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
 <h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="noopener">官方中文文件</a> .</p>
 <ol>
 <li>重點在於<code>_config.yml</code>的設定<pre><code>deploy:
   type: git
   repository: https://github.com/username/username.github.io
-  branche: master
-</code></pre></li>
+  branche: master</code></pre></li>
 <li>執行<code>hexo d</code>進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。</li>
 </ol>
 <p>(fin)</p>
@@ -239,7 +210,7 @@ username.xyz
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/" data-id="cjwb0xo0x001gigvxld1941yu" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/" data-id="cjwpa7kbs001dfkvxcglpngkt" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -253,7 +224,7 @@ username.xyz
 
 
   
-    <article id="post-2016/add_google_analytics_to_hexo_blog_1" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2016/add_google_analytics_to_hexo_blog_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/25/2016/add_google_analytics_to_hexo_blog_1/" class="article-date">
   <time datetime="2016-08-25T06:12:07.000Z" itemprop="datePublished">2016-08-25</time>
@@ -281,12 +252,10 @@ username.xyz
 </ol>
 <h2 id="開啟-config-yml"><a href="#開啟-config-yml" class="headerlink" title="開啟_config.yml"></a>開啟_config.yml</h2><ol>
 <li>確定一下你是使用預設的theme <code>landscape</code><pre><code>## Themes: https://hexo.io/themes/
-theme: landscape
-</code></pre></li>
+theme: landscape</code></pre></li>
 <li>開啟 <code>root/themes/landscape/_config.yml</code></li>
 <li>找到以下的設定區段<pre><code># Miscellaneous
-google_analytics:
-</code></pre></li>
+google_analytics:</code></pre></li>
 <li>填入步驟1. 中所取得 google_analytics ID</li>
 <li>部署網站，完成!</li>
 </ol>
@@ -295,7 +264,7 @@ google_analytics:
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/25/2016/add_google_analytics_to_hexo_blog_1/" data-id="cjwb0xo0d000wigvxyk432sx0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/25/2016/add_google_analytics_to_hexo_blog_1/" data-id="cjwpa7kb3000qfkvxqz0qlfbj" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/25/2016/add_google_analytics_to_hexo_blog_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -309,7 +278,7 @@ google_analytics:
 
 
   
-    <article id="post-2017/setting_DNS_with_google" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2017/setting_DNS_with_google" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/21/2017/setting_DNS_with_google/" class="article-date">
   <time datetime="2016-08-21T14:12:53.000Z" itemprop="datePublished">2016-08-21</time>
@@ -346,8 +315,7 @@ google_analytics:
 </ul>
 </li>
 <li>github page 要注意的事情，<br>你需要在你的github page 的repo root 加入一個名叫<code>CNAME</code>的檔案,<br>檔案的內容很簡單, 只需要你的domain即可<br>ex:<pre><code>blog.mydomain.me  
-mydomain.me
-</code></pre></li>
+mydomain.me</code></pre></li>
 </ol>
 <h2 id="Bare-CNAME"><a href="#Bare-CNAME" class="headerlink" title="Bare CNAME"></a>Bare CNAME</h2><p>大多數的時候, <code>CNAME</code> 的設定就夠了;不過對於我來說,<br>我會希望可以直接使用我的頂級domain,畢竟這樣網址可以更短一些,<br><code>mydomain.me</code> 比 <code>www.mydomain.me</code> 更有感覺。</p>
 <p>這裡受限於google 的 Name servers , 頂級domain 必為Type<code>A</code>須綁定ip<br>這裡我們可以使用一個免費的服務<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>,來達成目的</p>
@@ -370,7 +338,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/21/2017/setting_DNS_with_google/" data-id="cjwb0xo1n002eigvxaugt44we" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/21/2017/setting_DNS_with_google/" data-id="cjwpa7kf6006jfkvxjo0jl21z" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/21/2017/setting_DNS_with_google/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -384,7 +352,7 @@ mydomain.me
 
 
   
-    <article id="post-2016/sites_todo_list" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2016/sites_todo_list" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/20/2016/sites_todo_list/" class="article-date">
   <time datetime="2016-08-19T18:09:07.000Z" itemprop="datePublished">2016-08-20</time>
@@ -416,7 +384,7 @@ mydomain.me
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/20/2016/sites_todo_list/" data-id="cjwb0xo0w001eigvx13wvwmb6" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/20/2016/sites_todo_list/" data-id="cjwpa7kbo001afkvx8abkwxfu" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/20/2016/sites_todo_list/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -428,7 +396,7 @@ mydomain.me
 
 
   
-    <article id="post-2016/hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-2016/hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/13/2016/hello-world/" class="article-date">
   <time datetime="2016-08-13T03:32:15.000Z" itemprop="datePublished">2016-08-13</time>
@@ -452,18 +420,22 @@ mydomain.me
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/13/2016/hello-world/" data-id="cjwb0xo0y001higvx5pc8ruue" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/13/2016/hello-world/" data-id="cjwpa7kbn0019fkvxujxxpcrz" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/13/2016/hello-world/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -519,7 +491,7 @@ mydomain.me
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

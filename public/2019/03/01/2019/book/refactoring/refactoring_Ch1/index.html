@@ -84,7 +84,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019/book/refactoring/refactoring_Ch1" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019/book/refactoring/refactoring_Ch1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/01/2019/book/refactoring/refactoring_Ch1/" class="article-date">
   <time datetime="2019-03-01T03:17:16.000Z" itemprop="datePublished">2019-03-01</time>
@@ -107,13 +107,14 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="為什麼"><a href="#為什麼" class="headerlink" title="為什麼"></a>為什麼</h2><h3 id="知道自已不知道"><a href="#知道自已不知道" class="headerlink" title="知道自已不知道"></a>知道自已不知道</h3><p>上次在公司內部開始進行 <a href="/2019/01/30/2019/coding_dojo_in_company/">Coding Dojo</a>，在 <a href="/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/">FizzBuzz 的 Kata</a> 嚐到了甜頭<br>但是下一道題目「Bowling」，卻卡住了。<br>我們有測試，也通過測試，但是卻寸步難行，<br>在重構上我們非常的弱，這裡的重構不是指一次性的全面翻掉，<br>而是逐步的、可靠的前進，<br>我想習得這樣的技能，因為現場的代碼腐敗的更加嚴重，<br>如果連 Kata 產生的代碼都不能優化，<br>那想對產品指手劃腳只不過是說幹話。</p>
-<h2 id="閱讀經典-重構—改善即有的程式設計"><a href="#閱讀經典-重構—改善即有的程式設計" class="headerlink" title="閱讀經典:重構—改善即有的程式設計"></a>閱讀經典:重構—改善即有的程式設計</h2><p><img src="https://i.stack.imgur.com/BrLmD.jpg" alt=""></p>
+<h2 id="閱讀經典-重構—改善即有的程式設計"><a href="#閱讀經典-重構—改善即有的程式設計" class="headerlink" title="閱讀經典:重構—改善即有的程式設計"></a>閱讀經典:重構—改善即有的程式設計</h2><p><img src="https://i.stack.imgur.com/BrLmD.jpg" alt></p>
 <p>這是一本來自 Martin Fowler 的經典書籍，新版已經出了，而且是以 <code>JavaScript</code> 作為範例語言。<br>不過我手頭上借到的是以 <code>Java</code> 作為範例的板本。</p>
 <h3 id="CH1-重構，第一個案例"><a href="#CH1-重構，第一個案例" class="headerlink" title="CH1 重構，第一個案例"></a>CH1 重構，第一個案例</h3><p>第一個問題就是我找不到書中說的「線上範例」，<br>即使找到我也沒有 <code>Java</code> 的開發環境，所以心一橫就開始了改寫成 <code>C#</code> 的計劃<br>這部份比我想像中的簡單很多，兩個語言是相同類似的，<br><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/6e600db029fe2f62df724d0179b708c97a0b3313" target="_blank" rel="noopener">第1章，第一個案例</a></p>
 <p><strong>接下來只要照著書上一步一步作就會…覺得越來越沒 fu …</strong><br>為什麼 ??? </p>
 <p>其實 Martin 大叔在書中有提到「為即將修改的程式建立可靠的測試…畢竟是人，可能會犯錯。所以我需要可靠的測試」。<br>沒fu的原因就是<strong>我沒加測試</strong>，即使重構了，我也不知道好壞。<br>沒有反饋是很糟糕的一件事。</p>
 <h3 id="CH1-重構，第一個案例，加上測試"><a href="#CH1-重構，第一個案例，加上測試" class="headerlink" title="CH1 重構，第一個案例，加上測試"></a>CH1 重構，第一個案例，加上測試</h3><p>那麼要怎麼加測試呢 ?<br>書上的案例我分析了一下，其實重構的目標只是一個單純的方法<br>會針對不同的情境回傳不同的字串。</p>
-<p>簡單的說，我只要讓測試覆蓋這個方法就可以開始重構了，<br>我選擇<a href="https://www.jetbrains.com/dotcover/" target="_blank" rel="noopener">dotCover</a>來檢驗我的覆蓋率。<br>選擇的原因很簡單，因為我有買<a href="https://www.jetbrains.com/resharper/?" target="_blank" rel="noopener">ReSharper</a>，<br>如果有更好用更便宜的工具也請介紹給我。</p>
+<p>簡單的說，我只要讓測試覆蓋這個方法就可以開始重構了，<br>我選擇<a href="https://www.jetbrains.com/dotcover/" target="_blank" rel="noopener">dotCover</a>來檢驗我的覆蓋率。<br>選擇的原因很簡單，因為我有買<a href="https://www.jetbrains.com/resharper/?" target="_blank" rel="noopener">ReSharper</a>，  
+如果有更好用更便宜的工具也請介紹給我。</p>
 <blockquote>
 <p>OS:課金真的能解決很多人生問題啊(茶)…</p>
 </blockquote>
@@ -159,13 +160,17 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一章的範例完成後的結果大致如下<br><img src="/images/2019/3/test_cover_100.jpg" alt="100%!!!"><br>很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，<br>而且完成了重構，根本是現場不可能出現的完全體程式碼!!!<br>代碼的部份我會放在最後的參考區塊。</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>第一章的範例完成後的結果大致如下<br><img src="/images/2019/3/test_cover_100.jpg" alt="100%!!!"><br>很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，<br>而且完成了重構，根本是現場不可能出現的完全體程式碼!!!  
+代碼的部份我會放在最後的參考區塊。</p>
 <p><img src="/images/2019/3/cell.jpg" alt="我有沒有可能讓它更好？或是找出他的缺陷呢？"><br>下一步，我有沒有可能讓它更好？或是找出他的缺陷呢？  </p>
 <p>這個時候我想起了<a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">變異測試</a><br>還沒有實作過，來玩看看好了。  </p>
-<p>首先要選擇測試工具，這裡使用了<a href="https://stryker-mutator.io/" target="_blank" rel="noopener">Stryker Mutator</a>，<br>但是注意只能用在 .Net Core 的版本<br>照著官網安裝完成後執行</p>
+<p>首先要選擇測試工具，這裡使用了<a href="https://stryker-mutator.io/" target="_blank" rel="noopener">Stryker Mutator</a>，  
+但是注意只能用在 .Net Core 的版本<br>照著官網安裝完成後執行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">dotnet stryker</span></span><br></pre></td></tr></table></figure>
+
 <p>跑下去竟然真的找到有存活的變異<br><img src="/images/2019/3/run_stryker.jpg" alt="存活的變異"><br>這兩個變異存活的原因是類似的，</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> result = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (daysRented &gt; <span class="number">2</span>)</span><br><span class="line">    result += (daysRented - <span class="number">2</span>) * <span class="number">1.5</span>;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
 <p>變異點發生在 <code>daysRented &gt; 2</code> 的判斷式之中，<br>現有的測試在變異發生(<code>daysRented &gt;= 2</code>)時，無法提出警訊，也就是測試上的不足。<br>不過依現有的邏輯，不論是進入 <code>if</code> 進行了加0運算，或是直接回傳 result，<br>都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，<br>希望有先進願意不嗇指點，實務上跟本沒在跑變異測試。</p>
 <h2 id="後記2"><a href="#後記2" class="headerlink" title="後記2"></a>後記2</h2><p>回歸一下我們當初 Kata 的目的:</p>
 <ul>
@@ -211,7 +216,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjwb0xo8y00bqigvxszm3fsfe" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjwpa7kio00c0fkvxp6yt84ta" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -289,7 +294,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
