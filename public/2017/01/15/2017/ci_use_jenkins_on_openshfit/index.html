@@ -79,7 +79,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2017/ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2017/ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/15/2017/ci_use_jenkins_on_openshfit/" class="article-date">
   <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
@@ -121,7 +121,8 @@ ga('send', 'pageview');
 </li>
 </ol>
 <ol start="5">
-<li>登入後，管理 Jenkins &gt; 設定系統<ol>
+<li><p>登入後，管理 Jenkins &gt; 設定系統</p>
+<ol>
 <li>將執行程式數量設定為 1 </li>
 </ol>
 </li>
@@ -132,16 +133,20 @@ ga('send', 'pageview');
 </li>
 <li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
 </li>
-<li>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></li>
-<li>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></li>
-<li>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></li>
-<li>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</li>
+<li><p>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></p>
+</li>
+<li><p>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></p>
+</li>
+<li><p>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p>
+</li>
+<li><p>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</p>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_openshfit/" data-id="cjwb0xo14001oigvx79njy00i" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_openshfit/" data-id="cjwpa7kf1006dfkvx6o6y8xg3" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -219,7 +224,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

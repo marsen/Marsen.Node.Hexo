@@ -91,7 +91,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018/cloud_learn/aws_creat_ec2_instance" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018/cloud_learn/aws_creat_ec2_instance" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/" class="article-date">
   <time datetime="2017-12-08T08:42:42.000Z" itemprop="datePublished">2017-12-08</time>
@@ -124,30 +124,31 @@ ga('send', 'pageview');
 <h2 id="Web-Console"><a href="#Web-Console" class="headerlink" title="Web Console"></a>Web Console</h2><ol>
 <li><p>login AWS</p>
 </li>
-<li><p>進入EC2<br><img src="https://i.imgur.com/hRFwjzr.jpg" alt=""></p>
+<li><p>進入EC2<br><img src="https://i.imgur.com/hRFwjzr.jpg" alt></p>
 </li>
-<li><p>Launch Instance<br><img src="https://i.imgur.com/g9vlacA.jpg" alt=""></p>
+<li><p>Launch Instance<br><img src="https://i.imgur.com/g9vlacA.jpg" alt></p>
 </li>
-<li><p>選擇AMI(Amazon Machine Image )<br><img src="https://i.imgur.com/dVKPsAp.jpg" alt=""></p>
+<li><p>選擇AMI(Amazon Machine Image )<br><img src="https://i.imgur.com/dVKPsAp.jpg" alt></p>
 </li>
-<li><p>選擇Instance Type(有錢隨便選,沒錢選t2.nano)<br><img src="https://i.imgur.com/61gG2pd.jpg" alt=""></p>
+<li><p>選擇Instance Type(有錢隨便選,沒錢選t2.nano)<br><img src="https://i.imgur.com/61gG2pd.jpg" alt></p>
 </li>
-<li><p>設定 Instance Details<br><img src="https://i.imgur.com/NkbKrzL.jpg" alt=""></p>
+<li><p>設定 Instance Details<br><img src="https://i.imgur.com/NkbKrzL.jpg" alt></p>
 </li>
-<li><p>如果想在開機的時候自動安裝一些程式,可以在<code>Advanced Details</code> 加語法<br>windows AMI請用 <code>Powershell</code><br><img src="https://i.imgur.com/bJxWlgd.jpg" alt=""></p>
+<li><p>如果想在開機的時候自動安裝一些程式,可以在<code>Advanced Details</code> 加語法<br>windows AMI請用 <code>Powershell</code><br><img src="https://i.imgur.com/bJxWlgd.jpg" alt></p>
 </li>
-<li><p>加硬碟<br><img src="https://i.imgur.com/MP9igLc.jpg" alt=""></p>
+<li><p>加硬碟<br><img src="https://i.imgur.com/MP9igLc.jpg" alt></p>
 </li>
-<li><p>加tag<br><img src="https://i.imgur.com/xDTx2nv.jpg" alt=""></p>
+<li><p>加tag<br><img src="https://i.imgur.com/xDTx2nv.jpg" alt></p>
 </li>
-<li><p>設定Configure Security Group<br><img src="https://i.imgur.com/wximWw1.jpg" alt=""></p>
+<li><p>設定Configure Security Group<br><img src="https://i.imgur.com/wximWw1.jpg" alt></p>
 </li>
-<li><p>預覽與啟動<br><img src="https://i.imgur.com/6Y4fcOI.jpg" alt=""></p>
+<li><p>預覽與啟動<br><img src="https://i.imgur.com/6Y4fcOI.jpg" alt></p>
 </li>
-<li><p>最後一步,選擇key-pair<br><img src="https://i.imgur.com/fRhUafI.jpg" alt=""></p>
+<li><p>最後一步,選擇key-pair<br><img src="https://i.imgur.com/fRhUafI.jpg" alt></p>
 </li>
 </ol>
 <h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications &quot;ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]&quot; --security-group-ids sg-XXXXXX --key-name marktest.japan.training</span><br></pre></td></tr></table></figure>
+
 <h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
 <li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="noopener">run-instances</a></li>
 </ul>
@@ -156,7 +157,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/" data-id="cjwb0xo7t00adigvxcy3fhq8b" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/" data-id="cjwpa7khj00a4fkvxzpfwgt6v" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_creat_ec2_instance/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -234,7 +235,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

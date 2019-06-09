@@ -79,7 +79,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018/linux_command_2" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018/linux_command_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/05/2018/linux_command_2/" class="article-date">
   <time datetime="2018-04-05T07:53:23.000Z" itemprop="datePublished">2018-04-05</time>
@@ -110,21 +110,24 @@ ga('send', 'pageview');
 </blockquote>
 <p>補充:使用 <code>echo</code> 印出變數,<strong>從1開始</strong><br><code>$*</code> 指所有變數</p>
 <blockquote>
-<p>$ echo $1<br>good<br>$ echo $2<br>morning<br>$ echo $3<br>marsen<br>$ echo $*<br>good morning marsen </p>
+<p>$ echo $1<br>good<br>$ echo $2<br>morning<br>$ echo $3<br>marsen<br>$ echo $*
+good morning marsen </p>
 </blockquote>
 <h4 id="進階使用-backticks-執行-cat-Command"><a href="#進階使用-backticks-執行-cat-Command" class="headerlink" title="進階使用 backticks 執行 cat Command"></a>進階使用 backticks 執行 <code>cat</code> Command</h4><blockquote>
-<p>$ cat &gt; testfile<br>hello world<br>^C<br>sh-4.4$ set <code>cat testfile</code><br>sh-4.4$ echo $*<br>hello world</p>
+<p>$ cat &gt; testfile<br>hello world<br>^C<br>sh-4.4$ set <code>cat testfile</code><br>sh-4.4$ echo $*
+hello world</p>
 </blockquote>
 <h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><ol>
-<li>建立檔案<blockquote>
+<li><p>建立檔案</p>
+<blockquote>
 <p>$ cat &gt; helloworld.sh</p>
 </blockquote>
 </li>
 <li><p>編輯檔案</p>
 <blockquote>
 <p>$ vim helloworld.sh</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>執行檔案</p>
 <blockquote>
@@ -137,12 +140,16 @@ ga('send', 'pageview');
 <li>使用 <code>read</code> 讀取 input 到變數中</li>
 <li>使用 <code>$</code>+變數名呼叫變數</li>
 </ol>
-<p>sample:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure></p>
+<p>sample:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure>
+
 <p>executed:</p>
 <blockquote>
 <p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
 </blockquote>
-<h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "keyin a filename"</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name"</span><br></pre></td></tr></table></figure></p>
+<h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "keyin a filename"</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name"</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>$ sh rename.sh file1<br>keyin a filename<br>newfile<br>newfile</p>
 </blockquote>
@@ -167,7 +174,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="cjwb0xo4f0068igvxckncp2uj" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="cjwpa7kck002mfkvxcje7g20j" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/04/05/2018/linux_command_2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -245,7 +252,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

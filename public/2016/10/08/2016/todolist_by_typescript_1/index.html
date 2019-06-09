@@ -79,7 +79,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2016/todolist_by_typescript_1" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2016/todolist_by_typescript_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/08/2016/todolist_by_typescript_1/" class="article-date">
   <time datetime="2016-10-08T02:34:27.000Z" itemprop="datePublished">2016-10-08</time>
@@ -123,6 +123,7 @@ ga('send', 'pageview');
 <li>建立gulpfile.js </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> tsc = <span class="built_in">require</span>(<span class="string">'gulp-typescript'</span>);</span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">return</span> gulp.src(<span class="string">'public/javascripts/**/*.ts'</span>)</span><br><span class="line">        .pipe(tsc())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'public/javascripts/'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h3 id="Typescript"><a href="#Typescript" class="headerlink" title="Typescript"></a>Typescript</h3><ol>
 <li><p>關於 typescript 的定義檔, 以前有 tsd 與 typings兩種管理工具,現在可以更簡便的合併到 npm 作管理 .</p>
 </li>
@@ -137,18 +138,15 @@ ga('send', 'pageview');
 <li><p>todo.ts 引用 jquery 、jquery-ui 與 bootstrap 的 typescript 定義檔.  </p>
 <pre><code>/// &lt;reference path=&quot;../../../node_modules/@types/jquery/index.d.ts&quot;/&gt;  
 /// &lt;reference path=&quot;../../../node_modules/@types/bootstrap/index.d.ts&quot;/&gt;  
-/// &lt;reference path=&quot;../../../node_modules/@types/jqueryui/index.d.ts&quot;/&gt;
-</code></pre></li>
+/// &lt;reference path=&quot;../../../node_modules/@types/jqueryui/index.d.ts&quot;/&gt;</code></pre></li>
 <li><p>頁面載入對應的js檔,記得放置順序 jquery 要在最前面,並將放在<code>&lt;\body&gt;</code>之後  </p>
 <pre><code>&lt;script src=&quot;http://code.jquery.com/jquery-2.2.4.min.js&quot;   integrity=&quot;sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=&quot;   crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://code.jquery.com/ui/1.12.1/jquery-ui.min.js&quot;   integrity=&quot;sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=&quot;   crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-</code></pre></li>
+&lt;script src=&quot;http://code.jquery.com/ui/1.12.1/jquery-ui.min.js&quot;   integrity=&quot;sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=&quot;   crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</code></pre></li>
 <li><p>執行 <code>gulp</code> ,會產生todo.js</p>
 </li>
 <li><p>頁面載入js檔,記得要放在相依的js( jquery 、 bootstap 、 jqueryui)之後.</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/kata/todo.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/kata/todo.js&quot;&gt;&lt;/script&gt;</code></pre></li>
 </ol>
 <h4 id="截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置"><a href="#截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置" class="headerlink" title="截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置"></a>截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置</h4><h4 id="接下來才要開始寫-typescript"><a href="#接下來才要開始寫-typescript" class="headerlink" title="接下來才要開始寫 typescript"></a>接下來才要開始寫 typescript</h4><p>(待續)</p>
 <h4 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h4><ol>
@@ -160,7 +158,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="cjwb0xo12001kigvxps7506np" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="cjwpa7kbt001efkvxtbuby7xo" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -238,7 +236,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

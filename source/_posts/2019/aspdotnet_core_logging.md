@@ -142,7 +142,7 @@ Log 的作用範圍會受 `appsettings.json` 影響，
 如下圖作了設定， 
 ![PerfView](/images/2019/4/perfview.jpg)  
 不過我並沒有取得記錄，  
-![PerfView Log](/images/2019/4/perfviewlog.jpg)  
+![PerfView Log](/images/2019/4/perfview.jpg)  
 
 錯誤訊息如下  
  `EventSource Microsoft-Extensions-Logging: Object reference not set to an instance of an object`  

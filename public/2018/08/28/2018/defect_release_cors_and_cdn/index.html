@@ -86,7 +86,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2018/defect_release_cors_and_cdn" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018/defect_release_cors_and_cdn" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/28/2018/defect_release_cors_and_cdn/" class="article-date">
   <time datetime="2018-08-28T06:27:21.000Z" itemprop="datePublished">2018-08-28</time>
@@ -108,7 +108,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>很久很久很久以前，<br>【跨國語系基礎架構】上線了.<br>又過了很久很久 <strong>我們評估這多語系API需要上 CDN</strong><br><img src="https://i.imgur.com/0g5HL2z.jpg" alt=""></p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>很久很久很久以前，<br>【跨國語系基礎架構】上線了.<br>又過了很久很久 <strong>我們評估這多語系API需要上 CDN</strong><br><img src="https://i.imgur.com/0g5HL2z.jpg" alt></p>
 <h3 id="Release項目與工作內容"><a href="#Release項目與工作內容" class="headerlink" title="Release項目與工作內容"></a>Release項目與工作內容</h3><ul>
 <li>8/16 要 release 什麼?<br>  我們要將多語系開始開發的項目一次回台灣正式環境。</li>
 <li>我們作了什麼  <ul>
@@ -128,8 +128,8 @@ ga('send', 'pageview');
 </li>
 </ul>
 <p><strong>講那麼多，還不是壞掉了。</strong></p>
-<h2 id="錯誤原因"><a href="#錯誤原因" class="headerlink" title="錯誤原因"></a>錯誤原因</h2><h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/Etwq8nY.jpg" alt=""></p>
-<h3 id="錯誤原因-1"><a href="#錯誤原因-1" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/Ujy0Z4v.jpg" alt=""></p>
+<h2 id="錯誤原因"><a href="#錯誤原因" class="headerlink" title="錯誤原因"></a>錯誤原因</h2><h3 id="錯誤畫面"><a href="#錯誤畫面" class="headerlink" title="錯誤畫面"></a>錯誤畫面</h3><p><img src="https://i.imgur.com/Etwq8nY.jpg" alt></p>
+<h3 id="錯誤原因-1"><a href="#錯誤原因-1" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/Ujy0Z4v.jpg" alt></p>
 <p>多語系 CDN 的 Response Header Access-Control-Allow-Origin Protocol 與主頁面不符;</p>
 <h3 id="流程面"><a href="#流程面" class="headerlink" title="流程面"></a>流程面</h3><table>
 <thead>
@@ -138,8 +138,7 @@ ga('send', 'pageview');
 <th>測試結果</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>QA8</td>
 <td>OK</td>
 </tr>
@@ -163,8 +162,7 @@ ga('send', 'pageview');
 <td>全數機器上線</td>
 <td>OK，好</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>為什麼全數機器上線才發生異常。</p>
 <ul>
 <li>QA8 沒有 CDN</li>
@@ -187,19 +185,19 @@ ga('send', 'pageview');
 <li>CDN &amp; Access-Control-Allow-Origin </li>
 <li>稍微提一下 CORSModule</li>
 </ol>
-<h3 id="錯誤原因-2"><a href="#錯誤原因-2" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/GmBULAQ.jpg" alt=""></p>
+<h3 id="錯誤原因-2"><a href="#錯誤原因-2" class="headerlink" title="錯誤原因"></a>錯誤原因</h3><p><img src="https://i.imgur.com/GmBULAQ.jpg" alt></p>
 <pre><code>TranslationCDN : 用來防止瞬間量對 Server 的 Impact
 FingerprintTag : 一份Cache的時戳， 用以取得新版多語系 Json 檔    
-site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
-</code></pre><ol>
+site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></pre><ol>
 <li>Partial View 會有 OutputCache<br> → 保得了一時，保不了一世</li>
 <li>為了 Borwser Cache ，F2E 在 QueryString 作了加工。</li>
 <li>網站跨Domain的存取行為，歷史共業。</li>
 <li>CDN &amp; Access-Control-Allow-Origin </li>
 <li>CorsModule，有必要區分protocol嗎 ?</li>
 </ol>
-<p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt="">    </p>
+<p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt>    </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">"http:"</span>, <span class="string">"https:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="問題處理經過"><a href="#問題處理經過" class="headerlink" title="問題處理經過"></a>問題處理經過</h3><ol>
 <li><p>第一時間 QA 有看到異常， 但是在 PO 的環境無法重現 ，<br>RD 初步判斷為快取的問題， 並嚐試重現錯誤 。</p>
 </li>
@@ -234,11 +232,11 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
         - ao = https://8.qa.demo/index
     - https://8.qa.demo/index =&gt; **Error**
         - ts = 8458
-        - ao = https://8.qa.demo/index         
-</code></pre><ol start="6">
+        - ao = https://8.qa.demo/index         </code></pre><ol start="6">
 <li><p>確認 Prod CDN 的 WhiteList Header 的設定有問題，<br>那為什麼 PP/G3 不會有問題呢 ?<br>=&gt; <strong>在 PP/G3 設定為 Referrer</strong> </p>
 </li>
-<li><p>測試過程發現 x-cache Header 常常<br><code>Miss from cloudfront</code>,<br>表示資料並非來自 CDN .<br>實際測試 Origin 比 Referrer 更適合</p>
+<li><p>測試過程發現 x-cache Header 常常<br><code>Miss from cloudfront</code>,  
+表示資料並非來自 CDN .<br>實際測試 Origin 比 Referrer 更適合</p>
 </li>
 </ol>
 <h3 id="回饋與後續"><a href="#回饋與後續" class="headerlink" title="回饋與後續"></a>回饋與後續</h3><pre><code>1. 團隊評估欠缺數據 →
@@ -249,23 +247,26 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
 6. QAn 沒有設定 CDN → `沒有CDN的Issue沒必要特別設定(因為需要對外)`
 7. 頁面 OutputCache 會影響測試。
 8. PP / G3 與 Prod  CDN設定不一致 → `webapi/transalte/* 已調整一致`
-9. Release 三步驟 ， 最後一步才會開啟 CDN
-</code></pre><p>Q. 下次我們怎麼作 ?</p>
+9. Release 三步驟 ， 最後一步才會開啟 CDN</code></pre><p>Q. 下次我們怎麼作 ?</p>
 <h3 id="補充資料"><a href="#補充資料" class="headerlink" title="補充資料"></a>補充資料</h3><ul>
-<li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt=""></p>
+<li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt></p>
 <p>  Server跟CDN就像工廠與便利店的關係， 你要買東西不用跑到工廠<br>  只要在離自已最近的便利店買就好了， 過期的商品(資料)會被丟掉<br>  重新跟工廠進貨(拉新資料)。</p>
 </li>
-<li>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</li>
-<li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </li>
-<li>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></li>
-<li><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</p>
+</li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </p>
+</li>
+<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></p>
+</li>
+<li><p><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></p>
+</li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="cjwb0xo40005sigvxswja6n92" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="cjwpa7kc90023fkvxk2fjffds" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -343,7 +344,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/">more...</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
