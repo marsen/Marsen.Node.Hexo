@@ -63,13 +63,13 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="TypeScript" scheme="https://blog.marsen.me/tags/TypeScript/"/>
     
       <category term="Node.js" scheme="https://blog.marsen.me/tags/Node-js/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
   </entry>
   
@@ -218,11 +218,11 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -247,9 +247,9 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -276,11 +276,11 @@
     </summary>
     
     
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
-    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
