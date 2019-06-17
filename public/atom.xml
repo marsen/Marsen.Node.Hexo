@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-06-10T14:43:28.953Z</updated>
+  <updated>2019-06-17T09:47:34.337Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記] Stripe 串接</title>
+    <link href="https://blog.marsen.me/2019/06/17/2019/stripe_payment/"/>
+    <id>https://blog.marsen.me/2019/06/17/2019/stripe_payment/</id>
+    <published>2019-06-17T04:56:17.000Z</published>
+    <updated>2019-06-17T09:47:34.337Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Agenda"><a href="#Agenda" class="headerlink" title="Agenda"></a>Agenda</h2><ul><li>Stripe 簡介</li><li>註冊</li><li>付款</li></ul><h2 id="Stripe-簡介"><a href="#Stripe-簡介" class="headerlink" title="Stripe 簡介"></a>Stripe 簡介</h2><blockquote><p>Stripe是一家提供讓個人或公司在網際網路上接受付款服務的科技公司。<br>Stripe提供在網上接受付款所需的技術、避免信用卡詐騙技術及銀行基礎設施  </p></blockquote><p>– 引述自 Wiki</p><blockquote><p>Our mission is to increase<br>the GDP of the internet  </p></blockquote><p>– 引述自 Stripe 官網</p><p>業務範圍大多為歐美，亞洲方面支援香港、新加坡與日本等國…</p><h2 id="註冊"><a href="#註冊" class="headerlink" title="註冊"></a>註冊</h2><p>只需要透過信箱即可<a href="https://dashboard.stripe.com/register" target="_blank" rel="noopener">註冊</a>，  註冊後需要到信箱收取確認信以開通帳戶，<br>如果真的要在線上使用需要提供公司相關的資訊，<br>但以開發者而言，此時的 Stripe 已經提供一組測試 api 供你使用，<br>隨後即可以登入後台操作。<br><strong>請在 Dashboard 的左邊側欄&gt;開發者&gt;API 密鑰，取得Secret key</strong> ，<br>在後面呼叫 API 中都會使用這組 Secret Key 請特別留意。</p><h2 id="付款"><a href="#付款" class="headerlink" title="付款"></a>付款</h2><p>這裡只介紹 Stripe 信用卡的付款方法，<br>並根據 <a href="https://stripe.com/doc" target="_blank" rel="noopener">Stripe 文件</a>整理一些資訊給大家。  </p><p>如下圖，這是一個標準的 Stripe 結帳流程，<br><img src="/images/2019/6/01-overview.png" alt="stripe overview"></p><p>主要的兩個步驟在 <code>Create Source</code> 與 <code>Create Charge</code> ，<br>這裡會透過呼叫 <a href="https://stripe.com/docs/api" target="_blank" rel="noopener">Stripe API</a> 以完成付款流程。  </p><p>下面會介紹幾種信用卡的付款方式， 僅供參考，實際作業請以最新的 Stripe 文件為準。<br>過程中如有呼叫 API 都會用 curl 帶過，<br>Secret Key 一律以 <code>sk</code> 表示， Public Key 以 <code>pk</code> 表示<br>Stripe 有提供多種語言的範例或是提供 SDK 或 Libary， 請親自去看它們的文件囉。</p><h3 id="使用-Checkout-Session"><a href="#使用-Checkout-Session" class="headerlink" title="使用 Checkout Session"></a>使用 Checkout Session</h3><h4 id="Step-1-建立-Session"><a href="#Step-1-建立-Session" class="headerlink" title="Step 1. 建立 Session"></a>Step 1. 建立 Session</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/checkout/sessions \</span><br><span class="line">  -u sk_test_dAa6L6BL4gZDuscgJcl3an8K00aJL2yIaW: \</span><br><span class="line">  -d payment_method_types[]=card \</span><br><span class="line">  -d line_items[][name]=T-shirt \</span><br><span class="line">  -d line_items[][description]=<span class="string">"Comfortable cotton t-shirt"</span> \</span><br><span class="line">  -d line_items[][images][]=<span class="string">"https://example.com/t-shirt.png"</span> \</span><br><span class="line">  -d line_items[][amount]=500 \</span><br><span class="line">  -d line_items[][currency]=hkd \</span><br><span class="line">  -d line_items[][quantity]=1 \</span><br><span class="line">  -d success_url=<span class="string">"https://example.com/success"</span> \</span><br><span class="line">  -d cancel_url=<span class="string">"https://example.com/cancel"</span></span><br></pre></td></tr></table></figure><h4 id="Step-2-建立-CheckOut-頁面"><a href="#Step-2-建立-CheckOut-頁面" class="headerlink" title="Step 2. 建立 CheckOut 頁面"></a>Step 2. 建立 CheckOut 頁面</h4><p>Step 1 會取得一組 session_id ，請填入頁面中的<code>{session_id}</code>，<code>pk</code> 請填入 <code>public key</code></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://js.stripe.com/v3/"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">var stripe = Stripe('pk');</span></span><br><span class="line"><span class="undefined">stripe.redirectToCheckout(&#123;</span></span><br><span class="line"><span class="undefined">  // Make the id field from the Checkout Session creation API response</span></span><br><span class="line"><span class="undefined">  // available to this file， so you can provide it as parameter here</span></span><br><span class="line"><span class="undefined">  // instead of the &#123;&#123;CHECKOUT_SESSION_ID&#125;&#125; placeholder.</span></span><br><span class="line"><span class="undefined">  sessionId: '&#123;session_id&#125;'</span></span><br><span class="line"><span class="undefined">&#125;).then(function (result) &#123;</span></span><br><span class="line"><span class="undefined">  // If `redirectToCheckout` fails due to a browser or network</span></span><br><span class="line"><span class="undefined">  // error， display the localized error message to your customer</span></span><br><span class="line"><span class="undefined">  // using `result.error.message`.</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="Step-3-載入頁面"><a href="#Step-3-載入頁面" class="headerlink" title="Step 3. 載入頁面"></a>Step 3. 載入頁面</h4><p>調整你的付款流程，引導消費者到 Step 2. 的頁面，<br>會自動轉導到 Stripe 的標準頁，並且出現填寫信用卡的資訊，<br>消費者需要手動輸入卡號後，確認付款。<br>如果確認會引導至 Step 1 的 <code>success_url</code><br>消費者取消的話會引導至 Step 1 的 <code>cancel_url</code>  </p><h4 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h4><p>這是標準的第三方串接步驟，可以發現在 Step 3 的時候，<br>消費者會被帶離你原本的站台到 Stripe 的付款頁面，<br>這樣的好處是你不需要經手敏感的資料，像是信用卡卡號，<br>但是有時候，轉導到外部頁面會讓消費者不安進而中斷結帳，<br>那我們可以參考其它的作法。  </p><h3 id="使用-Source"><a href="#使用-Source" class="headerlink" title="使用 Source"></a>使用 Source</h3><p>一般來說，Source 是 Stripe 最常用的付款方式，<br>但在歐洲相關規定調整後，信用卡不再建議使用這個 API。<br>可以參考官方文件的<a href="https://stripe.com/docs/sources/cards" target="_blank" rel="noopener">說明</a></p><blockquote><p>Card Payments with Sources<br>Use Sources to accept card payments from around the world.  </p><p>Use of this API is no longer recommended. We recommend adopting the Payment Intents API.<br>This new integration lets you benefit from Dynamic 3D Secure and helps you prepare for<br>Strong Customer Authentication regulation in Europe.</p></blockquote><p>不過理論上您的客戶中沒有歐洲人的話，還是可以呼叫這個 API ，<br>作法如下:</p><h4 id="Step-1-Create-Source-並指定-Type-為-Card"><a href="#Step-1-Create-Source-並指定-Type-為-Card" class="headerlink" title="Step 1. Create Source 並指定 Type 為 Card"></a>Step 1. Create Source 並指定 Type 為 Card</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/sources</span><br><span class="line">  -u sk</span><br><span class="line">  -d <span class="built_in">type</span>=card</span><br><span class="line">  -d currency=hkd</span><br><span class="line">  -d owner[email]=<span class="string">"jenny.rosen@example.com"</span></span><br><span class="line">  -d card[number]=&#123;&#123;cardNumber&#125;&#125;</span><br><span class="line">  -d card[exp_month]=12</span><br><span class="line">  -d card[exp_year]=2020</span><br><span class="line">  -d card[cvc]=123</span><br></pre></td></tr></table></figure><h4 id="Step-2-Charge-With-Source"><a href="#Step-2-Charge-With-Source" class="headerlink" title="Step 2. Charge With Source"></a>Step 2. Charge With Source</h4><p>Step 1 可以取得 source id，利用 source id 呼叫 charge API 付款   </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/charges</span><br><span class="line">  -u sk</span><br><span class="line">  -d <span class="built_in">source</span>=&#123;&#123;<span class="built_in">source</span> id&#125;&#125;</span><br><span class="line">  -d amount=411</span><br><span class="line">  -d currency=hkd</span><br><span class="line">  -d description=<span class="string">"Charge for jenny.rosen@example.com"</span></span><br><span class="line">  -d metadata[a]=<span class="string">"b"</span></span><br><span class="line">  -d metadata[b]=123</span><br></pre></td></tr></table></figure><h3 id="使用-Token"><a href="#使用-Token" class="headerlink" title="使用 Token"></a>使用 Token</h3><p>不過 Sorce 信用卡在<a href="https://stripe.com/docs/payments/payment-methods#transitioning" target="_blank" rel="noopener">官方文件</a>上不再被建議使用，<br>我們可以看看另一個類似方法 <em>Token</em></p><h4 id="Step-1-Create-Token-並傳入卡號"><a href="#Step-1-Create-Token-並傳入卡號" class="headerlink" title="Step 1. Create Token 並傳入卡號"></a>Step 1. Create Token 並傳入卡號</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/tokens</span><br><span class="line">  -u sk</span><br><span class="line">  -d card[number]=&#123;&#123;cardNumber&#125;&#125;</span><br><span class="line">  -d card[exp_month]=12</span><br><span class="line">  -d card[exp_year]=2020</span><br><span class="line">  -d card[cvc]=123</span><br></pre></td></tr></table></figure><h4 id="Step-2-Charge-With-Token"><a href="#Step-2-Charge-With-Token" class="headerlink" title="Step 2. Charge With Token"></a>Step 2. Charge With Token</h4><p>Step 1 可以取得 token id，利用 source id 呼叫 charge API 付款</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/charges</span><br><span class="line">  -u sk</span><br><span class="line">  -d <span class="built_in">source</span>=&#123;&#123;token id&#125;&#125;</span><br><span class="line">  -d amount=412</span><br><span class="line">  -d currency=hkd</span><br><span class="line">  -d description=<span class="string">"Charge for jenny.rosen@example.com"</span></span><br><span class="line">  -d metadata[a]=<span class="string">"c"</span></span><br><span class="line">  -d metadata[b]=663</span><br></pre></td></tr></table></figure><h3 id="使用-Payment-Intent"><a href="#使用-Payment-Intent" class="headerlink" title="使用 Payment Intent"></a>使用 Payment Intent</h3><p>終於來到 Payment Intent 了，<br>實際上這是目前 Stripe 最推薦的信用卡支付方式，<br>呼叫的作法也很類似於 Source 與 Token，<br>沒什麼特別考量的話，建議使用這個付款方式。</p><h4 id="Step-1-Create-Payment-Method-並傳入卡號"><a href="#Step-1-Create-Payment-Method-並傳入卡號" class="headerlink" title="Step 1. Create Payment Method 並傳入卡號"></a>Step 1. Create Payment Method 並傳入卡號</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/payment_methods</span><br><span class="line">  -u sk</span><br><span class="line">  -X POST  </span><br><span class="line">  -d <span class="built_in">type</span>=card  </span><br><span class="line">  -d card[number]=&#123;&#123;cardNumber&#125;&#125;</span><br><span class="line">  -d card[exp_month]=12  </span><br><span class="line">  -d card[exp_year]=2020  </span><br><span class="line">  -d card[cvc]=123</span><br></pre></td></tr></table></figure><h4 id="Step-2-Create-Payment-Intent-With-Payment-Method"><a href="#Step-2-Create-Payment-Intent-With-Payment-Method" class="headerlink" title="Step 2. Create Payment Intent With Payment Method"></a>Step 2. Create Payment Intent With Payment Method</h4><p>Step 1 可以取得 payment method id，<br>利用 payment method id 呼叫 payment intents API 付款</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/payment_intents  </span><br><span class="line">  -u sk  </span><br><span class="line">  -d payment_method=&#123;&#123;payment method id&#125;&#125;</span><br><span class="line">  -d amount=555  </span><br><span class="line">  -d currency=hkd  </span><br><span class="line">  -d confirmation_method=manual  </span><br><span class="line">  -d confirm=<span class="literal">true</span></span><br></pre></td></tr></table></figure><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>想快速成立訂單請用 Session 的作法，<br>想要避免轉換率下降，請使用 Payment Intents。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://stripe.com/en-hk" target="_blank" rel="noopener">Online payment processing for internet businesses - Stripe</a></li><li><a href="https://dashboard.stripe.com/" target="_blank" rel="noopener">DashBoard</a></li><li><a href="https://stripe.com/docs" target="_blank" rel="noopener">Documentation | Stripe</a></li><li><a href="https://stripe.com/docs/api" target="_blank" rel="noopener">Stripe API Reference</a></li><li><a href="https://zh.wikipedia.org/wiki/Stripe" target="_blank" rel="noopener">Stripe Wiki</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Agenda&quot;&gt;&lt;a href=&quot;#Agenda&quot; class=&quot;headerlink&quot; title=&quot;Agenda&quot;&gt;&lt;/a&gt;Agenda&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Stripe 簡介&lt;/li&gt;
+&lt;li&gt;註冊&lt;/li&gt;
+&lt;li&gt;付款&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+    
+      <category term="API" scheme="https://blog.marsen.me/tags/API/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] 讓 SonarQube 檢查你的代碼 </title>
@@ -63,13 +91,13 @@
     </summary>
     
     
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
       <category term="TypeScript" scheme="https://blog.marsen.me/tags/TypeScript/"/>
     
       <category term="Node.js" scheme="https://blog.marsen.me/tags/Node-js/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
-    
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
   </entry>
   
@@ -218,11 +246,11 @@
     </summary>
     
     
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
-    
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -247,9 +275,9 @@
     </summary>
     
     
-      <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
-    
       <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
+      <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -276,11 +304,11 @@
     </summary>
     
     
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="TDD" scheme="https://blog.marsen.me/tags/TDD/"/>
-    
-      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
     
@@ -512,30 +540,6 @@
     
     
       <category term="powershell" scheme="https://blog.marsen.me/tags/powershell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[踩雷筆記] BDD 跑3個失敗就停止</title>
-    <link href="https://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/"/>
-    <id>https://blog.marsen.me/2018/11/19/2018/bdd_stopAfterfaliues/</id>
-    <published>2018-11-19T03:40:45.000Z</published>
-    <updated>2019-06-10T14:43:28.896Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原文描述"><a href="#原文描述" class="headerlink" title="原文描述"></a>原文描述</h2><blockquote><p>Visual Studio 的 Test Explorer 在跑測試，<br>如果遇到失敗，會直接中斷，<br>比如說有 2000 個測試案例 跑到第 1300 個時測試失敗就會中斷<br>剩下的 700 個案例會不執行直接略過。</p></blockquote><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><h3 id="實際狀況"><a href="#實際狀況" class="headerlink" title="實際狀況"></a>實際狀況</h3><p>並不是一跑到錯誤就會中斷測試，而是跑了 3 個失敗後中斷測試，<br>另外執行的測試專案，是使用 SpecRun.Runner 撰寫 Cucumber 語法跑 BDD 測試。</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>當使用測試專案使用 SpecRun.Runner，預設 stopAfterFailures 是 3，<br>所以3個失敗就會略過。</p><h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>正常的測試都是會全跑完的。因為 Test Framework 標示 Test Method 的部份，<br>都是幫你內建 Try/Catch 攔下所有 Exception 的。</p><p>MsTest 的 [TestMethod] 或是 NUnit 的[Test](XUnit 是 [Fact])，其實就是層 Wrapper<br>你在方法裡面寫的內容，只要有引發 Exception 的例外，<br>都會被這層 Wrapper 攔下來，轉成測試結果的內容。</p><h2 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h2><p>測試專案根目錄應該有一份 <code>Default.srprofile</code> 檔，如下<br>將 <code>stopAfterFailures</code> 調整至適當的值(ex:500)，將會顯示所有失敗測試。<br>本案例開啟後，實際失敗的測試有 37 個</p><pre><code class="xml"><span class="tag">&lt;<span class="name">Execution</span> <span class="attr">stopAfterFailures</span>=<span class="string">"3"</span> <span class="attr">testThreadCount</span>=<span class="string">"1"</span> <span class="attr">testSchedulingMode</span>=<span class="string">"Sequential"</span> /&gt;</span></code></pre><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul><li><a href="https://groups.google.com/forum/#!topic/specrun/yR6VVH8bDKg" target="_blank" rel="noopener">SpecRun skipping testing rather than running them when executing more than 16</a></li><li><a href="https://specflow.org/plus/documentation/SpecFlowPlus-Runner-Profiles/" target="_blank" rel="noopener">SpecFlow+ Runner Profiles</a></li></ul><p>特別感謝 91、Green、余小章的協助</p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;原文描述&quot;&gt;&lt;a href=&quot;#原文描述&quot; class=&quot;headerlink&quot; title=&quot;原文描述&quot;&gt;&lt;/a&gt;原文描述&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Visual Studio 的 Test Explorer 在跑測試，&lt;br&gt;如果遇到失敗，會直接
-      
-    
-    </summary>
-    
-    
-      <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
   </entry>
   
