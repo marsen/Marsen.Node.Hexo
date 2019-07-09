@@ -156,7 +156,7 @@ curl https://api.stripe.com/v1/charges
 ### 使用 Token
 
 不過 Sorce 信用卡在[官方文件](https://stripe.com/docs/payments/payment-methods#transitioning)上不再被建議使用，
-我們可以看看另一個類似方法 *Token*
+我們可以看看另一個類似的方法 *Token*
 
 #### Step 1. Create Token 並傳入卡號
 

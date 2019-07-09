@@ -53,3 +53,4 @@ Public URL 設定為 http://jenkins-youraccount.rhcloud.com
 在認証公鑰的過程中，需要寫入 `~/.ssh/known_hosts` 檔案。
 但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗
 
+(fin)
