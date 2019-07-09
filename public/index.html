@@ -76,6 +76,84 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019/introduce_variable_for_substring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/2019/introduce_variable_for_substring/" class="article-date">
+  <time datetime="2019-07-09T12:02:13.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/09/2019/introduce_variable_for_substring/">[學習筆記]重構使用 Introduce Variable for Substring </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="要知道的事"><a href="#要知道的事" class="headerlink" title="要知道的事"></a>要知道的事</h2><ul>
+<li>這是個人的學習記錄</li>
+<li>可能對你沒幫助</li>
+<li>不知不知最可怕。快不起來,因為你不覺得慢</li>
+<li>希望對你有幫助</li>
+<li>使用 Visual Studio &amp; ReSharper</li>
+</ul>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><blockquote>
+<p>把原本的程式<br>string url = “<a href="http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&quot;" target="_blank" rel="noopener">http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&quot;</a></p>
+<p>變成下面這樣</p>
+<p>string domain = “<a href="http://localhost:5000&quot;" target="_blank" rel="noopener">http://localhost:5000&quot;</a>;  
+string code = “SF188964T”;<br>string payType = “PayPal”;<br>string url = $”{domain}/api/refund/{payType}/{code}”;  </p>
+<p>你會怎麼作 ?</p>
+</blockquote>
+<p>我原本的作法，一個字一個挖出來，命名變數，再填回去。<br>怎麼作可以更快 ?</p>
+<p>透過 Resharper 的 Refactor &gt; Introduce Variable &gt; Introduce Variable for Substring 即可快速重構。</p>
+<p>參考 91 的影片</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/Nqz8qapjjz4" frameborder="0" allowfullscreen></iframe></div>
+
+<p>我實測原本的開發時間約為2~3分鐘，善用工具約可以在 30 ~ 45 s 完成。<br>效能提昇 400 % !!!!!(聽起來就很威)</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/C9jLXrh3LRg" frameborder="0" allowfullscreen></iframe></div>
+
+<p>當然結合了 Vim 與 Visual Studio 的工具才達到這樣的速度，強烈推薦以下課程。</p>
+<h2 id="我只推薦好東西"><a href="#我只推薦好東西" class="headerlink" title="我只推薦好東西"></a>我只推薦好東西</h2><p><a href="https://dotblogs.com.tw/hatelove/2019/06/17/extreme-developing-training-202002" target="_blank" rel="noopener">【極速開發+】 202002 第九梯次 台北</a></p>
+<h3 id="課程優點"><a href="#課程優點" class="headerlink" title="課程優點"></a>課程優點</h3><ol>
+<li>學心法也學作法，不是只有理論的打高空</li>
+<li>認識同好 ，來上課的同學都是願意精進自已的人，所以身上有很多寶可以挖</li>
+<li>認識 91 ，遇到 91 盡量挖就對了，偷到一招半式都完勝 10 年在那邊處理 NullReferenceException</li>
+<li>學習怎麼學習</li>
+</ol>
+<h2 id="其它本周學習事項"><a href="#其它本周學習事項" class="headerlink" title="其它本周學習事項"></a>其它本周學習事項</h2><ol>
+<li>可以讓中斷點停留在 lambda express 中</li>
+<li>MSTest 請用 DescriptionAttribute 加入測試描述</li>
+<li><a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.boundfield.convertemptystringtonull?view=netframework-4.8" target="_blank" rel="noopener">.Net MVC Model Binding 若欄位為空字串預設為轉為 Null</a></li>
+</ol>
+<h2 id="本周待確認事項"><a href="#本周待確認事項" class="headerlink" title="本周待確認事項"></a>本周待確認事項</h2><ol>
+<li>如何對 HttpClient 測試 ?</li>
+<li>如何用 <a href="https://fluentvalidation.net/testing" target="_blank" rel="noopener">FluentValidation</a> 作測試 ?</li>
+</ol>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2019/07/09/2019/introduce_variable_for_substring/" data-id="cjxvvfggo0000mgvxcr0fnvzf" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2019/07/09/2019/introduce_variable_for_substring/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2019/stripe_payment" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/17/2019/stripe_payment/" class="article-date">
@@ -122,7 +200,7 @@ ga('send', 'pageview');
 
 <h4 id="Step-2-建立-CheckOut-頁面"><a href="#Step-2-建立-CheckOut-頁面" class="headerlink" title="Step 2. 建立 CheckOut 頁面"></a>Step 2. 建立 CheckOut 頁面</h4><p>Step 1 會取得一組 session_id ，請填入頁面中的<code>{session_id}</code>，
 <code>pk</code> 請填入 <code>public key</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://js.stripe.com/v3/"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">var stripe = Stripe('pk');</span></span><br><span class="line"><span class="undefined">stripe.redirectToCheckout(&#123;</span></span><br><span class="line"><span class="undefined">  // Make the id field from the Checkout Session creation API response</span></span><br><span class="line"><span class="undefined">  // available to this file， so you can provide it as parameter here</span></span><br><span class="line"><span class="undefined">  // instead of the &#123;&#123;CHECKOUT_SESSION_ID&#125;&#125; placeholder.</span></span><br><span class="line"><span class="undefined">  sessionId: '&#123;session_id&#125;'</span></span><br><span class="line"><span class="undefined">&#125;).then(function (result) &#123;</span></span><br><span class="line"><span class="undefined">  // If `redirectToCheckout` fails due to a browser or network</span></span><br><span class="line"><span class="undefined">  // error， display the localized error message to your customer</span></span><br><span class="line"><span class="undefined">  // using `result.error.message`.</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://js.stripe.com/v3/"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> stripe = Stripe(<span class="string">'pk'</span>);</span></span><br><span class="line"><span class="undefined">stripe.redirectToCheckout(&#123;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// Make the id field from the Checkout Session creation API response</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// available to this file， so you can provide it as parameter here</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// instead of the &#123;&#123;CHECKOUT_SESSION_ID&#125;&#125; placeholder.</span></span></span><br><span class="line"><span class="javascript">  sessionId: <span class="string">'&#123;session_id&#125;'</span></span></span><br><span class="line"><span class="javascript">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// If `redirectToCheckout` fails due to a browser or network</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// error， display the localized error message to your customer</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// using `result.error.message`.</span></span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="Step-3-載入頁面"><a href="#Step-3-載入頁面" class="headerlink" title="Step 3. 載入頁面"></a>Step 3. 載入頁面</h4><p>調整你的付款流程，引導消費者到 Step 2. 的頁面，<br>會自動轉導到 Stripe 的標準頁，並且出現填寫信用卡的資訊，<br>消費者需要手動輸入卡號後，確認付款。<br>如果確認會引導至 Step 1 的 <code>success_url</code><br>消費者取消的話會引導至 Step 1 的 <code>cancel_url</code>  </p>
 <h4 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h4><p>這是標準的第三方串接步驟，可以發現在 Step 3 的時候，<br>消費者會被帶離你原本的站台到 Stripe 的付款頁面，<br>這樣的好處是你不需要經手敏感的資料，像是信用卡卡號，<br>但是有時候，轉導到外部頁面會讓消費者不安進而中斷結帳，<br>那我們可以參考其它的作法。  </p>
@@ -137,7 +215,7 @@ ga('send', 'pageview');
 <h4 id="Step-2-Charge-With-Source"><a href="#Step-2-Charge-With-Source" class="headerlink" title="Step 2. Charge With Source"></a>Step 2. Charge With Source</h4><p>Step 1 可以取得 source id，利用 source id 呼叫 charge API 付款   </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/charges</span><br><span class="line">  -u sk</span><br><span class="line">  -d <span class="built_in">source</span>=&#123;&#123;<span class="built_in">source</span> id&#125;&#125;</span><br><span class="line">  -d amount=411</span><br><span class="line">  -d currency=hkd</span><br><span class="line">  -d description=<span class="string">"Charge for jenny.rosen@example.com"</span></span><br><span class="line">  -d metadata[a]=<span class="string">"b"</span></span><br><span class="line">  -d metadata[b]=123</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用-Token"><a href="#使用-Token" class="headerlink" title="使用 Token"></a>使用 Token</h3><p>不過 Sorce 信用卡在<a href="https://stripe.com/docs/payments/payment-methods#transitioning" target="_blank" rel="noopener">官方文件</a>上不再被建議使用，<br>我們可以看看另一個類似方法 <em>Token</em></p>
+<h3 id="使用-Token"><a href="#使用-Token" class="headerlink" title="使用 Token"></a>使用 Token</h3><p>不過 Sorce 信用卡在<a href="https://stripe.com/docs/payments/payment-methods#transitioning" target="_blank" rel="noopener">官方文件</a>上不再被建議使用，<br>我們可以看看另一個類似的方法 <em>Token</em></p>
 <h4 id="Step-1-Create-Token-並傳入卡號"><a href="#Step-1-Create-Token-並傳入卡號" class="headerlink" title="Step 1. Create Token 並傳入卡號"></a>Step 1. Create Token 並傳入卡號</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.stripe.com/v1/tokens</span><br><span class="line">  -u sk</span><br><span class="line">  -d card[number]=&#123;&#123;cardNumber&#125;&#125;</span><br><span class="line">  -d card[exp_month]=12</span><br><span class="line">  -d card[exp_year]=2020</span><br><span class="line">  -d card[cvc]=123</span><br></pre></td></tr></table></figure>
 
 <h4 id="Step-2-Charge-With-Token"><a href="#Step-2-Charge-With-Token" class="headerlink" title="Step 2. Charge With Token"></a>Step 2. Charge With Token</h4><p>Step 1 可以取得 token id，利用 source id 呼叫 charge API 付款</p>
@@ -162,7 +240,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/06/17/2019/stripe_payment/" data-id="cjwzzh87f003ev8vxiamvgt6m" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/06/17/2019/stripe_payment/" data-id="cjxvrgaoz0023ysvxil71ogae" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/06/17/2019/stripe_payment/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -264,7 +342,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjwzzh8700034v8vxixbj91lk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="cjxvrgaox0021ysvxqx6qmw54" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -377,7 +455,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjwzzh87g003gv8vxv8tcadau" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/" data-id="cjxvrgaoz0024ysvxkhqgvk1r" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/typescript_unit_test/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -442,7 +520,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjwzzh87a003cv8vxsk0g5sgn" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/" data-id="cjxvrgaov001yysvx9jqdbb56" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/12/2019/csproj_content_none/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -498,7 +576,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjwzzh87j003hv8vxtha4qo01" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/11/2019/tool_sites/" data-id="cjxvrgap00025ysvxpqkz8ajj" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/11/2019/tool_sites/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -643,7 +721,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjwzzh8750037v8vxlwhxra4e" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/" data-id="cjxvrgaou001wysvxx9f82cc8" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/04/06/2019/aspdotnet_core_logging/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -789,7 +867,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjwzzh8e700cnv8vxvhkhlhsl" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/" data-id="cjxvrgatz00bqysvx59407jh5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -842,7 +920,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjwzzh86w0031v8vx5s9mjhgm" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/" data-id="cjxvrgaot001vysvxl8y0kqfm" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -976,118 +1054,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjwzzh8730036v8vxs1flpaf6" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/" data-id="cjxvrgaow001zysvx87v3krcz" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/02/06/2019/coding_dojo_kata_fizzbuzz_first/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TDD/">TDD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Testing/">Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重構/">重構</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019/coding_dojo_in_company" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/30/2019/coding_dojo_in_company/" class="article-date">
-  <time datetime="2019-01-29T17:41:17.000Z" itemprop="datePublished">2019-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] 在公司小規模玩 Coding Dojo </a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在上 91 大的(<a href="https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/">熱血 Coding Dojo 第一梯次</a>)的課程中，<br>我一直在思索一件事，<strong>為什麼我作不到呢？</strong></p>
-<p><img src="/images/2019/1/be_a_star.jpg" alt="我什麼時候才能成角啊"></p>
-<p>我不希望只是上了課之後，「喔喔喔 我好興奮啊…」就結束了，<br>所以馬上找了一起上課的兩個同事開了個簡單的 Retro<br>我只有一個問題，<br>「如果你覺得這堂課有效的話，我們要作什麼 才能帶來改變呢 ?」  </p>
-<h2 id="開起小型-Dojo"><a href="#開起小型-Dojo" class="headerlink" title="開起小型 Dojo"></a>開起小型 Dojo</h2><p>我們簡單的作了一個決定，我們要在公司內部建立一個 Dojo<br>並且簡單的訂定了三個目標</p>
-<ol>
-<li>學習 Pair ，並透過 Pair 彼此學習</li>
-<li>學習 TDD ，並透過 TDD 學習重構</li>
-<li>學習 Vim，並提昇開發速度</li>
-</ol>
-<p>這三個東西都是在課堂上學習到的，幸運得是我們當中有兩位已經會基本的 Vim 指令，<br>當然也各有各的問題，ex: 不熟悉英打、沒有 Reshaper 、找不到共同的時間等…</p>
-<p>總而言之，我們就這樣開始了。</p>
-<h3 id="第一個-Kata"><a href="#第一個-Kata" class="headerlink" title="第一個 Kata"></a>第一個 Kata</h3><p>第一個 Kata 是很重要的，<a href="http://codingdojo.org/kata/" target="_blank" rel="noopener">Coding Dojo</a>提供我們一些選擇，<br>Tennis Game 與 Pocker Hand 都是很好的題目，<br>但是新手上路，我們選了一個簡單的 <a href="http://codingdojo.org/kata/FizzBuzz/" target="_blank" rel="noopener">Fizz Buzz</a> 當作練習題目。<br>Fizz Buzz 的需求分析是很簡單的，  </p>
-<ol>
-<li>傳入 1 數，可以被 3 整除，回傳 Fizz</li>
-<li>傳入 1 數，可以被 5 整除，回傳 Buzz</li>
-<li>傳入 1 數，可以被 3 整除，且可以被 5 整除，回傳 FizzBuzz</li>
-<li>不符合上述條件回傳原數值</li>
-</ol>
-<p>Sample Case:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 → 1</span><br><span class="line">2 → 2</span><br><span class="line">3 → Fizz</span><br><span class="line">4 → 4</span><br><span class="line">5 → Buzz</span><br><span class="line">6 → Fizz</span><br><span class="line">7 → 7</span><br><span class="line">8 → 8</span><br><span class="line">9 → Fizz</span><br><span class="line">10 → Buzz</span><br><span class="line">11 → 11</span><br><span class="line">12 → Fizz</span><br><span class="line">13 → 13</span><br><span class="line">14 → 14</span><br><span class="line">15 → FizzBuzz</span><br></pre></td></tr></table></figure>
-
-<h3 id="怎麼開始？"><a href="#怎麼開始？" class="headerlink" title="怎麼開始？"></a>怎麼開始？</h3><p>首先是時間，專案很忙碌，不是所有的人都有空，<br>我要怎麼擠出時間 ？  </p>
-<h3 id="利用-Timebox-與-Don’t-Break-The-chain"><a href="#利用-Timebox-與-Don’t-Break-The-chain" class="headerlink" title="利用 Timebox 與 Don’t Break The chain"></a>利用 Timebox 與 Don’t Break The chain</h3><p>每天都練習 KATA，每次 30 分鐘；<br>每天約定一個時間 30 分鐘，30 分鐘到就強制結束，<br>不論是中午的 30 分鐘，或是下班前的 30 分鐘，<br>找一個時間只要有兩個人的時間 OK 就進行 。<br>輪流當 Dirver 與 Navigator ，時間設定 5 分鐘，<br>一樣時間到就換手。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">嚴格執行 Timebox 真的是一件很折磨人的事情，  </span><br><span class="line">特別是有一些火花的討論出現時，</span><br><span class="line">但是隨著每次的 Timebox 的結束，</span><br><span class="line">看到的成果比上一次多時，  </span><br><span class="line">那種進步感是相同明顯的。</span><br></pre></td></tr></table></figure>
-
-<p>很幸運的，一直到過農曆年我們都沒有中斷，<br>設定 Timebox 也確實有讓參與的人提昇，<br>包含「重構的技巧」、「打字」、「TDD」與「Vim」，<br>也有人分享工具，或是小技巧，<br>這達到我們<strong>彼此學習</strong>的目的。  </p>
-<h3 id="回顧一下作得好的部份"><a href="#回顧一下作得好的部份" class="headerlink" title="回顧一下作得好的部份"></a>回顧一下作得好的部份</h3><ol>
-<li>雖然很困難，有線上的問題要處理，有工作項目，有一堆會議，但是我們仍然沒有中斷過一天。</li>
-<li>完成了兩個 Kata ，經典的 FizzBuzz 還有很類似的題目 FooBarQix。</li>
-<li>確實有從彼此身上學到東西，比如說在 Vim 裡面超好用的 <code>ci</code> 或是 AceJump 小工具。</li>
-<li>人數控制的很好，押在 3 到 5 人，也讓大家都能參與到。</li>
-<li>最重要的一點，看到了很多「真實」</li>
-</ol>
-<h3 id="作得不好的部份"><a href="#作得不好的部份" class="headerlink" title="作得不好的部份"></a>作得不好的部份</h3><ol>
-<li>環境有一些前期門檻在，ex: Reshaper、已配置過的 VimRC</li>
-<li>Timebox 有時候仍會超過，主因是討論太熱情了。</li>
-<li>整體成員都算有經驗的開發者，但是對重構仍然很弱，對壞味道麻痺(不在意重複等…)</li>
-<li>TDD 有時候沒辦法作到 Baby Step ，雖然重構是成功的，但過程有點跳躍；或是重構完才發現測試壞一大片，需要偵錯去修正。</li>
-<li>雖然有記錄一些問題，但是常常沒有去求解答</li>
-</ol>
-<h3 id="真實的部份"><a href="#真實的部份" class="headerlink" title="真實的部份"></a>真實的部份</h3><ol>
-<li>我們常常看到重複視而不見，特別是只有兩、三次的重複<ul>
-<li>這題成員的看法比較貼近大量重複再重構…我仍然有點持疑  </li>
-</ul>
-</li>
-<li>因為時間壓力，我們會把問題留給後人；我們不會去理解前人的設計<ul>
-<li>時間壓力可以換成任何理由</li>
-</ul>
-</li>
-<li>Navigator 如果沒有思考 Dirver 會開 Auto</li>
-</ol>
-<p>我們開發者真的太有自信，在 Kata 過程出現的問題，<br>如果放到開發現場的規模，基本上就是災難，<br>而實際上也是每天發生。</p>
-<p>在時限的壓力下，你不能作出多完美的設計，<br>但是你可以透過測試作出足夠好的設計，<br>測試的保護可以幫助你提早發現</p>
-<h2 id="下一步是-？"><a href="#下一步是-？" class="headerlink" title="下一步是 ？"></a>下一步是 ？</h2><p>一直以來有那麼多讀書會，上了那麼多課，<br>也有外訓內訓，結果卻是不了了之，<br>要怎麼証明理論有效 ？<br>要怎麼導入開發現場 ？</p>
-<p><a href="https://github.com/marsen/Coding_Dojo_Csharp" target="_blank" rel="noopener">我們的成果</a></p>
-<h2 id="寫在後面"><a href="#寫在後面" class="headerlink" title="寫在後面"></a>寫在後面</h2><p>我不是本科系畢業，但在軟體開發上也有 7、8 年的經驗，<br>軟體的經典書籍也看過不少，<br>不論是免費的社群活動或是上萬元的課程，<br>相關的課也上了不少。  </p>
-<p>學習單一語言的特性或是設計模式、物件導向到工程上的 Code Review、Pair Programming、TDD 諸如此類等…<br>不能說沒有幫助，但總覺得現實與書上的理想好遠啊…<br>我以為我懂了，其實我根本不懂。  </p>
-<p>技術不斷推陳出新，追不勝追，<br>常常工作完後研究或是練習到半夜，<br>但是沒什麼效果，或在實務上根本用不到<br>真得很有事倍功半的無力感。  </p>
-<p>在工作上的產品或專案永遠都有<strong>緊急又重要</strong>的事要作，<br>人家的艾森豪矩陣有四個象限，你永遠只有一個象限，<br>生活上各種的壓力與瑣事，變成了種惡性循環，<br>像個泥沼一般，無法提昇所以下沉，下沉了更無法提昇。  </p>
-<p>這個小小實驗，就像是整個開發現場的濃縮版，<br>現場很多問題不是沒有解答，<br>但是常常一句「理論上是，但是…」，然後就沒有然後了。<br>我們太習慣短解，太過自信，讓不好的事情重複發生，<br>然後覺得自已很忙碌，很有價值感，<br>但是沒有任何改變。</p>
-<p>這個實驗我會繼續下去，期待能有好的結果，並帶來一些變化。  </p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://github.com/marsen/Coding_Dojo_Csharp" target="_blank" rel="noopener">marsen/Coding_Dojo_Csharp</a></li>
-<li><a href="http://codingdojo.org/KataCatalogue/" target="_blank" rel="noopener">Coding Dojo</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/" data-id="cjwzzh8770039v8vxg2ifj2dw" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TDD/">TDD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重構/">重構</a></li></ul>
 
     </footer>
   </div>
@@ -1112,6 +1084,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2019/07/09/2019/introduce_variable_for_substring/">[學習筆記]重構使用 Introduce Variable for Substring </a>
+          </li>
+        
+          <li>
             <a href="/2019/06/17/2019/stripe_payment/">[實作筆記] Stripe 串接</a>
           </li>
         
@@ -1127,10 +1103,6 @@ ga('send', 'pageview');
             <a href="/2019/04/12/2019/csproj_content_none/">[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔</a>
           </li>
         
-          <li>
-            <a href="/2019/04/11/2019/tool_sites/">[筆記] 好用的線上工具</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1140,7 +1112,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
