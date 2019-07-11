@@ -21,9 +21,9 @@
     "hexo-tag-youku": "^1.0.2"
   },
   "devDependencies": {
-    "ajv": "^6.10.0",
-    "ajv-keywords": "^3.4.0",
-    "babel-eslint": "^10.0.1",
+    "ajv": "^6.10.1",
+    "ajv-keywords": "^3.4.1",
+    "babel-eslint": "^10.0.2",
     "eslint": "^4.19.1"
   }
 }
