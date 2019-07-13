@@ -27,7 +27,7 @@ date: 2019/07/09 20:02:13
 
 我原本的作法，一個字一個挖出來，命名變數，再填回去。
 
-*怎麼作可以更快 ?*
+**怎麼作可以更快 ?**
 
 透過 Resharper 的 Refactor > Introduce Variable > Introduce Variable for Substring 即可快速重構。
 
