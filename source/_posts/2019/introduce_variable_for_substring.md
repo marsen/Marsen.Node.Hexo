@@ -14,11 +14,11 @@ date: 2019/07/09 20:02:13
 ## 問題
 
 > 把原本的程式
-> string url = "http://localhost:5000/api/v3.3/refund/PayPal/SF188964T"
+> string url = "<http://localhost:5000/api/v3.3/refund/PayPal/SF188964T">
 >
 > 變成下面這樣
 >
-> string domain = "http://localhost:5000";  
+> string domain = "<http://localhost:5000";>  
 > string code = "SF188964T";  
 > string payType = "PayPal";  
 > string url = $"{domain}/api/refund/{payType}/{code}";  
@@ -26,7 +26,8 @@ date: 2019/07/09 20:02:13
 > 你會怎麼作 ?
 
 我原本的作法，一個字一個挖出來，命名變數，再填回去。
-怎麼作可以更快 ?
+
+*怎麼作可以更快 ?*
 
 透過 Resharper 的 Refactor > Introduce Variable > Introduce Variable for Substring 即可快速重構。
 
