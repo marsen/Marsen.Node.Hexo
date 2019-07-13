@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Marsen">
 <meta property="og:description" content="要知道的事 這是個人的學習記錄 可能對你沒幫助 不知不知最可怕。快不起來,因為你不覺得慢 希望對你有幫助 使用 Visual Studio &amp;amp; ReSharper  問題 把原本的程式string url = “http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&amp;quot; 變成下面這樣 string domain = “http:">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2019-07-13T03:37:31.924Z">
+<meta property="og:updated_time" content="2019-07-13T03:40:36.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[學習筆記] 重構使用 Introduce Variable for Substring">
 <meta name="twitter:description" content="要知道的事 這是個人的學習記錄 可能對你沒幫助 不知不知最可怕。快不起來,因為你不覺得慢 希望對你有幫助 使用 Visual Studio &amp;amp; ReSharper  問題 把原本的程式string url = “http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&amp;quot; 變成下面這樣 string domain = “http:">
@@ -110,11 +110,11 @@ ga('send', 'pageview');
 <h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><blockquote>
 <p>把原本的程式<br>string url = “<a href="http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&quot;" target="_blank" rel="noopener">http://localhost:5000/api/v3.3/refund/PayPal/SF188964T&quot;</a></p>
 <p>變成下面這樣</p>
-<p>string domain = “<a href="http://localhost:5000&quot;" target="_blank" rel="noopener">http://localhost:5000&quot;</a>;  
-string code = “SF188964T”;<br>string payType = “PayPal”;<br>string url = $”{domain}/api/refund/{payType}/{code}”;  </p>
+<p>string domain = “<a href="http://localhost:5000&quot;;" target="_blank" rel="noopener">http://localhost:5000&quot;;</a><br>string code = “SF188964T”;<br>string payType = “PayPal”;<br>string url = $”{domain}/api/refund/{payType}/{code}”;  </p>
 <p>你會怎麼作 ?</p>
 </blockquote>
-<p>我原本的作法，一個字一個挖出來，命名變數，再填回去。<br>怎麼作可以更快 ?</p>
+<p>我原本的作法，一個字一個挖出來，命名變數，再填回去。</p>
+<p><em>怎麼作可以更快 ?</em></p>
 <p>透過 Resharper 的 Refactor &gt; Introduce Variable &gt; Introduce Variable for Substring 即可快速重構。</p>
 <p>參考 91 的影片</p>
 <div class="video-container"><iframe src="//www.youtube.com/embed/Nqz8qapjjz4" frameborder="0" allowfullscreen></iframe></div>
@@ -144,7 +144,7 @@ string code = “SF188964T”;<br>string payType = “PayPal”;<br>string url =
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/07/09/2019/introduce_variable_for_substring/" data-id="cjy0eyqq3002kp4vxd0ob4rf8" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/07/09/2019/introduce_variable_for_substring/" data-id="cjy0zeqoh002cs0vxdje9kv3h" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/07/09/2019/introduce_variable_for_substring/#disqus_thread" class="article-comment-link">留言</a>
       
