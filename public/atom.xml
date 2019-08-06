@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-08-03T19:14:13.524Z</updated>
+  <updated>2019-08-06T19:24:26.171Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[閱讀筆記] 學徒模式--優秀軟體開發者的養成之路</title>
+    <link href="https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_patterns/"/>
+    <id>https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_patterns/</id>
+    <published>2019-08-06T18:06:15.000Z</published>
+    <updated>2019-08-06T19:24:26.171Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/2019/8/apprenticeship_patternsjpg.jpg" alt="送書啦"></p><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近公司來了幾個來自 Build School 的學員，<br>作為暑期工讀生，開發一些 Side Project ，<br>雖然工作很忙，不過我倒是對帶新人還蠻有信心的。  </p><p>這些小朋友問了一些問題，讓我想到自已剛畢業和剛從資策會出來的那時候。<br>有的問題很大，大到可能要一輩子都無法解決。<br>有的問題很小，小到聽了會笑，但對他們來說可能像是眼裡的一粒沙。  </p><p>我在學習的初期，最困難的問題是<strong>不知道怎麼問問題</strong>。  而過了一陣子後，我發現一個更糟的狀況，<strong>我不知道我有問題</strong>。  而這本書大致上解決了我的上述的兩個問題。</p><h2 id="為何選擇這本書"><a href="#為何選擇這本書" class="headerlink" title="為何選擇這本書?"></a>為何選擇這本書?</h2><p>非常好讀，你不需要從頭讀到尾。<br>首先是每個篇幅非常的短，大概只要 5~10 分鐘就能讀完。<br>再來是除了第一章外，每一大章都會有一個地圖，<br>讓你能看見全貌。  </p><h2 id="如何讀這本書"><a href="#如何讀這本書" class="headerlink" title="如何讀這本書"></a>如何讀這本書</h2><p>而每一篇都包含情境、問題、解決方案與參照，<br>情境與問題就像是這本書的 GPS ,<br>讓你知道你落在這本書的哪個點上 。<br>解決方案是通篇的主體，但是對我來說後面的行動更為重要，<br>我開始練習 Kata、寫 Blog、尋找導師大多是因這本書而開始的。  </p><p>最後，都會附上相關章節的參照。<br>這非常有幫助，原因是在這張地圖上，<br>你可能會同時落在幾個點上。<br>那麼地圖與參照就會非常有幫助，你可以查找地圖發現有關連的章節，<br>也可以直接透過參照找到其它章節。  </p><h2 id="會不會是雞湯文"><a href="#會不會是雞湯文" class="headerlink" title="會不會是雞湯文"></a>會不會是雞湯文</h2><p>會不會變成雞湯，其實取決於你自已。<br>書上的行動，你作了嗎 ?<br>如果不行動，就當作喝雞湯吧。  </p><h2 id="這本書的缺點"><a href="#這本書的缺點" class="headerlink" title="這本書的缺點"></a>這本書的缺點</h2><p>這本書強調的是如何成為一個工匠，<br>如何成為一個達人。<br>我知道的現實是，很多工程人員到了一定的程度就會轉換職務<br>如果你的目標是成為管理者，業務等…職務<br>我想這本書在幫助上可能會少一半。<br>畢竟這不是一本教你管理、銷售或領導的書。</p><h2 id="最後的-mur-mur"><a href="#最後的-mur-mur" class="headerlink" title="最後的 mur mur"></a>最後的 mur mur</h2><p>現實上的工匠真的很少，這不是條發大財的路。<br>走起來也很辛苦，不過這是個革命的時代，<br>各行各業都在與軟體產業發生衝突與融合，<br>如果能有更多優秀的工程師，我們就不需要工程師了。</p><blockquote><p>鍚將會扮演它的角色，直到這個世界不再需要鍚為止，<br>然後鍚就會變成金子。  —El Alquimista</p></blockquote><p>期許自已和看到這篇文章的你都能成為更好的工程師。</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/images/2019/8/apprenticeship_patternsjpg.jpg&quot; alt=&quot;送書啦&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="閱讀筆記" scheme="https://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記] 第八個習慣 --- 從成功到卓越</title>
@@ -267,9 +291,9 @@
     </summary>
     
     
-      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
-    
       <category term="PowerShell" scheme="https://blog.marsen.me/tags/PowerShell/"/>
+    
+      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
     
   </entry>
   
@@ -513,33 +537,6 @@
     
     
       <category term="Git" scheme="https://blog.marsen.me/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[N社筆記]敏捷路上跌倒站起來 2018/11 月</title>
-    <link href="https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/"/>
-    <id>https://blog.marsen.me/2018/12/04/2018/csm/n_company_log_201811/</id>
-    <published>2018-12-04T03:14:05.000Z</published>
-    <updated>2019-06-10T14:43:28.921Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="2018-11-30"><a href="#2018-11-30" class="headerlink" title="2018/11/30"></a>2018/11/30</h2><p>Planning 有沒有優先討論重點項目？</p><ol><li>最先討論上個 Sprint 的 UnDone </li><li>順序等於優先權嗎？</li><li>工作是事先 Assign 好，而不是</li><li>兩個 Team 的 Backlog 放在一起，結果順序是 <ul><li>A Team (B Team 發呆)</li><li>B Team (A Team 發呆)</li></ul></li></ol><p>PO 只作明顯短期可見效果但低價的項目(沒有 Focos 價值)，如何引導 ?</p><h3 id="Scrum-Master-消失-，Planning-沒有-Couch-PO"><a href="#Scrum-Master-消失-，Planning-沒有-Couch-PO" class="headerlink" title="Scrum Master 消失 ，Planning 沒有 Couch PO"></a>Scrum Master 消失 ，Planning 沒有 Couch PO</h3><ul><li>Scrum Master 兼任主管</li><li>Scrum Master 兼任開發人員</li></ul><h3 id="KA-後台要中文-前台要英文"><a href="#KA-後台要中文-前台要英文" class="headerlink" title="KA 後台要中文 / 前台要英文"></a>KA 後台要中文 / 前台要英文</h3><ul><li>要問 Why：KA 面對的客戶也以中文為大宗，為什麼要英文？</li></ul><h2 id="2018-11-28"><a href="#2018-11-28" class="headerlink" title="2018/11/28"></a>2018/11/28</h2><blockquote><p>Demo 會議是由「 PO 介紹給 stackholder ?」<br>還是「 Team 介紹給 PO ,有 stackholder 最好。」<br>如果可以看錄影就當作 Demo 過了，那還需要 Demo 嗎 ? </p></blockquote><blockquote><p>三個 Team 各自有各自優先級最高的項目，這樣會不會陷入局部優化，過早進入細節 ?</p></blockquote><ul><li>無法集中火力處理優先度最高的需求</li></ul><h3 id="最大的-PO-沒進來"><a href="#最大的-PO-沒進來" class="headerlink" title="最大的 PO 沒進來"></a>最大的 PO 沒進來</h3><p>會後主管和小 PO 們再討論，有好有壞？<br>Scrum 怎麼說?</p><ul><li>主管應該不要進來</li><li>PO 最好能夠進來</li><li>不要在團隊裡形成小圈圈</li></ul><h2 id="2018-11-26"><a href="#2018-11-26" class="headerlink" title="2018/11/26"></a>2018/11/26</h2><h3 id="無限站立會議之卷"><a href="#無限站立會議之卷" class="headerlink" title="無限站立會議之卷"></a>無限<del>站立</del>會議之卷</h3><p>10:10 SRG 站立<br>10:20 A Team 站立<br>10:30 B Team 站立<br>11:30 RD1 周會</p><h2 id="2018-11-23"><a href="#2018-11-23" class="headerlink" title="2018/11/23"></a>2018/11/23</h2><ul><li><p>你需要一個旁觀者，不然只是自 high</p><ul><li>觀查群眾的反應</li><li>客觀點出講者的優缺點</li><li>再好的內容沒有人聽也是枉然</li></ul></li><li><p>成為 SM 之前要小心，不要急著成為 SM (特別是你是兼職的 SM 時)</p><blockquote><p>小心過早聚焦到細節，例如:安排會議/主持/作簡報<br>  不然你會變成「借會議室的人」、「照表操課的 Scrum Master」</p></blockquote></li><li><p>用誇張口吻重複他說的理想，你就會知道他是在說理想還是說幹話</p></li></ul><h2 id="2018-11-22"><a href="#2018-11-22" class="headerlink" title="2018/11/22"></a>2018/11/22</h2><p>情境:<br>團隊開發會與其它團隊開發相依或衝突，導致 Release 的品質有所缺陷。</p><ul><li><p>用更多的會議/文件/Check List作控管，有沒有辦法從 root cause 解決問題 ?</p></li><li><p>主管為什麼會想看「沒意義」又「不真實」的東西 ?<br><img src="https://i.imgur.com/xSq4oHY.jpg" alt></p><h2 id="2018-11-21"><a href="#2018-11-21" class="headerlink" title="2018/11/21"></a>2018/11/21</h2></li><li><p>口頭敘述</p></li></ul><h2 id="2018-11-19"><a href="#2018-11-19" class="headerlink" title="2018/11/19"></a>2018/11/19</h2><ul><li>Scrum 不要拿 A 會議的時間作 B 會議的事<ul><li>觀注目的</li><li>作該作的事</li><li></li></ul></li></ul><h3 id="有關進步"><a href="#有關進步" class="headerlink" title="有關進步"></a>有關進步</h3><p><a href="https://www.ted.com/talks/david_epstein_are_athletes_really_getting_faster_better_stronger/transcript?language=zh-tw" target="_blank" rel="noopener">運動員是否真的變得更快、更好、更強 ?</a></p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;2018-11-30&quot;&gt;&lt;a href=&quot;#2018-11-30&quot; class=&quot;headerlink&quot; title=&quot;2018/11/30&quot;&gt;&lt;/a&gt;2018/11/30&lt;/h2&gt;&lt;p&gt;Planning 有沒有優先討論重點項目？&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;最先討
-      
-    
-    </summary>
-    
-    
-      <category term="Scrum" scheme="https://blog.marsen.me/tags/Scrum/"/>
-    
-      <category term="Agile" scheme="https://blog.marsen.me/tags/Agile/"/>
     
   </entry>
   
