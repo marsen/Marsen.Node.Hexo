@@ -4,7 +4,7 @@ date: 2019/08/07 02:06:15
 tag:
   - 閱讀筆記
 ---
-![送書啦](/images/2019/8/apprenticeship_patternsjpg.jpg)
+![送書啦](/images/2019/8/apprenticeship_patterns.jpg)
 
 ## 前情提要
 
