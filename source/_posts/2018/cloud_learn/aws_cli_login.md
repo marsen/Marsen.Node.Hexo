@@ -4,6 +4,7 @@ date: 2018/03/25 23:01:24
 tag:
   - AWS
   - Docker
+  - Container 
 ---
 
 ## [安裝 AWS CLI](https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html)
