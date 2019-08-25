@@ -359,9 +359,9 @@
     </summary>
     
     
-      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
-    
       <category term="PowerShell" scheme="https://blog.marsen.me/tags/PowerShell/"/>
+    
+      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
     
   </entry>
   
