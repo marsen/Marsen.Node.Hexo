@@ -7,6 +7,7 @@ tag:
 ---
 
 ## 應該知道的事
+
 - 這個是 Debug 的筆記
 - 用的是 .Net Framework 4.6 不是 .Net Core
 - 對你可能沒有幫助
