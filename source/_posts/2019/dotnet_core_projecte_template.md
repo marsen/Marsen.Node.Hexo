@@ -122,6 +122,8 @@ ex:IPay、IRefund、ICheck…等，
 
 {% youtube RA_lHoa5uuI %}
 
+我把這個例子放在 [Github](https://github.com/marsen/dotnet.core.project.template.sample) 上，有興趣的朋友可以試試看。
+
 ## 其它
 
 ### 移除專案樣板 SOP
@@ -139,6 +141,7 @@ ex:IPay、IRefund、ICheck…等，
 
 ## 參考
 
+- [我的範例](https://github.com/marsen/dotnet.core.project.template.sample)
 - [教學課程：建立項目範本](https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-item-template)
 - [教學課程：建立專案範本](https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-project-template)
 - [dotnet/dotnet-template-samples](https://github.com/dotnet/dotnet-template-samples)
