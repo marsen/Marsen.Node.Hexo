@@ -21,7 +21,7 @@ date: 2019/09/01 20:46:46
 這裡指的是建立一個類別，然後繼承一堆介面，  
 ex:IPay、IRefund、ICheck…等，  
 並不包含商務邏輯的開發與實際的 API 或 SDK 串接，  
-而在公司的標準之下，我還必須引入一堆參考或 Nuget 套件。 
+而在公司的標準之下，我還必須引入一堆參考或 Nuget 套件。
 同時因為國際化專案採用動態載入的機制，  
 有一些細節準則需要由 Plugin 專案遵循，才不會引發異常或 Runtime Error。
 
@@ -40,7 +40,7 @@ ex:IPay、IRefund、ICheck…等，
     - 檔案層級參數化
 
         表示檔案名稱或是資料夾名稱等，我有動態抽換的需求。  
-        我會用 `F-*` 作為參數名稱，比如說 `F-plugin-name` 
+        我會用 `F-*` 作為參數名稱，比如說 `F-plugin-name`
         接下來將資料夾或檔案名稱想被抽換的部份改成參數名稱就好，參考下圖。
         ![檔案層級參數化](https://i.imgur.com/wQVnR1h.jpg)
 
@@ -129,7 +129,7 @@ ex:IPay、IRefund、ICheck…等，
 ### 移除專案樣板 SOP
 
 1. 執行 `dotnet new -u` 查詢樣版列表資訊，可以查到專案樣版的絕對路徑
-2. 執行 `dotnet new -u <ABSOLUTE_FILE_SYSTEM_DIRECTORY>` 
+2. 執行 `dotnet new -u <ABSOLUTE_FILE_SYSTEM_DIRECTORY>`
 
 ### 更新專案樣版
 
