@@ -2,7 +2,7 @@
 title: "[實作筆記] ASP.Net Core Logger"
 date: 2019/04/06 12:21:17
 tag:
-  - .Net Core
+  - .Net Framework
 ---
 
 ## 要知道的事

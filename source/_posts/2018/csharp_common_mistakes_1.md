@@ -2,13 +2,15 @@
 title: "[翻譯]C# 的常見錯誤"
 date: 2018/02/12 02:12:47
 tag:
-  - C#
+  - .Net Framework
 ---
 ## 出處
-http://www.dotnetcurry.com/csharp/1417/csharp-common-mistakes
+
+<http://www.dotnetcurry.com/csharp/1417/csharp-common-mistakes>
 
 ## 線上工具
-https://dotnetfiddle.net
+
+<https://dotnetfiddle.net>
 
 ## 引言
 
@@ -18,7 +20,6 @@ C#是個好棒棒的言語,但是它仍會有超乎你想像的行為,
 
 ![C# Quiz](https://i.imgur.com/wXjvug6.jpg)
 
-
 ### Null Value
 
 Null 很危險啦, 你別在 Null 身上調用方法  
@@ -27,7 +28,6 @@ Null 很危險啦, 你別在 Null 身上調用方法
 > We are all aware that null values can be dangerous, if not handled properly.  
 > Dereferencing a null-valued variable (i.e. calling a method on it or accessing one of its properties)  
 > will result in a NullReferenceException, as demonstrated with the following sample code:  
-
 
 ```csharp
 object nullValue = null;
@@ -56,9 +56,9 @@ bool isStringType = nullString is string;
 當然你也別想呼叫 `GetType()` 方法  
 
 > The correct answer is **No**.  
-> 
+>
 > A null value has no type at runtime.  
-> 
+>
 > In a way, this also affects reflection.  
 > Of course, you can’t call GetType() on a null value because a NullReferenceException would get thrown:  
 
@@ -94,7 +94,6 @@ bool areTypesEqual = intType == nullableIntType;
 上面兩段程式在runtime拿到的type很不一樣喔,  
 一個是`System.Int32`一個是 `System.Nullable'1\[System.Int32\]`  
 
-
 ### 當 null 遇上多載方法 (Handling Null values in Overloaded methods)
 
 ```csharp
@@ -102,7 +101,7 @@ private string OverloadedMethod(object arg)
 {
     return "object parameter";
 }
- 
+
 private string OverloadedMethod(string arg)
 {
     return "string parameter";
@@ -178,13 +177,14 @@ var shifted = 0b1 << 32;
 > Because that’s how the operator is defined. Before applying the operation,  
 > the second operand will be normalized to the bit length of the first operand with the modulo operation,  
 > i.e. by calculating the remainder of dividing the second operand by the bit length of the first operand.  
-> 
+>
 > The first operand in the example we just saw was a 32-bit number, hence: 32 % 32 = 0.  
 > Our number will be shifted left by 0 bits. That’s not the same as shifting it left by 1 bit 32 times.  
 
 好棒棒 你竟然可以看到這裡,  
 那我們繼續討論 & (and) 跟 | (or) 運算子吧,  
 這兩個運算子跟一般的運算子有點不一樣  
+
 - 通常只要看運算子的第一個運算數就能得知結果  
 - 在有掛 [Flag] atturibute的列舉它們好好用(看一下範例)  
 
@@ -207,7 +207,6 @@ bool isRed = (color & Colors.Red) == Colors.Red;
 上面這個刮號可不能省略喔, 因為(&)運算符的優先順序低於(==)運算符,  
 不過這段程式沒有刮號的話連編譯都不會過,真是好加在  
 另外在 .NET framework 4.0 之後的版本提供更棒的方法去檢查flags  
-
 
 ```csharp
 bool isRed = color.HasFlag(Colors.Red);
@@ -249,29 +248,32 @@ var rounded = Math.Round(2.5, MidpointRounding.AwayFromZero);
 以下的例子結果會是1,( 因為float的0.1實際上小於0.1 一ω一 )  
 這提醒我們在處理精確數值時,應轉換成整數處理.  
 (譯注:使用 [dotnetfiddle](https://dotnetfiddle.net) 時並不會有這個問題, 在windows 環境下測試的確會有問題)  
- 
+
 ```csharp
 var value = 1.4f;
 
 var rounded = Math.Round(value + 0.1f);
 ```
+
 ### 類別初始化
 
 最佳實踐建我我們應該避免在建構子初始化類別,
-特別是靜態建構子. 
+特別是靜態建構子.
 在初始化一個類別的順序如下
+
 1. 靜態欄位
 2. 靜態建構子
 3. 實體欄位
 4. 實體建構子
 
 看看這個例子
+
 ```csharp
 public static class Config
 {
     public static bool ThrowException { get; set; } = true;
 }
- 
+
 public class FailingClass
 {
     static FailingClass()
@@ -283,6 +285,7 @@ public class FailingClass
     }
 }
 ```
+
 當我們嚐試實例化FailingClass時,你會得到Exception;  
 值得注意的事,你拿到的會是`TypeInitializationException`  
 而並不是`InvalidOperationException`,  
@@ -304,14 +307,15 @@ catch (TypeInitializationException) { }
 Config.ThrowException = false;
 var instance = new FailingClass();
 ```
+
 這個類別在程序重啟前是不能再被使用了(會拋出錯誤),  
 這在 C# 是個非常糟糕的實踐,  
 千萬別這樣設計你的類別.  
 
-> The static constructor for a class is only called once. 
+> The static constructor for a class is only called once.
 > If it throws an exception, then this exception will be rethrown  
 > whenever you want to create an instance or access the class in any other way.  
-> 
+>
 > The class becomes effectively unusable until the process (or the application domain) is restarted.  
 > Yes, having even a minuscule chance that the  
 > static constructor will throw an exception, is a very bad idea.  
@@ -327,13 +331,13 @@ public class BaseClass
     {
         VirtualMethod(1);
     }
- 
+
     public virtual int VirtualMethod(int dividend)
     {
         return dividend / 1;
     }
 }
- 
+
 public class DerivedClass : BaseClass
 {
     int divisor;
@@ -341,7 +345,7 @@ public class DerivedClass : BaseClass
     {
         divisor = 1;
     }
- 
+
     public override int VirtualMethod(int dividend)
     {
         return base.VirtualMethod(dividend / divisor);
@@ -357,6 +361,7 @@ var instance = new DerivedClass();
 
 你會得到一個除0的錯誤 `DivideByZeroException`  
 這與執行順序有關
+
 1. 呼叫 BaseClass 建構子
 2. 執行 DerivedClass VirtualMethod (overrid BaseClass)
 3. divisor 未賦值拋出 `DivideByZeroException`
@@ -379,8 +384,8 @@ public class BaseClass
         return "Method in BaseClass ";
     }
 }
- 
-public class DerivedClass : BaseClass 
+
+public class DerivedClass : BaseClass
 {
     public new string Method()
     {
@@ -389,7 +394,7 @@ public class DerivedClass : BaseClass
 }
 ```
 
-> It’s typically used to hide the interface methods from the consumers of the class implementing it, 
+> It’s typically used to hide the interface methods from the consumers of the class implementing it,
 > unless they cast the instance to that interface.
 > But it works just as well if we want to have two different implementations of a method inside a single class.
 > It’s difficult to think of a good reason for doing it, though.
@@ -409,26 +414,26 @@ public interface IInterface
 {
     string Method();
 }
- 
+
 public class DerivedClass : IInterface
 {
     public string Method()
     {
         return "Method in DerivedClass";
     }
- 
+
     string IInterface.Method()
     {
         return "Method belonging to IInterface";
     }
 }
-It’s
+
 ```
+
 ## 迭代器 Iterators
 
 小心 Iterators 的陷阱
 看看以下[代碼](https://dotnetfiddle.net/BxfF0d):
-
 
 ```csharp
 private IEnumerable<int> GetEnumerable(StringBuilder log)
@@ -445,13 +450,13 @@ private IEnumerable<int> GetEnumerable(StringBuilder log)
 public class Context : IDisposable
 {
     private readonly StringBuilder log;
- 
+
     public Context(StringBuilder log)
     {
         this.log = log;
         this.log.AppendLine("Context created");
     }
- 
+
     public void Dispose()
     {
         this.log.AppendLine("Context disposed");
@@ -493,7 +498,7 @@ foreach (var number in GetEnumerable(log))
 這點很重要,  
 因為實務上你很有可能 using dbconnetion 之類的物件,  
 那麼你在取得真正的資料之前,  
-你的連線就已經中斷了 
+你的連線就已經中斷了
 
 > This means that in our real world database example, the code would fail –  
 > the connection would be closed before the values could be read from the database.
@@ -512,6 +517,7 @@ private IEnumerable<int> GetEnumerable(StringBuilder log)
     }
 }
 ```
+
 譯注:看到這裡對 `yield return` 的使用情境才比較有感啊...
 
 如果你不太熟`yield return`,其實它只是個語法糖,允許增量執行,  
@@ -573,6 +579,7 @@ for (int i = 1; i <= 2; i++)
     }
 }
 ```
+
 輸出如下,可以明顯看到 `GetCustomEnumerable` 方法,  
 實際上被隱含的執行了兩次,  
 這在 Code Review 的階段也是難以被察覺的.
@@ -617,6 +624,7 @@ for (int i = 1; i <= 2; i++)
     }
 }
 ```
+
 輸出結果
 
 > before 1
@@ -645,7 +653,7 @@ for (int i = 1; i <= 2; i++)
 對我來說 static class constructor 的行為是超乎預期的,  
 然後對 `yield return` 的使用場景更有感覺了.  
 本來預計農曆年就可以完成的翻譯,  
-竟然也拖了這麼久,看來我英文還是不行啊. 
+竟然也拖了這麼久,看來我英文還是不行啊.
 
 希望對大家有幫助,也請多多看原文 :)
 
