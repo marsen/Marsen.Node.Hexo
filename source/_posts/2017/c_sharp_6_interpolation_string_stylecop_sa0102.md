@@ -2,10 +2,11 @@
 title: "[記錄]VS2015 StyleCop 誤判SA0102"
 date: 2017/01/11 14:51:25
 tag:
-  - C#
+  - .Net Framework
   - StyleCop
 ---
 ## 環境
+
 - 作業系統:Windows 10
 - 開發工具:Visual Studio 2015 (Professional ver14.0.25431.01 Update 3)
 - StyleCop 4.7.50.0
@@ -14,16 +15,17 @@ tag:
 
 當使用C# 6 的`INTERPOLATION STRING`組合字串時，在StyleCop 4.7會誤判並回報SA0102的警告。
 
-``` c_sharp
-	return new ExcelResult
-	{
-		Data = exportData,
-		FileName = $"{shopId}_Code_{DateTime.Now.ToString("yyyyMMddHHmm")}",
-		SheetName = "ECouponCode"
-	};
+```csharp
+return new ExcelResult
+{
+  Data = exportData,
+  FileName = $"{shopId}_Code_{DateTime.Now.ToString("yyyyMMddHHmm")}",
+  SheetName = "ECouponCode"
+};
 ```
 
 ## 修正目標
+
 1. 將 StyleCop 4.7 更新至 StyleCop 5.0
 2. 編輯客製化的StyleCop Rules(直接將4.7的設定檔覆蓋VS會報錯)
 
