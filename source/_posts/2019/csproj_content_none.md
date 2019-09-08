@@ -2,7 +2,6 @@
 title: "[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔"
 date: 2019/04/12 16:38:16
 tag:
-- ASP.Net
 - .Net Framework
 ---
 
@@ -14,7 +13,7 @@ tag:
 
 ## 問題
 
-方案裡面有三個 Web 專案 Web1 、Web2 、Web3,   
+方案裡面有三個 Web 專案 Web1 、Web2 、Web3,
 因開發某功能需要加入一個文字靜態檔 `Iamfile.txt`  
 在部署的時候卻無法將檔案部署至網站根目錄。
 

@@ -4,14 +4,14 @@ date: 2016/11/21 16:49:17
 tag:
   - .Net Framework
   - IO
-  - Thread
-  - ASP.Net
+  - Thread  
   - Redis
 ---
 
 
 ## 概述
-_ASP.NET Thread Pool 的機制如何影響 Redis_
+
+ASP.NET Thread Pool 的機制如何影響 Redis
 
 ## 案例
 
@@ -34,21 +34,20 @@ Redis 會佔用.NET的 workerthread
 
 ### Thread Pool 500ms 的機制
 
-*一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」*  
+*一種簡化的說法「 ASP.NET Thread Pool 一秒能建立2個Thread。」*
 
-設定值 `minworkerthread` 就像是遊樂場*已經開啟*的閘門, 
+設定值 `minworkerthread` 就像是遊樂場*已經開啟*的閘門,
 每當有一個遊客(Task)進來時,立即提供給它使用。
 但是當遊客(Task)變多的時候,就會開始排隊(Queue),
 ASP.NET Thread Pool 隱含著一個機制,
 當它的隊伍(Queue)長達500豪秒沒有移動的話,
 就會開啟新的閘門(建立新的Thread)。
-而我的情境屬於[Burst of traffic](#burst_of_traffic),    
+而我的情境屬於[Burst of traffic](#burst_of_traffic),
 突然大量 Task 湧入 Queue ,  
 ThreadPool 需要大量的 Thread  
 每個新的 Thread 都需要 500ms 的反應時間 ,  
 而累積的時間超過 Task 的 Timeout 設定值時 ,  
-就會拋出Exception. 
-
+就會拋出Exception.
 
 ![ASP.NET Thread Pool](/images/workerthread_and_iothread/110416_103521_AM.jpg)
 
@@ -63,12 +62,12 @@ ASP.NET Thread Pool 的排隊機制與`minworkerthread` 設定值相關。
 ```xml
 <system.web>
     <processModel autoConfig="false" minWorkerThreads="1" />
-</system.web>    
+</system.web>
 ```
 
 ### 範例
 
-當 Redis 發生 Timeout 時, 
+當 Redis 發生 Timeout 時,
 可以透過錯誤訊息判斷其背後的原因是否與 workerthread 有關。
 在以下的例子可以看到 IOCP 與 WORKER 兩個值。
 這兩值表示 .Net ThreadPool 內的兩種執行緒,
