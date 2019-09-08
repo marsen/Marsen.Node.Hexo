@@ -4,7 +4,6 @@ date: 2017/01/28 20:46:49
 tag:
   - .Net Framework
   - Thread
-  - ASP.Net
 ---
 
 ## 前情提要
@@ -14,6 +13,7 @@ tag:
 所以這篇會簡單描述如何對 .NET Thread Pool [建立監控](https://msdn.microsoft.com/zh-tw/library/ff650682.aspx)。
 
 ## 步驟
+
 1. 建立監控記數器
 2. 在系統寫入監控數值
 3. 開啟效能計數器
@@ -52,21 +52,21 @@ class MyAspNetThreadCounters
     // Create custom counter objects
     CounterCreationData counter1 = new CounterCreationData();
     counter1.CounterName = "Available Worker Threads";
-    counter1.CounterHelp = "The difference between the maximum number " + 
+    counter1.CounterHelp = "The difference between the maximum number " +
                            "of thread pool worker threads and the " +
                            "number currently active.";
     counter1.CounterType = PerformanceCounterType.NumberOfItems32;
 
     CounterCreationData counter2 = new CounterCreationData();
     counter2.CounterName = "Available IO Threads";
-    counter2.CounterHelp = "The difference between the maximum number of " + 
-                           "thread pool IO threads and the number "+ 
+    counter2.CounterHelp = "The difference between the maximum number of " +
+                           "thread pool IO threads and the number "+
                            "currently active.";
     counter2.CounterType = PerformanceCounterType.NumberOfItems32;
 
     CounterCreationData counter3 = new CounterCreationData();
     counter3.CounterName = "Max Worker Threads";
-    counter3.CounterHelp = "The number of requests to the thread pool "+ 
+    counter3.CounterHelp = "The number of requests to the thread pool "+
                            "that can be active concurrently. All "+  
                            "requests above that number remain queued until " +
                            "thread pool worker threads become available.";
@@ -74,7 +74,7 @@ class MyAspNetThreadCounters
 
     CounterCreationData counter4 = new CounterCreationData();
     counter4.CounterName = "Max IO Threads";
-    counter4.CounterHelp = "The number of requests to the thread pool " + 
+    counter4.CounterHelp = "The number of requests to the thread pool " +
                            "that can be active concurrently. All "+  
                            "requests above that number remain queued until " +
                            "thread pool IO threads become available.";
@@ -91,8 +91,8 @@ class MyAspNetThreadCounters
       PerformanceCounterCategory.Delete("MyAspNetThreadCounters");
     }
     // bind the counters to the PerformanceCounterCategory
-    PerformanceCounterCategory category = 
-            PerformanceCounterCategory.Create("MyAspNetThreadCounters", 
+    PerformanceCounterCategory category =
+            PerformanceCounterCategory.Create("MyAspNetThreadCounters",
                                               "", col);
   }
 }
@@ -219,6 +219,6 @@ public void ShowPerfCounters(ASPNETThreadInfo t)
 1. 執行 `perfmon.exe` 開啟效能計數器
 2. 新增效能計數器(點選綠色加符號)
 3. 選取前面所建立監控記數器就能看到當前 ThreadPool 的使用狀況。
-![](https://i.imgur.com/HhlbNH2.jpg)
+![開啟效能計數器](https://i.imgur.com/HhlbNH2.jpg)
 
 (fin)

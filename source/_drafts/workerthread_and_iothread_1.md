@@ -5,56 +5,66 @@ tag:
   - .Net Framework
   - IO
   - Thread
-  - ASP.Net
 ---
+
 ## 前情提要
+
 1. 實務上的專案遭受 DDos 攻擊  
 2. DB TimeOut  
 3. Redis TimeOut  
 4. 主程式沒有死,但是Elmah出現大量Exception  
 
 ## 錯誤資訊
+
 ![瞬發的流量](/images/workerthread_and_iothread/110416_102437_AM.jpg)
 
 ### Redis的錯誤記錄
+
 錯誤1.
-```
+
+```text
     Timeout performing SETEX Cache:Key:06f305de-f163-4d49-8b98-d8bc51edf7d8, 
     inst: 1, mgr: ExecuteSelect, err: never, queue: 2, qu: 2, qs: 0, qc: 0, wr: 0, wq: 0, in: 0, ar: 0, 
     IOCP: (Busy=0,Free=1000,Min=4,Max=1000), WORKER: (Busy=165,Free=32602,Min=4,Max=32767), 
     clientName: TYO-HOST
 ```
+
 錯誤2.
-```
+
+```text
     StackExchange.Redis.RedisConnectionException
     SocketFailure on GET
 ```
+
 錯誤3.
-```
+
+```text
     No connection is available to service this operation: 
     GET Cache:Key:06f305de-f163-4d49-8b98-d8bc51edf7d8
 ```
+
 錯誤4.
-```
+
+```text
     UnableToResolvePhysicalConnection on GET
 ```
 
 ### SQL Server 錯誤記錄
 
-```
+```text
     A transport-level error has occurred when receiving results from the server. 
     (provider: Session Provider, error: 19 - Physical connection is not usable)
 ```
 
-
-
 ## 錯誤原因
+
 1. CLR 建立執行緒需要時間 , 一秒鐘最多只能建立兩條 Thread [註一](#comment1)
-2. 瞬間的 Request 量超過 ThreadPool 中的 Thread 數量 
-3. ThreadPool 建立 Thread 中 , 仍持續有 Request 進來引發錯誤 
+2. 瞬間的 Request 量超過 ThreadPool 中的 Thread 數量
+3. ThreadPool 建立 Thread 中 , 仍持續有 Request 進來引發錯誤
 4. 因為我的[測試環境](#testEnvironment)有四核心,依文件所說
 
 ## 實驗流程
+
 1. 建立監視器
     參考 [How To: Monitor the ASP.NET Thread Pool Using Custom Counters](https://msdn.microsoft.com/zh-tw/library/ff650682.aspx)
 
@@ -62,21 +72,23 @@ tag:
     2. 編譯並執行 console 專案
     3. 開啟`Regedit.exe` 檢查 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services` 應包含以下值
 
-        ```
-            Available Worker Threads
-            Available IO Threads
-            Max Worker Threads
-            Max IO Threads
-            Min Worker Threads
-            Min IO Threads
-        ```
+    ```
+    Available Worker Threads
+    Available IO Threads
+    Max Worker Threads
+    Max IO Threads
+    Min Worker Threads
+    Min IO Threads
+    ```
 
 2. 建立ASP.NET專案
     1. 建立[Global.asax](#global)
     2. 建立[StartWebApp.aspx](#startWebApp)
     3. 建立[Sleep.aspx](#sleep)
+
 3. 開啟 `perfmon.exe` 新增計數器 , 選取我們自定義的 `MyAspNetThreadCounters`
 4. 連結網頁 `localhost\StartWebApp.aspx` 以啟動網站,可以得到以下數據
+
     ```
     MaxWorkerThreads:32767.
     MaxIOThreads:1000.
@@ -94,9 +106,10 @@ tag:
 7. 再執行大量 redis 連線, 用以重現錯誤
 ![](/images/workerthread_and_iothread/110416_170001_PM.jpg)
 
-## 程式碼 
+## 程式碼
 
 ### <span id="MyAspNetThreadCounters">MyAspNetThreadCounters</span>
+
 ```csharp
   using System;
   using System.Diagnostics;
@@ -185,6 +198,7 @@ tag:
 ```
 
 ### <span id="global">Global.asax</span>
+
 ```csharp
   public class Global : System.Web
   {
@@ -208,6 +222,7 @@ tag:
       return busyWorkerThreads;
   }
 ```
+
 ```csharp
   using System;
 
@@ -287,14 +302,14 @@ tag:
           // use ThreadPool to get the current status
           int availableWorker, availableIO;
           int maxWorker, maxIO;
-                      
+
           ThreadPool.GetAvailableThreads(out availableWorker, out availableIO);
-          ThreadPool.GetMaxThreads(out maxWorker, out maxIO);            
+          ThreadPool.GetMaxThreads(out maxWorker, out maxIO);
           ASPNETThreadInfo threadInfo;
           threadInfo.AvailableWorkerThreads = (Int16)availableWorker;
           threadInfo.AvailableIOThreads = (Int16)availableIO;
           threadInfo.MaxWorkerThreads = (Int16)maxWorker;
-          threadInfo.MaxIOThreads = (Int16)maxIO;            
+          threadInfo.MaxIOThreads = (Int16)maxIO;
           // hard code for now; could get this from  machine.config
           threadInfo.MinFreeThreads = 8;
           threadInfo.MinLocalRequestFreeThreads = 4;
@@ -358,13 +373,14 @@ tag:
 ```
 
 ### <span id="startWebApp">StartWebApp.aspx</span>
+
 ```csharp
   protected void Page_Load(object sender, EventArgs e)
   {
       int availableWorker, availableIO;
       int maxWorker, maxIO;
       int minWorker, minIO;
-    
+
       ThreadPool.GetAvailableThreads(out availableWorker, out availableIO);
       ThreadPool.GetMaxThreads(out maxWorker, out maxIO);
       ThreadPool.GetMinThreads(out minWorker, out minIO);
@@ -381,6 +397,7 @@ tag:
 ```
 
 ###  <span id="sleep">Sleep.aspx</span>
+
 ```csharp
   void Page_Load(Object sender, EventArgs e)
   {
@@ -406,6 +423,7 @@ tag:
 ```
 
 ### StackExchange.Redis 源碼
+
 ```csharp
   private static int GetThreadPoolStats(out string iocp, out string worker)
   {
@@ -430,8 +448,8 @@ tag:
   }
 ```
 
+## <span id="testEnvironment">環境與工具</span>
 
-## <span id="testEnvironment">環境與工具</span> 
 - Visual Studio 2015 Professional UPDATE 3
 - Windows 10 
 - .NET Framework 4.5
@@ -439,6 +457,7 @@ tag:
 - CPU `Intel® Core™ i7-5500U` 四核心
 
 ## 官方說明
+
 - [爭用、 效能不佳、 和死結 （deadlock） 當您從 ASP.NET 應用程式呼叫 Web 服務](https://support.microsoft.com/zh-tw/kb/821268)
 - machine.config
 
@@ -449,11 +468,12 @@ tag:
 </system.web>
 ```
 
-### 建議的設定值 
+### 建議的設定值
+
 ```xml
 <system.web>
     <processModel autoConfig="false" minWorkerThreads="1" />
-</system.web>    
+</system.web>
 ```
 
 .NET 官方文件的預設值與建議值
@@ -470,24 +490,28 @@ tag:
 |executionTimeout| 90s  | 未建議 |
 
 * maxWorkerThreads,minWorkerThreads,maxIoThreads,minIoThreads 設定的數值需要乘上CPU的數量,  
-例: 4 核心設定 minWorkerThreads 值 20 ,實際上的值為 80   
+
+例: 4 核心設定 minWorkerThreads 值 20 ,實際上的值為 80
 
 ## <span id="comment1">註釋<span>
+
 1. ThreadPool 中會有一個 queue , 其中隱含一個半秒機制 , 當 queue 靜止超過半秒 , 就會在 ThreadPool 建立一個新的 Thread  
 
 ## 記錄
+
 - ADO.NET 需要使用 Worker Thread
 - Redis 需要使用 Worker Thread
-- 
-
 
 ## 參考
+
 - [Threading](https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx)
 - [Improving ASP.NET Performance](https://msdn.microsoft.com/en-us/library/ms998549.aspx)
 - [Programming the Thread Pool in the .NET Framework](https://msdn.microsoft.com/en-us/library/ms973903.aspx)
 - [StackExchange.Redis 源碼](https://github.com/StackExchange/StackExchange.Redis)
 - [雲計算之路-阿里雲上：從ASP.NET線程角度對「黑色30秒」問題的全新分析](https://read01.com/MenEP.html)
 - [How To: Monitor the ASP.NET Thread Pool Using Custom Counters](https://msdn.microsoft.com/zh-tw/library/ff650682.aspx)
-- http://www.thejoyofcode.com/tuning_the_threadpool.aspx
-- https://gist.github.com/JonCole/e65411214030f0d823cb
-- https://blogs.msdn.microsoft.com/carloc/2009/02/19/minworkerthreads-and-autoconfig/
+- <http://www.thejoyofcode.com/tuning_the_threadpool.aspx>
+- <https://gist.github.com/JonCole/e65411214030f0d823cb>
+- <https://blogs.msdn.microsoft.com/carloc/2009/02/19/minworkerthreads-and-autoconfig/>
+
+(fin)
