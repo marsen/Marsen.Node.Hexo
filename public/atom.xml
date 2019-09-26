@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-09-26T09:43:16.428Z</updated>
+  <updated>2019-09-26T09:50:44.783Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[實作筆記] 2019 常用工具整理</title>
+    <title>[工作筆記] 2019 常用工具整理</title>
     <link href="https://blog.marsen.me/2019/09/26/2019/my_tools_2019/"/>
     <id>https://blog.marsen.me/2019/09/26/2019/my_tools_2019/</id>
     <published>2019-09-26T09:41:17.000Z</published>
-    <updated>2019-09-26T09:43:16.428Z</updated>
+    <updated>2019-09-26T09:50:44.783Z</updated>
     
     <content type="html"><![CDATA[<h2 id="輸入法"><a href="#輸入法" class="headerlink" title="輸入法"></a>輸入法</h2><ul><li>無蝦米 (加速打字，未來不太看好，考慮更換中…)</li></ul><h2 id="網站"><a href="#網站" class="headerlink" title="網站"></a>網站</h2><ul><li><a href="https://www.slant.co/" target="_blank" rel="noopener">Slant 工具比較</a></li><li><a href="https://blog.marsen.me/2019/04/11/2019/tool_sites/">開發常用的工具網站 JSON/YAML/SQL</a></li><li><a href="http://www.richyli.com/tool/loremipsum/" target="_blank" rel="noopener">亂數假文產生器 - 中文</a></li><li><a href="https://www.lipsum.com/feed/html" target="_blank" rel="noopener">亂數假文產生器 - 英文</a></li><li><a href="https://zh-tw.facebook.com/" target="_blank" rel="noopener">資訊收集/廢文發佈</a></li></ul><h2 id="PC-工具"><a href="#PC-工具" class="headerlink" title="PC 工具"></a>PC 工具</h2><ul><li>文字比較工具<ul><li>Win Merge  </li></ul></li><li>Git GUI<ul><li><del>GitKraken(需收費)</del></li><li>Fork</li></ul></li><li>Carnac<ul><li>顯示鍵盤點擊歷程</li></ul></li><li>Windows 用 Launchers<ul><li>Wox</li></ul></li><li>快速搜尋文件<ul><li>Agent Ransack</li></ul></li><li>跨 PC 存放檔案<ul><li>Dropbox</li></ul></li><li>截圖錄影工具<ul><li>ShareX</li><li>Skitch  </li></ul></li><li>遠端桌面管理<ul><li>Remote Desktop Connection Manager</li></ul></li></ul><h2 id="筆記工具"><a href="#筆記工具" class="headerlink" title="筆記工具"></a>筆記工具</h2><ul><li>Evernote<ul><li>專案分類</li><li>職涯規劃</li><li>已完成的項目</li></ul></li><li>Notion<ul><li>GTD</li><li>周記劃</li></ul></li><li>HackMD<ul><li>暫存的記錄</li><li>會議/社群活動即時記錄</li><li>Blog 草稿</li><li>共筆</li></ul></li><li>Blog<ul><li>技術實作記錄</li><li>社群活動記錄</li></ul></li></ul><h2 id="瀏覽器-amp-外掛"><a href="#瀏覽器-amp-外掛" class="headerlink" title="瀏覽器 &amp; 外掛"></a>瀏覽器 &amp; 外掛</h2><p>95% 使用 Chrome ，4% 使用 FireFox，極少情況使用其它瀏覽器</p><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><ul><li>tampermonkey<ul><li>撰寫網頁小工具</li></ul></li><li>One Tab<ul><li>快速收攏大量分頁，常用在特殊主題搜尋的暫存</li></ul></li><li>Clear Cach<ul><li>清快取</li></ul></li><li>grammarly<ul><li>拼字校正</li></ul></li><li>Bitbucket Diff Tree<ul><li>Bitbucket PR 差異比較</li></ul></li><li>JSONView<ul><li>當 response 為 json 時更為好讀</li></ul></li><li>LastPass: Free Password Manager<ul><li>密碼管理</li></ul></li><li>Wappalyzer<ul><li>分析網站使用的框架與技術</li></ul></li><li>cVim<ul><li>使用 Vim 的習慣操作網頁</li></ul></li></ul><h2 id="文件編輯器"><a href="#文件編輯器" class="headerlink" title="文件編輯器"></a>文件編輯器</h2><ul><li>NotePad++</li><li>記事本</li></ul><h2 id="開發工具"><a href="#開發工具" class="headerlink" title="開發工具"></a>開發工具</h2><h3 id="VS-Code"><a href="#VS-Code" class="headerlink" title="VS Code"></a>VS Code</h3><ul><li>ejs</li><li>C#</li><li>Chinese (Traditional) Language Pack for Visual Studio Code</li><li>Cucumber (Gherkin) Full Support</li><li>Docker</li><li>Git History</li><li>Git Project Manager</li><li>GitLens — Git supercharged</li><li>JSON Tools</li><li>Markdown All in One</li><li>markdownlint</li><li>Paste URL</li><li>PowerShell</li><li>Relative Line Numbers</li><li>Remote - WSL</li><li>REST Client</li><li>Settings Sync</li><li>Snippets and Syntax Highlight for Gherkin (Cucumber)</li><li>Sort lines</li><li>SQL Server (mssql)</li><li>stylus</li><li>Swagger Viewer</li><li>Unique Lines</li><li>Vim</li><li>vscode-icons</li><li>Vue 2 Snippets</li></ul><h3 id="Microsoft-Visual-Studio-Professional-2017-預計升到-2019"><a href="#Microsoft-Visual-Studio-Professional-2017-預計升到-2019" class="headerlink" title="Microsoft Visual Studio Professional 2017 (預計升到 2019)"></a>Microsoft Visual Studio Professional 2017 (預計升到 2019)</h3><ul><li>OzCode (付費軟體)<ul><li>增強除錯</li></ul></li><li>ReSharper Ultimate (付費軟體)<ul><li>dotCover (檢驗覆蓋率，需另外安裝)</li><li>強化重構/測試</li></ul></li><li>ILSpy<ul><li>反組譯</li></ul></li><li>SpecFlow for Visual Studio 2017<ul><li>BDD 開發</li></ul></li><li>GhostDoc Community for VS2017 and Later (免費版)<ul><li>自動加入註解</li></ul></li><li>ResXManger<ul><li>多語系 Resource 檔編輯</li></ul></li><li>VsVim<ul><li>Vim 支援工具</li></ul></li><li>Snippet Designer<ul><li>Snippet 編輯管理</li></ul></li><li>Style Cop<ul><li>代碼審查</li></ul></li><li>xUnit.net.TestGenerator<ul><li>加速寫單元測試(xUnit)</li></ul></li><li>CodeMaid<ul><li>代碼審查 &amp; 複雜度</li></ul></li><li>Visual F# Tools [實驗性]</li><li>Roslyn Expression Evaluators [實驗性]</li><li>Roslyn Interactive Componets [實驗性]</li><li>Roslyn Language Service [實驗性]</li><li>Microsoft Library Manager</li><li>Develop Automated Tests VS2017</li><li>Visual Commander</li><li>Fix Mixed Tabs</li><li>Microsoft Visual Studio 測試平台</li><li>Microsoft Visual Studio Installer Projects</li><li>Microsoft Azure WebJobs 工具</li><li>Cloud Explorer for VS 2017</li></ul><h3 id="LINQPad-5-付費"><a href="#LINQPad-5-付費" class="headerlink" title="LINQPad 5 (付費)"></a>LINQPad 5 (付費)</h3><p>快速檢驗 C# 語法的小工具</p><h3 id="Terminal"><a href="#Terminal" class="headerlink" title="Terminal"></a>Terminal</h3><ul><li>Cmder | Console Emulator</li><li>Windows Powershell ISE</li></ul><h3 id="資料庫管理"><a href="#資料庫管理" class="headerlink" title="資料庫管理"></a>資料庫管理</h3><ul><li>Redis Desktop Manager (Redis)</li><li>SSMS (MsSQL)</li><li>Robo 3T (Mongo DB)</li></ul><h3 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h3><ul><li>Docker Desktop</li><li>Kitematic</li></ul><p>(未完待續)</p>]]></content>
     
@@ -38,7 +38,7 @@
     </summary>
     
     
-      <category term="常用工具整理" scheme="https://blog.marsen.me/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/"/>
+      <category term="工作筆記" scheme="https://blog.marsen.me/tags/%E5%B7%A5%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
@@ -314,11 +314,11 @@
   </entry>
   
   <entry>
-    <title>[筆記] 好用的線上工具</title>
+    <title>[工作筆記] 好用的線上工具</title>
     <link href="https://blog.marsen.me/2019/04/11/2019/tool_sites/"/>
     <id>https://blog.marsen.me/2019/04/11/2019/tool_sites/</id>
     <published>2019-04-11T03:16:21.000Z</published>
-    <updated>2019-06-10T14:43:28.969Z</updated>
+    <updated>2019-09-26T09:46:04.293Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Net-Config-Transformation-Online"><a href="#Net-Config-Transformation-Online" class="headerlink" title=".Net Config Transformation Online"></a>.Net Config Transformation Online</h2><p><a href="https://webconfigtransformationtester.apphb.com/" target="_blank" rel="noopener">Web.config Transformation Tester</a></p><h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="JSON-C-Class"><a href="#JSON-C-Class" class="headerlink" title="JSON C# Class"></a>JSON C# Class</h3><ul><li><a href="http://json2csharp.com/" target="_blank" rel="noopener">json2csharp - generate c# classes from json</a></li></ul><h3 id="JSON-Query-Online"><a href="#JSON-Query-Online" class="headerlink" title="JSON Query Online"></a>JSON Query Online</h3><ul><li><a href="http://www.jsonquerytool.com/" target="_blank" rel="noopener">Home - Online JSON Query Tester</a></li></ul><h3 id="JSON-Format"><a href="#JSON-Format" class="headerlink" title="JSON Format"></a>JSON Format</h3><ul><li><a href="https://jsonformatter.curiousconcept.com/" target="_blank" rel="noopener">JSON Formatter &amp; Validator</a></li><li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a></li></ul><h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><h3 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h3><ul><li><a href="http://www.yamllint.com/" target="_blank" rel="noopener">YAMLlint - The YAML Validator</a></li></ul><h2 id="SQL-Format"><a href="#SQL-Format" class="headerlink" title="SQL Format"></a>SQL Format</h2><p><a href="https://sqlformat.org/" target="_blank" rel="noopener">Format SQL Statements Online - sqlformat.org</a></p><p>(fin)</p>]]></content>
     
