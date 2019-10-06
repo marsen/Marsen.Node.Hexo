@@ -83,8 +83,13 @@ tag:
 
 ## 文件編輯器
 
+- Vim
 - NotePad++
 - 記事本
+
+## 個人工具
+
+- 桌面記時器 DesktopTimer.exe
 
 ## 開發工具
 
@@ -125,7 +130,7 @@ tag:
   - dotCover (檢驗覆蓋率，需另外安裝)
   - 強化重構/測試
 - ILSpy
-  - 反組譯
+  - 反組譯工具
 - SpecFlow for Visual Studio 2017
   - BDD 開發
 - GhostDoc Community for VS2017 and Later (免費版)
