@@ -36,6 +36,7 @@ tag:
   - ShareX
   - Skitch  
 - 遠端桌面管理
+  - Remote Desktop Manager Free (試用中)
   - Remote Desktop Connection Manager
 
 ## 筆記工具
