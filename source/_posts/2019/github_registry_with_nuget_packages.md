@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 用 Github Rigstry 作自已的 Nuget Server"
+title: "[實作筆記] 用 Github Registry 作自已的 Nuget Server"
 date: 2019/10/11 11:55:41
 tag:
  - 實作筆記 
