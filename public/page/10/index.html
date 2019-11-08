@@ -51,6 +51,10 @@ ga('send', 'pageview');
         <a href="/" id="logo">Marsen</a>
       </h1>
       
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">waiting to load</a>
+        </h2>
+      
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
@@ -76,9 +80,9 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-2017/ci_use_jenkins_on_windows" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2017/ci_use_jenkins_on_openshfit" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/15/2017/ci_use_jenkins_on_windows/" class="article-date">
+    <a href="/2017/01/15/2017/ci_use_jenkins_on_openshfit/" class="article-date">
   <time datetime="2017-01-15T14:16:42.000Z" itemprop="datePublished">2017-01-15</time>
 </a>
     
@@ -90,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/2017/ci_use_jenkins_on_windows/">CI/CD 環境建置筆記(一) - 在 windows 安裝 Jenkins</a>
+      <a class="article-title" href="/2017/01/15/2017/ci_use_jenkins_on_openshfit/">CI/CD 環境建置筆記 - 使用Openshift 的 Jenkins (失敗)</a>
     </h1>
   
 
@@ -101,62 +105,52 @@ ga('send', 'pageview');
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><ul>
 <li><a href="/2017/01/15/ci_use_jenkins/">CI/CD 環境建置筆記 - 前言&lt;目的&gt;</a></li>
 </ul>
-<h2 id="操作記錄"><a href="#操作記錄" class="headerlink" title="操作記錄"></a>操作記錄</h2><ol>
-<li><p>下載並安裝Jenkins（記錄版本為2.32.1）</p>
-</li>
-<li><p>連線localhost:8080,會要求輸入<code>Administrator password</code><br><img src="https://i.imgur.com/ik5l0sq.jpg" alt></p>
-</li>
-<li><p>安裝Plugins(這裡選擇預設)<br><img src="https://i.imgur.com/dOad35P.jpg" alt></p>
-</li>
-</ol>
-<ol start="4">
-<li><p>安裝畫面<br><img src="https://i.imgur.com/6FyGHPm.jpg" alt></p>
-</li>
-<li><p>建立管理者帳號密碼<br><img src="https://i.imgur.com/AzHrJdu.jpg" alt><br><img src="https://i.imgur.com/2ct8GiO.jpg" alt></p>
-</li>
-<li><p>登入後,管理 Jenkins &gt; 設定系統</p>
-<ol>
-<li>將執行程式數量設定為 1  (安裝完預設為2,其實可以不用修改)</li>
-<li><code>Shell</code> 設定為 <code>C:\Windows\system32\cmd.exe</code> </li>
-</ol>
-</li>
-<li><p>建立第一個作業,選擇新增作業 &gt; 輸入作業名稱 ,選擇「建立多重設定專案」<br><img src="https://i.imgur.com/0xkci16.jpg" alt></p>
-</li>
-<li><p><strong>執行一次建置</strong>,這個步驟是為了產生work space 。<br>work space 路徑大致如下 <code>.\Jenkins\workspace\Project name</code></p>
-</li>
-<li><p>執行 console 並切換路徑至 work space </p>
-</li>
-<li><p>將 Openshift 上的 nodejs 應用程式 repo 設為 remote<br><code>&gt;git remote add prod ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p>
-</li>
-<li><p>回到Jenkins,作業 &gt; 組態 &gt; 建置 &gt; 新增「執行Windows批次指令」</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">REM 測試</span></span><br><span class="line">whoami</span><br><span class="line">git push prod HEAD^:master</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>額外處理事項:<br>直接在 Jenkins server 發 pr 給 openshift 時,發生 503 錯誤。<br>使用 ssh 登入 openshift 看 log ,發現<br><code>Node Sass does not yet support your current environment</code> 錯誤<br>必須登入執行以下語法修正模組問題 <code>npm rebuild node-sass</code> </li>
-</ol>
-</li>
-<li><p>建置作業,會得到錯誤訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">上略...</span><br><span class="line">19:44:46 Host key verification failed.</span><br><span class="line">19:44:46 fatal: Could not read from remote repository.</span><br><span class="line">下略...</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<p>原因:主機密鑰驗證失敗,這個錯誤的意思是我的 Jenkins Server 主機並不認得遠端的 Openshift Server 的 host key,主要的原因是 Jenkins Service 在執行的身份是 <code>NT AUTHORITY\SYSTEM</code>,由於我已經有合適權限的帳號,所以只需要切換執行 Jenkins Server 的身份即可。<br><img src="https://i.imgur.com/HSJoXJp.jpg" alt></p>
-<p>如果你尚未建立遠端ssh連線的存取權限,或是對ssh連線不熟悉,可以參考文末的參考聯結。</p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="noopener">SSH原理与运用（一）：远程登录</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html" target="_blank" rel="noopener">SSH原理与运用（二）：远程操作与端口转发</a></li>
-<li><a href="https://dotblogs.com.tw/kirkchen/2013/04/23/use_ssh_to_interact_with_github_in_windows" target="_blank" rel="noopener">[Tip] Windows使用ssh對Github進行操作</a></li>
-<li><a href="http://www.vixual.net/blog/archives/190" target="_blank" rel="noopener">在 Windows 使用「非對稱金鑰」來遠端登入 SSH 的方法</a></li>
+<h2 id="操作記錄-失敗"><a href="#操作記錄-失敗" class="headerlink" title="操作記錄(失敗)"></a>操作記錄(失敗)</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h3><ul>
+<li>在 Openshift 新增一個 Jenkins Server</li>
 </ul>
+<h3 id="失敗原因"><a href="#失敗原因" class="headerlink" title="失敗原因:"></a>失敗原因:</h3><ul>
+<li>我找不到方法在 Openshift 上建置的 Jenkins Server </li>
+</ul>
+<h3 id="記錄"><a href="#記錄" class="headerlink" title="記錄:"></a>記錄:</h3><ol>
+<li>登入OpenShift的<a href="https://openshift.redhat.com/app/console/applications" target="_blank" rel="noopener">web console</a></li>
+<li>Add Application 選擇 <code>Jenkins Server</code>，使用預設設定Create Application.<br>Public URL 設定為 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a></li>
+<li>連線進 <a href="http://jenkins-youraccount.rhcloud.com" target="_blank" rel="noopener">http://jenkins-youraccount.rhcloud.com</a> 會發現需要帳密登入</li>
+<li>取得帳號密碼<ol>
+<li>使用 SSH 連線 Openshift 的 Jenkins Server (可以在web console 查到連結)<br> <code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code></li>
+<li>查看以下兩個檔案可以取得帳號密碼<br><code>JENKINS_USERNAME</code><br><code>JENKINS_PASSWORD</code> </li>
+</ol>
+</li>
+</ol>
+<ol start="5">
+<li><p>登入後，管理 Jenkins &gt; 設定系統</p>
+<ol>
+<li>將執行程式數量設定為 1 </li>
+</ol>
+</li>
+<li><p>選擇新增作業</p>
+<ol>
+<li>第一步要將原始碼自Github pull下來;在原始碼管理選擇<code>Git</code> , 設定好<code>Repositories</code>、<code>Branches to build</code></li>
+</ol>
+</li>
+<li><p><strong>執行一次建置</strong>，這個步驟是為了產生work space 。 </p>
+</li>
+<li><p>SSH 連線 Openshift，切換目錄到你的專案的work space<br><code>&gt; ssh 4263*****************@jenkins-youraccount.rhcloud.com</code><br><code>&gt; cd app-root/data/workspace/your_project_name</code></p>
+</li>
+<li><p>檢查一下目前Git的遠端Repo有哪些<br><code>&gt; git remote -v</code></p>
+</li>
+<li><p>將Openshift上的nodejs應用程式repo設為remote<br><code>&gt;git remote add openshift ssh://5**********************@nodejs-youraccount.rhcloud.com/~/git/nodejs.git/</code></p>
+</li>
+<li><p>推送到<code>openshift remote</code><br>失敗!!原因是權限問題，Openshift remote 是透過 SSH 連線，<br>在認証公鑰的過程中，需要寫入 <code>~/.ssh/known_hosts</code> 檔案。<br>但是 Openshift 建立的 Jenkins Server 登入帳號，權限並不足以寫入而造成失敗</p>
+</li>
+</ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_windows/" data-id="ck1tztr3t0015d0vxus1c0bih" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_openshfit/" data-id="ck2pw57uy0015mkvxmh7oej2t" class="article-share-link">Share</a>
       
-        <a href="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_windows/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins_on_openshfit/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI-CD/">CI/CD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Openshift/">Openshift</a></li></ul>
@@ -205,7 +199,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins/" data-id="ck1tztr3s0013d0vx8vdg4lcb" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins/" data-id="ck2pw57uy0016mkvxjshgzppx" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -285,7 +279,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ck1tztr3p0010d0vx0k7d4wsj" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/" data-id="ck2pw57uv0013mkvxzvr0g3ni" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/01/11/2017/c_sharp_6_interpolation_string_stylecop_sa0102/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -775,7 +769,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/12/05/2016/be_friend_with_time/" data-id="ck1tztr39000pd0vxuobwnlzk" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/12/05/2016/be_friend_with_time/" data-id="ck2pw57ud000imkvx00u412bo" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/12/05/2016/be_friend_with_time/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -865,7 +859,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/11/28/2016/dotnet_pdb_file/" data-id="ck1tztr36000nd0vxhjmzbbt1" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/11/28/2016/dotnet_pdb_file/" data-id="ck2pw57uh000mmkvx7hkp3qi8" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/11/28/2016/dotnet_pdb_file/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1016,7 +1010,7 @@ You can also look at the TimeoutException message from StackExchange.Redis.<br>H
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/11/21/2016/aspdotnet_threadpool_and_redis/" data-id="ck1tztr34000md0vxolbfnyy5" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/11/21/2016/aspdotnet_threadpool_and_redis/" data-id="ck2pw57uj000omkvxl972tze5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/11/21/2016/aspdotnet_threadpool_and_redis/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1082,7 +1076,7 @@ You can also look at the TimeoutException message from StackExchange.Redis.<br>H
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/28/2016/about_content_type/" data-id="ck1tztr2u000fd0vxpefx6xyt" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/28/2016/about_content_type/" data-id="ck2pw57ub000gmkvxuo2gas2f" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/28/2016/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1165,7 +1159,7 @@ You can also look at the TimeoutException message from StackExchange.Redis.<br>H
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/21/2016/1st_time_with_powershell/" data-id="ck1tztr32000ld0vxrmwe8ow4" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/21/2016/1st_time_with_powershell/" data-id="ck2pw57ua000emkvx8duiba21" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/21/2016/1st_time_with_powershell/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1231,7 +1225,7 @@ You can also look at the TimeoutException message from StackExchange.Redis.<br>H
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/14/2016/todolist_by_typescript_2/" data-id="ck1tztr3q0011d0vx9v5et49q" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/14/2016/todolist_by_typescript_2/" data-id="ck2pw57uv0012mkvx1133eh27" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/14/2016/todolist_by_typescript_2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1324,7 +1318,7 @@ You can also look at the TimeoutException message from StackExchange.Redis.<br>H
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="ck1tztr3n000yd0vxcst1vbou" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="ck2pw57uu0011mkvxd52m3xdw" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/#disqus_thread" class="article-comment-link">留言</a>
       

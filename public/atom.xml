@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Marsen</title>
   <icon>https://www.gravatar.com/avatar/be6152866ede00bca9d8f92aa352c938</icon>
-  
+  <subtitle>waiting to load</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
