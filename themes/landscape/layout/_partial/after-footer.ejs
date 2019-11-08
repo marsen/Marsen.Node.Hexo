@@ -20,5 +20,10 @@
   <%- css('fancybox/jquery.fancybox') %>
   <%- js('fancybox/jquery.fancybox.pack') %>
 <% } %>
-
+<% if(theme.sayings.length >0){%>
+<script>
+  var sayings = <%- JSON.stringify(theme.sayings) %>;
+</script>
+  
+<% } %>
 <%- js('js/script') %>

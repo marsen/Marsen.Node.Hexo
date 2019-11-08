@@ -1,4 +1,5 @@
 (function($){
+  $('#subtitle').html(sayings[Math.floor(Math.random() * sayings.length)]);
   // Search
   var $searchWrap = $('#search-form-wrap'),
     isSearchAnim = false,
