@@ -86,8 +86,6 @@ deploy:
 disqus_shortname: marsenlin
 
 # sayings
-sayings: ['Keep on going never give up.',
-'Action speak louder than words.',
+sayings: ['勿釀酒成醋 情緒總是有的 不要讓羨慕變成了嫉妒 ',
 '理性與感性的界線在好奇心',
-'Knowledge will give you power, but character erespect.---Bruce Lee',
 '保持距離才能安穩飛翔']
