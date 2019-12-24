@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>[學習筆記] SQL 大小事 Isolation Level | Marsen&#39;s Blog</title>
+  <title>[學習筆記] SQL 大小事 Isolation Level 與 SARGs | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="ACID 與 Isolation Level什麼是 ACID Atomicity（原子性）：  一個交易（transaction）中的所有操作，要嘛全部完成，要嘛全部不完成，  不會在中間某個環節中斷。交易在執行過程中發生錯誤，會被回滾（Rollback）到交易開始前的狀態，  就像這個交易從來沒有執行過一樣。即，交易不可分割、不可約簡。   Consistency（一致性）：  在交易開始之前和">
 <meta name="keywords" content="Database,SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[學習筆記] SQL 大小事 Isolation Level">
+<meta property="og:title" content="[學習筆記] SQL 大小事 Isolation Level 與 SARGs">
 <meta property="og:url" content="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="ACID 與 Isolation Level什麼是 ACID Atomicity（原子性）：  一個交易（transaction）中的所有操作，要嘛全部完成，要嘛全部不完成，  不會在中間某個環節中斷。交易在執行過程中發生錯誤，會被回滾（Rollback）到交易開始前的狀態，  就像這個交易從來沒有執行過一樣。即，交易不可分割、不可約簡。   Consistency（一致性）：  在交易開始之前和">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://miro.medium.com/max/1438/1*zAaBTdOtFJzISu4KGcwtvQ.png">
-<meta property="og:updated_time" content="2019-12-24T18:35:35.419Z">
+<meta property="og:updated_time" content="2019-12-24T18:37:55.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[學習筆記] SQL 大小事 Isolation Level">
+<meta name="twitter:title" content="[學習筆記] SQL 大小事 Isolation Level 與 SARGs">
 <meta name="twitter:description" content="ACID 與 Isolation Level什麼是 ACID Atomicity（原子性）：  一個交易（transaction）中的所有操作，要嘛全部完成，要嘛全部不完成，  不會在中間某個環節中斷。交易在執行過程中發生錯誤，會被回滾（Rollback）到交易開始前的狀態，  就像這個交易從來沒有執行過一樣。即，交易不可分割、不可約簡。   Consistency（一致性）：  在交易開始之前和">
 <meta name="twitter:image" content="https://miro.medium.com/max/1438/1*zAaBTdOtFJzISu4KGcwtvQ.png">
   
@@ -99,7 +99,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      [學習筆記] SQL 大小事 Isolation Level
+      [學習筆記] SQL 大小事 Isolation Level 與 SARGs
     </h1>
   
 
@@ -194,7 +194,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/" data-id="ck4k7msd5001em4vxvn4f0ec9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/" data-id="ck4k7sbrj002j04vxcabzez0z" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -235,7 +235,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2019/12/25/2019/about_sql_acid_and_srgs/">[學習筆記] SQL 大小事 Isolation Level</a>
+            <a href="/2019/12/25/2019/about_sql_acid_and_srgs/">[學習筆記] SQL 大小事 Isolation Level 與 SARGs</a>
           </li>
         
           <li>
