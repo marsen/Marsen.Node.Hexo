@@ -51,7 +51,7 @@ runas.exe /netnoly /user:MyCompany\Marsen "C:\Program Files (x86)\Microsoft SQL 
 
 ## 免責聲明
 
-雖然是加密過的檔案，不過如果被人知道你是使用 CAPU 加密，攻擊者取得檔案後仍然圖以透過 CAPU 解密登入。
+雖然是加密過的檔案，不過如果被人知道你是使用 CAPU 加密，攻擊者取得檔案後仍然可以透過 CAPU 解密登入。
 所以使用上一定要小心檔案不要外流，主要的優點仍然是節省打密碼的時間與打錯的風險。
 
 ## 參考
