@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe /netnoly /user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementSt">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2019-12-25T08:09:28.401Z">
+<meta property="og:updated_time" content="2019-12-25T08:10:23.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記] CPAU 加密仿登入">
 <meta name="twitter:description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe /netnoly /user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementSt">
@@ -131,7 +131,7 @@ ga('send', 'pageview');
 </li>
 </ol>
 <p>最後只要將步驟 4 的語法存成一個 bat 檔，就可以隨時點兩下執行了。</p>
-<h2 id="免責聲明"><a href="#免責聲明" class="headerlink" title="免責聲明"></a>免責聲明</h2><p>雖然是加密過的檔案，不過如果被人知道你是使用 CAPU 加密，攻擊者取得檔案後仍然圖以透過 CAPU 解密登入。<br>所以使用上一定要小心檔案不要外流，主要的優點仍然是節省打密碼的時間與打錯的風險。</p>
+<h2 id="免責聲明"><a href="#免責聲明" class="headerlink" title="免責聲明"></a>免責聲明</h2><p>雖然是加密過的檔案，不過如果被人知道你是使用 CAPU 加密，攻擊者取得檔案後仍然可以透過 CAPU 解密登入。<br>所以使用上一定要小心檔案不要外流，主要的優點仍然是節省打密碼的時間與打錯的風險。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771525(v%3Dws.11)" target="_blank" rel="noopener">Runas</a></li>
 <li><a href="https://www.joeware.net/freetools/tools/cpau/" target="_blank" rel="noopener">CPAU</a></li>
@@ -142,7 +142,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/08/20/2019/cpau/" data-id="ck4l0pigv002jj8vxctplx14x" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/08/20/2019/cpau/" data-id="ck4l0qbz5002picvxj37sfn9k" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/08/20/2019/cpau/#disqus_thread" class="article-comment-link">留言</a>
       
