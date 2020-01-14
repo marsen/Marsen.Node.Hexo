@@ -47,6 +47,6 @@ ex: Line、E-mail、簡訊甚至是電話，
 
 - <https://stripe.com/docs/webhooks>
 - <https://stripe.com/docs/api/issuing/authorizations>
-- <requestbin.com>
+- <https://requestbin.com/>
 
 (fin)
