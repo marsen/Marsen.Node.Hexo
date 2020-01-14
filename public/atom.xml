@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2019-12-24T18:37:55.880Z</updated>
+  <updated>2020-01-14T02:08:05.504Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[實作筆記] Reshaper Code Template</title>
+    <link href="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/"/>
+    <id>https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/</id>
+    <published>2020-01-08T09:17:17.000Z</published>
+    <updated>2020-01-14T02:08:05.504Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>我通常會作一些 Code Snippet 來加速開發，<br>避免同樣的代碼要重複的寫，<br>除了避免重複，能交給工具的儘量交給工具去作，<br>只要是人為的操作就有可能犯錯，就算是簡單的剪下貼上，<br>讓工具作事，用心去檢驗，這是我在 2019 練習的小心得。  </p><p>比如說我使用無蝦米輸入法、刻意練習英打速度，<br>購買 Reshaper 等…，都是為了提昇生產力。<br>今天就是要說說 Reshaper 的 Template ，<br>這是一個跟 Code Snippet 相同的功能 。  </p><h2 id="本文"><a href="#本文" class="headerlink" title="本文"></a>本文</h2><p>Template 與 Code Snippet 並不使用共同的範例檔，<br>所以要如何將已有的 Snippet 轉移過來呢 ? 如果有人知道請跟我說。<br>另一個問題是，他真的比原本的 Snippet 好用嗎 ?</p><p>因為我的 Snippet 並不多，大約 10 個左右<br>為了馬上增加生產力，我手動將主要有用到的 2個重建了<br>剩下的如果真的很少用，就讓他自然淘汰吧。<br>常用的如果有用到再來重建。</p><p>第二件事，我使用上手感是差不多的<br>據說 Resharper 會更智慧化，所以我會選用 Code Template  </p><h2 id="如何新增"><a href="#如何新增" class="headerlink" title="如何新增"></a>如何新增</h2><p>以 Visual Studio 2019 與 Resharper Ultimate 為例，<br>在搜尋框輸入 <code>Template</code> 找到 <code>Template Explorer</code><br>點擊新增圖示，進行編輯，<br>其它就跟原本的 Snippet 差不多，也可以提供參數化入與 short cut<br><img src="/images/2020/1/reshaper_tempalte_01.jpg" alt="Auto Scaling Group"></p><h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>如果已經安裝了 Resharper Ultimate 但是 Template 不工作的話記得看一下設定</p><p>Resharper &gt; Option &gt; Intellisense &gt; General</p><p><img src="/images/2020/1/reshaper_tempalte_02.jpg" alt="Auto Scaling Group"></p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://blog.darkthread.net/blog/vs-code-snippet-with-resharper/" target="_blank" rel="noopener">https://blog.darkthread.net/blog/vs-code-snippet-with-resharper/</a></li><li><a href="https://www.jetbrains.com/help/resharper/Creating_a_File_Template.html" target="_blank" rel="noopener">https://www.jetbrains.com/help/resharper/Creating_a_File_Template.html</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;我通常會作一些 Code Snippet 來加速開發，&lt;br&gt;避免同樣的代碼要重複的寫，&lt;br&gt;除了避免重複，能交給工具的儘
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>[學習筆記] SQL 大小事 Isolation Level 與 SARGs</title>
@@ -475,31 +496,6 @@
       <category term="Testing" scheme="https://blog.marsen.me/tags/Testing/"/>
     
       <category term="重構" scheme="https://blog.marsen.me/tags/%E9%87%8D%E6%A7%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記]使用 Windows PowerShell 批次上傳 AWS S3</title>
-    <link href="https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/"/>
-    <id>https://blog.marsen.me/2019/02/20/2019/Setting_up_aws_tools_for_powershell/</id>
-    <published>2019-02-20T11:09:18.000Z</published>
-    <updated>2019-06-10T14:43:28.954Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><p>相關服務要雲端化，要將站台、資料等…遷移至 AWS，<br>這個案例需要將大量在 File Server 上的檔案(報表/單據/報告書等…)上傳至 S3<br>因為檔案數量相當的大，所以開發一個簡單的指令來執行。</p><h3 id="Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具"><a href="#Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具" class="headerlink" title="Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具"></a>Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具</h3><ul><li><a href="https://aws.amazon.com/tw/powershell/" target="_blank" rel="noopener">下載適用於 Windows PowerShell 的 AWS 工具</a></li></ul><p><img src="/images/2019/2/awstools.jpg" alt="只需要安裝必要的程式"></p><h3 id="設定-aws-config"><a href="#設定-aws-config" class="headerlink" title="設定 aws config"></a>設定 aws config</h3><p>打開 terminal 執行以下語法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; aws configure</span><br></pre></td></tr></table></figure><p>依指示設定 <code>Access key ID</code> 與 <code>Secret access key</code>，  這個資料需要具備一定的權限才能取得，如果權限不足請向你的 AWS 服務管理員申請。</p><h3 id="撰寫-PowerShell-與執行"><a href="#撰寫-PowerShell-與執行" class="headerlink" title="撰寫 PowerShell 與執行"></a>撰寫 PowerShell 與執行</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bucketName</span> = <span class="string">"********************-your_bucket_name"</span></span><br><span class="line"><span class="variable">$path</span> = <span class="string">"Your\s3\path\"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> -Filter *.pdf |</span><br><span class="line"><span class="built_in">ForEach-Object</span> -Begin&#123;<span class="variable">$i</span>=<span class="number">0</span>&#125; &#123;  </span><br><span class="line">  <span class="variable">$i</span>++;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$path</span>+<span class="variable">$_</span> ;</span><br><span class="line">  <span class="comment">## 進度顯示</span></span><br><span class="line">  <span class="built_in">Write-Host</span> <span class="variable">$key</span> <span class="string">"(<span class="variable">$i</span>/1000)"</span>  -ForegroundColor Green ;</span><br><span class="line">  <span class="comment">## 上傳 S3</span></span><br><span class="line">  Write-S3Object -BucketName <span class="variable">$bucketName</span> -File <span class="variable">$_</span>.FullName -Key <span class="variable">$key</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;目標&quot;&gt;&lt;a href=&quot;#目標&quot; class=&quot;headerlink&quot; title=&quot;目標&quot;&gt;&lt;/a&gt;目標&lt;/h2&gt;&lt;p&gt;相關服務要雲端化，要將站台、資料等…遷移至 AWS，&lt;br&gt;這個案例需要將大量在 File Server 上的檔案(報表/單據/報告書等…)
-      
-    
-    </summary>
-    
-    
-      <category term="PowerShell" scheme="https://blog.marsen.me/tags/PowerShell/"/>
-    
-      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
     
   </entry>
   
