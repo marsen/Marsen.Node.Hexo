@@ -339,7 +339,7 @@ public void CovertAgeTodayIs2019()
     var actual = _target.Parse(testJson).Age;
     ////Assert
     actual.Should().Be(30);
-        }
+}
 ```
 
 #### Step2.4
