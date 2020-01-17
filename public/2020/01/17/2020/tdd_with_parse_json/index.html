@@ -5,17 +5,17 @@
   
   <title>[實作筆記] 記錄用 TDD 寫一個 Entity Parser  | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 json 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
+  <meta name="description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 JSON 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記] 記錄用 TDD 寫一個 Entity Parser ">
 <meta property="og:url" content="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 json 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
+<meta property="og:description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 JSON 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2020-01-17T01:19:35.199Z">
+<meta property="og:updated_time" content="2020-01-17T02:07:02.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記] 記錄用 TDD 寫一個 Entity Parser ">
-<meta name="twitter:description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 json 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
+<meta name="twitter:description" content="如何用 TDD 寫一個 Entity Parser情境，假設有一包 JSON 檔案如下 12345&amp;#123;  &quot;FirstName&quot;: &quot;Tian&quot;,  &quot;LastName&quot;: &quot;Tank&quot;,  &quot;BirthDate&quot;: &quot;1989/06/04&quot;&amp;#125;  我想轉換成 C# Entity ，這個 Entity 裡面包含兩個商業邏輯  提供全名 提供年紀  ex: 12Name = Tank">
   
     <link rel="alternate" href="/atom.xml" title="Marsen&#39;s Blog" type="application/atom+xml">
   
@@ -104,7 +104,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="如何用-TDD-寫一個-Entity-Parser"><a href="#如何用-TDD-寫一個-Entity-Parser" class="headerlink" title="如何用 TDD 寫一個 Entity Parser"></a>如何用 TDD 寫一個 Entity Parser</h2><p>情境，假設有一包 json 檔案如下</p>
+        <h2 id="如何用-TDD-寫一個-Entity-Parser"><a href="#如何用-TDD-寫一個-Entity-Parser" class="headerlink" title="如何用 TDD 寫一個 Entity Parser"></a>如何用 TDD 寫一個 Entity Parser</h2><p>情境，假設有一包 JSON 檔案如下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"FirstName"</span>: <span class="string">"Tian"</span>,</span><br><span class="line">  <span class="attr">"LastName"</span>: <span class="string">"Tank"</span>,</span><br><span class="line">  <span class="attr">"BirthDate"</span>: <span class="string">"1989/06/04"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我想轉換成 C# Entity ，<br>這個 Entity 裡面包含兩個商業邏輯</p>
@@ -116,7 +116,7 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Name = Tank Tian</span><br><span class="line">Age = 35</span><br></pre></td></tr></table></figure>
 
 <p>如何透過 TDD 的工序達到這個目標 ?</p>
-<h3 id="Arrange"><a href="#Arrange" class="headerlink" title="Arrange"></a>Arrange</h3><p>傳入的字串如下</p>
+<h3 id="Arrange"><a href="#Arrange" class="headerlink" title="Arrange"></a>Arrange</h3><p>傳入的 JSON 字串如下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"FirstName"</span>: <span class="string">"Tian"</span>,</span><br><span class="line">  <span class="attr">"LastName"</span>: <span class="string">"Tank"</span>,</span><br><span class="line">  <span class="attr">"BirthDate"</span>: <span class="string">"1989/06/04"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Act"><a href="#Act" class="headerlink" title="Act"></a>Act</h3><p>執行 Parse 方法之後</p>
@@ -129,13 +129,13 @@ ga('send', 'pageview');
 <p>Production Code 簡單寫可以這樣,<br>這個可以說是極致的 Baby Step 吧 ?</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PersonaEntity <span class="title">Parse</span>(<span class="params"><span class="keyword">string</span> json</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> PersonaEntity</span><br><span class="line">    &#123;</span><br><span class="line">        Name = <span class="string">"Tian Tank"</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>不過這個階段可以透過 IDE 工具長出合適的 Entity</p>
+<p>不過這個階段可以透過 IDE 工具長出 PersnaEntity</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonaEntity</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Step1-1"><a href="#Step1-1" class="headerlink" title="Step1.1"></a>Step1.1</h4><p>但是通常分析過需求，我們應該可以理解到 PersonaEntity.Name<br>其實是 FirstName 與 LastName 的組合，<br>所以我的步伐會大步一點，如下</p>
+<h4 id="Step1-1"><a href="#Step1-1" class="headerlink" title="Step1.1"></a>Step1.1</h4><p>透過分析過需求，我們應該可以理解到 PersonaEntity.Name<br>其實是 FirstName 與 LastName 的組合，<br>所以我們可重構一下 Production Code，<br>這個步伐會大步一點，如下</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PersonaEntity <span class="title">Parse</span>(<span class="params"><span class="keyword">string</span> json</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> PersonaEntity</span><br><span class="line">    &#123;</span><br><span class="line">        Name = <span class="string">"Tian"</span> + <span class="string">"Tank"</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="Step1-2"><a href="#Step1-2" class="headerlink" title="Step1.2"></a>Step1.2</h4><p>Oops 我會拿到一個紅燈，因為我忘了<strong>空白</strong>，  
+<h4 id="Step1-2"><a href="#Step1-2" class="headerlink" title="Step1.2"></a>Step1.2</h4><p>Oops !! 我拿到了一個紅燈，因為我忘了<strong>空白</strong>，  
 修改 Production Code 如下，得到綠燈</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PersonaEntity <span class="title">Parse</span>(<span class="params"><span class="keyword">string</span> json</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> PersonaEntity</span><br><span class="line">    &#123;</span><br><span class="line">        Name = <span class="string">"Tian"</span> +<span class="string">" "</span>+ <span class="string">"Tank"</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -191,7 +191,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/" data-id="ck5gxzcuz002yrsvx73uc0dvz" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/" data-id="ck5hiwui80022povx70bpqj3c" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/#disqus_thread" class="article-comment-link">留言</a>
       

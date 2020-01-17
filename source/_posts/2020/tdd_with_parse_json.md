@@ -6,7 +6,7 @@ date: 2020/01/17 00:14:31
 
 ## 如何用 TDD 寫一個 Entity Parser
 
-情境，假設有一包 json 檔案如下
+情境，假設有一包 JSON 檔案如下
 
 ```json
 {
@@ -33,7 +33,7 @@ Age = 35
 
 ### Arrange
 
-傳入的字串如下
+傳入的 JSON 字串如下
 
 ```json
 {
@@ -90,7 +90,7 @@ public PersonaEntity Parse(string json)
 }
 ```
 
-不過這個階段可以透過 IDE 工具長出合適的 Entity
+不過這個階段可以透過 IDE 工具長出 PersnaEntity
 
 ```csharp
 public class PersonaEntity
@@ -101,9 +101,10 @@ public class PersonaEntity
 
 #### Step1.1
 
-但是通常分析過需求，我們應該可以理解到 PersonaEntity.Name  
+透過分析過需求，我們應該可以理解到 PersonaEntity.Name  
 其實是 FirstName 與 LastName 的組合，  
-所以我的步伐會大步一點，如下
+所以我們可重構一下 Production Code，  
+這個步伐會大步一點，如下
 
 ```csharp
 public PersonaEntity Parse(string json)
@@ -117,7 +118,7 @@ public PersonaEntity Parse(string json)
 
 #### Step1.2
 
-Oops 我會拿到一個紅燈，因為我忘了**空白**，  
+Oops !! 我拿到了一個紅燈，因為我忘了**空白**，  
 修改 Production Code 如下，得到綠燈
 
 ```csharp
