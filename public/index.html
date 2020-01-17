@@ -171,7 +171,7 @@ ga('send', 'pageview');
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> SystemDateTime</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DateTime? _mockDateTime = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> DateTime Now</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> =&gt; _mockDateTime ?? DateTime.Now;</span><br><span class="line">        <span class="keyword">internal</span> <span class="keyword">set</span> =&gt; _mockDateTime = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">internal</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Reset</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        _mockDateTime = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="Step2-3"><a href="#Step2-3" class="headerlink" title="Step2.3"></a>Step2.3</h4><p>改寫測試案例</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CovertAgeTodayIs2019</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Arrange</span></span><br><span class="line">    SystemDateTime.Now = Convert.ToDateTime(<span class="string">"2019/12/28"</span>);</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Act</span></span><br><span class="line">    <span class="keyword">var</span> actual = _target.Parse(testJson).Age;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Assert</span></span><br><span class="line">    actual.Should().Be(<span class="number">30</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CovertAgeTodayIs2019</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Arrange</span></span><br><span class="line">    SystemDateTime.Now = Convert.ToDateTime(<span class="string">"2019/12/28"</span>);</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Act</span></span><br><span class="line">    <span class="keyword">var</span> actual = _target.Parse(testJson).Age;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Assert</span></span><br><span class="line">    actual.Should().Be(<span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="Step2-4"><a href="#Step2-4" class="headerlink" title="Step2.4"></a>Step2.4</h4><p>Mock 時間後再寫一個測試案例</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CovertAgeTodayIs2020</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Arrange</span></span><br><span class="line">    SystemDateTime.Now = Convert.ToDateTime(<span class="string">"2020/12/28"</span>);</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Act</span></span><br><span class="line">    <span class="keyword">var</span> actual = _target.Parse(testJson).Age;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/Assert</span></span><br><span class="line">    actual.Should().Be(<span class="number">31</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
@@ -189,7 +189,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/" data-id="ck5gxxyww0033msvxsypq12h0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/" data-id="ck5gxzcuz002yrsvx73uc0dvz" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/01/17/2020/tdd_with_parse_json/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -246,7 +246,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/14/2020/requestbin/" data-id="ck5gxxywu0031msvxjewxc0g0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/01/14/2020/requestbin/" data-id="ck5gxzcux002wrsvxig5ypfro" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/01/14/2020/requestbin/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -298,7 +298,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/" data-id="ck5gxxywv0032msvx1lag1pn4" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/" data-id="ck5gxzcuz002zrsvx4xfhcts7" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -419,7 +419,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/" data-id="ck5gxxywg002imsvxgzi1lbob" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/" data-id="ck5gxzcuj002drsvxoud2qwwu" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/12/25/2019/about_sql_acid_and_srgs/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -515,7 +515,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/11/26/2019/interview_log/" data-id="ck5gxxywm002rmsvxrfee8prx" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/11/26/2019/interview_log/" data-id="ck5gxzcuq002orsvxp94r85pd" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/11/26/2019/interview_log/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -576,7 +576,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/11/07/2019/swing_dance_log/" data-id="ck5gxxyws002ymsvx2ytoxynl" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/11/07/2019/swing_dance_log/" data-id="ck5gxzcuw002ursvxg3uxi3cq" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/11/07/2019/swing_dance_log/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -670,7 +670,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/10/11/2019/github_registry_with_nuget_packages/" data-id="ck5gxxywl002qmsvx208f0pux" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/10/11/2019/github_registry_with_nuget_packages/" data-id="ck5gxzcup002mrsvx5u0a35b5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/10/11/2019/github_registry_with_nuget_packages/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -931,7 +931,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/09/26/2019/my_tools_2019/" data-id="ck5gxxywn002smsvxonjr0lud" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/09/26/2019/my_tools_2019/" data-id="ck5gxzcuq002nrsvx5p9yksos" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/09/26/2019/my_tools_2019/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1030,7 +1030,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/09/01/2019/dotnet_core_projecte_template/" data-id="ck5gxxywk002omsvxihkcybe9" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/09/01/2019/dotnet_core_projecte_template/" data-id="ck5gxzcup002lrsvxdqcx8r74" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/09/01/2019/dotnet_core_projecte_template/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1160,7 +1160,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/08/25/2019/aws_auto_sacling_group/" data-id="ck5gxxywh002kmsvxndn1og0p" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/08/25/2019/aws_auto_sacling_group/" data-id="ck5gxzcuk002frsvxh2fszfq1" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/08/25/2019/aws_auto_sacling_group/#disqus_thread" class="article-comment-link">留言</a>
       
