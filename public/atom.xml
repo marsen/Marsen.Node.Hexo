@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-01-17T05:08:46.371Z</updated>
+  <updated>2020-01-28T14:45:55.323Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[閱讀筆記] 開刀房裡的沉思 -- 一位外科醫師的精進</title>
+    <link href="https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/"/>
+    <id>https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/</id>
+    <published>2020-01-28T05:18:10.000Z</published>
+    <updated>2020-01-28T14:45:55.323Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因為<a href="https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_patterns/">「學徒模式」</a>在最後的章節多次提到這本書，<br>於是去了圖書館借來翻了一下，內容大多與醫療與醫生相關，<br>作者在醫療上如何追求卓越，精益求精 ?<br>作為一個開發人員，能否借鏡不同產業的精進旅程帶來一些反思 ?  </p><p>簡單先作個小結，作者認為精進有三個基本要素</p><ol><li>努力不懈，簡單卻最困難，如何堅持?</li><li>務求正確, 這裡面臨了人性的挑戰，包含貪心、防衛心理和堅持與適時放棄</li><li>創新，勇於認錯、願意改變、見賢思齊</li></ol><p>引述一小段。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我們不只是活在一個人的世界，  </span><br><span class="line">必須和別人一起工作，與科學一起進步，  </span><br><span class="line">也活在混亂、複雜的現實世界裡，而且任重道遠。  </span><br><span class="line">......</span><br><span class="line">光是擔責任還不夠，選要想想如何能做得更好。</span><br></pre></td></tr></table></figure><h2 id="章節概要"><a href="#章節概要" class="headerlink" title="章節概要"></a>章節概要</h2><h3 id="禍手"><a href="#禍手" class="headerlink" title="禍手"></a>禍手</h3><p>簡單卻作不到的事。</p><h4 id="創新者的困境"><a href="#創新者的困境" class="headerlink" title="創新者的困境"></a>創新者的困境</h4><p>山姆維茲雖然推論出醫生不洗手是產婦致死的原兇，<br>但在同業同事間推動卻因批判與溝通而大大的失敗，<br>成為了悲劇英雄。</p><h4 id="現場執行的困境"><a href="#現場執行的困境" class="headerlink" title="現場執行的困境"></a>現場執行的困境</h4><ul><li>洗手的 SOP :缷下手錶，戒指…事實上沒有人能夠謹守這樣的步驟。</li><li>「不問你為什麼不洗手，而是問你為什麼不能洗手 ?」答案多半是:沒時間。</li><li>把病房變得像開刀房，使維持清潔變得容易，當他另謀高就後，原單位故態復萌、改革挫敗、白費功夫</li><li>「正向偏差」:透過內部推廣取代指示改變，詢問現場一線取代宣導與命令(現場改善、由下而上)</li></ul><blockquote><p>反思:<br>現場如何推動單元測試與 Clean Code ?<br>只靠個人 ? 明星開發者 ? 嚴格的規定 ? 無處不在的口號標語 ?  </p></blockquote><h3 id="薪事誰人知"><a href="#薪事誰人知" class="headerlink" title="薪事誰人知"></a>薪事誰人知</h3><p>醫師的困境是按件計酬，而存在與之對立的醫療保險業者，<br>原本醫療保險的立意是良善的，避免有得醫生漫天喊價。<br>但是時至今日，美國的醫療保險規則太過複雜，<br>引入第三方(保險業者)不但沒有幫助，反而變得更加複雜，<br>醫生無法得到合理的收費，沒有保險的病人無法得到醫療照護。</p><p>馬修．松頓保健計劃，在初期簡化與保險公司打交道的複雜性，<br>提昇了照護病人的成效，但在組織成長變大後，<br>諸多的規定與合約讓這個保險計劃也由保險集團接手，最終宣告結束。</p><h3 id="艾卜佳評分表"><a href="#艾卜佳評分表" class="headerlink" title="艾卜佳評分表"></a>艾卜佳評分表</h3><p>對人類來說，生產一直是一件困難的事。<br>對新生兒與孕婦在生產的過程中一不小心就有生命危險，<br>單鈎、產鉗、多達數十種的助產法、剖腹產等…</p><p>二十世紀複，隨著知識與器械的進步，研究卻表明醫院生產的新生兒死亡率高於產婆接生<br>生產流程的革新與標準化才進一步確保了新生兒的生存率<br>艾卜佳評分表在這當中擔任關鍵的角色，而且相當簡單。<br>膚色、哭聲、呼吸、四肢活動力、心跳次數等，簡單的分為 0、1、2 三種評分，<br>這讓主觀評量變成了客觀，有了評量才有改善的方向。<br>新生兒加護病房、產婦脊髓麻醉與胎兒心跳監視器也相應而生。</p><h3 id="醫師的成績單"><a href="#醫師的成績單" class="headerlink" title="醫師的成績單"></a>醫師的成績單</h3><p>辛辛那提的醫生全力以赴仍然只是中等平庸的醫院，<br>在本書中，醫生的技藝是呈現鐘型曲線。<br>在學徒模式書中，工程師是左傾的曲線<br><img src="/images/2020/1/better_by_atul_gawande_02.jpg" alt="左傾的曲線"></p><p>雖然手頭上沒有完整數據佐証，但是一般醫生至少需要 7 年的專業訓練，<br>而軟體工程業界，常常有中途出家的非本科工程師，<br>這個行業本身歷史很短也很年輕，<br>但是影響範圍卻相當的廣大，各行各業軟體都能參予其中。<br>這卻讓這個業界的一線從業人員的水平參疵不齊，可以參考達克效應<br><img src="/images/2020/1/better_by_atul_gawande_01.jpg" alt="Dunning-Kruger Effec"></p><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>艾卜佳評分表:<br>如何客觀評量績效 ?<br>書中說明產科的進步並不在嚴謹的「實證醫學」而是一個簡單的評分表。  </p><p>那麼如何評量代碼質量 ?  </p><ul><li>如何建立一個開發人員的評分表 ?  </li><li>如何建立代碼的艾卜佳評分表呢 ?</li></ul><p>產鉗在上個世紀是一門技藝，<br>儘管有研究表明剖腹產未必優於產鉗，但這門技藝仍就消失了。<br>如果產鉗是因為標準化的流程而消失，那軟體工程呢 ?<br>TDD 會是軟體工程裡的產鉗嗎 ? 2014 年的 <a href="http://joe-dev.blogspot.com/2014/06/tdd-is-dead.html" target="_blank" rel="noopener">TDD is died</a> 仍值得回味再三。</p><p>績效如何轉換成<a href="https://earnings.dgbas.gov.tw/experience_sub_01.aspx" target="_blank" rel="noopener">合理的收入</a>呢 ?  </p><h2 id="其它章節"><a href="#其它章節" class="headerlink" title="其它章節"></a>其它章節</h2><ul><li>一個都不能漏</li><li>浴血</li><li>裸</li><li>纏訟</li><li>死刑室醫師</li><li>戰鬥</li><li>我的印度之旅</li></ul><h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>2020 過年寫下這篇文章，幾個事件與書共鳴，<br>反思記錄一下。</p><p>先是 2020 年館長的新聞<a href="https://www.ptt.cc/bbs/Soft_Job/M.1579798528.A.0A9.html" target="_blank" rel="noopener">能同時十萬人上線的網站要300萬</a>，  館長已經揚言要提告了，在軟體業界常常有亂喊價，亂報時程的常態，<br>最後損失的往往是品質。</p><ul><li>本例中客戶揚言要提告工程師，其實我蠻疑惑為什麼不是中間人、接案公司、業務而是工程師 ?</li><li>壓測應該收多少錢 ? 要作到什麼程度</li><li>資安避險應收多少錢 ? 要作到什麼程度 ?</li><li>功能的缺失(帳務、發票 etc…)。如何驗收呢 ?</li><li>盲信的後果，你沒有專業要如何相信對方呢 ? 反過來，你有專業要如何讓客戶相信你呢 ?</li></ul><p>公開透明的組織運作，將會成為組織是否能夠進步改善的關鍵<br>2020 的武漢肺炎是反向的例子，</p><ul><li>武漢市長表示未被授權, 依法不能批露疫情。</li><li>WHO 錯誤評估風險等級</li><li>ICAO 屏避支持台灣的帳號</li></ul><p>這件事還沒有結束，就不多作評論了。<br>後續再作追踪。</p><p>最後是今年我的侄子出生了，<br>因為剛好讀到產婦相關章節，所以特別有感<br>願他平安成長。</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;因為&lt;a href=&quot;https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_
+      
+    
+    </summary>
+    
+    
+      <category term="閱讀筆記" scheme="https://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] 記錄用 TDD 寫一個 Entity Parser </title>
@@ -296,9 +319,9 @@
     <link href="https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_patterns/"/>
     <id>https://blog.marsen.me/2019/08/07/2019/book/apprenticeship_patterns/</id>
     <published>2019-08-06T18:06:15.000Z</published>
-    <updated>2020-01-15T17:55:38.479Z</updated>
+    <updated>2020-01-28T06:14:48.445Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/2019/8/apprenticeship_patterns.jpg" alt="送書啦"></p><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近公司來了幾個來自 Build School 的學員，<br>作為暑期工讀生，開發一些 Side Project ，<br>雖然工作很忙，不過我倒是對帶新人還蠻有信心的。  </p><p>這些小朋友問了一些問題，讓我想到自已剛畢業和剛從資策會出來的那時候。<br>有的問題很大，大到可能要一輩子都無法解決。<br>有的問題很小，小到聽了會笑，但對他們來說可能像是眼裡的一粒沙。  </p><p>我在學習的初期，最困難的問題是<strong>不知道怎麼問問題</strong>。  而過了一陣子後，我發現一個更糟的狀況，<strong>我不知道我有問題</strong>。  而這本書大致上解決了我的上述的兩個問題。</p><h2 id="為何選擇這本書"><a href="#為何選擇這本書" class="headerlink" title="為何選擇這本書?"></a>為何選擇這本書?</h2><p>非常好讀，你不需要從頭讀到尾。<br>首先是每個篇幅非常的短，大概只要 5~10 分鐘就能讀完。<br>再來是除了第一章外，每一大章都會有一個地圖，<br>讓你能看見全貌。  </p><h2 id="如何讀這本書"><a href="#如何讀這本書" class="headerlink" title="如何讀這本書"></a>如何讀這本書</h2><p>而每一篇都包含情境、問題、解決方案與參照，<br>情境與問題就像是這本書的 GPS ,<br>讓你知道你落在這本書的哪個點上 。<br>解決方案是通篇的主體，但是對我來說後面的行動更為重要，<br>我開始練習 Kata、寫 Blog、尋找導師大多是因這本書而開始的。  </p><p>最後，都會附上相關章節的參照。<br>這非常有幫助，原因是在這張地圖上，<br>你可能會同時落在幾個點上。<br>那麼地圖與參照就會非常有幫助，你可以查找地圖發現有關連的章節，<br>也可以直接透過參照找到其它章節。  </p><h2 id="會不會是雞湯文"><a href="#會不會是雞湯文" class="headerlink" title="會不會是雞湯文"></a>會不會是雞湯文</h2><p>會不會變成雞湯，其實取決於你自已。<br>書上的行動，你作了嗎 ?<br>如果不行動，就當作喝雞湯吧。  </p><h2 id="這本書的缺點"><a href="#這本書的缺點" class="headerlink" title="這本書的缺點"></a>這本書的缺點</h2><p>這本書強調的是如何成為一個工匠，<br>如何成為一個達人。<br>我知道的現實是，很多工程人員到了一定的程度就會轉換職務<br>如果你的目標是成為管理者，業務等…職務<br>我想這本書在幫助上可能會少一半。<br>畢竟這不是一本教你管理、銷售或領導的書。</p><h2 id="最後的-mur-mur"><a href="#最後的-mur-mur" class="headerlink" title="最後的 mur mur"></a>最後的 mur mur</h2><p>現實上的工匠真的很少，這不是條發大財的路。<br>走起來也很辛苦，不過這是個革命的時代，<br>各行各業都在與軟體產業發生衝突與融合，<br>如果能有更多優秀的工程師，我們就不需要工程師了。</p><blockquote><p>鍚將會扮演它的角色，直到這個世界不再需要鍚為止，<br>然後鍚就會變成金子。  —El Alquimista</p></blockquote><p>期許自已和看到這篇文章的你都能成為更好的工程師。</p><p>(fin)</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/images/2019/8/apprenticeship_patterns.jpg" alt="送書啦"></p><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近公司來了幾個來自 Build School 的學員，<br>作為暑期工讀生，開發一些 Side Project ，<br>雖然工作很忙，不過我倒是對帶新人還蠻有信心的。  </p><p>這些小朋友問了一些問題，讓我想到自已剛畢業和剛從資策會出來的那時候。<br>有的問題很大，大到可能要一輩子都無法解決。<br>有的問題很小，小到聽了會笑，但對他們來說可能像是眼裡的一粒沙。  </p><p>我在學習的初期，最困難的問題是<strong>不知道怎麼問問題</strong>。  而過了一陣子後，我發現一個更糟的狀況，<strong>我不知道我有問題</strong>。  而這本書大致上解決了我的上述的兩個問題。</p><h2 id="為何選擇這本書"><a href="#為何選擇這本書" class="headerlink" title="為何選擇這本書"></a>為何選擇這本書</h2><p>非常好讀，你不需要從頭讀到尾。<br>首先是每個篇幅非常的短，大概只要 5~10 分鐘就能讀完。<br>再來是除了第一章外，每一大章都會有一個地圖，<br>讓你能看見全貌。  </p><h2 id="如何讀這本書"><a href="#如何讀這本書" class="headerlink" title="如何讀這本書"></a>如何讀這本書</h2><p>而每一篇都包含情境、問題、解決方案與參照，<br>情境與問題就像是這本書的 GPS ,<br>讓你知道你落在這本書的哪個點上 。<br>解決方案是通篇的主體，但是對我來說後面的行動更為重要，<br>我開始練習 Kata、寫 Blog、尋找導師大多是因這本書而開始的。  </p><p>最後，都會附上相關章節的參照。<br>這非常有幫助，原因是在這張地圖上，<br>你可能會同時落在幾個點上。<br>那麼地圖與參照就會非常有幫助，你可以查找地圖發現有關連的章節，<br>也可以直接透過參照找到其它章節。  </p><h2 id="會不會是雞湯文"><a href="#會不會是雞湯文" class="headerlink" title="會不會是雞湯文"></a>會不會是雞湯文</h2><p>會不會變成雞湯，其實取決於你自已。<br>書上的行動，你作了嗎 ?<br>如果不行動，就當作喝雞湯吧。  </p><h2 id="這本書的缺點"><a href="#這本書的缺點" class="headerlink" title="這本書的缺點"></a>這本書的缺點</h2><p>這本書強調的是如何成為一個工匠，<br>如何成為一個達人。<br>我知道的現實是，很多工程人員到了一定的程度就會轉換職務<br>如果你的目標是成為管理者，業務等…職務<br>我想這本書在幫助上可能會少一半。<br>畢竟這不是一本教你管理、銷售或領導的書。</p><h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>現實上的工匠真的很少，這不是條發大財的路。<br>走起來也很辛苦，不過這是個革命的時代，<br>各行各業都在與軟體產業發生衝突與融合，<br>如果能有更多優秀的工程師，我們就不需要工程師了。</p><blockquote><p>鍚將會扮演它的角色，直到這個世界不再需要鍚為止，<br>然後鍚就會變成金子。</p><footer><strong>El Alquimista</strong></footer></blockquote><p>期許自已和看到這篇文章的你都能成為更好的工程師。</p><p>(fin)</p>]]></content>
     
     <summary type="html">
     
@@ -469,27 +492,6 @@
     
     
       <category term=".Net Framework" scheme="https://blog.marsen.me/tags/Net-Framework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[工作筆記] 好用的線上工具</title>
-    <link href="https://blog.marsen.me/2019/04/11/2019/tool_sites/"/>
-    <id>https://blog.marsen.me/2019/04/11/2019/tool_sites/</id>
-    <published>2019-04-11T03:16:21.000Z</published>
-    <updated>2020-01-15T17:55:38.494Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Net-Config-Transformation-Online"><a href="#Net-Config-Transformation-Online" class="headerlink" title=".Net Config Transformation Online"></a>.Net Config Transformation Online</h2><p><a href="https://webconfigtransformationtester.apphb.com/" target="_blank" rel="noopener">Web.config Transformation Tester</a></p><h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="JSON-C-Class"><a href="#JSON-C-Class" class="headerlink" title="JSON C# Class"></a>JSON C# Class</h3><ul><li><a href="http://json2csharp.com/" target="_blank" rel="noopener">json2csharp - generate c# classes from json</a></li></ul><h3 id="JSON-Query-Online"><a href="#JSON-Query-Online" class="headerlink" title="JSON Query Online"></a>JSON Query Online</h3><ul><li><a href="http://www.jsonquerytool.com/" target="_blank" rel="noopener">Home - Online JSON Query Tester</a></li></ul><h3 id="JSON-Format"><a href="#JSON-Format" class="headerlink" title="JSON Format"></a>JSON Format</h3><ul><li><a href="https://jsonformatter.curiousconcept.com/" target="_blank" rel="noopener">JSON Formatter &amp; Validator</a></li><li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener">Online JSON Viewer</a></li></ul><h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><h3 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h3><ul><li><a href="http://www.yamllint.com/" target="_blank" rel="noopener">YAMLlint - The YAML Validator</a></li></ul><h2 id="SQL-Format"><a href="#SQL-Format" class="headerlink" title="SQL Format"></a>SQL Format</h2><p><a href="https://sqlformat.org/" target="_blank" rel="noopener">Format SQL Statements Online - sqlformat.org</a></p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Net-Config-Transformation-Online&quot;&gt;&lt;a href=&quot;#Net-Config-Transformation-Online&quot; class=&quot;headerlink&quot; title=&quot;.Net Config Transformation O
-      
-    
-    </summary>
-    
     
   </entry>
   
