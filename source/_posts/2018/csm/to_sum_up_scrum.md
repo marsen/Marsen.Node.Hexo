@@ -14,7 +14,7 @@ tag:
 
 ## 什麼是 Scrum
 
-「什麼是 Scrum？」，在這之前我們先問一下「為什麼要 Scrum ？」    
+「什麼是 Scrum？」，在這之前我們先問一下「為什麼要 Scrum ？」  
 「Scrum 之前我們怎麼進行專案的？」、「Scrum 之前我們怎麼管理團隊的？」  
 層層的組織架構、層層的管理人員、層層規劃設計開發…
 
@@ -28,12 +28,12 @@ tag:
 
 不論是 Agile 或是 Scrum 都是要讓你適應變化，並且活下去。  
 
-而 Scrum 是一個框架，三個大原則，透明(Transparency)、檢驗(Inspection)、調適性(Adaptation)    
+而 Scrum 是一個框架，三個大原則，透明(Transparency)、檢驗(Inspection)、調適性(Adaptation)  
 簡單易學，卻難以精通，這句話說得明白一點，就是很容易畫虎不成反類犬。
 而 Scrum Guide 用了一句簡單帶過，  
-「Scrum’s roles, events, artifacts, and rules are immutable and although    
-implementing only parts of Scrum is possible, the result is not Scrum.    
-Scrum exists only in its entirety and functions well as a container   
+「Scrum’s roles, events, artifacts, and rules are immutable and although  
+implementing only parts of Scrum is possible, the result is not Scrum.  
+Scrum exists only in its entirety and functions well as a container  
 for other techniques, methodologies, and practices.」  
 
 常見的「Scrum 自助餐」其實不是 Scrum 。
@@ -54,6 +54,7 @@ CMS 課程帶給我一個很重要的學習，是個很簡單的老故事就說�
 
 **「所有人說都是對，排列組合也是對的，但結果是錯的。」**，
 怎麼解決這個問題？
+
 1. 讓盲人看見
 2. 讓盲人摸得到別人的區塊
 
@@ -111,7 +112,7 @@ Scrum 本身僅僅是個框架，它給了整個團隊非常彈性的空間，
 
 ### 角色的定位
 
-#### Scrum Master 要作什麼 ？  
+#### Scrum Master 要作什麼
 
 Scrum Master 的這個角色，不存在一般的組織架構之中，  
 這個導致 Scrum Master 的養成非常不易，  
@@ -121,6 +122,7 @@ Scrum Master 的這個角色，不存在一般的組織架構之中，
 (「記錄與側錄」是重要的，這能讓你從另一個旁觀者角度看事情，不要只有一個視角。)  
 同時又需要各種方法去教導、引導團隊，這包含「對 Scurm 的理解與實踐」與「工程實踐」  
 有太多 Scurm Master 常常會犯的錯如下:
+
 - 淪為安排會議的助理角色
 - 過度將焦點放在 Scurm Master 本身
 - 照表操課的帶四大會議，而不是觀注在團隊的成長與過程
@@ -129,9 +131,11 @@ Scrum Master 的這個角色，不存在一般的組織架構之中，
 - 無法存活導致被炒，即使有冒出新芽的改變也隨之消失
 - 只顧著存活而無法帶來實踐改變，純粹變成招覽「人材」用的蜜糖(HR:我們有屎逛，很潮喔;進去後才發現是小瀑布，真的很潮)
 
-#### PM 可以轉型 PO 嗎 ？
+#### PM 可以轉型 PO 嗎
 
 簡單的說，當然可以。
+**你想改變的是你的 Title 還是你的作事方法 ？**
+**你想改變的是你的 Title 還是你的作事方法 ？**
 **你想改變的是你的 Title 還是你的作事方法 ？**
 理想的 PO 應該更觀注在產品上面，我們希望你會產品有想法、有願景甚至有策略，  
 如果沒有策略，只是想作一些嚐試也是可以的。  
@@ -153,9 +157,12 @@ Walking Skeleton 是一個非常好用的手法，在探索出你的商業策略
 持續的開發增量，直到滿足 PO 對 MVP 定義，才有 Release 的可能。  
 相同的手法在團隊拆解 Task 也是可行的。
 
-**MVP遠比你的想得大的多**  
+**MVP很大，遠比你的想得大很多**
+**MVP很大，遠比你的想得大很多**
+**MVP很大，遠比你的想得大很多**
 
 歸納一下重點:
+
 - 想清楚產品現在最重要的策略
 - 由策略 Break Down 出 Product Backlog Items (User Story)
 - 只有作與不作的優先權
@@ -182,12 +189,13 @@ Walking Skeleton 是一個非常好用的手法，在探索出你的商業策略
 我常常在想，滿牆的便利貼與宗教崇拜這樣不是與彊屍道長沒有兩異嗎 ？
 
 我的建議的導入方法
-- 先觀察找到瓶頸或 Key Man
+
+- 先觀察找到瓶頸或關鍵人物
 - 爭取組織關鍵人物的支持，如果有老闆的支持更好
 - 帶來變化與作法，更勝於帶來新名詞
-- 一直講一直講，通常講到對方不耐煩才只是開始
+- 一直講一直講，通常講到對方不耐煩才只是開始(小心自已先不耐煩)
 
-## 現實的殘酷 與 仍然存在的疑惑 ?
+## 現實的殘酷 與 仍然存在的疑惑
 
 最後，記錄一些現在遇到不解的問題
 
@@ -221,8 +229,10 @@ Walking Skeleton 是一個非常好用的手法，在探索出你的商業策略
 如何讓團隊認知到清還債務能讓我們變快，並且在工程實踐上達到要求也是需要時間，  
 而成員確在職涯規劃上，2~3年就換個工作，而花了時間培養的戰力瞬間飛滅。  
 
-更甚是組織內部寧可用便宜的人材，換掉好不容易養成的人才。  
-對此我深感無力，跨職能與自組織最後也是淪為口號。  
+更甚是組織內部寧可換用便宜的人材，  
+而不珍惜自已花時間養成的人才。  
+對此我深感無力，  
+跨職能與自組織最後也是淪為口號。  
 
 ![全貌](/images/2018/csm/overview.JPG)
 
