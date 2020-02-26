@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="前情提要上次作完金流後，這次換作物流，在開發的過程中首次全程用 TDD 進行(?)，因為某些因素，測試沒有進版控，所以稍微記錄一下心路歷程。但是那個 T 是什麼? 就請各位看下去了… 需求說明出貨流程為:  訂單成立 透過物流服務配號 出貨 透過物流服務查詢物流狀態 狀態正確，通知消費者取貨 狀態不正確，通知商家，人工處理。  這次 TDD 進行的部份為流程上的第 4 步，往下看我怎麼做的   整">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2020-02-26T03:23:25.505Z">
+<meta property="og:updated_time" content="2020-02-26T03:29:06.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)">
 <meta name="twitter:description" content="前情提要上次作完金流後，這次換作物流，在開發的過程中首次全程用 TDD 進行(?)，因為某些因素，測試沒有進版控，所以稍微記錄一下心路歷程。但是那個 T 是什麼? 就請各位看下去了… 需求說明出貨流程為:  訂單成立 透過物流服務配號 出貨 透過物流服務查詢物流狀態 狀態正確，通知消費者取貨 狀態不正確，通知商家，人工處理。  這次 TDD 進行的部份為流程上的第 4 步，往下看我怎麼做的   整">
@@ -235,7 +235,7 @@ ga('send', 'pageview');
 <h2 id="心得小結"><a href="#心得小結" class="headerlink" title="心得小結"></a>心得小結</h2><p>TDD 不一定要用單元測試,<br>你可以試著從 T(Todo) Driven Development 到 T(Test) Driven Development<br>思考一下你目前的開發方式，<br>不要急著 TDD ，想像一下你開發到什麼程度會想要驗証(測試)，<br>試著在這個時間點加上測試就好，<br>這樣的開發方式，會比較貼近你的開發方式，<br>同時也可以練習寫測試，你會發現很多問題。<br>比如說:  </p>
 <ul>
 <li>你跟本沒有足夠了解需求，導致你寫不出驗收條件。</li>
-<li>你根本不熟悉測試框架或是相關的 Libary。</li>
+<li>你根本不熟悉測試框架或是相關的 Library。</li>
 <li>甚至你跟本不熟悉你賴以為生的開發工具與程式語言。</li>
 <li>或是你跟本不會 Debug 跟 Google 而且以前你一直以為你會。</li>
 <li>你把代碼搞得一蹋糊塗，而且沒有人愛你</li>
@@ -247,7 +247,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/" data-id="ck72qxj84002jk0vxw3s8w6lp" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/" data-id="ck72rf8sa0038ykvx695xlnvu" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/#disqus_thread" class="article-comment-link">留言</a>
       
