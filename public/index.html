@@ -94,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/">[實作筆記] 從 TDD 到 TDD  壹</a>
+      <a class="article-title" href="/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/">[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)</a>
     </h1>
   
 
@@ -164,7 +164,28 @@ ga('send', 'pageview');
 <p>我會再作進一步的分析，<br>可以看到原本的 TODO 產生了更多的 TODO ，<br>另外打完 API 後的處理也是個問題。</p>
 <p>這邊要用到 <a href="https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/">walking skeleton</a> 的概念，　　<br>簡單說就是，先打通再迭代。</p>
 <p>前面產生的 TODO 項目並不是「最」重要的，<br>我應該先處理回傳的資料，讓整件事情串通。<br>開立 TODO 如下</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">+           <span class="comment"><span class="doctag">///</span>/ TODO Parse Response Entity</span></span><br><span class="line">+           <span class="comment"><span class="doctag">///</span>/ TODO Switch Status</span></span><br><span class="line">+           <span class="comment"><span class="doctag">///</span>/ TODO Return ShippingOrderUpdateEntity List  </span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">可以得知，我最終會回傳一包 List，  </span><br><span class="line">這個時候我可以 Assert 了</span><br><span class="line"></span><br><span class="line"><span class="meta">### 修改第一個測試案例  </span></span><br><span class="line"></span><br><span class="line">這個階段我開始撥雲見日，我要很明確的寫下第一個測試案例，  </span><br><span class="line">第一個案例我會直接作 Happy Case ，  </span><br><span class="line">也就是目前的呼叫的 API</span><br><span class="line">只打一筆，回傳 Done 的資料。</span><br><span class="line"></span><br><span class="line">這裡進一步作需求分析，</span><br><span class="line">呼叫完 API 我會收到一大包 JSON 資料，  </span><br><span class="line">需要轉成我可以處理的物件，  </span><br><span class="line">其中最重要的欄位 lastStatusId 會回傳各種狀態，  </span><br><span class="line"></span><br><span class="line">- DONE</span><br><span class="line">- FAIL</span><br><span class="line">- Arrived</span><br><span class="line">- Shipping</span><br><span class="line">- SMS</span><br><span class="line">- Expiry</span><br><span class="line"></span><br><span class="line">我只處理</span><br><span class="line"></span><br><span class="line">- 已取貨(DONE) 系統狀態為 Finish</span><br><span class="line">- 失敗(FAIL、Expiry) 系統狀態為 Abnormal</span><br><span class="line">- 貨到待取(Arrived) 系統狀態為 Arrived</span><br><span class="line">- 出貨中(Shipping) 系統狀態為 Processing</span><br><span class="line"></span><br><span class="line">分析後，我的測項將會是向 API 循問一筆資料  </span><br><span class="line">且回傳一筆為 Done 的 ShippingOrderUpdateEntity 給我。</span><br><span class="line"></span><br><span class="line">```csharp</span><br><span class="line">    [<span class="meta">Fact</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Case1_Query_Done_waybillNo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> target = <span class="keyword">new</span> PickupService();</span><br><span class="line">        <span class="keyword">long</span> storeId = <span class="number">1</span>;</span><br><span class="line">        List&lt;<span class="keyword">string</span>&gt; waybillNo = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt; &#123;<span class="string">"TEST2002181800010"</span>&#125;;</span><br><span class="line">        <span class="keyword">var</span> actual = target.GetUpdateStatus(storeId, waybillNo).FirstOrDefault().Status;</span><br><span class="line">        actual.Should().Be(StatusEnum.Finish);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="comment"><span class="doctag">///</span>/ TODO Parse Response Entity</span></span><br><span class="line">+ <span class="comment"><span class="doctag">///</span>/ TODO Switch Status</span></span><br><span class="line">+ <span class="comment"><span class="doctag">///</span>/ TODO Return ShippingOrderUpdateEntity List</span></span><br></pre></td></tr></table></figure>
+
+<p>可以得知，我最終會回傳一包 List，<br>這個時候我可以 Assert 了</p>
+<h3 id="修改第一個測試案例"><a href="#修改第一個測試案例" class="headerlink" title="修改第一個測試案例"></a>修改第一個測試案例</h3><p>這個階段我開始撥雲見日，我要很明確的寫下第一個測試案例，<br>第一個案例我會直接作 Happy Case ，<br>也就是目前的呼叫的 API<br>只打一筆，回傳 Done 的資料。</p>
+<p>這裡進一步作需求分析，<br>呼叫完 API 我會收到一大包 JSON 資料，<br>需要轉成我可以處理的物件，<br>其中最重要的欄位 lastStatusId 會回傳各種狀態，  </p>
+<ul>
+<li>DONE</li>
+<li>FAIL</li>
+<li>Arrived</li>
+<li>Shipping</li>
+<li>SMS</li>
+<li>Expiry</li>
+</ul>
+<p>我只處理</p>
+<ul>
+<li>已取貨(DONE) 系統狀態為 Finish</li>
+<li>失敗(FAIL、Expiry) 系統狀態為 Abnormal</li>
+<li>貨到待取(Arrived) 系統狀態為 Arrived</li>
+<li>出貨中(Shipping) 系統狀態為 Processing</li>
+</ul>
+<p>分析後，我的測項將會是向 API 循問一筆資料<br>且回傳一筆為 Done 的 ShippingOrderUpdateEntity 給我。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Case1_Query_Done_waybillNo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = <span class="keyword">new</span> PickupService();</span><br><span class="line">    <span class="keyword">long</span> storeId = <span class="number">1</span>;</span><br><span class="line">    List&lt;<span class="keyword">string</span>&gt; waybillNo = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt; &#123;<span class="string">"TEST2002181800010"</span>&#125;;</span><br><span class="line">    <span class="keyword">var</span> actual = target.GetUpdateStatus(storeId, waybillNo).FirstOrDefault().Status;</span><br><span class="line">    actual.Should().Be(StatusEnum.Finish);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="拿到紅燈-，Do-TODO-Parse-Response-Entity"><a href="#拿到紅燈-，Do-TODO-Parse-Response-Entity" class="headerlink" title="拿到紅燈 ，Do TODO Parse Response Entity"></a>拿到紅燈 ，<a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/38b41170115d3114953bfc91746ff3342c26dbc9" target="_blank" rel="noopener">Do TODO Parse Response Entity</a></h3><p>如果是 Test Driven 我可能會速解再加案例，<br>但是我現在是 Todo Driven 所以造著 Todo 作事，<br>透過 json2csharp 快速產生 Entity 來轉置 JSON 資料。</p>
 <h3 id="如何從-T-odo-DD-到-T-est-DD"><a href="#如何從-T-odo-DD-到-T-est-DD" class="headerlink" title="如何從 T(odo)DD 到 T(est)DD"></a>如何從 T(odo)DD 到 T(est)DD</h3><p>寫到這裡我已經開始感覺 Todo 的挶限性了，<br>由於這個方法職責不分，所以要測試是困難的，<br>但是 Todo 的作法是無法趨動改變的。</p>
@@ -1081,7 +1102,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/">[實作筆記] 從 TDD 到 TDD  壹</a>
+            <a href="/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/">[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)</a>
           </li>
         
           <li>

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 從 TDD 到 TDD  壹"
+title: "[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)"
 date: 2020/02/26 10:40:14
 tag:
     - TDD
@@ -178,10 +178,10 @@ mock api 的服務為 [mocky](https://www.mocky.io/)，
 開立 TODO 如下
 
 ```csharp
-+           //// TODO Parse Response Entity
-+           //// TODO Switch Status
-+           //// TODO Return ShippingOrderUpdateEntity List  
-```  
++ //// TODO Parse Response Entity
++ //// TODO Switch Status
++ //// TODO Return ShippingOrderUpdateEntity List  
+```
 
 可以得知，我最終會回傳一包 List，  
 這個時候我可以 Assert 了
