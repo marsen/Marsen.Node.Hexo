@@ -15,7 +15,7 @@ date: 2020/03/10 02:02:31
 我安裝了 [git-fork](https://git-fork.com/) 作為我的 Git GUI 工具。
 裡面有一個很方便的功能可以快速的設定 ssh ,  
 
-![](/images/2020/3/030901_fork_setting_ssh.png)  
+![fork](/images/2020/3/030901_fork_setting_ssh.png)  
 
 於是我很輕鬆娛快的設定了一組 ssh key 我命名為 `Macbook`  
 也可以很正常的在 fork 裡面作一些 git 的操作 ,  
@@ -79,11 +79,11 @@ debug1: SSH2_MSG_NEWKEYS sent
 debug1: expecting SSH2_MSG_NEWKEYS
 debug1: SSH2_MSG_NEWKEYS received
 debug1: rekey after 134217728 blocks
-debug1: Will attempt key: /Users/marsen/.ssh/id_rsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_dsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_ecdsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_ed25519 
-debug1: Will attempt key: /Users/marsen/.ssh/id_xmss 
+debug1: Will attempt key: /Users/marsen/.ssh/id_rsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_dsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_ecdsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_ed25519
+debug1: Will attempt key: /Users/marsen/.ssh/id_xmss
 debug1: SSH2_MSG_EXT_INFO received
 debug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-rsa,rsa-sha2-512,rsa-sha2-256,ssh-dss>
 debug1: SSH2_MSG_SERVICE_ACCEPT received
@@ -119,11 +119,11 @@ git@github.com: Permission denied (publickey).
 查找過 `/etc/ssh/ssh_config` 裡面並沒有相關的設定
 
 ```text
-debug1: Will attempt key: /Users/marsen/.ssh/id_rsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_dsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_ecdsa 
-debug1: Will attempt key: /Users/marsen/.ssh/id_ed25519 
-debug1: Will attempt key: /Users/marsen/.ssh/id_xmss 
+debug1: Will attempt key: /Users/marsen/.ssh/id_rsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_dsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_ecdsa
+debug1: Will attempt key: /Users/marsen/.ssh/id_ed25519
+debug1: Will attempt key: /Users/marsen/.ssh/id_xmss
 ```
 
 希望有人能有答案或提供文件可以參考一下。
