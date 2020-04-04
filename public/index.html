@@ -104,7 +104,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="異常處理的-Todo-項目"><a href="#異常處理的-Todo-項目" class="headerlink" title="異常處理的 Todo 項目"></a>異常處理的 Todo 項目</h2><p>異常處理有幾種狀況，<br>一種是回傳的狀態有異常，<br>一種是回傳的資料有異常，<br>最後一種是超乎預期的異常，<br>比如說 Http 通訊上本身有問題。</p>
+        <p>承<a href="https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/">上篇</a></p>
+<h2 id="異常處理的-Todo-項目"><a href="#異常處理的-Todo-項目" class="headerlink" title="異常處理的 Todo 項目"></a>異常處理的 Todo 項目</h2><p>異常處理有幾種狀況，<br>一種是回傳的狀態有異常，<br>一種是回傳的資料有異常，<br>最後一種是超乎預期的異常，<br>比如說 Http 通訊上本身有問題。</p>
 <p>再進一步分析這三種狀況，<br>我會寫下以下幾種情境</p>
 <ol>
 <li>回傳的狀態有異常，記錄回傳的異常狀態，拋出 Exception</li>
@@ -178,7 +179,7 @@ ga('send', 'pageview');
 <p>稍微提一下，反而在寫 Unit Test 過程中，<br>發現了 Production Code 一些 Over Design 的代碼。</p>
 <p>比如說，多餘的邏輯分支，在某些因果條件，跟本不可能被執行到的代碼。<br>我視作無用的代碼將他移除。</p>
 <p>另外也有發現一些 Entity 在呼叫 API 的過程不會取用它的資料或欄位，<br>也許有得人會想要移除這些 Entity ，但我會傾向保留，<br>原因是這些 Entity 是在整合測試階段被趨動出來的，<br>雖然沒有用到而且會使代碼的覆蓋率下降，<br>但是我認為這些代碼很有可能再下一個階段就會被用到，<br>在不影響功能的情況我不會刻意移除。</p>
-<p>整體而言，測試已 100% 覆蓋，<br>也記錄了如何從 Todo Driven 到 TDD 的想法與技巧。<br>最後整理一下代碼，<br>把 MockHttpMessageHandler 搬到 TestingToolkit。<br>最後回頭把 api apy 對 HttpClient 的處理調整一下就大功告成啦。</p>
+<p>整體而言，測試已 100% 覆蓋，<br>也記錄了如何從 Todo Driven 到 TDD 的想法與技巧。<br>最後整理一下代碼，<br>把 MockHttpMessageHandler 搬到 TestingToolkit。<br>最後回頭把 api Pay 對 HttpClient 的處理調整一下就大功告成啦。</p>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
 <li><a href="https://dev.to/n_develop/mocking-the-httpclient-in-net-core-with-nsubstitute-k4j" target="_blank" rel="noopener">https://dev.to/n_develop/mocking-the-httpclient-in-net-core-with-nsubstitute-k4j</a></li>
 </ul>
