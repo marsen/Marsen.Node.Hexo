@@ -6,6 +6,8 @@ tag:
     - Unit Testing
 ---
 
+承[上篇](https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/)
+
 ## 異常處理的 Todo 項目
 
 異常處理有幾種狀況，
@@ -292,7 +294,7 @@ Production Code 就直接整個用 try Catch 包起來再記 Log
 也記錄了如何從 Todo Driven 到 TDD 的想法與技巧。
 最後整理一下代碼，
 把 MockHttpMessageHandler 搬到 TestingToolkit。
-最後回頭把 api apy 對 HttpClient 的處理調整一下就大功告成啦。
+最後回頭把 api Pay 對 HttpClient 的處理調整一下就大功告成啦。
 
 ### 參考
 
