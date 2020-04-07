@@ -52,7 +52,7 @@ debug1: Connecting to github.com [192.30.253.112] port 22.
 debug1: Connection established.
 debug1: identity file /Users/marsen/.ssh/id_rsa type -1
 debug1: identity file /Users/marsen/.ssh/id_rsa-cert type -1
-中間省略... 
+中間省略...  
 debug1: Trying private key: /Users/marsen/.ssh/id_ecdsa
 debug1: Trying private key: /Users/marsen/.ssh/id_ed25519
 debug1: Trying private key: /Users/marsen/.ssh/id_xmss
