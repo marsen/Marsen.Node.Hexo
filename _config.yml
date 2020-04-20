@@ -75,7 +75,7 @@ limit: 20
 theme: landscape
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/zh-tw/docs/one-command-deployment.html
 email: thisismysoul@gmail.com
 deploy:
   type: git
