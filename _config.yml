@@ -84,7 +84,8 @@ deploy:
 
 # Disqus Comments
 disqus_shortname: marsenlin
-
+# LikeCoind
+likecoin_id: marsenlin
 # sayings
 sayings: ['',
 '理性與感性的界線在好奇心',
