@@ -85,7 +85,7 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 ```
 
 `$ProjectKey` 與 `$Oragnization` 這兩個變數可以在 SonarCloud 的 Overview 介面的右下角找到，  
-`$Sonar_Login` 則可以透過 https://sonarcloud.io/account/security/ 設定。
+`$Sonar_Login` 則可以透過 [Security](https://sonarcloud.io/account/security) 設定。
 
 執行命名完成後，大概幾秒內就可以在 SonarCloud 中看到結果了。
 
@@ -100,7 +100,7 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 - 要安裝 Java (Java8)
 - 執行語法的目錄底下不能有`sonar-project.properties`
   - 不然會報錯 (sonar-project.properties files are not understood by the SonarScanner for MSBuild.)
-  - 我覺得應該是我的檔案內容有誤，但是還不知道怎麼修正。總之直接移除對我來說是可以 work 的。 
+  - 我覺得應該是我的檔案內容有誤，但是還不知道怎麼修正。總之直接移除對我來說是可以 work 的。  
 
 ## 參考
 
