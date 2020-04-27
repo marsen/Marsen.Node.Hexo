@@ -107,8 +107,47 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
   - 不然會報錯 (sonar-project.properties files are not understood by the SonarScanner for MSBuild.)
   - 我覺得應該是我的檔案內容有誤，但是還不知道怎麼修正。總之直接移除對我來說是可以 work 的。  
 
+## CI 執行代碼檢查
+
+同上面的概念，只要讓你的 CI Server 在執行的過程中依序執行 Begin > MSBuild > End 即可，  
+參考 Github Action 的 yaml 檔
+
+```yaml
+#上略
+    - name: Install Dotnet Sonarscanner
+      run: dotnet tool install --global dotnet-sonarscanner --version 4.8.0
+    - name: SonarScanner Begin
+      run: dotnet sonarscanner begin /k:"marsen_Marsen.NetCore.Dojo" /o:"marsen-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$SONAR_LOGIN
+    - name: Build with dotnet
+      run: dotnet build ".\Marsen.NetCore.Dojo.Integration.Test.sln"
+    - name: SonarScanner End
+      run: dotnet sonarscanner end /d:"sonar.login="$SONAR_LOGIN
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
+```
+
+這裡要注意的是，
+首先每次你都需要安裝 Dotnet Sonarscanner ，  
+其實我不清楚 Github Action 背後的機制，但是我猜測應該是用到容器化的技術，  
+每次 CI 執行時都會起一個實體(這個可設定，但是 Linux Like 的 OS 又快又便，就別考慮 Windows了吧)  
+所以每次都要重頭安裝相關的軟體，比如 : Dotnet Sonarscanner  。
+
+另外一點是，環境變數的設定，可以看到最後面的 `env` 變數。
+這個是機制是將 CI 的設定傳到實體的環境變數之中。
+在 yaml 中綁定要使用 `$+變數名` EX: `SONAR_LOGIN`
+其它的變數，你可以在 Github 的 [Secrets](https://github.com/marsen/Marsen.NetCore.Dojo/settings/secrets) 頁面設定。
+另外 Github 有些預設的[變數](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables)。
+更多資訊可以[參考](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#in-this-article)
+
+設定成功後，每次進 Code 就能看到代碼的壞味道、重複或是資安風險等資訊囉。
+可以參觀一下[我的專案](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)。
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=marsen_Marsen.NetCore.Dojo)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
+
 ## 參考
 
 - [Get started with GitHub.com](https://sonarcloud.io/documentation/integrations/github/)
+- [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan)
 
 (fin)
