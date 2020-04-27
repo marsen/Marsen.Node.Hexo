@@ -10,7 +10,8 @@ date: 2020/04/27 17:01:46
 當初有一些問題沒有排除，加上工作一忙就沒有後續了。  
 
 我的理想目標是，每當我上 Code 到線上 Repo 時(Github)，  
-SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budget ，如果有異常(覆蓋率下降、壞味道等…)最好再發個通知給我。
+SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budget，  
+如果有異常(覆蓋率下降、壞味道等…)最好再發個通知給我。
 這些功能要怎麼作到呢 ?
 
 然後我會實際用在我的[SideProject](https://github.com/marsen/Marsen.NetCore.Dojo)上，  
@@ -39,8 +40,11 @@ SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budge
 
 首先要在 SonarCloud 上建立 Project ，  
 可以參考[Get started with GitHub.com](https://sonarcloud.io/documentation/integrations/github/)快速建立。  
+
 Administrator > Analysis Method  
-![Analysis Methodn](/images/2020/4/sonarqube_run_with_github_action_02.jpg)
+
+![Analysis Methodn](/images/2020/4/sonarqube_run_with_github_action_02.jpg)  
+
 這裡要把 SonarCloud Automatic Analysis 的功能關掉。  
 SonarCloud 支援自動分析語言只有以下
 
@@ -48,9 +52,7 @@ ABAP, Apex, CSS, Flex, Go, HTML, JS, Kotlin, PHP, Python, Ruby, Scala, Swift, Ty
 
 雖然有很多，但可惜並沒有 C# ，所以要先關掉，不然 Github Action 執行時會收到下面的錯誤。
 
-```shell
-You are running CI analysis while Automatic Analysis is enabled. Please consider disabling one or the other.
-```
+`You are running CI analysis while Automatic Analysis is enabled. Please consider disabling one or the other.`
 
 另外目前支援的 CI 服務有 Circle CI 與 Travis CI ，  
 一樣殘念的是沒有支援 Github Action 。  
@@ -61,8 +63,10 @@ You are running CI analysis while Automatic Analysis is enabled. Please consider
 ![Analysis Methodn](/images/2020/4/sonarqube_run_with_github_action_01.jpg)
 
 首先先下載 SonarScanner，選擇正確的語言(Others)與OS(Windows)後下載，
-接著設定環境變數
-![Setting Path](/images/2020/4/sonarqube_run_with_github_action_03.jpg)
+接著設定環境變數  
+
+![Setting Path](/images/2020/4/sonarqube_run_with_github_action_03.jpg)  
+
 最後開啟 CMD 切換到專案目錄底下後。
 執行語法，如果照著上述步驟，你可以在 Download 的按鈕下方找到語法，同時它會幫你填好 Token。  
 
