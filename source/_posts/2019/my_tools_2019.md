@@ -38,7 +38,9 @@ tag:
 - 遠端桌面管理
   - Remote Desktop Manager Free (試用中)
   - Remote Desktop Connection Manager
-
+- windows 仿 linux 指令
+  - cygwin
+  
 ## 筆記工具
 
 - Evernote
