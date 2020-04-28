@@ -130,7 +130,7 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 這裡要注意的是，
 首先每次你都需要安裝 Dotnet Sonarscanner ，  
 其實我不清楚 Github Action 背後的機制，但是我猜測應該是用到容器化的技術，  
-每次 CI 執行時都會起一個實體(這個可設定，但是 Linux Like 的 OS 又快又便，就別考慮 Windows了吧)  
+每次 CI 執行時都會起一個實體(這個可設定，~~但是 Linux Like 的 OS 又快又便宜，就別考慮 Windows了吧~~請[參考](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners))  
 所以每次都要重頭安裝相關的軟體，比如 : Dotnet Sonarscanner  。
 
 另外一點是，環境變數的設定，可以看到最後面的 `env` 變數。
