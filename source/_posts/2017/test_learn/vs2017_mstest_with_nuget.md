@@ -1,9 +1,10 @@
 ---
-title: "Visual Studio 2017 MSTest Framework 異常修正"
+title: "[踩雷筆記] Visual Studio 2017 MSTest Framework 異常修正"
 date: 2017/12/11 11:17:08
 tag:
   - MsTest
   - Visual Studio
+  - 踩雷筆記
 ---
 ## 應該要知道的事
 
