@@ -13,7 +13,7 @@
 <meta property="og:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2018-04-05T07:53:23.000Z">
-<meta property="article:modified_time" content="2020-04-07T05:38:49.934Z">
+<meta property="article:modified_time" content="2020-04-29T01:37:12.023Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="Unix">
 <meta property="article:tag" content="Linux">
@@ -118,25 +118,29 @@ ga('send', 'pageview');
 </blockquote>
 <p>補充:使用 <code>echo</code> 印出變數,<strong>從1開始</strong><br><code>$*</code> 指所有變數</p>
 <blockquote>
-<p>$ echo $1<br>good<br>$ echo $2<br>morning<br>$ echo $3<br>marsen<br>$ echo $*<br>good morning marsen </p>
+<p>$ echo $1<br>good<br>$ echo $2<br>morning<br>$ echo $3<br>marsen<br>$ echo $*<br>good morning marsen</p>
 </blockquote>
 <h4 id="進階使用-backticks-執行-cat-Command"><a href="#進階使用-backticks-執行-cat-Command" class="headerlink" title="進階使用 backticks 執行 cat Command"></a>進階使用 backticks 執行 <code>cat</code> Command</h4><blockquote>
-<p>$ cat &gt; testfile<br>hello world<br>^C<br>sh-4.4$ set <code>cat testfile</code><br>sh-4.4$ echo $*<br>hello world</p>
+<p>$ cat &gt; testfile<br>hello world<br>sh-4.4$ set <code>cat testfile</code><br>sh-4.4$ echo $*<br>hello world</p>
 </blockquote>
 <h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><ol>
-<li>建立檔案<blockquote>
+<li><p>建立檔案</p>
+<blockquote>
 <p>$ cat &gt; helloworld.sh</p>
 </blockquote>
 </li>
-<li>編輯檔案<blockquote>
+<li><p>編輯檔案</p>
+<blockquote>
 <p>$ vim helloworld.sh</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure></li>
-<li>執行檔案<blockquote>
-<p>$ sh helloworld.sh<br>hello world</p>
-</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>執行檔案</p>
 </li>
 </ol>
+<blockquote>
+<p>$ sh helloworld.sh<br>hello world</p>
+</blockquote>
 <h3 id="變數-variable"><a href="#變數-variable" class="headerlink" title="變數 variable"></a>變數 variable</h3><ol>
 <li>大小寫有分</li>
 <li>使用 <code>read</code> 讀取 input 到變數中</li>
@@ -144,6 +148,7 @@ ga('send', 'pageview');
 </ol>
 <p>sample:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure>
+
 <p>executed:</p>
 <blockquote>
 <p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
@@ -162,7 +167,7 @@ ga('send', 'pageview');
 <li>ESC + : , 輸入 q! (不存儲並離開vim)</li>
 </ul>
 </li>
-<li><p>「<strong>`</strong>」 Backquote 或 backticks </p>
+<li><p>「<strong>`</strong>」 Backquote 或 backticks</p>
 </li>
 </ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
