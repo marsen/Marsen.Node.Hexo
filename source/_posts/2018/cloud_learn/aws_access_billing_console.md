@@ -6,6 +6,7 @@ tag:
 ---
 
 ## 前情提要
+
 設定了 IAM User Account 也給予了 Administrator 的權限,  
 不過仍然看不到 Billing 的頁面資訊 .  
 
@@ -16,15 +17,16 @@ tag:
 檢查了權限,明明就有設定 Read Billing 但是仍然看不到.  
 
 ## 解決方法
+
 實際上要進入 Billing Console 其實要有兩個步驟  
+
 1. 權限要設定,更多細節可以參考這篇[文章](https://aws.amazon.com/blogs/security/enhanced-iam-capabilities-for-the-aws-billing-console/)(2014)
 2. 要透過 Root Account 在 [Account Settings](https://console.aws.amazon.com/billing/home#/account) 頁面設定, 允許 IAM user 存取 Billing Console  
 
 ![](https://i.imgur.com/yBXaLPJ.jpg)
 
-
-
 ## 參考
+
 - [Don’t Forget to Enable Access to the Billing Console!](https://aws.amazon.com/blogs/security/dont-forget-to-enable-access-to-the-billing-console/)
 
 (fin)
