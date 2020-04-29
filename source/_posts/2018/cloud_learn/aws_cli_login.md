@@ -18,7 +18,7 @@ tag:
 - 直接開機跳過網路設定(也還沒有辦法設)
 - 第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助
 
-## 設定 [Putty](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console) 
+## 設定 [Putty](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console)
 
 ## 連線機器
 
@@ -33,12 +33,12 @@ ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
 ### 預設連線帳戶
 
 > For Amazon Linux, the user name is `ec2-user`.
-> For Centos, the user name is `centos`. 
-> For Debian, the user name is `admin` or `root`. 
-> For Fedora, the user name is `ec2-user`. 
-> For RHEL, the user name is `ec2-user` or `root`. 
-> For SUSE, the user name is `ec2-user` or `root`. 
-> For Ubuntu, the user name is `ubuntu` or `root`. 
+> For Centos, the user name is `centos`.
+> For Debian, the user name is `admin` or `root`.
+> For Fedora, the user name is `ec2-user`.
+> For RHEL, the user name is `ec2-user` or `root`.
+> For SUSE, the user name is `ec2-user` or `root`.
+> For Ubuntu, the user name is `ubuntu` or `root`.
 > Otherwise, if `ec2-user` and `root` don't work, check with your AMI provider.
 
 windows 好像是 Administrator ? 求補充
