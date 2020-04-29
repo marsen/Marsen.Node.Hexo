@@ -2,14 +2,17 @@
 title: "[踩雷筆記]誰改了我的 package-lock.json ?"
 date: 2018/07/30 15:53:21
 tag:
-  - Node.js   
+  - Node.js  
+  - 實作筆記 
 ---
 ## 環境
+
 OS Windows 10
 npm v6.2.0
 node v8.11.1
 
 ## 問題
+
 承上篇[[實作筆記]設定 NPM Registry](https://blog.marsen.me/2018/07/29/2018/node_set_registry/)，  
 後續發生的一些問題，  
 每當我執行 `npm install` 的時候都會異動到 `package-lock.json` 檔;  
@@ -17,7 +20,8 @@ node v8.11.1
 
 奇怪的點是，異動竟然包含 Registry !?  
 全部都被置換成公司的 Domain , WTF ?
-![](https://i.imgur.com/KwwUqPV.jpg)
+
+![公司的 Domain ](https://i.imgur.com/KwwUqPV.jpg)
 
 ## 原因與坑
 
@@ -31,13 +35,13 @@ node 會去檢查你實際安裝的 node_modules，
 小心有坑!!  
 即使刪除了 node_modules 再重新 `npm install`，  
 仍然會產生錯誤的 `package-lock.json`;  
-這個原因是 npm 會有 `npm-cache`; 
+這個原因是 npm 會有 `npm-cache`;  
 這個資料夾位在 `%Users%\AppData\Roaming`。  
 
 ## 解決方法
 
 1. 設定 npm registry  
-  > npm set registry https://registry.npmjs.org  
+   > npm set registry <https://registry.npmjs.org>  
 2. 刪除專案底下的 node_modules 資料夾
 3. 刪除 npm-cache
 4. 重新執行 `npm install`

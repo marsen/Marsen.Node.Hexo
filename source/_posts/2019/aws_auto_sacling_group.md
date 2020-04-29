@@ -2,6 +2,7 @@
 title: "[實作筆記] AWS Auto Scaling Group"
 date: 2019/08/25 11:21:46
 tags:
+    - 實作筆記
     - AWS
 ---
 
@@ -91,8 +92,8 @@ tags:
 ### 站台加入 Health Check
 
 - 加入靜態檔案(ex:check.html)
-- IIS Building * 80
-![IIS Building * 80](/images/2019/8/aws_iissetting.jpg)
+- IIS Building *80
+![IIS Building* 80](/images/2019/8/aws_iissetting.jpg)
 - 設定 Target Group 的 Health Check (ex:/check.html)
 ![AWS Target Gropu Health Check](/images/2019/8/aws_tg_healthcheck.jpg)
 

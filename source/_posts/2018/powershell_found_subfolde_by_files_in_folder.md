@@ -3,9 +3,11 @@ title: "[實作筆記]用 Command Line 取得資料夾內包含特定檔案的�
 date: 2018/11/23 13:43:00
 tag:
     - PowerShell
+    - 實作筆記
 ---
 
 ## 情境
+
 - OS : Windows 10
 
 在一個巨型的 Git Repo 當中，底下依專案分了許多專案資料夾，  
@@ -19,7 +21,7 @@ tag:
 而是所在的專案，再用 IDE 開啟進行修改，  
 為此我需要列出**專案資料夾**  
 
-## 目標 
+## 目標
 
 用 Command Line 取得Repo資料夾內包含.tt檔案的專案資料夾名稱  
 
@@ -29,7 +31,8 @@ tag:
 D:\Repo\Taiwan\******.******.Repofolder
 λ Get-ChildItem -Path .\ -Filter *.tt -Recurse -File -Name | ForEach-Object { $_.Split('\')[0] } | Group {$_} | select name
 ```
-```
+
+```sh
 Name  
 ----  
 FacebookShop  
@@ -42,6 +45,7 @@ SyncImageToOthers
 ```
 
 ## 小結
+
 總覺得寫得有點又臭又長，希望有更好的作法可以提供給我，
 不限於 `powershell` 就算是 Linux 的語法也可以讓我參考一下。
 

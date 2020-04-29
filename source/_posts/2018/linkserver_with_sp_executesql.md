@@ -2,6 +2,7 @@
 title: "[實作筆記]SQL Server 與 Linked Server 注意事項"
 date: 2018/10/17 18:05:33
 tag:
+  - 實作筆記
   - SQL
   - Database
 ---

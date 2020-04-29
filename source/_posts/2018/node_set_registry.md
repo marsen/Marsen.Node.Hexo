@@ -4,13 +4,14 @@ date: 2018/07/29 16:21:22
 tag:
   - Node.js
   - Gulpjs   
+  - 實作筆記
 ---
 
 ## 原因
 
 最近換了新電腦，在家工作時發生了 npm install Error;  
 錯誤訊息如下，明顯看到 npm 嚐試去連線 `http://npm.mycompany.io`  
-http://npm.mycompany.io 是公司內部的私有網路;  
+<http://npm.mycompany.io> 是公司內部的私有網路;  
 印象中沒有特別設定，可能是公司內的預設安裝設定的。
 
 ```shell=
@@ -27,9 +28,10 @@ npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
 npm ERR! A complete log of this run can be found in:
 npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log
 ```
+
 ## 解法
 
-一個簡單的方法是 VPN 回公司內部網路; 
+一個簡單的方法是 VPN 回公司內部網路;  
 另一個方法是重新設定，
 
 ```shell=

@@ -33,8 +33,6 @@ runas.exe /netnoly /user:MyCompany\Marsen "C:\Program Files (x86)\Microsoft SQL 
 1. 請先下載[CPAU](https://www.joeware.net/freetools/tools/cpau/)\
    - 我採用綠色安裝，如果有必要可以設為環境變數
 
-
-
 2. 加密,以下的語法會產生以 `MyCompany\Marsen` 的身份登入執行 SSMS 的批次檔 `run.bat`
 
     ```bash

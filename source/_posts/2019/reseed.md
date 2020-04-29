@@ -3,6 +3,7 @@ title: "[實作筆記]查找與重建 Table 的索引值"
 date: 2019/01/05 13:13:29
 tag:
     - SQL
+    - 實作筆記
 ---
 
 查詢指定 Table 目前的索引值
@@ -32,6 +33,5 @@ GO
 ## 參考
 
 - [DBCC CHECKIDENT (Transact-SQL)](https://docs.microsoft.com/zh-tw/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?view=sql-server-2017)
-
 
 (fin)

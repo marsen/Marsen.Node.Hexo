@@ -5,14 +5,17 @@ tag:
     - TDD
     - 重構
     - Unit Testing
+    - 實作筆記
     - Testing
 ---
 
 ## 前情提要
+
 記錄一下 Kata 的思路。
 
 ## 實例化需求
-```
+
+```text
 1 is 1
 2 is 2
 3 is Fizz
@@ -30,9 +33,9 @@ tag:
 
 有沒有必要寫這麼多測試呢？
 比如說 1、2、4 的測試是不是重複了？
-日前 91 大有過類似的討論， 
+日前 91 大有過類似的討論，  
 
-```
+```text
 第一個 test case 挑最簡單的，讓你可以從紅燈變綠燈。驅動出你需要的產品代碼。  
 接下來後面的幾個，都可以只是拿來「確認」是否滿足你期望的情境，  
 也就是你寫新的測試案例，你期望他就是綠燈了，然後驗證是否符合你的期望。  
@@ -42,7 +45,7 @@ tag:
 測試的不是只有「驅動開發」而已。
 而好的程式碼，也不能只依靠測試。
 
-### 第一個測試案例，1 回傳 1 
+### 第一個測試案例，1 回傳 1  
 
 我一開始就寫成這樣，所以後面的 2、4 案例也都會是綠燈。
 
@@ -223,6 +226,7 @@ public class FizzBuzz
 ```
 
 ### 組合 result 值
+
 這個階段 'Fizz' 與 'Buzz' 在程式中只會出現一次，  
 15 的餘數檢查也被移除了，這時的複雜度是 4 ，  
 可惜的是我沒有意識到第三個 `if` 的明顯不同，
@@ -266,6 +270,7 @@ public class FizzBuzz
 ```
 
 ### 實作 FizzRule Class
+
 這是繼 `FizzBuzz` 後產生的第二個 Class，  
 算有指標意義，這裡原本的目的是想要消除 `if`，  
 但無法一步到位，先試著把 Fizz 與 Buzz 的邏輯作分離，  
@@ -310,6 +315,7 @@ public class FizzBuzz
 ```
 
 ### 實作 BuzzRule Class
+
 一樣把 Buzz 的邏輯搬到新的 Class 中，
 這裡故意用相同的方法名，是為了下一步要抽介面。
 
@@ -334,6 +340,7 @@ public string GetResult(int number)
 ```
 
 ### 介面 IRule
+
 終於抽出了介面，自已為聰明的把關鍵字抽離到了介面之中，  
 卻沒有考慮到真正的邏輯是組合 result 的行為仍然相依在 `FizzBuzz` Class
 
@@ -370,6 +377,7 @@ public class BuzzRule : IRule
 ```
 
 ### IRule List
+
 準備好了 IRule ，就是要讓 `FizzBuzz` 與 `FizzRule` 以及 `BuzzRule` 解耦的階段了，
 這步我踩得有小，可以更直接一點重構，  
 一樣的問題，我仍然沒有意識最後一個`if(?:)`其實也是一種 `IRule`，  
@@ -401,7 +409,8 @@ public class FizzBuzz
 }
 ```
 
-### foreach List<IRule>
+### foreach List IRule
+
 自以為帥氣的完成重構，而且用 `foreach` 消除了重複的 `if`...  
 實際上複雜度完全沒有下降。
 關鍵的 `result += rule.Word;` 與  
@@ -432,6 +441,7 @@ public class FizzBuzz
 ## 重構二、面對問題
 
 ### 消除 foreach
+
 參考 Martin 大叔的作法，把 foreach 變成 pipelines  
 光是這個作法就讓我的複雜度從 4 下降到 2 了，  
 此時，`result += rule.Word;` 與  
@@ -462,6 +472,7 @@ public class FizzBuzz
 ```
 
 ### 實作 Apply
+
 終於將`result += rule.Word;`的邏輯從 `FizzBuzz` 抽離到 `IRule` 之中，  
 再由各自的 Rule 實作，這個時候就會覺得 `IRule.Check` 與 `IRule.Word` 有點累贅，  
 基於 SOLID 原則，這部份邏輯甚至不該被揭露在 `FizzBuzz`之中。  
@@ -496,7 +507,8 @@ public class FizzBuzz
 }
 ```
 
-### NormalRule 
+### NormalRule
+
 終於加上 `NormalRule` Class 了，裡面只有一個方法 `Apply`，  
 這裡是為了將來的介面準備，我想讓 NormalRule 成為 `IRule` 的一部份，  
 不過可以看到的問題是，方法簽章並不一致。
@@ -524,6 +536,7 @@ public class FizzBuzz
 ```
 
 ### 修改 IRule.Apply
+
 在我的認知中，對 Production Code 修改介面是件危險的事，  
 這在 Kata 是可行的，但是在實際的 Production 恐怕就不夠 Baby Step 了，
 我或許應該創造一個 IRuleV2 之類的介面，而不是直接修改 `IRule`。
@@ -559,6 +572,7 @@ public class FizzRule : IRule
 ```
 
 ### NormalRule 與 IRule
+
 這裡讓 `NormalRule` 實作 `IRule` 介面，  
 實際上在上面幾步已經完成了，`IRule` 反而比較像一個標籤掛在 `NormalRule` 上，  
 如此一來，就能夠在 `FizzBuzz` 裡面透過 `List<IRule>` 統整所有的規則。
@@ -597,7 +611,6 @@ public interface IRule
 如果是 Production Code 我想我會使用 NameSpace 與專案資料夾再作進一步的整理吧。  
 最後把 `FizzRule` 與 `BuzzRule` 的 `Check` 與 `Word` 拿掉只是一點潔癖。
 
-
 ```csharp
 public class FizzRule : IRule
 {
@@ -609,6 +622,7 @@ public class FizzRule : IRule
 ```
 
 ## 結語
+
 過程中一直考慮著想要拿掉所有`if`，或是套用職責鏈(Chain of Responsibility Pattern)的 Pattern，  
 現在想想都有點走歪了方向，一再忽視責職的歸屬而讓後面的重構有點吃力，  
 不過透過 TDD 仍然讓程式碼重構到了一定的程度。
@@ -623,6 +637,7 @@ public class FizzRule : IRule
 ### 後記 1. 20190207
 
 #### Aggregate
+
 文章貼出後，同事的回饋，可以使用 `Aggregate` 取代 `Foreach`，  
 程式碼可以更加精鍊。
 
@@ -669,5 +684,8 @@ public class FizzBuzz
 ```
 
 ## 參考
+
 - [Coding_Dojo_Csharp](https://github.com/marsen/Coding_Dojo_Csharp/tree/fizzbuzz/20190205/UnitTestProject6)
 - [Refactoring with Loops and Collection Pipelines](https://martinfowler.com/articles/refactoring-pipelines.html?fbclid=IwAR0uG0IXa_i6JoSRPtO6s-gXj-0jOAZDNrBYRmaHAJ2_RYFpiqcrbr4Z86k)
+
+(fin)
