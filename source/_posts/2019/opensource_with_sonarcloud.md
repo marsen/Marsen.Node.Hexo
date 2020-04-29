@@ -2,7 +2,8 @@
 title: "[實作筆記] 讓 SonarQube 檢查你的代碼 "
 date: 2019/05/16 17:13:18
 tag:
-    - .Net Framework
+   - 實作筆記
+   - .Net Framework
 ---
 
 ## 前情提要
@@ -21,7 +22,7 @@ tag:
 3. 使用 PowerShell 執行 Command
 4. 也許不需要知道
 
-## 實作筆記
+## 記錄
 
 1. 申請[SonarCloud](https://sonarcloud.io)帳號，我直接使用 Github
 

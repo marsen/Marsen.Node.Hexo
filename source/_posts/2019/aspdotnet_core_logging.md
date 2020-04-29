@@ -3,6 +3,7 @@ title: "[實作筆記] ASP.Net Core Logger"
 date: 2019/04/06 12:21:17
 tag:
   - .Net Framework
+  - 實作筆記
 ---
 
 ## 要知道的事
@@ -41,6 +42,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 ## 預設的行為
+
 如果你沒有呼叫 `ConfigureLogging` 預設的行為如下述.
 
 The default project template calls `CreateDefaultBuilder`， which adds the following logging providers:
@@ -95,7 +97,7 @@ public class HomeController : Controller
 
 結果如下，可以發現 `LogLevel.None`、`LogLevel.Trace` 與 `LogLevel.Warning` 並未出現在 Console 資訊當中
 
-```
+```text
 info: Marsen.NetCore.Site.Controllers.HomeController[0]
       HomeController Information
 crit: Marsen.NetCore.Site.Controllers.HomeController[0]
@@ -134,13 +136,12 @@ Log 的作用範圍會受 `appsettings.json` 影響，
 
 如同 `Console` 的行為一般，可以在 Visual Studio 的輸出(Output)>偵錯(Debug)視窗中，查詢到記錄。
 
-![](https://i.imgur.com/274witm.jpg)
-
+![Console](https://i.imgur.com/274witm.jpg)
 
 #### EventSource
 
 如同[官方文件](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#eventsource-provider)所說，我下載了 `PerfView` ，
-如下圖作了設定， 
+如下圖作了設定，  
 ![PerfView](/images/2019/4/perfview.jpg)  
 不過我並沒有取得記錄，  
 ![PerfView Log](/images/2019/4/perfview.jpg)  
@@ -148,7 +149,7 @@ Log 的作用範圍會受 `appsettings.json` 影響，
 錯誤訊息如下  
  `EventSource Microsoft-Extensions-Logging: Object reference not set to an instance of an object`  
 暫時不打算深追查，
-ETW 可以記錄的 Memory 、Disc IO 、CPU 等資訊， 
+ETW 可以記錄的 Memory 、Disc IO 、CPU 等資訊，  
 其實與我想要的應用程式記錄有所差異，稍稍記錄一下以後也許用得到。  
 如果有人能留言給我一些方向，也是非常歡迎。  
 
@@ -169,16 +170,19 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 這裡我使用 `Microsoft.Extensions.Logging.EventLog` 處理 EventLog 可以在 Event View 中看見記錄;  
 而 file log 我使用 `Serilog.Extensions.Logging.File` ， 特別要注意以下兩點  
+
 - Nuget 使用的版本為 2.0.0 以上版本，目前仍然不是穩定版本  
 - AddFile 傳入的是記錄檔的完整 Path 而非目錄  
 
 ## 自訂 Elmah
+
 Elmah 在 Net 算是一個蠻方便的工具，有提供簡易介面、可以選擇用 File 或是 Database 方式作 Logging，  
 更重要是小弟我用了 4 年，順手就研究一下。
 
 設定相當簡單， 在 `Startup.cs` 的 `ConfigureServices` 加入
+
 ```csharp
-services.AddElmah<XmlFileErrorLog>(options =>            
+services.AddElmah<XmlFileErrorLog>(options =>
 {
     //options.CheckPermissionAction = context => context.User.Identity.IsAuthenticated;
     //options.Path = @"elmah";
@@ -197,8 +201,8 @@ app.UseElmah();
 在這裡可以看見 Elmah 的行為與 Net Core 的行為並不一致，Log 與錯誤記錄本來就不該混為一談。  
 我想我要調整一下我的想法了，不過關於 Log 暫時就到此為止。
 
-
 ## 參考
+
 - [ASP.NET Core Logging](https://codingblast.com/asp-net-core-logging/)
 - [.NET Core Logging With LoggerFactory: Best Practices and Tips](https://stackify.com/net-core-loggerfactory-use-correctly/)
 - [Logging in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)

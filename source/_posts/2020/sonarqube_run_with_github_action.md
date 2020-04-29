@@ -1,6 +1,9 @@
 ---
 title: "[實作筆記] Github 結合 SonarCloud 作代碼質量檢查"
 date: 2020/04/27 17:01:46
+tag:
+    - CI-CD
+    - 實作筆記
 ---
 
 ## 前情提要

@@ -3,6 +3,7 @@ title: "[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔"
 date: 2019/04/12 16:38:16
 tag:
 - .Net Framework
+- 實作筆記
 ---
 
 ## 應該知道的事
@@ -21,7 +22,7 @@ tag:
 
 對檔案按右鍵 > 屬性 > 複製的輸出目錄 > 下拉選取一律複製。
 
-![](/images/2019/4/copy_file_to_bin.jpg)
+![複製的輸出目錄](/images/2019/4/copy_file_to_bin.jpg)
 
 很可惜，這個設定的調整會讓這個檔案在**建置**的時候輸出到指定資料夾中( Ex: \bin )，  
 這個操作會影響 `csproj` 如下:
@@ -52,7 +53,7 @@ cd C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0
 執行建置
 
 ```sh
-λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=true;PublishProfile=Mall.QA.pubxml;MvcBuildViews=false;AutoVersion=True 
+λ MSBuild.exe D:\Projects\IsASolution.sln /p:Configuration=QA;DeployOnBuild=true;PublishProfile=Mall.QA.pubxml;MvcBuildViews=false;AutoVersion=True
 ```
 
 執行後輸出的位置需要看你的部署檔 `*.pubxml` 如下範例  

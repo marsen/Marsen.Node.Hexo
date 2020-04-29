@@ -2,6 +2,7 @@
 title: "[實作筆記]Hexo Update 與 npm 修復漏洞"
 date: 2018/10/20 11:41:05
 tag:
+  - 實作筆記
   - Hexo
   - Node.js
 ---
@@ -23,22 +24,19 @@ Github 一直以來都有一個很棒的功能，
 
 它能夠對你的 Repo 提供安全警告，  
 如下圖，這是對我的個人 Blog 所使用的框架 Hexo 的相依性安全警告，  
-這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，   
+這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，  
 建議升級套件以解決這個問題。  
-![](https://i.imgur.com/HYBh5vv.jpg)
-
+![升級套件](https://i.imgur.com/HYBh5vv.jpg)
 
 ### 解決方式
 
 使用 [`npm update`](https://docs.npmjs.com/cli/update) , 這個命令會更新專案的 package 到最新版本  
-
 
 ```sh
 npm update
 ```
 
 可能會看到類似以下的結果，同時提示你可以使用 [`npm audit fix`](https://docs.npmjs.com/cli/audit) 更新有風險的 package 以修複這些漏洞  
-
 
 ```sh
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):

@@ -3,6 +3,7 @@ title: "[實作筆記] Stripe 串接"
 date: 2019/06/17 12:56:17
 tag:
   - API
+  - 實作筆記
 ---
 
 ## Agenda
@@ -120,7 +121,6 @@ stripe.redirectToCheckout({
 > This new integration lets you benefit from Dynamic 3D Secure and helps you prepare for  
 > Strong Customer Authentication regulation in Europe.
 
-
 不過理論上您的客戶中沒有歐洲人的話，還是可以呼叫這個 API ，  
 作法如下:
 
@@ -140,7 +140,7 @@ curl https://api.stripe.com/v1/sources
 
 #### Step 2. Charge With Source
 
-Step 1 可以取得 source id，利用 source id 呼叫 charge API 付款   
+Step 1 可以取得 source id，利用 source id 呼叫 charge API 付款  
 
 ```bash
 curl https://api.stripe.com/v1/charges

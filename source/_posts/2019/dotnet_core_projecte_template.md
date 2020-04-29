@@ -1,7 +1,8 @@
 ---
 title: "[實作筆記] 利用 .Net Core Project Template 加速開發"
 date: 2019/09/01 20:46:46
-
+tag:
+    - 實作筆記
 ---
 
 ## 要知道的事
@@ -25,7 +26,7 @@ ex:IPay、IRefund、ICheck…等，
 同時因為國際化專案採用動態載入的機制，  
 有一些細節準則需要由 Plugin 專案遵循，才不會引發異常或 Runtime Error。
 
-## 實作筆記
+## 記錄
 
 ### 建立專案樣版 SOP
 
