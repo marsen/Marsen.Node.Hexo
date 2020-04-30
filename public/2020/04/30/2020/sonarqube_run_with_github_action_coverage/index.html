@@ -8,7 +8,7 @@
   <meta name="description" content="前情提要承上篇,我已經將 SonarCloud 的代碼檢查與 Github Action 結合在一起了。透過專案首頁的 Dashboard 與專案的 Budget 我可以知道目前專案的一些狀況，壞味道、技術債等 … 題外話，測試分類在我的專案中有兩種測試，單元測試與整合測試。我的分類方法，單一類別的 public 方法就用單元測試包覆。不同的類別之如果有組合的交互行為，就用整合測試包覆。 舉個簡單">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇">
-<meta property="og:url" content="https://blog.marsen.me/2020/04/29/2020/sonarqube_run_with_github_action_coverage/index.html">
+<meta property="og:url" content="https://blog.marsen.me/2020/04/30/2020/sonarqube_run_with_github_action_coverage/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="前情提要承上篇,我已經將 SonarCloud 的代碼檢查與 Github Action 結合在一起了。透過專案首頁的 Dashboard 與專案的 Budget 我可以知道目前專案的一些狀況，壞味道、技術債等 … 題外話，測試分類在我的專案中有兩種測試，單元測試與整合測試。我的分類方法，單一類別的 public 方法就用單元測試包覆。不同的類別之如果有組合的交互行為，就用整合測試包覆。 舉個簡單">
 <meta property="og:locale" content="zh_TW">
@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=vulnerabilities">
 <meta property="og:image" content="https://sonarcloud.io/images/project_badges/sonarcloud-black.svg">
 <meta property="og:image" content="https://sonarcloud.io/api/project_badges/quality_gate?project=marsen_Marsen.NetCore.Dojo">
-<meta property="article:published_time" content="2020-04-29T00:43:01.000Z">
-<meta property="article:modified_time" content="2020-04-30T07:28:36.645Z">
+<meta property="article:published_time" content="2020-04-30T07:30:43.000Z">
+<meta property="article:modified_time" content="2020-04-30T07:35:07.316Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="CI-CD">
@@ -104,8 +104,8 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main"><article id="post-2020/sonarqube_run_with_github_action_coverage" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/29/2020/sonarqube_run_with_github_action_coverage/" class="article-date">
-  <time datetime="2020-04-29T00:43:01.000Z" itemprop="datePublished">2020-04-29</time>
+    <a href="/2020/04/30/2020/sonarqube_run_with_github_action_coverage/" class="article-date">
+  <time datetime="2020-04-30T07:30:43.000Z" itemprop="datePublished">2020-04-30</time>
 </a>
     
   </div>
@@ -221,9 +221,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/04/29/2020/sonarqube_run_with_github_action_coverage/" data-id="ck9knke4n00009cug7qk36294" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/04/30/2020/sonarqube_run_with_github_action_coverage/" data-id="ck9knke4n00009cug7qk36294" class="article-share-link">Share</a>
       
-        <a href="https://blog.marsen.me/2020/04/29/2020/sonarqube_run_with_github_action_coverage/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2020/04/30/2020/sonarqube_run_with_github_action_coverage/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI-CD/" rel="tag">CI-CD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag">實作筆記</a></li></ul>
@@ -267,7 +267,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2020/04/29/2020/sonarqube_run_with_github_action_coverage/">[實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇</a>
+            <a href="/2020/04/30/2020/sonarqube_run_with_github_action_coverage/">[實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇</a>
           </li>
         
           <li>
@@ -364,7 +364,7 @@ ga('send', 'pageview');
 
   (function(){
     var ifrm = document.createElement("iframe");
-    ifrm.setAttribute("src", "https://button.like.co/in/embed/marsenlin/button?referrer=https%3A%2F%2Fblog.marsen.me%2F2020%2F04%2F29%2F2020%2Fsonarqube_run_with_github_action_coverage%2F");      
+    ifrm.setAttribute("src", "https://button.like.co/in/embed/marsenlin/button?referrer=https%3A%2F%2Fblog.marsen.me%2F2020%2F04%2F30%2F2020%2Fsonarqube_run_with_github_action_coverage%2F");      
     ifrm.setAttribute("sandbox","allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
     ifrm.frameborder = "0";
     ifrm.scrolling = "no";
@@ -374,7 +374,7 @@ ga('send', 'pageview');
 
   var disqus_shortname = 'marsenlin';
   
-  var disqus_url = 'https://blog.marsen.me/2020/04/29/2020/sonarqube_run_with_github_action_coverage/';
+  var disqus_url = 'https://blog.marsen.me/2020/04/30/2020/sonarqube_run_with_github_action_coverage/';
   
   (function(){
     var dsq = document.createElement('script');
