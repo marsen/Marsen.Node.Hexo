@@ -1,10 +1,4 @@
----
-title: 實戰 .Net 大量請求與多執行緒(一) 錯誤與原因
-tag:
-  - .Net Framework
-  - IO
-  - Thread
----
+
 
 ## 前情提要
 

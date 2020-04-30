@@ -1,10 +1,4 @@
----
-title: [學習筆記] ASP.Net 執行緒 概觀
-date: 2016/11/04 11:49:17
-tag:
-  - .Net Framework
-  - Thread Pool  
----
+
 ## 學習筆記
 
 1. 非同步與多執行緒應用的場景並不同,不該混淆
