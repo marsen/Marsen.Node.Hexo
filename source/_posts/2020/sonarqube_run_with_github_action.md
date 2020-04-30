@@ -43,7 +43,7 @@ SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budge
 然後我就要直上 CI 了，Github Action 我並不熟悉，但是我知道上面應該是執行 Linux like 的作業系統。  
 
 首先要在 SonarCloud 上建立 Project ，  
-可以參考[Get started with GitHub.com](https://sonarcloud.io/documentation/integrations/github/)快速建立。  
+可以參考 [Get started with GitHub.com](https://sonarcloud.io/documentation/integrations/github/) 快速建立。  
 
 Administrator > Analysis Method  
 
