@@ -1,6 +1,5 @@
 ---
 title: 實戰 .Net 大量請求與多執行緒(一) 錯誤與原因
-date: 2016/11/04 11:49:17
 tag:
   - .Net Framework
   - IO
