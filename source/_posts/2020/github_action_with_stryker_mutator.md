@@ -94,6 +94,8 @@ $STRYKER_DASHBOARD_API_KEY 是 [Github 的 Secrets](https://help.github.com/en/a
 
 觸發 CI 完成後，就可以在 [Dashboard](https://dashboard.stryker-mutator.io/reports/github.com/marsen/Marsen.NetCore.Dojo/master) 上看到報表啦。
 
+![結果呈現](/images/2020/5/github_action_with_stryker_mutator_05.jpg)
+
 ## 參考
 
 - <https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/>
