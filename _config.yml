@@ -79,7 +79,7 @@ theme: landscape
 email: thisismysoul@gmail.com
 deploy:
   type: git
-  repository: git@github.com:marsen/marsen.github.io.git
+  repository: https://github.com/marsen/marsen.github.io.git
   branche: master
 
 # Disqus Comments
