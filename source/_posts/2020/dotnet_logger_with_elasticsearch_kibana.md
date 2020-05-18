@@ -87,7 +87,7 @@ docker-compose up -d
 
 ### 雷包
 
-第一次旨啟動 Kibana 要 5 分鐘左右，但是我不確定是 docker 或是 Kibana 的問題
+第一次啟動 Kibana 要 5 分鐘左右，但是我不確定是 docker 或是 Kibana 的問題
 
 ## Dotnet Core NLog with ElasticSearch
 
@@ -101,7 +101,8 @@ Install-Package NLog
 Install-package NLog.Targets.ElasticSearch
 ```
 
-設定 `appsettings.json`
+~~設定 `appsettings.json`~~
+(請見 [20200518 的補充](#20200518-補充))
 
 ```json
 {
@@ -118,7 +119,8 @@ Install-package NLog.Targets.ElasticSearch
 - `nlog > targets > target`
 - `nlog > rules > logger`
 
-這裡的重點是 `ElasticSearchServerAddress` 這組字串需設定成你的 ElasticSearchServerAddress
+~~這裡的重點是 `ElasticSearchServerAddress` 這組字串需設定成你的 ElasticSearchServerAddress~~  
+(請見 [20200518 的補充](#20200518-補充))
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -189,6 +191,42 @@ public Result MyMethod(Context ctx)
         this.logger.LogError("What's a Wonderful World");
     }
 }
+```
+
+### 20200518 補充
+
+`nlog.config` 與 `appsettings.json` 內容調整。
+
+使用[Elasticsearch Cloud](https://www.elastic.co/)(以下簡稱 ESC)當作服務的儲存體。  
+踩到了一個雷包，當我把 `ElasticSearchServerAddress` 修改成 ESC 服務的 EndPoint  
+我發現 ESC 並未接收到 Log ，更奇怪的事情是，在我本機端 docker 所建置服務仍然收到了 Log。
+
+查詢了一下最新的[Nlog ElasticSearch Wiki](https://github.com/markmcdowell/NLog.Targets.ElasticSearch/wiki)後，  
+應該改用 `uri` 屬性設定 EndPoint ，而沒有設定的情況下預設為 `localhost:9200` ，  
+
+```text
+uri - Uri of a Elasticsearch node. Multiple can be passed comma separated.  
+Ignored if cloud id is provided. Layout Default: http://localhost:9200
+```
+
+而要使用 ESC 的 EndPoint，除了設定 `uri` 外，還需要啟用授權。
+`requireAuth` 設定為 `true`(預設為`false`)，另外還要設定 `username` 與 `password`。
+`appsettings.json` 的 ConnectionsString 就可以刪除了。  
+`nlog.config` 修改大致如下
+
+```xml
+<!--略-->
+<target xsi:type="ElasticSearch"
+  name="elastic.co"
+  index="dotnetcore-nlog-elk-${date:format=yyyy.MM.dd}"
+  documentType="_doc"
+  includeAllProperties="true"
+  layout="[${date:format=yyyy-MM-dd HH\:mm\:ss}][${level}] ${logger} ${message} ${exception:format=toString}"
+  uri="https://**************elastic-cloud.com:9243"
+  requireAuth="true"
+  username="**********"
+  password="******************">
+<!--略-->  
 ```
 
 ## Dotnet Core AOP
