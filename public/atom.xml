@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-05-18T09:12:21.326Z</updated>
+  <updated>2020-05-29T06:13:51.319Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[A社筆記] 閒聊 Product Backlog </title>
+    <link href="https://blog.marsen.me/2020/05/28/2020/productbacklog/"/>
+    <id>https://blog.marsen.me/2020/05/28/2020/productbacklog/</id>
+    <published>2020-05-28T07:06:02.000Z</published>
+    <updated>2020-05-29T06:13:51.319Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>Although implementing only parts of Scrum is possible, the result is not Scrum.</p><blockquote></blockquote><p>雖然實施部分的 Scrum 是可能的，但結果並不是 Scrum 《Scrum Guide》</p></blockquote><p>之所以在文章一開頭就引述這段文字，是因為世界上太多 <code>Scrum But</code> 了;<br>而我下文所敘的則是 <code>Not Scrum</code>。<br>未來有機會再深入討論兩者的差異，對我來說主要是心態上的差異。</p><p>我們透明、檢核、調試，我們擁抱改變，我們有所堅持，我們有理想但我們也務實。<br>好啦，說不定只有你自已。  </p><p>在 A 社的導入的過程中，我開場白通常會說「這不是 Scurm」然後開始拿 Scurm 的東西說嘴。<br>至少對我來說，這比那些號稱「我們跑 Scrum」「But #^%!~…」要好得多，<br>與其讓你難以分辨斷句在哪，或是誤會怎麼 Scrum 這麼糞，不如讓我明確的告訴你「這不是 Scurm」。  </p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>蠻小巧的團隊，小到我覺得也許不用任何「敏捷」<br>分為兩個組成 QA 部門與 RD 部門，遠端工作的 RD 主管兼職 PM<br>QA 團隊的主管除了目前這個團隊，也要兼者作其它團隊的測試，<br>此外還有一個大主管，在國外有時差，每周固定會與成員們開 3 次的會。<br>RD 團隊成為會有一個 Daily Sync 的會議，每天約 5~10 分鐘。<br>整個團隊有使用 Azure DevOps 的看板，但是 QA 只會用來開 Bug。<br>但不知道什麼時候 Bug 才會被修復。</p><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><h3 id="Azure-DevOps-BackLogs-太像文件"><a href="#Azure-DevOps-BackLogs-太像文件" class="headerlink" title="Azure DevOps BackLogs 太像文件"></a>Azure DevOps BackLogs 太像文件</h3><p>Azure DevOps 的 BackLogs 放著許多 Feature ，<br>依據不同的功能，再將每個 Sprint 的 User Story 放進去<br>這些 Feature 永遠不會被作完，隨著時間過去，<br>儘管完成了許多 User Story ，但是也會有新的 User Story 被加進去。<br>而作為文件，他的巢狀結構又不足以面對複雜的需求內容，<br>分散式存儲對於維護與修改上也是相同不便。</p><h3 id="Bug-隨時蹦出"><a href="#Bug-隨時蹦出" class="headerlink" title="Bug 隨時蹦出"></a>Bug 隨時蹦出</h3><p>QA 的工作就是不斷的測試，一有發現問題就開立 Bug，<br>RD 有空就會去領來作，有時候也會有 RD 主管確認過後再分配給 RD<br>這導致不同面向的問題，RD 自領的情況可能會無序的作，<br>導致真正有價值的 Bug 無法第一時間被修正。<br>而如果每件事情都要 RD 主管確認後再進行動作，<br>RD 主管恐怕會變成瓶頸所在。</p><h2 id="BackLogs-簡介"><a href="#BackLogs-簡介" class="headerlink" title="BackLogs 簡介"></a>BackLogs 簡介</h2><p>下面是我在向團隊介紹 Backlogs 後的筆記。</p><p>在 Azure DevOps 上會有 BackLogs 與 Sprints &gt; Backlog。<br>恰巧與 Scurm 的 Product BackLogs 與 Sprints Backlog 可以一一對應。<br>如果以 XP 來說，可以投射到發佈計劃會議與迭代計劃會議中討論的「用戶故事清單」。<br>如果以 GTD 的方法論來說 BackLogs 可以當作收集一切事務的 Inbox，<br>而 Sprints &gt; Backlog 可以視作專案裡面的工作項目。</p><p>總的來說，這些方法論的名詞故有所不同，但本質上卻是非常接近的事務。<br>我們總是有許多新的想法，但是沒有足夠的時間作所有的事。<br>所以我們必須補捉這些想法，放入 BackLogs 之中<br>補捉了之後，必須排序，這裡的概念有「重要且緊急」先作 ( 參考 Eisenhower Matrix )，<br>或是「價值高」的先作，或是有影響力的先作 ( 參考 Impact Mapping )。<br>GTD 的概念是 5 分鐘能完成的想法，立刻去作不然就丟到 BackLogs ( Inbox ) 之中，<br>我認為團隊不適合這樣作，畢竟 GTD 是針對個人的工作法。<br>團隊反而要刻意不作為，才能讓真正重要的事情浮現，而不是被一堆雜訊 DDos，<br>所有想法我的建議是「丟到 Backlogs 之中」，然後定期梳理吧。</p><p>理論上大部份事情會由模糊到清晰，這是個過程，之後才會進入到一個可以被執行的階段。<br>在 Scurm 之中，常用「遠光燈」作例子，我個人比較喜歡用「通勤」舉例。</p><p>留個問題給你，誰來衡量 ? 團隊 ? PO ? 客戶 ?</p><p>想像一下你要上班了，在家裡你對公司的方向與位置其實有個大概的想法，<br>要走過哪些路口，經過某個大樓，穿越了一座橋後你需要待轉，<br>再過幾個紅綠燈，看到速食店後就可以開始找車位了。<br>實際上路後，也許路上施工，你必需繞個路，或是運氣很好一路綠燈。<br>哦，不!! 你的車拋錨了，你必須改搭公車，而它的路線是……  </p><p>有個大方向就是你的目標，路口、橋、大樓，就是你的每個迭代，<br>每次的煞車、轉彎或催油門就是再被細分下來的工作項目，<br>紅燈、拋錨、下雨天就是你真實上路後才會體驗到的事。<br>有個概念「Road Map」其實也是在說差不多的事。  </p><p>回到 Product BackLogs 與 Sprints Backlog ，<br>我們也就是不斷的細化這些項目，一直到可執行然後被執行為止。  </p><p>至於怎麼變快呢 ?<br>也許你要選一條最優路線，最短的距離最少的車流，沒有紅綠燈之類的，<br>也許你要有最棒的工具，最好的機車、定期保養之類的，<br>也許你要改變的開車習慣，不要危險駕駛、不任意切換車道等等…  </p><p>透過的調整工作順序與找尋最佳工具輔助與調整心態，是我目前的答案。  </p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Although implementing only parts of Scrum is possible, th
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Aglie" scheme="https://blog.marsen.me/tags/Aglie/"/>
+    
+  </entry>
   
   <entry>
     <title>[實作筆記] Dotnet Logger 整合 Kibana Kibana 與 Elasticsearch</title>
@@ -501,33 +526,6 @@
     </summary>
     
     
-    
-      <category term="實作筆記" scheme="https://blog.marsen.me/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記] AWS Auto Scaling Group</title>
-    <link href="https://blog.marsen.me/2019/08/25/2019/aws_auto_sacling_group/"/>
-    <id>https://blog.marsen.me/2019/08/25/2019/aws_auto_sacling_group/</id>
-    <published>2019-08-25T03:21:46.000Z</published>
-    <updated>2020-04-29T01:19:53.294Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近將一個服務掛上雲端(AWS)，使用 EC2 ，<br>並且實作了 Auto Scaling ，特別紀錄一下。</p><h2 id="概觀"><a href="#概觀" class="headerlink" title="概觀"></a>概觀</h2><p>以下使用的都是 AWS 的服務</p><ol><li><p>Auto Scaling Group (ASG) :<br> 本篇主角，根據指定的 Policies 與 LC 加開減少機器。</p></li><li><p>Launch Configuration (LC) :<br> 一個 ASG 背後一定要搭配一個 LC，可以說是 ASG 的生命共同體，<br> 用來指定 EC2 的配置，並透過 <code>User Data</code> 指定實體起動時所需要執行的工作。<br> 註: 也有使用 Launch Template 的作法，這篇不會討論。</p></li><li><p>Target Group (TG):<br> 由 1 到多個 EC2 實體(instance)組成，用來與 ELB(ALB) 搭配。</p></li><li><p>ALB :<br> 流量負載平衡，與 TG 作為搭配。可以依不同條件轉導到不同 TG</p></li></ol><p><img src="/images/2019/8/aws_asg_overview.jpg" alt="Auto Scaling Group"></p><h3 id="組合零件"><a href="#組合零件" class="headerlink" title="組合零件"></a>組合零件</h3><p>這有點像是在玩模型玩具，各個部份的小零件可以組成一個大零件，<br>再將各個部件結合，完成我所要的功能。<br>以下是這所需要的各個零件</p><ul><li>Golden Image : 由實際的 EC2 Instance 建立。並包含 Cloud Watch Agent 的配置。</li><li>User Data : Lanuch Configuration 的一個子項目，可以在 EC2 啟動時，執行指定的命令，比如說在 WINDOWS 透過 Powershell 抓取新版程式來建置服務。</li><li>Launch Configuration : 由上述兩個零件 (Gloden Image &amp; User Data) 組成，另外還可以設定 EBS、Plocies 等設定…</li><li>Target Group : 用來存放相關實體(EC2 Instance)的抽象概念, 可以設定 Health Check 來確定實體的健康情況。</li><li>Auto Scaling Group : 透過 Lanuch Configuration 來建立實體，並且可以將實體放入指定的 Target Group 之中。並且可以設定 Policy 來實現 Scaling Out/In.</li><li>ALB : 負載平衡的一種，透過設定，可以將 Request 導到對應的 Target Group。</li></ul><h2 id="紀錄"><a href="#紀錄" class="headerlink" title="紀錄"></a>紀錄</h2><h3 id="Add-CloudWatch-Agent"><a href="#Add-CloudWatch-Agent" class="headerlink" title="Add CloudWatch Agent"></a>Add CloudWatch Agent</h3><ol><li><p>Login EC2 Instance</p></li><li><p>安裝 CloudWatch Agent</p></li><li><p>準備一個 Json 檔如下</p> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;  </span><br><span class="line"><span class="attr">"agent"</span>:&#123;  </span><br><span class="line">    <span class="attr">"logfile"</span>:<span class="string">"c:\\ProgramData\\Amazon\\AmazonCloudWatchAgent\\Logs\\amazon-cloudwatch-agent.log"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">"logs"</span>:&#123;  </span><br><span class="line">    <span class="attr">"logs_collected"</span>:&#123;  </span><br><span class="line">        <span class="attr">"files"</span>:&#123;  </span><br><span class="line">            <span class="attr">"collect_list"</span>:[  </span><br><span class="line">            &#123;  </span><br><span class="line">                <span class="attr">"file_path"</span>:<span class="string">"D:\\logs\\**.log"</span>,</span><br><span class="line">                <span class="attr">"log_group_name"</span>:<span class="string">"/MY/Service/Worker"</span>,</span><br><span class="line">                <span class="attr">"log_stream_name"</span>:<span class="string">"&#123;instance_id&#125;"</span>,</span><br><span class="line">                <span class="attr">"timezone"</span>:<span class="string">"UTC"</span>,</span><br><span class="line">                <span class="attr">"timestamp_format"</span>:<span class="string">"%Y-%m-%dT%H:%M:%S"</span></span><br><span class="line">            &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"log_stream_name"</span>:<span class="string">"default-log-stream"</span>,</span><br><span class="line">    <span class="attr">"force_flush_interval"</span>:<span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>開啟powershell，切換目錄至 AmazonCloudWatchAgent</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">"C:\Program Files\Amazon\AmazonCloudWatchAgent"</span></span><br></pre></td></tr></table></figure></li><li><p>執行以下語法</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./amazon-cloudwatch-agent-ctl.ps1 -a fetch-config -m ec2 -c file:yourjsonfile.json -s</span><br></pre></td></tr></table></figure></li></ol><h3 id="站台加入-Health-Check"><a href="#站台加入-Health-Check" class="headerlink" title="站台加入 Health Check"></a>站台加入 Health Check</h3><ul><li>加入靜態檔案(ex:check.html)</li><li>IIS Building <em>80<br>![IIS Building</em> 80](/images/2019/8/aws_iissetting.jpg)</li><li>設定 Target Group 的 Health Check (ex:/check.html)<br><img src="/images/2019/8/aws_tg_healthcheck.jpg" alt="AWS Target Gropu Health Check"></li></ul><h3 id="包成-Gloden-Image"><a href="#包成-Gloden-Image" class="headerlink" title="包成 Gloden Image"></a>包成 Gloden Image</h3><ol><li><p>機器下 ALB</p><p> <img src="/images/2019/8/aws_gi_out_alb.jpg" alt="機器下ALB"></p></li><li><p>開啟 Ec2LaunchSettings.exe</p><p> <img src="/images/2019/8/aws_ec2_launch_settings.jpg" alt="開啟 Ec2LaunchSettings.exe"></p></li><li><p>透過 Ec2LaunchSettings 關機</p><p> <img src="/images/2019/8/aws_ec2_launch_settings_turn_off.jpg" alt="透過 Ec2LaunchSettings 關機"></p></li><li><p>Waitting Instance Stoped , Create Images</p><p> <img src="/images/2019/8/aws_gi_create_images.jpg" alt="Waitting Instance Stoped , Create Images"></p></li></ol><h3 id="Create-Launch-Configuration"><a href="#Create-Launch-Configuration" class="headerlink" title="Create Launch Configuration"></a>Create Launch Configuration</h3><p><img src="/images/2019/8/aws_create_lc.jpg" alt="Create Launch Configuration"></p><ol><li>Choose AMI<br> <img src="/images/2019/8/aws_choose_ami.jpg" alt="Choose Gloden Image"></li><li>Choose Instance Type<br> <img src="/images/2019/8/aws_choose_instance_type.jpg" alt="t2.small"></li><li>Configure details<br> <img src="/images/2019/8/aws_userdata.jpg" alt="Add User Data"></li><li>Add Storage<br> <img src="/images/2019/8/aws_ebs.jpg" alt="Set EBS"></li><li>Configure Security Group</li><li>Review</li></ol><h3 id="Create-Auto-Scaling-group"><a href="#Create-Auto-Scaling-group" class="headerlink" title="Create Auto Scaling group"></a>Create Auto Scaling group</h3><ol><li>Configure Auto Scaling group details<br> <img src="/images/2019/8/aws_create_asg.jpg" alt="Configure Auto Scaling group details"></li><li>Configure scaling policies<blockquote><p>略</p></blockquote></li><li>Configure Notifications<blockquote><p>略</p></blockquote></li><li>Configure Tags<blockquote><p>略</p></blockquote></li><li>Review</li></ol><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://docs.aws.amazon.com/zh_tw/autoscaling/ec2/userguide/create-asg-from-instance.html" target="_blank" rel="noopener">使用 EC2 執行個體建立 Auto Scaling 群組 - Amazon EC2 Auto Scaling</a></li><li><a href="https://docs.aws.amazon.com/en_us/autoscaling/ec2/userguide/LaunchConfiguration.html" target="_blank" rel="noopener">Launch Configurations - Amazon EC2 Auto Scaling</a></li><li><a href="https://aws.amazon.com/cn/blogs/china/aws-alb-route-distribute/" target="_blank" rel="noopener">使用AWS Application Load Balancer</a></li><li><a href="https://docs.aws.amazon.com/zh_tw/elasticloadbalancing/latest/network/load-balancer-target-groups.html" target="_blank" rel="noopener">Network Load Balancers 的目標群組</a></li><li><a href="https://docs.aws.amazon.com/zh_tw/elasticloadbalancing/latest/network/create-target-group.html" target="_blank" rel="noopener">為 Network Load Balancer 建立目標群組</a></li><li><a href="https://docs.aws.amazon.com/zh_tw/AmazonCloudWatch/latest/logs/QuickStartWindows2016.html#configure_cwl_download" target="_blank" rel="noopener">CloudWatch Logs</a></li><li><a href="https://docs.aws.amazon.com/zh_tw/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html" target="_blank" rel="noopener">使用 CloudWatch 代理程式從 Amazon EC2 執行個體和現場部署伺服器收集指標和日誌 - Amazon CloudWatch</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;最近將一個服務掛上雲端(AWS)，使用 EC2 ，&lt;br&gt;並且實作了 Auto Scaling ，特別紀錄一下。&lt;/p&gt;
-&lt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="AWS" scheme="https://blog.marsen.me/tags/AWS/"/>
     
       <category term="實作筆記" scheme="https://blog.marsen.me/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
     
