@@ -124,6 +124,50 @@ ga('send', 'pageview');
 <p>想法是通用類別，或許用抽像類別繼承也可以 ?<br>Created 欄位用來記錄資料產生時間，<br>Type 用來記錄 Record 的型別，<br>Record 用來記錄實際的資料。</p>
 <p>預計未來可能會需要取出 Json 資料再轉成物件操作。</p>
 <p>大概就醬。</p>
+<h3 id="6-8-補充-Net-Logger-分級"><a href="#6-8-補充-Net-Logger-分級" class="headerlink" title="6/8 補充 .Net Logger 分級"></a>6/8 補充 .Net Logger 分級</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trace</td>
+<td>0</td>
+<td>包含最詳細訊息的記錄。 這些訊息可能包含敏感性應用程式資料。 這些訊息預設會停用，且永遠不應在生產環境中啟用。</td>
+</tr>
+<tr>
+<td>Debug</td>
+<td>1</td>
+<td>開發期間用於互動式調查的記錄。 這些記錄主要應包含適用於偵錯的資訊，且不具備任何長期價值。</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>2</td>
+<td>追蹤應用程式一般流程的記錄。 這些記錄應具備長期值。</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>3</td>
+<td>醒目提示應用程式流程中異常或未預期事件的記錄，這些異常或未預期事件不會造成應用程式執行停止。</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>4</td>
+<td>在目前執行流程因失敗而停止時進行醒目提示的記錄。 這些記錄應指出目前活動中的失敗，而非整個應用程式的失敗。</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>5</td>
+<td>描述無法復原的應用程式或系統損毀，或需要立即注意重大失敗的記錄。</td>
+</tr>
+<tr>
+<td>None</td>
+<td>6</td>
+<td>不會用來寫入記錄訊息。 指定記錄類別不應寫入任何訊息。</td>
+</tr>
+</tbody></table>
 <p>(fin)</p>
 
       
