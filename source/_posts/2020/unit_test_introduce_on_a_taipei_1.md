@@ -114,5 +114,6 @@ pair programming 30 min，QA 約 20分鐘。
 - [RIP TDD](https://www.facebook.com/notes/kent-beck/rip-tdd/750840194948847/)
 - [Laziness Impatience Hubris](https://wiki.c2.com/?LazinessImpatienceHubris)
 - [瞭解單元測試](http://otischou.tw/2019/08/02/unit-test.html)
+- [How YOU can Learn Dependency Injection in .NET Core and C#](https://softchris.github.io/pages/dotnet-di.html)
 
 (fin)
