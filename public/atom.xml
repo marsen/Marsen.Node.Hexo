@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-06-12T06:14:37.442Z</updated>
+  <updated>2020-06-30T10:00:07.572Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[閱讀筆記] 回饋隨筆—《SCRUM敏捷實戰手冊》</title>
+    <link href="https://blog.marsen.me/2020/06/30/2020/yuubuke_talk_about_scrum/"/>
+    <id>https://blog.marsen.me/2020/06/30/2020/yuubuke_talk_about_scrum/</id>
+    <published>2020-06-30T09:51:03.000Z</published>
+    <updated>2020-06-30T10:00:07.572Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>朋友在一個知識型部落客的團隊中工作，<br>作了一個有關 Scrum 的影片，<br>恰巧我最近的工作與 Scrum 的導入有比較深的關係，<br>影片我也蠻喜歡的，就稍微作個筆記當作回饋。</p><h2 id="回饋隨筆"><a href="#回饋隨筆" class="headerlink" title="回饋隨筆"></a>回饋隨筆</h2><p>第一點，讓我可以看到非業界人員初探 Scrum 的角度，<br>我第一次「知道」Scrum 已經是在 C 社的事了。<br>有點忘了第一次接觸的「初心」，台灣非軟體人說這方面的非常稀少。<br>能夠提供不同視角是很重要的。  </p><p>橄欖球列陣這部份我蠻喜歡的; 雖然直譯就知道 Scrum 原本的意思，<br>但是離「光速蒙面俠」太遠，已經有點忘了那些規則，<br>現在對比起來真的很像，為了一次的達陣，你需要多少衝刺 ?<br>戰術又該怎麼選擇 ? 球員平時的訓練與臨場反應是不是也可以映射到這個業界呢 ?  </p><p>整個影片很淺顯易懂，口齒清晰即使放到 1.5 倍速還是聽得清楚，<br>可惜的是汽車廠 5 年轉型的故事我想知道更多細節或出處，<br>不是很喜歡「一半的時間，作兩倍的工作」的結論，<br>我覺得是書商的行銷手段，不是 Scrum 的目標與強項。<br>產能的提昇不過是個結果，重點是三大支柱對團隊帶來的效應。<br>沒提到透明性、檢視性與調適性我覺得蠻可惜的，  </p><p>另外個人的工作流程我不覺得需要跑 Scrum ，<br>可以試試 GTD 或 PDCA ，而且你會發現很多類似的觀念與原則。<br>Scrum 設計上是適合小型團隊的，業界說法是 3~9 人，不含 PO 與 SM<br>多人的公司也有很多別的方法論(EX: LeSS or SAFe)，這裡我不多開戰線，敏捷無它「務實」而已。<br>方法沒有不好，只有適不適合。</p><h2 id="差異"><a href="#差異" class="headerlink" title="差異"></a>差異</h2><p>有些用字跟業界不太一樣有點可惜，硬要翻譯不如保留英文或是業界常用翻譯。<br>Scrum 跟規格固定應該沒有什麼關係，不過工程上的確這樣作會帶來一些好處。<br>Scrum 跟 Agile 本質上還是有些不同， Agile 比較像願景、原則比較抽象的層次。<br>複習一下 Agile 的宣言</p><ul><li>Individuals and interactions over processes and tools</li><li>Working software over comprehensive documentation</li><li>Customer collaboration over contract negotiation</li><li>Responding to change over following a plan</li></ul><p>Scrum 是業界較常見的框架而且與其它工作法相容性非常的高，<br>就我個人而言擷取過 XP、GTD、番茄鐘、Lean 與 ToC 等方法。<br>作為一個框架，有彈性的包容各種方法是它如此廣佈的原因之一。</p><p>最後 Scrum 無法擺脫加班、Scrum 無法擺脫加班、Scrum 無法擺脫加班<br>不要盲從，Google 是先成為 google 才有導入 Scrum，你導入 Scrum 也不會成為 Google。<br>丟書前多想 3 秒鐘，丟桌上不如丟臉上，丟書不如丟辭呈。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://william-yeh.net/post/2018/11/why-safe-over-less/" target="_blank" rel="noopener">為什麼 LeSS 這麼迷人，可是總是輸給 SAFe？</a></li><li><a href="https://www.youtube.com/watch?v=dzu9yYgmO6s" target="_blank" rel="noopener">影片無法嵌入，改分享連結</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;朋友在一個知識型部落客的團隊中工作，&lt;br&gt;作了一個有關 Scrum 的影片，&lt;br&gt;恰巧我最近的工作與 Scrum 的導入
+      
+    
+    </summary>
+    
+    
+    
+      <category term="閱讀筆記" scheme="https://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
   
   <entry>
     <title>[A社筆記] Introduce Unit Test --- 心法篇</title>
@@ -500,31 +524,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記] 用 Github Registry 作自已的 Nuget Server</title>
-    <link href="https://blog.marsen.me/2019/10/11/2019/github_registry_with_nuget_packages/"/>
-    <id>https://blog.marsen.me/2019/10/11/2019/github_registry_with_nuget_packages/</id>
-    <published>2019-10-11T03:55:41.000Z</published>
-    <updated>2020-04-07T05:38:49.951Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><p>使用 GitHub Package Registry 建立一個自已的 Nuget Server。</p><h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h3><h4 id="申請"><a href="#申請" class="headerlink" title="申請"></a>申請</h4><p>GitHub Package Registry 還在 Beta 階段，需要申請才能取得試用。<br>過程並不複雜，在此不贅述，請再自行查找網路。</p><h4 id="建立-Repository"><a href="#建立-Repository" class="headerlink" title="建立 Repository"></a>建立 Repository</h4><p>實測的結果，<code>nuget push</code> 並無法建立 Repository ，<br>並且會導致發佈失敗，故必需 <strong>優先建立 Packages 的 Repository</strong> 。<br>Repository 可以包含多個專案，並獨立發佈(發佈指令詳見下文)。  </p><h4 id="建立-nuget-文檔"><a href="#建立-nuget-文檔" class="headerlink" title="建立 .nuget 文檔"></a>建立 .nuget 文檔</h4><p>請以專案名稱命名檔案，ex:<code>Marsen.Utility.nuget</code><br>請依實際情況調整 <strong>id</strong>、<strong>version</strong> 與 <strong>projectUrl</strong><br>特別是 <strong>version</strong> 代表的是 Packages 的版本<br>更多訊息請<a href="https://docs.microsoft.com/zh-tw/nuget/reference/nuspec" target="_blank" rel="noopener">參考</a></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">metadata</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>Marsen.Utility<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">authors</span>&gt;</span>Marsen Lin<span class="tag">&lt;/<span class="name">authors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Marsen Utility<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">language</span>&gt;</span>en-US<span class="tag">&lt;/<span class="name">language</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">projectUrl</span>&gt;</span>https://github.com/marsen/Marsen.Nuget.Packages<span class="tag">&lt;/<span class="name">projectUrl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">metadata</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="取得授權-token"><a href="#取得授權-token" class="headerlink" title="取得授權 token"></a>取得授權 token</h3><p>請參考<a href="https://help.github.com/en/articles/configuring-nuget-for-use-with-github-package-registry#authenticating-to-github-package-registry" target="_blank" rel="noopener">Configuring NuGet for use with GitHub Package Registry</a> 或是 <a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line" target="_blank" rel="noopener">Creating a personal access token for the command line</a><br><strong>至少需要以下權限</strong></p><ul><li><input disabled="" type="checkbox"> repo Full control of private repositories<ul><li><input disabled="" type="checkbox"> repo:status Access commit status</li><li><input disabled="" type="checkbox"> repo_deployment Access deployment status</li><li><input disabled="" type="checkbox"> public_repo Access public repositories</li><li><input disabled="" type="checkbox"> repo:invite Access repository invitations</li></ul></li><li><input disabled="" type="checkbox"> write:packages Upload packages to github package registry</li><li><input disabled="" type="checkbox"> read:packages Download packages from github package registry</li></ul><h3 id="下載-安裝-設定-Nuget"><a href="#下載-安裝-設定-Nuget" class="headerlink" title="下載/安裝/設定 Nuget"></a>下載/安裝/設定 Nuget</h3><ol><li><a href="https://www.nuget.org/downloads" target="_blank" rel="noopener">下載 Latest Nuget</a>，取得 nuget.exe</li><li>設定 Path (以 Windows 10 為例)<ul><li>控制台</li><li>系統設定&gt;進階設定</li><li>環境變數 &gt; Path</li></ul></li><li>設定完 path 記得重啟 Terminal Session</li></ol><h3 id="新增-Nuget-Source"><a href="#新增-Nuget-Source" class="headerlink" title="新增 Nuget Source"></a>新增 Nuget Source</h3><h4 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h4><p>Name 、 Source 與 UserName 網址請依實際調整參數<br>Password 請代入 token</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nuget sources Add -Name <span class="string">"Marsen.Nuget sources"</span> /</span><br><span class="line">-Source <span class="string">"https://nuget.pkg.github.com/marsen/index.json"</span> /</span><br><span class="line">-UserName marsen -Password 3*******************************1</span><br></pre></td></tr></table></figure><h4 id="設定-Key"><a href="#設定-Key" class="headerlink" title="設定 Key"></a>設定 Key</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget setapikey 3*******************************1 -Source <span class="string">"Marsen Nuget Sources"</span></span><br></pre></td></tr></table></figure><h4 id="刪除"><a href="#刪除" class="headerlink" title="刪除"></a>刪除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget sources Remove -Name <span class="string">"Marsen.Nuget sources"</span></span><br></pre></td></tr></table></figure><h4 id="查詢"><a href="#查詢" class="headerlink" title="查詢"></a>查詢</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget sources</span><br></pre></td></tr></table></figure><h4 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget pack Marsen.Package.csproj -OutputDirectory c:\local_nugets</span><br></pre></td></tr></table></figure><h4 id="發佈"><a href="#發佈" class="headerlink" title="發佈"></a>發佈</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuget push c:\local_nugets\Marsen.Utility.1.0.0.nupkg -Source <span class="string">"Marsen Nuget Sources"</span></span><br></pre></td></tr></table></figure><h3 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h3><p><img src="https://i.imgur.com/Qz5Rv4c.jpg" alt="GitHub Package Registry"></p><h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><ol><li>每次都要打版號好麻煩，能不能自動化 ?</li><li>透過 CI 建立，並傳入參數作為版號 ?</li><li>每次 commit 只要通過 UT 測試就發佈.beta版 ? CI 發佈正式版 ?</li></ol><p>more…</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://help.github.com/en/articles/configuring-nuget-for-use-with-github-package-registry#authenticating-to-github-package-registry" target="_blank" rel="noopener">Configuring NuGet for use with GitHub Package Registry</a></li><li><a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line" target="_blank" rel="noopener">Creating a personal access token for the command line</a></li><li><a href="https://www.nuget.org/" target="_blank" rel="noopener">https://www.nuget.org/</a></li><li><a href="https://docs.microsoft.com/zh-tw/nuget/install-nuget-client-tools" target="_blank" rel="noopener">https://docs.microsoft.com/zh-tw/nuget/install-nuget-client-tools</a></li><li><a href="https://docs.microsoft.com/zh-tw/nuget/reference/nuspec" target="_blank" rel="noopener">https://docs.microsoft.com/zh-tw/nuget/reference/nuspec</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;目標&quot;&gt;&lt;a href=&quot;#目標&quot; class=&quot;headerlink&quot; title=&quot;目標&quot;&gt;&lt;/a&gt;目標&lt;/h2&gt;&lt;p&gt;使用 GitHub Package Registry 建立一個自已的 Nuget Server。&lt;/p&gt;
-&lt;h2 id=&quot;步驟&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-    
-    
-      <category term="實作筆記" scheme="https://blog.marsen.me/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
