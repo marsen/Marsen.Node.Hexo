@@ -50,7 +50,7 @@ Scrum 跟 Agile 本質上還是有些不同， Agile 比較像願景、原則比
 - Responding to change over following a plan
 
 Scrum 是業界較常見的框架而且與其它工作法相容性非常的高，  
-就我個人而言擷取過 XP、GTD、番茄鐘、Lean 與 ToC 等方法。  
+就我個人而言擷取過 XP、GTD、番茄鐘、ORID 與 ToC 等方法。  
 作為一個框架，有彈性的包容各種方法是它如此廣佈的原因之一。
 
 最後 Scrum 無法擺脫加班、Scrum 無法擺脫加班、Scrum 無法擺脫加班  
