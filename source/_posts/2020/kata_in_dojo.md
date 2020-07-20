@@ -17,7 +17,7 @@ date: 2020/07/20 14:27:03
 然後在後續有再重啟一次，那次是使用 Production Code 進行，  
 有多一些新的成員，但是也是隨著「忙碌」與「沒時間」而停止，  
 雖然我心裡比較想直接譙那些不出席又不出聲的人渣一些髒話，  
-不過我想這就是現實吧。這也引發我後續[對 TDD 產鉗的反思](https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/)。  
+不過我想這就是現實吧。這也引發我後續對 [TDD 產鉗的反思](https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/)。  
 
 ## 回答
 
