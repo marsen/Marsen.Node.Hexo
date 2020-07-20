@@ -7,7 +7,9 @@ tag:
   - Unit Testing
   - Vim
 ---
+
 ## 前情提要
+
 在上 91 大的([熱血 Coding Dojo 第一梯次](https://blog.marsen.me/2019/01/13/2019/91_coding_dojo_log/))的課程中，  
 我一直在思索一件事，**為什麼我作不到呢？**
 
@@ -34,8 +36,8 @@ tag:
 
 ### 第一個 Kata
 
-第一個 Kata 是很重要的，[Coding Dojo](http://codingdojo.org/kata/)提供我們一些選擇，
-Tennis Game 與 Pocker Hand 都是很好的題目，
+第一個 Kata 是很重要的，[Coding Dojo](http://codingdojo.org/kata/) 提供我們一些選擇，
+Tennis Game 與 Poker Hand 都是很好的題目，
 但是新手上路，我們選了一個簡單的 [Fizz Buzz](http://codingdojo.org/kata/FizzBuzz/) 當作練習題目。
 Fizz Buzz 的需求分析是很簡單的，  
 
@@ -45,7 +47,8 @@ Fizz Buzz 的需求分析是很簡單的，
 4. 不符合上述條件回傳原數值
 
 Sample Case:
-```
+
+```text
 1 → 1
 2 → 2
 3 → Fizz
@@ -63,54 +66,59 @@ Sample Case:
 15 → FizzBuzz
 ```
 
-### 怎麼開始？
+### 怎麼開始
+
 首先是時間，專案很忙碌，不是所有的人都有空，  
 我要怎麼擠出時間 ？  
 
-### 利用 Timebox 與 Don't Break The chain
+### 利用 TimeBox 與 Don't Break The chain
+
 每天都練習 KATA，每次 30 分鐘；  
 每天約定一個時間 30 分鐘，30 分鐘到就強制結束，  
 不論是中午的 30 分鐘，或是下班前的 30 分鐘，  
 找一個時間只要有兩個人的時間 OK 就進行 。  
-輪流當 Dirver 與 Navigator ，時間設定 5 分鐘，  
+輪流當 Driver 與 Navigator ，時間設定 5 分鐘，  
 一樣時間到就換手。
 
-```
-嚴格執行 Timebox 真的是一件很折磨人的事情，  
+```text
+嚴格執行 TimeBox 真的是一件很折磨人的事情，  
 特別是有一些火花的討論出現時，
-但是隨著每次的 Timebox 的結束，
+但是隨著每次的 TimeBox 的結束，
 看到的成果比上一次多時，  
 那種進步感是相同明顯的。
 ```
 
 很幸運的，一直到過農曆年我們都沒有中斷，  
-設定 Timebox 也確實有讓參與的人提昇，  
+設定 TimeBox 也確實有讓參與的人提昇，  
 包含「重構的技巧」、「打字」、「TDD」與「Vim」，  
 也有人分享工具，或是小技巧，  
 這達到我們**彼此學習**的目的。  
 
 ### 回顧一下作得好的部份
+
 1. 雖然很困難，有線上的問題要處理，有工作項目，有一堆會議，但是我們仍然沒有中斷過一天。
-2. 完成了兩個 Kata ，經典的 FizzBuzz 還有很類似的題目 FooBarQix。
+2. 完成了兩個 KATA ，經典的 FizzBuzz 還有很類似的題目 FooBarQix。
 3. 確實有從彼此身上學到東西，比如說在 Vim 裡面超好用的 `ci` 或是 AceJump 小工具。
 4. 人數控制的很好，押在 3 到 5 人，也讓大家都能參與到。
 5. 最重要的一點，看到了很多「真實」
 
 ### 作得不好的部份
+
 1. 環境有一些前期門檻在，ex: Reshaper、已配置過的 VimRC
-2. Timebox 有時候仍會超過，主因是討論太熱情了。
+2. TimeBox 有時候仍會超過，主因是討論太熱情了。
 3. 整體成員都算有經驗的開發者，但是對重構仍然很弱，對壞味道麻痺(不在意重複等…)
 4. TDD 有時候沒辦法作到 Baby Step ，雖然重構是成功的，但過程有點跳躍；或是重構完才發現測試壞一大片，需要偵錯去修正。
 5. 雖然有記錄一些問題，但是常常沒有去求解答
 
 ### 真實的部份
+
 1. 我們常常看到重複視而不見，特別是只有兩、三次的重複
    - 這題成員的看法比較貼近大量重複再重構…我仍然有點持疑  
 2. 因為時間壓力，我們會把問題留給後人；我們不會去理解前人的設計
    - 時間壓力可以換成任何理由
-3. Navigator 如果沒有思考 Dirver 會開 Auto
+3. Navigator 如果沒有思考 Driver 會開 Auto
 
-我們開發者真的太有自信，在 Kata 過程出現的問題，  
+我們開發者真的太有自信，在 KATA 過程出現的問題，  
 如果放到開發現場的規模，基本上就是災難，
 而實際上也是每天發生。
 
@@ -118,7 +126,7 @@ Sample Case:
 但是你可以透過測試作出足夠好的設計，  
 測試的保護可以幫助你提早發現
 
-## 下一步是 ？
+## 下一步是
 
 一直以來有那麼多讀書會，上了那麼多課，  
 也有外訓內訓，結果卻是不了了之，
@@ -158,6 +166,7 @@ Sample Case:
 這個實驗我會繼續下去，期待能有好的結果，並帶來一些變化。  
 
 ## 參考
+
 - [marsen/Coding_Dojo_Csharp](https://github.com/marsen/Coding_Dojo_Csharp)
 - [Coding Dojo](http://codingdojo.org/KataCatalogue/)
 

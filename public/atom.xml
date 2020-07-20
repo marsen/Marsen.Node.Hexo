@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-07-01T04:36:52.914Z</updated>
+  <updated>2020-07-20T07:13:11.016Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[A社筆記] KATA 跟本是個屁，練不出什麼鬼東西，不服來戰</title>
+    <link href="https://blog.marsen.me/2020/07/20/2020/kata_in_dojo/"/>
+    <id>https://blog.marsen.me/2020/07/20/2020/kata_in_dojo/</id>
+    <published>2020-07-20T06:27:03.000Z</published>
+    <updated>2020-07-20T07:13:11.016Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>前幾天有個小朋友問我說<br>「想問問 Tennis KATA 練習的重點是重構嗎<br>有沒有什麼重構的目標 ?」  </p><h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>這讓我想起一年前寫的文章，<a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] 在公司小規模玩 Coding Dojo</a><br>順便記錄一下後續，那個實驗大概在三月隨著參與的人員忙碌而停止了，<br>然後在後續有再重啟一次，那次是使用 Production Code 進行，<br>有多一些新的成員，但是也是隨著「忙碌」與「沒時間」而停止，<br>雖然我心裡比較想直接譙那些不出席又不出聲的人渣一些髒話，<br>不過我想這就是現實吧。這也引發我後續<a href="https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/">對 TDD 產鉗的反思</a>。  </p><h2 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h2><h3 id="簡答版"><a href="#簡答版" class="headerlink" title="簡答版"></a>簡答版</h3><p>Kata 可以幫助你學習到。</p><ul><li>需求分析</li><li>寫測試案例</li><li>TDD 與 Unit Test</li><li>找到壞味道與重構</li><li>Design Pattern</li></ul><h3 id="詳答版"><a href="#詳答版" class="headerlink" title="詳答版"></a>詳答版</h3><p>Kata 就是一個簡單的需求，當需求來的時候<br>你必需先作需求分析，透過需求分析找到測試案例。<br>如果你想學習 TDD 你可以試著讓每個測試案例趨動你的代碼生成。<br>也就是說分析測試案例的時候，你要考慮案例的順序與帶來代碼的改變。  </p><p>試著遵守 TDD 的 紅-綠-重構 準則，<br>重構包含「測試代碼」與「產品代碼」，<br>如果是 OO 語言試著去遵循「SOLID原則」，<br>試著自已隨著 Kata 的過程流動可以看到代碼的變化。  </p><p>Design Patten 可以當作目標或指引去重構代碼。<br>不過以 Design Patten 為目標的話，<br>有兩種可能:</p><ol><li>在「需求分析」階段覺察適合的 Patten 透過設計案例來趨動</li><li>在已完成的代碼中覺察適合的 Patten 在不破壞測試的情況下重構(也有可能需要加測試案例)</li></ol><h4 id="原始回答"><a href="#原始回答" class="headerlink" title="原始回答"></a>原始回答</h4><p><img src="/images/2020/7/kata_in_dojo.jpg" alt=""></p><h2 id="新的問題"><a href="#新的問題" class="headerlink" title="新的問題"></a>新的問題</h2><p>要花多少時間才能培育一個懂「OO、TDD、Refactoring、DP」的工程師 ?<br>這個性價比符合嗎 ? 職涯規劃上值得嗎 ?  業界真的有需求嗎 ? 還是只要會剪下貼上就好 ?<br>真正的大公司是這樣開發的嗎 ? 業界很多公司不這樣作不也活得好好的 ?<br>目前的趨勢會更加的專業分工，這些準繩<br>我還沒有答案，但我還在路上。</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;前幾天有個小朋友問我說&lt;br&gt;「想問問 Tennis KATA 練習的重點是重構嗎&lt;br&gt;有沒有什麼重構的目標 ?」  &lt;/
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[閱讀筆記] 回饋隨筆—《SCRUM敏捷實戰手冊》</title>
@@ -496,29 +518,6 @@
       
       
         &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 N 社 4 年了，一直以來都有一個習慣，就是每年都會定期開 CV，&lt;br&gt;有好的機會就去面試看看。&lt;br&gt;部門主管 C 哥在這部份相當開
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[生活筆記] Swing Dance 雜記</title>
-    <link href="https://blog.marsen.me/2019/11/07/2019/swing_dance_log/"/>
-    <id>https://blog.marsen.me/2019/11/07/2019/swing_dance_log/</id>
-    <published>2019-11-07T09:03:56.000Z</published>
-    <updated>2020-04-07T05:38:49.955Z</updated>
-    
-    <content type="html"><![CDATA[<p>學習 Swing 大概滿周年了，最初的理由已經有點忘記了;<br>為了避免忘掉更多東西，還是隨手記錄一下自已的一些小小想法。</p><h2 id="波動的感覺"><a href="#波動的感覺" class="headerlink" title="波動的感覺"></a>波動的感覺</h2><p>在新手期的階段有一件有趣的事，在牽起 Follower 手的時候，<br>大概就知道這個人有沒有跳過舞，基本上會有波動從對方的手傳遞過來，<br>正常來說這個波動應該是上下的，有時候會遇到左右或是扭扭的波動，<br>也有波平如鏡的狀況。</p><p>Lindy 的基本動作之一是 Bounce，它帶來的波動應該是上下，而且是下律動的。<br>所以如果感覺到不太一樣的波，大概可以猜這個人之前有跳過別的舞蹈，<br>準確率還蠻高的，只是現在我好像感覺不太到了。</p><h2 id="與武術的關係"><a href="#與武術的關係" class="headerlink" title="與武術的關係"></a>與武術的關係</h2><p>上面提到了波，就聊聊舞與武的關係，因為不知道為何我腦海總會出現「波動拳」三個字。<br>除了波以外，練基本步跟 Bounce 就好像是在蹲馬步，跟 Follower 練習就好像在練套路(Kata)<br>而 Social 場合就像是賽際過招，年度大型 Event 就是天下武術大會的概念。</p><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>跳舞的目的很抽象，不像其它的運動，有明確的目的，例如把球投進籃子裡或是率先衝過終點線。<br>我給自已訂了一些目標與原則，<br>首先要讓 Follower 感到安全，<br>同時不能讓他感到無聊，整個過程必須是有趣的，<br>最後一定要讓 Follower 跳得好看。<br>如果 Follower 被誇獎跳得很美，Leader 才算成功。</p><h2 id="規則"><a href="#規則" class="headerlink" title="規則"></a>規則</h2><p>一開始學習給的一些自我約束，不一一說明原委，反正我就是喜歡沒事找事作</p><ol><li>不要找同一個人一直跳舞，儘可能每首都換</li><li>全場通殺，小一點的 Social 場合儘量跟每個人都跳到</li><li>Follower 永遠是對的，如果 Follower 跟錯了，想想是不是自已的 Leading 不夠明確</li><li>Last Song , 可以的話最後一首一定要跳</li></ol><h2 id="教室"><a href="#教室" class="headerlink" title="教室"></a>教室</h2><p>Big Apple(BA)、Swing Taiwan(ST)、YM Swing(YM)、Lindy Island(艾倫)、JF Swing(JF)、Naughty Swing</p><p>台北我知道的教室大概就這幾間(2019)，第一次是在 ST 上的，後來時間對不上就去 YM 學了一陣子(半年以上)，<br>Lindy Island 上過一期 Swing Out(四堂)，Naughty Swing 上過一次 Solo 。<br>上面的教室括號內是教室的簡稱，然後我是按照某種神祕規則排序的，不知道有人看得出來嗎 ?</p><h2 id="給一年前的我的建議"><a href="#給一年前的我的建議" class="headerlink" title="給一年前的我的建議"></a>給一年前的我的建議</h2><ol><li>不要先學 Charleston 。</li><li>照教室開課的順序去學，但是覺得困難的話，與其往下上，不如上複習班</li><li>不同教室類似的課通常會錯開，時間許可的話都去上。</li><li>常去 Socail 多聽音樂，練習、練習、練習</li><li>Solo 比想像中的好玩，一定要試試</li><li>Keep Learning</li></ol><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;學習 Swing 大概滿周年了，最初的理由已經有點忘記了;&lt;br&gt;為了避免忘掉更多東西，還是隨手記錄一下自已的一些小小想法。&lt;/p&gt;
-&lt;h2 id=&quot;波動的感覺&quot;&gt;&lt;a href=&quot;#波動的感覺&quot; class=&quot;headerlink&quot; title=&quot;波動的感覺&quot;&gt;&lt;/a&gt;波
       
     
     </summary>
