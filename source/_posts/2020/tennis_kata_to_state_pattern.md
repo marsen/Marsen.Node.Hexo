@@ -17,14 +17,15 @@ Tennis Kata 是我最常練習的一個題目，
 不過我確被定錨了。
 
 今年 5 月上了「測試驅動開發與持續重構」，  
-第一天也有透過 Tennis Kata 展示了一下火力，  
-那個時候講師有提到可以使用 State Pattern 來實作，  
+第一天 91 大也有透過 Tennis Kata 展示了一下火力，  
+那個時候又有提到可以使用 State Pattern 來實作，  
 最近工作上又恰巧有使用到 State Pattern。  
 於是我便決定要試著用 State Pattern 來進行 Tennis Kata 。  
 
 有兩種方法，一種是無到有的 Kata，  
 一種是將現有 Tennis Production Code，  
 透過重構轉換成 State Pattern，  
+這次我選擇從無到有。
 
 ## 第一次失敗
 
@@ -112,6 +113,8 @@ protected abstract void ChangeState();
 ```
 
 這不就恰巧是 `Template Method Pattern` 嗎 ?  
+同樣的手段可以放在 `ReceiverScore` 方法再重構一次。  
+
 實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。
 在學習 Design Pattern 的路上，最難且最重要的不是使用，而是找出適用場景。  
 

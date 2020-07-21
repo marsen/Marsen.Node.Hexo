@@ -96,7 +96,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/2020/tennis_kata_to_state_pattern/">[實作筆記] Tennis KATA 與 State Pattern</a>
+      <a class="article-title" href="/2020/07/21/2020/tennis_kata_to_state_pattern/">[實作筆記] Tennis KATA 與 State Pattern </a>
     </h1>
   
 
@@ -105,8 +105,8 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>Tennis Kata 是我最常練習的一個題目，<br>就我個人而言，這個題目源起 91 大的極速開發，<br>目前最快只有在 17 分左右，使用 Rider with Mac 的話可能還會再慢一些。<br>我很熟悉，所以很少作需求分析，Test Case 也大多有即定的寫法。<br>手動得很快，腦卻不怎麼動了，明明這是一個相當經典的題目，<br>不過我確被定錨了。</p>
-<p>今年 5 月上了「測試驅動開發與持續重構」，<br>第一天也有透過 Tennis Kata 展示了一下火力，<br>那個時候講師有提到可以使用 State Pattern 來實作，<br>最近工作上又恰巧有使用到 State Pattern。<br>於是我便決定要試著用 State Pattern 來進行 Tennis Kata 。  </p>
-<p>有兩種方法，一種是無到有的 Kata，<br>一種是將現有 Tennis Production Code，<br>透過重構轉換成 State Pattern，  </p>
+<p>今年 5 月上了「測試驅動開發與持續重構」，<br>第一天 91 大也有透過 Tennis Kata 展示了一下火力，<br>那個時候又有提到可以使用 State Pattern 來實作，<br>最近工作上又恰巧有使用到 State Pattern。<br>於是我便決定要試著用 State Pattern 來進行 Tennis Kata 。  </p>
+<p>有兩種方法，一種是無到有的 Kata，<br>一種是將現有 Tennis Production Code，<br>透過重構轉換成 State Pattern，<br>這次我選擇從無到有。</p>
 <h2 id="第一次失敗"><a href="#第一次失敗" class="headerlink" title="第一次失敗"></a>第一次失敗</h2><p>總歸來說，需求分析作得不夠徹底，<br>Test Case 設計不良，所以很難自然而然的讓 State 產生</p>
 <p><img src="/images/2020/7/tennis_kata_to_state_pattern_00.jpg" alt="第一次失敗"></p>
 <p>上圖是我第一次畫的 State ，<br>現在回過頭來想想，圖型上其實可以很明顯看出重複的壞味道。<br>但是我當下完全沒有「覺察」，明明是想要消除 if else，<br>卻在 State 裡面產生了大量的 if else。  </p>
@@ -167,7 +167,8 @@ ga('send', 'pageview');
 <p>以 <code>ServerScore</code> 方法為例，<br>本來是在定義在 Abstract Class State 之中的抽像方法，<br>由各個 State (Normal、Same、Deuce、Adv 與 Win)實作，<br>但是我們可以明顯發現， <code>Context.ServerPoint++</code> 是重複的，<br>而 <code>ChangeState</code> 才是真正抽像的地方，<br>所以我們可以在 Abstract Class State 加入以下的方法與抽像方法，  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ServerScore</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Context.ServerPoint++;</span><br><span class="line">    ChangeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">ChangeState</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
 
-<p>這不就恰巧是 <code>Template Method Pattern</code> 嗎 ?<br>實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。<br>在學習 Design Pattern 的路上，最難且最重要的不是使用，而是找出適用場景。  </p>
+<p>這不就恰巧是 <code>Template Method Pattern</code> 嗎 ?<br>同樣的手段可以放在 <code>ReceiverScore</code> 方法再重構一次。  </p>
+<p>實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。<br>在學習 Design Pattern 的路上，最難且最重要的不是使用，而是找出適用場景。  </p>
 <p>也是我比較建議的作法，透過重構自然走向 Pattern，<br>透過限制改變來提昇品質，首先要有測試保護，再找尋場景或壞味道重構，<br>最後讓 Design Pattern 成為指引，讓代碼自動躍然而上。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://refactoring.guru/design-patterns/state" target="_blank" rel="noopener">State Pattern</a></li>
@@ -1054,7 +1055,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2020/07/21/2020/tennis_kata_to_state_pattern/">[實作筆記] Tennis KATA 與 State Pattern</a>
+            <a href="/2020/07/21/2020/tennis_kata_to_state_pattern/">[實作筆記] Tennis KATA 與 State Pattern </a>
           </li>
         
           <li>
