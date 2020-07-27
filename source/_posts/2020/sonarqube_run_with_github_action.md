@@ -28,7 +28,7 @@ SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budge
 1. 一定要可以執行代碼檢查
 2. 要能結合 CI ，我以 Github Action 作為我的主要 CI 工具
 3. 能夠跑測試並輸出測試報告
-4. Buget 刷新
+4. Badge 刷新
 5. 發通知
 
 這篇主要會說明如何結合 CI 執行代碼檢查。  
@@ -47,7 +47,7 @@ SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budge
 
 Administrator > Analysis Method  
 
-![Analysis Methodn](/images/2020/4/sonarqube_run_with_github_action_02.jpg)  
+![Analysis Method](/images/2020/4/sonarqube_run_with_github_action_02.jpg)  
 
 這裡要把 SonarCloud Automatic Analysis 的功能關掉。  
 SonarCloud 支援自動分析語言只有以下
@@ -60,11 +60,11 @@ ABAP, Apex, CSS, Flex, Go, HTML, JS, Kotlin, PHP, Python, Ruby, Scala, Swift, Ty
 
 另外目前支援的 CI 服務有 Circle CI 與 Travis CI ，  
 一樣殘念的是沒有支援 Github Action 。  
-另外兩個選項目是 Other CI 與 Manunlly(手動) 。  
+另外兩個選項目是 Other CI 與 Manunally (手動) 。  
 我的前一篇文章就是使用手動的方式把檢查報告打到 SonarCloud。  
 雖然只隔一年，但 UI 介面上已經有些差距，我還是再作一次介紹。
 
-![Analysis Methodn](/images/2020/4/sonarqube_run_with_github_action_01.jpg)
+![Analysis Method](/images/2020/4/sonarqube_run_with_github_action_01.jpg)
 
 首先先下載 SonarScanner，選擇正確的語言(Others)與OS(Windows)後下載，
 接著設定環境變數  
@@ -100,7 +100,7 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 簡單總結一下
 
 1. 你要有 SonarCloud
-2. 要下載 SonarSanner
+2. 要下載 SonarScanner
 3. 依序執行 Begin > MSBuild > End
 
 另外有一些雷包，在這裡也記錄一下
@@ -152,5 +152,9 @@ dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 
 - [Get started with GitHub.com](https://sonarcloud.io/documentation/integrations/github/)
 - [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan)
+
+## 補充
+
+- [Azure DevOps in Action - 在Build Pipeline當中加入自動化程式碼檢查](https://studyhost.blogspot.com/2020/07/azure-devops-in-action-build-pipeline_26.html?fbclid=IwAR2PXmn_O91Z_duGpn5_z-tKAzvtZGc147omxtCkZDNk0xGRSwKqKRofy3M)
 
 (fin)
