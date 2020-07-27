@@ -15,8 +15,9 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_00.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_01.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_02.jpg">
+<meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_03.jpg">
 <meta property="article:published_time" content="2020-07-21T00:16:27.000Z">
-<meta property="article:modified_time" content="2020-07-21T02:58:06.734Z">
+<meta property="article:modified_time" content="2020-07-27T06:47:23.115Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="Unit Testing">
 <meta property="article:tag" content="TDD">
@@ -168,7 +169,60 @@ ga('send', 'pageview');
 </ul>
 <p><img src="/images/2020/7/tennis_kata_to_state_pattern_02.jpg" alt="Final State"></p>
 <p>最後的狀態會如上圖，當大量的 State 產生之時，心裡真的有點慌慌的，<br>這也是我為什麼覺得這次的 TDD 仍然不算順暢成功，<br>雖然後來收練成 <code>NormalState</code> 時真得很爽。</p>
-<p>另外這次還是有用到一些套路，<br>比如說，用 Dictionary 消除 if else 的手段。<br>另一個則是 <code>Template Method Pattern</code>，<br>讓我們看看以下的 commit  </p>
+<h2 id="第三次成功，仍然不足夠"><a href="#第三次成功，仍然不足夠" class="headerlink" title="第三次成功，仍然不足夠"></a>第三次成功，仍然不足夠</h2><p>參考第二次所作的 State Diagram。<br>可以看到缺少了 Normal to Normal 的線條。<br><img src="/images/2020/7/tennis_kata_to_state_pattern_03.jpg" alt="Final State"></p>
+<table>
+<thead>
+<tr>
+<th>States</th>
+<th>Sample</th>
+<th>Next States</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Same</td>
+<td>0-0,1-1,2-2</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td>0-1,0-2,1-2,1-3</td>
+<td>Same、Normal、Deuce、Win</td>
+</tr>
+<tr>
+<td>Deuce</td>
+<td>3-3,4-4,5-5</td>
+<td>Advantage</td>
+</tr>
+<tr>
+<td>Advantage</td>
+<td>3-4,5-6</td>
+<td>Deuce、Win</td>
+</tr>
+<tr>
+<td>Win</td>
+<td>5-3,5-7</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>參考上表製作測試案例，<br>這裡我想強調的是狀態改變的動線，<br>狀態由 Same 開始。</p>
+<p>簡單筆記一下測試與重構的幾個亮點<br>完整的 commit 可以從 <a href="https://github.com/marsen/Marsen.NetCore.Dojo/commits/Kata/TennisWithStatePattern2?before=af1303f38d61abc0dba0a965e5dfadf55bc08ccd+105" target="_blank" rel="noopener">d792b2e</a>開始看</p>
+<h3 id="Highlight-Test-Cases"><a href="#Highlight-Test-Cases" class="headerlink" title="Highlight Test Cases"></a>Highlight Test Cases</h3><p>測試的案例的設計會依 State Diagram 的箭頭來設計，<br>也就是狀態的改變，初始狀態為 Same 比分為 0 - 0 ，<br>並透過 Design Pattern 重構出 SameState 。</p>
+<p>第二個測試案例也很簡單，<br>因為 SameState 只會往 NormalState 移動，<br>所以只要使用 1 - 0 或是 0 - 1 這個案例，我就可以建立出 NormalState 類別。<br>並且可以觀察到兩個 State 的共通性，這個時候就會重構出 IState 介面。</p>
+<p>一樣看圖開發，<br>NormalState 是最為複雜的一個狀態，他的狀態可能為  </p>
+<ul>
+<li>保持原樣 : Normal</li>
+<li>退回平手 : Same</li>
+<li>進入決勝 : Deuce</li>
+<li>直接獲勝 : Win</li>
+</ul>
+<p>而剩下的狀態都算是相當簡單，<br>Win 的狀態不會再改變，<br>Deuce 只會往 Adv 狀態前進，<br>Adv 是相對複雜的狀態，可能變成 Win 也可能降回 Deuce ，<br>此外與 Normal 並沒有任何的相關聯，所以在案例設計上，應該放比較後面。</p>
+<p>第三個案例，我會讓 Normal 變回 Same ，除了可以完成一條狀態改變的路徑外，<br>好處是我不用新增類別，作到最小異動。<br>一開始我的邏輯會放在 GameContext 之中，但是不論是依循著 Design Pattern 的設計，<br>或是單純考量職責，理應都會很自然將這裡的邏輯移至 NormalState 之中。<br>這裡案例會選用 1-1 。</p>
+<p>但是要將邏輯移到 NormalState 之中時，會面臨一個問題。<br>原本在 GameContext 之中的 ServerPoint(發球者得分數) 與 ReceiverPoint(接球者得分數) ，<br>在 Normal State 之中也要能夠被取得，一樣依循 Design Pattern 的話，<br>將會在 Normal State 之中建立 SetContext 方法。<br>但是我們在比賽初始階段就需要 SetContext ，<br>也就是說 SameState 其實不用 ServerPoint 或 ReceiverPoint 的資訊。<br>但是因為我們相依於介面 IState 之上，導致 Normal 或 Same 都要實作 SetContext 方法。</p>
+<p>再進一步，SetContext 在不同的 State 實作上是不會有變化的，<br>所以我會轉換 IState 為抽像類別 State。</p>
+<p>接下來我選擇了 0 - 1 、0 - 2 、0 - 3 等案例，<br>這裡實作的是 Normal to Normal 的狀態改變(其實是沒變)，透過 Dictionary 消除 if 的手法就略過不提。<br>但是也許下次我不會急著完成 Normal State 而是先完成 Win 與 Deuce 。</p>
+<p>接下來讓 3 - 3 這個案例，帶我們走到 Deuce State，<br>稍微繞了一點路作 4 - 4 這個案例，雖然一樣是 Deuce State，<br>但是從 3 - 3 走到 4 - 4 必須經過 Adv State ，我一開始的設計案例上並沒有考量清楚。<br>4 - 4 的案例應該是 Adv 回到 Deuce 的這條路。<br>最後再將透過案例 5 - 3 讓 Adv 走到 Win 與 案例 4 - 1 讓 Normal 走到 Win 就可以結束主要的流程了。</p>
+<p>收官的部份就是簡單的重構，與補足一些特殊比分的案例，<br>特別要注意的是 Normal State 的 Score 仍然有許多的 if 讓我想重構移除。<br>此外，State Pattern 會特別重視得分的順序，<br>比如說 100 - 100 這種極端案例，交互得分的情況會忠實呈現在 State Pattern 之中。<br>所以在測試時，就要特別注意得分的順序性 ; 我想這意味著產品代碼也是應該有此特性才對。</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>這次還是有用到一些常用的重構套路，<br>比如說，用 Dictionary 消除 if else 的手段。<br>另一個則是 <code>Template Method Pattern</code>，<br>讓我們看看以下的 commit  </p>
 <ul>
 <li><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/e8ddf89fdee94d6a82115f4449e213a4874269f8" target="_blank" rel="noopener">e8ddf8</a></li>
 <li><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/145d3cb408ed5b39a729c4a9b22fb6744b62c48f" target="_blank" rel="noopener">145d3c</a></li>
