@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2019/5/sonarcloud_command.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2019/5/sonarcloud_result.jpg">
 <meta property="article:published_time" content="2019-05-16T09:13:18.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:19:53.311Z">
+<meta property="article:modified_time" content="2020-04-29T17:41:11.551Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content=".Net Framework">
 <meta property="article:tag" content="實作筆記">
@@ -147,7 +147,7 @@ ga('send', 'pageview');
 <li><p>啟動掃瞄，以 .Net Core 為例</p>
 </li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> begin /k:<span class="string">&quot;&#123;project name&#125;&quot;</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">&quot;https://sonarcloud.io&quot;</span> /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
@@ -163,7 +163,7 @@ ga('send', 'pageview');
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> end /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>輸出結果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner <span class="keyword">for</span> MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner <span class="keyword">for</span> MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>

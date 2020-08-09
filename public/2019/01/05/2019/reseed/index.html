@@ -5,15 +5,15 @@
   
   <title>[實作筆記]查找與重建 Table 的索引值 | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="查詢指定 Table 目前的索引值 DBCC CHECKIDENT (yourtable) Example 1234USE AdventureWorks2012;  GO  DBCC CHECKIDENT (&#39;Person.AddressType&#39;);  GO  DBCC CHECKIDENT (memberAccount)  重新建立你的索引值 DBCC CHECKIDENT (yourtabl">
+  <meta name="description" content="查詢指定 Table 目前的索引值 DBCC CHECKIDENT (yourtable) Example 1234USE AdventureWorks2012;  GO  DBCC CHECKIDENT (&amp;#x27;Person.AddressType&amp;#x27;);  GO  DBCC CHECKIDENT (memberAccount)  重新建立你的索引值 DBCC CHECKIDENT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記]查找與重建 Table 的索引值">
 <meta property="og:url" content="https://blog.marsen.me/2019/01/05/2019/reseed/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="查詢指定 Table 目前的索引值 DBCC CHECKIDENT (yourtable) Example 1234USE AdventureWorks2012;  GO  DBCC CHECKIDENT (&#39;Person.AddressType&#39;);  GO  DBCC CHECKIDENT (memberAccount)  重新建立你的索引值 DBCC CHECKIDENT (yourtabl">
+<meta property="og:description" content="查詢指定 Table 目前的索引值 DBCC CHECKIDENT (yourtable) Example 1234USE AdventureWorks2012;  GO  DBCC CHECKIDENT (&amp;#x27;Person.AddressType&amp;#x27;);  GO  DBCC CHECKIDENT (memberAccount)  重新建立你的索引值 DBCC CHECKIDENT">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-01-05T05:13:29.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:19:53.313Z">
+<meta property="article:modified_time" content="2020-04-29T17:41:11.551Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="SQL">
 <meta property="article:tag" content="實作筆記">
@@ -111,11 +111,11 @@ ga('send', 'pageview');
         <p>查詢指定 Table 目前的索引值</p>
 <p>DBCC CHECKIDENT (yourtable)</p>
 <p>Example</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">DBCC CHECKIDENT ('Person.AddressType');  </span><br><span class="line">GO  DBCC CHECKIDENT (memberAccount)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">DBCC CHECKIDENT (&#x27;Person.AddressType&#x27;);  </span><br><span class="line">GO  DBCC CHECKIDENT (memberAccount)</span><br></pre></td></tr></table></figure>
 
 <p>重新建立你的索引值</p>
 <p>DBCC CHECKIDENT (yourtable, reseed, new index)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">DBCC CHECKIDENT ('Person.AddressType', RESEED, 10);  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">DBCC CHECKIDENT (&#x27;Person.AddressType&#x27;, RESEED, 10);  </span><br><span class="line">GO  </span><br></pre></td></tr></table></figure>
 
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://docs.microsoft.com/zh-tw/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?view=sql-server-2017" target="_blank" rel="noopener">DBCC CHECKIDENT (Transact-SQL)</a></li>

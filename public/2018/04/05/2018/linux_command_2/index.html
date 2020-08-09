@@ -13,7 +13,7 @@
 <meta property="og:description" content="上一篇我們學會一些基本 linux command,接下來我們將介紹更多的命令並組合它們到 shell script.讓 script 幫助我們完成一些事, 就像魔法一般, 開始囉.   補充指令vim開啟 vim 編輯器echo印出文字 $ echo “text”text  印出變數 echo $*印出PID (Process ID) echo $$set設定變數 $ set good morn">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2018-04-05T07:53:23.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:37:12.023Z">
+<meta property="article:modified_time" content="2020-04-29T17:41:11.547Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="Unix">
 <meta property="article:tag" content="Linux">
@@ -133,7 +133,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>$ vim helloworld.sh</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo &quot;hello world&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>執行檔案</p>
 </li>
@@ -147,14 +147,14 @@ ga('send', 'pageview');
 <li>使用 <code>$</code>+變數名呼叫變數</li>
 </ol>
 <p>sample:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo &quot;who are you?&quot;</span><br><span class="line">read name</span><br><span class="line">echo &quot;Hi, $name nice to see you.&quot;</span><br></pre></td></tr></table></figure>
 
 <p>executed:</p>
 <blockquote>
 <p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
 </blockquote>
 <h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "keyin a filename"</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo &quot;keyin a filename&quot;</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name&quot;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>$ sh rename.sh file1<br>keyin a filename<br>newfile<br>newfile</p>
