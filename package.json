@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "4.2.0"
+    "version": "4.2.1"
   },
   "dependencies": {
     "hexo": "^4.2.0",
@@ -21,8 +21,8 @@
     "hexo-tag-youku": "^1.0.2"
   },
   "devDependencies": {
-    "ajv": "^6.12.0",
-    "ajv-keywords": "^3.4.1",
+    "ajv": "^6.12.3",
+    "ajv-keywords": "^3.5.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "minimist": "^1.2.5"
