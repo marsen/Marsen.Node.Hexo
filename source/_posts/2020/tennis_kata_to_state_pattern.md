@@ -91,6 +91,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 
 參考第二次所作的 State Diagram。  
 可以看到缺少了 Normal to Normal 的線條。  
+第三次將它補上了。
 ![Final State](/images/2020/7/tennis_kata_to_state_pattern_03.jpg)
 
 | States   | Sample           | Next States             |
@@ -111,60 +112,63 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 ### Highlight Test Cases
 
 測試的案例的設計會依 State Diagram 的箭頭來設計，  
-也就是狀態的改變，初始狀態為 Same 比分為 0 - 0 ，  
-並透過 Design Pattern 重構出 SameState 。
+也就是狀態的改變，**初始狀態為 `SameState` 比分為 0 - 0** ，  
+並將 Design Pattern 作為指引重構出 `SameState` 。
 
-第二個測試案例也很簡單，  
-因為 SameState 只會往 NormalState 移動，  
-所以只要使用 1 - 0 或是 0 - 1 這個案例，我就可以建立出 NormalState 類別。
-並且可以觀察到兩個 State 的共通性，這個時候就會重構出 IState 介面。
+**第二個測試案例**也很簡單，  
+因為 `SameState` 只會往 `NormalState` 移動，  
+所以只要使用 1 - 0 或是 0 - 1 這個案例，我就可以建立出 `NormalState` 類別。
+並且可以觀察到兩個 State 的共通性，這個時候就會重構出 `IState` 介面。
 
 一樣看圖開發，  
-NormalState 是最為複雜的一個狀態，他的狀態可能為  
+`NormalState` 是最為複雜的一個狀態，他的狀態可能為  
 
-- 保持原樣 : Normal
-- 退回平手 : Same
-- 進入決勝 : Deuce
-- 直接獲勝 : Win
+- 保持原樣 : `NormalState`
+- 退回平手 : `SameState`
+- 進入決勝 : `DeuceState`
+- 直接獲勝 : `WinState`
 
 而剩下的狀態都算是相當簡單，  
-Win 的狀態不會再改變，  
-Deuce 只會往 Adv 狀態前進，
-Adv 是相對複雜的狀態，可能變成 Win 也可能降回 Deuce ，
-此外與 Normal 並沒有任何的相關聯，所以在案例設計上，應該放比較後面。
+`WinState` 的狀態不會再改變，  
+`DeuceState` 只會往 `AdvState` 狀態前進，
+`AdvState` 是相對複雜的狀態，可能變成 `WinState` 也可能降回 `DeuceState` ，
+與 `NormalState` 並沒有直接的關聯路徑，所以在案例設計上，應該放比較後面。
 
-第三個案例，我會讓 Normal 變回 Same ，除了可以完成一條狀態改變的路徑外，  
+**第三個案例**，我會讓 `NormalState` 變回 `SameState`，除了可以完成一條狀態改變的路徑外，  
 好處是我不用新增類別，作到最小異動。
 一開始我的邏輯會放在 GameContext 之中，但是不論是依循著 Design Pattern 的設計，  
-或是單純考量職責，理應都會很自然將這裡的邏輯移至 NormalState 之中。
-這裡案例會選用 1-1 。
+或是單純考量職責，很自然地將這裡的邏輯移至 `NormalState` 之中。
+**這裡案例會選用 1-1** 。
 
-但是要將邏輯移到 NormalState 之中時，會面臨一個問題。  
-原本在 GameContext 之中的 ServerPoint(發球者得分數) 與 ReceiverPoint(接球者得分數) ，
-在 Normal State 之中也要能夠被取得，一樣依循 Design Pattern 的話，  
-將會在 Normal State 之中建立 SetContext 方法。
-但是我們在比賽初始階段就需要 SetContext ，  
-也就是說 SameState 其實不用 ServerPoint 或 ReceiverPoint 的資訊。
-但是因為我們相依於介面 IState 之上，導致 Normal 或 Same 都要實作 SetContext 方法。
+但是要將邏輯移到 `NormalState` 之中時，會面臨一個問題。  
+`NormalState` 之中，為了判斷是否會回到 `SameState`，
+需要知道 GameContext 的資訊 ( ServerPoint 與 ReceiverPoint )，  
+依循 Design Pattern 的指引，  
+將會在 `IState` 之中建立 SetContext 方法。
+儘管 `SameState` 其實不用 ServerPoint 或 ReceiverPoint 的資訊。
+但是因為我們相依於介面 `IState` 之上，導致 `NormalState` 或 `SameState` 都要實作 SetContext 方法。
 
 再進一步，SetContext 在不同的 State 實作上是不會有變化的，  
-所以我會轉換 IState 為抽像類別 State。
+所以我會轉換 `IState` 為抽像類別 `State`。
+而我也需要在比賽初始時呼蹈後 SetContext 並將初始狀態設為 `SameState`
 
-接下來我選擇了 0 - 1 、0 - 2 、0 - 3 等案例，  
+**案例 4、5、6 我選擇了 0-1 、0-2 、0-3 等案例**，  
 這裡實作的是 Normal to Normal 的狀態改變(其實是沒變)，透過 Dictionary 消除 if 的手法就略過不提。  
-但是也許下次我不會急著完成 Normal State 而是先完成 Win 與 Deuce 。
+但是也許下次我不會急著完成 `NormalState` 而是先完成 `WinState` 與 `DeuceState` 。
 
-接下來讓 3 - 3 這個案例，帶我們走到 Deuce State，
-稍微繞了一點路作 4 - 4 這個案例，雖然一樣是 Deuce State，  
-但是從 3 - 3 走到 4 - 4 必須經過 Adv State ，我一開始的設計案例上並沒有考量清楚。  
-4 - 4 的案例應該是 Adv 回到 Deuce 的這條路。
-最後再將透過案例 5 - 3 讓 Adv 走到 Win 與 案例 4 - 1 讓 Normal 走到 Win 就可以結束主要的流程了。
+**接下來讓 3-3 這個案例，帶我們走到 `DeuceState`**，
+稍微繞了一點路作 4-4 這個案例，雖然一樣是 `DeuceState`，  
+我一開始的設計案例上並沒有考量清楚，從 3-3 走到 4-4 必須經過 `AdvState`，  
+下次應該先選擇 **3-4 或 4-3 的案例**，  
+再透過 **4-4 的案例**實作 `AdvState` 回到 `DeuceState` 的這條路徑。  
+最後再將透過**案例 5-3 讓 `AdvState` 走到 `WinState`** 與 **案例 4-1 讓 `NormalState` 走到 Win** 就可以結束主要的流程了。
 
 收官的部份就是簡單的重構，與補足一些特殊比分的案例，  
-特別要注意的是 Normal State 的 Score 仍然有許多的 if 讓我想重構移除。
-此外，State Pattern 會特別重視得分的順序，  
-比如說 100 - 100 這種極端案例，交互得分的情況會忠實呈現在 State Pattern 之中。
-所以在測試時，就要特別注意得分的順序性 ; 我想這意味著產品代碼也是應該有此特性才對。
+特別要注意的是 `NormalState` 的 Score 仍然有許多的 if 讓我想重構移除，
+目前暫時沒有想法。
+此外，實際上 Tennis 會特別重視得分的順序，  
+比如說 **100-100 Deuce 這種極端案例**，交互得分的情況應忠實呈現在測試之中。
+所以在寫測試時，就要特別注意得分的順序性。
 
 ## 後記
 
@@ -197,10 +201,10 @@ protected abstract void ChangeState();
 同樣的手段可以放在 `ReceiverScore` 方法再重構一次。  
 
 實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。
-在學習 Design Pattern 的路上，最難且最重要的不是使用，而是找出適用場景。  
+在學習 Design Pattern 的路上，不是硬套，而是找出適用場景。  
 
 也是我比較建議的作法，透過重構自然走向 Pattern，  
-透過限制改變來提昇品質，首先要有測試保護，再找尋場景或壞味道重構，  
+透過限制改變來提昇品質，首先要有測試保護，再找尋套路或壞味道重構，  
 最後讓 Design Pattern 成為指引，讓代碼自動躍然而上。
 
 ## 參考

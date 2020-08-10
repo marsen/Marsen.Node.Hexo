@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.imgur.com/Dw2yIvG.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png">
 <meta property="article:published_time" content="2018-08-28T06:27:21.000Z">
-<meta property="article:modified_time" content="2020-03-08T09:31:52.206Z">
+<meta property="article:modified_time" content="2020-04-07T05:38:49.932Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="CDN">
 <meta property="article:tag" content="AWS">
@@ -53,7 +53,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -203,7 +203,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></p
 <li>CorsModule，有必要區分protocol嗎 ?</li>
 </ol>
 <p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt="">    </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">&quot;http:&quot;</span>, <span class="string">&quot;https:&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">"http:"</span>, <span class="string">"https:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="問題處理經過"><a href="#問題處理經過" class="headerlink" title="問題處理經過"></a>問題處理經過</h3><ol>
 <li><p>第一時間 QA 有看到異常， 但是在 PO 的環境無法重現 ，<br>RD 初步判斷為快取的問題， 並嚐試重現錯誤 。</p>
