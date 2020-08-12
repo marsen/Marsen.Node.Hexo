@@ -14,7 +14,7 @@ Tennis Kata 是我最常練習的一個題目，
 目前最快只有在 17 分左右，使用 Rider with Mac 的話可能還會再慢一些。  
 我很熟悉，所以很少作需求分析，Test Case 也大多有即定的寫法。  
 手動得很快，腦卻不怎麼動了，明明這是一個相當經典的題目，  
-不過我確被定錨了。
+不過我卻被定錨了。
 
 今年 5 月上了「測試驅動開發與持續重構」，  
 第一天 91 大也有透過 Tennis Kata 展示了一下火力，  
@@ -47,7 +47,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 如上圖，我蠻粗暴的將所有比分轉換成可能的 State，  
 一樣我沒有注意到重複，但是比較起第一次的失敗，  
 這次的狀態機是將所有可能的狀態攤平，  
-當初會這樣作是為了符合 Tennis 的規則。
+這樣作是為了符合 Tennis 的規則。
 
 ### Test Cases
 
@@ -84,8 +84,9 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 ![Final State](/images/2020/7/tennis_kata_to_state_pattern_02.jpg)
 
 最後的狀態會如上圖，當大量的 State 產生之時，心裡真的有點慌慌的，  
-這也是我為什麼覺得這次的 TDD 仍然不算順暢成功，  
-雖然後來收練成 `NormalState` 時真得很爽。
+這次的 TDD 仍然不算順暢成功，設計階段就可以在腦中模擬的問題，
+我拖到了開發階段，雖然後來收斂成 `NormalState` 時頗有一回事，
+但如果在實務上，這段不確定且發散的時間仍然是太長。
 
 ## 第三次成功，仍然不足夠
 
@@ -104,7 +105,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 
 參考上表製作測試案例，
 這裡我想強調的是狀態改變的動線，  
-狀態由 Same 開始。
+狀態由 `SameState` 開始。
 
 簡單筆記一下測試與重構的幾個亮點
 完整的 commit 可以從 [d792b2e](https://github.com/marsen/Marsen.NetCore.Dojo/commits/Kata/TennisWithStatePattern2?before=af1303f38d61abc0dba0a965e5dfadf55bc08ccd+105)開始看
