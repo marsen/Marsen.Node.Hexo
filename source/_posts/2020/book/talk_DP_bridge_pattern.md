@@ -276,12 +276,15 @@ public class HandsetNBrandGame
 
 ```
 
+![完成](/images/2020/8/talk_DP_bridge_pattern_02.jpg)
+
 ## Recap
 
 1. 修剪枝葉，
 2. 製造重複，重構並產出 `Implementor`
 3. 如果橋接的兩端有需要傳遞的資訊，考慮使用方法參數
 4. `Abstraction` 抽象呼叫 `Implementor` 來建立橋接
+![Bridge](/images/2020/8/talk_DP_bridge_pattern_03.jpg)
 
 ## 參考
 
