@@ -12,8 +12,8 @@ tag:
 因緣繼會下參加了一個線上讀書會，  
 讀的是一本老書，[「大話設計模式」](https://www.tenlong.com.tw/products/9789866761799)，
 簡體書應該是 2007 年出版，但是國內有繁體書，  
-我應該是在 2010 年左右入手這本書的，號稱簡單易懂，  
-當時應該也是翻了幾遍。
+我是在 2010 年左右入手這本書的，號稱簡單易懂，  
+當時翻了幾遍，但是對 DP 與 OOP 並沒有很深刻的認知。
 
 如果對 OOP 沒有什概念的人，這本書的附錄也有簡單的介紹。
 算是適合當作入門的書。
@@ -26,7 +26,7 @@ tag:
 ## 本書小得
 
 這篇 blog 主要是寫書中的第 22 章--橋接模式，  
-但是我想提一下心得，也許之後會寫別得章節，也許不會，  
+但是我想提一下心得，也許之後會寫別的章節，也許不會，  
 但心得就先收錄在這裡了。  
 
 首先是這本書面向的讀者應該是小菜，  
@@ -41,9 +41,9 @@ tag:
 
 第三點，網路上有簡體版的書在流通，但是用語與正體中文有所差異。  
 
-基於以上 3 點，想讀這本書的人可以考慮一下，  
-或許結合一些其它的書或是網路資源，  
-對你可以來說可以有更好的理解。  
+想讀這本書的人參考一下上述幾點，  
+或許結合一些其它的書籍或是網路資源，  
+對你來說可以對設計模式有更好的理解。  
 
 ## 橋接模式
 
@@ -291,5 +291,6 @@ public class HandsetNBrandGame
 - <https://refactoring.guru/design-patterns/bridge>
 - <https://sourcemaking.com/design_patterns/bridge>
 - <https://simpleprogrammer.com/design-patterns-simplified-the-bridge-pattern/>
+- [深入淺出 Design Pattern](https://www.tenlong.com.tw/products/9789867794529)
 
 (fin)
