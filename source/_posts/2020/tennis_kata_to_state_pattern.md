@@ -5,6 +5,8 @@ tag:
     - TDD
     - Unit Testing
     - 實作筆記
+    - OOP
+    - Design Pattern
 ---
 
 ## 前情提要
