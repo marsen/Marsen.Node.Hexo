@@ -116,7 +116,7 @@ date: 2020/08/29 13:03:47
 往廣度延伸或是往深度延伸，或是擴及整個產業，  
 而我的看法是當這個產業，越多人參與且越多人討論的時候，就會越健全。
 
-可以參考[CSScoke Amos](https://www.youtube.com/embed/B5alI7bYwHw)的直播，
+可以參考 [CSScoke Amos](https://www.youtube.com/embed/B5alI7bYwHw) 的直播，
 有這樣的討論是很好的，也可以看出來，軟體的教學方式與系統還有很多嚐試與調整的空間，  
 看看[網頁 15 天 Taker(道歉與回應)](https://www.youtube.com/watch?v=wqB8w1osofY)
 而軟體業就我的觀察仍在茁壯擴展之中，並且深入百業之中，但人學習的速度確漸漸的跟不上了。
