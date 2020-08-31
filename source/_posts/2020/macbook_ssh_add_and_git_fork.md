@@ -9,7 +9,7 @@ tag:
 
 最近轉換了一下跑道 ，  
 剛好又了一點時間就想說順便換一下 OS 學一點新東西，
-就敗了一台 Macbook ， 這幾天就忙著整理開發環境 。  
+就敗了一台 MacBook ， 這幾天就忙著整理開發環境 。  
 在 ssh 上卡住了點 ， 就作點記錄順便上來提問 。
 
 ## 情境
@@ -19,7 +19,7 @@ tag:
 
 ![fork](/images/2020/3/030901_fork_setting_ssh.png)  
 
-於是我很輕鬆娛快的設定了一組 ssh key 我命名為 `Macbook`  
+於是我很輕鬆娛快的設定了一組 ssh key 我命名為 `MacBook`  
 也可以很正常的在 fork 裡面作一些 git 的操作 ，  
 比如說 fetch push pull 等。
 
@@ -37,7 +37,7 @@ Please make sure you have the correct access rights and the repository exists.
 
 很明顯是權限不足的原因。
 但是我查找了 `~/.ssh` 資料夾 ，  
-我設定的 private key `Macbook` 確實存在。  
+我設定的 private key `MacBook` 確實存在。  
 
 所以我透過一個指令來取得更多資訊
 
@@ -64,7 +64,7 @@ git@github.com: Permission denied (publickey).
 
 幾個奇怪的地方
 一個是 identity file 或是 Trying private key 的檔案我都找不到 ，
-另一個奇怪的點是 `~/.ssh/Macbook` 這組我剛剛建立的 private key 明明存在 ，  
+另一個奇怪的點是 `~/.ssh/MacBook` 這組我剛剛建立的 private key 明明存在 ，  
 我確找不到他顯示在 identity file 或是 Trying private key 的記錄之中
 總而言之，最後的訊息仍然是
 
@@ -74,7 +74,7 @@ git@github.com: Permission denied (publickey).
 
 ## 解決方法
 
-指令 `ssh-add -K Macbook` 執行後， 就可正常運作。
+指令 `ssh-add -K MacBook` 執行後， 就可正常運作。
 小小猜測一下 ， 應該是 fork 運作的環境與一般 terminal 的環境有所差異，  
 所以需要額外透過指令加上 private key 才能夠執行。
 
