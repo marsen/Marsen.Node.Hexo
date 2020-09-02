@@ -8,20 +8,22 @@ tag:
 
 ### Scrum Master
 
-哪些人適合作 Scrum Master ?   
+哪些人適合作 Scrum Master ?  
 常見組織轉型時會直覺的找現有的角色作 Scrum Master ，  
-但是 Scrum Master 是一個 **Couching** 的角色，  
-傳統公司裡面並沒有 **Couching** 的角色，通常都行不通的。  
+但是 Scrum Master 是一個 **Coaching** 的角色，  
+傳統公司裡面並沒有 **Coaching** 的角色，通常都行不通的。  
 
 ![&#x5F9E; Manager Driven &#x8B8A;&#x6210; Custom Driven](/images/2018/csm/day_2/closer_customer.jpg)
 
 > 傳統公司裡面的 Manager ，要麼是 R&D 的 Manager ，要麼是 PMO 的 Manager。通常會有幾個問題  
-> 1. R&D 通常由資深RD升上來，但是不善於管理\(彼得效應\)  
+>
+> 1. R&D 通常由資深RD升上來，但是不善於管理\(彼得效應\)
 > 2. PMO 會有自已與部門的考績考量，而這不一定能瞄準市場目標  
 > 3. 通常工作都會由 Manager 分派，而不是由成員主動爭取  
 > 4. 失敗的時候，總要有人背鍋，那個人就是 Manager \(但是實務上常常看到 Manager 丟鍋給成員\)  
-> ~~5. 不太關注成員的成長。~~\(好啦，也許有的有\)  
+> 5. ~~不太關注成員的成長。~~\(好啦，也許有的有\)  
 > 6. Manager 要作太多的決策
+>
 
 ### Scrum Master 不是 Decision maker
 
@@ -57,7 +59,7 @@ Scrum Master 的責任
 * Coach PO
 
   * 消除客戶與開發之間的障礙
-  * 教導 PO 如何透過 Scrum 最有效率達到目標\(How to maximize ROI and meet their objectives through Scrum \) 
+  * 教導 PO 如何透過 Scrum 最有效率達到目標\(How to maximize ROI and meet their objectives through Scrum \)  
 
   以下圖來說，Y 軸代表價值，X 軸代表時間。上圖的策略表示產品初期就發佈高價值的增量，  
   隨著時間過去，單位時間能帶來的價值太少時，也許我們就不作了\(虛線之後\)，因為不符成本。  
@@ -69,23 +71,21 @@ Scrum Master 的責任
 ![&#x5169;&#x7A2E;&#x4E0D;&#x540C;&#x7684;&#x8FED;&#x4EE3;&#x7B56;&#x7565;](/images/2018/csm/day_2/increment_pattern.jpg)
 
 * Coach Team
-  * Improving the lives of the development team by facilitating creativity and empowerment　
+  * Improving the lives of the development team by facilitating creativity and empowerment  
   * 以任何可能的方式提高開發團隊的生產力
 
     團隊常見的兩個問題，作太少或是作不完。可以嚐試一些工程實踐，但是別忘了工程實踐的目的是讓 Sprint Done。  
     比如說：  
 
-
     > mini-waterfall的流程可能會導致 Item 作不完，原因是 Testing 的角色在最後面才會進來，會有 Items 作不完，  
     > 提早發現其實是件好事，不論是**全都作不完**、**高優先權的作不完**或是**低優先權的全都作完**都是很好的干預點，  
     > 只要在 Retrospective 將作不完的東西攤開\(透明\)，分析問題就可以有機會改善
-
+    >
     > 引入不同的流程、開發方式都會有一個學習與生存的焦慮在裡面。可以透過 Coaching 降低學習焦慮，  
     > 你要尋找適合的人選與資源，這是 Scrum Master 的職責。  
     > 有的團隊的抗拒會比較強，Scrum Master 要找好時機進行，例如：Sprint 失敗時。  
 
-  * Improving the engineering practices and tools so each increment of functionality is potentially shippiable。   
-
+  * Improving the engineering practices and tools so each increment of functionality is potentially shippable。  
 
     > 實例化需求\(SBE\)、驗收趨動開發\(ATDD\)  
     > 實踐上怎麼作呢 ?  
@@ -108,7 +108,7 @@ Question:
 1. Item1、Item2、Item3 會改到同一個模塊，所以 RD 會習慣同時開發(F2E反應)
 2. 沒有持續集成(CI)，或是 CI 不包含自動化測試怎麼辦？
     - 如何快速寫出一個自動化測試試？
-** 
+**
 ```
 
 ### 問一個問題，**「什麼讓我們慢下來**？，**什麼讓我們不能更快？」**
@@ -117,7 +117,7 @@ Question:
 
 小結：
 
-* Scrum Master 要讓團隊與 PO 深入理解 Scrum 
+* Scrum Master 要讓團隊與 PO 深入理解 Scrum  
 * Scrum Master 就像是牧羊犬要保護羊群\(團隊\)，因為會有狼\(插件or something...，或是羊群裡有狼\)
 * Scrum Master 不作決策，更多是關心決策的過程甚於決策本身
 * 具有生產力的團隊就是 Scrum Master 的產出
@@ -138,7 +138,7 @@ Question:
      * 放進下面幾個 Sprint Backlog。
      * 放進 Product Backlog。
      * 很異常的情況，才會終止 Sprint。
-   * Scrum Master 要關注 Root Cause 
+   * Scrum Master 要關注 Root Cause  
 3. 保持團隊與 Product Owner 的連結
    * 有時候 Product Owner 也身不由已。
    * 如果 Product Owner 不在決策圈或未被授權，要了解背後的原因。
@@ -150,7 +150,7 @@ Question:
 6. 不要讓團隊與 Product Owner 成為甲方乙方。
 7. 讓團隊自已挑選工作，而不是分派工作。
 8. 觀注事實。
-   * 團隊的 Velocity 
+   * 團隊的 Velocity  
    * 上個 Sprint 完成的點數
    * 誠實面對失敗\( _柯語錄:面對挫折打擊不是最困難的；最困難的是面對各種挫折打擊，卻沒有失去對人世的熱情_\)。
    * 思考著如何讓 Product 的 Impact 發生
@@ -199,16 +199,16 @@ Solution：
 不要反射性的去解決問題，讓子彈飛一會兒…。
 
 * 讓問題變透明，讓團隊看見問題
-* 不急著干預，試著讓團隊自行解決問題 
+* 不急著干預，試著讓團隊自行解決問題  
 * 讓 Team 與 PO 直接交流，不要成為 PO 與 Team 的傳話筒。
 * 要保持「意識」，不要條件反射去干預，要克服這個心魔。
 
-Real Team 
+Real Team  
 
 * 所有人的目標是一致的，而不是臨時組成的一群人。
 * 俱備 End to End 的完整。
 * 有限的人數，Scrum 建議 5~9 人。
-* Mutual accountability 
+* Mutual accountability  
 * Agreed way of working
 
 ![Scrum Team &#x662F;&#x81EA;&#x7D44;&#x7E54;&#x7684;&#x5718;&#x968A;](/images/2018/csm/day_2/authority_matrix.jpg)
@@ -216,26 +216,25 @@ Real Team
 一個好的 Scrum Master 的產品是 Well-Working Team， 這需要時間\(以年計算…\)。  
 如何打造一個 Team ，這比 Scrum Maser 有更多的討論，但是實務上在成為 Scrum Master 時，大多數人打造 Team 的基本功是缺乏的\(彼得原理？\)，這需要更多的學習…
 
-##### 參考：
+## 參考
 
 * [\[N社筆記\] 敏捷路上跌倒站起來 2018/11/1](https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/)
 * [\[閱讀筆記\] The Great Scrum Master 第一章](https://blog.marsen.me/2018/07/15/books/book_the_great_scurm_master_ch1/)
 * [The role of the Scrum Master – Part I](https://stayrelevant.globant.com/en/the-role-of-the-scrum-master-part-i/)
 
-
-##### 心得小結:
+## 心得小結
 
 1. 還好上課有記錄，課程很有料，過了一個月想法仍源源不絕的出來。
-2. 你可以繼續 Scurm 自助餐，但是那個不是 Scurm 不是守破離。
+2. 你可以繼續 Scrum 自助餐，但是那個不是 Scrum 不是守破離。
 3. 一邊觀察 N 社團隊的運作一邊寫筆記，Change My Company。
-4. Gitbook 也很方便的筆記工具，寫完後同步到 Github 就能拿到九成完美的 markdown 。
-5. Scurm 給團隊更多職責，所以團隊要更強才行。
-6. Corss Learning 不僅僅是溝通層面而已，而是為了真正的 End to End。你的 End 到底到哪裡 ？如何 DoD？
+4. GitBook 也很方便的筆記工具，寫完後同步到 Github 就能拿到九成完美的 markdown 。
+5. Scrum 給團隊更多職責，所以團隊要更強才行。
+6. Cross Learning 不僅僅是溝通層面而已，而是為了真正的 End to End。你的 End 到底到哪裡 ？如何 DoD？
 7. 所有聲音都是真的，不要急著說服別人，記住盲人摸象沒有一個瞎子說謊。
 8. 第二步我在哪裡？第一步看見全貌、先要透明，透明的意思是有共識，再此之上是溝通與信任…不要把人僅僅當作 Resource。
 9. 團隊裡面不要有小團隊/人數控制在5~9/保持團隊穩定/Real Team，好難…實務上怎麼作 ？
 10. Walking Skeleton 可以貫通在 PBI/User Story/Task 之間，要盡可能的薄但暢通，再此之上才有增量。
 11. 可交付的增量不是Release，也不是MVP。MVP比你想像的還大。
-12. Sprint 的觀念在蕃茄鐘或GTD也有反覆出現過，在 Timebox 中反覆實驗，尋求改善。
+12. Sprint 的觀念在蕃茄鐘或GTD也有反覆出現過，在 TimeBox 中反覆實驗，尋求改善。
 
 (fin)

@@ -6,33 +6,34 @@ tag:
     - Agile
 ---
 
-#### 課程簡介
+## 課程簡介
+
 - Scrum Master 認証課程
 - 講師 ： [呂毅(Lv Yi)](https://blog.odd-e.com/yilv/)
-- 課前請看過 [Scurm Guide](https://scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Simplified.pdf) 與 [Scurm Primer](http://scrumprimer.org/scrum_primer_cn.pdf)
+- 課前請看過 [Scrum Guide](https://scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Simplified.pdf) 與 [Scrum Primer](http://scrumprimer.org/scrum_primer_cn.pdf)
 
 ### Daily Scrum
 
-* 建議 Time Box 15 mins，每日同時同地進行，注意避免超時。
-* 目的是 Adapt，觀注 Item 而非 Task。
-* Scrum Master 不是會議的中心；避免讓團隊成員變成對 Scrum Master 或 PO 報告。
-* Scrum Master 應減少(避免成為中心)
-  * 發言
-  * 眼神接觸
-* PO不一定需要每天參與Daily Scrum，但參與有助於問題的釐清
-* 不討論細節，只確認現況\(Reality Check\)與目標\(Goal\)的差距，細節可會後釐清
+- 建議 Time Box 15 mins，每日同時同地進行，注意避免超時。
+- 目的是 Adapt，觀注 Item 而非 Task。
+- Scrum Master 不是會議的中心；避免讓團隊成員變成對 Scrum Master 或 PO 報告。
+- Scrum Master 應減少(避免成為中心)
+  - 發言
+  - 眼神接觸
+- PO不一定需要每天參與Daily Scrum，但參與有助於問題的釐清
+- 不討論細節，只確認現況\(Reality Check\)與目標\(Goal\)的差距，細節可會後釐清
 
-補充: 
+補充
 
-* [GROW](https://wiki.mbalib.com/zh-tw/GROW%E6%A8%A1%E5%9E%8B)
-* 有的人就是很話澇，曾有團隊給每個成員紅/黃牌，當有人說得太久就給牌警告 XDDD
-* Scrum Master 可以作的事
-  * Does the team find the daily scrum useful ？ 成員有沒有發現站立的好處 ？
-  * Do they manage themselves ？ 團隊是否自組織了？
-  * Do they share their work ？ 他們的工作是共享的嗎 ？
-  * Do they come prepared ？ 他們\(這個Sprint/Item/Task\)準備好了嗎 ？
-  * Do they report unclear ？他們的說明是否易懂？
-  * Does it take too long ？是不是太耗時了？
+- [GROW](https://wiki.mbalib.com/zh-tw/GROW%E6%A8%A1%E5%9E%8B)
+- 有的人就是很話澇，曾有團隊給每個成員紅/黃牌，當有人說得太久就給牌警告 XDDD
+- Scrum Master 可以作的事
+  - Does the team find the daily scrum useful ？ 成員有沒有發現站立的好處 ？
+  - Do they manage themselves ？ 團隊是否自組織了？
+  - Do they share their work ？ 他們的工作是共享的嗎 ？
+  - Do they come prepared ？ 他們\(這個Sprint/Item/Task\)準備好了嗎 ？
+  - Do they report unclear ？他們的說明是否易懂？
+  - Does it take too long ？是不是太耗時了？
 
 > 我在 C 社是下午 5:30 執行 Daily Scrum，在 N 社是早上 10:30。  
 > 個人比較喜歡 C 社的作法，但有可能是被制約了，因為那是我第一個跑 Scrum 的團隊。
@@ -50,24 +51,23 @@ tag:
 
 #### Review
 
-* 展示我們完成了「什麼\(What\)」\(面對 Stakeholder 練習別說技術語言\)
-* 建立 Product Owner 與 Stakeholder 的信任
-* 取得來自 Product Owner 與 Stakeholder 的 Feedback 
-* 圍繞著 Product 進行 Inspect 與 Adapt
-* Team Member 完成某些 Task 或 Item 之時，就可以找 PO 進行 View \(Just In Time Review\)
- 
+- 展示我們完成了「什麼\(What\)」\(面對 Stakeholder 練習別說技術語言\)
+- 建立 Product Owner 與 Stakeholder 的信任
+- 取得來自 Product Owner 與 Stakeholder 的 Feedback  
+- 圍繞著 Product 進行 Inspect 與 Adapt
+- Team Member 完成某些 Task 或 Item 之時，就可以找 PO 進行 View \(Just In Time Review\)
 
 ![-](/images/2018/csm/day_2/done&accept.jpg)
 
 #### Retrospective
 
-* 觀注我們是「怎麼\(How\)」作的
-* 圍繞著 Process 進行 Inspect 與 Adapt
-* 從經驗中學習，增進溝通
-* 幫助團隊關注改善 Process
-* 關注重複發生的問題
-  * 有時是組織性的問題
-  * 有時是團隊的問題
+- 觀注我們是「怎麼\(How\)」作的
+- 圍繞著 Process 進行 Inspect 與 Adapt
+- 從經驗中學習，增進溝通
+- 幫助團隊關注改善 Process
+- 關注重複發生的問題
+  - 有時是組織性的問題
+  - 有時是團隊的問題
 
 > **「每個人的觀點都是對的；但不完全是對的。」**  
 > 上面這句話，要兩句同時看才完整。
@@ -83,45 +83,45 @@ tag:
 
 #### Product Owner
 
-* 對產品有遠景
-* 定義產品的功能，決定發佈的日期與內容
-* 對功能作排序\(價值、成本、風險…etc\)
-* 對產品獲利能力負責
+- 對產品有遠景
+- 定義產品的功能，決定發佈的日期與內容
+- 對功能作排序\(價值、成本、風險…etc\)
+- 對產品獲利能力負責
 
 > 為什麼 Scrum 的設計上只有一個 PO ，這讓下決定變得簡單；但實務上這件事不容易。  
 > 在 C 社期間與 Boss 的距離較短\(公司規模小\)， 但是 Boss 也是喜歡透過一個 PM 來作代理人，在 N 社公司規模更大，PMO 基本上是個巨型團隊，即使是 PO 仍需要與其它部門確認、核可、討論才能決定。不論大小，在工作實務上仍然像個 PM 或是窗口與代理人。
 
 #### Product Backlog
 
-* 要包含功能性與技術性的需求 Items
-* Items 將被拆解為工作項目\(Tasks\)
-* 只對高優先的項目作細部分解。
-  * 價值、緊急程度需要可測量
-* 多個團隊應該共用一份 Product Backlog
-* 由商業計劃驅動，有時候你需要客戶的協助
+- 要包含功能性與技術性的需求 Items
+- Items 將被拆解為工作項目\(Tasks\)
+- 只對高優先的項目作細部分解。
+  - 價值、緊急程度需要可測量
+- 多個團隊應該共用一份 Product Backlog
+- 由商業計劃驅動，有時候你需要客戶的協助
 
 **好的 Product Backlog** ，可以協助團隊 Refinement
 
-* Ordered
-* Detailed Appropriately
-* Dynamic
-* Estimated
+- Ordered
+- Detailed Appropriately
+- Dynamic
+- Estimated
 
 #### Refinement
 
-* 最高優先的 Item 可以提前 2-3 個 Sprint 執行 Refinement
-* PO 與 Team 一起進行
-* 你可以在 Sprint 中期進行一次
-* 可以透過 User Story Mapping 進行討論
+- 最高優先的 Item 可以提前 2-3 個 Sprint 執行 Refinement
+- PO 與 Team 一起進行
+- 你可以在 Sprint 中期進行一次
+- 可以透過 User Story Mapping 進行討論
 
 > User Story 的目的是用來達溝通的，  
 > 溝通最大的目的在於分享觀點與學習，不要僅僅流於形式。
-
+>
 > 實務上 Refinement 隨時會發生，關鍵的成員討論並決策。  
 > 而且不難實現，隨時 Refinement 是第一線的開發人員很自然的思維與生態。  
 > PO 在場的話更好，但是不是必要的。特別要記得設定 Time Box，避免討論多與實踐。
 
-#### Walking Skeleton 
+#### Walking Skeleton  
 
 這裡有關一些 User Story Mapping 的東西，我不清楚故不作說明，未來再作補充。  
 我們可以把 Y 軸的分群當作一個一個 Feature，很明顯我們不需要把每件事作到 100% ，那樣太慢而且沒有意義。
@@ -170,9 +170,9 @@ Task 也可以應用 Walking Skeleton 的方式切割，儘早讓整合測試發
 
 #### 參考
 
-* [Agile Retrospectives: Making Good Teams Great](https://books.google.com.tw/books/about/Agile_Retrospectives.html?id=zA5QDwAAQBAJ&source=kp_cover&redir_esc=y)
-* [Project Retrospectives: A Handbook for Team Reviews](https://www.amazon.com/Project-Retrospectives-Handbook-Team-Reviews/dp/0932633447)
-* [User Story Mapping: Discover the Whole Story, Build the Right Product](https://www.tenlong.com.tw/products/9789863479468)
-* [用户故事地图\(User Story Mapping\)之初体验](https://devopshub.cn/2016/01/10/user-story-mapping-for-the-first-time/)
+- [Agile Retrospectives: Making Good Teams Great](https://books.google.com.tw/books/about/Agile_Retrospectives.html?id=zA5QDwAAQBAJ&source=kp_cover&redir_esc=y)
+- [Project Retrospectives: A Handbook for Team Reviews](https://www.amazon.com/Project-Retrospectives-Handbook-Team-Reviews/dp/0932633447)
+- [User Story Mapping: Discover the Whole Story, Build the Right Product](https://www.tenlong.com.tw/products/9789863479468)
+- [用户故事地图\(User Story Mapping\)之初体验](https://devopshub.cn/2016/01/10/user-story-mapping-for-the-first-time/)
 
 (fin)
