@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-09-07T09:44:21.908Z</updated>
+  <updated>2020-09-07T09:49:51.067Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>[翻譯]每個 Sprint 都需要 Retrospective Meeting 嗎 ？</title>
-    <link href="https://blog.marsen.me/2020/09/07/2020/a/"/>
-    <id>https://blog.marsen.me/2020/09/07/2020/a/</id>
+    <link href="https://blog.marsen.me/2020/09/07/2020/does_a_scrum_team_need_a_retrospective_every_sprint/"/>
+    <id>https://blog.marsen.me/2020/09/07/2020/does_a_scrum_team_need_a_retrospective_every_sprint/</id>
     <published>2020-09-07T09:43:03.000Z</published>
-    <updated>2020-09-07T09:44:21.908Z</updated>
+    <updated>2020-09-07T09:49:51.067Z</updated>
     
     <content type="html"><![CDATA[<h2 id="擷錄翻譯"><a href="#擷錄翻譯" class="headerlink" title="擷錄翻譯"></a>擷錄翻譯</h2><h3 id="常見的問題"><a href="#常見的問題" class="headerlink" title="常見的問題"></a>常見的問題</h3><ul><li>我們的團隊很棒，我們沒有需要改進的項目…</li><li>回顧會議很無聊，所以…</li><li>我們實際的工作太忙了(或回顧會議太花時間了)…</li><li>我就不喜歡回顧…  </li></ul><h3 id="你永遠不夠好到太好"><a href="#你永遠不夠好到太好" class="headerlink" title="你永遠不夠好到太好"></a>你永遠不夠好到太好</h3><blockquote><p>作者舉自已經驗 10 年的團隊，每 2 周的回顧仍有許多改善的地方。</p></blockquote><p>實際上你永遠不會好到太好，即便你已經是市場上最好的團隊。<br>在 VUCA 的世界一切都在變，就像一句老話說的「逆水行舟，不進則退」<br>看看世上最好的職業球隊，三連冠很棒，但是你試過四連冠、五連冠嗎?<br>再談談軟體的熵，為了滿足各種需求，你開始切前後端、開始用微服務<br>容器化技術、DevOps 到 SRE …<br>只會變得更細緻、更專業、更多的溝通…</p><p>所以真正的問題或許是，<strong>為什麼你覺得你不能更好了呢 ?</strong></p><h3 id="回顧會議很無聊"><a href="#回顧會議很無聊" class="headerlink" title="回顧會議很無聊"></a>回顧會議很無聊</h3><blockquote><p>作者提供了幾個方法讓回顧會議回覆活力</p><ol><li>由別的團隊的 Scrum Master 來帶領你的團隊的回顧會議</li><li>改變場地</li><li>使用不同風格進行<br>推薦書單 <a href="https://www.amazon.com/Improving-Agile-Retrospectives-Efficient-Addison-Wesley/dp/0134678346" target="_blank" rel="noopener">Improving Agile Retrospectives</a></li></ol></blockquote><p>尋求社群的建議，我個人再推薦一個網站 <a href="https://www.funretrospectives.com/" target="_blank" rel="noopener">FunRetrospectives</a>…<br>回顧會議很無聊對 Scrum Master 應該是個警鐘，<br>但是醫生也會生病，請勇敢的尋求協助，而不是僵化的照本宣科，  </p><p><em>No one said a retrospective should be as exciting as the latest Hollywood blockbuster.But there are things you can to do to liven them up.</em></p><h3 id="Too-Busy-To-Improve"><a href="#Too-Busy-To-Improve" class="headerlink" title="Too Busy To Improve"></a>Too Busy To Improve</h3><p><img src="https://i.imgur.com/VkHvIDP.png" alt="too busy to improve"></p><blockquote><p>作者僅說明這樣是一個短視的團隊，<br>同時引用《高效率人士的七個習慣》書中的故事<br>短視近利的樵夫永遠不會打磨他的斧頭。</p></blockquote><p>請注意「短視」的文化根歸何處 ?<br>這是一個複雜的問題，需要細心的觀察。<br>是團隊嗎 ? 或是 PO ? 也有可能是老闆或是客戶。<br>需要用系統思考的方式找到癥結點。<br>然後 — Change Your Company !</p><h3 id="我就是不喜歡回顧"><a href="#我就是不喜歡回顧" class="headerlink" title="我就是不喜歡回顧"></a>我就是不喜歡回顧</h3><blockquote><p>這個可能回顧會議變得無聊的變形<br>但作者將兩者分別出來的原因是，有的人就只是單純不喜歡而已<br>這些人只想作他們想作的部份…</p></blockquote><p>作者例子基本上是團隊的害蟲了，<br>實務上我認為更多是人的價值觀不同，<br>在一般的開發人員或是 Team Member 身上或許還好解決，<br>透過溝通，排除他的困難。<br>個人經驗上比較麻煩的反而是中階主管，<br>比如說 : Team Leader 身兼 Team Member，<br>但是每次都翹掉回顧會議，說「我有其它會議、我很忙、我很特別…」  </p><p>我的想法是將他的角色提昇到 StackHolder，如果他的權限會影響開發，<br>鼓勵他下放，讓 Team Members 具備獨力開發的能力。<br>讓他去作特別的事，反之如果他回頭想參與開發，<br>那應該與其它 Team Members 一樣全程參與會議。</p><p>黑暗兵法:在回顧會議取回他會影響開發的權限。喔，你當然可以選擇一場他不在的場次 :)</p><p>最後作者仍然補上可以減少回顧的可能性，</p><blockquote><p>當你的團隊真得很棒，<br>或是為了讓回顧不無聊而付出巨大的努力，<br>或是你的團隊其實不太忙，甚至不太需要什麼改善計劃(可能要改善需求端)<br>能理解工作與喜歡作的項目的價值<br><strong>團隊在一個極短的 sprint之中</strong><br>可以減少團隊的回顧會議</p><p>If your team:</p><p>Is really good.<br>Has made significant efforts to make sure retrospectives aren’t boring.<br>Is not too busy to invest in improvements that don’t pay them back  immediately.<br>And understands the value of doing other than just the most pleasant work.</p><p>… and if they work in short sprints, I’ll say it’s OK for the team do retrospectives less frequently.</p></blockquote><p>但是並不建議，僅僅為了這個理由改變 Sprint 的長度，<br>而 Scrum Master 應該悍衛每個 Sprint 應執行的回顧會議，<br>但也可以適當調整為每兩個 Sprint 一次。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://www.mountaingoatsoftware.com/blog/does-a-scrum-team-need-a-retrospective-every-sprint" target="_blank" rel="noopener">Does a Scrum Team Need aRetrospective Every Sprint?</a></li><li><a href="https://www.funretrospectives.com/" target="_blank" rel="noopener">FunRetrospectives</a></li><li><a href="https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1" target="_blank" rel="noopener">https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1</a></li></ul><p>(fin)</p>]]></content>
     
