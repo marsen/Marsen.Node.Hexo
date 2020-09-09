@@ -15,12 +15,12 @@ date: 2020/09/09 14:53:03
 
 [![看到這個廣告](https://i.imgur.com/KaAdrTh.png)](https://www.facebook.com/TutoringApp/posts/645426629424215?__cft__[0]=AZWZ8RmP2GoiGK3qd63VguoGdXajn0Xsaj8ZPBzO7H_XUKKw2gpBqpPWDip9Ei_XQA2Ac4AOOmvnp6_XzdYSKZDA_PmSFiQdUzq2UKUbZylDsFQhrCya_gsvDFOWG5dyRZoemH7m0pzswr08rfBYX2dTbfLiWBSpjR4pX-TIPCUj7g&__tn__=%2CO%2CP-R)
 
-這一兩天到收到了錄取通知，我只是一個小小工程師，  
+我只是一個小小工程師，  
 不是網紅應該沒什麼流量(應該是我在蹭 TUTORING 的流量 XD)，
 竟然也能錄取，真的覺得很開心呢，  
 這也是這篇文章誕生的原因啦。
 
-同時，這個兩禮拜我剛好特別忙，
+同時，這個兩禮拜我剛好特別忙(應該會忙到 10 月初)，
 工作之外還有表演的排練、教學課程的準備以及一場讀書會的發表。
 我本來應該拒絕，但是我還是想挑戰看看，  
 首先是 9 堂課其實只有 180 分鐘(9x20)而已，應該不是難到無法克服程度。
