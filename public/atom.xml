@@ -6,7 +6,11 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
+<<<<<<< HEAD
   <updated>2020-09-14T10:40:05.290Z</updated>
+=======
+  <updated>2020-09-21T07:03:03.215Z</updated>
+>>>>>>> 09b22b661... hexo g
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +19,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[生活筆記] Young Marvel 1.0 小結 --- 需改善消化系統</title>
+    <link href="https://blog.marsen.me/2020/09/21/2020/young_marvel_1/"/>
+    <id>https://blog.marsen.me/2020/09/21/2020/young_marvel_1/</id>
+    <published>2020-09-21T06:51:17.000Z</published>
+    <updated>2020-09-21T07:03:03.215Z</updated>
+    
+    <content type="html"><![CDATA[<p>有些事情一時間我沒辦法說得清楚，<br>總要一些沉澱…  </p><p>這個課程也算是跌跌撞撞的完成了。<br>中間卡了個中共肺炎，又遇上炎熱的夏天，<br>練習室的冷氣顯示好像是我殘餘的血量而不是希望的溫度。  </p><p>消失了兩個教室，但是人都還在，沒事、沒事。<br>肺炎的關係室外的 Social 沒有了，<br>淹水的關係地下室也沒有了，<br>上課 Follower 總是少幾個，但也不是大問題;<br>資深的 Leader 沒有走到最後，其實對我也還好。<br>沒事、沒事…吧。  </p><p>喜歡兩個人的 Solo 再結合的橋段，<br>喜歡聽著音樂即興發揮，雖然我常常是即興發呆，<br>開始會注意到 Routine 之中的 And 拍。<br>試著 6+2 或是 2+6 甚至是 2+4+2 的方式打散固定的東西。  </p><p>但是老實說，我還是覺得沒有進步。<br>總歸一句，吸收與消化能力太差，<br>從生物的例子來說，我缺乏分解肉的酶。<br>花再多時間啃頂級的牛排也得不到養份，<br>小藍莓雖然好消化，但是沒有蛋白質。  </p><p>下個問題是…如何產生酶 ?<br>太大哉問了，好難回答。  </p><p>其它零碎的想法:<br>風城的熱情大過天龍，是因為取之不易，所以珍惜 ?<br>如果斷掉了，黏了幾次還是好不了就放棄了吧 。<br>停損很重要、退場很重要，理財如此、工作如此、生活如此。<br>點頭之交仍然是最好的狀態，再熟一點就會開始莫名奇妙的要求。</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;有些事情一時間我沒辦法說得清楚，&lt;br&gt;總要一些沉澱…  &lt;/p&gt;
+&lt;p&gt;這個課程也算是跌跌撞撞的完成了。&lt;br&gt;中間卡了個中共肺炎，又遇上炎熱的夏天，&lt;br&gt;練習室的冷氣顯示好像是我殘餘的血量而不是希望的溫度。  &lt;/p&gt;
+&lt;p&gt;消失了兩個教室，但是人都還在，沒事、沒事。
+      
+    
+    </summary>
+    
+    
+    
+      <category term="生活筆記" scheme="https://blog.marsen.me/tags/%E7%94%9F%E6%B4%BB%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
   
   <entry>
     <title>[生活筆記] TUTORING APP 多特英 第四屆體驗大使</title>
@@ -503,6 +533,7 @@
     
   </entry>
   
+<<<<<<< HEAD
   <entry>
     <title>[實作筆記] 用 TDD 寫一個 API Pay </title>
     <link href="https://blog.marsen.me/2020/01/29/2020/tdd_pay_api/"/>
@@ -531,4 +562,6 @@
     
   </entry>
   
+=======
+>>>>>>> 09b22b661... hexo g
 </feed>
