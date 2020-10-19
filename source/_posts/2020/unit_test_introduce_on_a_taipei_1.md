@@ -21,7 +21,7 @@ tag:
   - 單元
 - UT 不過是驗收的最基本的單位。
 - 開發人員一定會測試的，不論用何種方法
-  - Debuger
+  - Debug
   - Console Output
   - Break Point
 - 程式人員的好品德

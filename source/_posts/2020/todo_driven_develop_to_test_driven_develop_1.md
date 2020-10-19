@@ -64,7 +64,7 @@ Step 2 . [隨著過程把 TODO 拆的更細](https://github.com/marsen/Marsen.Ne
 ### 第一個測試，但是沒有 Assert
 
 我目前對測試案例沒有任何的想法(這是個壞味道)，  
-但是我打算直接[透過測試呼叫我的 Prodction Code](https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0)  
+但是我打算直接[透過測試呼叫我的 Production Code](https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0)  
 
 ```csharp
 [Fact]
@@ -78,13 +78,13 @@ public void Case1_Just_Run()
 ```
 
 因為沒有想法，所以沒有 `Assert`  
-這不算是測試，頂多是**一個小工具**可以隨時呼叫我的 Prodcution Code 而已  
+這不算是測試，頂多是**一個小工具**可以隨時呼叫我的 Production Code 而已  
 
 ### [Do Todo 建立 HttpClient](https://github.com/marsen/Marsen.NetCore.Dojo/commit/1c1102457355992c1e75fcf47846404d60310f3d)
 
 這裡依造我以前的開發習慣，直接開幹，  
 把 HttpClient new 出來，刪除 Todo Comment  
-Commited 然後發 Pull Request
+Committed 然後發 Pull Request
 
 ```csharp
 -            //// TODO 1.建立 HttpClient
@@ -153,7 +153,7 @@ Commited 然後發 Pull Request
 為了修正這個紅燈我會指定 url，  
 實務上我會使用沙盒的 url ，  
 這裡我先用 mock api 取代 ，  
-mock api 的服務為 [mocky](https://www.mocky.io/)，  
+mock api 的服務為 [Mocky](https://www.mocky.io/)，  
 類似的服務很多，也不是本篇的重點，就不贅述了。
 
 這次一次處理掉兩個 TODO ，  
@@ -345,7 +345,7 @@ Production Code (部份)
 
 這個時候基本的功能都好了，來收拾一下剩下的 TODO 項目吧  
 主要都是取得設定值的功能，實務上這些設定值可能來自不同的服務  
-Database、Config Service 或 Settring API 等…  
+Database、Config Service 或 Setting API 等…  
 我在這裡先簡化成 `IStoreSettingService` 取值就好。
 
 ```csharp
@@ -358,7 +358,7 @@ Database、Config Service 或 Settring API 等…
 
 同時測試代碼也要修改，  
 注意這裡的 testId 其實是 Pickup Service 提供給我們的測試 Id  
-在 Production 你需要整合進你的 Database、Config Service 或 Settring API 裡  
+在 Production 你需要整合進你的 Database、Config Service 或 Setting API 裡  
 在整合測試可以直接 mock 它
 
 ```csharp
