@@ -13,7 +13,7 @@
 <meta property="og:description" content="前情提要上次作完金流後，這次換作物流，在開發的過程中首次全程用 TDD 進行(?)，因為某些因素，測試沒有進版控，所以稍微記錄一下心路歷程。但是那個 T 是什麼? 就請各位看下去了… 需求說明出貨流程為:  訂單成立 透過物流服務配號 出貨 透過物流服務查詢物流狀態 狀態正確，通知消費者取貨 狀態不正確，通知商家，人工處理。  這次 TDD 進行的部份為流程上的第 4 步，往下看我怎麼做的   整">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-02-26T02:40:14.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:19:53.351Z">
+<meta property="article:modified_time" content="2020-10-19T08:46:38.461Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="Unit Testing">
@@ -140,11 +140,11 @@ ga('send', 'pageview');
 </li>
 </ol>
 <p>以往這個時候，我就會進開發了，<br>這次我不打算刻意改變我的開發習慣，<br>但是我會多作一件事，寫測試。<br>這個測試會直接呼叫我即將開發的方法，<br>而我的方法會真的去打 API 存取 DB 讀 Config Files 諸如此類的事情。</p>
-<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><h3 id="第一個測試，但是沒有-Assert"><a href="#第一個測試，但是沒有-Assert" class="headerlink" title="第一個測試，但是沒有 Assert"></a>第一個測試，但是沒有 Assert</h3><p>我目前對測試案例沒有任何的想法(這是個壞味道)，<br>但是我打算直接<a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0" target="_blank" rel="noopener">透過測試呼叫我的 Prodction Code</a>  </p>
+<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><h3 id="第一個測試，但是沒有-Assert"><a href="#第一個測試，但是沒有-Assert" class="headerlink" title="第一個測試，但是沒有 Assert"></a>第一個測試，但是沒有 Assert</h3><p>我目前對測試案例沒有任何的想法(這是個壞味道)，<br>但是我打算直接<a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0" target="_blank" rel="noopener">透過測試呼叫我的 Production Code</a>  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Case1_Just_Run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = <span class="keyword">new</span> PickupService();</span><br><span class="line">    <span class="keyword">long</span> storeId = <span class="number">0</span>;</span><br><span class="line">    List&lt;<span class="keyword">string</span>&gt; waybillNo = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;();</span><br><span class="line">    target.GetUpdateStatus(storeId, waybillNo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>因為沒有想法，所以沒有 <code>Assert</code><br>這不算是測試，頂多是<strong>一個小工具</strong>可以隨時呼叫我的 Prodcution Code 而已  </p>
-<h3 id="Do-Todo-建立-HttpClient"><a href="#Do-Todo-建立-HttpClient" class="headerlink" title="Do Todo 建立 HttpClient"></a><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/1c1102457355992c1e75fcf47846404d60310f3d" target="_blank" rel="noopener">Do Todo 建立 HttpClient</a></h3><p>這裡依造我以前的開發習慣，直接開幹，<br>把 HttpClient new 出來，刪除 Todo Comment<br>Commited 然後發 Pull Request</p>
+<p>因為沒有想法，所以沒有 <code>Assert</code><br>這不算是測試，頂多是<strong>一個小工具</strong>可以隨時呼叫我的 Production Code 而已  </p>
+<h3 id="Do-Todo-建立-HttpClient"><a href="#Do-Todo-建立-HttpClient" class="headerlink" title="Do Todo 建立 HttpClient"></a><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/1c1102457355992c1e75fcf47846404d60310f3d" target="_blank" rel="noopener">Do Todo 建立 HttpClient</a></h3><p>這裡依造我以前的開發習慣，直接開幹，<br>把 HttpClient new 出來，刪除 Todo Comment<br>Committed 然後發 Pull Request</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-            <span class="comment"><span class="doctag">///</span>/ TODO 1.建立 HttpClient</span></span><br><span class="line">+            <span class="keyword">var</span> httpClient = <span class="keyword">new</span> HttpClient();</span><br></pre></td></tr></table></figure>
 
 <h3 id="Do-Todo-建立-auth"><a href="#Do-Todo-建立-auth" class="headerlink" title="Do Todo 建立 auth"></a><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/5f5b85ab3ff97170f5ce51fac71e01bac8779b9f" target="_blank" rel="noopener">Do Todo 建立 auth</a></h3><p>通常在串接第三方服務的過程中，<br>第三方會提供沙盒(SandBob)作開發人員測試使用<br>這裡我加了一點遮罩，但實務上如果是沙盒的 auth 資訊<br>我可能會直接 Commit 進去(壞味道)。</p>
@@ -163,7 +163,7 @@ ga('send', 'pageview');
 <h3 id="Do-TODO-4-指定-API-URL-amp-TODO-5-呼叫"><a href="#Do-TODO-4-指定-API-URL-amp-TODO-5-呼叫" class="headerlink" title="Do TODO 4.指定 API URL &amp; TODO 5.呼叫"></a><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/fb3fb84442b074838785d3155c6d79969fd5ba30" target="_blank" rel="noopener">Do TODO 4.指定 API URL &amp; TODO 5.呼叫</a></h3><p>修改代碼如下，拿到第一個紅燈<br>因為我沒有指定 url</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ TODO 4.指定 API URL</span></span><br><span class="line"><span class="keyword">string</span> url=<span class="keyword">string</span>.Empty;</span><br><span class="line"><span class="keyword">var</span> responseMessage = httpClient.PostAsync(url, httpContent).Result;</span><br></pre></td></tr></table></figure>
 
-<p>為了修正這個紅燈我會指定 url，<br>實務上我會使用沙盒的 url ，<br>這裡我先用 mock api 取代 ，<br>mock api 的服務為 <a href="https://www.mocky.io/" target="_blank" rel="noopener">mocky</a>，<br>類似的服務很多，也不是本篇的重點，就不贅述了。</p>
+<p>為了修正這個紅燈我會指定 url，<br>實務上我會使用沙盒的 url ，<br>這裡我先用 mock api 取代 ，<br>mock api 的服務為 <a href="https://www.mocky.io/" target="_blank" rel="noopener">Mocky</a>，<br>類似的服務很多，也不是本篇的重點，就不贅述了。</p>
 <p>這次一次處理掉兩個 TODO ，<br>表示當初我 TODO Task 切的過小，<br>下次可以切大一些。</p>
 <p>不算壞味道，就當學個經驗。</p>
 <h3 id="第一次-TODO-作完之後"><a href="#第一次-TODO-作完之後" class="headerlink" title="第一次 TODO 作完之後"></a>第一次 TODO 作完之後</h3><p>當初規劃的 TODO Task 都作完了，<br>但是其實工作並沒有完成。  </p>
@@ -223,10 +223,10 @@ ga('send', 'pageview');
 <li>失敗(Expiry) 系統狀態為 Abnormal</li>
 <li>貨到待取(Arrived) 系統狀態為 Arrived</li>
 </ul>
-<h3 id="剩下的-TODO-項目"><a href="#剩下的-TODO-項目" class="headerlink" title="剩下的 TODO 項目"></a>剩下的 TODO 項目</h3><p>這個時候基本的功能都好了，來收拾一下剩下的 TODO 項目吧<br>主要都是取得設定值的功能，實務上這些設定值可能來自不同的服務<br>Database、Config Service 或 Settring API 等…<br>我在這裡先簡化成 <code>IStoreSettingService</code> 取值就好。</p>
+<h3 id="剩下的-TODO-項目"><a href="#剩下的-TODO-項目" class="headerlink" title="剩下的 TODO 項目"></a>剩下的 TODO 項目</h3><p>這個時候基本的功能都好了，來收拾一下剩下的 TODO 項目吧<br>主要都是取得設定值的功能，實務上這些設定值可能來自不同的服務<br>Database、Config Service 或 Setting API 等…<br>我在這裡先簡化成 <code>IStoreSettingService</code> 取值就好。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-           <span class="comment"><span class="doctag">///</span>/ TODO login id 抽參數</span></span><br><span class="line">-           httpClient.DefaultRequestHeaders.Add(<span class="string">"login_id"</span>, <span class="string">"testId"</span>);</span><br><span class="line"></span><br><span class="line">+           <span class="keyword">var</span> loginId = <span class="keyword">this</span>._storeSettingService.GetValue(storeId,<span class="string">"pickup.service"</span>,<span class="string">"loginId"</span>);</span><br><span class="line">+           httpClient.DefaultRequestHeaders.Add(<span class="string">"login_id"</span>, loginId);</span><br></pre></td></tr></table></figure>
 
-<p>同時測試代碼也要修改，<br>注意這裡的 testId 其實是 Pickup Service 提供給我們的測試 Id<br>在 Production 你需要整合進你的 Database、Config Service 或 Settring API 裡<br>在整合測試可以直接 mock 它</p>
+<p>同時測試代碼也要修改，<br>注意這裡的 testId 其實是 Pickup Service 提供給我們的測試 Id<br>在 Production 你需要整合進你的 Database、Config Service 或 Setting API 裡<br>在整合測試可以直接 mock 它</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_storeSettingService.GetValue(_testStoreId, <span class="string">"pickup.service"</span>, <span class="string">"loginId"</span>).Returns(<span class="string">"testId"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>Auth 也是相同的處理</p>
