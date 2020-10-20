@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記]ElasticSearch Reindex"
+title: "[實作筆記] ElasticSearch Reindex"
 date: 2020/10/20 15:10:59
 ---
 
