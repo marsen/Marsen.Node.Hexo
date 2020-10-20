@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記]ElasticSearch reindex"
+title: "[實作筆記]ElasticSearch Reindex"
 date: 2020/10/20 15:10:59
 ---
 
@@ -37,7 +37,7 @@ Memory 只有 1 GB，Storage 有 30 GB。
 > so Elasticsearch will happily let you create hundreds of indices.
 
 但是實務上我產生了太多的 Shards ，這也是初學者常踩的一個雷包，
-一不小心就會 Oversharding 可以參考 [How to size your shards](`https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html#fix-an-oversharded-cluster`)進行修正。
+一不小心就會 Oversharding 可以參考 [How to size your shards](`https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html#fix-an-oversharded-cluster`) 進行修正。
 
 這裡我使用了 Reindex 這個 API 來將一些碎小的 Index 作結合(Combine Smaller Indices)。
 

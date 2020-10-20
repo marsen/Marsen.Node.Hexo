@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>[實作筆記]ElasticSearch reindex | Marsen&#39;s Blog</title>
+  <title>[實作筆記]ElasticSearch Reindex | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前情提要初探 ElasticSearch Service (以下簡稱 ESS )，結合 Logstash、Kibana 合稱 ELK，Elastic Cloud 提供更多的功能雖然蠻多還用不到，但比起自已架設會快相當的多。因為主系統仍在開發中，只有部份功能上線，所以我選擇 ESS 作為我們的 Log System。選擇 ESS 的原因如下:  快速實現，只需要在 Elastic.io 簡單的操作，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[實作筆記]ElasticSearch reindex">
+<meta property="og:title" content="[實作筆記]ElasticSearch Reindex">
 <meta property="og:url" content="https://blog.marsen.me/2020/10/20/elasticsearch_reindex_note/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="前情提要初探 ElasticSearch Service (以下簡稱 ESS )，結合 Logstash、Kibana 合稱 ELK，Elastic Cloud 提供更多的功能雖然蠻多還用不到，但比起自已架設會快相當的多。因為主系統仍在開發中，只有部份功能上線，所以我選擇 ESS 作為我們的 Log System。選擇 ESS 的原因如下:  快速實現，只需要在 Elastic.io 簡單的操作，">
@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/loss_data.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/jvm_pressure_down.jpg">
 <meta property="article:published_time" content="2020-10-20T07:10:59.000Z">
-<meta property="article:modified_time" content="2020-10-20T08:48:59.436Z">
+<meta property="article:modified_time" content="2020-10-20T08:50:12.367Z">
 <meta property="article:author" content="Marsen L.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/Summary.jpg">
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      [實作筆記]ElasticSearch reindex
+      [實作筆記]ElasticSearch Reindex
     </h1>
   
 
@@ -124,7 +124,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>a lot of people use Elasticsearch for logging.<br>A standard format is to assign a new index for each day.<br>中略 …<br>Indices are fairly lightweight data organization mechanisms,<br>so Elasticsearch will happily let you create hundreds of indices.</p>
 </blockquote>
-<p>但是實務上我產生了太多的 Shards ，這也是初學者常踩的一個雷包，<br>一不小心就會 Oversharding 可以參考 <a href="`https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html#fix-an-oversharded-cluster`">How to size your shards</a>進行修正。</p>
+<p>但是實務上我產生了太多的 Shards ，這也是初學者常踩的一個雷包，<br>一不小心就會 Oversharding 可以參考 <a href="`https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html#fix-an-oversharded-cluster`">How to size your shards</a> 進行修正。</p>
 <p>這裡我使用了 Reindex 這個 API 來將一些碎小的 Index 作結合(Combine Smaller Indices)。</p>
 <h2 id="實作記錄"><a href="#實作記錄" class="headerlink" title="實作記錄"></a>實作記錄</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html" target="_blank" rel="noopener">Reindex</a> 的 SOP</p>
 <ol>
@@ -231,7 +231,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2020/10/20/elasticsearch_reindex_note/">[實作筆記]ElasticSearch reindex</a>
+            <a href="/2020/10/20/elasticsearch_reindex_note/">[實作筆記]ElasticSearch Reindex</a>
           </li>
         
           <li>
