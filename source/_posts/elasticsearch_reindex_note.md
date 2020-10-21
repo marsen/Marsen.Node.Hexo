@@ -18,7 +18,7 @@ Elastic Cloud 提供更多的功能雖然蠻多還用不到，但比起自已架
 
 現有配置如下
 
-![Summary](/images/2020/10/ess_reindex/Summary.jpg)
+![Summary](/images/2020/10/ess_reindex/summary.jpg)
 
 初始的配置更低，是使用最小單位、最少節點的配置。
 Memory 只有 1 GB，Storage 有 30 GB。

@@ -12,14 +12,14 @@
 <meta property="og:site_name" content="Marsen&#39;s Blog">
 <meta property="og:description" content="前情提要初探 ElasticSearch Service (以下簡稱 ESS )，結合 Logstash、Kibana 合稱 ELK，Elastic Cloud 提供更多的功能雖然蠻多還用不到，但比起自已架設會快相當的多。因為主系統仍在開發中，只有部份功能上線，所以我選擇 ESS 作為我們的 Log System。選擇 ESS 的原因如下:  快速實現，只需要在 Elastic.io 簡單的操作，">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/Summary.jpg">
+<meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/summary.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/loss_data.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/jvm_pressure_down.jpg">
 <meta property="article:published_time" content="2020-10-20T07:10:59.000Z">
-<meta property="article:modified_time" content="2020-10-20T08:52:29.925Z">
+<meta property="article:modified_time" content="2020-10-21T01:59:54.987Z">
 <meta property="article:author" content="Marsen L.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/Summary.jpg">
+<meta name="twitter:image" content="https://blog.marsen.me/images/2020/10/ess_reindex/summary.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen&#39;s Blog" type="application/atom+xml">
   
@@ -118,7 +118,7 @@ ga('send', 'pageview');
 <li>開源且社群活躍，也是目前主流的 Distribution Search Engine</li>
 </ol>
 <p>現有配置如下</p>
-<p><img src="/images/2020/10/ess_reindex/Summary.jpg" alt="Summary"></p>
+<p><img src="/images/2020/10/ess_reindex/summary.jpg" alt="Summary"></p>
 <p>初始的配置更低，是使用最小單位、最少節點的配置。<br>Memory 只有 1 GB，Storage 有 30 GB。<br>在初始配置的情況下，<code>JVM memory pressure</code> 常態性達 70% ~ 80%，<br>這是個異常狀況，在實務上緊急將 Memory Scale Up 到 2 Memory 暫時解除這個問題。</p>
 <h2 id="效能問題"><a href="#效能問題" class="headerlink" title="效能問題"></a>效能問題</h2><p>追究後面的本質原因的話，是在系統設計上, 每日建立新的 <a href="https://www.elastic.co/blog/what-is-an-elasticsearch-index" target="_blank" rel="noopener">Index</a>，<br>在官方的 blog 也有提到這樣的實踐方式。</p>
 <blockquote>
