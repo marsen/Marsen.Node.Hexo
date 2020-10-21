@@ -112,7 +112,7 @@ ga('send', 'pageview');
 <li>開源且社群活躍，也是目前主流的 Distribution Search Engine</li>
 </ol>
 <p>現有配置如下</p>
-<p><img src="/images/2020/10/ess_reindex/Summary.jpg" alt="Summary"></p>
+<p><img src="/images/2020/10/ess_reindex/summary.jpg" alt="Summary"></p>
 <p>初始的配置更低，是使用最小單位、最少節點的配置。<br>Memory 只有 1 GB，Storage 有 30 GB。<br>在初始配置的情況下，<code>JVM memory pressure</code> 常態性達 70% ~ 80%，<br>這是個異常狀況，在實務上緊急將 Memory Scale Up 到 2 Memory 暫時解除這個問題。</p>
 <h2 id="效能問題"><a href="#效能問題" class="headerlink" title="效能問題"></a>效能問題</h2><p>追究後面的本質原因的話，是在系統設計上, 每日建立新的 <a href="https://www.elastic.co/blog/what-is-an-elasticsearch-index" target="_blank" rel="noopener">Index</a>，<br>在官方的 blog 也有提到這樣的實踐方式。</p>
 <blockquote>
