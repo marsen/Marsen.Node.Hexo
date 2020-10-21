@@ -11,6 +11,8 @@ highlight-green = #99cc99
 highlight-aqua = #66cccc
 highlight-blue = #6699cc
 highlight-purple = #cc99cc
+highlight-yellow-transparent = #ffcc6666
+highlight-green-transparent = #99cc9966
 
 $code-block
   background: highlight-background
@@ -31,8 +33,8 @@ $line-numbers
   pre, code
     font-family: font-mono
   code
-    background: color-background
-    text-shadow: 0 1px #fff
+    background: highlight-green-transparent
+    text-shadow: 0 #fff
     padding: 0 0.3em
   pre
     @extend $code-block
