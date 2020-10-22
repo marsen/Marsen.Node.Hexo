@@ -40,7 +40,7 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 |空白或 @|MX|1 小時|30|alt3.gmr-smtp-in.l.google.com|
 |空白或 @|MX|1 小時|40|alt4.gmr-smtp-in.l.google.com|
 
-![CloudFlare 的設定畫面](/images/2020/10/email/add_name.jpg)
+![MX](/images/2020/10/email/mx_record.jpg)
 
 設定完成後依照 Google 的說法會收到一封信(但是有些情況收不到)就會生效,  
 我實測上沒收到信,但是寄信馬上就生效了.
