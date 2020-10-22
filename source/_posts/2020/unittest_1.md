@@ -208,23 +208,25 @@ public class Calculator
 }
 ```
 
-#### 3A
+#### 3A 原則
 
-- Arrange
+- Arrange(準備、初始化)
+  如果 Arrange 過長會是一個壞味道，
+  表示這方法相依太多參數、服務或模組
+範例:
+
   - `target = new Calculator();`
   - first number is `2`
   - second number is `1`
 
-- Act
+- Act(執行/呼叫受測行為)
   - `target.Add(2, 1)`
-- Assert
+
+- Assert(驗証)
   - `Assert.Equal(3, acted result);
 
-#### 3A 的補充
-
-- 如果 Arrange 過長會是一個壞味道，
-  - 表示這方法相依太多參數、服務或模組
-
-## Live Coding
+不要過度追求可讀性，而將測試程式變得難以理解，
+可以使用測試驗証框架(ex:Fluent Assertions)，  
+或是抽出方法來增加可讀性，但比起可讀，更重要是可理解。
 
 (fin)
