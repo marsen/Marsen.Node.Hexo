@@ -73,4 +73,10 @@ ex:
 
 歡迎指教討論。  
 
+## 系列文章
+
+- [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/setting_DNS_with_google/)
+- [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/how_to_use_github_page/)
+- [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2%20by%20cloudflare/)
+
 (fin)

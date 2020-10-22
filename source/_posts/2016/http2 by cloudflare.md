@@ -5,6 +5,7 @@ tag:
   - HTTP
   - TCP/IP
 ---
+
 ## 應該知道的事
 
 - HTTP/1.1是目前被應用得最廣泛的通訊協定，也可以說是最成功的一個
@@ -52,7 +53,11 @@ tag:
 使用 support HTTP/2的瀏覽器，瀏覽網頁，觀察其 protocol 。
 ![HTTP/2](/images/090516_024550_AM.jpg)
 
-(fin)
+## 系列文章
+
+- [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/setting_DNS_with_google/)
+- [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/how_to_use_github_page/)
+- [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2%20by%20cloudflare/)
 
 ## 參考
 
