@@ -82,6 +82,85 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-2017/auto_add_trello_card" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/2017/auto_add_trello_card/" class="article-date">
+  <time datetime="2017-02-08T15:52:27.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/2017/auto_add_trello_card/">自動化 Trello 操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Trello 是一個非常方便的工作管理工具,<br>最主要的功能只有 Boards 、 Lists 與 Cards,<br>確可以發揮相當大的綜效功能,<br>用來當作敏捷開發的白板、安排工作項目與進度,<br>作為協作的平台與工具。<br>也有相當多元的外掛可以供不同的情境使用,<br>開發人員也可以自行串接API與系統作整合。<br>簡單記錄自動化產生 Cards 的兩種方法。</p>
+<h2 id="第一種方法-使用mail"><a href="#第一種方法-使用mail" class="headerlink" title="第一種方法,使用mail"></a>第一種方法,使用mail</h2><ol>
+<li>開啟 Menu &gt; More</li>
+<li>點選 Email-to-board Settings</li>
+<li>選擇你要產生卡片的 List 與 位置(頂部或底部)</li>
+</ol>
+<p><img src="https://i.imgur.com/PqDLtdO.gif" alt=""></p>
+<ol start="4">
+<li>寄信，信件格式如下<ul>
+<li>email 的 subject 會成為卡片的標題</li>
+<li>email 的內容會成為卡片的描述</li>
+<li>如果有附加檔案在郵件中，會附加到卡片中</li>
+<li>在 subject 加入 <code>#label</code> 可以在卡片加入標籤(Labels)</li>
+<li>在 subject 加入 <code>@member</code> 可以在卡片加入成員(Members)</li>
+</ul>
+</li>
+</ol>
+<p>更多請<a href="http://help.trello.com/article/809-creating-cards-by-email" target="_blank" rel="noopener">參考</a>. </p>
+<h2 id="第二種方法-使用API"><a href="#第二種方法-使用API" class="headerlink" title="第二種方法,使用API"></a>第二種方法,使用API</h2><ol>
+<li>登入 Trello</li>
+<li>連線 <a href="https://developers.trello.com" target="_blank" rel="noopener">https://developers.trello.com</a><br>點選<code>Get your Application Key</code>. 連線到 <a href="https://trello.com/app-key" target="_blank" rel="noopener">https://trello.com/app-key</a></li>
+</ol>
+<h3 id="取得Key"><a href="#取得Key" class="headerlink" title="取得Key"></a>取得Key</h3><p><img src="https://i.imgur.com/bBoiUCr.jpg" alt=""></p>
+<h3 id="生成Token"><a href="#生成Token" class="headerlink" title="生成Token"></a>生成Token</h3><p><img src="https://i.imgur.com/gHsdYv8.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/bSXkChk.jpg" alt=""><br>點選allow後，就會顯示你的token，特別注意登入的身份權限，<br>並且千萬不要外洩你的token與key值。</p>
+<p>試打API,建立一張 Card 到指定的 List 中.<br>並且設定期限(due)與標籤(labels),<br>更多的API設定請<a href="https://developers.trello.com/advanced-reference" target="_blank" rel="noopener">參考</a>.<br><img src="https://i.imgur.com/yk6SZYm.jpg" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li>Email:<ul>
+<li>優點:簡單、方便、可以結合mail system 、附加檔案簡單</li>
+<li>缺點:部份功能無法實現(ex: 設定due date)</li>
+</ul>
+</li>
+<li>API:<ul>
+<li>優點:靈活、Resful的API可以實現大部份的功能</li>
+<li>缺點:實作比較麻煩</li>
+</ul>
+</li>
+</ul>
+<p>(fin)    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2017/02/08/2017/auto_add_trello_card/" data-id="ckfdhi6tq0018koug7dr9azum" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2017/02/08/2017/auto_add_trello_card/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/" rel="tag">Trello</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2017/aspdotnet_threadpool_monitor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/28/2017/aspdotnet_threadpool_monitor/" class="article-date">
@@ -1264,76 +1343,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
 
 
   
-    <article id="post-2016/about_content_type" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/28/2016/about_content_type/" class="article-date">
-  <time datetime="2016-10-28T04:54:55.000Z" itemprop="datePublished">2016-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/2016/about_content_type/">有關 HTTP Header Content-Type</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>當我們對 Server 發出 request 的時候<br>需要註明你 request 的 Content-Type<br>以下簡單介紹一下這些格式  </p>
-<h3 id="測試工具"><a href="#測試工具" class="headerlink" title="測試工具"></a>測試工具</h3><p><a href="https://www.getpostman.com/" target="_blank" rel="noopener">PostMan</a>這套工具<br>可以模擬不同的格式資料發動 request 到你的 Server</p>
-<hr>
-<h2 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h2><h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a><code>application/x-www-form-urlencoded</code></h3><p>常用的Content-Type,簡單說就是KEY-VALUE的方式<br>如下, KEY firstname 的值是 marsen<br>lastname 是由使用者輸入</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  First name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"firstname"</span> <span class="attr">value</span>=<span class="string">"marsen"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  Last name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"lastname"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>同時資料會作一次url encoded,<br>產生類似下列的資料<br>firstname=marsen&amp;lastname=lin&amp;key%5b1%5d=value%5b1%5d</p>
-<hr>
-<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a><code>multipart/form-data</code></h3><p>PostMan中的選項 <code>binary</code> 其實就是包成這種格式<br>上傳檔案會使用這種Content-Type,<br>這通常表示你的html element包含有 <code>&lt;input type=&quot;file&quot;&gt;</code></p>
-<hr>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>PostMan中的選項 <code>raw</code>,可以用字串組合成任意Content-Type,<br>參考<a href="http://www.freeformatter.com/mime-types-list.html" target="_blank" rel="noopener">Content-Type Table</a>  </p>
-<ul>
-<li><code>application/json</code><br>目前主流的API會用輕巧的JSON作為傳遞資訊的媒介  </li>
-<li><code>text/xml</code>、<code>application/xml</code><br>早期標準的Web服務通常會透過xml作為交換資訊的媒介  </li>
-<li><code>text/plain</code><br>有些email或debug的情況會使用text/plain作為Content-Type,但是一般的Request情況不建議使用  </li>
-<li>更多請參考<a href="https://www.w3.org/TR/html5/forms.html#text/plain-encoding-algorithm" target="_blank" rel="noopener">Spec</a></li>
-</ul>
-<hr>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">https://imququ.com/post/four-ways-to-post-data-in-http.html</a></li>
-<li><a href="https://codeforgeek.com/2014/09/handle-get-post-request-express-4/" target="_blank" rel="noopener">https://codeforgeek.com/2014/09/handle-get-post-request-express-4/</a></li>
-<li><a href="https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters" target="_blank" rel="noopener">https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters</a></li>
-<li><a href="https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack" target="_blank" rel="noopener">https://stackoverflow.com/questions/4832357/whats-the-difference-between-text-xml-vs-application-xml-for-webservice-respons?ref=mythemeco&amp;t=pack</a></li>
-<li><a href="https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean" target="_blank" rel="noopener">https://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/28/2016/about_content_type/" data-id="ckfdhi6tg000ikoug0wpz9bli" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2016/10/28/2016/about_content_type/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/" rel="tag">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">下一頁 &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">下一頁 &amp;raquo;</a>
   </nav>
 </section>
         
@@ -1344,6 +1357,10 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/28/2020/softwarecraftsmanship.manifesto/">[生活筆記] 簽署軟體工藝宣言</a>
+          </li>
         
           <li>
             <a href="/2020/10/22/2020/google_domain_forward_mail/">[實作筆記]怎麼建立一個網站？(四) - 自訂網域 EMail</a>
@@ -1361,10 +1378,6 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
             <a href="/2020/10/03/2020/after_try_tutoring_app/">[生活筆記] TUTORING APP 多特英 第四屆體驗大使 --- 心得篇</a>
           </li>
         
-          <li>
-            <a href="/2020/09/30/2020/aha_programing/">[翻譯] AHA Programming 💡</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1374,7 +1387,7 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 

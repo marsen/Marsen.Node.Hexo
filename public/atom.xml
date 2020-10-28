@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-10-22T06:05:26.170Z</updated>
+  <updated>2020-10-28T03:30:25.803Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[生活筆記] 簽署軟體工藝宣言</title>
+    <link href="https://blog.marsen.me/2020/10/28/2020/softwarecraftsmanship.manifesto/"/>
+    <id>https://blog.marsen.me/2020/10/28/2020/softwarecraftsmanship.manifesto/</id>
+    <published>2020-10-28T03:14:08.807Z</published>
+    <updated>2020-10-28T03:30:25.803Z</updated>
+    
+    <content type="html"><![CDATA[<p>As aspiring Software Craftsmen we are raising the bar of<br>professional software development by practicing it and helping<br>others learn the craft. Through this work we have come to value:  </p><p>Not only working software, but also <code>well-crafted software</code><br>Not only responding to change, but also <code>steadily adding value</code><br>Not only individuals and interactions, but also <code>a community of professionals</code><br>Not only customer collaboration, but also <code>productive partnerships</code></p><p>That is, in pursuit of the items on the left we have found the items on the right to be indispensable.  </p><p>作為有理想的軟件工匠，我們一直身體力行，<br>提升專業軟件開發的標準，並幫助他人學習此工藝。<br>通過這些工作，我們建立以下的價值觀：</p><p>既要讓軟件工作，更要精益求精<br>既要響應變化，更要穩步增加價值<br>永遠要有個體與互動，更要形成專家的社區<br>永遠要與客戶合作，更要建立卓有成效的伙伴關係</p><p>也就是說，左項固然值得追求，右項同樣不可或缺。</p><h2 id="簽署心得"><a href="#簽署心得" class="headerlink" title="簽署心得"></a>簽署心得</h2><p>30196   Marsen (Taiwan) 2020/10/28,<br>這些價值觀我是相同認同的,<br>可是這個網站的感覺並沒有呈現出那樣價值觀啊…<br>或許還少了一點美感。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="http://teddy-chen-tw.blogspot.com/search/label/%E9%82%84%E5%B0%91%E4%B8%80%E6%9C%AC%E6%9B%B8" target="_blank" rel="noopener">【還少一本書】Clean Agile</a></li><li><a href="http://manifesto.softwarecraftsmanship.org/" target="_blank" rel="noopener">Software Craftsmanship Manifesto（軟體工藝宣言）</a></li><li><a href="http://manifesto.softwarecraftsmanship.org/#/en/reading" target="_blank" rel="noopener">Software Craftsmanship Manifesto（軟體工藝宣言）#相關閱讀</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;As aspiring Software Craftsmen we are raising the bar of&lt;br&gt;professional software development by practicing it and helping&lt;br&gt;others lear
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[實作筆記]怎麼建立一個網站？(四) - 自訂網域 EMail</title>
@@ -478,32 +500,6 @@
       <category term="CI/CD" scheme="https://blog.marsen.me/tags/CI-CD/"/>
     
       <category term="AOP" scheme="https://blog.marsen.me/tags/AOP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[實作筆記] Github 結合 Stryker 作變異測試</title>
-    <link href="https://blog.marsen.me/2020/05/06/2020/github_action_with_stryker_mutator/"/>
-    <id>https://blog.marsen.me/2020/05/06/2020/github_action_with_stryker_mutator/</id>
-    <published>2020-05-06T01:03:30.000Z</published>
-    <updated>2020-08-31T01:03:57.619Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>前年初次接觸<a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">變異測試</a>，去年在看<a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/">重構</a>時偷換了概念，<br>將兩者結合了。</p><p>這次我想更進一步，將 CI Server 與之結合。</p><h2 id="Stryker-Net"><a href="#Stryker-Net" class="headerlink" title="Stryker.Net"></a>Stryker.Net</h2><p>跟據<a href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md" target="_blank" rel="noopener">Stryker Handbook</a>，<br>Stryker 主要有三個專案，</p><ul><li>Stryker (Javascript &amp; TypeScript)</li><li>Stryker4s (Scala)</li><li>Stryker.NET (.NET)</li></ul><p>我會使用我的練習用<a href="https://github.com/marsen/Marsen.NetCore.Dojo/" target="_blank" rel="noopener">專案</a>作為目標，<br>所以很理所當然的我會選擇 <code>Stryker.NET</code>，那我們就開始吧。</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="安裝-Stryker"><a href="#安裝-Stryker" class="headerlink" title="安裝 Stryker"></a>安裝 Stryker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g dotnet-stryker</span><br></pre></td></tr></table></figure><h3 id="執行-Stryker"><a href="#執行-Stryker" class="headerlink" title="執行 Stryker"></a>執行 Stryker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet stryker -tp "['./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests.csproj','./test/Marsen.NetCore.Dojo.Integration.Tests/Marsen.NetCore.Dojo.Integration.Tests.csproj']" -p="Marsen.NetCore.Dojo.csproj" -dk=$STRYKER_DASHBOARD_API_KEY</span><br></pre></td></tr></table></figure><p>注意幾個 cli 參數，<br><code>-tp</code> 明確指定測試的專案有哪些，可以用中括號<code>[]</code>傳入多個測試專案名稱，使用<code>,</code>作為分隔符<br><code>-p</code> 專案名稱<br><code>-dk</code> dashboard-api-key 這組 key 是用來與 <code>https://dashboard.stryker-mutator.io/</code> 互動的，<br>最主的功能是將報告上傳。<br>$STRYKER_DASHBOARD_API_KEY 是 <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets" target="_blank" rel="noopener">Github 的 Secrets</a></p><p>你可以執行 <code>dotnet stryker -h</code> 查看更多原始說明  </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-tp|--test-projects Specify what test projects should run on the project under test.</span><br><span class="line">-p|--project-file &lt;projectFileName&gt; Used for matching the project references when finding the project to</span><br><span class="line">                                              mutate. Example: "ExampleProject.csproj"</span><br><span class="line">-dk|--dashboard-api-key &lt;api-key&gt; Api key for dashboard reporter. You can get your key here: https://dashboard.stryker-mutator.io</span><br></pre></td></tr></table></figure><h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>新增一個 <code>stryker-config.json</code><br>對我來說，最重要的是要記得設定 <code>stryker-config &gt; reporters &gt; dashboard</code> 這筆資料。<br><a href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Configuration.md" target="_blank" rel="noopener">詳細的說明的可以參考這篇</a>  </p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"stryker-config"</span>: &#123;</span><br><span class="line">    <span class="attr">"dashboard-project"</span>: <span class="string">"github.com/marsen/Marsen.NetCore.Dojo"</span>,</span><br><span class="line">    <span class="attr">"dashboard-version"</span>: <span class="string">"master"</span>,</span><br><span class="line">    <span class="attr">"reporters"</span>: [</span><br><span class="line">      <span class="string">"json"</span>,</span><br><span class="line">      <span class="string">"dashboard"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="在-Github-上工作"><a href="#在-Github-上工作" class="headerlink" title="在 Github 上工作"></a>在 Github 上工作</h3><p>首先你必須在 <a href="https://dashboard.stryker-mutator.io/" target="_blank" rel="noopener">Dashboard</a>中 Enable Repository</p><p><img src="/images/2020/5/github_action_with_stryker_mutator_01.jpg" alt="Enable Repository">  </p><p>然後產生一組 Key</p><p><img src="/images/2020/5/github_action_with_stryker_mutator_02.jpg" alt="產生一組 Key"></p><p>接下來到 Github ， 我們將這組 Key 設定到 Secrets 之中</p><p><img src="/images/2020/5/github_action_with_stryker_mutator_03.jpg" alt="將 Key 設定至 Github"></p><p>再到 Github Actions 中，把 workflow 指令設定完成，</p><p><img src="/images/2020/5/github_action_with_stryker_mutator_04.jpg" alt="Github Actions"></p><p>觸發 CI 完成後，就可以在 <a href="https://dashboard.stryker-mutator.io/reports/github.com/marsen/Marsen.NetCore.Dojo/master" target="_blank" rel="noopener">Dashboard</a> 上看到報表啦。</p><p><img src="/images/2020/5/github_action_with_stryker_mutator_05.jpg" alt="結果呈現"></p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/">https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/</a></li><li><a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">https://blog.marsen.me/2018/03/20/2018/mutation_testing/</a></li><li><a href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md" target="_blank" rel="noopener">https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md</a></li><li><a href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter" target="_blank" rel="noopener">https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;前年初次接觸&lt;a href=&quot;https://blog.marsen.me/2018/03/20/2018/mutation
-      
-    
-    </summary>
-    
-    
-    
-      <category term="實作筆記" scheme="https://blog.marsen.me/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
-    
-      <category term="CI/CD" scheme="https://blog.marsen.me/tags/CI-CD/"/>
     
   </entry>
   
