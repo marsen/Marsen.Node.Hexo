@@ -1,29 +1,34 @@
 ---
 title: "[活動筆記]蝦皮購物新加坡研發團隊技術分享會"
 date: 2018/03/15 17:00:12
+tag:
+	- 活動筆記
 ---
 
 ## 應該不用知道的事
+
 1. 雖然是「技術分享會」實際上在徵才
 2. 不過還是有半場的技術分享
-3. 91app 至少去了10 個人(含前員工) 
+3. 91app 至少去了10 個人(含前員工)
 4. 這篇文章對你應該沒有幫助
 
 ## 有關蝦皮
+
 - 屬於[Sea 集團](http://www.seagroup.com/home)的一部份
 - 東南亞多國服務(新加坡、泰國、馬來西亞、印度、台灣、越南…)
 - 63e Request / Day
 - 8G IO / Mins
 
 ## 選擇
-- Native App / Web / Hybird / RN ?
-- Clound / Self machine ?
+
+- Native App / Web / Hybrid / RN ?
+- Cloud / Self machine ?
 - Php/ Nodejs / RoR / Django ?
-- Apache / Ngnix ?
+- Apache / Nginx ?
 - C ++ / Java / GoLang
-- Memcahed / Redis ?
+- Memcached / Redis ?
 - SPA / MPA ?
-- Mesos / Kubernate ?
+- Mesos / Kubernetes ?
 
 ## Qiz & Ans
 
