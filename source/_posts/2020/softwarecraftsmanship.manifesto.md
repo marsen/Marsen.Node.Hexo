@@ -27,10 +27,16 @@ That is, in pursuit of the items on the left we have found the items on the righ
 
 ## 簽署心得
 
-30196   Marsen (Taiwan) 2020/10/28,  
 這些價值觀我是相同認同的,  
 可是這個網站的感覺並沒有呈現出那樣價值觀啊…
-或許還少了一點美感。
+或許還少了一點美感.  
+
+我的簽署資訊如下, 
+`30196   Marsen (Taiwan) 2020/10/28`,  
+查詢功能不能查 ID 與國家有點弱,
+沒有正體中文的翻譯,  補充資料的部份很不錯,  
+但是也只是沒有系統的散落在那裡.  
+想給點回饋,也找不到留言區或討論區, 或是網站的 Repository.  
 
 ## 參考
 
