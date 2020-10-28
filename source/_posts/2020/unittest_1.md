@@ -229,4 +229,22 @@ public class Calculator
 可以使用測試驗証框架(ex:Fluent Assertions)，  
 或是抽出方法來增加可讀性，但比起可讀，更重要是可理解。
 
+## 彩蛋
+
+後續的 Live Coding 會讓參加者完成後續的方法測試，
+加法、減法、乘法、除法…
+特別計算到除法的除零邏輯時，應該拋出錯誤。
+趁這個機會可以介紹如何驗証 Exception。
+
+> 進一步可以介紹如何使用 `fluentassertions`。
+
+```csharp
+  [Fact]
+  public void Divide_7_0_is_Exception()
+  {
+      Func<int> act = () => _target.Divide(7, 0);
+      act.Should().Throw<DivideByZeroException>();
+  }
+```
+
 (fin)
