@@ -31,7 +31,7 @@ That is, in pursuit of the items on the left we have found the items on the righ
 可是這個網站的感覺並沒有呈現出那樣價值觀啊…
 或許還少了一點美感.  
 
-我的簽署資訊如下, 
+我的簽署資訊如下,  
 `30196   Marsen (Taiwan) 2020/10/28`,  
 查詢功能不能查 ID 與國家有點弱,
 沒有正體中文的翻譯,  補充資料的部份很不錯,  
