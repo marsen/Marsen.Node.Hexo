@@ -1,10 +1,9 @@
 ---
-title: "將 Express 網站整合 Typescirpt 開發"
+title: "將 Express 網站整合 TypeScript 開發"
 date: 2017/08/16 16:26:14
-tag:
-  - Expressjs
+tag:  
   - TypeScript
-  - Gulpjs
+  - GulpJs
   - Node.js
 ---
 ## 原因與目的
