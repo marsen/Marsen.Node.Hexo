@@ -10,10 +10,10 @@ date: 1985/02/09 00:00:29
 ### 技能(SKILLS)
 
 * Project Management and Leadership:
-  * CSM(Certified Scrum Master) 認証
-  * 1 年小組 Tech Leader & 1 年 Team Leader 經驗
-  * 3 年敏捷 Scrum Team 經驗
-  * 8 年軟體/Web開發經驗
+  * 2018 ~ 2022 CSM(Certified Scrum Master) 認証
+  * 5 年以上 Tech/Team Leader 經驗至今
+  * 2015 年敏捷 Scrum Team 至今
+  * 2010 年軟體/Web 開發經驗至今
 
 * Problem-solving and Communication:
   * 第三方系統介接
@@ -25,7 +25,7 @@ date: 1985/02/09 00:00:29
   * JavaScript & Nodejs With TypeScript (Gulp/Angular/...etc)
   * Database(MsSQL/MySql/MongoDB)
   * CI/CD experience with Jenkins
-  * Git & Setting flow with Bitbacket/GitLab/GitHub
+  * Git & Setting flow with Bitbucket/GitLab/GitHub
   * AWS experience(EC2/S3/)
   * Unit Testing/TDD/Automation Testing
   * Java & Php & Ruby experience with side project
@@ -45,7 +45,7 @@ date: 1985/02/09 00:00:29
 近期團隊進行第二次轉型，受到公司肯定成為團隊的  Tech-Lead，
 團隊改以跨國整合而非單一市場，在國際化與在地化上面臨許多挑戰，卻值得期待。  
 技術方面:  
-以 .NET MVC 為主，搭配 Angular/TypeScirpt 作為開發的核心  
+以 .NET MVC 為主，搭配 Angular/TypeScript 作為開發的核心  
 多樣的 Cache 機制也在實務中不同的場景應用，  
 IoC大量的被應用在開發之中，也參與過了 TDD 的導入。  
 公司內部有多種的讀書會與分享會，讓自已組織表達能力更上一層樓。  
@@ -53,7 +53,7 @@ IoC大量的被應用在開發之中，也參與過了 TDD 的導入。
 雖然尚未完成一個完整 DevOps 循環，但團隊也持續在努力中。  
 2018 擔任 Tech Leader，並考取 CSM。
 
-#### 2012-2015 全曜財經(Cmoney)
+#### 2012-2015 全曜財經(CMoney)
 
 擔任WEB軟體工程師，負責需求分析、架構設計、前後端的銜接與技術支援，新人教育訓練與專案管理。
 開發專案有
@@ -62,7 +62,7 @@ IoC大量的被應用在開發之中，也參與過了 TDD 的導入。
   -「管理後台與財務後台」
   -「會員中心」公司主要的會員系統。
 與其它系統的維護。
-在公司導入版本控制(SVN)與 Scurm，後期啟動導入 Git。
+在公司導入版本控制(SVN)與 Scrum，後期啟動導入 Git。
 2014 擔任 Team Leader 。
 
 #### 2010-2012 緯創軟體(Wistron ITS)
@@ -75,11 +75,12 @@ IoC大量的被應用在開發之中，也參與過了 TDD 的導入。
 
 #### 2003-2007
 
-中原大學應用數學系(Chung Yuan Christian University,Applied Mathematics)
+中原大學應用數學系(Chung Yuan Christian University，Applied Mathematics)
 
 ### 其它(OTHER)
 
 語言: 中文(母語)、英文(中等)
 Blog: <https://blog.marsen.me/>
+Email: admin@marsen.me
 
 (fin)

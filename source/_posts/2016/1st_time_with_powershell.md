@@ -9,7 +9,7 @@ tag:
 
 ## 需求
 
-1. 將指定的Log記錄,匯入資料庫,產生row data
+1. 將指定的Log記錄，匯入資料庫，產生row data
 2. 將row data 轉換成為需要的報表資料
 3. 產生報表
 
@@ -32,8 +32,8 @@ tag:
 ### 讀取檔案
 
 ```powershell
-#用New-Object 建立.Net StreamrReader 物件
-$reader = New-Object System.io.streamreader(get-item $filePath)
+#用New-Object 建立.Net StreamReader 物件
+$reader = New-Object System.io.streamReader(get-item $filePath)
 #使用`[]`建立靜態類別讀取檔案
 $file = [System.IO.File]::ReadAllLines($filePath)  
 #直接使用Get-Content讀取文檔
@@ -98,9 +98,9 @@ $datatable | export-csv C:\Reports\20161026.csv -Encoding UTF8
 
 ## 參考
 
-1. https://msdn.microsoft.com/en-us/powershell
-2. https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods
-3. https://cmatskas.com/execute-sql-query-with-powershell/
-4. https://blogs.technet.microsoft.com/heyscriptingguy/
+1. <https://msdn.microsoft.com/en-us/powershell>
+2. <https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-static-classes-and-methods>
+3. <https://cmatskas.com/execute-sql-query-with-powershell/>
+4. <https://blogs.technet.microsoft.com/heyscriptingguy/>
 
 (fin)
