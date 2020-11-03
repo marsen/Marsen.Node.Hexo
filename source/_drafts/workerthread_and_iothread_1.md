@@ -1,11 +1,10 @@
 
-
 ## 前情提要
 
 1. 實務上的專案遭受 DDos 攻擊  
 2. DB TimeOut  
 3. Redis TimeOut  
-4. 主程式沒有死,但是Elmah出現大量Exception  
+4. 主程式沒有死，但是 Elmah 出現大量Exception  
 
 ## 錯誤資訊
 

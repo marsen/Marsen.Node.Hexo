@@ -23,8 +23,8 @@ tag:
 
 ### `application/x-www-form-urlencoded`
 
-常用的Content-Type,簡單說就是KEY-VALUE的方式  
-如下, KEY firstname 的值是 marsen  
+常用的Content-Type，簡單說就是KEY-VALUE的方式  
+如下， KEY firstname 的值是 marsen  
 lastname 是由使用者輸入
 
 ```html
@@ -36,7 +36,7 @@ lastname 是由使用者輸入
 </form>
 ```
 
-同時資料會作一次url encoded,  
+同時資料會作一次url encoded，  
 產生類似下列的資料
 firstname=marsen&lastname=lin&key%5b1%5d=value%5b1%5d
 
@@ -45,14 +45,14 @@ firstname=marsen&lastname=lin&key%5b1%5d=value%5b1%5d
 ### `multipart/form-data`
 
 PostMan中的選項 `binary` 其實就是包成這種格式  
-上傳檔案會使用這種Content-Type,  
+上傳檔案會使用這種Content-Type，  
 這通常表示你的html element包含有 `<input type="file">`
 
 ---
 
 ### 其它
 
-PostMan中的選項 `raw`,可以用字串組合成任意Content-Type,  
+PostMan中的選項 `raw`，可以用字串組合成任意Content-Type，  
 參考[Content-Type Table](http://www.freeformatter.com/mime-types-list.html)  
 
 - `application/json`

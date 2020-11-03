@@ -27,8 +27,8 @@ IOCP: (Busy=0,Free=1000,Min=8,Max=1000), WORKER: (Busy=13,Free=32754,Min=8,Max=3
 ## 解析
 
 這時當 StackExchange.Redis 在進行同步作業的時候,  
-如果超過 `synctimeout` 的設定值(預設是1000ms), 
-Redis 會佔用.NET的 workerthread 
+如果超過 `syncTimeout` 的設定值(預設是1000ms),  
+Redis 會佔用.NET的 worker Thread  
 而在 .NET 底層隱含著一個機制,
 會導致錯誤。
 
@@ -93,6 +93,7 @@ IOCP: (Busy=0, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=819
 |in|there are no active readers and zero bytes are available to be read on the NIC bytes/activereaders|0個reader|bytes/activereaders|
 
 ## 參考
+
 - [Threading](https://msdn.microsoft.com/en-us/library/orm-9780596527570-03-19.aspx)
 - [Improving ASP.NET Performance](https://msdn.microsoft.com/en-us/library/ms998549.aspx)
 - [Programming the Thread Pool in the .NET Framework](https://msdn.microsoft.com/en-us/library/ms973903.aspx)
@@ -104,6 +105,7 @@ IOCP: (Busy=0, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=819
 ---
 
 ## 其它的 Redis Error 情境 
+
 只作摘要式的翻譯。
 
 ### Memory pressure (記憶體壓力)
@@ -120,7 +122,7 @@ Monitory memory usage on machine to make sure that it does not exceed available 
 Monitor the Page Faults/Sec perf counter. Most systems will have some page faults even during   
 normal operation, so watch for spikes in this page faults perf counter which correspond with timeouts.  
 
-`Resolution:`   
+`Resolution:`  
 增加記憶體或是減少記憶體使用量
 Upgrade to a larger client VM size with more memory or dig into your memory usage patterns   
 to reduce memory consuption.  
@@ -134,7 +136,7 @@ ThreadPool突然大量的工作湧入queue導致執行緒來不及建立。
  Bursts of traffic combined with poor ThreadPool settings can result in delays in processing   
  data already sent by the Redis Server but not yet consumed on the client side.  
 
-`測量:`   
+`測量:`  
 可以用[程式](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)監控 ThreadPool .  
 或是單純透過 TimeoutException 的訊息,觀察IOCP與WORKER的Busy值來判斷.   
 `Measurement:`  
@@ -155,7 +157,7 @@ socket layer but haven't yet been read by the application (e.g. StackExchange.Re
 This typically means that your application isn't reading data from the network as quickly as   
 the server is sending it to you.  
 
-`Resolution:` 
+`Resolution:`  
 調整ThreadPool設定  
 Configure your ThreadPool Settings to make sure that your threadpool will scale up quickly under burst scenarios.
 
@@ -163,20 +165,20 @@ Configure your ThreadPool Settings to make sure that your threadpool will scale 
 
 ### High CPU usage (CPU 過載)
 
-`Problem:` 
+`Problem:`  
 High CPU usage on the client is an indication that the system cannot keep up with the work that it has been asked to perform. High CPU is a problem because the CPU is busy and it can't keep up with the work the application is asking it to do. The response from Redis can come very quickly, but because the CPU isn't keeping up with the workload, the response sits in the socket's kernel buffer waiting to be processed. If the delay is long enough, a timeout occurs in spite of the requested data having already arrived from the server.
 
-`Measurement:` 
+`Measurement:`  
 Monitor the System Wide CPU usage through the azure portal or through the associated perf counter. 
 Be careful not to monitor process CPU because a single process can have low CPU usage at the same time that overall system CPU can be high. 
 Watch for spikes in CPU usage that correspond with timeouts. As a result of high CPU, 
 you may also see high "in: XXX" values in TimeoutException error messages as described above in the "Burst of traffic" section. 
 Note that in newer builds of StackExchange.Redis, the client-side CPU will be printed out in the timeout error message as long as the environment doesn't block access to the CPU perf counter.
 
-`Note:` 
+`Note:`  
 StackExchange.Redis version 1.1.603 or later now prints out "local-cpu" usage when a timeout occurs to help understand when client-side CPU usage may be affecting performance.
 
-`Resolution:` 
+`Resolution:`  
 增加CPU或是找出CPU產生過載的原因  
 Upgrade to a larger VM size with more CPU capacity or investigate what is causing CPU spikes.
 
@@ -184,14 +186,14 @@ Upgrade to a larger VM size with more CPU capacity or investigate what is causin
 
 ### Client Side Bandwidth Exceeded (頻寬不足)
 
-`Problem:` 
+`Problem:`  
 Different sized client machines have limitations on how much network bandwidth they have available. 
 If the client exceeds the available bandwidth, then data will not be processed on the client side as quickly as the server is sending it. This can lead to timeouts.
 
-`Measurement:` 
+`Measurement:`  
 Monitor how your Bandwidth usage change over time using code like this. Note that this code may not run successfully in some environments with restricted permissions (like Azure WebSites).
 
-`Resolution:` 
+`Resolution:`  
 加大頻寬或減少使用量
 Increase Client VM size or reduce network bandwidth consumption.
 
@@ -202,16 +204,16 @@ Increase Client VM size or reduce network bandwidth consumption.
 `Problem:` 
 如圖所示,A與B兩個Request都太過龐大,當同時發動請求時,  
 A 回應的時間過長, 導致 B 的Timeout
-A large request/response can cause timeouts. As an example, suppose your timeout value configured is 1 second. 
-Your application requests two keys (e.g. 'A' and 'B') at the same time using the same physical network connection. 
+A large request/response can cause timeouts. As an example, suppose your timeout value configured is 1 second.  
+Your application requests two keys (e.g. 'A' and 'B') at the same time using the same physical network connection.  
 Most clients support "Pipelining" of requests, such that both requests 'A' and 'B' are sent on the wire to the server one after the other without waiting for the responses. 
 The server will send the responses back in the same order. If response 'A' is large enough it can eat up most of the timeout for subsequent requests.
 
-Below, I will try to demonstrate this. In this scenario, Request 'A' and 'B' are sent quickly, 
-the server starts sending responses 'A' and 'B' quickly, but because of data transfer times, 
+Below, I will try to demonstrate this. In this scenario, Request 'A' and 'B' are sent quickly,  
+the server starts sending responses 'A' and 'B' quickly, but because of data transfer times,  
 'B' get stuck behind the other request and times out even though the server responded quickly.
 
-```
+```text
 |-------- 1 Second Timeout (A)----------|
 |-Request A-|
      |-------- 1 Second Timeout (B) ----------|
@@ -225,10 +227,13 @@ This is a difficult one to measure. You basically have to instrument your client
 
 `Resolution:`
 將所需要的資料分割成數個小片段 再分別取回
-Redis is optimized for a large number of small values, rather than a few large values. 
+Redis is optimized for a large number of small values， rather than a few large values.  
 The preferred solution is to break up your data into related smaller values. See here for details around why smaller values are recommended.
-Increase the size of your VM (for client and Redis Cache Server), to get higher bandwidth capabilities, reducing data transfer times for larger responses. 
-Note that getting more bandwidth on just the server or just on the client may not be enough. 
+Increase the size of your VM (for client and Redis Cache Server)， to get higher bandwidth capabilities，  
+reducing data transfer times for larger responses.  
+Note that getting more bandwidth on just the server or just on the client may not be enough.  
 Measure your bandwidth usage and compare it to the capabilities of the size of VM you currently have.
-Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool). 
-If you go this route, make sure that you don't create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.
+Increase the number of ConnectionMultiplexer objects you use and round-robin requests over different connections (e.g. use a connection pool).  
+If you go this route，make sure that you don't create a brand new ConnectionMultiplexer for each request as the overhead of creating the new connection will kill your performance.  
+
+(fin)
