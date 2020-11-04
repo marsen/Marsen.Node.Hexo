@@ -110,7 +110,7 @@ tag:
 - Roles
 	- contries PM
 	- fucntion PM
-- Scurm 是跑給老闆看的(!!?)
+- Scrum 是跑給老闆看的(!!?)
 - 馬來西亞不用小豬ICON(各地風俗民情不同)
 
 ## 參考

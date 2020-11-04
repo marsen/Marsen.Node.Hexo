@@ -219,7 +219,7 @@ Real Team
 ## 參考
 
 * [\[N社筆記\] 敏捷路上跌倒站起來 2018/11/1](https://blog.marsen.me/2018/11/18/2018/csm/91app_scrum_masters_growth_camp/)
-* [\[閱讀筆記\] The Great Scrum Master 第一章](https://blog.marsen.me/2018/07/15/books/book_the_great_scurm_master_ch1/)
+* [\[閱讀筆記\] The Great Scrum Master 第一章](https://blog.marsen.me/2018/07/15/books/book_the_great_Scrum_master_ch1/)
 * [The role of the Scrum Master – Part I](https://stayrelevant.globant.com/en/the-role-of-the-scrum-master-part-i/)
 
 ## 心得小結
