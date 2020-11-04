@@ -12,7 +12,7 @@ tag:
 ## 第一個層次 --- 我的團隊
 Scrum Master 只對開發團隊負責，  
 **「如何讓自已每天都發揮作用?」**  
-建立具有敏捷思維與 Scurm 價值觀的自組織團隊是個長期活動。  
+建立具有敏捷思維與 Scrum 價值觀的自組織團隊是個長期活動。  
 第一步是觀察，並抑制親力親為的衝動(具體建議/親自排解障礙)，
 
 可能的問題在於，團隊缺乏理解、所有權、責任感與經驗;  
@@ -23,7 +23,7 @@ Scrum Master 只對開發團隊負責，
 沒有主管並不會讓團隊自組織！給團隊解決不能只靠再想想
 https://www.facebook.com/91agile/posts/986977734810178
 ```
-### Scurm 的價值觀
+### Scrum 的價值觀
 - 承諾、專注、開放、尊重、勇氣
 --- ScrumAlliance 《Scaling Lean & Agile Development》
 - 誠實、開放、勇氣、尊重、專注、信任、授權和合作
@@ -35,7 +35,7 @@ https://www.facebook.com/91agile/posts/986977734810178
 
 
 ## 第二個層次 --- 關係
-- Scurm Team
+- Scrum Team
 	- 建立連貫、自信的團隊
 	- 將 PO 整合進入團隊 
 	- 建立三個角色平衡的關係
@@ -43,8 +43,8 @@ https://www.facebook.com/91agile/posts/986977734810178
 	- 客戶、用戶、經理、銷售人員、維運人員、客服、其它團隊
 	- 將自組織用于參與的所有人員
 
-	這需要 Scurm Master 對 Scurm 定義、理解與解釋的能力，  
-	不只是會議/角色或產出物，而是從文化、價值觀與思維方式對 Scurm 的內化。  
+	這需要 Scrum Master 對 Scrum 定義、理解與解釋的能力，  
+	不只是會議/角色或產出物，而是從文化、價值觀與思維方式對 Scrum 的內化。  
 	在這層次下，需要建立靈活的虛擬團隊擁有所有權，承擔某些責任，  
 	有些團隊在解決問題後就可以淡出，有的要維持一段時間。  
     
@@ -88,7 +88,7 @@ Scrum Master 小組是改變組織最好的起點。
 - 建立虛擬組織讓人參與並擁有所有權
 
 ### 挑戰
-- Scurm Master 否定 Scrum Master 小組的價值
+- Scrum Master 否定 Scrum Master 小組的價值
 - 防衛心理:
 	- 缺乏同理心，從別的團隊角度觀察事情
 	- 缺乏系統觀點與思維
@@ -128,15 +128,15 @@ RD彼此衝突 / Merge Before Build 造成的衝突與浪費
 ```
 1.
 組織或團隊會抗拒改變;
-又或者組識本身的價值觀與 Scurm 有所抵觸。
-以這個層面來說 Scurm Master 能作得很有限，
+又或者組識本身的價值觀與 Scrum 有所抵觸。
+以這個層面來說 Scrum Master 能作得很有限，
 所以又有 Agile Coach 的產生 ? → 說穿了就是顧問 ?
 第一現場的工作者給的問題，如果不虛心接受
 以現場角度思考，全盤歸疚於心態問題，是在逃避問題
 抱著過往成功不放，不願具體改變或聆聽異議，  
 由上而下獨幹而非由下而上改變，喊喊口號「速度感起來了!」  
 敏捷淪為口號，實踐就成了宗教儀式。
-不論是 Scurm Master 或是 Agile Coach 都是觀察者/顧問的角色，
+不論是 Scrum Master 或是 Agile Coach 都是觀察者/顧問的角色，
 ```
 ```
 轉型的路上我質疑一切
@@ -152,7 +152,7 @@ Unit Tests Team ?
 為什麼有這樣的想法 ? 單元測試很重要，卻沒有人寫。
 原因1. 沒有時間
 原因2. 流程內未包含寫單元測試與執行單元測試，
-Scurm 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Tests。
+Scrum 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Tests。
 原因3. 責任規屬不明? QA Team 專心作測試，RD Team 專心作開發
 沒有一個團隊專門來處理單元測試
 原因4. 導入失敗 
@@ -167,7 +167,7 @@ Scurm 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Te
 
 ## 參考
 
-- [Scurm的價值觀](https://ruddyblog.wordpress.com/tag/scrum價值觀/)
+- [Scrum的價值觀](https://ruddyblog.wordpress.com/tag/scrum價值觀/)
 - [Scrum價值觀問題溯源](https://www.jianshu.com/p/1293bfe84446)
 - [Cynefin 框架](https://en.wikipedia.org/wiki/Cynefin_framework)
 - [決策於渾沌之中](https://www.hbrtaiwan.com/article_content_AR0000595.html)

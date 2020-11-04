@@ -86,7 +86,7 @@ tag:
 
 ### 反思
 
-- Scurm 四大會議的立會與 Retrospective
+- Scrum 四大會議的立會與 Retrospective
 
 
 ## 執行
