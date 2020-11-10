@@ -128,7 +128,7 @@ tag:
 
 ## Over View
 
-![Strip Oauth Flow](/images/2020/11/cashflow.png)
+![Cash Flow Over View](/images/2020/11/cashflow.png)
 
 ## 參考
 
