@@ -1,6 +1,8 @@
 ---
 title: "[生活筆記] 簽署軟體工藝宣言"
-date: 2020/20/28 11:16:17
+date: 2020/10/28 11:16:17
+tag:
+    - 生活筆記
 ---
 
 As aspiring Software Craftsmen we are raising the bar of  
