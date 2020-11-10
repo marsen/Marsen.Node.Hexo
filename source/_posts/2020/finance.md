@@ -126,6 +126,10 @@ tag:
   - 好友/親人
   - 普通同事/朋友，只包不去通常可以省時省錢
 
+## Over View
+
+![Strip Oauth Flow](/images/2020/11/cashflow.png)
+
 ## 參考
 
 - [轉帳免手續費](https://carl5202002.pixnet.net/blog/post/316738662-%E8%B7%A8%E8%A1%8C%E8%BD%89%E5%B8%B3%E5%85%8D%E6%89%8B%E7%BA%8C%E8%B2%BB)
