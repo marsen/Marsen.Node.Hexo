@@ -23,14 +23,14 @@ date: 2020/10/22 11:02:59
 加上 Google 的服務常常說收就收, 有商務需求的人還是不建議這個方式喔.  
 電子郵件 > 新增電子別名,輸入自已想要的名字,然後填入`現有收件者電子郵件地址`
 
-![新增電子郵件別名](/images/2020/10/email/add_forward.jpg)
+![新增電子郵件別名](/images/2020/10/email/add_forward.jpgJ
 
 ![輸入轉寄電子郵件](/images/2020/10/email/add_name.jpg)
 
 如果你全部使用 Google 的服務的話,這樣子的設定就好了,  
 DNS 的 MX 記錄 Google 會自動幫你處理到好.  
-但是如果你像我一樣, 使用了別的 DNS 服務就必須要自已手動將 MX 記錄註冊上去喔 
-在 CloudFlare > DNS 就可以進行設定. 
+但是如果你像我一樣, 使用了別的 DNS 服務就必須要自已手動將 MX 記錄註冊上去喔  
+在 CloudFlare > DNS 就可以進行設定.  
 
 |名稱/主機/別名|類型|存留時間 (TTL)|優先順序|值/回應/目的位置|
 |---        |---|---    |---    |---    |
@@ -46,10 +46,43 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 我實測上沒收到信,但是寄信馬上就生效了.
 有了自已域名的信箱~~虛榮感~~專業度是不是又上升了幾個百分點呢?
 
+## 補充 20201118
+
+前面已經可以透過自已的域名收信啦，  
+那麼怎麼寄信呢?  
+
+想像一下，如果用 `admin@yourdomain.com` 收信，  
+卻用 `youraccout@gmail.com` 回信，  
+是不是整個 Low 掉了，而且收信者是不是會懷疑怎麼寄信給 A 卻是 B 回信呢?。
+
+為了解決這個問題，請參考[在 Gmail 中使用別名傳送電子郵件](https://support.google.com/domains/answer/9437157)，  
+
+1. 產生應用程式密碼
+   - 登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。
+    ![登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。](/images/2020/10/email/gmail_application_setting.jpg)
+   - 左側安全性 > 應用程式密碼 > 選取應用程式(選擇郵件) > 選取裝置(其它) > **輸入自已的 Domain** > 產生
+    ![登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。](/images/2020/10/email/gmail_application_add.jpg)
+    ![輸入密碼](/images/2020/10/email/gmail_application_password.jpg)
+   - 把系統產生的 16 個字元密碼記錄下來。等一下我們會需要用到這組密碼
+
+2. 新增電子郵件別名
+   - 登入 Gmail > 設定 > 帳戶和匯入 > 選擇寄件地址 > 新增另一個電子郵件地址
+   - 電子郵件地址輸入 **自訂網域信箱** > 勾選「視為別名」
+   - SMTP 伺服器輸入 **smtp.gmail.com** 通訊埠 **587**，選取**採用 TLS 的加密連線**
+   - 使用者帳戶請輸入 Google 帳戶(不用包含`@gmail.com`)，密碼使用上一步的**應用程式密碼** > 新增帳戶
+   - 系統會寄一封驗証信，驗証後即可使用新的信箱寄信了
+   ![驗証信箱](/images/2020/10/email/gmail_application_verify.jpg)
+
+3. 變更「寄件者」地址
+   - 登入 Gmail > 設定 > 帳戶和匯入 > 選擇寄件地址
+   - 設定回覆郵件時：來自和郵件傳送地址相同位置的回覆
+   - 將自訂網域的信箱設定為預設郵件
+
 ## 參考
 
 - [轉寄電子郵件](https://support.google.com/domains/answer/3251241?hl=zh-Hant#emailForwarding)
 - [設定自訂名稱伺服器的電子郵件轉寄功能](https://support.google.com/domains/answer/9428703)
+- [在 Gmail 中使用別名傳送電子郵件](https://support.google.com/domains/answer/9437157)
 
 ## 系列文章
 
