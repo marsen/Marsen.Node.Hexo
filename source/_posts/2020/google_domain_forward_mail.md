@@ -69,6 +69,7 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
    - 登入 Gmail > 設定 > 帳戶和匯入 > 選擇寄件地址 > 新增另一個電子郵件地址
    - 電子郵件地址輸入 **自訂網域信箱** > 勾選「視為別名」
    - SMTP 伺服器輸入 **smtp.gmail.com** 通訊埠 **587**，選取**採用 TLS 的加密連線**
+   ![SMTP 設定](/images/2020/10/email/gmail_application_smtp.jpg)
    - 使用者帳戶請輸入 Google 帳戶(不用包含`@gmail.com`)，密碼使用上一步的**應用程式密碼** > 新增帳戶
    - 系統會寄一封驗証信，驗証後即可使用新的信箱寄信了
    ![驗証信箱](/images/2020/10/email/gmail_application_verify.jpg)
