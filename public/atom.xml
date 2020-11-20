@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2020-11-11T02:16:23.906Z</updated>
+  <updated>2020-11-20T09:00:25.225Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[活動筆記] 2020 SCRUM GUIDE UPDATE</title>
+    <link href="https://blog.marsen.me/2020/11/20/2020/scrum_guide_2020/"/>
+    <id>https://blog.marsen.me/2020/11/20/2020/scrum_guide_2020/</id>
+    <published>2020-11-20T09:32:02.000Z</published>
+    <updated>2020-11-20T09:00:25.225Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>2020/11/18 將迎來 Scrum 25 周年與 Scrum Guide 的更新，<br>活動有一些大師對談，錄影放在文末連結之中，<br>另稍微比較一下 2017 與 2020 Scrum Guide 的差異(以中文為主)，<br>特別感謝譯者這麼有效率的更新，我差不多在 19 號就可以在<a href="https://www.scrumguides.org/download.html" target="_blank" rel="noopener">網站下載</a>了</p><h2 id="排版與封面"><a href="#排版與封面" class="headerlink" title="排版與封面"></a>排版與封面</h2><p>2017 版本主要視覺的位置放了兩個大師的合照，首行字為「Scrum 指南™」<br>2020 版本主要視覺的位置為「Scrum 指南」，首行字為兩位大師的名字。<br>理想我會希望使用 2020 的版本，然後兩位大師的名字縮小到角落 :D</p><h3 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h3><p>2020 將目的前移到目錄之前，我覺得這樣的調整很好。<br>讓人可以先讀取本指南的目的。</p><h3 id="Scrum-指南的目的"><a href="#Scrum-指南的目的" class="headerlink" title="Scrum 指南的目的"></a>Scrum 指南的目的</h3><p>篇幅相比 2017 更長了，並將 2017 版「Scrum 的運用」縮減並挪移至此處。<br>簡介了 Scrum 的起源，概述了 Scrum 的運用範圍與現況。  </p><p>另外有兩句預防性的警語，是這個段落的重點</p><ul><li>改變 Scrum 的核心設計或 Scrum 的各種理念，遺漏其中任何元素，或是不遵照 Scrum 的規則，是在掩蓋問題，並限制了 Scrum 的各種好處，甚至可能使其變得毫無用處。</li><li>這些使用 Scrum 框架內的戰術技巧有很大的變化，因此不在此描述。</li></ul><p>這個篇幅簡述了 Scrum 已是被時間與不同產業實証有用的框架，<br>但擅自修改 Scrum 可能會導致 Scrum 效用打折甚至無用，<br>並具體說明 Scrum 的戰術實作不會在此指南描述。</p><h3 id="Scrum-的定義"><a href="#Scrum-的定義" class="headerlink" title="Scrum 的定義"></a>Scrum 的定義</h3><p>相比 2017 的版本，這裡直接提到了 Scrum 中所有的角色與其職責。<br>並明確的說明「原封不動地應用 Scrum」, 並強調這份指南是<code>人之間的指引</code>，<br>而不是具體的流程、技術與方法。</p><p>這裡也是我覺得很好的地方，以前在首次與團隊成員說明 Scrum Guide 時，<br>如果按照 2017 的章節說明，我都要另外安排一個段落先簡述 Scrum 中的角色，<br>因為 2017 在角色出現的篇幅比角色的說明還要早。</p><h3 id="Scrum-的理論"><a href="#Scrum-的理論" class="headerlink" title="Scrum 的理論"></a>Scrum 的理論</h3><p>2020 的版本加上精實思維(Lean Thinking)，<br>並具體說明了檢視、調適的事件( 2017 翻譯為活動)與三大支柱的關係。  </p><p>透明性的段落強調了<code>没有透明性的檢視會產生誤導和浪費(做出讓價值減少且風險增加的決策)</code><br>很有感觸，我在團隊導入 Scrum 的首要宗旨就是看見事實。<br>(有機會再談談如何定義事實與 Ruddy 老師說的「看見全貌」的差異之所在)  </p><p>檢視性強調 Scrum 將以 5 個事件有節奏實踐檢視性(具體作法與事件在這個段落還沒提)，  </p><p><code>檢視性促成調適性。 沒有調適性的檢視是沒有意義的。Scrum 的事件旨在激發改變。</code>  </p><p>這句話作到了承先起後的作用，可以將檢視性視作三大支柱的樞鈕。  </p><p>調適性的篇幅提到了授權與自我管理，這也許是導入常常碰到的地雷。<br>團隊不被授權或缺乏自我管理的能力或意識(有點像有沒有病識感)。  </p><p>2020 的編排我很喜歡，除了一再預告事件如何產生三大支柱之外，不再僅僅以順序暗示三大支柱的關係。<br>而是明確的說明<code>透明性促成檢視性。檢視性促成調適性。</code>。<br>(有點像真善美，沒有真後面就會變成假善、假美那就豪無意義了)  </p><h3 id="Scrum-的價值觀"><a href="#Scrum-的價值觀" class="headerlink" title="Scrum 的價值觀"></a>Scrum 的價值觀</h3><p>對承諾、專注、開放、尊重、與勇氣的排版更明顯了，另外 Stakeholders 也明文納入其中了。  </p><p>誒、不對啊，這些態度不是跟四維八德一樣，小朋友都知道嗎?<br>而且應該不論是你的老闆、雞巴主管、龜毛客戶、秋條前輩到所有人都應該要有相同的態度，不是嗎?<br>這就是知易行難吧… 說個滑坡的，最近在思考尊重與尊敬的差異，<br>朋友給了我一個例子:</p><ul><li>尊重:念在你是一代宗師，你自盡吧</li><li>尊敬:我的戰鬥力只有六千，他起碼有一萬以上</li></ul><p>聽說看得懂的都是老人。</p><h3 id="Scrum-Team"><a href="#Scrum-Team" class="headerlink" title="Scrum Team"></a>Scrum Team</h3><p>引言強調一位 Product Owner(2017 在後面的段落才提到)，<br>強調了沒有子團隊與階級架構(具體實務上會影響到組織結構，實作起來並不容易，需要更多的經驗)。<br>這次沒有翻譯目標/目的了，直接使用 Product Goal 並在後面的段落具體指由 PO 開發、描述溝通。  </p><p>然後強化了對當責的描述，調整了後面篇幅的介紹順序<br>2017:PO &gt; Development Team &gt; Scrum Master<br>2020:Developers &gt; PO &gt; Scrum Master<br>我認為順序都是有暗喻性的，但解讀方式是自由的，就不過多解釋了。  </p><p>重點是責任的部份，我覺得比起 2017 更能簡單的用 Scrum Guide 說明現在角色的職責所在了。  </p><p>Developers</p><p>● 打造一份 Sprint 的計畫，也就是 Sprint Backlog；<br>● 藉由遵循完成之定義，以灌輸品質；<br>● 每天調適其邁向 Sprint Goal 的計畫；和，<br>● 作為專業人士對彼此負責。</p><p>Product Owner</p><p>● 開發並明確的描述溝通 Product Goal；<br>● 創造並清楚的描述溝通 Product Backlog items；<br>● 對 Product Backlog items 進行排序；和，<br>● 確保 Product Backlog 是透明的、可見的與可理解的</p><p>這裡特別加上了</p><p><code>Product Owner 可以自己做上述工作，或者也可以將職責委託他人，然而，Product Owner 仍肩負最終責任。</code></p><p>這句話我視為對大型組織導入 Scrum 的困難之處的回應。<br>錯誤 Scrum (其實就不是 Scrum)會產生缺乏<a href="https://www.youtube.com/watch?v=cr2rjaGmUzo" target="_blank" rel="noopener">實際權限的 PO</a>，<br>或是有權無(卸)責的傳統型領導。</p><p>Scrum Master</p><p>明文<code>Scrum Master 對 Scrum Team 的效能負責</code>;職責更明確了，語句更洗鋉，贅字更少。<br>但我覺得「真正的領導者」這段文字將會產生轉型時的爭議，特別是將「僕人式領導」文字又被拿掉。<br>我會建議作為 Scrum Master 要把這件事放在心中，Title 只是浮雲啊。  </p><h3 id="Scrum-事件-原為-Scrum-活動"><a href="#Scrum-事件-原為-Scrum-活動" class="headerlink" title="Scrum 事件(原為 Scrum 活動)"></a>Scrum 事件(原為 Scrum 活動)</h3><p>Sprint</p><p>明文<code>採用時間較短的 Sprint，可以建立更多學習周期</code>，此外更加強調三大支柱與 Sprint 的關係。  </p><p>特別提醒經驗主義的重要性，更勝於實際的做法(諸如:燃盡圖、燃起圖，或是累積流量圖等…)<br>這與我的經驗也是不謀而合，主管一開始就投入過多心力在要求製作圖表，<br>而忽略了在圖表之前，進行預估其實是需要訓練的，最後圖表變成作假帳…<br>失去透明度，檢視性與調適性將無法發揮功能，Scrum/Sprint 將會失敗(或是不知道成功或失敗)。  </p><p>取消 Sprint 的章節被大幅縮減，僅以不合時宜一句代過。<br>反而釋放更多空間給 Product Owner。<br>我覺得 PO 當要取消 Sprint 時，要思考以下的問題，  </p><ul><li>要如何與其它角色互動?  </li><li>要如何持續實現 Product Goal?  </li></ul><p>這樣的文字編排方式，我覺得是很大的改善，強調在 Scrum 之中，<br>我們的所有行為都是為了實現三大支柱，而我們相信這樣的方法可以領我們到達終點之地。<br>後面的事件也都有類似的描述，我就不再補充。  </p><p>Sprint Planning</p><p>2017 版本<br>第一個討論題目：這次 Sprint 能做出什麼？<br>第二個討論題目：如何完成所選的工作？</p><p>2020 版本<br>主題一：為什麼這次 Sprint 有價值？<br>主題二：這次 Sprint 能完成（Done）什麼？<br>主題三：如何完成所挑選的工作？</p><p>明顯多了一個有關價值的主題，但是需要與 Stakeholders 在 Sprint Planning 結束前被確定下來，<br>就我實務的經驗 Stakeholders 與 PO 會比 Developers 提早決定未來的目標，<br>所以 Stakeholders 依然不是會議中必要的角色。  </p><p>Daily Scrum</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Developers 可以選擇他們想要的任何 Daily Scrum 的結構和技術，</span><br><span class="line">只要他們的 Daily Scrum 專注於實現 Sprint Goal 的進展，</span><br><span class="line">並且產生下一個工作天可執行的計畫。</span><br><span class="line">這樣可以更專注並改進自我管理（self-management）。</span><br></pre></td></tr></table></figure><p>把經典的三個問題拿掉了，這也符合我的經驗，不要流於形式，<br>而是更專注在實現 Sprint Goal，不流於形式則更能讓團隊自我管理。  </p><p>Sprint Review 與 Sprint Retrospective</p><p>這兩個段落的篇幅都縮短了，但是我覺得更言簡意賅。<br>但投影片展示的描述，我還比較喜歡 2017 版本的描述 <code>是為了引發意見的反饋和提升協同合作</code>，<br>但的確實務上往往會淪為簡報報告。  </p><p>關於 Retrospective 這個會議對我的定義，<br>我目前的團隊沒有在跑 Scrum ，但是我直接引入 Retrospective。<br>Retrospective 是一個可以雕塑團隊的會議。<br>有趣的事，團隊現在調整的越來越像 Scrum (當然依然不是 Scrum)  </p><h3 id="Scrum-Artifacts"><a href="#Scrum-Artifacts" class="headerlink" title="Scrum Artifacts"></a>Scrum Artifacts</h3><p>明文: Artifacts 的設計是為了使關鍵資訊之透明性極大化。(其實 2017 年的版本也有提到)<br>2020 版本的文字組織更簡明之外，都加上了承諾的區塊，</p><ul><li>Product Backlog 是為了實現 Product Goal 的承諾</li><li>Increment 是為了實現對完成之定義(Definition of Done) 的承諾</li><li>Sprint Backlog 是為了實現 Sprint Goal 的承諾</li></ul><h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>結語的部份並沒有太大幅度的修改，<br>但是我想要再一次強調 「雖然實施部分的 Scrum 是可能的，但結果就不是 Scrum 了。」  </p><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>整體的文章的結構完整性更好了，三大支柱與活動的連結，產出與承諾的連結。<br>然後將實作(戰術)面與角色的行為(戰鬥)樣版移除，我不認為這樣會變得模糊不清;<br>反而給了更多空間讓團隊發揮。  </p><p>想起以前聽過「守、破、離」的演說，我想這次 Scrum Guide 有一點這樣的味道，<br>在 25 年前，什麼經驗都沒有情況，這樣的樣版帶來了相當大的幫助，<br>現在我們都有一些實作有一些失敗有一些成功，是時候把樣版移除了(或是回到問題的本質)。</p><ul><li>你真要的三個問題嗎 ? 背後想問到的是什麼 ?</li><li>真的不取消 Sprint 嗎 ? 為什麼不行 ?</li><li>不站立真的不能開 Daily Scrum 嗎 ?</li></ul><h2 id="校錯"><a href="#校錯" class="headerlink" title="校錯"></a>校錯</h2><ol><li><img src="https://i.imgur.com/cXQldi5.jpg" alt="的的"></li><li><img src="https://i.imgur.com/PYZ4H8K.jpg" alt="的的"></li><li><img src="https://i.imgur.com/uLK8BRU.jpg" alt="Artifacts"></li></ol><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://www.youtube.com/watch?v=Dfxo3PZwDI8" target="_blank" rel="noopener">活動影片</a></li><li><a href="https://wangterryonagile.blogspot.com/2020/11/scrum-guide-2020.html" target="_blank" rel="noopener">Scrum guide 2020 翻譯後記</a></li><li><a href="https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Chinese-Traditional.pdf" target="_blank" rel="noopener">2020 中文版</a></li><li><a href="https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Traditional.pdf" target="_blank" rel="noopener">2017 中文版</a></li><li><a href="https://www.youtube.com/watch?v=cr2rjaGmUzo" target="_blank" rel="noopener">對產品負責人角色的錯誤觀念會如何毀了您的組織，以及其因應之道</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;2020/11/18 將迎來 Scrum 25 周年與 Scrum Guide 的更新，&lt;br&gt;活動有一些大師對談，錄影放在
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Agile" scheme="https://blog.marsen.me/tags/Agile/"/>
+    
+      <category term="Scrum" scheme="https://blog.marsen.me/tags/Scrum/"/>
+    
+  </entry>
   
   <entry>
     <title>[生活筆記] 收支流程設計</title>
@@ -474,31 +500,6 @@
     
     
       <category term="實作筆記" scheme="https://blog.marsen.me/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[A社筆記] 閒聊 Product Backlog </title>
-    <link href="https://blog.marsen.me/2020/05/28/2020/productbacklog/"/>
-    <id>https://blog.marsen.me/2020/05/28/2020/productbacklog/</id>
-    <published>2020-05-28T07:06:02.000Z</published>
-    <updated>2020-11-04T08:27:21.548Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>Although implementing only parts of Scrum is possible, the result is not Scrum.</p><blockquote></blockquote><p>雖然實施部分的 Scrum 是可能的，但結果並不是 Scrum 《Scrum Guide》</p></blockquote><p>之所以在文章一開頭就引述這段文字，是因為世界上太多 <code>Scrum But</code> 了;<br>而我下文所敘的則是 <code>Not Scrum</code>。<br>未來有機會再深入討論兩者的差異，對我來說主要是心態上的差異。</p><p>我們透明、檢核、調試，我們擁抱改變，我們有所堅持，我們有理想但我們也務實。<br>好啦，說不定只有你自已。  </p><p>在 A 社的導入的過程中，我開場白通常會說「這不是 Scrum」然後開始拿 Scrum 的東西說嘴。<br>至少對我來說，這比那些號稱「我們跑 Scrum」「But #^%!~…」要好得多，<br>與其讓你難以分辨斷句在哪，或是誤會怎麼 Scrum 這麼糞，不如讓我明確的告訴你「這不是 Scrum」。  </p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>蠻小巧的團隊，小到我覺得也許不用任何「敏捷」<br>分為兩個組成 QA 部門與 RD 部門，遠端工作的 RD 主管兼職 PM<br>QA 團隊的主管除了目前這個團隊，也要兼者作其它團隊的測試，<br>此外還有一個大主管，在國外有時差，每周固定會與成員們開 3 次的會。<br>RD 團隊成為會有一個 Daily Sync 的會議，每天約 5~10 分鐘。<br>整個團隊有使用 Azure DevOps 的看板，但是 QA 只會用來開 Bug。<br>但不知道什麼時候 Bug 才會被修復。</p><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><h3 id="Azure-DevOps-BackLogs-太像文件"><a href="#Azure-DevOps-BackLogs-太像文件" class="headerlink" title="Azure DevOps BackLogs 太像文件"></a>Azure DevOps BackLogs 太像文件</h3><p>Azure DevOps 的 BackLogs 放著許多 Feature ，<br>依據不同的功能，再將每個 Sprint 的 User Story 放進去<br>這些 Feature 永遠不會被作完，隨著時間過去，<br>儘管完成了許多 User Story ，但是也會有新的 User Story 被加進去。<br>而作為文件，他的巢狀結構又不足以面對複雜的需求內容，<br>分散式存儲對於維護與修改上也是相同不便。</p><h3 id="Bug-隨時蹦出"><a href="#Bug-隨時蹦出" class="headerlink" title="Bug 隨時蹦出"></a>Bug 隨時蹦出</h3><p>QA 的工作就是不斷的測試，一有發現問題就開立 Bug，<br>RD 有空就會去領來作，有時候也會有 RD 主管確認過後再分配給 RD<br>這導致不同面向的問題，RD 自領的情況可能會無序的作，<br>導致真正有價值的 Bug 無法第一時間被修正。<br>而如果每件事情都要 RD 主管確認後再進行動作，<br>RD 主管恐怕會變成瓶頸所在。</p><h2 id="BackLogs-簡介"><a href="#BackLogs-簡介" class="headerlink" title="BackLogs 簡介"></a>BackLogs 簡介</h2><p>下面是我在向團隊介紹 Backlogs 後的筆記。</p><p>在 Azure DevOps 上會有 BackLogs 與 Sprints &gt; Backlog。<br>恰巧與 Scrum 的 Product BackLogs 與 Sprints Backlog 可以一一對應。<br>如果以 XP 來說，可以投射到發佈計劃會議與迭代計劃會議中討論的「用戶故事清單」。<br>如果以 GTD 的方法論來說 BackLogs 可以當作收集一切事務的 Inbox，<br>而 Sprints &gt; Backlog 可以視作專案裡面的工作項目。</p><p>總的來說，這些方法論的名詞故有所不同，但本質上卻是非常接近的事務。<br>我們總是有許多新的想法，但是沒有足夠的時間作所有的事。<br>所以我們必須補捉這些想法，放入 BackLogs 之中<br>補捉了之後，必須排序，這裡的概念有「重要且緊急」先作 ( 參考 Eisenhower Matrix )，<br>或是「價值高」的先作，或是有影響力的先作 ( 參考 Impact Mapping )。<br>GTD 的概念是 5 分鐘能完成的想法，立刻去作不然就丟到 BackLogs ( Inbox ) 之中，<br>我認為團隊不適合這樣作，畢竟 GTD 是針對個人的工作法。<br>團隊反而要刻意不作為，才能讓真正重要的事情浮現，而不是被一堆雜訊 DDos，<br>所有想法我的建議是「丟到 Backlogs 之中」，然後定期梳理吧。</p><p>理論上大部份事情會由模糊到清晰，這是個過程，之後才會進入到一個可以被執行的階段。<br>在 Scrum 之中，常用「遠光燈」作例子，我個人比較喜歡用「通勤」舉例。</p><p>留個問題給你，誰來衡量 ? 團隊 ? PO ? 客戶 ?</p><p>想像一下你要上班了，在家裡你對公司的方向與位置其實有個大概的想法，<br>要走過哪些路口，經過某個大樓，穿越了一座橋後你需要待轉，<br>再過幾個紅綠燈，看到速食店後就可以開始找車位了。<br>實際上路後，也許路上施工，你必需繞個路，或是運氣很好一路綠燈。<br>哦，不!! 你的車拋錨了，你必須改搭公車，而它的路線是……  </p><p>有個大方向就是你的目標，路口、橋、大樓，就是你的每個迭代，<br>每次的煞車、轉彎或催油門就是再被細分下來的工作項目，<br>紅燈、拋錨、下雨天就是你真實上路後才會體驗到的事。<br>有個概念「Road Map」其實也是在說差不多的事。  </p><p>回到 Product BackLogs 與 Sprints Backlog ，<br>我們也就是不斷的細化這些項目，一直到可執行然後被執行為止。  </p><p>至於怎麼變快呢 ?<br>也許你要選一條最優路線，最短的距離最少的車流，沒有紅綠燈之類的，<br>也許你要有最棒的工具，最好的機車、定期保養之類的，<br>也許你要改變的開車習慣，不要危險駕駛、不任意切換車道等等…  </p><p>透過的調整工作順序、找尋最佳工具輔助與保持正確心態，是我目前的答案。  </p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Although implementing only parts of Scrum is possible, th
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Agile" scheme="https://blog.marsen.me/tags/Agile/"/>
     
   </entry>
   
