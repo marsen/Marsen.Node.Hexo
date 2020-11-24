@@ -1114,7 +1114,6 @@ a.article-title:hover {
 .article-entry code {
   background: rgba(153,204,153,0.4);
   text-shadow: 0 #fff;
-  padding: 0 0.3em;
 }
 .article-entry pre code {
   background: none;
