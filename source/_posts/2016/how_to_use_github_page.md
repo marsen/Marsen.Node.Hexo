@@ -79,7 +79,7 @@ Hexo基本概念可以參考[官方中文文件](https://hexo.io/zh-tw/docs/inde
 
 - [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/setting_DNS_with_google/)
 - [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/how_to_use_github_page/)
-- [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2%20by%20cloudflare/)
+- [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2_by_cloudflare/)
 - [怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)
 
 (fin)
