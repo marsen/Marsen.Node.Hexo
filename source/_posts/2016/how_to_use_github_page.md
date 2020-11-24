@@ -53,8 +53,9 @@ tag:
 ex:
         blog.username.xyz  
         username.xyz
-3. 在Name Servers (例如[cloudflare](https://www.cloudflare.com/))上設定`CNAME`到github page,  
-將`blog.username.xyz` 綁定到 `username.github.io`
+        username.xyz
+3. 在Name Servers (例如[cloudflare](https://www.cloudflare.com/))上設定 `CNAME` 到github page,  
+將 `blog.username.xyz` 綁定到 `username.github.io`
 ex:
 
 | TYPE | NAME | VALUE | TTL |
@@ -67,18 +68,18 @@ ex:
 
 Hexo基本概念可以參考[官方中文文件](https://hexo.io/zh-tw/docs/index.html) .
 
-1. 重點在於`_config.yml`的設定
+1. 重點在於 `_config.yml` 的設定
         deploy:
           type: git
           repository: <https://github.com/username/username.github.io>
           branch: master
 
-2. 執行`hexo d`進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。
+2. 執行 `hexo d` 進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。
 
 ## 系列文章
 
-- [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/setting_DNS_with_google/)
-- [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/how_to_use_github_page/)
+- [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/2016/setting_DNS_with_google/)
+- [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/)
 - [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2_by_cloudflare/)
 - [怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)
 

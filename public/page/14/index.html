@@ -841,23 +841,24 @@ line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h
 <h2 id="使用自訂的-Domain"><a href="#使用自訂的-Domain" class="headerlink" title="使用自訂的 Domain"></a>使用自訂的 Domain</h2><ol>
 <li>首先準備好一個domain ex: username.xyz</li>
 <li>需要在根目錄底下，放入一個 CName file<br>檔案的內容只需要你的domain即可<br>ex:<pre><code>blog.username.xyz  
+username.xyz
 username.xyz</code></pre></li>
-<li>在Name Servers (例如<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>)上設定<code>CNAME</code>到github page,<br>將<code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
+<li>在Name Servers (例如<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>)上設定 <code>CNAME</code> 到github page,<br>將 <code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
 </ol>
 <p>| TYPE | NAME | VALUE | TTL |<br>|—|—|—|—|—|<br>| CName  | * | username.xyz | auto |<br>| CName  | blog | username.github.io | auto |<br>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
 <h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="noopener">官方中文文件</a> .</p>
 <ol>
-<li><p>重點在於<code>_config.yml</code>的設定</p>
+<li><p>重點在於 <code>_config.yml</code> 的設定</p>
 <pre><code>deploy:
   type: git
   repository: &lt;https://github.com/username/username.github.io&gt;
   branch: master</code></pre></li>
-<li><p>執行<code>hexo d</code>進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。</p>
+<li><p>執行 <code>hexo d</code> 進行部署，這個動作會將hexo 建立出來的靜態網站(html+css+javascript+圖片等…)部署到github page上。</p>
 </li>
 </ol>
 <h2 id="系列文章"><a href="#系列文章" class="headerlink" title="系列文章"></a>系列文章</h2><ul>
-<li><a href="https://blog.marsen.me/2016/08/21/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
-<li><a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">怎麼建立一個網站？(二)</a></li>
+<li><a href="https://blog.marsen.me/2016/08/21/2016/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
+<li><a href="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/">怎麼建立一個網站？(二)</a></li>
 <li><a href="https://blog.marsen.me/2016/09/04/2016/http2_by_cloudflare/">怎麼建立一個網站？(三)</a></li>
 <li><a href="https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/">怎麼建立一個網站？(四)</a></li>
 </ul>
