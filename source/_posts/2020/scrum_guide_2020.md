@@ -225,5 +225,9 @@ Retrospective 是一個可以雕塑團隊的會議。
 - [2020 中文版](https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Chinese-Traditional.pdf)
 - [2017 中文版](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Traditional.pdf)
 - [對產品負責人角色的錯誤觀念會如何毀了您的組織，以及其因應之道](https://www.youtube.com/watch?v=cr2rjaGmUzo)
+- [Scrum Guide 2020 Update --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-update-adrian-cheng/)
+- [Scrum Guide 2020 少了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E8%A2%AB%E7%A7%BB%E9%99%A4%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
+- [Scrum Guide 2020 多了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
+- [Scrum Guide 2020 改了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
 
 (fin)

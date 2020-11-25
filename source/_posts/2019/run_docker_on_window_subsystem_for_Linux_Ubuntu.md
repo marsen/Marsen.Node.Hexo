@@ -86,7 +86,7 @@ See 'docker run --help'.
 ## 如何解決
 
 1. Windows 上要安裝 Docker for Windows
-2. 勾選 Docker for Windows → Setting → Expose deamon on tcp://localhost:2375 Without TLS
+2. 勾選 Docker for Windows → Setting → Expose Daemon on tcp://localhost:2375 Without TLS
 ![Docker](/images/2019/1/docker.jpg)
 
 3. 回到 Ubantu , 執行以下命令
@@ -107,8 +107,8 @@ export DOCKER_HOST=localhost:2375
 
 ## 學到的事
 
-- Docker 有 Host(Deamon) 與 Client 之分
-- 在 Windows 上的 VM(Ubantu) 再安裝 Docker Deamon 是行不通的(細節我並不清楚，求補充…)
+- Docker 有 Host(Daemon) 與 Client 之分
+- 在 Windows 上的 VM(Ubantu) 再安裝 Docker Daemon 是行不通的(細節我並不清楚，求補充…)
 - 我還不夠了解 Windows Container 與 Linux Container 的差異
   - [Windows Container FAQ - 官網沒有說的事](https://columns.chicken-house.net/2016/09/05/windows-container-faq/)
   - [LCOW Labs: Linux Container On Windows](https://columns.chicken-house.net/2017/10/04/lcow/)
