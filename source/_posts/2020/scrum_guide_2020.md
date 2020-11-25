@@ -201,8 +201,8 @@ Retrospective 是一個可以雕塑團隊的會議。
 ## 小結
 
 整體的文章的結構完整性更好了，三大支柱與活動的連結，產出與承諾的連結。
-然後將實作(戰術)面與角色的行為(戰鬥)樣版移除，我不認為這樣會變得模糊不清;
-反而給了更多空間讓團隊發揮。  
+然後將實作(戰術)面與角色的行為(戰鬥)樣版移除，這樣給了更多空間讓團隊發揮。  
+也會促使團隊思考背後的原因(Why) ?
 
 想起以前聽過「守、破、離」的演說，我想這次 Scrum Guide 有一點這樣的味道，  
 在 25 年前，什麼經驗都沒有情況，這樣的樣版帶來了相當大的幫助，
@@ -211,6 +211,14 @@ Retrospective 是一個可以雕塑團隊的會議。
 - 你真要的三個問題嗎 ? 背後想問到的是什麼 ?
 - 真的不取消 Sprint 嗎 ? 為什麼不行 ?
 - 不站立真的不能開 Daily Scrum 嗎 ?
+
+**20201125 補充:**
+Adrian 的分享相當清晰，補充連結如下:
+
+- [Scrum Guide 2020 Update --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-update-adrian-cheng/)
+- [Scrum Guide 2020 少了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E8%A2%AB%E7%A7%BB%E9%99%A4%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
+- [Scrum Guide 2020 多了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
+- [Scrum Guide 2020 改了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
 
 ## 校錯
 
@@ -225,9 +233,5 @@ Retrospective 是一個可以雕塑團隊的會議。
 - [2020 中文版](https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Chinese-Traditional.pdf)
 - [2017 中文版](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Chinese-Traditional.pdf)
 - [對產品負責人角色的錯誤觀念會如何毀了您的組織，以及其因應之道](https://www.youtube.com/watch?v=cr2rjaGmUzo)
-- [Scrum Guide 2020 Update --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-update-adrian-cheng/)
-- [Scrum Guide 2020 少了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E8%A2%AB%E7%A7%BB%E9%99%A4%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
-- [Scrum Guide 2020 多了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
-- [Scrum Guide 2020 改了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
 
 (fin)
