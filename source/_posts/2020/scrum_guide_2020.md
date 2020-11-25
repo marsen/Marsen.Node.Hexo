@@ -213,7 +213,7 @@ Retrospective 是一個可以雕塑團隊的會議。
 - 不站立真的不能開 Daily Scrum 嗎 ?
 
 **20201125 補充:**
-Adrian 的分享相當清晰，補充連結如下:
+Adrian 的分享相當清晰明瞭，補充連結如下:
 
 - [Scrum Guide 2020 Update --- Adrian](https://lnkd.in/gqfVSiW)
 - [Scrum Guide 2020 少了什麼? --- Adrian](https://lnkd.in/gBTX4vm)
