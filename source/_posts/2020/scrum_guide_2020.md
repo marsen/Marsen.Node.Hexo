@@ -215,10 +215,10 @@ Retrospective 是一個可以雕塑團隊的會議。
 **20201125 補充:**
 Adrian 的分享相當清晰，補充連結如下:
 
-- [Scrum Guide 2020 Update --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-update-adrian-cheng/)
-- [Scrum Guide 2020 少了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E8%A2%AB%E7%A7%BB%E9%99%A4%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
-- [Scrum Guide 2020 多了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
-- [Scrum Guide 2020 改了什麼? --- Adrian](https://www.linkedin.com/pulse/scrum-guide-2020-%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E9%BA%BC-adrian-cheng/)
+- [Scrum Guide 2020 Update --- Adrian](https://lnkd.in/gqfVSiW)
+- [Scrum Guide 2020 少了什麼? --- Adrian](https://lnkd.in/gBTX4vm)
+- [Scrum Guide 2020 多了什麼? --- Adrian](https://lnkd.in/gNWJG4c)
+- [Scrum Guide 2020 改了什麼? --- Adrian](https://lnkd.in/gnHcQTZ)
 
 ## 校錯
 
