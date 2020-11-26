@@ -30,10 +30,9 @@
   <%- css('fancybox/jquery.fancybox') %>
   <%- js('fancybox/jquery.fancybox.pack') %>
 <% } %>
-<% if(theme.sayings.length >0){%>
 <script>
+  debugger;
   var sayings = <%- JSON.stringify(theme.sayings) %>;
 </script>
   
-<% } %>
 <%- js('js/script.js?v=0') %>
