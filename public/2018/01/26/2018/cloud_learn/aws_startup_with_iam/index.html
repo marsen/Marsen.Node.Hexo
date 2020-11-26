@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>[學習筆記] AWS 註冊到建立安全性帳戶 | Marsen&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論  創建帳號這段蠻簡單的，不贅敘;特別一提的事可以使用有 VISA 的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度，可以在金融卡存個 3000 之類的。預算可以更彈性,而且精準的控制預算。 另外說一下，現在 AWS 有一年的免費額度(已經有好一陣子了)，在註冊流程跳過付款方式的設定，實">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[學習筆記] AWS 註冊到建立安全性帳戶">
+<meta property="og:url" content="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/index.html">
+<meta property="og:site_name" content="Marsen&#39;s Blog">
+<meta property="og:description" content="該知道的事 僅作為學習 AWS 的過程記錄用 可能對你有幫助 可能對你沒幫助 有沒有幫助都歡迎你提出問題與討論  創建帳號這段蠻簡單的，不贅敘;特別一提的事可以使用有 VISA 的金融卡作金額控管比起信用卡動輒數萬到數十萬的額度，可以在金融卡存個 3000 之類的。預算可以更彈性,而且精準的控制預算。 另外說一下，現在 AWS 有一年的免費額度(已經有好一陣子了)，在註冊流程跳過付款方式的設定，實">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/kRBApSO.jpg">
+<meta property="og:image" content="https://i.imgur.com/X3T5poV.jpg">
+<meta property="og:image" content="https://i.imgur.com/viNBe2p.jpg">
+<meta property="og:image" content="https://i.imgur.com/JcC9NVz.jpg">
+<meta property="og:image" content="https://i.imgur.com/Ry9M2sj.jpg">
+<meta property="og:image" content="https://i.imgur.com/8DOmpsg.jpg">
+<meta property="og:image" content="https://i.imgur.com/ETV1LMR.jpg">
+<meta property="article:published_time" content="2018-01-26T06:24:16.000Z">
+<meta property="article:modified_time" content="2020-11-24T05:55:58.952Z">
+<meta property="article:author" content="Marsen L.">
+<meta property="article:tag" content="AWS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/kRBApSO.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Marsen&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71201782-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="blog-banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Marsen&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.marsen.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2018/cloud_learn/aws_startup_with_iam" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/2018/cloud_learn/aws_startup_with_iam/" class="article-date">
+  <time datetime="2018-01-26T06:24:16.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [學習筆記] AWS 註冊到建立安全性帳戶
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="該知道的事"><a href="#該知道的事" class="headerlink" title="該知道的事"></a>該知道的事</h2><ol>
+<li>僅作為學習 AWS 的過程記錄用</li>
+<li>可能對你有幫助</li>
+<li>可能對你沒幫助</li>
+<li>有沒有幫助都歡迎你提出問題與討論</li>
+</ol>
+<h2 id="創建帳號"><a href="#創建帳號" class="headerlink" title="創建帳號"></a>創建帳號</h2><p>這段蠻簡單的，不贅敘;特別一提的事<code>可以使用有 VISA 的金融卡作金額控管</code><br>比起信用卡動輒數萬到數十萬的額度，可以在金融卡存個 3000 之類的。<br>預算可以更彈性,而且精準的控制預算。</p>
+<p>另外說一下，現在 AWS 有一年的免費額度(已經有好一陣子了)，<br><del>在註冊流程跳過付款方式的設定，</del><br><del>實際上也是可以操作的 AWS 的(目前只有設定 IAM)。</del><br>(2018/01/31更新)<br>確定<code>可以使用有VISA的金融卡</code>開戶，<br>另外當要實際使用 AWS 的服務時 EX: EC2, Lambda etc…<br>需要綁定信用卡(VISA 金融卡也可以)才能繼續使用。</p>
+<p>綁定的過程會需要輸入電話，AWS 會撥一通電話給你，<br>螢幕上會出現4個數字，照畫面輸入即可完成信用卡(VISA 金融卡)的驗証。</p>
+<h2 id="權限控管"><a href="#權限控管" class="headerlink" title="權限控管"></a>權限控管</h2><h3 id="Root-User"><a href="#Root-User" class="headerlink" title="Root User"></a>Root User</h3><p><img src="https://i.imgur.com/kRBApSO.jpg" alt="Root User"><br>完成註冊後，一開始只能使用 email 登入，這個帳號可以存取 AWS 所有服務。<br>AWS <strong>不建議使用 Root User 作為日常的管理帳戶, Root User 應該只被用來建立第一個 IAM</strong></p>
+<h4 id="重點項目"><a href="#重點項目" class="headerlink" title="重點項目"></a>重點項目</h4><ol>
+<li><p>Root User 啟用 <a href="https://aws.amazon.com/iam/details/mfa/" target="_blank" rel="noopener">MFA</a><br><img src="https://i.imgur.com/X3T5poV.jpg" alt="MFA"><br>首先要下載驗証程式(Google Authenticator),<br>然後下一步到以下畫面時,，用 Authenticator 掃瞄 QR Code，<br><strong>連續輸入兩次授權碼(輸入完第一組後,等待新的授權碼出現再輸入)</strong></p>
+<p><img src="https://i.imgur.com/viNBe2p.jpg" alt="連續輸入兩次授權碼"></p>
+<p>可以在 <a href="https://console.aws.amazon.com/iam/home" target="_blank" rel="noopener">IAM Console</a> 檢查成功了沒</p>
+<p><img src="https://i.imgur.com/JcC9NVz.jpg" alt="IAM Console"></p>
+</li>
+<li><p>建立 IAM User 與指定 Group 權限<br>AWS IAM 的權限觀念是透過 User 與 Group 來組合的，<br>權限是授與 Group , 而 User 隸屬於 Group 便擁有其權限，<br>同時 AWS 提供多組(347組)預設的 Policies, 讓人選擇<br>當然也可以建立自已的 Policy.<br><em>*不確定有沒有反向的 Policy ，</em><br><em>如果有當不同的 Group Policy 有衝突時該如何處理。</em></p>
+<p><img src="https://i.imgur.com/Ry9M2sj.jpg" alt="Policy"></p>
+<p>建立使用者時, 使用 AutoGenerated Password 時<br>要記得取得 password<br>在最後一步會按下 Show 就會顯示<br><img src="https://i.imgur.com/8DOmpsg.jpg" alt="Show Password"></p>
+</li>
+<li><p>設定 AWS Account ID 與 Alias<br><img src="https://i.imgur.com/ETV1LMR.jpg" alt="設定 AWS Account ID 與 Alias"></p>
+</li>
+</ol>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><ol>
+<li>如何禁用 Root user 登入 ? 可以停用而不刪除一個 user account 嗎？</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root account 無法停用</span><br><span class="line">IAM User 可以透過 disable passwd 方式停用</span><br><span class="line">root account 基本的 practice</span><br><span class="line">1. 啟用 MFA</span><br><span class="line">2. 移除 Access Credential</span><br><span class="line">概念就跟 Windows Administrator or Linux root 一樣</span><br><span class="line">需要時再用</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html" target="_blank" rel="noopener">Root User Account</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users" target="_blank" rel="noopener">建立第一個IAM USER</a></li>
+</ul>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/" data-id="ckhvk0jw300dfxougcfco947k" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/12/2018/csharp_common_mistakes_1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [翻譯]C# 的常見錯誤
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/07/2018/six_strategies_for_application_deployment/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[好文分享]應用部署的六種策略</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+
+  <div id="likecoin">
+  Please enable JavaScript to view the LikeCoin.
+  </div>
+
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/20/2020/scrum_guide_2020/">[活動筆記] 2020 SCRUM GUIDE UPDATE</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/10/2020/finance/">[生活筆記] 收支流程設計</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/2020/softwarecraftsmanship.manifesto/">[生活筆記] 簽署軟體工藝宣言</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/22/2020/google_domain_forward_mail/">[實作筆記] 怎麼建立一個網站？(四) - 自訂網域 EMail</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/2020/elasticsearch_reindex_note/">[實作筆記] ElasticSearch Reindex</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Net-Framework/" style="font-size: 15.38px;">.Net Framework</a> <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/API/" style="font-size: 11.54px;">API</a> <a href="/tags/AWS/" style="font-size: 14.62px;">AWS</a> <a href="/tags/Agile/" style="font-size: 17.69px;">Agile</a> <a href="/tags/BootStrap/" style="font-size: 10.77px;">BootStrap</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/CI-CD/" style="font-size: 15.38px;">CI/CD</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Coding-Standard/" style="font-size: 10px;">Coding Standard</a> <a href="/tags/Container/" style="font-size: 12.31px;">Container</a> <a href="/tags/Database/" style="font-size: 13.85px;">Database</a> <a href="/tags/Design-Pattern/" style="font-size: 10.77px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.31px;">Docker</a> <a href="/tags/Entity-Framework/" style="font-size: 10.77px;">Entity Framework</a> <a href="/tags/Git/" style="font-size: 10.77px;">Git</a> <a href="/tags/Google/" style="font-size: 11.54px;">Google</a> <a href="/tags/GulpJs/" style="font-size: 10.77px;">GulpJs</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Hexo/" style="font-size: 10.77px;">Hexo</a> <a href="/tags/IIS/" style="font-size: 10px;">IIS</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Integrated-Testing/" style="font-size: 11.54px;">Integrated Testing</a> <a href="/tags/JQuery/" style="font-size: 10.77px;">JQuery</a> <a href="/tags/Jenkins/" style="font-size: 12.31px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 10px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 10.77px;">Linux</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/MsSQL/" style="font-size: 11.54px;">MsSQL</a> <a href="/tags/MsTest/" style="font-size: 10px;">MsTest</a> <a href="/tags/Mutation-Testing/" style="font-size: 10px;">Mutation Testing</a> <a href="/tags/NPM/" style="font-size: 10.77px;">NPM</a> <a href="/tags/Node-js/" style="font-size: 14.62px;">Node.js</a> <a href="/tags/OAuth/" style="font-size: 10px;">OAuth</a> <a href="/tags/OOP/" style="font-size: 11.54px;">OOP</a> <a href="/tags/Openshift/" style="font-size: 10.77px;">Openshift</a> <a href="/tags/PowerShell/" style="font-size: 11.54px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10.77px;">Redis</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SCSS/" style="font-size: 10px;">SCSS</a> <a href="/tags/SQL/" style="font-size: 11.54px;">SQL</a> <a href="/tags/SQL-Server/" style="font-size: 10px;">SQL Server</a> <a href="/tags/Scrum/" style="font-size: 16.92px;">Scrum</a> <a href="/tags/Shell/" style="font-size: 10.77px;">Shell</a> <a href="/tags/Specflow/" style="font-size: 10px;">Specflow</a> <a href="/tags/StyleCop/" style="font-size: 10px;">StyleCop</a> <a href="/tags/TDD/" style="font-size: 16.15px;">TDD</a> <a href="/tags/Testing/" style="font-size: 13.85px;">Testing</a> <a href="/tags/Thread/" style="font-size: 10.77px;">Thread</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/TypeScript/" style="font-size: 13.08px;">TypeScript</a> <a href="/tags/Unit-Testing/" style="font-size: 19.23px;">Unit Testing</a> <a href="/tags/Unix/" style="font-size: 10.77px;">Unix</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Visual-Studio/" style="font-size: 10px;">Visual Studio</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" style="font-size: 20px;">實作筆記</a> <a href="/tags/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86/" style="font-size: 10.77px;">時間管理</a> <a href="/tags/%E6%B4%BB%E5%8B%95%E7%AD%86%E8%A8%98/" style="font-size: 12.31px;">活動筆記</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E7%AD%86%E8%A8%98/" style="font-size: 13.85px;">生活筆記</a> <a href="/tags/%E8%A8%98%E9%8C%84/" style="font-size: 11.54px;">記錄</a> <a href="/tags/%E8%B8%A9%E9%9B%B7%E7%AD%86%E8%A8%98/" style="font-size: 13.08px;">踩雷筆記</a> <a href="/tags/%E9%87%8D%E6%A7%8B/" style="font-size: 12.31px;">重構</a> <a href="/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/" style="font-size: 18.46px;">閱讀筆記</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framework/" rel="tag">.Net Framework</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AOP/" rel="tag">AOP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/" rel="tag">Agile</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BootStrap/" rel="tag">BootStrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI-CD/" rel="tag">CI/CD</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding-Standard/" rel="tag">Coding Standard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/" rel="tag">Entity Framework</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/" rel="tag">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GulpJs/" rel="tag">GulpJs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/" rel="tag">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Integrated-Testing/" rel="tag">Integrated Testing</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/" rel="tag">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsSQL/" rel="tag">MsSQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MsTest/" rel="tag">MsTest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mutation-Testing/" rel="tag">Mutation Testing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OAuth/" rel="tag">OAuth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Openshift/" rel="tag">Openshift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrum/" rel="tag">Scrum</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Specflow/" rel="tag">Specflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StyleCop/" rel="tag">StyleCop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/" rel="tag">TDD</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Testing/" rel="tag">Testing</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/" rel="tag">Thread</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Trello/" rel="tag">Trello</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Testing/" rel="tag">Unit Testing</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unix/" rel="tag">Unix</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/" rel="tag">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/" rel="tag">post</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag">實作筆記</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86/" rel="tag">時間管理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B4%BB%E5%8B%95%E7%AD%86%E8%A8%98/" rel="tag">活動筆記</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AD%86%E8%A8%98/" rel="tag">生活筆記</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A8%98%E9%8C%84/" rel="tag">記錄</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B8%A9%E9%9B%B7%E7%AD%86%E8%A8%98/" rel="tag">踩雷筆記</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E6%A7%8B/" rel="tag">重構</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/" rel="tag">閱讀筆記</a><span class="tag-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">多語系</h3>
+    <div class="widget">
+        <div id="ytWidget"></div>
+    </div>
+</div>
+<script src="https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=zh&widgetTheme=dark&autoMode=false" type="text/javascript"></script>
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">BADGES</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
+            <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
+        </a>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Marsen L.<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    <script>
+
+  (function(){
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "https://button.like.co/in/embed/marsenlin/button?referrer=https%3A%2F%2Fblog.marsen.me%2F2018%2F01%2F26%2F2018%2Fcloud_learn%2Faws_startup_with_iam%2F");      
+    ifrm.setAttribute("sandbox","allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
+    ifrm.frameborder = "0";
+    ifrm.scrolling = "no";
+    (document.getElementById("likecoin").replaceChild(ifrm, document.getElementById("likecoin").childNodes[0]));
+  })();
+
+
+  var disqus_shortname = 'marsenlin';
+  
+  var disqus_url = 'https://blog.marsen.me/2018/01/26/2018/cloud_learn/aws_startup_with_iam/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script>
+  debugger;
+  var sayings = ;
+</script>
+  
+
+<script src="/js/script.js?v=0.js"></script>
+
+
+  </div>
+</body>
+</html>
