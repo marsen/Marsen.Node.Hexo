@@ -1,12 +1,12 @@
 ---
-title: "[活動筆記]單元測試這樣玩就對了"
+title: "[活動筆記] 單元測試這樣玩就對了"
 date: 2017/04/23 00:01:39
 tag:
   - Unit Testing
 ---
-## 應該知道的事:
+## 應該知道的事
 
-- 使用 C# , 但是其他語言也適用 
+- 使用 C# , 但是其他語言也適用
 - 使用 Visual Studio
 - 案例一有基本數理的專有名詞
   - 上界(Upper Bound)、下界(lower Bound)、左邊界(Left Bound)、右邊界(Right Bound)
@@ -29,10 +29,10 @@ ex:
 如上範例所示,
 「(」「)」小括號(parentheses)表示`OPEN`(不包含,大於或小於)
 「[」「]」中括號(square brackets)表示`CLOSE`(包含,大於等於或小於等於)
- (1,6] , 代表這個區間大於1小於等於6,包含的整數有 2、3、4、5、6 
+ (1,6] , 代表這個區間大於1小於等於6,包含的整數有 2、3、4、5、6
  [-2,4), 代表這個區間大於等於-2小於4,包含的整數有-2、-1、0、1、2、3
 
-![](https://i.imgur.com/TDHhx0A.png)
+![解析](https://i.imgur.com/TDHhx0A.png)
 
 這題比較單純,只需要考慮所有的情況,
 並且寫成單元測試即可。
@@ -108,7 +108,7 @@ public void GetNowString()
 }
 ```
 
-**解析**
+#### 解析1
 
 `GetNowString`與系統的時間`DateTime.Now`,
 是具有耦合性,要解耦需要透過一些IoC的手段去處理。
@@ -163,7 +163,7 @@ public void GetNowString()
 }
 ```
 
-**解析**
+#### 解析2
 
 基本上這樣就可以測試了,
 原來的代碼,經過一定的重構,
@@ -243,29 +243,29 @@ public class DateProviderStub : IDateProvider
 ### 圖例解析
 
 我們剛剛究竟幹了什麼？
-![](https://i.imgur.com/qeqzaoO.jpg)
+![我們剛剛究竟幹了什麼？](https://i.imgur.com/qeqzaoO.jpg)
 看看原本的情況,本來的方法因為相依與`Datetime`而無法測試
-![](https://i.imgur.com/Mquk1Cm.png)
+![相依Datetime](https://i.imgur.com/Mquk1Cm.png)
 讓我們開始下刀,
 先用一個新的方法`GetNow`
 將它與待測的方法作分割,
 但是對整個類來說仍舊是耦合。
-![](https://i.imgur.com/c0Xg4vw.png)
+![耦合](https://i.imgur.com/c0Xg4vw.png)
 繼續把這刀往下切,
 我們墊一層介面,
 待測方法不再直接呼叫`GetNow`
 而是透過介面執行,當然會有額外實作介面與注入的功(請參考程式碼,不在此處繪出了.)
-![](https://i.imgur.com/8dDlWi2.png)
+![透過介面執行](https://i.imgur.com/8dDlWi2.png)
 最後,別忘了我們的目的
 測試原本的待測方法,
 我們可以透過一個`假的`類,
 來操控他的行為(ex:凍結時間).  
 如此一來,就可進行測試了.
-![](https://i.imgur.com/c3mW59v.png)
+![測試](https://i.imgur.com/c3mW59v.png)
 另外,這種被待測方法呼叫後
 會回傳一個假值的方法或類
 被叫作`STUB`
-![](https://i.imgur.com/KXvYMsx.png)
+![STUB](https://i.imgur.com/KXvYMsx.png)
 
 ## 案例三、發送郵件
 
@@ -291,7 +291,7 @@ A:檢查調用次數、參數
 我們只能透過傳遞的參數(如果有多載)
 與方法被調用的次數來進行驗証。
 
-![](https://i.imgur.com/zbllutC.png)
+![MOCK](https://i.imgur.com/zbllutC.png)
 
 ## 重點摘要
 
