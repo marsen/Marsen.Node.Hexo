@@ -299,7 +299,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>The result would again be 0.  </p>
 </blockquote>
-<p>那我們是不是可以一次移32bit,讓它一次變成0呢？<br>靠北啊 竟然不行捏, 你只會拿到 1,<br>這跟運算子(operator)基本運算有關,在作位元運算的時候,<br>會拿第一個運算數除以第二個運算數後取餘數,<br>這導致我們只會拿 32 % 32 的結果 , 也就是 1 啦<br>(譯注:這段其實我不是很確定,如果錯誤請糾正)  </p>
+<p>那我們是不是可以一次移 32 bit,讓它一次變成 0 呢？<br>靠北啊 竟然不行捏, 你只會拿到 1,<br>這跟運算子(operator)基本運算有關,在作位元運算的時候,<br>會拿第一個運算數除以第二個運算數後取餘數,<br>這導致我們只會拿 32 % 32 的結果 , 也就是 1 啦<br>(譯注:這段其實我不是很確定,如果錯誤請糾正)  </p>
 <blockquote>
 <p>However, the bit shifting operators have a second operand.<br>Instead of shifting to the left by 1 bit 32 times, we can shift left by 32 bits and get the same result.  </p>
 </blockquote>
@@ -314,7 +314,7 @@ ga('send', 'pageview');
 <p>好棒棒 你竟然可以看到這裡,<br>那我們繼續討論 &amp; (and) 跟 | (or) 運算子吧,<br>這兩個運算子跟一般的運算子有點不一樣  </p>
 <ul>
 <li>通常只要看運算子的第一個運算數就能得知結果  </li>
-<li>在有掛 [Flag] atturibute的列舉它們好好用(看一下範例)  </li>
+<li>在有掛 [Flag] attribute 的列舉它們好好用(看一下範例)  </li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Flags</span>]</span><br><span class="line"><span class="keyword">private</span> <span class="built_in">enum</span> Colors</span><br><span class="line">&#123;</span><br><span class="line">    None = <span class="number">0b0</span>,</span><br><span class="line">    Red = <span class="number">0b1</span>,</span><br><span class="line">    Green = <span class="number">0b10</span>,</span><br><span class="line">    Blue = <span class="number">0b100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -338,7 +338,7 @@ ga('send', 'pageview');
 <p>這個行為可以透過<code>MidpointRounding</code>參數改變  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rounded = Math.Round(<span class="number">2.5</span>, MidpointRounding.AwayFromZero);</span><br></pre></td></tr></table></figure>
 
-<p>另外要小心浮點數的精度問題,<br>以下的例子結果會是1,( 因為float的0.1實際上小於0.1 一ω一 )<br>這提醒我們在處理精確數值時,應轉換成整數處理.<br>(譯注:使用 <a target="_blank" rel="noopener" href="https://dotnetfiddle.net">dotnetfiddle</a> 時並不會有這個問題, 在windows 環境下測試的確會有問題)  </p>
+<p>另外要小心浮點數的精度問題,<br>以下的例子結果會是1,( 因為float的0.1實際上小於0.1 一ω一 )<br>這提醒我們在處理精確數值時,應轉換成整數處理.<br>(譯注:使用 <a target="_blank" rel="noopener" href="https://dotnetfiddle.net">dotnet fiddle</a> 時並不會有這個問題, 在windows 環境下測試的確會有問題)  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">value</span> = <span class="number">1.4f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rounded = Math.Round(<span class="keyword">value</span> + <span class="number">0.1f</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="類別初始化"><a href="#類別初始化" class="headerlink" title="類別初始化"></a>類別初始化</h3><p>最佳實踐建我我們應該避免在建構子初始化類別,<br>特別是靜態建構子.<br>在初始化一個類別的順序如下</p>

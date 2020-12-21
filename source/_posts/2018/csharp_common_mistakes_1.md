@@ -156,7 +156,7 @@ shifted = shifted << 1;
 
 > The result would again be 0.  
 
-那我們是不是可以一次移32bit,讓它一次變成0呢？  
+那我們是不是可以一次移 32 bit,讓它一次變成 0 呢？  
 靠北啊 竟然不行捏, 你只會拿到 1,  
 這跟運算子(operator)基本運算有關,在作位元運算的時候,  
 會拿第一個運算數除以第二個運算數後取餘數,  
@@ -186,7 +186,7 @@ var shifted = 0b1 << 32;
 這兩個運算子跟一般的運算子有點不一樣  
 
 - 通常只要看運算子的第一個運算數就能得知結果  
-- 在有掛 [Flag] atturibute的列舉它們好好用(看一下範例)  
+- 在有掛 [Flag] attribute 的列舉它們好好用(看一下範例)  
 
 ```csharp
 [Flags]
@@ -247,7 +247,7 @@ var rounded = Math.Round(2.5, MidpointRounding.AwayFromZero);
 另外要小心浮點數的精度問題,  
 以下的例子結果會是1,( 因為float的0.1實際上小於0.1 一ω一 )  
 這提醒我們在處理精確數值時,應轉換成整數處理.  
-(譯注:使用 [dotnetfiddle](https://dotnetfiddle.net) 時並不會有這個問題, 在windows 環境下測試的確會有問題)  
+(譯注:使用 [dotnet fiddle](https://dotnetfiddle.net) 時並不會有這個問題, 在windows 環境下測試的確會有問題)  
 
 ```csharp
 var value = 1.4f;
