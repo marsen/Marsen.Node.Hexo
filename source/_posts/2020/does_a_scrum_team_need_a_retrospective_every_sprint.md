@@ -1,5 +1,5 @@
 ---
-title: "[翻譯]每個 Sprint 都需要 Retrospective Meeting 嗎 ？"
+title: "[翻譯] 每個 Sprint 都需要 Retrospective Meeting 嗎 ？"
 date: 2020/09/07 17:43:03
 ---
 
