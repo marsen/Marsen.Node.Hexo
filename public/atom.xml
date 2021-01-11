@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2021-01-06T04:47:43.568Z</updated>
+  <updated>2021-01-11T07:23:47.406Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[生活筆記] 有關單元測試的一些反思</title>
+    <link href="https://blog.marsen.me/2021/01/11/2021/about_unit_test/"/>
+    <id>https://blog.marsen.me/2021/01/11/2021/about_unit_test/</id>
+    <published>2021-01-11T06:35:23.000Z</published>
+    <updated>2021-01-11T07:23:47.406Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>單元測試可以說是我這幾年投入最多學習項目，<br>我為什麼會這麼投入? 是因為我相信這是一個有效的開發方式，<br>持續的上課與練習，稍微記錄一下這些年來的反思。</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p>單元測試是我覺得不論何種程式語言(雖然我並不甚理解 FP)，最最基礎的技能，<br>非常值得深耕，好的單元測試本身是一種規格書(spec)與使用者案例(use case)，<br>你想搞 CI/CD、敏捷、DevOps、DDD，都一定要有單元測試，<br>甚至我認為這一切只是軟體開發的本質的多面。</p><blockquote><p>我個人是相當推崇 XP (極限編程)的，雖然不知道是不是因為「每周工作 40 小時」這一條，<br>    導致企業不愛，公司不疼、專案管理協會不推、主管不敢用，<br>    但就我來說 XP 反而是最貼近軟體工程的具體實踐(而 Scrum 只是框架，你可以把 XP 放進去)，<br>    也是真正能快速帶來品質的作法(簡單而務實)。</p></blockquote><h2 id="缺少的拼圖-困難的現實"><a href="#缺少的拼圖-困難的現實" class="headerlink" title="缺少的拼圖(困難的現實)"></a>缺少的拼圖(困難的現實)</h2><ol><li><p>學習曲線高</p><p> 有寫單元測試的工程師非常非常稀少，能內化寫得好的更是稀少。<br> 為寫而寫的單元測試不但無法帶來好處，反而弊病叢生又無法為產品帶來價值。<br> 但是學好單元測試要多久 ? 要導入又要多久 ?<br> 這點有些因人而異，但我敢說不是只有一兩次的內訓或 WorkShop 就可以實際上戰場。</p></li><li><p>人員素值參次不齊</p><p> 承上，寫測試的好處，短期內很難有立竿見影的好處，<br> 人性就是多一事不如少一事。<br> 更糟的是，過沒多久這些人員離職、調任、昇遷，<br> 人走了留下了代碼，一年年過去，<br> 就只剩一個焦油坑，一代一代傳承的業力，等待被引爆。</p></li><li><p>教育體系的缺乏</p><p> 在台灣能把測試說到點上的講師，我只能推 91 大，<br> 也可能是我同溫層太厚或是見識太少，有很棒的講師或網路資源請推薦給我。<br> 如果可以的話，我希望所有軟體的教育機構都應該介紹並深入指導這門知識，<br> 包含大專院校與各類補教機構 。</p><p> 不過反過來說，91 大的課程對學生來說並不便宜，時間也相當短促資訊量大，課也很難搶。<br> 在我的觀點，台灣整體軟體產業不能只依靠一個人。</p></li><li><p>產品生命周期短</p><p> 現在的公司壽命，往往比一個人的職涯短，更不用說是內部的專案壽命，<br> 人員也常常被調任，也導致開發人員對產品或代碼的擁有權與責任感降低，<br> 當你對自已的產出只當作是個過客，那就不會原意用單元測試去細細打磨</p></li><li><p>人各有志</p><p> 並不是所有人都與我有相同的想法，我認為身為開發人員必須對自已的負責，<br> 要有「匠人心態」所以我的基礎會建立在單元測試之上。<br> 但有得人就只是「討口飯吃」、有得人著重「商業思維」、<br> 有得人偏重「架構設計」、有得人在乎「市場行銷」。<br> 退一步說，這都沒錯，但是這些開發者往往不會投入太多的精力在單元測試上(或是排序上靠後)</p></li></ol><p>我希望未來單元測試這件事能夠更普及，<br>可以用更少的成本，帶來更深入的理解，<br>而且有更多課程與資源可以學習。</p><h2 id="與未來的展望"><a href="#與未來的展望" class="headerlink" title="與未來的展望"></a>與未來的展望</h2><p>單元測試可以幫開發人員可以用更少的資源，對代碼有更深的理解，<br>一切都是案例而案例是對產品的理解，<br>一但理解了案例，工程師只需要組合單元或是創造新的單元。<br>而代碼就會是活的工程文件，可以跨越時間傳承給下一位 RD，<br>你傳承的不再會是業力，而是產品品質的火炬。</p><p>一但單元測試的基本知識抓住後，<br>測試趨動開發與重構就會水到渠成，<br>這兩門技術也不容易，本質上也易學難精，很需要經驗值，<br>測試趨動會讓我們更接近使用者，這裡指的是代碼的使用者。</p><blockquote><p>反思:也許是我們太常一人同時飾演多角才會這樣的問題，那麼 Pair Programming 是不是能解決這樣的問題)</p></blockquote><p>重構會引導我們到<strong>設計模式</strong>，<br>當然<strong>設計</strong>(架構與軟體)又是另一個領域了，未來會多找這一些課程來上。<br>目前這塊我也覺得是有缺憾的，TDD 之後就是重構了。<br>但是我並不認為硬背重構的準則或是 Design Pattern 就是解決之道，<br>而是應該結合兩者有系統化的設計課程，<br>理想上是有一個開發案例，可以循序漸進，反覆迭代的開發，<br>讓學徒可以由作中學，進而掌握這兩本藝術。</p><p>如何讓初階的開發者在學習路上，就接觸到正確的單元測試的姿勢呢 ?<br>如果未來有一天，人人都能寫出水平之上的測試，這個產業將會進入什麼樣領域呢 ?  </p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://blog.marsen.me/2020/10/19/2020/unittest_1/">單元測試分享(一) — Why ? How ? What ?</a></li></ul><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;單元測試可以說是我這幾年投入最多學習項目，&lt;br&gt;我為什麼會這麼投入? 是因為我相信這是一個有效的開發方式，&lt;br&gt;持續的上
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Unit Testing" scheme="https://blog.marsen.me/tags/Unit-Testing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[生活筆記] 職涯回顧</title>
+    <link href="https://blog.marsen.me/2021/01/11/2021/feedback_my_career/"/>
+    <id>https://blog.marsen.me/2021/01/11/2021/feedback_my_career/</id>
+    <published>2021-01-11T06:23:44.000Z</published>
+    <updated>2021-01-11T07:08:20.560Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>本來想寫寫單元測試活動的心得，<br>但是覺得需要先說說我對軟體開發的想法，<br>但是在那之前有需要說明我經歷了什麼，我又是怎麼樣的人。<br>寫著寫著越來越多，就拆了這篇文章出來。</p><p>剛好就業也差不多 10 年有餘了，也算是給自已一個重新審視的機會。</p><h2 id="經歷"><a href="#經歷" class="headerlink" title="經歷"></a>經歷</h2><p>退伍的第一份開發工作就被開除;<br>原因不明，但我的解釋就是戰力不足不是即戰力，<br>但是因為該公司很快就放掉我，我反而是感謝的。<br>那個時候工作很難找(08年金融海嘯)，就業面臨了沒經驗找工作的蛋生雞問題。</p><p><img src="https://i.imgur.com/C8ArWcY.png" alt="沒經驗找工作"></p><p>所以就想去補習(資策會的課程)，<br>但是家裡沒錢(房貸/學貸)還有一些長輩的不良債務(家裡被潑漆之類的)，  </p><p>後來跑去一個電子線材公司作資訊助理工作了 1 年半，<br>存夠了錢就去上課了，半年後也順利找到 W 社的工作，<br>這個時候去各個地方面試就蠻搶手的 Offer 拿到蠻多的，<br>但是我開的薪資，現在想想蠻都低的，另外比較印象深刻的是面試被保哥打槍了兩次(無聲卡)，<br>W 社最主要讓我認識了 Gelis 大大，還有獨立接手一個專案的經驗。<br>但離開的原因也是因為缺乏刺激，一個人怎麼作都不會有人管你，<br>看著一大份前人遺物，同事們的想法就是能動就好，沒有人想改進代碼，<br>那個時候我蠻受「學徒模式」一書的影響，想成為一個匠人，沒有回饋(與加薪)的環境我選擇了離開。</p><p>到了 C 社以後，蠻受主管肯定，工作氛圍比較接近新創，<br>同事之間的互動也蠻不錯的，最主要的成長是獨立開發了幾個專案，而且蠻賺錢的。<br>那個時候的角色也不錯，能清楚知道需求端開發端的狀況，<br>而且有幾個蠻重要的技術導入經驗。<br>但是後來碰到一個蠻低的薪資天花板(就知道我起薪有多低XD)，所以離開了。<br>現在想想離開也蠻正確的，不單單是薪水，對技術過於保守，其實現在有點吃老本的感覺。</p><p>後來就進了 N 社，我是在 N 社的成長期進去的，裡面很多大大(Rick、小風、Andrew 等…)，<br>也有一些 MVP，也是這個機會接觸到 TDD 與 SkillTree 的課程，<br>但是也是蠻掙扎的，一直無法作主要的專案，理想的開發方式也常常被現實打臉，<br>社群活動也參加的蠻多的，前期一些中國的講者的課程影響我蠻深的(也跟測試有關)，<br>跟 Ruddy 老師也有蠻近的接觸，看了蠻多的好書「軟技能」、「軟體開發本質論」、「進化」等…，<br>工作上實作了敏捷(雖然有蠻多地方怪怪)，也取得 Scrum Master 的認証，<br>但是我其實不是太認同社群的造神運動，還有認証機構進來以後說一些虛無飄渺的東西。<br>我還是想將「理論」與「現實」的鴻溝抹平，<br>離開的原因是想要有程式外的與人(妹子)接觸與時間(不太想 10-19 的上班方式)，薪資當然也有所提昇。</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p>早期的我很受「學徒模式」一書的影響，<br>想成為一個<strong>匠人</strong>，但是現在開始反思這個想法會不會過時了，<br>現在會比較想要<strong>斜槓</strong>，但是我不認為這兩者是衝突的。<br>主因是受前端開發影響，真的是一年萬變。<br>以前的我是前後端都開發，現在主流的開發方式都是分離的，<br>有其時空背景的因素在，而敏捷團隊講求的是跨職能(ps.我認為應是團隊而不是個人的跨職能)。<br>對於我來說，我個人也願意多學一點，但是反而有些貪多嚼不爛，<br>時間會是我最大的敵人，也是<a href="https://blog.marsen.me/2016/12/05/2016/be_friend_with_time/">朋友</a>，<br>而要考慮的會是<strong>價值與風險</strong>，單純的一直學「新」技術，沒有累積話只是一種浪費(比如說:<a href="https://zh.wikipedia.org/wiki/Microsoft_Silverlight">Sliverlight</a>)，<br>所以我現在遇到新技術，會讓子彈飛一會兒，畢竟時間與精力都是稀缺資源。</p><p>開發之外也有很多重要的事，這些在「軟技能」一書可以看到，<br>包含維持自已身體的健康、習慣的建立、時間管理、財務管理、第二外語與溝通的技巧，<br>甚至是你的社交圈、家庭與親密關係，到這裡其實就是你的人生了。<br>軟體工程師不應該只是一個開發工具，軟體開發應該是未來人人具備的技能，</p><p>而你擁有這些技能，如何善用讓自已可以過得更好，反而才是一個議題。<br>舉例來說，有人用來增加收入(接案)，有人用來分析投資(股票爬蟲&amp;程式交易)，<br>有人用來找<a href="https://buzzorange.com/techorange/2019/09/26/find-girlfriend-by-python/">伴侶</a>，有人用來建立品牌或創業。<br>不要讓開發只在工作之中，要讓開發落入你的生活之中。</p><p>(fin)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;本來想寫寫單元測試活動的心得，&lt;br&gt;但是覺得需要先說說我對軟體開發的想法，&lt;br&gt;但是在那之前有需要說明我經歷了什麼，我又
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[活動筆記] 工程師如何提升英文聽說讀寫能力</title>
@@ -451,52 +497,6 @@
       <category term="OOP" scheme="https://blog.marsen.me/tags/OOP/"/>
     
       <category term="Design Pattern" scheme="https://blog.marsen.me/tags/Design-Pattern/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[A社筆記] KATA 跟本是個屁，練不出什麼鬼東西，不服來戰</title>
-    <link href="https://blog.marsen.me/2020/07/20/2020/kata_in_dojo/"/>
-    <id>https://blog.marsen.me/2020/07/20/2020/kata_in_dojo/</id>
-    <published>2020-07-20T06:27:03.000Z</published>
-    <updated>2020-07-20T07:20:51.980Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>前幾天有個小朋友問我說<br>「想問問 Tennis KATA 練習的重點是重構嗎<br>有沒有什麼重構的目標 ?」  </p><h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>這讓我想起一年前寫的文章，<a href="https://blog.marsen.me/2019/01/30/2019/coding_dojo_in_company/">[N社筆記] 在公司小規模玩 Coding Dojo</a><br>順便記錄一下後續，那個實驗大概在三月隨著參與的人員忙碌而停止了，<br>然後在後續有再重啟一次，那次是使用 Production Code 進行，<br>有多一些新的成員，但是也是隨著「忙碌」與「沒時間」而停止，<br>雖然我心裡比較想直接譙那些不出席又不出聲的人渣一些髒話，<br>不過我想這就是現實吧。這也引發我後續對 <a href="https://blog.marsen.me/2020/01/28/2020/book/better_by_atul_gawande/">TDD 產鉗的反思</a>。  </p><h2 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h2><h3 id="簡答版"><a href="#簡答版" class="headerlink" title="簡答版"></a>簡答版</h3><p>Kata 可以幫助你學習到。</p><ul><li>需求分析</li><li>寫測試案例</li><li>TDD 與 Unit Test</li><li>找到壞味道與重構</li><li>Design Pattern</li></ul><h3 id="詳答版"><a href="#詳答版" class="headerlink" title="詳答版"></a>詳答版</h3><p>Kata 就是一個簡單的需求，當需求來的時候<br>你必需先作需求分析，透過需求分析找到測試案例。<br>如果你想學習 TDD 你可以試著讓每個測試案例趨動你的代碼生成。<br>也就是說分析測試案例的時候，你要考慮案例的順序與帶來代碼的改變。  </p><p>試著遵守 TDD 的 紅-綠-重構 準則，<br>重構包含「測試代碼」與「產品代碼」，<br>如果是 OO 語言試著去遵循「SOLID原則」，<br>試著自已隨著 Kata 的過程流動可以看到代碼的變化。  </p><p>Design Patten 可以當作目標或指引去重構代碼。<br>不過以 Design Patten 為目標的話，<br>有兩種可能:</p><ol><li>在「需求分析」階段覺察適合的 Patten 透過設計案例來趨動</li><li>在已完成的代碼中覺察適合的 Patten 在不破壞測試的情況下重構(也有可能需要加測試案例)</li></ol><h4 id="原始回答"><a href="#原始回答" class="headerlink" title="原始回答"></a>原始回答</h4><p><img src="/images/2020/7/kata_in_dojo.jpg" alt="原始回答"></p><h2 id="新的問題"><a href="#新的問題" class="headerlink" title="新的問題"></a>新的問題</h2><p>要花多少時間才能培育一個懂「OO、TDD、Refactoring、DP」的工程師 ?<br>這個性價比符合商業利益嗎 ? 職涯規劃上值得嗎 ?<br>業界真的有需求嗎 ? 還是只要會剪下貼上就好 ?<br>真正的大公司是這樣開發的嗎 ? 業界很多公司不這樣作不也活得好好的 ?<br>目前的趨勢會更加的專業分工，這些準繩依舊適用嗎 ?</p><p><strong>我還沒有答案，但我還在路上。</strong></p><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;前幾天有個小朋友問我說&lt;br&gt;「想問問 Tennis KATA 練習的重點是重構嗎&lt;br&gt;有沒有什麼重構的目標 ?」  &lt;/
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[閱讀筆記] 回饋隨筆—《SCRUM敏捷實戰手冊》</title>
-    <link href="https://blog.marsen.me/2020/06/30/2020/yuubuke_talk_about_scrum/"/>
-    <id>https://blog.marsen.me/2020/06/30/2020/yuubuke_talk_about_scrum/</id>
-    <published>2020-06-30T09:51:03.000Z</published>
-    <updated>2020-07-01T04:36:52.914Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>朋友在一個知識型部落客的團隊中工作，<br>作了一個有關 Scrum 的影片，<br>恰巧我最近的工作與 Scrum 的導入有比較深的關係，<br>影片我也蠻喜歡的，就稍微作個筆記當作回饋。</p><h2 id="回饋隨筆"><a href="#回饋隨筆" class="headerlink" title="回饋隨筆"></a>回饋隨筆</h2><p>第一點，讓我可以看到非業界人員初探 Scrum 的角度，<br>我第一次「知道」Scrum 已經是在 C 社的事了。<br>有點忘了第一次接觸的「初心」，台灣非軟體人說這方面的非常稀少。<br>能夠提供不同視角是很重要的。  </p><p>橄欖球列陣這部份我蠻喜歡的; 雖然直譯就知道 Scrum 原本的意思，<br>但是離「光速蒙面俠」太遠，已經有點忘了那些規則，<br>現在對比起來真的很像，為了一次的達陣，你需要多少衝刺 ?<br>戰術又該怎麼選擇 ? 球員平時的訓練與臨場反應是不是也可以映射到這個業界呢 ?  </p><p>整個影片很淺顯易懂，口齒清晰即使放到 1.5 倍速還是聽得清楚，<br>可惜的是汽車廠 5 年轉型的故事我想知道更多細節或出處，<br>不是很喜歡「一半的時間，作兩倍的工作」的結論，<br>我覺得是書商的行銷手段，不是 Scrum 的目標與強項。<br>產能的提昇不過是個結果，重點是三大支柱對團隊帶來的效應。<br>沒提到透明性、檢視性與調適性我覺得蠻可惜的，  </p><p>另外個人的工作流程我不覺得需要跑 Scrum ，<br>可以試試 GTD 或 PDCA ，而且你會發現很多類似的觀念與原則。<br>Scrum 設計上是適合小型團隊的，業界說法是 3~9 人，不含 PO 與 SM<br>多人的公司也有很多別的方法論(EX: LeSS or SAFe)，這裡我不多開戰線，敏捷無它「務實」而已。<br>方法沒有不好，只有適不適合。</p><h2 id="差異"><a href="#差異" class="headerlink" title="差異"></a>差異</h2><p>有些用字跟業界不太一樣有點可惜，硬要翻譯不如保留英文或是業界常用翻譯。<br>Scrum 跟規格固定應該沒有什麼關係，不過工程上的確這樣作會帶來一些好處。<br>Scrum 跟 Agile 本質上還是有些不同， Agile 比較像願景、原則比較抽象的層次。<br>複習一下 Agile 的宣言</p><ul><li>Individuals and interactions over processes and tools</li><li>Working software over comprehensive documentation</li><li>Customer collaboration over contract negotiation</li><li>Responding to change over following a plan</li></ul><p>Scrum 是業界較常見的框架而且與其它工作法相容性非常的高，<br>就我個人而言擷取過 XP、GTD、番茄鐘、ORID 與 ToC 等方法。<br>作為一個框架，有彈性的包容各種方法是它如此廣佈的原因之一。</p><p>最後 Scrum 無法擺脫加班、Scrum 無法擺脫加班、Scrum 無法擺脫加班<br>不要盲從，Google 是先成為 google 才有導入 Scrum，你導入 Scrum 也不會成為 Google。<br>丟書前多想 3 秒鐘，丟桌上不如丟臉上，丟書不如丟辭呈。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://william-yeh.net/post/2018/11/why-safe-over-less/" target="_blank" rel="noopener">為什麼 LeSS 這麼迷人，可是總是輸給 SAFe？</a></li><li><a href="https://www.youtube.com/watch?v=dzu9yYgmO6s" target="_blank" rel="noopener">影片無法嵌入，改分享連結</a></li></ul><p>(fin)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;朋友在一個知識型部落客的團隊中工作，&lt;br&gt;作了一個有關 Scrum 的影片，&lt;br&gt;恰巧我最近的工作與 Scrum 的導入
-      
-    
-    </summary>
-    
-    
-    
-      <category term="閱讀筆記" scheme="https://blog.marsen.me/tags/%E9%96%B1%E8%AE%80%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
