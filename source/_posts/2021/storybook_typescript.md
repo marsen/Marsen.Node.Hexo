@@ -10,7 +10,7 @@ tags:
 不論是 App 或是 Web, 與使用者第一線互動的就是 UI 了。  
 另一面在需求設計上, 我們總會想像一個畫面，  
 想像著使用者如何使用我們的產品，  
-也就是 UI 是理想與真實的邊界。  
+也就是說 UI 是理想與真實的邊界。  
 
 Designer 完成了設計, Engineer 將之實作出來,  
 主流的開發方式會透過 Component 來節省時間。  
@@ -699,6 +699,8 @@ Error.args = {
   error: 'Something',
 };
 ```
+
+完整代碼可以參考[此處](https://github.com/marsen/intro-to-storybook-typescript)。
 
 ## 參考
 
