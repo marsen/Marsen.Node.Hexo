@@ -32,7 +32,7 @@ tag:
 ## 配置
 
 1. [cloudflare](https://www.cloudflare.com/) 設定DNS，在指定的domain下，設定為「DNS and HTTP Proxy(CDN)」。
-![設定為「DNS and HTTP Proxy(CDN)」](/images/090516_021242_AM.jpg)
+![設定為「DNS and HTTP Proxy(CDN)」](/images/2016/090516_021242_AM.jpg)
 2. 設定Page-Rules，這個是為了開啟SSL
     1. 設定`SSL`為`Flexible`,輸入`*.username.com/*`。  
 這個時候你就可以瀏覽`https://blog.username.com/`,但同時也可以瀏覽`http://blog.username.com/` 。  
@@ -40,17 +40,17 @@ tag:
 但是如果是github page建立網站，就要再仰賴 [cloudflare](https://www.cloudflare.com/) 了。
 3. 設定Page-Rules，這個是為了開啟SSL
     1. 設定`ALWAYS USE HTTPS`,輸入`http://*.username.com/*`。  
-![設定為「DNS and HTTP Proxy(CDN)」](/images/090516_023252_AM.jpg)
+![設定為「DNS and HTTP Proxy(CDN)」](/images/2016/090516_023252_AM.jpg)
 
 設定完大致如下，順利的話幾分鐘就生效了。  
-![生效](/images/090516_023554_AM.jpg)
+![生效](/images/2016/090516_023554_AM.jpg)
 
 這時候瀏覽 `http://blog.username.com/` 就會轉導到 `https://blog.username.com/` 了 。
 
 ## 檢驗
 
 使用 support HTTP/2的瀏覽器，瀏覽網頁，觀察其 protocol 。
-![HTTP/2](/images/090516_024550_AM.jpg)
+![HTTP/2](/images/2016/090516_024550_AM.jpg)
 
 ## 系列文章
 

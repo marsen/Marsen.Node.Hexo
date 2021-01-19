@@ -21,7 +21,7 @@ tag:
 4. powershell 作BulkInsert
 5. powershell 寫入檔案
 
-![PowerShell](/images/102216_095355_PM.jpg)
+![PowerShell](/images/2016/102216_095355_PM.jpg)
 
 ### 簡記要點
 
