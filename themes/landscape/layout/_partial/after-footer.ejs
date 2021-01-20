@@ -30,9 +30,8 @@
   <%- css('fancybox/jquery.fancybox') %>
   <%- js('fancybox/jquery.fancybox.pack') %>
 <% } %>
-<script>
-  debugger;
-  var sayings = <%- JSON.stringify(theme.sayings) %>;
+<script>  
+  var sayings = <%- JSON.stringify(config.sayings) %>;
 </script>
   
 <%- js('js/script.js?v=0') %>
