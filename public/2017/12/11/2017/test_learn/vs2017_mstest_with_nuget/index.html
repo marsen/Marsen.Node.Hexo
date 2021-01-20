@@ -122,7 +122,6 @@ ga('send', 'pageview');
 </ul>
 <h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p><img src="https://i.imgur.com/FDDtc9V.jpg" alt="載入測試時發生例外狀況"><br>原本使用 Visual Studio 2015 建立的測試專案,<br>升級到 Visual Studio 2017 後, 發生以下錯誤</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[2017&#x2F;12&#x2F;11 上午 02:09:59 Error] 測試探索程式 &#39;SpecRunTestDiscoverer&#39; </span><br><span class="line">載入測試時發生例外狀況。例外狀況: 無法載入檔案或組件 </span><br><span class="line">&#39;Microsoft.VisualStudio.QualityTools.UnitTestFramework,</span><br><span class="line">Version&#x3D;10.0.0.0, Culture&#x3D;neutral, PublicKeyToken&#x3D;b03f5f7f11d50a3a&#39;</span><br><span class="line">或其相依性的其中之一。 系統找不到指定的檔案。</span><br></pre></td></tr></table></figure>
-
 <h2 id="導致結果"><a href="#導致結果" class="headerlink" title="導致結果"></a>導致結果</h2><p><img src="https://i.imgur.com/2REPRzG.jpg" alt="原本的測試數量為1942,變成459,遺失了7成5的測試案例."></p>
 <ol>
 <li>測試專案會找不到測試,或是測試數量不正確.</li>
@@ -138,7 +137,7 @@ ga('send', 'pageview');
 <li>重啟 Visual Studio 2017 並建置以觸發探索測試<br><img src="https://i.imgur.com/RPI77KN.jpg" alt="透過 Nuget 安裝 MSTest.TestAdapter/MSTest.TestFramework"><br><img src="https://i.imgur.com/JQ7zf2S.jpg" alt="重啟 Visual Studio 2017 並建置以觸發探索測試"></li>
 </ul>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html" target="_blank" rel="noopener">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li>
+<li><a target="_blank" rel="noopener" href="https://developercommunity.visualstudio.com/content/problem/14673/unit-test-fail-cannot-load-microsoftvisualstudiote.html">Unit test fail - cannot load Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</a></li>
 </ul>
 <p>(fin)</p>
 <h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul>
@@ -148,7 +147,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/" data-id="ckhvk0jvt00crxougf2fd9915" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/" data-id="ckk532nj80084u4ug2zcl8p84" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/12/11/2017/test_learn/vs2017_mstest_with_nuget/#disqus_thread" class="article-comment-link">留言</a>
       

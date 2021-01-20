@@ -110,9 +110,9 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="noopener">Unix Terminal Online</a></li>
-<li><a href="https://www.udemy.com/learn-shell-scripting-all-levels/" target="_blank" rel="noopener">Learn Shell Scripting all Levels</a></li>
-<li><a href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html" target="_blank" rel="noopener">umask 指令</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix_terminal_online.php">Unix Terminal Online</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/learn-shell-scripting-all-levels/">Learn Shell Scripting all Levels</a></li>
+<li><a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0320bash/csh/no3-8-01.html">umask 指令</a></li>
 </ul>
 <h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><h3 id="Clear"><a href="#Clear" class="headerlink" title="Clear"></a><code>Clear</code></h3><h4 id="清除目前-terminal-畫面"><a href="#清除目前-terminal-畫面" class="headerlink" title="清除目前 terminal 畫面"></a>清除目前 terminal 畫面</h4><h3 id="Cal"><a href="#Cal" class="headerlink" title="Cal"></a><code>Cal</code></h3><h4 id="產生當下的月曆"><a href="#產生當下的月曆" class="headerlink" title="產生當下的月曆"></a>產生當下的月曆</h4><blockquote>
 <p>$ cal                                                </p>
@@ -181,7 +181,7 @@ ga('send', 'pageview');
 <h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a><code>ls</code></h3><h4 id="列出資料夾中的所有檔案"><a href="#列出資料夾中的所有檔案" class="headerlink" title="列出資料夾中的所有檔案"></a>列出資料夾中的所有檔案</h4><h4 id="ls-foldername"><a href="#ls-foldername" class="headerlink" title="ls foldername"></a><code>ls foldername</code></h4><p>列出指定的資料夾中所有的檔案</p>
 <h4 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a><code>ls -l</code></h4><p>列出資料夾中的所有檔案與其權限資訊</p>
 <blockquote>
-<p>ls 最常被使用到的功能還是那個 -l 的選項，為此，很多 distribution 在預設的情況中， 已經將 ll (L 的小寫) 設定成為 ls -l 的意思了！其實，那個功能是 <a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="noopener">Bash shell</a> 的 <a href="http://linux.vbird.org/linux_basic/0320bash.php#alias" target="_blank" rel="noopener">alias</a> 功能呢<br>— 鳥哥的 Linux 私房菜</p>
+<p>ls 最常被使用到的功能還是那個 -l 的選項，為此，很多 distribution 在預設的情況中， 已經將 ll (L 的小寫) 設定成為 ls -l 的意思了！其實，那個功能是 <a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0320bash.php">Bash shell</a> 的 <a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0320bash.php#alias">alias</a> 功能呢<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a><code>chmod</code></h3><h4 id="修改檔案權限"><a href="#修改檔案權限" class="headerlink" title="修改檔案權限"></a>修改檔案權限</h4><blockquote>
 <p>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rw-r–r– 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 777 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-rwxrwxrwx 1 33581 33581   0 Mar 12 17:32 test<br>sh-4.4$ chmod 444 test<br>sh-4.4$ ls -l<br>total 4<br>-rw-r–r– 1 33581 33581 978 Mar 12 17:30 README.txt<br>-r–r–r– 1 33581 33581   0 Mar 12 17:32 test</p>
@@ -223,7 +223,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>$ cut -d”-“ -f 1,3 filenames<br>Name-Age<br>Roger-30<br>Nadal-25<br>Tiger-37<br>Michael-49</p>
 </blockquote>
-<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a><code>dd</code></h3><h4 id="資料處理、拷貝、備份、轉碼-更多"><a href="#資料處理、拷貝、備份、轉碼-更多" class="headerlink" title="資料處理、拷貝、備份、轉碼;更多"></a>資料處理、拷貝、備份、轉碼;<a href="https://blog.gtwang.org/linux/dd-command-examples/" target="_blank" rel="noopener">更多</a></h4><blockquote>
+<h3 id="dd"><a href="#dd" class="headerlink" title="dd"></a><code>dd</code></h3><h4 id="資料處理、拷貝、備份、轉碼-更多"><a href="#資料處理、拷貝、備份、轉碼-更多" class="headerlink" title="資料處理、拷貝、備份、轉碼;更多"></a>資料處理、拷貝、備份、轉碼;<a target="_blank" rel="noopener" href="https://blog.gtwang.org/linux/dd-command-examples/">更多</a></h4><blockquote>
 <p>$ cat &gt; infile<br>this is the input file<br>$ cat infile<br>this is the input file</p>
 </blockquote>
 <blockquote>
@@ -238,11 +238,10 @@ ga('send', 'pageview');
 <p>$ man ls<br>h</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">                   SUMMARY OF LESS COMMANDS</span><br><span class="line"></span><br><span class="line">      Commands marked with * may be preceded by a number, N.</span><br><span class="line">      Notes in parentheses indicate the behavior if N is given.</span><br><span class="line"></span><br><span class="line">  h  H                 Display this help.</span><br><span class="line">  q  :q  Q  :Q  ZZ     Exit.</span><br><span class="line"> ---------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">                           MOVING</span><br><span class="line"></span><br><span class="line">  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).</span><br><span class="line">  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).</span><br><span class="line">  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).</span><br><span class="line">  b  ^B  ESC-v      *  Backward one window (or N lines).</span><br><span class="line">  z                 *  Forward  one window (and set window to N).</span><br><span class="line">  w                 *  Backward one window (and set window to N).</span><br><span class="line">  ESC-SPACE         *  Forward  one window, but don&#39;t stop at end-of-file.</span><br><span class="line">  d  ^D             *  Forward  one half-window (and set half-window to N).</span><br><span class="line">  u  ^U             *  Backward one half-window (and set half-window to N).</span><br><span class="line">  ESC-)  RightArrow *  Left  one half screen width (or N positions).</span><br><span class="line">  ESC-(  LeftArrow  *  Right one half screen width (or N positions).</span><br><span class="line">  F                    Forward forever; like &quot;tail -f&quot;.</span><br><span class="line">  r  ^R  ^L            Repaint screen.</span><br><span class="line">HELP -- Press RETURN for more, or q when done</span><br></pre></td></tr></table></figure>
-
 <p>按<code>q</code>退出查詢畫面</p>
 <h3 id="banner"><a href="#banner" class="headerlink" title="banner"></a><code>banner</code></h3><h4 id="輸出用-組成的大形文字"><a href="#輸出用-組成的大形文字" class="headerlink" title="輸出用#組成的大形文字"></a>輸出用#組成的大形文字</h4><p>實測未出現,上網查了一下banner好像有蠻多不同的類型可以安裝?</p>
 <h3 id="compress"><a href="#compress" class="headerlink" title="compress"></a><code>compress</code></h3><h4 id="壓縮檔案"><a href="#壓縮檔案" class="headerlink" title="壓縮檔案"></a>壓縮檔案</h4><h3 id="zcat"><a href="#zcat" class="headerlink" title="zcat"></a><code>zcat</code></h3><h4 id="讀取壓縮檔案"><a href="#讀取壓縮檔案" class="headerlink" title="讀取壓縮檔案"></a>讀取壓縮檔案</h4><h3 id="uncompress"><a href="#uncompress" class="headerlink" title="uncompress"></a><code>uncompress</code></h3><h4 id="解壓縮檔案"><a href="#解壓縮檔案" class="headerlink" title="解壓縮檔案"></a>解壓縮檔案</h4><blockquote>
-<p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a href="http://www.gnu.org/" target="_blank" rel="noopener">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
+<p>compress 已經退流行了。為了支援 windows 常見的 zip，其實 Linux 也早就有 zip 指令了！ gzip 是由 <a target="_blank" rel="noopener" href="http://www.gnu.org/">GNU 計畫</a>所開發出來的壓縮指令，該指令已經取代了 compress 。<br>— 鳥哥的 Linux 私房菜</p>
 </blockquote>
 <h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>以上是一些基本的 Linux Command ,<br>下一篇,我們會建立.sh檔,將 Linux Command 依照指定的順序執行<br>並使用 <code>sh</code> 命令執行<br>用以完成一些更進階的工作. </p>
 <p>(more..)</p>
@@ -250,7 +249,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="ckhvk0jsx0034xoug8dsjg7bh" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/03/26/2018/linux_command_1/" data-id="ckk532nhr002uu4ugcvn7e3hl" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/03/26/2018/linux_command_1/#disqus_thread" class="article-comment-link">留言</a>
       

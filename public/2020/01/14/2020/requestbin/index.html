@@ -109,13 +109,13 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="案例說明"><a href="#案例說明" class="headerlink" title="案例說明"></a>案例說明</h2><p>最近串接 Stripe ，一個相當方便的國際化金流服務，<br>情境是主子帳號的綁定，<br>Stripe 可以透過 Oauth 的方式綁定不同的 Stripe 帳戶，<br>對於電子商務的平台來說，相當的方便，<br>它可以透過簡單的<a href="https://stripe.com/docs/connect/standard-accounts#revoked-access" target="_blank" rel="noopener">授權機制</a>，取得客戶的金流資訊，  </p>
+        <h2 id="案例說明"><a href="#案例說明" class="headerlink" title="案例說明"></a>案例說明</h2><p>最近串接 Stripe ，一個相當方便的國際化金流服務，<br>情境是主子帳號的綁定，<br>Stripe 可以透過 Oauth 的方式綁定不同的 Stripe 帳戶，<br>對於電子商務的平台來說，相當的方便，<br>它可以透過簡單的<a target="_blank" rel="noopener" href="https://stripe.com/docs/connect/standard-accounts#revoked-access">授權機制</a>，取得客戶的金流資訊，  </p>
 <p><img src="/images/2020/1/requestbin_01.jpg" alt="Strip Oauth Flow"></p>
 <p>這時候問題來了，營運部門發現有的時候客戶會不小心將授權解除，<br>這會導致帳務上的問題，所以需要在第一時間被通知，<br>而 Stripe 其實也有提供 Event Driven 的解決方案。</p>
 <p>透過 Webhook 監聽指定的事件 (Event)，可以串接各種通知服務。<br>ex: Line、E-mail、簡訊甚至是電話，<br>開發這樣的通知服務並不難但是要時間的。</p>
 <p>而其中最大的風險在於 Event 送到 Webhook 再到通知服務的這段流程。<br>如果這段不通，就算 Event 確實會發生，就算通知務服務是正常的，<br>仍然會收不到通知。</p>
 <p><strong>有沒有辦法快速驗証Webhook呢?</strong><br><strong>有沒有辦法快速驗証Webhook呢?</strong><br><strong>有沒有辦法快速驗証Webhook呢?</strong></p>
-<h2 id="網路上的-Solution"><a href="#網路上的-Solution" class="headerlink" title="網路上的 Solution"></a>網路上的 Solution</h2><p>這個時候就要推薦一下網路上的這個服務 <a href="https://requestbin.com/" target="_blank" rel="noopener">Request Bin</a><br>登入後只需要一鍵，就可以快速建立一個 EndPoint<br>而且立即生效，有任 Request 進來都會完整記錄。</p>
+<h2 id="網路上的-Solution"><a href="#網路上的-Solution" class="headerlink" title="網路上的 Solution"></a>網路上的 Solution</h2><p>這個時候就要推薦一下網路上的這個服務 <a target="_blank" rel="noopener" href="https://requestbin.com/">Request Bin</a><br>登入後只需要一鍵，就可以快速建立一個 EndPoint<br>而且立即生效，有任 Request 進來都會完整記錄。</p>
 <h3 id="好處"><a href="#好處" class="headerlink" title="好處"></a>好處</h3><ol>
 <li>快速建立 EndPoint</li>
 <li>立即生效</li>
@@ -123,16 +123,16 @@ ga('send', 'pageview');
 </ol>
 <p>如果有其它類似的服務，請推薦。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://stripe.com/docs/webhooks" target="_blank" rel="noopener">https://stripe.com/docs/webhooks</a></li>
-<li><a href="https://stripe.com/docs/api/issuing/authorizations" target="_blank" rel="noopener">https://stripe.com/docs/api/issuing/authorizations</a></li>
-<li><a href="https://requestbin.com/" target="_blank" rel="noopener">https://requestbin.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripe.com/docs/webhooks">https://stripe.com/docs/webhooks</a></li>
+<li><a target="_blank" rel="noopener" href="https://stripe.com/docs/api/issuing/authorizations">https://stripe.com/docs/api/issuing/authorizations</a></li>
+<li><a target="_blank" rel="noopener" href="https://requestbin.com/">https://requestbin.com/</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/14/2020/requestbin/" data-id="ckhvk0jv700anxoug94indp23" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2020/01/14/2020/requestbin/" data-id="ckk532nis006hu4ugdos04r11" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2020/01/14/2020/requestbin/#disqus_thread" class="article-comment-link">留言</a>
       

@@ -154,17 +154,16 @@ ga('send', 'pageview');
 <li><p>最後一步,選擇 key-pair<br><img src="https://i.imgur.com/fRhUafI.jpg" alt="Key-Pair"></p>
 </li>
 </ol>
-<h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications "ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]" --security-group-ids sg-XXXXXX --key-name marktest.japan.training</span><br></pre></td></tr></table></figure>
-
+<h2 id="CLI-command"><a href="#CLI-command" class="headerlink" title="CLI command"></a>CLI command</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 run-instances --image-id ami-da9e2cbc --count 1 --instance-type t2.nano --subnet-id subnet-cxxxxxxx --user-data file://userdata.sh --tag-specifications &quot;ResourceType=instance,Tags=[&#123;Key=Environment,Value=AWS-Training&#125;,&#123;Key=Name,Value=AWS-Training_MarkLin&#125;]&quot; --security-group-ids sg-XXXXXX --key-name marktest.japan.training</span><br></pre></td></tr></table></figure>
 <h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
-<li><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank" rel="noopener">run-instances</a></li>
+<li><a target="_blank" rel="noopener" href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html">run-instances</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_create_ec2_instance/" data-id="ckhvkmsl00000qoug2c04eur4" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_create_ec2_instance/" data-id="ckk532nje008tu4ug1demfu4w" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2017/12/08/2018/cloud_learn/aws_create_ec2_instance/#disqus_thread" class="article-comment-link">留言</a>
       

@@ -111,19 +111,19 @@ ga('send', 'pageview');
         <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul>
 <li>你要有一個 GitHub 帳號</li>
 </ul>
-<h2 id="建立github-page"><a href="#建立github-page" class="headerlink" title="建立github page"></a>建立github page</h2><p>如果不排斥看原文，可以直接<a href="https://pages.github.com/" target="_blank" rel="noopener">參考</a>  </p>
+<h2 id="建立github-page"><a href="#建立github-page" class="headerlink" title="建立github page"></a>建立github page</h2><p>如果不排斥看原文，可以直接<a target="_blank" rel="noopener" href="https://pages.github.com/">參考</a>  </p>
 <ol>
 <li><p>建立一個 Repository , 並且命名為 <code>username.github.io</code> , 這裡的 username 請使用你的 GitHub 帳號的 username.  </p>
 </li>
 <li><p>clone <code>username.github.io</code> 到你的本機上.</p>
 <pre><code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/username/username.github.io</span><br></pre></td></tr></table></figure></code></pre></li>
 <li><p>建立一個靜態網頁 <code>index.html</code> , 隨便打點什麼。  </p>
-<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//IETF//DTD HTML 2.0//EN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TITLE</span>&gt;</span></span><br><span class="line">                        Hello world</span><br><span class="line">                <span class="tag">&lt;/<span class="name">TITLE</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BODY</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">H1</span>&gt;</span>Hello world<span class="tag">&lt;/<span class="name">H1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">P</span>&gt;</span>This is my github page<span class="tag">&lt;/<span class="name">P</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre></li>
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//IETF//DTD HTML 2.0//EN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TITLE</span>&gt;</span></span><br><span class="line">                        Hello world</span><br><span class="line">                <span class="tag">&lt;/<span class="name">TITLE</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BODY</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">H1</span>&gt;</span>Hello world<span class="tag">&lt;/<span class="name">H1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">P</span>&gt;</span>This is my github page<span class="tag">&lt;/<span class="name">P</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre></li>
 <li><p>commit之後,push 到github上</p>
 <pre><code>&gt; git add --all
 &gt; git commit -m &quot;Initial commit&quot;
 &gt; git push -u origin master</code></pre></li>
-<li><p>瀏覽  <a href="http://username.github.io" target="_blank" rel="noopener">http://username.github.io</a> 即完成</p>
+<li><p>瀏覽  <a target="_blank" rel="noopener" href="http://username.github.io">http://username.github.io</a> 即完成</p>
 </li>
 </ol>
 <h2 id="使用自訂的-Domain"><a href="#使用自訂的-Domain" class="headerlink" title="使用自訂的 Domain"></a>使用自訂的 Domain</h2><ol>
@@ -131,10 +131,10 @@ ga('send', 'pageview');
 <li>需要在根目錄底下，放入一個 CName file<br>檔案的內容只需要你的domain即可<br>ex:<pre><code>blog.username.xyz  
 username.xyz
 username.xyz</code></pre></li>
-<li>在Name Servers (例如<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>)上設定 <code>CNAME</code> 到github page,<br>將 <code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
+<li>在Name Servers (例如<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a>)上設定 <code>CNAME</code> 到github page,<br>將 <code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
 </ol>
 <p>| TYPE | NAME | VALUE | TTL |<br>|—|—|—|—|—|<br>| CName  | * | username.xyz | auto |<br>| CName  | blog | username.github.io | auto |<br>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
-<h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="noopener">官方中文文件</a> .</p>
+<h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/index.html">官方中文文件</a> .</p>
 <ol>
 <li><p>重點在於 <code>_config.yml</code> 的設定</p>
 <pre><code>deploy:
@@ -155,7 +155,7 @@ username.xyz</code></pre></li>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/" data-id="ckhvk0js70015xoug3e3i1vhd" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/" data-id="ckk532nh1000yu4ug95w55n3v" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/#disqus_thread" class="article-comment-link">留言</a>
       

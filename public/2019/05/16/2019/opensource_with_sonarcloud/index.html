@@ -130,7 +130,7 @@ ga('send', 'pageview');
 <li>也許不需要知道</li>
 </ol>
 <h2 id="記錄"><a href="#記錄" class="headerlink" title="記錄"></a>記錄</h2><ol>
-<li><p>申請<a href="https://sonarcloud.io" target="_blank" rel="noopener">SonarCloud</a>帳號，我直接使用 Github</p>
+<li><p>申請<a target="_blank" rel="noopener" href="https://sonarcloud.io">SonarCloud</a>帳號，我直接使用 Github</p>
 <ul>
 <li>需要允許 SonarCloud 存取 Github 的專案 Repo</li>
 <li>建立一組 Token, 用來作身份驗証，可以重複使用請勿外流</li>
@@ -147,40 +147,34 @@ ga('send', 'pageview');
 <li><p>啟動掃瞄，以 .Net Core 為例</p>
 </li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> begin /k:<span class="string">&quot;&#123;project name&#125;&quot;</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">&quot;https://sonarcloud.io&quot;</span> /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>建置專案</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet build</span><br></pre></td></tr></table></figure>
-
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core</span><br><span class="line">Copyright (C) Microsoft Corporation. All rights reserved.</span><br><span class="line">中略...</span><br><span class="line">Build succeeded.</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> end /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner <span class="keyword">for</span> MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner <span class="keyword">for</span> MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>
-
-<p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
+<p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a target="_blank" rel="noopener" href="https://www.openshift.com/">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
 <p><img src="/images/2019/5/sonarcloud_result.jpg" alt="結果上傳"></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/" target="_blank" rel="noopener">Static Code Analysis of .NET Core Projects with SonarCloud</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/SonarQube" target="_blank" rel="noopener">SonarQube - 维基百科，自由的百科全书</a></li>
-<li><a href="https://www.sonarqube.org/" target="_blank" rel="noopener">Continuous Inspection | SonarQube</a></li>
+<li><a target="_blank" rel="noopener" href="https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/">Static Code Analysis of .NET Core Projects with SonarCloud</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SonarQube">SonarQube - 维基百科，自由的百科全书</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sonarqube.org/">Continuous Inspection | SonarQube</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="ckhvk0jup0097xougcz2jdehl" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/" data-id="ckk532nic004uu4ug62oy4ozu" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/05/16/2019/opensource_with_sonarcloud/#disqus_thread" class="article-comment-link">留言</a>
       

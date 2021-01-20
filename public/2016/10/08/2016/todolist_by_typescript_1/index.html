@@ -120,10 +120,10 @@ ga('send', 'pageview');
 <li>用 bootstrap 作簡單的樣式</li>
 </ol>
 <h2 id="實作記錄"><a href="#實作記錄" class="headerlink" title="實作記錄"></a>實作記錄</h2><h3 id="UI-使用-Bootstrap-沒有必要重新打造輪子-能用的就拿來用"><a href="#UI-使用-Bootstrap-沒有必要重新打造輪子-能用的就拿來用" class="headerlink" title="UI : 使用 Bootstrap 沒有必要重新打造輪子,能用的就拿來用"></a>UI : 使用 Bootstrap <em>沒有必要重新打造輪子,能用的就拿來用</em></h3><ul>
-<li>找到一個TODOLIST的<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="noopener">樣版</a>,內含 HTML 、 CSS 與 JS ,功能完整.</li>
-<li>取用<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="noopener">樣版</a>的HTML .     </li>
+<li>找到一個TODOLIST的<a target="_blank" rel="noopener" href="http://bootsnipp.com/index.php/snippets/featured/todo-example">樣版</a>,內含 HTML 、 CSS 與 JS ,功能完整.</li>
+<li>取用<a target="_blank" rel="noopener" href="http://bootsnipp.com/index.php/snippets/featured/todo-example">樣版</a>的HTML .     </li>
 <li>引用 bootstrap 3.3.5 CDN上的 css .</li>
-<li>建立一個 todo.css 直接引用<a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="noopener">樣版</a>的 css 並加入頁面參考.</li>
+<li>建立一個 todo.css 直接引用<a target="_blank" rel="noopener" href="http://bootsnipp.com/index.php/snippets/featured/todo-example">樣版</a>的 css 並加入頁面參考.</li>
 </ul>
 <h3 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h3><ol>
 <li>安裝 typescript<br><code>npm install typescript --save</code></li>
@@ -131,18 +131,17 @@ ga('send', 'pageview');
 <li>安裝 gulp-typescript<br><code>npm install gulp-typescript</code></li>
 <li>建立gulpfile.js </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> tsc = <span class="built_in">require</span>(<span class="string">'gulp-typescript'</span>);</span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">return</span> gulp.src(<span class="string">'public/javascripts/**/*.ts'</span>)</span><br><span class="line">        .pipe(tsc())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'public/javascripts/'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> tsc = <span class="built_in">require</span>(<span class="string">&#x27;gulp-typescript&#x27;</span>);</span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">return</span> gulp.src(<span class="string">&#x27;public/javascripts/**/*.ts&#x27;</span>)</span><br><span class="line">        .pipe(tsc())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&#x27;public/javascripts/&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="Typescript"><a href="#Typescript" class="headerlink" title="Typescript"></a>Typescript</h3><ol>
 <li><p>關於 typescript 的定義檔, 以前有 tsd 與 typings兩種管理工具,現在可以更簡便的合併到 npm 作管理 .</p>
 </li>
-<li><p>透過 <a href="http://microsoft.github.io/TypeSearch/" target="_blank" rel="noopener">TypeSearch</a> 可以找到 <a href="https://www.npmjs.com/package/@types/bootstrap" target="_blank" rel="noopener">bootstrap</a> 的 typescript 定義檔.</p>
+<li><p>透過 <a target="_blank" rel="noopener" href="http://microsoft.github.io/TypeSearch/">TypeSearch</a> 可以找到 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/@types/bootstrap">bootstrap</a> 的 typescript 定義檔.</p>
 </li>
 <li><p>執行 <code>npm install --save @types/bootstrap</code> 安裝 bootstrap (目前的版本是 Bootstrap 3.3.5) , 因為相依於 jquery 所以也會一併安裝</p>
 </li>
 <li><p>安裝 jquery-ui 的定義檔<br><code>npm install --save @types/jqueryui</code></p>
 </li>
-<li><p>新增檔案 <code>todo.ts</code> ,將 <a href="http://bootsnipp.com/index.php/snippets/featured/todo-example" target="_blank" rel="noopener">樣版</a> 的 javascript 複製貼上 .<br><em>*註:因為 typescript 是 javascript 的 superset , 完全可以相容原生 javascript, 如果有任何錯誤, TypeScript將會提示你</em></p>
+<li><p>新增檔案 <code>todo.ts</code> ,將 <a target="_blank" rel="noopener" href="http://bootsnipp.com/index.php/snippets/featured/todo-example">樣版</a> 的 javascript 複製貼上 .<br><em>*註:因為 typescript 是 javascript 的 superset , 完全可以相容原生 javascript, 如果有任何錯誤, TypeScript將會提示你</em></p>
 </li>
 <li><p>todo.ts 引用 jquery 、jquery-ui 與 bootstrap 的 typescript 定義檔.  </p>
 <pre><code>/// &lt;reference path=&quot;../../../node_modules/@types/jquery/index.d.ts&quot;/&gt;  
@@ -159,15 +158,15 @@ ga('send', 'pageview');
 </ol>
 <h4 id="截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置"><a href="#截至目前為止-僅僅是在作複製樣版-同時一併處理一些基本-gulp-與-typescript-相關的配置" class="headerlink" title="截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置"></a>截至目前為止,僅僅是在作複製樣版,同時一併處理一些基本 gulp 與 typescript 相關的配置</h4><h4 id="接下來才要開始寫-typescript"><a href="#接下來才要開始寫-typescript" class="headerlink" title="接下來才要開始寫 typescript"></a>接下來才要開始寫 typescript</h4><p>(待續)</p>
 <h4 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h4><ol>
-<li><a href="http://blog.miniasp.com/post/2016/08/22/TypeScript-Future-Declaration-Files.aspx" target="_blank" rel="noopener">關於 TypeScript 2.0 之後的模組定義檔 ( Declaration Files ) ( *.d.ts )</a></li>
-<li><a href="http://bootsnipp.com/" target="_blank" rel="noopener">bootsnipp</a></li>
-<li><a href="http://com-brianflove.appspot.com/2016/03/29/typescript-express-node-js/" target="_blank" rel="noopener">TYPESCRIPT + EXPRESS + NODE.JS</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.miniasp.com/post/2016/08/22/TypeScript-Future-Declaration-Files.aspx">關於 TypeScript 2.0 之後的模組定義檔 ( Declaration Files ) ( *.d.ts )</a></li>
+<li><a target="_blank" rel="noopener" href="http://bootsnipp.com/">bootsnipp</a></li>
+<li><a target="_blank" rel="noopener" href="http://com-brianflove.appspot.com/2016/03/29/typescript-express-node-js/">TYPESCRIPT + EXPRESS + NODE.JS</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="ckhvk0js70017xougbpff12c8" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/" data-id="ckk532nh40017u4ug6bn96odl" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2016/10/08/2016/todolist_by_typescript_1/#disqus_thread" class="article-comment-link">留言</a>
       

@@ -203,8 +203,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></p
 <li>CorsModule，有必要區分protocol嗎 ?</li>
 </ol>
 <p><img src="https://i.imgur.com/Dw2yIvG.jpg" alt="">    </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">"http:"</span>, <span class="string">"https:"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span>/ Step3. 檢查呼叫webapi是否需要https</span></span><br><span class="line"><span class="keyword">if</span> (httpContext.Request.Url.Scheme == Uri.UriSchemeHttps &amp;&amp; (sourceUri == <span class="literal">null</span> || sourceUri.Scheme == Uri.UriSchemeHttps))</span><br><span class="line">&#123;</span><br><span class="line">    allowOrigin = allowOrigin.Replace(<span class="string">&quot;http:&quot;</span>, <span class="string">&quot;https:&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="問題處理經過"><a href="#問題處理經過" class="headerlink" title="問題處理經過"></a>問題處理經過</h3><ol>
 <li><p>第一時間 QA 有看到異常， 但是在 PO 的環境無法重現 ，<br>RD 初步判斷為快取的問題， 並嚐試重現錯誤 。</p>
 </li>
@@ -258,13 +257,13 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></p
 <li><p>什麼是 CDN ?<br><img src="https://raw.githubusercontent.com/hungys/azure-blog/master/media/14-using-azure-cdn/cdn-concept.png" alt=""></p>
 <p>  Server跟CDN就像工廠與便利店的關係， 你要買東西不用跑到工廠<br>  只要在離自已最近的便利店買就好了， 過期的商品(資料)會被丟掉<br>  重新跟工廠進貨(拉新資料)。</p>
 </li>
-<li><p>什麼是 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS" target="_blank" rel="noopener">CORS</a> ?</p>
+<li><p>什麼是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS">CORS</a> ?</p>
 </li>
-<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener">Origin</a> </p>
+<li><p>什麼是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin">Origin</a> </p>
 </li>
-<li><p>什麼是 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer" target="_blank" rel="noopener">Referrer</a></p>
+<li><p>什麼是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer">Referrer</a></p>
 </li>
-<li><p><a href="https://hackmd.io/p/SyFiZ2wIX#/" target="_blank" rel="noopener">Slide</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://hackmd.io/p/SyFiZ2wIX#/">Slide</a></p>
 </li>
 </ul>
 <p>(fin)</p>
@@ -272,7 +271,7 @@ site : BrowserCache 遇到跨 Domain 存取時， 會發生 CORS Error</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="ckhvk0jss002mxoug07fxfgrq" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/" data-id="ckk532nhn002fu4ug24ypdp0q" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/08/28/2018/defect_release_cors_and_cdn/#disqus_thread" class="article-comment-link">留言</a>
       

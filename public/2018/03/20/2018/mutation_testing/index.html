@@ -130,7 +130,6 @@ ga('send', 'pageview');
 <p><strong>no , test not covered</strong><br>這表示你的測試並未</p>
 <h3 id="測試不一定能補捉變異"><a href="#測試不一定能補捉變異" class="headerlink" title="測試不一定能補捉變異"></a>測試不一定能補捉變異</h3><p>比如說 <code>邊際值</code> 或是 <code>隱含的互動</code>;<br>測試覆蓋率100%也不一定能補捉變異<br>要麼少了test case,<br>要麼多了無意義的代碼<br>看看以下例子<br>ex:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo(x,y)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span>/ logic here</span></span><br><span class="line">    sideeffct();</span><br><span class="line">    <span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>反思一下, 測試過了代碼就沒問題 ?<br>不能捉到變異的測試,<br>有發揮它的功能嗎 ?<br>一般來說如果透過 TDD 進行軟體開發,<br>我們的測試應該是會恰巧符合一項 Test Case<br>而如果是先寫代碼再寫測試,<br>將很難通過變異測試(容易產生多餘的代碼)</p>
 <h3 id="找到變異的幾個方向"><a href="#找到變異的幾個方向" class="headerlink" title="找到變異的幾個方向"></a>找到變異的幾個方向</h3><ul>
 <li>邊界條件(<code>&lt;</code> =&gt; <code>&lt;=</code>)</li>
@@ -144,10 +143,8 @@ ga('send', 'pageview');
 </ul>
 <h3 id="先寫代碼再寫測試有問題是很正常的"><a href="#先寫代碼再寫測試有問題是很正常的" class="headerlink" title="先寫代碼再寫測試有問題是很正常的"></a>先寫代碼再寫測試有問題是很正常的</h3><h2 id="Kata-PokerHands-範例"><a href="#Kata-PokerHands-範例" class="headerlink" title="Kata-PokerHands 範例"></a>Kata-PokerHands 範例</h2><h3 id="原碼-使用java"><a href="#原碼-使用java" class="headerlink" title="原碼(使用java)"></a><a target="_blank" rel="noopener" href="https://github.com/JosephYao/Kata-PokerHands">原碼(使用java)</a></h3><h3 id="變異實例"><a href="#變異實例" class="headerlink" title="變異實例"></a>變異實例</h3><p>有問題 ,反向測試案例不足</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> List&lt;Integer&gt; <span class="title">getPairCardRanks</span><span class="params">(List&lt;Integer&gt; cardRanks)</span> </span>&#123;</span><br><span class="line">         List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; CARD_COUNT - <span class="number">1</span>; index++)</span><br><span class="line">         <span class="keyword">if</span> (isTwoNeighborCardRanksEquals(index, cardRanks))</span><br><span class="line">           result.add(cardRanks.get(index));</span><br><span class="line">         <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>有問題 , -1 但是預期中的行為</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span>   Integer   <span class="title">getThreeOfAKindCardRank</span><span class="params">(List&lt;Integer\&gt; cardRanks)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; CARD_COUNT - <span class="number">2</span>; index++)</span><br><span class="line">      <span class="keyword">if</span> (isThreeNeighborCardRanksEquals(index, cardRanks))</span><br><span class="line">       <span class="keyword">return</span>   cardRanks.get(index);</span><br><span class="line">     <span class="keyword">throw</span>   <span class="keyword">new</span>   IllegalStateException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ol>
 <li>沒有TDD 沒有單元測試,別跑變異測試</li>
 <li>至少要有行級別的覆蓋率(line coverage)</li>
@@ -188,7 +185,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/03/20/2018/mutation_testing/" data-id="ckhvk0jsy0039xougbcuv7jgj" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/03/20/2018/mutation_testing/" data-id="ckk532nht0031u4ug2p4s0i3u" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/#disqus_thread" class="article-comment-link">留言</a>
       

@@ -104,18 +104,16 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a href="http://npm.mycompany.io" target="_blank" rel="noopener">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network 'proxy' config is set properly.  See: 'npm help config'</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure>
-
+        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a target="_blank" rel="noopener" href="http://npm.mycompany.io">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network &#x27;proxy&#x27; config is set properly.  See: &#x27;npm help config&#x27;</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>一個簡單的方法是 VPN 回公司內部網路;<br>另一個方法是重新設定，</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">http://npm.mycompany.io</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm <span class="built_in">set</span> registry https://registry.npmjs.org</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
-
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/29/2018/node_set_registry/" data-id="ckhvk0jt1003hxougg6iff6oo" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/29/2018/node_set_registry/" data-id="ckk532nhw0039u4ug89kpd6fe" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -164,27 +162,25 @@ ga('send', 'pageview');
 <h3 id="教導和輔導"><a href="#教導和輔導" class="headerlink" title="教導和輔導"></a>教導和輔導</h3><p>初期需要一再解釋為什麼要實施 Scrum 和 Agile 方法和如何運作，<br>團隊成熟後，共享經驗，並且更多的實踐</p>
 <h3 id="移除障礙"><a href="#移除障礙" class="headerlink" title="移除障礙"></a>移除障礙</h3><p>排除團隊的障礙，是將<strong>責任、活動和所有權</strong>都下放給團隊，讓團隊可以自行解決問題</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">實務上資安、權限和風險上的控管似乎不可行?</span><br><span class="line">雖然說信任團隊，但是上述的角度來看，這些限制是必要之惡。</span><br><span class="line">新創團隊怎麼作 ? 規模擴大後的團隊又該怎麼作 ? </span><br><span class="line">系統思考?</span><br></pre></td></tr></table></figure>
-
 <h3 id="引導"><a href="#引導" class="headerlink" title="引導"></a>引導</h3><p>確保會議有效率，使每次談話有目標/結果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">開會前確認討論的主題與範圍，</span><br><span class="line">開會中確保有效討論與時間控制; </span><br><span class="line">開會完產出相對的決定&#x2F;行為&#x2F;文件。</span><br><span class="line">其中以行為最為重要，也是所謂的action item</span><br><span class="line">或是下一步清單。</span><br></pre></td></tr></table></figure>
 <ul>
-<li><a href="http://www.cheers.com.tw/blog/blogTopic.action?id=662&nid=10065" target="_blank" rel="noopener">無效會議的3種狀況：會而不議、議而不決、決而不行</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cheers.com.tw/blog/blogTopic.action?id=662&nid=10065">無效會議的3種狀況：會而不議、議而不決、決而不行</a></li>
 </ul>
 <h3 id="教練"><a href="#教練" class="headerlink" title="教練"></a>教練</h3><p>Scrum Master 最重要技能之一，關注個人成長也關注團隊自組織、責任感與所有權</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">不知道這本書在供三小，知道的人請告訴我</span><br><span class="line">我比較推薦以下這篇的說法，教導是單向的，教練則是的迴圈</span><br><span class="line">教導比較像是說明、講解、指示;或許有點像上課、聽演講或是看一本書</span><br><span class="line">教練比較有互動性，除了上述所說也包含了給予回饋、示範與局部修正</span><br><span class="line">指導者與被指導者都會參與其中。</span><br></pre></td></tr></table></figure>
 <ul>
-<li><a href="https://www.projectidealism.com/posts/2010/03/difference-between-teaching-and.html" target="_blank" rel="noopener">The difference between teaching and coaching</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.projectidealism.com/posts/2010/03/difference-between-teaching-and.html">The difference between teaching and coaching</a></li>
 </ul>
 <h3 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h3><p>觀察、聆聽而不是干預;保持耐心再採取行動。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">20180724讀書會回饋:</span><br><span class="line">1. Scrum Master 要有意識的不作為(Actively Doing Nothing)</span><br><span class="line">2. 移除障礙:還是先觀察，讓團隊自行解決問題，個人的問題或許不是團隊的問題; </span><br><span class="line">    站立會議是個人尋求團隊意見的好時機。</span><br><span class="line">3. 引導的方法就是問問題與對話。</span><br><span class="line">4. 引導分為個人與團隊</span><br><span class="line">    - 個人</span><br><span class="line">        引導作對方想作或是 Scrum Master 想作的事 </span><br><span class="line">    - 團隊</span><br><span class="line">        尋找一個目標，發散 → 收斂 → 執行</span><br><span class="line">        再找下一個目標，發散 → 收斂 → 執行</span><br><span class="line">        持續這樣的步驟，並隨時回頭看看效果如何，</span><br><span class="line">        有些想法或許會被錯過</span><br></pre></td></tr></table></figure>
-
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="教練的實例"><a href="#教練的實例" class="headerlink" title="教練的實例"></a>教練的實例</h3><p>提問篇<br><a href="https://www.youtube.com/watch?v=ucSdnwSTJSo" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ucSdnwSTJSo</a><br>解答篇<br><a href="https://www.youtube.com/watch?v=gJRMatocP7o" target="_blank" rel="noopener">https://www.youtube.com/watch?v=gJRMatocP7o</a><br>Coaching example : Kasatkina<br><a href="https://www.facebook.com/NextGenTPE/videos/450757555322367/" target="_blank" rel="noopener">https://www.facebook.com/NextGenTPE/videos/450757555322367/</a><br>Coaching example : 跆拳道<br><a href="https://www.youtube.com/watch?v=zcCm9QichHk" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zcCm9QichHk</a><br>Coaching example : 空手道<br><a href="https://youtu.be/ooAOc9Fwg0U" target="_blank" rel="noopener">https://youtu.be/ooAOc9Fwg0U</a></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="教練的實例"><a href="#教練的實例" class="headerlink" title="教練的實例"></a>教練的實例</h3><p>提問篇<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ucSdnwSTJSo">https://www.youtube.com/watch?v=ucSdnwSTJSo</a><br>解答篇<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gJRMatocP7o">https://www.youtube.com/watch?v=gJRMatocP7o</a><br>Coaching example : Kasatkina<br><a target="_blank" rel="noopener" href="https://www.facebook.com/NextGenTPE/videos/450757555322367/">https://www.facebook.com/NextGenTPE/videos/450757555322367/</a><br>Coaching example : 跆拳道<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zcCm9QichHk">https://www.youtube.com/watch?v=zcCm9QichHk</a><br>Coaching example : 空手道<br><a target="_blank" rel="noopener" href="https://youtu.be/ooAOc9Fwg0U">https://youtu.be/ooAOc9Fwg0U</a></p>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" data-id="ckhvk0jvy00d0xoug3ma647w1" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" data-id="ckk532nja008eu4ug2e4q1bsi" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/25/2018/books/book_the_great_scurm_master_ch2/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -325,7 +321,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/" data-id="ckhvk0jvz00d3xouggzd8298h" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/" data-id="ckk532nja008gu4ugf4nfegk5" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/23/2018/books/book_the_great_scurm_master_ch3/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -476,8 +472,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
-<h6 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">20180717 讀書會</span><br><span class="line">Q:Scrum Master 應該先成為觀察者的角色，</span><br><span class="line">再進一步作引導或指導，兼任多支團隊的情況下，</span><br><span class="line">可能會受限於環境，導致無法作第一線的觀察，而導致效果不佳。</span><br><span class="line">A:較成熟的團隊可以稍微放一下，多參與初心團隊，</span><br><span class="line">自組織的成熟團隊就不必要每件事。</span><br><span class="line">feedback:</span><br><span class="line">1. 不成熟的 Scrum Mater 應該跟著成熟的 Scrum Master 共事。</span><br><span class="line">2. 不成熟的團隊應由成熟的 Scrum Mater 帶領。</span><br><span class="line">3. 成熟的團隊 Scrum Mater 的角色仍在，但是可以淡出。</span><br></pre></td></tr></table></figure>
-
+<h6 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">20180717 讀書會</span><br><span class="line">Q:Scrum Master 應該先成為觀察者的角色，</span><br><span class="line">再進一步作引導或指導，兼任多支團隊的情況下，</span><br><span class="line">可能會受限於環境，導致無法作第一線的觀察，而導致效果不佳。</span><br><span class="line">A:較成熟的團隊可以稍微放一下，多參與初心團隊，</span><br><span class="line">自組織的成熟團隊就不必要每件事。</span><br><span class="line">feedback:</span><br><span class="line">1. 不成熟的 Scrum Mater 應該跟著成熟的 Scrum Master 共事。</span><br><span class="line">2. 不成熟的團隊應由成熟的 Scrum Mater 帶領。</span><br><span class="line">3. 成熟的團隊 Scrum Mater 的角色仍在，但是可以淡出。 </span><br></pre></td></tr></table></figure>
 <h3 id="Scrum-Master-領導"><a href="#Scrum-Master-領導" class="headerlink" title="Scrum Master 領導"></a>Scrum Master 領導</h3><ul>
 <li>Scrum Master要注重整個組織，非單一支 Scrum 團隊，</li>
 <li>關心長期目標與策略。</li>
@@ -500,7 +495,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/" data-id="ckhvk0jvx00cyxougfldpgrdq" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/" data-id="ckk532nj90089u4ug3kn5h3v1" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/15/2018/books/book_the_great_scurm_master_ch1/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -565,7 +560,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/02/2018/find_intern/" data-id="ckhvk0jst002pxoughfry8fo1" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/02/2018/find_intern/" data-id="ckk532nho002ku4ug84g42yog" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/02/2018/find_intern/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -602,7 +597,6 @@ ga('send', 'pageview');
         <h2 id="下玉山"><a href="#下玉山" class="headerlink" title="下玉山"></a>下玉山</h2><p>登玉山是我的年度計劃之一，至少已經規劃 3 年了<br>過程也是一波三折，如果不是身體發生的狀況<br>現在這篇文章應該是登玉山的甘苦談了，<br>簡單的說一下原因，我是帶著落枕上山的，<br>爬山的過程中，身體為了保護脖子，不自然的動作導致了肩膀也傷痛<br>目前還在復健中，這跟後來的病痛有沒有關係，我就不知道了</p>
 <h2 id="5月9日晚上"><a href="#5月9日晚上" class="headerlink" title="5月9日晚上"></a>5月9日晚上</h2><p>當天晚上的計劃是閱讀<strong>單元測試的藝術</strong>，<br>這是在公司參加的讀書會，剛好下山後的那個禮拜就是我負責的章節，<br>因為身體還在很疲累的狀態，所以我只打算在床上稍作閱讀，<br>沒有計劃要刻 Code 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">程式相關的書跟其它書籍最大的不同是，</span><br><span class="line">如果裡面有程式碼，你很容易去實踐書裡面的內容，</span><br><span class="line">有好有壞，它不像一些高大上的東西，說得到作不到(光說不練)(就是幹話)  </span><br><span class="line">程式寫下來，跑一下就可以很清楚作者要表達的東西。</span><br></pre></td></tr></table></figure>
-
 <h3 id="症狀"><a href="#症狀" class="headerlink" title="症狀"></a>症狀</h3><p>一開始是看不清楚一兩個字，單純以為是眼花了而已。<br>隨即發現這跟平常的眼花並不一樣，左邊的視野完全消失了，<br>當下立即對自我作了一下檢查，不論是左眼右眼看到的東西是相同的，<br>就是左邊的視野是糢糊不清。<br><img src="https://i.imgur.com/czkqPZE.jpg" alt=""></p>
 <p>當下時間已經是凌晨 1:00 多了，從來沒有這樣的症狀，<br>很害怕是視網膜剝離或是急性青光眼之類的，<br>真的是有想到各種失去視力的恐怖想像，<br>不過症狀卻隨著我到達醫院消失了，</p>
 <p>當下醫生也只有量血壓，看起來也正常，<br>也沒有其它症狀，就被趕回家了……</p>
@@ -626,7 +620,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/06/10/2018/body_error/" data-id="ckhvk0jso002axougdss1a9el" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/06/10/2018/body_error/" data-id="ckk532nhi0026u4ugg78977u8" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/06/10/2018/body_error/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -691,7 +685,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/06/02/2018/mit_job_event_log/" data-id="ckhvk0jsy0036xougeogz9xst" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/06/02/2018/mit_job_event_log/" data-id="ckk532nhs002xu4ug07km0ov3" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/06/02/2018/mit_job_event_log/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -778,7 +772,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/05/29/2018/books/the_silo_effect_7/" data-id="ckhvk0jw000d5xoug0hb5cp6o" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/05/29/2018/books/the_silo_effect_7/" data-id="ckk532njb008ju4ug13tj9wfv" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/05/29/2018/books/the_silo_effect_7/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -817,33 +811,30 @@ ga('send', 'pageview');
         <ol>
 <li><p>安裝 Windows 套件管理工具 Chocolatey</p>
 <ul>
-<li><a href="https://chocolatey.org" target="_blank" rel="noopener">https://chocolatey.org</a></li>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org">https://chocolatey.org</a></li>
 </ul>
 </li>
 <li><p>安裝 Node.js®</p>
 <ul>
-<li><p><a href="https://chocolatey.org/packages/nodejs" target="_blank" rel="noopener">https://chocolatey.org/packages/nodejs</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs -y</span><br></pre></td></tr></table></figure>
-</li>
+<li><p><a target="_blank" rel="noopener" href="https://chocolatey.org/packages/nodejs">https://chocolatey.org/packages/nodejs</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs -y</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>註冊公司內部 NPM Server</p>
 <ul>
-<li><p><a href="http://company.npm.server" target="_blank" rel="noopener">http://company.npm.server</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> registry http://company.npm.server</span><br></pre></td></tr></table></figure>
-</li>
+<li><p><a target="_blank" rel="noopener" href="http://company.npm.server">http://company.npm.server</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> registry http://company.npm.server</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>安裝 RUBY</p>
 <ul>
-<li><p><a href="https://chocolatey.org/packages/ruby/2.5.1.1" target="_blank" rel="noopener">https://chocolatey.org/packages/ruby/2.5.1.1</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby -y</span><br></pre></td></tr></table></figure>
-</li>
+<li><p><a target="_blank" rel="noopener" href="https://chocolatey.org/packages/ruby/2.5.1.1">https://chocolatey.org/packages/ruby/2.5.1.1</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby -y</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>下載 RubyGems</p>
 <ul>
-<li><a href="https://rubygems.org/pages/download#formats" target="_blank" rel="noopener">https://rubygems.org/pages/download#formats</a></li>
+<li><a target="_blank" rel="noopener" href="https://rubygems.org/pages/download#formats">https://rubygems.org/pages/download#formats</a></li>
 <li>Download from above</li>
 <li>Unpack into a directory and cd there</li>
 <li>Install with: ruby setup.rb (you may need admin/root privilege)</li>
@@ -851,9 +842,8 @@ ga('send', 'pageview');
 </li>
 <li><p>安裝 compass</p>
 <ul>
-<li><p><a href="https://rubygems.org/gems/compass/versions/1.0.3" target="_blank" rel="noopener">https://rubygems.org/gems/compass/versions/1.0.3</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install compass</span><br></pre></td></tr></table></figure>
-</li>
+<li><p><a target="_blank" rel="noopener" href="https://rubygems.org/gems/compass/versions/1.0.3">https://rubygems.org/gems/compass/versions/1.0.3</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install compass</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>檢查 PATH</p>
@@ -863,8 +853,7 @@ ga('send', 'pageview');
 <li><p>執行 compass</p>
 <ul>
 <li><p>使用 Command Line</p>
-  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp compass</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp compass</span><br></pre></td></tr></table></figure></li>
 <li><p>使用工作執行器總管</p>
 <p>  <img src="https://i.imgur.com/2sEzAx5.jpg" alt="工作執行器總管"></p>
 </li>
@@ -876,7 +865,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/04/26/2018/windows_with_sass/" data-id="ckhvk0jua008bxoug5szhgli8" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/04/26/2018/windows_with_sass/" data-id="ckk532ni1003vu4ug2g7g7nh8" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/04/26/2018/windows_with_sass/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -926,13 +915,12 @@ ga('send', 'pageview');
 <li>重建前台專案</li>
 </ol>
 <h2 id="3-Chocolatey"><a href="#3-Chocolatey" class="headerlink" title="3.Chocolatey"></a>3.Chocolatey</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">choco install googlechrome -y</span><br><span class="line">choco install dropbox -y</span><br><span class="line">choco install evernote -y</span><br><span class="line"></span><br><span class="line">choco install git -y</span><br><span class="line">choco install nodejs -y</span><br><span class="line">choco install putty -y</span><br><span class="line">choco install visualstudiocode -y</span><br><span class="line"></span><br><span class="line">choco install winmerge -y</span><br><span class="line">choco install slack -y</span><br><span class="line">choco install linqpad -y</span><br><span class="line">choco install 7zip -y</span><br><span class="line"> </span><br><span class="line">choco install gitkraken -y</span><br><span class="line"><span class="meta">#</span><span class="bash">choco install sourcetree -y</span></span><br></pre></td></tr></table></figure>
-
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/04/17/2018/new_pc_install/" data-id="ckhvk0jt0003exougf4fshib1" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/04/17/2018/new_pc_install/" data-id="ckk532nhu0034u4ug3ukk30ub" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/04/17/2018/new_pc_install/#disqus_thread" class="article-comment-link">留言</a>
       
