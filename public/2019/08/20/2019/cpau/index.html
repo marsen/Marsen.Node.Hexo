@@ -5,12 +5,12 @@
   
   <title>[實作筆記] CPAU 加密仿登入 | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe &#x2F;netnoly &#x2F;user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementSt">
+  <meta name="description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe &#x2F;netnoly &#x2F;user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\Managem">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記] CPAU 加密仿登入">
 <meta property="og:url" content="https://blog.marsen.me/2019/08/20/2019/cpau/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe &#x2F;netnoly &#x2F;user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementSt">
+<meta property="og:description" content="前情提要登入 SQL Server 需要受到權限管控，而在 Windows 中需要使用特定用戶身份登入時，我們常常會選擇 runas 命令。   原始作法大概類似如下: 1runas.exe &#x2F;netnoly &#x2F;user:MyCompany\Marsen &quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\Managem">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-08-20T02:46:10.000Z">
 <meta property="article:modified_time" content="2020-04-29T01:19:53.302Z">
@@ -108,8 +108,7 @@ ga('send', 'pageview');
       
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>登入 SQL Server 需要受到權限管控，<br>而在 Windows 中需要使用特定用戶身份登入時，<br>我們常常會選擇 runas 命令。  </p>
 <h2 id="原始作法"><a href="#原始作法" class="headerlink" title="原始作法"></a>原始作法</h2><p>大概類似如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas.exe /netnoly /user:MyCompany\Marsen <span class="string">"C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas.exe /netnoly /user:MyCompany\Marsen <span class="string">&quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe&quot;</span></span><br></pre></td></tr></table></figure>
 <p>我會寫成一個 ps (PowerShell) File 來執行這件事。<br>但是會有一些問題。</p>
 <h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><ol>
 <li>每次登入都輸入密碼好麻煩</li>
@@ -118,32 +117,30 @@ ga('send', 'pageview');
 </ol>
 <p>我希望點兩下就能以正確的身份開啟 SSMS 而且密碼不會被明碼存儲</p>
 <h2 id="CPAU"><a href="#CPAU" class="headerlink" title="CPAU"></a>CPAU</h2><ol>
-<li><p>請先下載<a href="https://www.joeware.net/freetools/tools/cpau/" target="_blank" rel="noopener">CPAU</a>\</p>
+<li><p>請先下載<a target="_blank" rel="noopener" href="https://www.joeware.net/freetools/tools/cpau/">CPAU</a>\</p>
 <ul>
 <li>我採用綠色安裝，如果有必要可以設為環境變數</li>
 </ul>
 </li>
 <li><p>加密,以下的語法會產生以 <code>MyCompany\Marsen</code> 的身份登入執行 SSMS 的批次檔 <code>run.bat</code></p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPAU -u MyCompany\marsen -p *************** -ex <span class="string">"C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"</span> -enc -file D:\run.bat</span><br></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPAU -u MyCompany\marsen -p *************** -ex <span class="string">&quot;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe&quot;</span> -enc -file D:\run.bat</span><br></pre></td></tr></table></figure></li>
 <li><p>解密</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPAU -file D:\run.bat -dec</span><br></pre></td></tr></table></figure>
-
+<p>最後只要將步驟 4 的語法存成一個 bat 檔，就可以隨時點兩下執行了。</p>
 </li>
 </ol>
-<p>最後只要將步驟 4 的語法存成一個 bat 檔，就可以隨時點兩下執行了。</p>
 <h2 id="免責聲明"><a href="#免責聲明" class="headerlink" title="免責聲明"></a>免責聲明</h2><p>雖然是加密過的檔案，不過如果被人知道你是使用 CAPU 加密，攻擊者取得檔案後仍然可以透過 CAPU 解密登入。<br>所以使用上一定要小心檔案不要外流，主要的優點仍然是節省打密碼的時間與打錯的風險。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771525(v%3Dws.11)" target="_blank" rel="noopener">Runas</a></li>
-<li><a href="https://www.joeware.net/freetools/tools/cpau/" target="_blank" rel="noopener">CPAU</a></li>
-<li><a href="https://blog.xuite.net/billchu1109/wretch/142970080-Rusas%E7%9A%84%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88CPAU" target="_blank" rel="noopener">Rusas的替代方案CPAU</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771525(v%3Dws.11)">Runas</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.joeware.net/freetools/tools/cpau/">CPAU</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.xuite.net/billchu1109/wretch/142970080-Rusas%E7%9A%84%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88CPAU">Rusas的替代方案CPAU</a></li>
 </ul>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2019/08/20/2019/cpau/" data-id="ckhvk0jug008nxoug6aes33ch" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2019/08/20/2019/cpau/" data-id="ckk532ni7004cu4ug2o3g7qc3" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2019/08/20/2019/cpau/#disqus_thread" class="article-comment-link">留言</a>
       

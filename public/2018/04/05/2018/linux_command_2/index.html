@@ -133,8 +133,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>$ vim helloworld.sh</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo "hello world"</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">say hello</span></span><br><span class="line">echo &quot;hello world&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>執行檔案</p>
 </li>
 </ol>
@@ -147,15 +146,13 @@ ga('send', 'pageview');
 <li>使用 <code>$</code>+變數名呼叫變數</li>
 </ol>
 <p>sample:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "who are you?"</span><br><span class="line">read name</span><br><span class="line">echo "Hi, $name nice to see you."</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo &quot;who are you?&quot;</span><br><span class="line">read name</span><br><span class="line">echo &quot;Hi, $name nice to see you.&quot;</span><br></pre></td></tr></table></figure>
 <p>executed:</p>
 <blockquote>
 <p>$ sh whoareyou.sh<br>who are you?<br>Mark<br>Hi, Mark nice to see you.</p>
 </blockquote>
 <h3 id="互動式重新命名檔案"><a href="#互動式重新命名檔案" class="headerlink" title="互動式重新命名檔案"></a>互動式重新命名檔案</h3><p>sample:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo "keyin a filename"</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name"</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this is a shell sample</span></span><br><span class="line">echo &quot;keyin a filename&quot;</span><br><span class="line">read name</span><br><span class="line">mv $1 $name</span><br><span class="line">echo $name&quot;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>$ sh rename.sh file1<br>keyin a filename<br>newfile<br>newfile</p>
 </blockquote>
@@ -171,16 +168,16 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><a href="https://www.tutorialspoint.com/unix_terminal_online.php" target="_blank" rel="noopener">Unix Terminal Online</a></li>
-<li><a href="https://itsfoss.com/how-to-exit-vim/" target="_blank" rel="noopener">離開Vim的<del>100種</del>方法</a></li>
-<li><a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="noopener">鳥哥的 Linux 私房菜—認識與學習BASH</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix_terminal_online.php">Unix Terminal Online</a></li>
+<li><a target="_blank" rel="noopener" href="https://itsfoss.com/how-to-exit-vim/">離開Vim的<del>100種</del>方法</a></li>
+<li><a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0320bash.php">鳥哥的 Linux 私房菜—認識與學習BASH</a></li>
 </ol>
 <p>(fin)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="ckhvk0jt0003bxougawxe2u3w" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/04/05/2018/linux_command_2/" data-id="ckk532nhs002zu4ugflz49o7r" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/04/05/2018/linux_command_2/#disqus_thread" class="article-comment-link">留言</a>
       

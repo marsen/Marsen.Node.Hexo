@@ -113,21 +113,17 @@ ga('send', 'pageview');
 </ul>
 <h2 id="易學難精的-Git-與-Flow"><a href="#易學難精的-Git-與-Flow" class="headerlink" title="易學難精的 Git 與 Flow"></a>易學難精的 Git 與 Flow</h2><p>在使用 Git 時，分支的策略往往比 Git 本身更複雜。<br>Git 在建立分支是成本非常低的一件事情，<br>也因此很容易開出一堆分支，<br>這與團隊規模和PR的流程有關，可以參考文末的分支策略聯結。<br>因為 Git 開分支實在太便宜了，<br>我的 Remote Repo 不知不覺中竟然有了破千的分支。<br>大量的分支意味著大量的需求，其實是好事，<br>但是大部份的分支都已經功成身該退了，<br>當我使用一些 GUI 工具，為了顯示這些分支時，<br>這樣的數量反而成了阻礙。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="大量刪除遠端分支的方法"><a href="#大量刪除遠端分支的方法" class="headerlink" title="大量刪除遠端分支的方法"></a>大量刪除遠端分支的方法</h3><p>Step1. 可以透過正規表示式查詢大量分支。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ '/\/feature\/BTS14/&#123;print $2&#125;'</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ &#x27;/\/feature\/BTS14/&#123;print $2&#125;&#x27;</span><br></pre></td></tr></table></figure>
 <p>Step2. 同上的語法，但是後面　pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ '/\/feature\/BTS14/&#123;print $2&#125;'| xargs -I &#123;&#125; git push origin :&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>特別看一下 <code>{} git push origin :{}</code> ，我們實際上是透過 push 語法刪除分支的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | awk -Forigin/ &#x27;/\/feature\/BTS14/&#123;print $2&#125;&#x27;| xargs -I &#123;&#125; git push origin :&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>特別看一下 <code>&#123;&#125; git push origin :&#123;&#125;</code> ，我們實際上是透過 push 語法刪除分支的。</p>
 <h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="2019-05-09"><a href="#2019-05-09" class="headerlink" title="2019/05/09"></a>2019/05/09</h3><h3 id="大量刪除本地分支的方法"><a href="#大量刪除本地分支的方法" class="headerlink" title="大量刪除本地分支的方法"></a>大量刪除本地分支的方法</h3><p>Step1. 可以透過正規表示式查詢大量分支。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep "pattern"</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep &quot;pattern&quot;</span><br></pre></td></tr></table></figure>
 <p>Step2. 同上的語法，但是後面　pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep "pattern" | xargs git branch -D</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch | grep &quot;pattern&quot; | xargs git branch -D</span><br></pre></td></tr></table></figure>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略 - 阮一峰的网络日志</a></li>
-<li><a href="http://nedwu13.blogspot.com/2014/01/tbd-what-is-trunk-based-development.html" target="_blank" rel="noopener">筆記：TBD是三小?—What is Trunk Based Development?</a><ul>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">Git分支管理策略 - 阮一峰的网络日志</a></li>
+<li><a target="_blank" rel="noopener" href="http://nedwu13.blogspot.com/2014/01/tbd-what-is-trunk-based-development.html">筆記：TBD是三小?—What is Trunk Based Development?</a><ul>
 <li>主幹開發主幹發佈/主幹開發分支發佈/分支開發主幹發佈</li>
 </ul>
 </li>
@@ -137,7 +133,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="ckhvk0jsu002uxoug9gcygoug" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/" data-id="ckk532nho002mu4ug7f8hads6" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/12/12/2018/git_delete_remote_branch/#disqus_thread" class="article-comment-link">留言</a>
       

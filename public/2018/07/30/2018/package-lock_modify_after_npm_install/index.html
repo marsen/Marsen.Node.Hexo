@@ -111,14 +111,14 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><p>OS Windows 10<br>npm v6.2.0<br>node v8.11.1</p>
-<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>承上篇<a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/">[實作筆記]設定 NPM Registry</a>，<br>後續發生的一些問題，<br>每當我執行 <code>npm install</code> 的時候都會異動到 <code>package-lock.json</code> 檔;<br>異動這個檔案並不意外，可以參考<a href="https://docs.npmjs.com/files/package-lock.json" target="_blank" rel="noopener">官方文件</a>的說法。  </p>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>承上篇<a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/">[實作筆記]設定 NPM Registry</a>，<br>後續發生的一些問題，<br>每當我執行 <code>npm install</code> 的時候都會異動到 <code>package-lock.json</code> 檔;<br>異動這個檔案並不意外，可以參考<a target="_blank" rel="noopener" href="https://docs.npmjs.com/files/package-lock.json">官方文件</a>的說法。  </p>
 <p>奇怪的點是，異動竟然包含 Registry !?<br>全部都被置換成公司的 Domain , WTF ?</p>
 <p><img src="https://i.imgur.com/KwwUqPV.jpg" alt="公司的 Domain "></p>
 <h2 id="原因與坑"><a href="#原因與坑" class="headerlink" title="原因與坑"></a>原因與坑</h2><p>當執行 <code>npm install</code> 的時候，<br>node 會去檢查你實際安裝的 node_modules，<br>並產生 <code>package-lock.json</code> 檔。<br>可以把 <code>package-lock.json</code> 想像成 node_modules 的映射。<br>而恰巧之前所安裝過的檔案，是在 Registry 為 <code>npm.mycompany</code> 時下載的;<br>這導致產生 <code>package-lock.json</code> 的時候會映射出 <code>npm.mycompany</code> 的資訊。</p>
 <p>小心有坑!!<br>即使刪除了 node_modules 再重新 <code>npm install</code>，<br>仍然會產生錯誤的 <code>package-lock.json</code>;<br>這個原因是 npm 會有 <code>npm-cache</code>;<br>這個資料夾位在 <code>%Users%\AppData\Roaming</code>。  </p>
 <h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><ol>
 <li>設定 npm registry  <blockquote>
-<p>npm set registry <a href="https://registry.npmjs.org" target="_blank" rel="noopener">https://registry.npmjs.org</a>  </p>
+<p>npm set registry <a target="_blank" rel="noopener" href="https://registry.npmjs.org">https://registry.npmjs.org</a>  </p>
 </blockquote>
 </li>
 <li>刪除專案底下的 node_modules 資料夾</li>
@@ -130,7 +130,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/" data-id="ckhvk0jt2003kxoug200v1sfz" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/" data-id="ckk532nhw003bu4ug8q2vemek" class="article-share-link">Share</a>
       
         <a href="https://blog.marsen.me/2018/07/30/2018/package-lock_modify_after_npm_install/#disqus_thread" class="article-comment-link">留言</a>
       
