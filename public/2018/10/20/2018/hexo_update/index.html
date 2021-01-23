@@ -49,7 +49,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -111,16 +111,14 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>好久沒有作 hexo 更新了，<br>本身這個 Blog 就是透過 <a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">hexo 與 Github 建置</a>的 。<br>眨眼也過了兩年，文筆仍然很差;<br>說真的有很大的<a href="https://www.darencademy.com/article/view/id/16485" target="_blank" rel="noopener">資訊焦慮</a>，文章的內容也不夠充實，<br>很多觀點無法忠實的記錄下來，更無法連貫成線;<br>自已還要多方努力與學習。</p>
-<p>如前面所說，這個 Blog 是透過 Github 作存放的空間，<br>雖然 <a href="https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/" target="_blank" rel="noopener">Github 最近被 Microsoft 收購</a>了;<br>不過它仍是開發人員最常使用的代碼托管服務與社群，<br>而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  </p>
-<p>Github 一直以來都有一個很棒的功能，<br><a href="https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/" target="_blank" rel="noopener">GitHub’s security alerts for vulnerable dependencies</a></p>
+        <p>好久沒有作 hexo 更新了，<br>本身這個 Blog 就是透過 <a href="https://blog.marsen.me/2016/08/28/how_to_use_github_page/">hexo 與 Github 建置</a>的 。<br>眨眼也過了兩年，文筆仍然很差;<br>說真的有很大的<a target="_blank" rel="noopener" href="https://www.darencademy.com/article/view/id/16485">資訊焦慮</a>，文章的內容也不夠充實，<br>很多觀點無法忠實的記錄下來，更無法連貫成線;<br>自已還要多方努力與學習。</p>
+<p>如前面所說，這個 Blog 是透過 Github 作存放的空間，<br>雖然 <a target="_blank" rel="noopener" href="https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/">Github 最近被 Microsoft 收購</a>了;<br>不過它仍是開發人員最常使用的代碼托管服務與社群，<br>而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  </p>
+<p>Github 一直以來都有一個很棒的功能，<br><a target="_blank" rel="noopener" href="https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/">GitHub’s security alerts for vulnerable dependencies</a></p>
 <p>它能夠對你的 Repo 提供安全警告，<br>如下圖，這是對我的個人 Blog 所使用的框架 Hexo 的相依性安全警告，<br>這封信說明了 lodash 這個套件的版本存在著高風險的資安問題，<br>建議升級套件以解決這個問題。<br><img src="https://i.imgur.com/HYBh5vv.jpg" alt="升級套件"></p>
-<h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>使用 <a href="https://docs.npmjs.com/cli/update" target="_blank" rel="noopener"><code>npm update</code></a> , 這個命令會更新專案的 package 到最新版本  </p>
+<h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>使用 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/update"><code>npm update</code></a> , 這個命令會更新專案的 package 到最新版本  </p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure>
-
-<p>可能會看到類似以下的結果，同時提示你可以使用 <a href="https://docs.npmjs.com/cli/audit" target="_blank" rel="noopener"><code>npm audit fix</code></a> 更新有風險的 package 以修複這些漏洞  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.1.3: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo@3.8.0</span><br><span class="line">added 126 packages from 59 contributors, removed 80 packages, updated 21 packages, moved 14 packages and audited 3143 packages <span class="keyword">in</span> 25.064s</span><br><span class="line">found 68 vulnerabilities (21 low, 38 moderate, 9 high)</span><br><span class="line">run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
-
+<p>可能會看到類似以下的結果，同時提示你可以使用 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/audit"><code>npm audit fix</code></a> 更新有風險的 package 以修複這些漏洞  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;darwin&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;any&quot;</span>&#125; (current: &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;win32&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;x64&quot;</span>&#125;)</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.1.3: wanted &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;darwin&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;any&quot;</span>&#125; (current: &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;win32&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;x64&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ hexo@3.8.0</span><br><span class="line">added 126 packages from 59 contributors, removed 80 packages, updated 21 packages, moved 14 packages and audited 3143 packages <span class="keyword">in</span> 25.064s</span><br><span class="line">found 68 vulnerabilities (21 low, 38 moderate, 9 high)</span><br><span class="line">run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
 <p>(fin)</p>
 
       
@@ -167,7 +165,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -248,7 +246,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -311,7 +309,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 

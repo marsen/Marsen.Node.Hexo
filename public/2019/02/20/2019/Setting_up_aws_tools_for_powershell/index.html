@@ -49,7 +49,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -113,15 +113,13 @@ ga('send', 'pageview');
       
         <h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><p>相關服務要雲端化，要將站台、資料等…遷移至 AWS，<br>這個案例需要將大量在 File Server 上的檔案(報表/單據/報告書等…)上傳至 S3<br>因為檔案數量相當的大，所以開發一個簡單的指令來執行。</p>
 <h3 id="Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具"><a href="#Step-1-下載並安裝適用於-Windows-PowerShell-的-AWS-工具" class="headerlink" title="Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具"></a>Step 1 下載並安裝適用於 Windows PowerShell 的 AWS 工具</h3><ul>
-<li><a href="https://aws.amazon.com/tw/powershell/" target="_blank" rel="noopener">下載適用於 Windows PowerShell 的 AWS 工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/powershell/">下載適用於 Windows PowerShell 的 AWS 工具</a></li>
 </ul>
 <p><img src="/images/2019/2/awstools.jpg" alt="只需要安裝必要的程式"></p>
 <h3 id="設定-aws-config"><a href="#設定-aws-config" class="headerlink" title="設定 aws config"></a>設定 aws config</h3><p>打開 terminal 執行以下語法</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; aws configure</span><br></pre></td></tr></table></figure>
-
 <p>依指示設定 <code>Access key ID</code> 與 <code>Secret access key</code>，<br>這個資料需要具備一定的權限才能取得，如果權限不足請向你的 AWS 服務管理員申請。</p>
-<h3 id="撰寫-PowerShell-與執行"><a href="#撰寫-PowerShell-與執行" class="headerlink" title="撰寫 PowerShell 與執行"></a>撰寫 PowerShell 與執行</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bucketName</span> = <span class="string">"********************-your_bucket_name"</span></span><br><span class="line"><span class="variable">$path</span> = <span class="string">"Your\s3\path\"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> <span class="literal">-Filter</span> *.pdf |</span><br><span class="line"><span class="built_in">ForEach-Object</span> <span class="literal">-Begin</span>&#123;<span class="variable">$i</span>=<span class="number">0</span>&#125; &#123;  </span><br><span class="line">  <span class="variable">$i</span>++;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$path</span>+<span class="variable">$_</span> ;</span><br><span class="line">  <span class="comment">## 進度顯示</span></span><br><span class="line">  <span class="built_in">Write-Host</span> <span class="variable">$key</span> <span class="string">"(<span class="variable">$i</span>/1000)"</span>  <span class="literal">-ForegroundColor</span> Green ;</span><br><span class="line">  <span class="comment">## 上傳 S3</span></span><br><span class="line">  <span class="built_in">Write-S3Object</span> <span class="literal">-BucketName</span> <span class="variable">$bucketName</span> <span class="operator">-File</span> <span class="variable">$_</span>.FullName <span class="literal">-Key</span> <span class="variable">$key</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="撰寫-PowerShell-與執行"><a href="#撰寫-PowerShell-與執行" class="headerlink" title="撰寫 PowerShell 與執行"></a>撰寫 PowerShell 與執行</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bucketName</span> = <span class="string">&quot;********************-your_bucket_name&quot;</span></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&quot;Your\s3\path\&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> <span class="literal">-Filter</span> *.pdf |</span><br><span class="line"><span class="built_in">ForEach-Object</span> <span class="literal">-Begin</span>&#123;<span class="variable">$i</span>=<span class="number">0</span>&#125; &#123;  </span><br><span class="line">  <span class="variable">$i</span>++;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$path</span>+<span class="variable">$_</span> ;</span><br><span class="line">  <span class="comment">## 進度顯示</span></span><br><span class="line">  <span class="built_in">Write-Host</span> <span class="variable">$key</span> <span class="string">&quot;(<span class="variable">$i</span>/1000)&quot;</span>  <span class="literal">-ForegroundColor</span> Green ;</span><br><span class="line">  <span class="comment">## 上傳 S3</span></span><br><span class="line">  <span class="built_in">Write-S3Object</span> <span class="literal">-BucketName</span> <span class="variable">$bucketName</span> <span class="operator">-File</span> <span class="variable">$_</span>.FullName <span class="literal">-Key</span> <span class="variable">$key</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>(fin)</p>
 
       
@@ -168,7 +166,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -249,7 +247,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -312,7 +310,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 

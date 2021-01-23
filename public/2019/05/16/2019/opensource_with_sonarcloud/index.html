@@ -51,7 +51,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -130,7 +130,7 @@ ga('send', 'pageview');
 <li>也許不需要知道</li>
 </ol>
 <h2 id="記錄"><a href="#記錄" class="headerlink" title="記錄"></a>記錄</h2><ol>
-<li><p>申請<a href="https://sonarcloud.io" target="_blank" rel="noopener">SonarCloud</a>帳號，我直接使用 Github</p>
+<li><p>申請<a target="_blank" rel="noopener" href="https://sonarcloud.io">SonarCloud</a>帳號，我直接使用 Github</p>
 <ul>
 <li>需要允許 SonarCloud 存取 Github 的專案 Repo</li>
 <li>建立一組 Token, 用來作身份驗証，可以重複使用請勿外流</li>
@@ -147,33 +147,27 @@ ga('send', 'pageview');
 <li><p>啟動掃瞄，以 .Net Core 為例</p>
 </li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> begin /k:<span class="string">"&#123;project name&#125;"</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">"https://sonarcloud.io"</span> /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> begin /k:<span class="string">&quot;&#123;project name&#125;&quot;</span> /o:&#123;group name&#125; /d:sonar.host.url=<span class="string">&quot;https://sonarcloud.io&quot;</span> /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using the .NET Core version of the Scanner for MSBuild</span><br><span class="line">Pre-processing started.</span><br><span class="line">中略...</span><br><span class="line">16:40:31.855  Pre-processing succeeded.</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>建置專案</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet build</span><br></pre></td></tr></table></figure>
-
 <p>輸出結果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core</span><br><span class="line">Copyright (C) Microsoft Corporation. All rights reserved.</span><br><span class="line">中略...</span><br><span class="line">Build succeeded.</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>上傳結果</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">"&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll"</span> end /d:sonar.login=<span class="string">"&#123;your token&#125;"</span></span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> dotnet <span class="string">&quot;&#123;path of sonar scanner&#125;\SonarScanner.MSBuild.dll&quot;</span> end /d:sonar.login=<span class="string">&quot;&#123;your token&#125;&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>輸出結果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SonarScanner <span class="keyword">for</span> MSBuild 4.6.1</span><br><span class="line">Using the .NET Core version of the Scanner <span class="keyword">for</span> MSBuild</span><br><span class="line">Post-processing started.</span><br><span class="line">中略...</span><br><span class="line">INFO: Analysis total time: 21.446 s</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: EXECUTION SUCCESS</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">INFO: Total time: 2:27.021s</span><br><span class="line">INFO: Final Memory: 24M/72M</span><br><span class="line">INFO: ------------------------------------------------------------------------</span><br><span class="line">The SonarQube Scanner has finished</span><br></pre></td></tr></table></figure>
-
-<p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a href="https://www.openshift.com/" target="_blank" rel="noopener">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
+<p>最後到 SonarCloud 的網站上就可以看到報告結果，<br>下一步就是將這整段流程結合 CI ，官網推薦是使用 Travis CI,<br>也有相同的文件與資源，我會試試看或是使用 Jenkins,<br>如果有機會能更進一步，我想結合 <a target="_blank" rel="noopener" href="https://www.openshift.com/">OpenShift</a> ,<br>讓部署的過程中結合代碼品質檢查。</p>
 <p><img src="/images/2019/5/sonarcloud_result.jpg" alt="結果上傳"></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/" target="_blank" rel="noopener">Static Code Analysis of .NET Core Projects with SonarCloud</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/SonarQube" target="_blank" rel="noopener">SonarQube - 维基百科，自由的百科全书</a></li>
-<li><a href="https://www.sonarqube.org/" target="_blank" rel="noopener">Continuous Inspection | SonarQube</a></li>
+<li><a target="_blank" rel="noopener" href="https://dotnetthoughts.net/static-code-analysis-of-netcore-projects/">Static Code Analysis of .NET Core Projects with SonarCloud</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SonarQube">SonarQube - 维基百科，自由的百科全书</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sonarqube.org/">Continuous Inspection | SonarQube</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -221,7 +215,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -302,7 +296,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -365,7 +359,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 

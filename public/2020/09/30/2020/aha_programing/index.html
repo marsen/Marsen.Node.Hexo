@@ -46,7 +46,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -110,7 +110,7 @@ ga('send', 'pageview');
       
         <p>The dangers of DRY, the web of WET, the awesomeness of AHA.</p>
 <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>為什麼我要翻譯 ? 練習英文，同時學習程式開發的原則 。<br>程式開發原則其實超級多，稍稍整理一下。</p>
-<h3 id="物件導向程式設計的-SOLID-原則"><a href="#物件導向程式設計的-SOLID-原則" class="headerlink" title="物件導向程式設計的 SOLID 原則"></a>物件導向程式設計的 SOLID 原則</h3><p>這五個知名的原則，可以一言以蔽之 — 高內聚、低耦合。<br>而我自已更喜歡 <a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">Teddy 老師的五則皆變:「面對原始碼改變的五種不同策略」</a></p>
+<h3 id="物件導向程式設計的-SOLID-原則"><a href="#物件導向程式設計的-SOLID-原則" class="headerlink" title="物件導向程式設計的 SOLID 原則"></a>物件導向程式設計的 SOLID 原則</h3><p>這五個知名的原則，可以一言以蔽之 — 高內聚、低耦合。<br>而我自已更喜歡 <a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html">Teddy 老師的五則皆變:「面對原始碼改變的五種不同策略」</a></p>
 <h4 id="SRP-Single-Responsibility-Principle-單一職責原則"><a href="#SRP-Single-Responsibility-Principle-單一職責原則" class="headerlink" title="SRP(Single Responsibility Principle) 單一職責原則"></a>SRP(Single Responsibility Principle) 單一職責原則</h4><p>A class should have only one reason to change<br>以一個類別來說，應該只有一個引起它變化的原因。  </p>
 <p>舉個實務上在改動代碼的例子:<br>線上回報了一個購物車的問題，<br>你去追查發現購物車保含禮品與折價券的情境下，才會發生問題，<br>同時主管要求你，這段代碼發生異常時加上 Log 並發 Email 通知。  </p>
 <p>你會怎麼改呢 ? 加個 if 判斷購物車/禮品/折價券之間的對應關係 ?<br>使用 Try Catch 補捉異常，記錄 Log 並發送 Email ?<br>那麼這些邏輯應該被加到哪些類別呢 ?<br>請思考一下<br>在這個原則底下，應該考慮 if 的邏輯屬於購物車/禮品/折價券中的哪一類 ?<br>而三個商務邏輯如何互動，當前的設計也是要注意的方向。<br>Log / Email 也是同樣的，是否也應該隸屬獨立類別呢。<br>請思考一下，請思考一下。  </p>
@@ -155,14 +155,14 @@ ga('send', 'pageview');
 </ul>
 <h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>不用擔心何時該對重複代碼進行抽象，<br>這不是一個硬性規定，也是為什麼我更喜歡 AHA 勝於 DRY 或 WET.  </p>
 <h2 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Duplicate_code" target="_blank" rel="noopener">Code Duplicate</a></li>
-<li><a href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33" target="_blank" rel="noopener">WET</a></li>
-<li><a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">五則皆變</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Duplicate_code">Code Duplicate</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33">WET</a></li>
+<li><a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html">五則皆變</a></li>
 <li><a href="https://blog.marsen.me/2020/07/27/2020/oop_experience/">[閱讀筆記] 物件導向的心得與隨筆</a></li>
-<li><a href="https://ihower.tw/blog/archives/7181" target="_blank" rel="noopener">Kent Beck 的四個簡單程式設計原則</a></li>
-<li><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/410455/" target="_blank" rel="noopener">九大設計原則</a></li>
-<li><a href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33" target="_blank" rel="noopener">Stop trying to be so DRY, instead Write Everything Twice (WET)</a></li>
+<li><a target="_blank" rel="noopener" href="https://ihower.tw/blog/archives/7181">Kent Beck 的四個簡單程式設計原則</a></li>
+<li><a target="_blank" rel="noopener" href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/410455/">九大設計原則</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33">Stop trying to be so DRY, instead Write Everything Twice (WET)</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -208,7 +208,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -289,7 +289,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -352,7 +352,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 

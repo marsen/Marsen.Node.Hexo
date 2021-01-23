@@ -50,7 +50,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -112,7 +112,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近開始學 <a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>， 這個神器大概在 C 社時期就有聽過了，<br>不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，<br>在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。</p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近開始學 <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a>， 這個神器大概在 C 社時期就有聽過了，<br>不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，<br>在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。</p>
 <p>一開始有一個很天真的想法，<strong>我想在 Windows 內建的 Linux 子系統 Ubantu 安裝 Docker</strong>，<br>沒想到最後是脫褲子放屁，不過過程蠻有趣的，稍微記錄一下。</p>
 <h2 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h2><ol>
 <li><p>Windows 10 安裝 Ubantu</p>
@@ -120,33 +120,24 @@ ga('send', 'pageview');
 <li><p>在 Ubantu 安裝 Docker</p>
 <p> 更新 apt-get</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
 <p> 允許 apt-get 透過 https</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
-
 <p> 加入 Docker 官方 GPG KEY</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-
 <p> 然後可以驗証一下</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key fingerprint 0EBFCD88</span><br></pre></td></tr></table></figure>
-
 <p> 加入 Docker 的 apt-repository</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo add-apt-repository \</span></span><br><span class="line">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line"><span class="meta">$</span><span class="bash">(lsb_release -cs) \</span></span><br><span class="line">stable"</span><br></pre></td></tr></table></figure>
-
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo add-apt-repository \</span></span><br><span class="line"><span class="bash"><span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span></span><br><span class="line"><span class="bash">$(lsb_release -cs) \</span></span><br><span class="line"><span class="bash">stable<span class="string">&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p> 再次更新 apt-get</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
 <p> 安裝 Docker CE</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure></li>
 <li><p>Run Docker</p>
 </li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker container run hello-world</span><br></pre></td></tr></table></figure>
-
 <p>我都會失敗如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.</span><br><span class="line">See 'docker run --help'.</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.</span><br><span class="line">See &#x27;docker run --help&#x27;.</span><br></pre></td></tr></table></figure>
 <h2 id="如何解決"><a href="#如何解決" class="headerlink" title="如何解決"></a>如何解決</h2><ol>
 <li><p>Windows 上要安裝 Docker for Windows</p>
 </li>
@@ -157,29 +148,27 @@ ga('send', 'pageview');
 </ol>
 <p>指定 Docker Host 在路徑</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H localhost:2375 images</span><br></pre></td></tr></table></figure>
-
 <p>如果不想每次指定的話…請參考以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> DOCKER_HOST=localhost:2375</span><br></pre></td></tr></table></figure>
-
 <p><img src="/images/2019/1/ubantu_docker.jpg" alt="執行結果"></p>
 <h2 id="學到的事"><a href="#學到的事" class="headerlink" title="學到的事"></a>學到的事</h2><ul>
 <li>Docker 有 Host(Daemon) 與 Client 之分</li>
 <li>在 Windows 上的 VM(Ubantu) 再安裝 Docker Daemon 是行不通的(細節我並不清楚，求補充…)</li>
 <li>我還不夠了解 Windows Container 與 Linux Container 的差異<ul>
-<li><a href="https://columns.chicken-house.net/2016/09/05/windows-container-faq/" target="_blank" rel="noopener">Windows Container FAQ - 官網沒有說的事</a></li>
-<li><a href="https://columns.chicken-house.net/2017/10/04/lcow/" target="_blank" rel="noopener">LCOW Labs: Linux Container On Windows</a></li>
+<li><a target="_blank" rel="noopener" href="https://columns.chicken-house.net/2016/09/05/windows-container-faq/">Windows Container FAQ - 官網沒有說的事</a></li>
+<li><a target="_blank" rel="noopener" href="https://columns.chicken-house.net/2017/10/04/lcow/">LCOW Labs: Linux Container On Windows</a></li>
 <li>more …</li>
 </ul>
 </li>
 <li><del>繞了一圈，一事無成</del></li>
 </ul>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4" target="_blank" rel="noopener">Installing the Docker client on Windows Subsystem for Linux (Ubuntu)</a></li>
-<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Get Docker CE for Ubuntu</a></li>
-<li><a href="https://www.microsoft.com/zh-tw/p/ubuntu/9nblggh4msv6?activetab=pivot%3Aoverviewtab" target="_blank" rel="noopener">取得 Ubuntu - Microsoft Store zh-TW</a></li>
-<li><a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows" target="_blank" rel="noopener">Docker CE Desktop Windows</a></li>
-<li><a href="https://oomusou.io/docker/docker-for-windows/" target="_blank" rel="noopener">如何安裝 Docker for Windows ?</a></li>
-<li><a href="https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/deploy-containers/linux-containers" target="_blank" rel="noopener">Windows 上的 Linux 容器</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4">Installing the Docker client on Windows Subsystem for Linux (Ubuntu)</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Get Docker CE for Ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-tw/p/ubuntu/9nblggh4msv6?activetab=pivot%3Aoverviewtab">取得 Ubuntu - Microsoft Store zh-TW</a></li>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">Docker CE Desktop Windows</a></li>
+<li><a target="_blank" rel="noopener" href="https://oomusou.io/docker/docker-for-windows/">如何安裝 Docker for Windows ?</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/deploy-containers/linux-containers">Windows 上的 Linux 容器</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -227,7 +216,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -308,7 +297,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -371,7 +360,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 
