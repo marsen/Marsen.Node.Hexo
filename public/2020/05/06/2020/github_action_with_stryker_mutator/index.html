@@ -52,7 +52,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -116,25 +116,21 @@ ga('send', 'pageview');
       
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>前年初次接觸<a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">變異測試</a>，去年在看<a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/">重構</a>時偷換了概念，<br>將兩者結合了。</p>
 <p>這次我想更進一步，將 CI Server 與之結合。</p>
-<h2 id="Stryker-Net"><a href="#Stryker-Net" class="headerlink" title="Stryker.Net"></a>Stryker.Net</h2><p>跟據<a href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md" target="_blank" rel="noopener">Stryker Handbook</a>，<br>Stryker 主要有三個專案，</p>
+<h2 id="Stryker-Net"><a href="#Stryker-Net" class="headerlink" title="Stryker.Net"></a>Stryker.Net</h2><p>跟據<a target="_blank" rel="noopener" href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md">Stryker Handbook</a>，<br>Stryker 主要有三個專案，</p>
 <ul>
 <li>Stryker (Javascript &amp; TypeScript)</li>
 <li>Stryker4s (Scala)</li>
 <li>Stryker.NET (.NET)</li>
 </ul>
-<p>我會使用我的練習用<a href="https://github.com/marsen/Marsen.NetCore.Dojo/" target="_blank" rel="noopener">專案</a>作為目標，<br>所以很理所當然的我會選擇 <code>Stryker.NET</code>，那我們就開始吧。</p>
+<p>我會使用我的練習用<a target="_blank" rel="noopener" href="https://github.com/marsen/Marsen.NetCore.Dojo/">專案</a>作為目標，<br>所以很理所當然的我會選擇 <code>Stryker.NET</code>，那我們就開始吧。</p>
 <h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="安裝-Stryker"><a href="#安裝-Stryker" class="headerlink" title="安裝 Stryker"></a>安裝 Stryker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g dotnet-stryker</span><br></pre></td></tr></table></figure>
-
-<h3 id="執行-Stryker"><a href="#執行-Stryker" class="headerlink" title="執行 Stryker"></a>執行 Stryker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet stryker -tp "['./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests.csproj','./test/Marsen.NetCore.Dojo.Integration.Tests/Marsen.NetCore.Dojo.Integration.Tests.csproj']" -p="Marsen.NetCore.Dojo.csproj" -dk=$STRYKER_DASHBOARD_API_KEY</span><br></pre></td></tr></table></figure>
-
-<p>注意幾個 cli 參數，<br><code>-tp</code> 明確指定測試的專案有哪些，可以用中括號<code>[]</code>傳入多個測試專案名稱，使用<code>,</code>作為分隔符<br><code>-p</code> 專案名稱<br><code>-dk</code> dashboard-api-key 這組 key 是用來與 <code>https://dashboard.stryker-mutator.io/</code> 互動的，<br>最主的功能是將報告上傳。<br>$STRYKER_DASHBOARD_API_KEY 是 <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets" target="_blank" rel="noopener">Github 的 Secrets</a></p>
+<h3 id="執行-Stryker"><a href="#執行-Stryker" class="headerlink" title="執行 Stryker"></a>執行 Stryker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet stryker -tp &quot;[&#x27;./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests.csproj&#x27;,&#x27;./test/Marsen.NetCore.Dojo.Integration.Tests/Marsen.NetCore.Dojo.Integration.Tests.csproj&#x27;]&quot; -p=&quot;Marsen.NetCore.Dojo.csproj&quot; -dk=$STRYKER_DASHBOARD_API_KEY</span><br></pre></td></tr></table></figure>
+<p>注意幾個 cli 參數，<br><code>-tp</code> 明確指定測試的專案有哪些，可以用中括號<code>[]</code>傳入多個測試專案名稱，使用<code>,</code>作為分隔符<br><code>-p</code> 專案名稱<br><code>-dk</code> dashboard-api-key 這組 key 是用來與 <code>https://dashboard.stryker-mutator.io/</code> 互動的，<br>最主的功能是將報告上傳。<br>$STRYKER_DASHBOARD_API_KEY 是 <a target="_blank" rel="noopener" href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Github 的 Secrets</a></p>
 <p>你可以執行 <code>dotnet stryker -h</code> 查看更多原始說明  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-tp|--test-projects Specify what test projects should run on the project under test.</span><br><span class="line">-p|--project-file &lt;projectFileName&gt; Used for matching the project references when finding the project to</span><br><span class="line">                                              mutate. Example: "ExampleProject.csproj"</span><br><span class="line">-dk|--dashboard-api-key &lt;api-key&gt; Api key for dashboard reporter. You can get your key here: https://dashboard.stryker-mutator.io</span><br></pre></td></tr></table></figure>
-
-<h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>新增一個 <code>stryker-config.json</code><br>對我來說，最重要的是要記得設定 <code>stryker-config &gt; reporters &gt; dashboard</code> 這筆資料。<br><a href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Configuration.md" target="_blank" rel="noopener">詳細的說明的可以參考這篇</a>  </p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"stryker-config"</span>: &#123;</span><br><span class="line">    <span class="attr">"dashboard-project"</span>: <span class="string">"github.com/marsen/Marsen.NetCore.Dojo"</span>,</span><br><span class="line">    <span class="attr">"dashboard-version"</span>: <span class="string">"master"</span>,</span><br><span class="line">    <span class="attr">"reporters"</span>: [</span><br><span class="line">      <span class="string">"json"</span>,</span><br><span class="line">      <span class="string">"dashboard"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="在-Github-上工作"><a href="#在-Github-上工作" class="headerlink" title="在 Github 上工作"></a>在 Github 上工作</h3><p>首先你必須在 <a href="https://dashboard.stryker-mutator.io/" target="_blank" rel="noopener">Dashboard</a>中 Enable Repository</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-tp|--test-projects Specify what test projects should run on the project under test.</span><br><span class="line">-p|--project-file &lt;projectFileName&gt; Used for matching the project references when finding the project to</span><br><span class="line">                                              mutate. Example: &quot;ExampleProject.csproj&quot;</span><br><span class="line">-dk|--dashboard-api-key &lt;api-key&gt; Api key for dashboard reporter. You can get your key here: https://dashboard.stryker-mutator.io</span><br></pre></td></tr></table></figure>
+<h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>新增一個 <code>stryker-config.json</code><br>對我來說，最重要的是要記得設定 <code>stryker-config &gt; reporters &gt; dashboard</code> 這筆資料。<br><a target="_blank" rel="noopener" href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Configuration.md">詳細的說明的可以參考這篇</a>  </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;stryker-config&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;dashboard-project&quot;</span>: <span class="string">&quot;github.com/marsen/Marsen.NetCore.Dojo&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dashboard-version&quot;</span>: <span class="string">&quot;master&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;reporters&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;json&quot;</span>,</span><br><span class="line">      <span class="string">&quot;dashboard&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在-Github-上工作"><a href="#在-Github-上工作" class="headerlink" title="在 Github 上工作"></a>在 Github 上工作</h3><p>首先你必須在 <a target="_blank" rel="noopener" href="https://dashboard.stryker-mutator.io/">Dashboard</a>中 Enable Repository</p>
 <p><img src="/images/2020/5/github_action_with_stryker_mutator_01.jpg" alt="Enable Repository">  </p>
 <p>然後產生一組 Key</p>
 <p><img src="/images/2020/5/github_action_with_stryker_mutator_02.jpg" alt="產生一組 Key"></p>
@@ -142,13 +138,13 @@ ga('send', 'pageview');
 <p><img src="/images/2020/5/github_action_with_stryker_mutator_03.jpg" alt="將 Key 設定至 Github"></p>
 <p>再到 Github Actions 中，把 workflow 指令設定完成，</p>
 <p><img src="/images/2020/5/github_action_with_stryker_mutator_04.jpg" alt="Github Actions"></p>
-<p>觸發 CI 完成後，就可以在 <a href="https://dashboard.stryker-mutator.io/reports/github.com/marsen/Marsen.NetCore.Dojo/master" target="_blank" rel="noopener">Dashboard</a> 上看到報表啦。</p>
+<p>觸發 CI 完成後，就可以在 <a target="_blank" rel="noopener" href="https://dashboard.stryker-mutator.io/reports/github.com/marsen/Marsen.NetCore.Dojo/master">Dashboard</a> 上看到報表啦。</p>
 <p><img src="/images/2020/5/github_action_with_stryker_mutator_05.jpg" alt="結果呈現"></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a href="https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/">https://blog.marsen.me/2019/03/01/2019/book/refactoring/refactoring_Ch1/</a></li>
 <li><a href="https://blog.marsen.me/2018/03/20/2018/mutation_testing/">https://blog.marsen.me/2018/03/20/2018/mutation_testing/</a></li>
-<li><a href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md" target="_blank" rel="noopener">https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md</a></li>
-<li><a href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter" target="_blank" rel="noopener">https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md">https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter">https://github.com/stryker-mutator/stryker-net/blob/master/docs/Reporters.md#dashboard-reporter</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -196,7 +192,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -277,7 +273,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -340,7 +336,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 

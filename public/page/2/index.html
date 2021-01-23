@@ -40,7 +40,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -113,9 +113,9 @@ ga('send', 'pageview');
 <h2 id="簽署心得"><a href="#簽署心得" class="headerlink" title="簽署心得"></a>簽署心得</h2><p>這些價值觀我是相同認同的,<br>可是這個網站的感覺並沒有呈現出那樣價值觀啊…<br>或許還少了一點美感.  </p>
 <p>我的簽署資訊如下,<br><code>30196   Marsen (Taiwan) 2020/10/28</code>,<br>查詢功能不能查 ID 與國家有點弱,<br>沒有正體中文的翻譯,  補充資料的部份很不錯,<br>但是也只是沒有系統的散落在那裡.<br>想給點回饋,也找不到留言區或討論區, 或是網站的 Repository.  </p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://teddy-chen-tw.blogspot.com/search/label/%E9%82%84%E5%B0%91%E4%B8%80%E6%9C%AC%E6%9B%B8" target="_blank" rel="noopener">【還少一本書】Clean Agile</a></li>
-<li><a href="http://manifesto.softwarecraftsmanship.org/" target="_blank" rel="noopener">Software Craftsmanship Manifesto（軟體工藝宣言）</a></li>
-<li><a href="http://manifesto.softwarecraftsmanship.org/#/en/reading" target="_blank" rel="noopener">Software Craftsmanship Manifesto（軟體工藝宣言）#相關閱讀</a></li>
+<li><a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/search/label/%E9%82%84%E5%B0%91%E4%B8%80%E6%9C%AC%E6%9B%B8">【還少一本書】Clean Agile</a></li>
+<li><a target="_blank" rel="noopener" href="http://manifesto.softwarecraftsmanship.org/">Software Craftsmanship Manifesto（軟體工藝宣言）</a></li>
+<li><a target="_blank" rel="noopener" href="http://manifesto.softwarecraftsmanship.org/#/en/reading">Software Craftsmanship Manifesto（軟體工藝宣言）#相關閱讀</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -158,7 +158,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>擁有自已域名的網站已經 4 年啦, 雖然我只有用在 Blog 上，<br>而且是用靜態網站的方式呈現，但也是算小小的一個成就.<br>不過其實心理還是有一個小小的缺憾，就是我沒有自已域名的 email.<br>之前沒有好好作功課，想到還要架設一個 Mail Server 就覺得不可能.<br>但其實並沒有那麼複雜.<br>我使用 <a href="https://domains.google.com/" target="_blank" rel="noopener">Google Domain</a> 的服務結合 <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">CloudFlare</a>.<br>大約只要 30 分鐘就能收到信啦.</p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>擁有自已域名的網站已經 4 年啦, 雖然我只有用在 Blog 上，<br>而且是用靜態網站的方式呈現，但也是算小小的一個成就.<br>不過其實心理還是有一個小小的缺憾，就是我沒有自已域名的 email.<br>之前沒有好好作功課，想到還要架設一個 Mail Server 就覺得不可能.<br>但其實並沒有那麼複雜.<br>我使用 <a target="_blank" rel="noopener" href="https://domains.google.com/">Google Domain</a> 的服務結合 <a target="_blank" rel="noopener" href="https://www.cloudflare.com/">CloudFlare</a>.<br>大約只要 30 分鐘就能收到信啦.</p>
 <h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>首先是進入 Google Domain 的後台,<br>記得如果你人在台灣是不被允許使用 Google Domain 的服務,<br>所以必需要透過 VPN 跳轉到美國才能操作後台喔.</p>
 <p>真的是超簡單的,但是數量上限為 100 個,<br>加上 Google 的服務常常說收就收, 有商務需求的人還是不建議這個方式喔.<br>電子郵件 &gt; 新增電子別名,輸入自已想要的名字,然後填入<code>現有收件者電子郵件地址</code></p>
 <p>![新增電子郵件別名](/images/2020/10/email/add_forward.jpgJ</p>
@@ -214,11 +214,11 @@ ga('send', 'pageview');
 <p>設定完成後依照 Google 的說法會收到一封信(但是有些情況收不到)就會生效,<br>我實測上沒收到信,但是寄信馬上就生效了.<br>有了自已域名的信箱<del>虛榮感</del>專業度是不是又上升了幾個百分點呢?</p>
 <h2 id="補充-20201118"><a href="#補充-20201118" class="headerlink" title="補充 20201118"></a>補充 20201118</h2><p>前面已經可以透過自已的域名收信啦，<br>那麼怎麼寄信呢?  </p>
 <p>想像一下，如果用 <code>admin@yourdomain.com</code> 收信，<br>卻用 <code>youraccout@gmail.com</code> 回信，<br>是不是整個 Low 掉了，而且收信者是不是會懷疑怎麼寄信給 A 卻是 B 回信呢?。</p>
-<p>為了解決這個問題，請參考<a href="https://support.google.com/domains/answer/9437157" target="_blank" rel="noopener">在 Gmail 中使用別名傳送電子郵件</a>，  </p>
+<p>為了解決這個問題，請參考<a target="_blank" rel="noopener" href="https://support.google.com/domains/answer/9437157">在 Gmail 中使用別名傳送電子郵件</a>，  </p>
 <ol>
 <li><p>產生應用程式密碼</p>
 <ul>
-<li>登入Google帳戶後，前往<a href="https://myaccount.google.com/" target="_blank" rel="noopener">Google 帳戶</a>頁面。<br><img src="/images/2020/10/email/gmail_application_setting.jpg" alt="登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。"></li>
+<li>登入Google帳戶後，前往<a target="_blank" rel="noopener" href="https://myaccount.google.com/">Google 帳戶</a>頁面。<br><img src="/images/2020/10/email/gmail_application_setting.jpg" alt="登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。"></li>
 <li>左側安全性 &gt; 應用程式密碼 &gt; 選取應用程式(選擇郵件) &gt; 選取裝置(其它) &gt; <strong>輸入自已的 Domain</strong> &gt; 產生<br><img src="/images/2020/10/email/gmail_application_add.jpg" alt="登入Google帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。"><br><img src="/images/2020/10/email/gmail_application_password.jpg" alt="輸入密碼"></li>
 <li>把系統產生的 16 個字元密碼記錄下來。等一下我們會需要用到這組密碼</li>
 </ul>
@@ -241,9 +241,9 @@ ga('send', 'pageview');
 </li>
 </ol>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://support.google.com/domains/answer/3251241?hl=zh-Hant#emailForwarding" target="_blank" rel="noopener">轉寄電子郵件</a></li>
-<li><a href="https://support.google.com/domains/answer/9428703" target="_blank" rel="noopener">設定自訂名稱伺服器的電子郵件轉寄功能</a></li>
-<li><a href="https://support.google.com/domains/answer/9437157" target="_blank" rel="noopener">在 Gmail 中使用別名傳送電子郵件</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.google.com/domains/answer/3251241?hl=zh-Hant#emailForwarding">轉寄電子郵件</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.google.com/domains/answer/9428703">設定自訂名稱伺服器的電子郵件轉寄功能</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.google.com/domains/answer/9437157">在 Gmail 中使用別名傳送電子郵件</a></li>
 </ul>
 <h2 id="系列文章"><a href="#系列文章" class="headerlink" title="系列文章"></a>系列文章</h2><ul>
 <li><a href="https://blog.marsen.me/2016/08/21/2016/setting_DNS_with_google/">怎麼建立一個網站？(一)</a></li>
@@ -295,31 +295,29 @@ ga('send', 'pageview');
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>初探 ElasticSearch Service (以下簡稱 ESS )，<br>結合 Logstash、Kibana 合稱 ELK，<br>Elastic Cloud 提供更多的功能雖然蠻多還用不到，但比起自已架設會快相當的多。<br>因為主系統仍在開發中，只有部份功能上線，所以我選擇 ESS 作為我們的 Log System。<br>選擇 ESS 的原因如下:</p>
 <ol>
 <li>快速實現，只需要在 Elastic.io 簡單的操作，便可以有一個功能齊全的服務</li>
-<li>提供很全面的 <a href="https://www.elastic.co/kibana" target="_blank" rel="noopener">Kibana</a> 圖形介面</li>
+<li>提供很全面的 <a target="_blank" rel="noopener" href="https://www.elastic.co/kibana">Kibana</a> 圖形介面</li>
 <li>與 .NET 的整合很單純，安裝完 NuGet 套件後，只要設定好 Config 立即可以使用</li>
 <li>開源且社群活躍，也是目前主流的 Distribution Search Engine</li>
 </ol>
 <p>現有配置如下</p>
 <p><img src="/images/2020/10/ess_reindex/summary.jpg" alt="Summary"></p>
 <p>初始的配置更低，是使用最小單位、最少節點的配置。<br>Memory 只有 1 GB，Storage 有 30 GB。<br>在初始配置的情況下，<code>JVM memory pressure</code> 常態性達 70% ~ 80%，<br>這是個異常狀況，在實務上緊急將 Memory Scale Up 到 2 Memory 暫時解除這個問題。</p>
-<h2 id="效能問題"><a href="#效能問題" class="headerlink" title="效能問題"></a>效能問題</h2><p>追究後面的本質原因的話，是在系統設計上, 每日建立新的 <a href="https://www.elastic.co/blog/what-is-an-elasticsearch-index" target="_blank" rel="noopener">Index</a>，<br>在官方的 blog 也有提到這樣的實踐方式。</p>
+<h2 id="效能問題"><a href="#效能問題" class="headerlink" title="效能問題"></a>效能問題</h2><p>追究後面的本質原因的話，是在系統設計上, 每日建立新的 <a target="_blank" rel="noopener" href="https://www.elastic.co/blog/what-is-an-elasticsearch-index">Index</a>，<br>在官方的 blog 也有提到這樣的實踐方式。</p>
 <blockquote>
 <p>a lot of people use Elasticsearch for logging.<br>A standard format is to assign a new index for each day.<br>中略 …<br>Indices are fairly lightweight data organization mechanisms,<br>so Elasticsearch will happily let you create hundreds of indices.</p>
 </blockquote>
 <p>但是實務上我產生了太多的 Shards ，這也是初學者常踩的一個雷包，<br>一不小心就會 Oversharding 可以參考 <a href="`https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html#fix-an-oversharded-cluster`">How to size your shards</a> 進行修正。</p>
 <p>這裡我使用了 Reindex 這個 API 來將一些碎小的 Index 作結合(Combine Smaller Indices)。</p>
-<h2 id="實作記錄"><a href="#實作記錄" class="headerlink" title="實作記錄"></a>實作記錄</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html" target="_blank" rel="noopener">Reindex</a> 的 SOP</p>
+<h2 id="實作記錄"><a href="#實作記錄" class="headerlink" title="實作記錄"></a>實作記錄</h2><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html">Reindex</a> 的 SOP</p>
 <ol>
 <li><p>確保 maximum shards 的足夠<br>ESS 為了避免 Oversharding 導致整個 Cluster 崩潰會有設定一個上限值，<br>7.x 版本預設為 1000 ，而 Reindex 每一個 Index 都會需要 2 個 Shards (猜測是SWAP機制)<br>以我為例，原本我的 Shards 已達 999 ，當我試著要 Reindex 時會拿到以下會錯誤。</p>
 <p><code>this action would add [2] total shards, but this cluster currently has [1000]/[1000] maximum shards open</code></p>
 <p> 處理的方法也很簡單，只要透過 <code>/_cluster/settings</code> 加大 <code>cluster.max_shards_per_node</code> 即可。</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT localhost:9200/_cluster/settings -H "Content-Type: application/json" -d '&#123; "persistent": &#123; "cluster.max_shards_per_node": "3000" &#125; &#125;'</span><br></pre></td></tr></table></figure>
-
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT localhost:9200/_cluster/settings -H &quot;Content-Type: application/json&quot; -d &#x27;&#123; &quot;persistent&quot;: &#123; &quot;cluster.max_shards_per_node&quot;: &quot;3000&quot; &#125; &#125;&#x27;</span><br></pre></td></tr></table></figure>
 <p> 實務上我 Reindex 後會刪除碎小的 index，刪除後 Shards 的數量也會下降，<br> 當 Shards 剩餘數量足夠時，我會重設回 1000。</p>
 </li>
 <li><p>執行 reindex ，請確保新舊 index 符合商業邏輯<br> example:</p>
- <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"source"</span>: &#123;</span><br><span class="line">        <span class="attr">"index"</span>: <span class="string">"staging-aaa-service-2020.06.*"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"dest"</span>: &#123;</span><br><span class="line">        <span class="attr">"index"</span>: <span class="string">"staging-aaa-service-2020.06"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;source&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;index&quot;</span>: <span class="string">&quot;staging-aaa-service-2020.06.*&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;dest&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;index&quot;</span>: <span class="string">&quot;staging-aaa-service-2020.06&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>確保查詢一致</p>
 <ul>
 <li>query 數量為 N</li>
@@ -357,12 +355,12 @@ ga('send', 'pageview');
 <li>或是有什麼機制，可以讓我定期將某些資料 Reindex 嗎 ?</li>
 </ul>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10253348" target="_blank" rel="noopener">Shard 的最佳化管理</a></li>
-<li><a href="https://www.elastic.co/blog/what-is-an-elasticsearch-index" target="_blank" rel="noopener">What is an Elasticsearch Index?</a></li>
-<li><a href="https://godleon.github.io/blog/Elasticsearch/Elasticsearch-getting-started/" target="_blank" rel="noopener">[Elasticsearch] 基本概念 &amp; 搜尋入門</a></li>
-<li><a href="https://shazi.info/elasticsearch-7-x-node-%E9%96%8B%E6%94%BE-1000-%E5%80%8B-shards-%E9%99%90%E5%88%B6/" target="_blank" rel="noopener">Elasticsearch 7.x node 開放 1000 個 shards 限制</a></li>
-<li><a href="https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster" target="_blank" rel="noopener">How many shards should I have in my Elasticsearch cluster?</a></li>
-<li><a href="https://juejin.im/entry/6844903715468492813" target="_blank" rel="noopener">圖解 Elasticsearch 原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10253348">Shard 的最佳化管理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/blog/what-is-an-elasticsearch-index">What is an Elasticsearch Index?</a></li>
+<li><a target="_blank" rel="noopener" href="https://godleon.github.io/blog/Elasticsearch/Elasticsearch-getting-started/">[Elasticsearch] 基本概念 &amp; 搜尋入門</a></li>
+<li><a target="_blank" rel="noopener" href="https://shazi.info/elasticsearch-7-x-node-%E9%96%8B%E6%94%BE-1000-%E5%80%8B-shards-%E9%99%90%E5%88%B6/">Elasticsearch 7.x node 開放 1000 個 shards 限制</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster">How many shards should I have in my Elasticsearch cluster?</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/entry/6844903715468492813">圖解 Elasticsearch 原理</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -450,30 +448,23 @@ ga('send', 'pageview');
 <p>這裡提供一個觀念，不要為了 Design Pattern 而 Design Pattern<br>但是即有的代碼需要重構之時，Design Pattern 可以提供像是燈塔般的指引作用<br>只要巧妙的設計測試案例，走向目標。</p>
 </blockquote>
 <p>此外，當代碼有了單元測試的保護，<br>在開發日常的除錯作業將會有很大的幫助，<br>測試可以幫你快速的定位錯誤。<br>即使測試並未攔截到錯誤的話，那也表示你發現了一個前所未有的情境，<br>而只要加上這個測試情境，再修改代碼，未來這個情境將不會再有錯誤。</p>
-<h3 id="經典書籍對單元測試的定義"><a href="#經典書籍對單元測試的定義" class="headerlink" title="經典書籍對單元測試的定義"></a>經典書籍對單元測試的定義</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，</span><br><span class="line">之後對這個單元的單一最終結果的某些假設或期望進行驗証。</span><br><span class="line">單元測試幾乎都是可以使用單元測試框架進行撰寫的。</span><br><span class="line">撰寫單元測試很容易，執行起來快速。單元測試可靠，易讀，並且很容易維護。</span><br><span class="line">只要要產品不發生改化，單元測試執行結果是穩定一致的。</span><br><span class="line"></span><br><span class="line">--- &lt;&lt;單元測試的藝術2nd&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="F-I-R-S-T-Principles"><a href="#F-I-R-S-T-Principles" class="headerlink" title="F.I.R.S.T Principles"></a>F.I.R.S.T Principles</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- Fast : 快速→不夠快就不會被頻繁執行</span><br><span class="line">- Independent :獨立→互相依賴的測試，會讓除錯變得困難</span><br><span class="line">- Repeatable : 可重複→在任何環境下執行都有相同的結果(EX:時間／網路)</span><br><span class="line">- Self-Validating : 自我驗証→測試是否通過，不需額外的判斷與操作</span><br><span class="line">- Timely : 即時→產品代碼前不久先寫測試</span><br><span class="line"></span><br><span class="line">---&lt;&lt;Clean Code&gt;&gt;</span><br></pre></td></tr></table></figure>
-
+<h3 id="經典書籍對單元測試的定義"><a href="#經典書籍對單元測試的定義" class="headerlink" title="經典書籍對單元測試的定義"></a>經典書籍對單元測試的定義</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">一個單元測試是一段自動化的程式碼，這段程式會呼叫被測試的工作單元，</span><br><span class="line">之後對這個單元的單一最終結果的某些假設或期望進行驗証。</span><br><span class="line">單元測試幾乎都是可以使用單元測試框架進行撰寫的。</span><br><span class="line">撰寫單元測試很容易，執行起來快速。單元測試可靠，易讀，並且很容易維護。</span><br><span class="line">只要要產品不發生改化，單元測試執行結果是穩定一致的。</span><br><span class="line"></span><br><span class="line">--- &lt;&lt;單元測試的藝術2nd&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="F-I-R-S-T-Principles"><a href="#F-I-R-S-T-Principles" class="headerlink" title="F.I.R.S.T Principles"></a>F.I.R.S.T Principles</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- Fast : 快速→不夠快就不會被頻繁執行</span><br><span class="line">- Independent :獨立→互相依賴的測試，會讓除錯變得困難</span><br><span class="line">- Repeatable : 可重複→在任何環境下執行都有相同的結果(EX:時間／網路)</span><br><span class="line">- Self-Validating : 自我驗証→測試是否通過，不需額外的判斷與操作</span><br><span class="line">- Timely : 即時→產品代碼前不久先寫測試</span><br><span class="line"></span><br><span class="line">---&lt;&lt;Clean Code&gt;&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>上面提到很多工程面的實踐，<br>也不僅限於單元測試，更多的是測試與品質的關係。<br>一再強調的觀念是:</p>
 <p><strong>測試是品質的可量化指標。</strong><br><strong>測試是品質的可量化指標。</strong><br><strong>測試是品質的可量化指標。</strong></p>
 <p>而回到工程面上來說，作為第一線的品質把關，<br>開發人員本來就應該對自已的代碼提供單元測試，<br>而 TDD、Test As Document、Refactoring、Design Pattern 等…是環環相扣的工程實踐，<br>Pair Programming、Code Review、Pull Request 等…是工程流程的實踐<br>單元測試正是那個將各種實踐結合在一起的一種工具。</p>
 <p><img src="/images/2020/10/unit_test_is_basic_tool.jpg" alt="Unit Test is basic tool"></p>
 <p>在心法上，要將單元測試視作工具，而非聖盃，<br><code>TDD</code> 或是<code>覆蓋率</code>也是同樣的道理，御物而不御於物。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可用的軟體 重於 詳盡的文件</span><br><span class="line">&lt;&lt;敏捷軟體開發宣言&gt;&gt;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可用的軟體 重於 詳盡的文件</span><br><span class="line">&lt;&lt;敏捷軟體開發宣言&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>引用一下敏捷宣言:<br>可用的軟體 重於 100%覆蓋率的代碼<br>可用的軟體 重於 測試全過的代碼<br>右側項目雖然有其價值，但我們更重視左側項目。</p>
 <p>而這裡<strong>可用的最低標準，我認為是符合品質期待</strong>。</p>
 <h2 id="First-Test"><a href="#First-Test" class="headerlink" title="First Test"></a>First Test</h2><h3 id="第一個單元測試，加法計算器"><a href="#第一個單元測試，加法計算器" class="headerlink" title="第一個單元測試，加法計算器"></a>第一個單元測試，加法計算器</h3><h4 id="Case-Add-1-1-2"><a href="#Case-Add-1-1-2" class="headerlink" title="Case:Add(+) : 1 + 1 = 2"></a>Case:Add(+) : 1 + 1 = 2</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Add_1_1_is_2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = <span class="keyword">new</span> Calculator();</span><br><span class="line">    Assert.Equal(<span class="number">2</span>, target.Add(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>Production 代碼</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> first, <span class="built_in">int</span> second</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Next-Case"><a href="#Next-Case" class="headerlink" title="Next Case"></a>Next Case</h4><p>用 Test Case 逼出邏輯，用最簡單的方法實踐</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Add_2_1_is_3</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = <span class="keyword">new</span> Calculator();</span><br><span class="line">    Assert.Equal(<span class="number">3</span>, target.Add(<span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> first, <span class="keyword">int</span> second</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Add</span>(<span class="params"><span class="built_in">int</span> first, <span class="built_in">int</span> second</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="3A-原則"><a href="#3A-原則" class="headerlink" title="3A 原則"></a>3A 原則</h4><ul>
 <li><p>Arrange(準備、初始化)<br>如果 Arrange 過長會是一個壞味道，<br>表示這方法相依太多參數、服務或模組<br>範例:</p>
 <ul>
@@ -498,8 +489,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>進一步可以介紹如何使用 <code>fluentassertions</code>。</p>
 </blockquote>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Divide_7_0_is_Exception</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Func&lt;<span class="keyword">int</span>&gt; act = () =&gt; _target.Divide(<span class="number">7</span>, <span class="number">0</span>);</span><br><span class="line">    act.Should().Throw&lt;DivideByZeroException&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Divide_7_0_is_Exception</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Func&lt;<span class="built_in">int</span>&gt; act = () =&gt; _target.Divide(<span class="number">7</span>, <span class="number">0</span>);</span><br><span class="line">    act.Should().Throw&lt;DivideByZeroException&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>(fin)</p>
 
       
@@ -541,7 +531,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>直接連結<a href="https://blog.marsen.me/2020/09/09/2020/before_try_tutoring_app/">前篇</a> 吧。<br><a href="https://bit.ly/3dJk4Sr" target="_blank" rel="noopener">APP 下載連結</a>我也不囉唆，直接給。</p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>直接連結<a href="https://blog.marsen.me/2020/09/09/2020/before_try_tutoring_app/">前篇</a> 吧。<br><a target="_blank" rel="noopener" href="https://bit.ly/3dJk4Sr">APP 下載連結</a>我也不囉唆，直接給。</p>
 <h2 id="使用記錄"><a href="#使用記錄" class="headerlink" title="使用記錄"></a>使用記錄</h2><p>我在使用前就知道接下來兩個禮拜並不輕鬆，<br>除了一些平日的課程之外，還有排舞與游泳的練習與它牌的英語課。<br>所以我計劃第一周上 4 次課(80分鐘)，<br>第二周上 5 次課(100分鐘)。</p>
 <p>我原本的想法是這個 app 應該可以用一些空閒時間來填補，<br>但是實際上真的沒有那麼簡單。</p>
 <h3 id="心態面"><a href="#心態面" class="headerlink" title="心態面"></a>心態面</h3><p>畢竟這是一個跟真人對話的英文口說 APP ，同時要使用你並不擅常的語言。<br>以我來說並不是那麼容易的東西，通常老師也會跟你作一小段的開場白，<br>問問你今天過得好嗎，或是簡單的自我介紹，身為內向者其實要保留一點心力來回答。</p>
@@ -557,12 +547,12 @@ ga('send', 'pageview');
 <p>唯一的問題大概就是太晚了找不太到老師(因為大多為菲律賓老師，而時區與台灣相同)，<br>另外中間還有發生跟老師有誤會導致課程中斷的事。<br>所以整體而言，跟我原先的預期大概只完成了 87 % 左右。</p>
 <p>不過三更半夜的在 2 個小時內找到 4 個老師上課，這就是現實生活中難以實現的事吧。<br>多虧了網路的無遠弗界，再加上 TUTORING APP 這樣的線上英文學習媒合才辦得到吧，<br>當然希望未來有更多時區的老師可以選擇囉。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://tutoring.pixnet.net/blog/post/3797354" target="_blank" rel="noopener">價格介紹文章</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/post/12459416" target="_blank" rel="noopener">TUTORING客服</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/post/7117913-app%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%b4%b9%ef%bd%9c%e5%a6%82%e4%bd%95%e7%8d%b2%e5%be%97%e5%85%8d%e8%b2%bb%e6%b0%b4%e5%b9%b3%e6%b8%ac%e8%a9%a6%e5%88%b8%ef%bc%9f%ef%bd%9ctut" target="_blank" rel="noopener">獲得免費水平測試</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/270020" target="_blank" rel="noopener">使用FAQ</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/219587" target="_blank" rel="noopener">用戶反饋</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/214517" target="_blank" rel="noopener">外師推薦</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/3797354">價格介紹文章</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/12459416">TUTORING客服</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/7117913-app%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%b4%b9%ef%bd%9c%e5%a6%82%e4%bd%95%e7%8d%b2%e5%be%97%e5%85%8d%e8%b2%bb%e6%b0%b4%e5%b9%b3%e6%b8%ac%e8%a9%a6%e5%88%b8%ef%bc%9f%ef%bd%9ctut">獲得免費水平測試</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/270020">使用FAQ</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/219587">用戶反饋</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/214517">外師推薦</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -605,7 +595,7 @@ ga('send', 'pageview');
       
         <p>The dangers of DRY, the web of WET, the awesomeness of AHA.</p>
 <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>為什麼我要翻譯 ? 練習英文，同時學習程式開發的原則 。<br>程式開發原則其實超級多，稍稍整理一下。</p>
-<h3 id="物件導向程式設計的-SOLID-原則"><a href="#物件導向程式設計的-SOLID-原則" class="headerlink" title="物件導向程式設計的 SOLID 原則"></a>物件導向程式設計的 SOLID 原則</h3><p>這五個知名的原則，可以一言以蔽之 — 高內聚、低耦合。<br>而我自已更喜歡 <a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">Teddy 老師的五則皆變:「面對原始碼改變的五種不同策略」</a></p>
+<h3 id="物件導向程式設計的-SOLID-原則"><a href="#物件導向程式設計的-SOLID-原則" class="headerlink" title="物件導向程式設計的 SOLID 原則"></a>物件導向程式設計的 SOLID 原則</h3><p>這五個知名的原則，可以一言以蔽之 — 高內聚、低耦合。<br>而我自已更喜歡 <a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html">Teddy 老師的五則皆變:「面對原始碼改變的五種不同策略」</a></p>
 <h4 id="SRP-Single-Responsibility-Principle-單一職責原則"><a href="#SRP-Single-Responsibility-Principle-單一職責原則" class="headerlink" title="SRP(Single Responsibility Principle) 單一職責原則"></a>SRP(Single Responsibility Principle) 單一職責原則</h4><p>A class should have only one reason to change<br>以一個類別來說，應該只有一個引起它變化的原因。  </p>
 <p>舉個實務上在改動代碼的例子:<br>線上回報了一個購物車的問題，<br>你去追查發現購物車保含禮品與折價券的情境下，才會發生問題，<br>同時主管要求你，這段代碼發生異常時加上 Log 並發 Email 通知。  </p>
 <p>你會怎麼改呢 ? 加個 if 判斷購物車/禮品/折價券之間的對應關係 ?<br>使用 Try Catch 補捉異常，記錄 Log 並發送 Email ?<br>那麼這些邏輯應該被加到哪些類別呢 ?<br>請思考一下<br>在這個原則底下，應該考慮 if 的邏輯屬於購物車/禮品/折價券中的哪一類 ?<br>而三個商務邏輯如何互動，當前的設計也是要注意的方向。<br>Log / Email 也是同樣的，是否也應該隸屬獨立類別呢。<br>請思考一下，請思考一下。  </p>
@@ -650,14 +640,14 @@ ga('send', 'pageview');
 </ul>
 <h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>不用擔心何時該對重複代碼進行抽象，<br>這不是一個硬性規定，也是為什麼我更喜歡 AHA 勝於 DRY 或 WET.  </p>
 <h2 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener">DRY</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Duplicate_code" target="_blank" rel="noopener">Code Duplicate</a></li>
-<li><a href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33" target="_blank" rel="noopener">WET</a></li>
-<li><a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">五則皆變</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Duplicate_code">Code Duplicate</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33">WET</a></li>
+<li><a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html">五則皆變</a></li>
 <li><a href="https://blog.marsen.me/2020/07/27/2020/oop_experience/">[閱讀筆記] 物件導向的心得與隨筆</a></li>
-<li><a href="https://ihower.tw/blog/archives/7181" target="_blank" rel="noopener">Kent Beck 的四個簡單程式設計原則</a></li>
-<li><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/410455/" target="_blank" rel="noopener">九大設計原則</a></li>
-<li><a href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33" target="_blank" rel="noopener">Stop trying to be so DRY, instead Write Everything Twice (WET)</a></li>
+<li><a target="_blank" rel="noopener" href="https://ihower.tw/blog/archives/7181">Kent Beck 的四個簡單程式設計原則</a></li>
+<li><a target="_blank" rel="noopener" href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/410455/">九大設計原則</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/wuz/stop-trying-to-be-so-dry-instead-write-everything-twice-wet-5g33">Stop trying to be so DRY, instead Write Everything Twice (WET)</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -767,7 +757,7 @@ ga('send', 'pageview');
 <p>Back-end<br><img src="https://i.imgur.com/KYi08LU.png" alt="Back-end"></p>
 <p>DevOps<br><img src="https://i.imgur.com/ftRylxZ.png" alt="DevOps"></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://github.com/kamranahmedse/developer-roadmap" target="_blank" rel="noopener">https://github.com/kamranahmedse/developer-roadmap</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kamranahmedse/developer-roadmap">https://github.com/kamranahmedse/developer-roadmap</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -860,7 +850,7 @@ ga('send', 'pageview');
       
         <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>學英文一直以來都是我的硬傷，<br>而且不論是補習、聽歌、看美劇各種方法我都試過，<br>也不能說沒有效，就是無法持續且無法應用在生活上，<br>所以有什機會能夠讓自已更進步我都會想試試看。</p>
 <p>這篇文章可能有點微工商，<br>總之前幾天我滑到這個廣告，  </p>
-<p><a href="https://www.facebook.com/TutoringApp/posts/645426629424215?__cft__[0]=AZWZ8RmP2GoiGK3qd63VguoGdXajn0Xsaj8ZPBzO7H_XUKKw2gpBqpPWDip9Ei_XQA2Ac4AOOmvnp6_XzdYSKZDA_PmSFiQdUzq2UKUbZylDsFQhrCya_gsvDFOWG5dyRZoemH7m0pzswr08rfBYX2dTbfLiWBSpjR4pX-TIPCUj7g&__tn__=%2CO%2CP-R" target="_blank" rel="noopener"><img src="https://i.imgur.com/KaAdrTh.png" alt="看到這個廣告"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.facebook.com/TutoringApp/posts/645426629424215?__cft__[0]=AZWZ8RmP2GoiGK3qd63VguoGdXajn0Xsaj8ZPBzO7H_XUKKw2gpBqpPWDip9Ei_XQA2Ac4AOOmvnp6_XzdYSKZDA_PmSFiQdUzq2UKUbZylDsFQhrCya_gsvDFOWG5dyRZoemH7m0pzswr08rfBYX2dTbfLiWBSpjR4pX-TIPCUj7g&__tn__=%2CO%2CP-R"><img src="https://i.imgur.com/KaAdrTh.png" alt="看到這個廣告"></a></p>
 <p>我只是一個小小工程師，<br>不是網紅應該沒什麼流量(應該是我在蹭 TUTORING APP 的流量 XD)，<br>竟然也能錄取，真的覺得很開心呢，<br>這也是這篇文章誕生的原因啦。</p>
 <p>同時，這個兩禮拜我剛好特別忙(應該會忙到 10 月初)，<br>工作之外還有表演的排練、教學課程的準備以及一場讀書會的發表。<br>我本來應該拒絕，但是我還是想挑戰看看，<br>首先是 9 堂課其實只有 180 分鐘(9x20)而已，應該不是難到無法克服程度。<br>再來是 TUTORING APP 其實很方便，我想試試是否能隨時找到安靜的角落，<br>就能夠完成一次英文對話(比起上課我更想閒聊啦)。<br>最後是我原本就有打算要寫一篇 Blog 來記錄這件事，<br>那就順水推舟一下，讓這篇文章誕生啦。</p>
 <h2 id="參加-TUTORING-兩週學習挑戰的動機-原因"><a href="#參加-TUTORING-兩週學習挑戰的動機-原因" class="headerlink" title="參加 TUTORING 兩週學習挑戰的動機/原因"></a>參加 TUTORING 兩週學習挑戰的動機/原因</h2><p>在今年初，肺炎還沒有在世界上造成大流行，可以出國趴趴造的一月，<br>就曾經試用過這個 APP，當時我在上面臨時找了一個菲律賓老師，<br>選擇了一個簡單的課程，體驗的時間很短，應該不到一小時，<br>但是給我留下很好的印象，時間超彈性，找到老師到上課大概花不到 1 分鐘。<br>這對我來說很方便。</p>
@@ -868,13 +858,13 @@ ga('send', 'pageview');
 <p>其實我比較希望由母語教師來教，但是上了那堂課後的確讓我改觀，<br>TUTORING APP 其實也是有母語教師的，但是好的老師就是好的老師，是不分國籍與母語的。<br>所以可以看一下老師的簡介與評分，也可以聽聽發音，<br>可能我聽多了印度英文(線上程式課)，我反而覺得英國腔有點不習慣XD，<br>但那次上課的菲律賓老師，咬字與發音真的都很好，完全不比母語老師差，人也很有耐心。  </p>
 <p>網路上有很多的英文教材，台灣也有很多英語學習的管道與廣告，<br>為什麼 TUTORING APP 會吸引我呢 ?<br>不是因為他的圖示很可愛，而<strong>是不用留電話</strong>這一點，<br>蠻多英文教學的課程廣告都會要求留電話，<br>為了你留電話，會打折會送測試送體驗，但是<strong>千萬不要留電話</strong>。<br>除非你想要有接不完的銷售電話…<br>一直約課程、約實體見面，甚至催你買課…。<br>而我追求的是時間彈性，空間彈性的上課方式，<br>明明有類似 TUTORING APP 的服務(真人線上英文學習一對一家教)，<br>我就不懂為什麼要留言電話，電訪行銷不是 1980 年代的東西了嗎 ?<br>另外一方面，我會參加一些語言交換的聚會，<br>不過目前程度還是太差，所以聊得很乾(其實我用母語聊天一樣乾…)，<br>有一個教材讓我跟著學習反而是比較輕鬆的方式練習英文口說，當然我也是會繼續參加線下活動。<br>多認識一下外國的朋友:)。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://bit.ly/3dJk4Sr" target="_blank" rel="noopener">TUTORING APP 下載</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/post/3797354" target="_blank" rel="noopener">價格介紹文章</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/post/12459416" target="_blank" rel="noopener">TUTORING客服</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/post/7117913-app%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%b4%b9%ef%bd%9c%e5%a6%82%e4%bd%95%e7%8d%b2%e5%be%97%e5%85%8d%e8%b2%bb%e6%b0%b4%e5%b9%b3%e6%b8%ac%e8%a9%a6%e5%88%b8%ef%bc%9f%ef%bd%9ctut" target="_blank" rel="noopener">獲得免費水平測試</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/270020" target="_blank" rel="noopener">使用FAQ</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/219587" target="_blank" rel="noopener">用戶反饋</a></li>
-<li><a href="https://tutoring.pixnet.net/blog/category/214517" target="_blank" rel="noopener">外師推薦</a></li>
+<li><a target="_blank" rel="noopener" href="https://bit.ly/3dJk4Sr">TUTORING APP 下載</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/3797354">價格介紹文章</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/12459416">TUTORING客服</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/post/7117913-app%e4%bd%bf%e7%94%a8%e4%bb%8b%e7%b4%b9%ef%bd%9c%e5%a6%82%e4%bd%95%e7%8d%b2%e5%be%97%e5%85%8d%e8%b2%bb%e6%b0%b4%e5%b9%b3%e6%b8%ac%e8%a9%a6%e5%88%b8%ef%bc%9f%ef%bd%9ctut">獲得免費水平測試</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/270020">使用FAQ</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/219587">用戶反饋</a></li>
+<li><a target="_blank" rel="noopener" href="https://tutoring.pixnet.net/blog/category/214517">外師推薦</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -931,10 +921,10 @@ ga('send', 'pageview');
 <ol>
 <li>由別的團隊的 Scrum Master 來帶領你的團隊的回顧會議</li>
 <li>改變場地</li>
-<li>使用不同風格進行<br>推薦書單 <a href="https://www.amazon.com/Improving-Agile-Retrospectives-Efficient-Addison-Wesley/dp/0134678346" target="_blank" rel="noopener">Improving Agile Retrospectives</a></li>
+<li>使用不同風格進行<br>推薦書單 <a target="_blank" rel="noopener" href="https://www.amazon.com/Improving-Agile-Retrospectives-Efficient-Addison-Wesley/dp/0134678346">Improving Agile Retrospectives</a></li>
 </ol>
 </blockquote>
-<p>尋求社群的建議，我個人再推薦一個網站 <a href="https://www.funretrospectives.com/" target="_blank" rel="noopener">FunRetrospectives</a>…<br>回顧會議很無聊對 Scrum Master 應該是個警鐘，<br>但是醫生也會生病，請勇敢的尋求協助，而不是僵化的照本宣科，  </p>
+<p>尋求社群的建議，我個人再推薦一個網站 <a target="_blank" rel="noopener" href="https://www.funretrospectives.com/">FunRetrospectives</a>…<br>回顧會議很無聊對 Scrum Master 應該是個警鐘，<br>但是醫生也會生病，請勇敢的尋求協助，而不是僵化的照本宣科，  </p>
 <p><em>No one said a retrospective should be as exciting as the latest Hollywood blockbuster.But there are things you can to do to liven them up.</em></p>
 <h3 id="Too-Busy-To-Improve"><a href="#Too-Busy-To-Improve" class="headerlink" title="Too Busy To Improve"></a>Too Busy To Improve</h3><p><img src="https://i.imgur.com/VkHvIDP.png" alt="too busy to improve"></p>
 <blockquote>
@@ -956,9 +946,9 @@ ga('send', 'pageview');
 </blockquote>
 <p>但是並不建議，僅僅為了這個理由改變 Sprint 的長度，<br>而 Scrum Master 應該悍衛每個 Sprint 應執行的回顧會議，<br>但也可以適當調整為每兩個 Sprint 一次。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="https://www.mountaingoatsoftware.com/blog/does-a-scrum-team-need-a-retrospective-every-sprint" target="_blank" rel="noopener">Does a Scrum Team Need aRetrospective Every Sprint?</a></li>
-<li><a href="https://www.funretrospectives.com/" target="_blank" rel="noopener">FunRetrospectives</a></li>
-<li><a href="https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1" target="_blank" rel="noopener">https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mountaingoatsoftware.com/blog/does-a-scrum-team-need-a-retrospective-every-sprint">Does a Scrum Team Need aRetrospective Every Sprint?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.funretrospectives.com/">FunRetrospectives</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1">https://www.betteruserstories.com/courses/better-user-stories/videos?video_id=1</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -1060,7 +1050,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
+        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
@@ -1121,7 +1111,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain"];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰"];
 </script>
   
 
