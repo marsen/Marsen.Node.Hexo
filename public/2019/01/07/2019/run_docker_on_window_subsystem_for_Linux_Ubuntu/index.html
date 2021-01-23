@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2019/1/docker.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2019/1/ubantu_docker.jpg">
 <meta property="article:published_time" content="2019-01-07T09:18:13.000Z">
-<meta property="article:modified_time" content="2020-11-25T01:08:11.363Z">
+<meta property="article:modified_time" content="2021-01-15T06:27:39.825Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="Docker">
@@ -50,7 +50,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -112,7 +112,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近開始學 <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a>， 這個神器大概在 C 社時期就有聽過了，<br>不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，<br>在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。</p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>最近開始學 <a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>， 這個神器大概在 C 社時期就有聽過了，<br>不過一直沒有機會在實務上接觸，雖然有自已摸一點，但就只有皮毛而已，<br>在 A 社有機會由同事開課，並提供 EC2 作實驗，就趁這個機會作一點深入的學習。</p>
 <p>一開始有一個很天真的想法，<strong>我想在 Windows 內建的 Linux 子系統 Ubantu 安裝 Docker</strong>，<br>沒想到最後是脫褲子放屁，不過過程蠻有趣的，稍微記錄一下。</p>
 <h2 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h2><ol>
 <li><p>Windows 10 安裝 Ubantu</p>
@@ -120,24 +120,33 @@ ga('send', 'pageview');
 <li><p>在 Ubantu 安裝 Docker</p>
 <p> 更新 apt-get</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
 <p> 允許 apt-get 透過 https</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
+
 <p> 加入 Docker 官方 GPG KEY</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+
 <p> 然後可以驗証一下</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key fingerprint 0EBFCD88</span><br></pre></td></tr></table></figure>
+
 <p> 加入 Docker 的 apt-repository</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo add-apt-repository \</span></span><br><span class="line"><span class="bash"><span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span></span><br><span class="line"><span class="bash">$(lsb_release -cs) \</span></span><br><span class="line"><span class="bash">stable<span class="string">&quot;</span></span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo add-apt-repository \</span></span><br><span class="line">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line"><span class="meta">$</span><span class="bash">(lsb_release -cs) \</span></span><br><span class="line">stable"</span><br></pre></td></tr></table></figure>
+
 <p> 再次更新 apt-get</p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
 <p> 安裝 Docker CE</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>Run Docker</p>
 </li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker container run hello-world</span><br></pre></td></tr></table></figure>
+
 <p>我都會失敗如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.</span><br><span class="line">See &#x27;docker run --help&#x27;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.</span><br><span class="line">See 'docker run --help'.</span><br></pre></td></tr></table></figure>
+
 <h2 id="如何解決"><a href="#如何解決" class="headerlink" title="如何解決"></a>如何解決</h2><ol>
 <li><p>Windows 上要安裝 Docker for Windows</p>
 </li>
@@ -148,27 +157,29 @@ ga('send', 'pageview');
 </ol>
 <p>指定 Docker Host 在路徑</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -H localhost:2375 images</span><br></pre></td></tr></table></figure>
+
 <p>如果不想每次指定的話…請參考以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> DOCKER_HOST=localhost:2375</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/2019/1/ubantu_docker.jpg" alt="執行結果"></p>
 <h2 id="學到的事"><a href="#學到的事" class="headerlink" title="學到的事"></a>學到的事</h2><ul>
 <li>Docker 有 Host(Daemon) 與 Client 之分</li>
 <li>在 Windows 上的 VM(Ubantu) 再安裝 Docker Daemon 是行不通的(細節我並不清楚，求補充…)</li>
 <li>我還不夠了解 Windows Container 與 Linux Container 的差異<ul>
-<li><a target="_blank" rel="noopener" href="https://columns.chicken-house.net/2016/09/05/windows-container-faq/">Windows Container FAQ - 官網沒有說的事</a></li>
-<li><a target="_blank" rel="noopener" href="https://columns.chicken-house.net/2017/10/04/lcow/">LCOW Labs: Linux Container On Windows</a></li>
+<li><a href="https://columns.chicken-house.net/2016/09/05/windows-container-faq/" target="_blank" rel="noopener">Windows Container FAQ - 官網沒有說的事</a></li>
+<li><a href="https://columns.chicken-house.net/2017/10/04/lcow/" target="_blank" rel="noopener">LCOW Labs: Linux Container On Windows</a></li>
 <li>more …</li>
 </ul>
 </li>
 <li><del>繞了一圈，一事無成</del></li>
 </ul>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4">Installing the Docker client on Windows Subsystem for Linux (Ubuntu)</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Get Docker CE for Ubuntu</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-tw/p/ubuntu/9nblggh4msv6?activetab=pivot%3Aoverviewtab">取得 Ubuntu - Microsoft Store zh-TW</a></li>
-<li><a target="_blank" rel="noopener" href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">Docker CE Desktop Windows</a></li>
-<li><a target="_blank" rel="noopener" href="https://oomusou.io/docker/docker-for-windows/">如何安裝 Docker for Windows ?</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/deploy-containers/linux-containers">Windows 上的 Linux 容器</a></li>
+<li><a href="https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4" target="_blank" rel="noopener">Installing the Docker client on Windows Subsystem for Linux (Ubuntu)</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Get Docker CE for Ubuntu</a></li>
+<li><a href="https://www.microsoft.com/zh-tw/p/ubuntu/9nblggh4msv6?activetab=pivot%3Aoverviewtab" target="_blank" rel="noopener">取得 Ubuntu - Microsoft Store zh-TW</a></li>
+<li><a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows" target="_blank" rel="noopener">Docker CE Desktop Windows</a></li>
+<li><a href="https://oomusou.io/docker/docker-for-windows/" target="_blank" rel="noopener">如何安裝 Docker for Windows ?</a></li>
+<li><a href="https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/deploy-containers/linux-containers" target="_blank" rel="noopener">Windows 上的 Linux 容器</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -216,7 +227,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -297,7 +308,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
+        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
