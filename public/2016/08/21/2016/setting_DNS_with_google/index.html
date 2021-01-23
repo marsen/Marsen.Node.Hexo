@@ -13,7 +13,7 @@
 <meta property="og:description" content="前置作業 準備好你的google帳號。 可以連到美國的VPN。google domain beta 台灣尚未開放 準備一張信用卡，狠狠的刷下去(挑對domain其實很便宜啦) 你的網站，什麼語言都可以，靜態的網頁也可以。*這裡我事先準備好了兩個網站,分別是用github page 與 nodejs 的 express,實作有機會再作記錄。  設定domain Github page 所建立的網站,">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2016-08-21T14:12:53.000Z">
-<meta property="article:modified_time" content="2020-11-24T06:32:03.059Z">
+<meta property="article:modified_time" content="2021-01-15T06:27:39.818Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -45,7 +45,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -109,9 +109,9 @@ ga('send', 'pageview');
       
         <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ol>
 <li>準備好你的google帳號。</li>
-<li>可以連到美國的VPN。<a target="_blank" rel="noopener" href="https://atom.io/packages/atom-beautify">google domain beta</a> 台灣尚未開放</li>
+<li>可以連到美國的VPN。<a href="https://atom.io/packages/atom-beautify" target="_blank" rel="noopener">google domain beta</a> 台灣尚未開放</li>
 <li>準備一張信用卡，狠狠的刷下去(挑對domain其實很便宜啦)</li>
-<li>你的網站，什麼語言都可以，靜態的網頁也可以。<br>*這裡我事先準備好了兩個網站,<br>分別是用<a target="_blank" rel="noopener" href="https://pages.github.com/">github page</a> 與 <a target="_blank" rel="noopener" href="https://nodejs.org">nodejs</a> 的 <a target="_blank" rel="noopener" href="http://expressjs.com/">express</a>,實作有機會再作記錄。</li>
+<li>你的網站，什麼語言都可以，靜態的網頁也可以。<br>*這裡我事先準備好了兩個網站,<br>分別是用<a href="https://pages.github.com/" target="_blank" rel="noopener">github page</a> 與 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs</a> 的 <a href="http://expressjs.com/" target="_blank" rel="noopener">express</a>,實作有機會再作記錄。</li>
 </ol>
 <h2 id="設定domain"><a href="#設定domain" class="headerlink" title="設定domain"></a>設定domain</h2><ol>
 <li><p>Github page 所建立的網站,會提供一組domain給你<br>ex:<code>myDomain.github.io</code></p>
@@ -121,7 +121,7 @@ ga('send', 'pageview');
 <li><p>google domain 本身有提供 Name servers , 但是由於 type<code>A</code> 的 Domain,<br> 必須指定公用ip(家中有裝 HiNet ADSL 可以申請一組);但實際上我的兩個網站,並不需要我準備實體 IP,<br> 只需要使用 type <code>CName</code> 將我的subdomain指向原本服務的domain即可。<br> ex:</p>
 <ul>
 <li>blog.myDomain.me → myDomain.github.io</li>
-<li><a target="_blank" rel="noopener" href="http://www.myDomain.me">www.myDomain.me</a> → myDomain.rhcloud.com</li>
+<li><a href="http://www.myDomain.me" target="_blank" rel="noopener">www.myDomain.me</a> → myDomain.rhcloud.com</li>
 </ul>
 </li>
 <li><p>github page 要注意的事情，  </p>
@@ -129,21 +129,21 @@ ga('send', 'pageview');
 </ol>
 <p>你需要在你的github page 的repo root 加入一個名叫<code>CName</code>的檔案,<br>檔案的內容很簡單, 只需要你的domain即可<br>ex:<br>        blog.myDomain.me<br>        myDomain.me</p>
 <h2 id="Bare-CName"><a href="#Bare-CName" class="headerlink" title="Bare CName"></a>Bare CName</h2><p>大多數的時候, <code>CName</code> 的設定就夠了;不過對於我來說,<br>我會希望可以直接使用我的頂級domain,畢竟這樣網址可以更短一些,<br><code>myDomain.me</code> 比 <code>www.myDomain.me</code> 更有感覺。</p>
-<p>這裡受限於google 的 Name servers , 頂級domain 必為Type<code>A</code>須綁定ip<br>這裡我們可以使用一個免費的服務<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a>,來達成目的</p>
+<p>這裡受限於google 的 Name servers , 頂級domain 必為Type<code>A</code>須綁定ip<br>這裡我們可以使用一個免費的服務<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>,來達成目的</p>
 <ol>
-<li><p>註冊<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a></p>
+<li><p>註冊<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a></p>
 </li>
-<li><p>登入後<a target="_blank" rel="noopener" href="https://www.cloudflare.com/a/add-site">add site</a>,輸入你註冊的domain<br>ex:<code>myDomain</code></p>
+<li><p>登入後<a href="https://www.cloudflare.com/a/add-site" target="_blank" rel="noopener">add site</a>,輸入你註冊的domain<br>ex:<code>myDomain</code></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a> 會提供你至少兩組Name servers<br>ex:<br><code>carter.ns.cloudflare.com</code><br><code>tina.ns.cloudflare.com</code></p>
+<li><p><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a> 會提供你至少兩組Name servers<br>ex:<br><code>carter.ns.cloudflare.com</code><br><code>tina.ns.cloudflare.com</code></p>
 </li>
-<li><p>請先登入<a target="_blank" rel="noopener" href="https://atom.io/packages/atom-beautify">google domain beta</a>設定Name servers到<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a></p>
+<li><p>請先登入<a href="https://atom.io/packages/atom-beautify" target="_blank" rel="noopener">google domain beta</a>設定Name servers到<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a></p>
 </li>
 <li><p>請依以下步驟設定</p>
 <ul>
 <li>*  → myDomain.me</li>
 <li>blog.myDomain.me → myDomain.github.io</li>
-<li><a target="_blank" rel="noopener" href="http://www.myDomain.me">www.myDomain.me</a> → myDomain.rhcloud.com</li>
+<li><a href="http://www.myDomain.me" target="_blank" rel="noopener">www.myDomain.me</a> → myDomain.rhcloud.com</li>
 </ul>
 </li>
 <li><p>等待約數分鐘就ok啦</p>
@@ -203,7 +203,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -284,7 +284,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
+        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>

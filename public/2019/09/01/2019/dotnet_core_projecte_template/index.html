@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://i.imgur.com/wQVnR1h.jpg">
 <meta property="og:image" content="https://i.imgur.com/AhlYXRt.jpg">
 <meta property="article:published_time" content="2019-09-01T12:46:46.000Z">
-<meta property="article:modified_time" content="2020-04-29T01:19:53.308Z">
+<meta property="article:modified_time" content="2020-04-29T17:41:11.550Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -48,7 +48,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -130,22 +130,26 @@ ga('send', 'pageview');
 <li><p>建立 <code>.template.config</code> 資料夾</p>
 </li>
 <li><p>在<code>.template.config</code> 建立 <code>template.json</code><br>  <code>template.json</code> 可以說是整個專案樣版的靈魂部份，更多的訊息可以在 MSDN 找到，<br>  我只說明 <code>symbols</code> 節點的部份，它用來方置參數的訊息，所以需要建立一個自訂義的子節點，在這裡我命名為 <code>pluginName</code>，同時指定他的 type 為 parameter，<br>  透過設定 <code>defaultValue</code> 給予預設值，最後將 <code>fileRename</code> 指定為 <code>F-plugin-name</code>，<br>  將 <code>(C-plugin-name)</code> 指定為我的內容層級參數。</p>
- <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;$schema&quot;</span>: <span class="string">&quot;http://json.schemastore.org/template&quot;</span>,</span><br><span class="line"><span class="attr">&quot;author&quot;</span>: <span class="string">&quot;MarkLin&quot;</span>,</span><br><span class="line"><span class="attr">&quot;classifications&quot;</span>: [ <span class="string">&quot;Common&quot;</span>, <span class="string">&quot;SDK&quot;</span>, <span class="string">&quot;C#8&quot;</span> ],</span><br><span class="line"><span class="attr">&quot;identity&quot;</span>: <span class="string">&quot;Marsen.Blog.Plugin.Template&quot;</span>,</span><br><span class="line"><span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Marsen Blog Plugin Template&quot;</span>,</span><br><span class="line"><span class="attr">&quot;shortName&quot;</span>: <span class="string">&quot;mbp&quot;</span>,</span><br><span class="line"><span class="attr">&quot;tags&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;language&quot;</span>: <span class="string">&quot;C#&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;project&quot;</span></span><br><span class="line">&#125;,  </span><br><span class="line"><span class="attr">&quot;preferNameDirectory&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">&quot;symbols&quot;</span>:&#123;</span><br><span class="line">    <span class="attr">&quot;pluginName&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;parameter&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;defaultValue&quot;</span>: <span class="string">&quot;Demo&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;fileRename&quot;</span>: <span class="string">&quot;F-plugin-name&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;replaces&quot;</span>:<span class="string">&quot;(C-plugin-name)&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"$schema"</span>: <span class="string">"http://json.schemastore.org/template"</span>,</span><br><span class="line"><span class="attr">"author"</span>: <span class="string">"MarkLin"</span>,</span><br><span class="line"><span class="attr">"classifications"</span>: [ <span class="string">"Common"</span>, <span class="string">"SDK"</span>, <span class="string">"C#8"</span> ],</span><br><span class="line"><span class="attr">"identity"</span>: <span class="string">"Marsen.Blog.Plugin.Template"</span>,</span><br><span class="line"><span class="attr">"name"</span>: <span class="string">"Marsen Blog Plugin Template"</span>,</span><br><span class="line"><span class="attr">"shortName"</span>: <span class="string">"mbp"</span>,</span><br><span class="line"><span class="attr">"tags"</span>: &#123;</span><br><span class="line">    <span class="attr">"language"</span>: <span class="string">"C#"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"project"</span></span><br><span class="line">&#125;,  </span><br><span class="line"><span class="attr">"preferNameDirectory"</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">"symbols"</span>:&#123;</span><br><span class="line">    <span class="attr">"pluginName"</span>: &#123;</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"parameter"</span>,</span><br><span class="line">    <span class="attr">"defaultValue"</span>: <span class="string">"Demo"</span>,</span><br><span class="line">    <span class="attr">"fileRename"</span>: <span class="string">"F-plugin-name"</span>,</span><br><span class="line">    <span class="attr">"replaces"</span>:<span class="string">"(C-plugin-name)"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>CLI強化，在<code>.template.config</code> 建立 <code>dotnetcli.host.json</code><br> 這個檔案建立的目的，是為了讓我接下來使用 CLI 建立專案時能夠指定傳入的參數。<br> 這裡需指定 <code>template.json</code> 中的 symbol 並設定</p>
- <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;symbolInfo&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;pluginName&quot;</span>: &#123;</span><br><span class="line">          <span class="attr">&quot;longName&quot;</span>: <span class="string">&quot;pluginName&quot;</span>,</span><br><span class="line">          <span class="attr">&quot;shortName&quot;</span>: <span class="string">&quot;p&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"symbolInfo"</span>: &#123;</span><br><span class="line">      <span class="attr">"pluginName"</span>: &#123;</span><br><span class="line">          <span class="attr">"longName"</span>: <span class="string">"pluginName"</span>,</span><br><span class="line">          <span class="attr">"shortName"</span>: <span class="string">"p"</span></span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>執行 <code>dotnet new i</code> 註冊樣版<br> 執行命令前請確定所在位置包含<code>.template.config</code> 資料夾與相關的檔案</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet new -i ./</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet new -i ./</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>執行 <code>dotnet new -u</code> 查詢樣版列表資訊確認安裝已完成</p>
 </li>
 <li><p>應用</p>
 <p> 在想建立專案的資料夾底下執行 <code>dotnet new &lt;template_name&gt;</code> 語法,<br> 並且可以透過 CLI 指定參數，我並沒有研究 GUI 的操作，有興趣的人請自行研究，<br> 如果能分享給我就不勝感激。</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet new mbp -p Marsen2</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet new mbp -p Marsen2</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>展示  </p>
 </li>
 </ol>
 <div class="video-container"><iframe src="https://www.youtube.com/embed/RA_lHoa5uuI" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
 
-<p>我把這個例子放在 <a target="_blank" rel="noopener" href="https://github.com/marsen/dotnet.core.project.template.sample">Github</a> 上，有興趣的朋友可以試試看。</p>
+<p>我把這個例子放在 <a href="https://github.com/marsen/dotnet.core.project.template.sample" target="_blank" rel="noopener">Github</a> 上，有興趣的朋友可以試試看。</p>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="移除專案樣板-SOP"><a href="#移除專案樣板-SOP" class="headerlink" title="移除專案樣板 SOP"></a>移除專案樣板 SOP</h3><ol>
 <li>執行 <code>dotnet new -u</code> 查詢樣版列表資訊，可以查到專案樣版的絕對路徑</li>
 <li>執行 <code>dotnet new -u &lt;ABSOLUTE_FILE_SYSTEM_DIRECTORY&gt;</code></li>
@@ -153,14 +157,14 @@ ga('send', 'pageview');
 <h3 id="更新專案樣版"><a href="#更新專案樣版" class="headerlink" title="更新專案樣版"></a>更新專案樣版</h3><p>直接進入專案樣版的絕對路徑</p>
 <h3 id="發佈"><a href="#發佈" class="headerlink" title="發佈"></a>發佈</h3><p>略…</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/marsen/dotnet.core.project.template.sample">我的範例</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-item-template">教學課程：建立項目範本</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-project-template">教學課程：建立專案範本</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/dotnet/dotnet-template-samples">dotnet/dotnet-template-samples</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jerriepelser.com/blog/tips-for-developing-dotnet-new-templates/">Tips for developing templates for dotnet new</a></li>
-<li><a target="_blank" rel="noopener" href="http://json.schemastore.org/template">JSON 結構描述保存區的 template.json 結構描述</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/dotnet/templating/issues/1238">How to name (or rename) files based on a parameter? · Issue #1238 · dotnet/templating</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jerriepelser.com/blog/tips-for-developing-dotnet-new-templates/">Tips for developing templates for dotnet new</a></li>
+<li><a href="https://github.com/marsen/dotnet.core.project.template.sample" target="_blank" rel="noopener">我的範例</a></li>
+<li><a href="https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-item-template" target="_blank" rel="noopener">教學課程：建立項目範本</a></li>
+<li><a href="https://docs.microsoft.com/zh-tw/dotnet/core/tutorials/cli-templates-create-project-template" target="_blank" rel="noopener">教學課程：建立專案範本</a></li>
+<li><a href="https://github.com/dotnet/dotnet-template-samples" target="_blank" rel="noopener">dotnet/dotnet-template-samples</a></li>
+<li><a href="https://www.jerriepelser.com/blog/tips-for-developing-dotnet-new-templates/" target="_blank" rel="noopener">Tips for developing templates for dotnet new</a></li>
+<li><a href="http://json.schemastore.org/template" target="_blank" rel="noopener">JSON 結構描述保存區的 template.json 結構描述</a></li>
+<li><a href="https://github.com/dotnet/templating/issues/1238" target="_blank" rel="noopener">How to name (or rename) files based on a parameter? · Issue #1238 · dotnet/templating</a></li>
+<li><a href="https://www.jerriepelser.com/blog/tips-for-developing-dotnet-new-templates/" target="_blank" rel="noopener">Tips for developing templates for dotnet new</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -208,7 +212,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -289,7 +293,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
+        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>

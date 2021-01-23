@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_02.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_03.jpg">
 <meta property="article:published_time" content="2020-07-21T00:16:27.000Z">
-<meta property="article:modified_time" content="2020-08-31T01:05:45.253Z">
+<meta property="article:modified_time" content="2020-09-01T12:49:24.107Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="Unit Testing">
@@ -54,7 +54,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -207,7 +207,7 @@ ga('send', 'pageview');
 </tr>
 </tbody></table>
 <p>參考上表製作測試案例，<br>這裡我想強調的是狀態改變的動線，<br>狀態由 <code>SameState</code> 開始。</p>
-<p>簡單筆記一下測試與重構的幾個亮點<br>完整的 commit 可以從 <a target="_blank" rel="noopener" href="https://github.com/marsen/Marsen.NetCore.Dojo/commits/Kata/TennisWithStatePattern2?before=af1303f38d61abc0dba0a965e5dfadf55bc08ccd+105">d792b2e</a>開始看</p>
+<p>簡單筆記一下測試與重構的幾個亮點<br>完整的 commit 可以從 <a href="https://github.com/marsen/Marsen.NetCore.Dojo/commits/Kata/TennisWithStatePattern2?before=af1303f38d61abc0dba0a965e5dfadf55bc08ccd+105" target="_blank" rel="noopener">d792b2e</a>開始看</p>
 <h3 id="Highlight-Test-Cases"><a href="#Highlight-Test-Cases" class="headerlink" title="Highlight Test Cases"></a>Highlight Test Cases</h3><p>測試的案例的設計會依 State Diagram 的箭頭來設計，<br>也就是狀態的改變，<strong>初始狀態為 <code>SameState</code> 比分為 0 - 0</strong> ，<br>並將 Design Pattern 作為指引重構出 <code>SameState</code> 。</p>
 <p><strong>第二個測試案例</strong>也很簡單，<br>因為 <code>SameState</code> 只會往 <code>NormalState</code> 移動，<br>所以只要使用 1 - 0 或是 0 - 1 這個案例，我就可以建立出 <code>NormalState</code> 類別。<br>並且可以觀察到兩個 State 的共通性，這個時候就會重構出 <code>IState</code> 介面。</p>
 <p>一樣看圖開發，<br><code>NormalState</code> 是最為複雜的一個狀態，他的狀態可能為  </p>
@@ -226,19 +226,20 @@ ga('send', 'pageview');
 <p>收官的部份就是簡單的重構，與補足一些特殊比分的案例，<br>特別要注意的是 <code>NormalState</code> 的 Score 仍然有許多的 if 讓我想重構移除，<br>目前暫時沒有想法。<br>此外，實際上 Tennis 會特別重視得分的順序，<br>比如說 <strong>100-100 Deuce 這種極端案例</strong>，交互得分的情況應忠實呈現在測試之中。<br>所以在寫測試時，就要特別注意得分的順序性。</p>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>這次還是有用到一些常用的重構套路，<br>比如說，用 Dictionary 消除 if else 的手段。<br>另一個則是 <code>Template Method Pattern</code>，<br>讓我們看看以下的 commit  </p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/e8ddf89fdee94d6a82115f4449e213a4874269f8">e8ddf8</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/145d3cb408ed5b39a729c4a9b22fb6744b62c48f">145d3c</a></li>
+<li><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/e8ddf89fdee94d6a82115f4449e213a4874269f8" target="_blank" rel="noopener">e8ddf8</a></li>
+<li><a href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/145d3cb408ed5b39a729c4a9b22fb6744b62c48f" target="_blank" rel="noopener">145d3c</a></li>
 </ul>
 <p>以 <code>ServerScore</code> 方法為例，<br>本來是在定義在 Abstract Class State 之中的抽像方法，<br>由各個 State (Normal、Same、Deuce、Adv 與 Win)實作，<br>但是我們可以明顯發現， <code>Context.ServerPoint++</code> 是重複的，<br>而 <code>ChangeState</code> 才是真正抽像的地方，<br>所以我們可以在 Abstract Class State 加入以下的方法與抽像方法，  </p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ServerScore</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Context.ServerPoint++;</span><br><span class="line">    ChangeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">ChangeState</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
+
 <p>這不就恰巧是 <code>Template Method Pattern</code> 嗎 ?<br>同樣的手段可以放在 <code>ReceiverScore</code> 方法再重構一次。  </p>
 <p>實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。<br>在學習 Design Pattern 的路上，不是硬套，而是找出適用場景。  </p>
 <p>也是我比較建議的作法，透過重構自然走向 Pattern，<br>透過限制改變來提昇品質，首先要有測試保護，再找尋套路或壞味道重構，<br>最後讓 Design Pattern 成為指引，讓代碼自動躍然而上。</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://refactoring.guru/design-patterns/state">State Pattern</a></li>
-<li><a target="_blank" rel="noopener" href="https://refactoring.guru/design-patterns/template-method">Template Method Pattern</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.rulesofsport.com/sports/tennis.html">Tennis Rules</a></li>
-<li><a target="_blank" rel="noopener" href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html">SOLID 五則皆變</a></li>
+<li><a href="https://refactoring.guru/design-patterns/state" target="_blank" rel="noopener">State Pattern</a></li>
+<li><a href="https://refactoring.guru/design-patterns/template-method" target="_blank" rel="noopener">Template Method Pattern</a></li>
+<li><a href="https://www.rulesofsport.com/sports/tennis.html" target="_blank" rel="noopener">Tennis Rules</a></li>
+<li><a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">SOLID 五則皆變</a></li>
 </ul>
 <p>(fin)</p>
 
@@ -286,7 +287,7 @@ ga('send', 'pageview');
   </div>
 
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -367,7 +368,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
     <h3 class="widget-title">BADGES</h3>
     <div class="widget">
-        <a target="_blank" rel="noopener" href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl">
+        <a href="https://bcert.me/bc/html/show-badge.html?b=uufxvngl" target="_blank" rel="noopener">
             <img src="/images/2018/csm/seal-csm.png" alt="Certified ScrumMaster®">
         </a>
     </div>
