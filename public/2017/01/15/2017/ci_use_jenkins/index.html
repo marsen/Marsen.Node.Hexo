@@ -5,17 +5,17 @@
   
   <title>CI/CD 環境建置筆記 - 前言&lt;目的&gt; | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="現有架構 版本控制 Github OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但是每次都要">
+  <meta name="description" content="現有架構 版本控制 Github  Openshift Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。   開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CI&#x2F;CD 環境建置筆記 - 前言&lt;目的&gt;">
 <meta property="og:url" content="https://blog.marsen.me/2017/01/15/2017/ci_use_jenkins/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="現有架構 版本控制 Github OpenshiftOpenshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但是每次都要">
+<meta property="og:description" content="現有架構 版本控制 Github  Openshift Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),Github 則是單純的負責版本控制。   開發流程作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,這樣的流程雖然簡單,但">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/QLzPTrp.jpg">
 <meta property="og:image" content="https://i.imgur.com/dHYRJKr.jpg">
 <meta property="article:published_time" content="2017-01-15T13:54:00.000Z">
-<meta property="article:modified_time" content="2020-04-07T05:38:49.910Z">
+<meta property="article:modified_time" content="2021-01-26T08:07:06.748Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="CI&#x2F;CD">
 <meta property="article:tag" content="Jenkins">
@@ -111,17 +111,22 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt=""></p>
+        <h2 id="現有架構"><a href="#現有架構" class="headerlink" title="現有架構"></a>現有架構</h2><p><img src="https://i.imgur.com/QLzPTrp.jpg" alt="現有架構"></p>
 <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><ol>
-<li>Github</li>
-<li>Openshift<br>Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),<br>Github 則是單純的負責版本控制。<h3 id="開發流程"><a href="#開發流程" class="headerlink" title="開發流程"></a>開發流程</h3>作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。<br>原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,<br>這樣的流程雖然簡單,但是每次都要人工執行,因為其執行順序,其實都隱含著風險,<br>例如:上錯版本或是產品未進版控等等…,<br>而當進一步想要執行建置、編譯 、套件管理、測試、分析與產生報表時,<br>產品與源碼將會產生差異(ex:產品會包含壓縮的檔案而源碼則是未壓縮的檔案)</li>
+<li><p>Github</p>
+</li>
+<li><p>Openshift</p>
+<p>Openshift 是實際線上服務所在,也可以稱作是我的產品(Product),<br>Github 則是單純的負責版本控制。</p>
+</li>
 </ol>
-<h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點:"></a>缺點:</h4><ol>
+<h3 id="開發流程"><a href="#開發流程" class="headerlink" title="開發流程"></a>開發流程</h3><p>作為獨立開發的專案,這個網站只是我很單純的自我介紹、練習(KATA)、學習與分享的集散地。<br>原本的開發流程很單純,如上圖。完成的CODE同步到 GITHUB 後也同步上 Openshift ,<br>這樣的流程雖然簡單,但是每次都要人工執行,因為其執行順序,其實都隱含著風險,<br>例如:上錯版本或是產品未進版控等等…,<br>而當進一步想要執行建置、編譯 、套件管理、測試、分析與產生報表時,<br>產品與源碼將會產生差異(ex:產品會包含壓縮的檔案而源碼則是未壓縮的檔案)</p>
+<h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h4><ol>
 <li>在這樣的架構上容易不小心發佈還在開發中的功能。</li>
 <li>Prod的來源就是程式碼,無法確保與版控一致,如此就喪失版控的用意。</li>
 <li>難以擴展其他功能,如:建置、編譯 、套件管理、測試、分析與產生報表</li>
 </ol>
-<h4 id="目標"><a href="#目標" class="headerlink" title="目標:"></a>目標:</h4><p><img src="https://i.imgur.com/dHYRJKr.jpg" alt=""><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>
+<h4 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h4><p><img src="https://i.imgur.com/dHYRJKr.jpg" alt="目標"><br>如圖所示,<br>第一步 Jenkins要將原始碼自Github pull下來<br>第二到第N步 Jenkins要執行建置、測試、coding style的檢查、壓縮…等等。<br>最後一步 Jenkins 將會將程式碼發佈到Openshift 上面。<br>中間的步驟先跳過,之後再一一補上。<br>所以第一目標很簡單,<br>從Github Pull再Push到Openshift。</p>
+<p>(fin)</p>
 
       
     </div>
