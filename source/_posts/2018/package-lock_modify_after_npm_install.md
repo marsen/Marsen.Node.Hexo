@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記]誰改了我的 package-lock.json ?"
+title: "[踩雷筆記] 誰改了我的 package-lock.json ?"
 date: 2018/07/30 15:53:21
 tag:
   - Node.js  
@@ -13,7 +13,7 @@ node v8.11.1
 
 ## 問題
 
-承上篇[[實作筆記]設定 NPM Registry](https://blog.marsen.me/2018/07/29/2018/node_set_registry/)，  
+承上篇[[實作筆記] 設定 NPM Registry](https://blog.marsen.me/2018/07/29/2018/node_set_registry/)，  
 後續發生的一些問題，  
 每當我執行 `npm install` 的時候都會異動到 `package-lock.json` 檔;  
 異動這個檔案並不意外，可以參考[官方文件](https://docs.npmjs.com/files/package-lock.json)的說法。  

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記]Hexo Update 與 npm 修復漏洞"
+title: "[實作筆記] Hexo Update 與 npm 修復漏洞"
 date: 2018/10/20 11:41:05
 tag:
   - 實作筆記
