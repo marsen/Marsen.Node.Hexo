@@ -1,5 +1,5 @@
 ---
-title: '[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作'
+title: '[KATA]用 typescript 作一個簡易的 TodoList(二) - 用JQuery實作'
 date: 2016/10/14 10:34:27
 tag: 
 - TypeScript
@@ -8,25 +8,23 @@ tag:
 - JQuery
 ---
 ## 設計理念
-1. 顯示/新增/刪除 todolist 
-2. todolist 會是一堆todoItem的集合,所以要定義todoItem的形別
+
+1. 顯示/新增/刪除 TodoList
+2. TodoList 會是一堆todoItem的集合,所以要定義todoItem的形別
     - Content : todoItem 的內容
     - Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉
 3. 主要的功能
-    -  建立todoItem
-    -  完成todoItem
-    -  繪製todoList到前端的畫面上
+   - 建立todoItem
+   - 完成todoItem
+   - 繪製todoList到前端的畫面上
 
 ## 自我分析
+
 跟 UI 耦合太高,Render 應該與 TodoService 分離 ,
 DOM 註冊事件相依在 Service 裡面要抽離也不好抽 。
 沒有先寫測試 , 要想一想怎麼與 UI 層作隔離。
 
-
-
 ## 程式碼
-
-  
 
 ### 建立 BaseService
 

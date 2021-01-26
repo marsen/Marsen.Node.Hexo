@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作 | Marsen&#39;s Blog</title>
+  <title>[KATA]用 typescript 作一個簡易的 TodoList(二) - 用JQuery實作 | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="設計理念 顯示&#x2F;新增&#x2F;刪除 todolist  todolist 會是一堆todoItem的集合,所以要定義todoItem的形別 Content : todoItem 的內容 Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉   主要的功能 建立todoItem 完成todoItem 繪製todoList到前端的畫面上    自我分析跟 UI 耦合太">
+  <meta name="description" content="設計理念 顯示&#x2F;新增&#x2F;刪除 TodoList TodoList 會是一堆todoItem的集合,所以要定義todoItem的形別 Content : todoItem 的內容 Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉   主要的功能 建立todoItem 完成todoItem 繪製todoList到前端的畫面上    自我分析跟 UI 耦合太高">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作">
+<meta property="og:title" content="[KATA]用 typescript 作一個簡易的 TodoList(二) - 用JQuery實作">
 <meta property="og:url" content="https://blog.marsen.me/2016/10/14/2016/todolist_by_typescript_2/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="設計理念 顯示&#x2F;新增&#x2F;刪除 todolist  todolist 會是一堆todoItem的集合,所以要定義todoItem的形別 Content : todoItem 的內容 Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉   主要的功能 建立todoItem 完成todoItem 繪製todoList到前端的畫面上    自我分析跟 UI 耦合太">
+<meta property="og:description" content="設計理念 顯示&#x2F;新增&#x2F;刪除 TodoList TodoList 會是一堆todoItem的集合,所以要定義todoItem的形別 Content : todoItem 的內容 Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉   主要的功能 建立todoItem 完成todoItem 繪製todoList到前端的畫面上    自我分析跟 UI 耦合太高">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2016-10-14T02:34:27.000Z">
-<meta property="article:modified_time" content="2020-04-07T05:38:49.909Z">
+<meta property="article:modified_time" content="2021-01-26T08:12:41.273Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="TypeScript">
 <meta property="article:tag" content="BootStrap">
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      [KATA]用typescript作一個簡易的todolist(二) - 用JQuery實作
+      [KATA]用 typescript 作一個簡易的 TodoList(二) - 用JQuery實作
     </h1>
   
 
@@ -111,8 +111,8 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ol>
-<li>顯示/新增/刪除 todolist </li>
-<li>todolist 會是一堆todoItem的集合,所以要定義todoItem的形別<ul>
+<li>顯示/新增/刪除 TodoList</li>
+<li>TodoList 會是一堆todoItem的集合,所以要定義todoItem的形別<ul>
 <li>Content : todoItem 的內容</li>
 <li>Status : todoItem 的狀態,完成(done)、未完成(undo) ,設計成列舉</li>
 </ul>

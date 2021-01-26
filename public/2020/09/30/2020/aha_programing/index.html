@@ -14,7 +14,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/pI1bZ7h.png">
 <meta property="article:published_time" content="2020-09-30T06:44:53.000Z">
-<meta property="article:modified_time" content="2020-09-30T06:49:03.678Z">
+<meta property="article:modified_time" content="2021-01-26T08:23:54.865Z">
 <meta property="article:author" content="Marsen L.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/pI1bZ7h.png">
@@ -118,14 +118,14 @@ ga('send', 'pageview');
 <h4 id="OCP-Open-Closed-Principle-開閉原則"><a href="#OCP-Open-Closed-Principle-開閉原則" class="headerlink" title="OCP(Open Closed Principle) 開閉原則"></a>OCP(Open Closed Principle) 開閉原則</h4><p>software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification<br>軟體實體(類別,模組,函式等等) 應該是可以擴展的，但不能被修改</p>
 <p>同上的情境，遵循 OCP 在面對新增需求的時候，可以單純透過新增類別或方法來達成需求。</p>
 <h4 id="LSP-Liskov-Substitution-Principle-里氏替換原則"><a href="#LSP-Liskov-Substitution-Principle-里氏替換原則" class="headerlink" title="LSP(Liskov Substitution Principle) 里氏替換原則"></a>LSP(Liskov Substitution Principle) 里氏替換原則</h4><p>Subtypes must be substitutable for their base types.<br>基底類別應該要能夠被他的衍生類別給替代而不影響原本的功能</p>
-<p>這裡提到的原則，其實是對繼承的限制，在強型別語言都已經有這方面的實作了。<br>以上述的例子來說，Log/Email 的實作至少應該有一層的抽象隔離，<br>並以繼承抽象的實作來，<br>也就是說實際上如何 Log 可以是 files、DB、Clound 或任何其它的東西。  </p>
+<p>這裡提到的原則，其實是對繼承的限制，在強型別語言都已經有這方面的實作了。<br>以上述的例子來說，Log/Email 的實作至少應該有一層的抽象隔離，<br>並以繼承抽象的實作來，<br>也就是說實際上如何 Log 可以是 files、DB、Cloud 或任何其它的東西。  </p>
 <p>這裡也跟下面的 ISP 相呼應。</p>
 <h4 id="ISP-Interface-Segregation-Principles-介面隔離原則"><a href="#ISP-Interface-Segregation-Principles-介面隔離原則" class="headerlink" title="ISP(Interface Segregation Principles) 介面隔離原則"></a>ISP(Interface Segregation Principles) 介面隔離原則</h4><p>No client should be forced to depend on methods it does not use.<br>不應該讓使用者去依賴他根本不會使用到的東西</p>
 <p>介面是方法的抽象，所以我認為當一個介面有超過一個方法時，<br>就應該思考一下有沒有違背這個原則。<br>實務上會有許多的同類型的介面應該被歸屬到同一類之中，<br>簡單可行的方法是當你實作一個介面時，會不會要跟著實作許多用不到的方法呢?<br>如果有的話，試著將它們拆分成不同的介面吧。</p>
 <h4 id="DIP-Dependency-Inversion-Principle-依賴反轉原則"><a href="#DIP-Dependency-Inversion-Principle-依賴反轉原則" class="headerlink" title="DIP(Dependency Inversion Principle) 依賴反轉原則"></a>DIP(Dependency Inversion Principle) 依賴反轉原則</h4><p>High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).<br>高層模組不應該依賴於低層模組。兩者皆應該依賴抽象。</p>
 <p>Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.<br>抽象不應該依賴細節。細節應該依賴抽象<br>DRY(an acronym for “”)</p>
 <p><img src="https://i.imgur.com/pI1bZ7h.png" alt="DRY"></p>
-<p>直接透過 wiki 的圖片來說明上面的例子。<br>想像 Object A 是購物車 Object B 是 Logger,<br>Figure 1 顯示的就是直接相依的情境，而如果我們可以透過一個 ILogger 的介面就可以反轉相依，<br>使得購物車與 Logger 都相依與介面，<br>現行主流的程式也都有提供對應的 DI Framework 或 Libary，<br>只要好好使用，這個原則並不難實踐了。</p>
+<p>直接透過 wiki 的圖片來說明上面的例子。<br>想像 Object A 是購物車 Object B 是 Logger,<br>Figure 1 顯示的就是直接相依的情境，而如果我們可以透過一個 ILogger 的介面就可以反轉相依，<br>使得購物車與 Logger 都相依與介面，<br>現行主流的程式也都有提供對應的 DI Framework 或 Library，<br>只要好好使用，這個原則並不難實踐了。</p>
 <h3 id="小記"><a href="#小記" class="headerlink" title="小記"></a>小記</h3><p>說得有點太多了，以上的部份未來另外抽成相關的文章吧。</p>
 <h2 id="主文"><a href="#主文" class="headerlink" title="主文"></a>主文</h2><div class="video-container"><iframe src="https://www.youtube.com/embed/wuVy7rwkCfc" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
 
@@ -134,7 +134,7 @@ ga('send', 'pageview');
 <p>Every piece of knowledge must have a single,<br>unambiguous, authoritative representation within a system<br>每一項知識都必須在系統中具有單一，明確，權威的表示形式</p>
 </blockquote>
 <p>儘管實務上比定義更為寬鬆，我仍然認為這個一個好習慣。<br>使用 Copy/Paste 最大的問題是，當某處發現了一個錯誤，<br>我會意識到其它複製貼上的地方也有相同的錯誤，並且需要被修正。</p>
-<p>我曾經接手了一份代碼，有著大量重複代碼，為了修正一個 Bug 我需要修改 8 個地方!<br>抽像化這部份的代碼成為一個隨處可呼叫 funciton 將有很大的幫助。</p>
+<p>我曾經接手了一份代碼，有著大量重複代碼，為了修正一個 Bug 我需要修改 8 個地方!<br>抽像化這部份的代碼成為一個隨處可呼叫 function 將有很大的幫助。</p>
 <h3 id="WET"><a href="#WET" class="headerlink" title="WET"></a>WET</h3><p>另一個概念是<code>WET(Write Everything Twice)</code></p>
 <blockquote>
 <p>You can ask yourself “Haven’t I written this before?”<br>two times, but never three</p>

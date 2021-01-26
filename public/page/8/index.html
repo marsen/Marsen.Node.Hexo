@@ -167,10 +167,10 @@ ga('send', 'pageview');
       
         <h2 id="2018-11-30"><a href="#2018-11-30" class="headerlink" title="2018/11/30"></a>2018/11/30</h2><p>Planning 有沒有優先討論重點項目？</p>
 <ol>
-<li>最先討論上個 Sprint 的 UnDone </li>
+<li>最先討論上個 Sprint 的 UnDone  </li>
 <li>順序等於優先權嗎？</li>
 <li>工作是事先 Assign 好，而不是</li>
-<li>兩個 Team 的 Backlog 放在一起，結果順序是 <ul>
+<li>兩個 Team 的 Backlog 放在一起，結果順序是  <ul>
 <li>A Team (B Team 發呆)</li>
 <li>B Team (A Team 發呆)</li>
 </ul>
@@ -185,8 +185,9 @@ ga('send', 'pageview');
 <li>要問 Why：KA 面對的客戶也以中文為大宗，為什麼要英文？</li>
 </ul>
 <h2 id="2018-11-28"><a href="#2018-11-28" class="headerlink" title="2018/11/28"></a>2018/11/28</h2><blockquote>
-<p>Demo 會議是由「 PO 介紹給 stackholder ?」<br>還是「 Team 介紹給 PO ,有 stackholder 最好。」<br>如果可以看錄影就當作 Demo 過了，那還需要 Demo 嗎 ? </p>
+<p>Demo 會議是由「 PO 介紹給 stackholder ?」</p>
 </blockquote>
+<p>還是「 Team 介紹給 PO ,有 stackholder 最好。」<br>如果可以看錄影就當作 Demo 過了，那還需要 Demo 嗎 ?  </p>
 <blockquote>
 <p>三個 Team 各自有各自優先級最高的項目，這樣會不會陷入局部優化，過早進入細節 ?</p>
 </blockquote>
@@ -220,16 +221,17 @@ ga('send', 'pageview');
 <ul>
 <li><p>用更多的會議/文件/Check List作控管，有沒有辦法從 root cause 解決問題 ?</p>
 </li>
-<li><p>主管為什麼會想看「沒意義」又「不真實」的東西 ?<br><img src="https://i.imgur.com/xSq4oHY.jpg" alt=""></p>
-<h2 id="2018-11-21"><a href="#2018-11-21" class="headerlink" title="2018/11/21"></a>2018/11/21</h2></li>
-<li><p>口頭敘述</p>
+<li><p>主管為什麼會想看「沒意義」又「不真實」的東西 ?  </p>
 </li>
+</ul>
+<p><img src="https://i.imgur.com/xSq4oHY.jpg" alt="主管為什麼會想看「沒意義」又「不真實」的東西"></p>
+<h2 id="2018-11-21"><a href="#2018-11-21" class="headerlink" title="2018/11/21"></a>2018/11/21</h2><ul>
+<li>口頭敘述</li>
 </ul>
 <h2 id="2018-11-19"><a href="#2018-11-19" class="headerlink" title="2018/11/19"></a>2018/11/19</h2><ul>
 <li>Scrum 不要拿 A 會議的時間作 B 會議的事<ul>
 <li>觀注目的</li>
 <li>作該作的事</li>
-<li></li>
 </ul>
 </li>
 </ul>
@@ -411,8 +413,6 @@ ga('send', 'pageview');
 <p>MsTest 的 [TestMethod] 或是 NUnit 的[Test](XUnit 是 [Fact])，其實就是層 Wrapper<br>你在方法裡面寫的內容，只要有引發 Exception 的例外，<br>都會被這層 Wrapper 攔下來，轉成測試結果的內容。</p>
 <h2 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h2><p>測試專案根目錄應該有一份 <code>Default.srprofile</code> 檔，如下<br>將 <code>stopAfterFailures</code> 調整至適當的值(ex:500)，將會顯示所有失敗測試。<br>本案例開啟後，實際失敗的測試有 37 個</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Execution</span> <span class="attr">stopAfterFailures</span>=<span class="string">&quot;3&quot;</span> <span class="attr">testThreadCount</span>=<span class="string">&quot;1&quot;</span> <span class="attr">testSchedulingMode</span>=<span class="string">&quot;Sequential&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/specrun/yR6VVH8bDKg">SpecRun skipping testing rather than running them when executing more than 16</a></li>
 <li><a target="_blank" rel="noopener" href="https://specflow.org/plus/documentation/SpecFlowPlus-Runner-Profiles/">SpecFlow+ Runner Profiles</a></li>

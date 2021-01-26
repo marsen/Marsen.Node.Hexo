@@ -47,13 +47,13 @@ software entities (classes, modules, functions, etc.) should be open for extensi
 
 #### LSP(Liskov Substitution Principle) 里氏替換原則
 
-Subtypes must be substitutable for their base types. 
+Subtypes must be substitutable for their base types.  
 基底類別應該要能夠被他的衍生類別給替代而不影響原本的功能
 
 這裡提到的原則，其實是對繼承的限制，在強型別語言都已經有這方面的實作了。
 以上述的例子來說，Log/Email 的實作至少應該有一層的抽象隔離，  
 並以繼承抽象的實作來，  
-也就是說實際上如何 Log 可以是 files、DB、Clound 或任何其它的東西。  
+也就是說實際上如何 Log 可以是 files、DB、Cloud 或任何其它的東西。  
 
 這裡也跟下面的 ISP 相呼應。
 
@@ -83,7 +83,7 @@ DRY(an acronym for "")
 想像 Object A 是購物車 Object B 是 Logger,  
 Figure 1 顯示的就是直接相依的情境，而如果我們可以透過一個 ILogger 的介面就可以反轉相依，  
 使得購物車與 Logger 都相依與介面，  
-現行主流的程式也都有提供對應的 DI Framework 或 Libary，  
+現行主流的程式也都有提供對應的 DI Framework 或 Library，  
 只要好好使用，這個原則並不難實踐了。
 
 ### 小記
@@ -108,7 +108,7 @@ DRY(Don't Repeat Yourself 的縮寫，不要重複你自已)，一個古老的�
 我會意識到其它複製貼上的地方也有相同的錯誤，並且需要被修正。
 
 我曾經接手了一份代碼，有著大量重複代碼，為了修正一個 Bug 我需要修改 8 個地方!  
-抽像化這部份的代碼成為一個隨處可呼叫 funciton 將有很大的幫助。
+抽像化這部份的代碼成為一個隨處可呼叫 function 將有很大的幫助。
 
 ### WET
 

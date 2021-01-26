@@ -60,7 +60,7 @@ ABAP, Apex, CSS, Flex, Go, HTML, JS, Kotlin, PHP, Python, Ruby, Scala, Swift, Ty
 
 另外目前支援的 CI 服務有 Circle CI 與 Travis CI ，  
 一樣殘念的是沒有支援 Github Action 。  
-另外兩個選項目是 Other CI 與 Manunally (手動) 。  
+另外兩個選項目是 Other CI 與 Manually (手動) 。  
 我的前一篇文章就是使用手動的方式把檢查報告打到 SonarCloud。  
 雖然只隔一年，但 UI 介面上已經有些差距，我還是再作一次介紹。
 
@@ -77,7 +77,7 @@ ABAP, Apex, CSS, Flex, Go, HTML, JS, Kotlin, PHP, Python, Ruby, Scala, Swift, Ty
 Begin
 
 ```shell
-dotnet sonarscanner begin /k:"$ProjectKey" /o:"$Oragnization" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$Sonar_Login
+dotnet sonarscanner begin /k:"$ProjectKey" /o:"$Organization" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$Sonar_Login
 ```
 
 MSBuild
@@ -92,7 +92,7 @@ End
 dotnet sonarscanner end /d:"sonar.login="$Sonar_Login
 ```
 
-`$ProjectKey` 與 `$Oragnization` 這兩個變數可以在 SonarCloud 的 Overview 介面的右下角找到，  
+`$ProjectKey` 與 `$Organization` 這兩個變數可以在 SonarCloud 的 Overview 介面的右下角找到，  
 `$Sonar_Login` 則可以透過 [Security](https://sonarcloud.io/account/security) 設定。
 
 執行命名完成後，大概幾秒內就可以在 SonarCloud 中看到結果了。

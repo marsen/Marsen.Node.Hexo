@@ -16,6 +16,7 @@ tag:
 ## 情境
 
 ### 實際狀況
+
 並不是一跑到錯誤就會中斷測試，而是跑了 3 個失敗後中斷測試，
 另外執行的測試專案，是使用 SpecRun.Runner 撰寫 Cucumber 語法跑 BDD 測試。
 
@@ -34,16 +35,17 @@ MsTest 的 [TestMethod] 或是 NUnit 的[Test](XUnit 是 [Fact])，其實就是�
 都會被這層 Wrapper 攔下來，轉成測試結果的內容。
 
 ## 解決方案
+
 測試專案根目錄應該有一份 `Default.srprofile` 檔，如下
 將 `stopAfterFailures` 調整至適當的值(ex:500)，將會顯示所有失敗測試。
 本案例開啟後，實際失敗的測試有 37 個
 
 ```xml
   <Execution stopAfterFailures="3" testThreadCount="1" testSchedulingMode="Sequential" />
-``` 
-
+```
 
 ## 參考資料
+
 - [SpecRun skipping testing rather than running them when executing more than 16](https://groups.google.com/forum/#!topic/specrun/yR6VVH8bDKg)
 - [SpecFlow+ Runner Profiles](https://specflow.org/plus/documentation/SpecFlowPlus-Runner-Profiles/)
 

@@ -60,7 +60,7 @@ W 社最主要讓我認識了 Gelis 大大，還有獨立接手一個專案的�
 有其時空背景的因素在，而敏捷團隊講求的是跨職能(ps.我認為應是團隊而不是個人的跨職能)。
 對於我來說，我個人也願意多學一點，但是反而有些貪多嚼不爛，  
 時間會是我最大的敵人，也是[朋友](https://blog.marsen.me/2016/12/05/2016/be_friend_with_time/)，  
-而要考慮的會是**價值與風險**，單純的一直學「新」技術，沒有累積話只是一種浪費(比如說:[Sliverlight](https://zh.wikipedia.org/wiki/Microsoft_Silverlight))，  
+而要考慮的會是**價值與風險**，單純的一直學「新」技術，沒有累積話只是一種浪費(比如說:[SliverLight](https://zh.wikipedia.org/wiki/Microsoft_Silverlight))，  
 所以我現在遇到新技術，會讓子彈飛一會兒，畢竟時間與精力都是稀缺資源。
 
 開發之外也有很多重要的事，這些在「軟技能」一書可以看到，
