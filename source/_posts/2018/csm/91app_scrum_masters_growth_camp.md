@@ -8,10 +8,11 @@ tag:
 
 #### 工程人員一定要分析後才能投點嗎 ?(有關 Planning 會議很長)
 
-> 記得設定 Timebox。
+> 記得設定 TimeBox
 Scrum 是經驗法則，可以拿已經作過投點的 Item 作為比較基準。
 如果有未知與風險，當下不要過度鑽入細節。
 你可以
+
 - 開一個小的 Task 用來作調研與評估
 - 開一個很大 Task 之後再用來 BreakDown
 - 如果它是高價值又高風險，就優先作它吧
@@ -28,9 +29,10 @@ O↓ 事實(每個人看到的都不一樣)
 Interpretive 意義與價值觀
 Decisional 決定
 
-#### Bussiness DevOps  
-![](https://imgur.com/x0imNlo.jpg)
-![](https://i.imgur.com/A04B5uG.jpg)
+#### Business DevOps
+
+![Concept to Market](https://imgur.com/x0imNlo.jpg)
+![ah ha! to ka ching!](https://i.imgur.com/A04B5uG.jpg)
 
 #### 迭代與增量真的有幫助嗎 ? (Agile 之前我們怎麼工作的?/Scrum 真的好嗎 ?)
 
@@ -46,7 +48,8 @@ Decisional 決定
 
 > 這句話的潛台詞是「還有其它的方法」。
 
-####  團隊成員恐懼端到端的開發(新手SM與新手團隊)
+#### 團隊成員恐懼端到端的開發(新手SM與新手團隊)
+
 - 讓 1 個 Sprint 先完成 1個最高優先級的Item (初期導入 Scrum 怎麼作?)
 
 > Scrum 對團隊的要求其實蠻高的，
@@ -62,23 +65,29 @@ Decisional 決定
 但是要失敗的有意義。
 
 ##### 後續
+
 11/23 團隊作的工作量實際上達到 254/3xx (Commit 3xx，完成254。)，
 sprint 是成功的，但是 Velocity 是失準的。
-> 小心得: 
-> 1. 所謂的 Commit 如果不是對自已 Commit 起不了激勵作用，  
-> 如果 Team 與 PO 不認為「我們是一個Team」，而還是分 PMO 與 R&D
-> 那麼 Commit 就會變成畫押背鍋的儀式。
+
+> 小心得:
+>
+> 1. 所謂的 Commit 如果不是對自已 Commit 起不了激勵作用,
+>   如果 Team 與 PO 不認為「我們是一個Team」，而還是分 PMO 與 R&D
+>   那麼 Commit 就會變成畫押背鍋的儀式。
 > 2. 氣象報告失準怎麼辦，颱風沒來大家都開心嗎？(從 100→254，是效率大爆發，還是浮報點數了？)
 
 #### Scrum 的神奇魔力
-![](https://i.imgur.com/T3BV4F3.png)
+
+![Scrum 的神奇魔力](https://i.imgur.com/T3BV4F3.png)
 
 #### 當老闆就是 PO (PO 與 Scrum Master 出現了階級關係)
+
 - 找一個小 PO (作 PO 真正該作的事)
 
 > 正視真正的問題是「你沒有 PO」
 
 #### 當 Team 在兩個作法兩難的時候
+
 - 作一個 Check Point，保留可以回來重新審視的機會
 
 > 現實中有遇到類似的狀況，
@@ -94,7 +103,7 @@ SM 的問題是「認為該作，但是沒有技術 Know How 所以不知道該�
 至少在 Scrum 中我認為可以透過 Velocity 作為指標。
 也可以透過 DoD 決定品質的程度(ex:)。
 另外，重構不是重作，
-重構應該是時時發生的，寫測試可以讓這件事被量化， 
+重構應該是時時發生的，寫測試可以讓這件事被量化，  
 難以測試的代碼本身就有一定的壞味道(工程實踐與遇到的困難就以後再寫了…)。
 
 #### Team 不該 Challenge Item Value 嗎 ?(這樣跟以前需求來就作有什麼不同?)
@@ -105,7 +114,6 @@ Team 可以決定怎麼作，與 PO 討論理解為什麼要這麼作，
 並不是所謂的「需求來就作」，而把 PMO 的角色拿掉，
 是為了減少隔閤，讓團隊更接近商務端。
 聽起來這個情境，Team 與 PO 仍有抗拒心理...
-
 
 #### 身兼開發的 Scrum Master
 
@@ -120,12 +128,13 @@ Team(1+1+1+1...) x SM (0.9 or 1.1) = 生產力
 作出來就好了(黑貓白貓能抓老鼠就是好貓...)
 很務實，但是很傷害團隊…，不要有機會讓團隊聽到這種話
 
-#### 結束就結束了。
+#### 結束就結束了
 
 ## 參考
+
 - [[心得] ScrumMaster自我突破訓練營](https://medium.com/terryisbloggingonagile/%E5%BF%83%E5%BE%97-scrummaster%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-3ce6f7c8c6)
 - [ScrumMaster 自我突破訓練營 in 91APP ：ScrumMaster的生存之道](https://medium.com/@imfufu/scrummaster-%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-in-91app-scrummaster%E7%9A%84%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93-678f0774d967)
-- [ORID簡報- By 茶米](https://drive.google.com/file/d/1CmJJGP7dpnSUzUP3ZrA8nNO1a6aKxM0Z/view?usp=sharing)
+- [ORID 簡報- By 茶米](https://drive.google.com/file/d/1CmJJGP7dpnSUzUP3ZrA8nNO1a6aKxM0Z/view?usp=sharing)
 - [Scrum Master自我突破訓練營 — 心得分享](https://medium.com/@linchi/scrum-master%E8%87%AA%E6%88%91%E7%AA%81%E7%A0%B4%E8%A8%93%E7%B7%B4%E7%87%9F-%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB-9846fa255a27)
 
 (fin)
