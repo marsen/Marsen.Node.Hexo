@@ -5,15 +5,15 @@
   
   <title>.NET PDB File 介紹 | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:   A program database (.pdb) f">
+  <meta name="description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:    A program database (.pdb)">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".NET PDB File 介紹">
 <meta property="og:url" content="https://blog.marsen.me/2016/11/28/2016/dotnet_pdb_file/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:   A program database (.pdb) f">
+<meta property="og:description" content="PDB(Program Database Files ).Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。 MSDN 這樣說程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。 原文:    A program database (.pdb)">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2016-11-28T15:54:55.000Z">
-<meta property="article:modified_time" content="2020-04-07T05:38:49.905Z">
+<meta property="article:modified_time" content="2021-01-26T08:42:18.928Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content=".Net Framework">
 <meta name="twitter:card" content="summary">
@@ -107,9 +107,9 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，<br>其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
+        <h3 id="PDB-Program-Database-Files"><a href="#PDB-Program-Database-Files" class="headerlink" title="PDB(Program Database Files )"></a>PDB(Program Database Files )</h3><p><strong>.Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。</strong></p>
 <h4 id="MSDN-這樣說"><a href="#MSDN-這樣說" class="headerlink" title="MSDN 這樣說"></a>MSDN 這樣說</h4><p>程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、<br>方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。</p>
-<p>原文: </p>
+<p>原文:  </p>
 <blockquote>
 <p><em>A program database (.pdb) file, also called a symbol file,</em><br><em>maps the identifiers that you create in source files for classes,</em><br><em>methods, and other code to the identifiers that are used in the</em><br><em>compiled executables of your project.</em></p>
 </blockquote>
@@ -125,32 +125,17 @@ ga('send', 'pageview');
 </ol>
 <h3 id="pdb-檔案與-dll-或可執行檔-需要完全符合"><a href="#pdb-檔案與-dll-或可執行檔-需要完全符合" class="headerlink" title=".pdb 檔案與.dll(或可執行檔)需要完全符合"></a>.pdb 檔案與.dll(或可執行檔)需要完全符合</h3><p>偵錯工具只會載入與可執行檔建置時所建立的 .pdb 檔案完全相同之可執行檔的 .pdb 檔案<br>*相同原始碼在不同機器建置的執行檔與PDB，偵錯工具將無法進行偵錯</p>
 <h3 id="看看-pdb檔的內容"><a href="#看看-pdb檔的內容" class="headerlink" title="看看.pdb檔的內容"></a>看看.pdb檔的內容</h3><ol>
-<li>開啟 %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\DIA SDK\Samples\DIA2Dump\dia2dump.sln</li>
+<li><p>開啟 %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\DIA SDK\Samples\DIA2Dump\dia2dump.sln</p>
+</li>
+<li><p>執行以下命令  </p>
+</li>
 </ol>
-<ol start="2">
-<li>執行以下命令<br><code>Dia2Dump pdbfilepath &gt;&gt; dumpfileName.txt</code><br>ex:<br><code>Dia2Dump C:\myproj\bin\debug\myproj.pdb &gt;&gt; myproj_dump.txt</code></li>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; Dia2Dump pdbfilepath &gt;&gt; dumpfileName.txt</span><br><span class="line">&gt; Dia2Dump C:\myproj\bin\debug\myproj.pdb &gt;&gt; myproj_dump.txt`</span><br></pre></td></tr></table></figure>
+<ol>
+<li>輸出的結果大致如下  </li>
 </ol>
-<ol start="3">
-<li>輸出的結果大致如下 </li>
-</ol>
-<pre><code>Function       : In MetaData, [00001F16][0001:00001F16], len = 000000ED, GetBookList
-Function attribute:
-Function info:
-
-
-//中略
-
-Function: [0001F71A][0001:0001F71A] GetSalePage b_231
-Function: [00001F16][0001:00001F16] GetBookList
-Function: [0001F4F0][0001:0001F4F0] GetLayoutByAd b_0
-
-//中略
-
-** GetBookList
-
-line 46 at [00001F16][0001:00001F16], len = 0x1    D:\Repo\Mark_Lin\MYPROJ\WebAPI\Controllers\BookController.cs
-line 47 at [00001F17][0001:00001F17], len = 0x6
-line 48 at [00001F1D][0001:00001F1D], len = 0x1C                 </code></pre><h5 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h5><ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Function       : In MetaData, [00001F16][0001:00001F16], len = 000000ED, GetBookList</span><br><span class="line">Function attribute:</span><br><span class="line">Function info:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//中略</span><br><span class="line"></span><br><span class="line">Function: [0001F71A][0001:0001F71A] GetSalePage b_231</span><br><span class="line">Function: [00001F16][0001:00001F16] GetBookList</span><br><span class="line">Function: [0001F4F0][0001:0001F4F0] GetLayoutByAd b_0</span><br><span class="line"></span><br><span class="line">//中略</span><br><span class="line"></span><br><span class="line">** GetBookList</span><br><span class="line"></span><br><span class="line">line 46 at [00001F16][0001:00001F16], len = 0x1	 D:\Repo\Mark_Lin\PROJ\WebAPI\Controllers\BookController.cs</span><br><span class="line">line 47 at [00001F17][0001:00001F17], len = 0x6</span><br><span class="line">line 48 at [00001F1D][0001:00001F1D], len = 0x1C</span><br></pre></td></tr></table></figure>
+<h4 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h4><ul>
 <li><a target="_blank" rel="noopener" href="http://anferneehardaway.pixnet.net/blog/post/6273453">http://anferneehardaway.pixnet.net/blog/post/6273453</a></li>
 <li><a target="_blank" rel="noopener" href="https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx">https://msdn.microsoft.com/zh-tw/library/ms241903(v=vs.100).aspx</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know">http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know</a></li>
