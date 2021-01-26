@@ -13,7 +13,7 @@ Stripe 可以透過 Oauth 的方式綁定不同的 Stripe 帳戶，
 對於電子商務的平台來說，相當的方便，  
 它可以透過簡單的[授權機制](https://stripe.com/docs/connect/standard-accounts#revoked-access)，取得客戶的金流資訊，  
 
-![Strip Oauth Flow](/images/2020/1/requestbin_01.jpg)
+![Strip Oauth Flow](/images/2020/1/requested_01.jpg)
 
 這時候問題來了，營運部門發現有的時候客戶會不小心將授權解除，  
 這會導致帳務上的問題，所以需要在第一時間被通知，  

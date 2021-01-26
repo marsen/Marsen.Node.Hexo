@@ -38,7 +38,7 @@ Template 與 Code Snippet 並不使用共同的範例檔，
 在搜尋框輸入 `Template` 找到 `Template Explorer`  
 點擊新增圖示，進行編輯，
 其它就跟原本的 Snippet 差不多，也可以提供參數化入與 short cut
-![Create Template](/images/2020/1/reshaper_tempalte_01.jpg)
+![Create Template](/images/2020/1/reshaper_template_01.jpg)
 
 ## 補充
 
@@ -46,7 +46,7 @@ Template 與 Code Snippet 並不使用共同的範例檔，
 
 Resharper > Option > Intellisense > General
 
-![Option](/images/2020/1/reshaper_tempalte_02.jpg)
+![Option](/images/2020/1/reshaper_template_02.jpg)
 
 ## 參考
 

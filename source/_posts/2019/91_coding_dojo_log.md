@@ -47,7 +47,6 @@ tag:
 - 一個變數活很久 最後可能被複寫 會容易產生side effects
 - zcc (Vim in Visual Studio)
 
-
 ### 壞味道
 
 - 重構的壞味道，使用私有變數而非方法

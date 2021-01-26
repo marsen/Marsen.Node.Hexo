@@ -130,7 +130,7 @@ public class FizzBuzz
 ### 重構餘數檢查
 
 這一步真的非常的的小，我想大多數的人甚至會跳過這步驟的重構，  
-我只是把餘數檢查抽成私有方法，可以透過 `Resharp` 快速重構。
+我只是把餘數檢查抽成私有方法，可以透過 `Resharper` 快速重構。
 
 ```csharp
 public class FizzBuzz
@@ -661,9 +661,9 @@ public class FizzBuzz
 #### 參數優化
 
 把 r、n 這類較沒意義的命名改成 input 與 rule，
-單純是為了讓 `Aggreate` 的可讀性較高一些。  
+單純是為了讓 `Aggregate` 的可讀性較高一些。  
 接下來這個異動的幅度較大，實務上我不會這樣作，  
-讓 `Apply` 的方法簽章順序與 `Aggreate` 一樣把 `input` String 放在最前面，  
+讓 `Apply` 的方法簽章順序與 `Aggregate` 一樣把 `input` String 放在最前面，  
 真的真的非常沒有必要，因為會異動到介面。
 
 ```csharp
