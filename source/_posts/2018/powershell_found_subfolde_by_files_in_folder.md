@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記]用 Command Line 取得資料夾內包含特定檔案的子資料夾"
+title: "[實作筆記] 用 Command Line 取得資料夾內包含特定檔案的子資料夾"
 date: 2018/11/23 13:43:00
 tag:
     - PowerShell

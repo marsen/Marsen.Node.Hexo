@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記]重灌開發環境"
+title: "[實作筆記] 重灌開發環境"
 date: 2018/04/17 11:34:51
 tag:
     - 實作筆記
@@ -16,9 +16,9 @@ visual studio 預設會安裝 typescript 2.6
 ### 解決步驟
 
 1. 在專案目錄執行 `npm i` 重新安裝相關module
-2. complie 後發現 `node_modules/@types` 中有檔案無法成功編譯
+2. compile 後發現 `node_modules/@types` 中有檔案無法成功編譯
 3. 移除 `node_modules/@types` 整個資料夾
-4. 重新 complie 後仍會無法成功
+4. 重新 compile 後仍會無法成功
 5. 移除 `C:\Program Files (x86)\Microsoft SDKs\TypeScript\2.6` (非必要,好像要看vs預設載入的版本為何?)
 
 ## 2.多語系dll衝突

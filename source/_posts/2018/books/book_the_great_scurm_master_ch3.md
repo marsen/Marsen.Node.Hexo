@@ -182,6 +182,6 @@ Scrum 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Te
 - [Scrum價值觀問題溯源](https://www.jianshu.com/p/1293bfe84446)
 - [Cynefin 框架](https://en.wikipedia.org/wiki/Cynefin_framework)
 - [決策於渾沌之中](https://www.hbrtaiwan.com/article_content_AR0000595.html)
-- [Stacey Matrix and Cynefin framework](https://www.jianshu.com/p/a17aaadb4d80) 
+- [Stacey Matrix and Cynefin framework](https://www.jianshu.com/p/a17aaadb4d80)
 
 (fin)

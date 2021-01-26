@@ -1,9 +1,10 @@
 ---
-title: "CSM Day1"
+title: "[活動筆記] CSM Day1"
 date: 2018/10/27 21:10:01
 tag:
     - Scrum
     - Agile
+    - 活動筆記
 ---
 
 ## 課程簡介
