@@ -1,15 +1,17 @@
 ---
-title: "單元測試與重構記錄(二) 發問篇"
+title: "[實作筆記] 單元測試與重構記錄(二) 發問篇"
 date: 2017/12/08 19:04:42
 tag:
   - Unit Testing
   - Integrated Testing
 ---
 ## Q1 Controller 要測試嗎？
-### Logics in controller 
+
+### Logics in controller
+
 ```csharp
 [Route("Member/Get/{Id}")]
-public JsonResult GetMemeberList(long Id, string cc = "f")
+public JsonResult GetMemberList(long Id, string cc = "f")
 {
     var cleanCache = false;
     //// logics here
@@ -20,9 +22,9 @@ public JsonResult GetMemeberList(long Id, string cc = "f")
 
     try
     {
-        var memeberList = this.memeberService.GetmemeberList(Id, cleanCache);            
+        var memberList = this.memberService.GetMemberList(Id, cleanCache);            
         //// logics here
-        if (memeberList.Any())
+        if (memberList.Any())
         {
             //// do something ...
         }
@@ -40,15 +42,19 @@ public JsonResult GetMemeberList(long Id, string cc = "f")
     }
 }
 ```
+
 #### 自問自答
+
 我認為要，
-但是對於WebAPI回傳的`JsonResult`或是`ActionResult` 
+但是對於WebAPI回傳的`JsonResult`或是`ActionResult`  
 需要轉形才能作驗証  
 可以考慮整合測試勝於單元測試,
 Controller的通常是面對 Client Side 的呼叫.
 
 ## Q2 當 Controller 只有取資料的邏輯
-### No Logics in Controller 
+
+### No Logics in Controller
+
 ```csharp
 public ActionResult Index()
 {    
@@ -57,19 +63,25 @@ public ActionResult Index()
 ```
 
 ## Q3 當 Service 只有取資料的邏輯
-### No Logics in Service 
+
+### No Logics in Service
+
 ```csharp
 public Member Get(long id)
 {    
     return this.DataAccessor.GetMember(id);
 }
 ```
-#### 自問自答
+
+#### Q3.自問自答
+
 我認為不要,
 要測試商業邏輯,不要在意覆蓋率
 
 ## Q4. 當Service只有取Catch資料的邏輯
+
 ### No Logics in Service , just call another service
+
 ```csharp
 public Member Get(long id)
 {   
@@ -83,14 +95,18 @@ public Member Get(long id)
     );    
 }
 ```
-#### 自問自答
+
+#### Q4.自問自答
+
 同上,仍然不需要,
-要測試商業邏輯,不要在意覆蓋率, 
+要測試商業邏輯,不要在意覆蓋率,  
 要注意的或許是`CacheService.GetCacheData`是不是有包測試 ?
 一般來說,Cache的功能很泛用,測試的報酬率很高
 
 ## Q5. 承上,當邏輯存在Func參數之中？
-### Logics in Func 
+
+### Logics in Func
+
 ```csharp
 public Member Get(long id)
 {   
@@ -112,14 +128,18 @@ public Member Get(long id)
     );    
 }
 ```
-#### 自問自答
+
+#### Q5.自問自答
+
 暫時無解,
 或許是這樣Pattern不適合測試,需要調整架構嗎？
 為了測試多包成一個公開方法,反而失去匿名函數的彈性優點,
 不在匿名函數內寫邏輯更不合理,待求解答
 
 ## Q6.當邏輯在DA層或ORM的Query中要如何測試？
+
 ### Logics in ORM
+
 ```csharp
 上略...
 using (var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
@@ -137,25 +157,32 @@ using (var transactionScope = new TransactionScope(TransactionScopeOption.Requir
     }
 }
 ```
-#### 自問自答
+
+#### Q6.自問自答
+
 不適用單元測試,應該整合測試作包覆
 
 ## Q7. 當邏輯在MappingProfile該如何測試?
+
 ### Logics in MappingProfile
+
 ```csharp
 protected override void Configure()
 {
 Mapper.CreateMap<PageEntity, UserPageEntity>()
-	  .ForMember(i => i.Id, s => s.MapFrom(i => i.User_Id))
-	  .ForMember(i => i.Title, s => s.MapFrom(i => i.User_Name))
-	  .ForMember(i => i.PageName, s => s.MapFrom(i => i.User_Name + i.User_LastName))
-	  .ForMember(i => i.LightBox, s => s.MapFrom(i => i.User_Sex == "male" ? true : false));
+  .ForMember(i => i.Id, s => s.MapFrom(i => i.User_Id))
+  .ForMember(i => i.Title, s => s.MapFrom(i => i.User_Name))
+  .ForMember(i => i.PageName, s => s.MapFrom(i => i.User_Name + i.User_LastName))
+  .ForMember(i => i.LightBox, s => s.MapFrom(i => i.User_Sex == "male" ? true : false));
 }
 ```
-#### 自問自答
+
+#### Q7. 自問自答
+
 要作測試,檢查欄位Mapping是否正確,
 但實務上若重用性不高,寫MappingProfile不如直接在代碼內轉換.
 可以少寫MappingProfile的測試.
 
 待解答...
+
 (fin)
