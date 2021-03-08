@@ -82,7 +82,7 @@ TDD 則為 Test-Driven **Development**。
 購物車的畫面如上，我會使用 C# 的 ASP.NET Core 進行開發，  
 雖然我會延用 ASP.NET 所提供的 MVC 框架，但我也會試著使用 DDD 的概念去設計，  
 我會設計一系列的 Domain Model 並且使用 Domain Service 作為隔離，  
-MVC 的 Controller 我會視為 DDD 的 Application Service，
+MVC 的 Controller 我會視為 DDD 的 Application Service，  
 這裡會出現 View Model，不同於 Domain Model，View Model 由 UI 所需要的資料決定。
 更多的細節會記錄在後續的筆記當中。
 
