@@ -206,8 +206,9 @@ Offer : Get
 ### 2020
 
 我在 2020 年 3 月前往 A 社，擔任 Scrum Master。
-### 20210322
 
-關於 N 社的新聞與社評幾則。
+### 20210322 更新  
+
+[關於 N 社的新聞與社評幾則](https://blog.marsen.me/2021/03/22/2021/next_bank_update/)。
 
 (fin)
