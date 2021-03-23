@@ -3,6 +3,8 @@ title: "[生活筆記] 將來銀行與純網銀一些有的沒的"
 date: 2021/03/22 15:46:38
 ---
 
+![Next Bank](https://www.nextbank.com.tw/images/img-logos_02.webp)
+
 ## 前情提要
 
 將來銀行是台灣三大純網銀(Line、樂天)中,  
