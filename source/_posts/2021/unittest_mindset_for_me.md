@@ -36,6 +36,7 @@ tag:
 很多時候為了 DP 而 DP, 而重構我可以作到小幅度的重構, 精簡程式碼
 但是如果要重構成另一個 Pattern 時就又有點卡住了，所以我想我可能沒有掌握住軟體 Design 的技巧
 
+<!--
 ## 導師 W 回饋
 
 你的想法有些問題。
@@ -58,11 +59,12 @@ tag:
 對於結構設計來說，最爲重要的會先界定各種類型的物件。
 例如 Page (View), UI Controller (Controller), Service, Dao, Entity 等個類型的物件。
 這些各種類型的物件，正是軟體人員需要爲其測試的 "單元"
+-->
 
 ## 反思與小結
 
 最近參加了 [Implementing Domain-driven Design](https://www.tenlong.com.tw/products/9787121224485) 的讀書會，  
-像是導師 W 所說，學習了單元測試與 TDD 後，  
+像是導師所說，學習了單元測試與 TDD 後，  
 試著應用在實務上還是有所困難的，  
 所以我刻意建立了一些專案用來學習。  
 
