@@ -59,9 +59,10 @@ ex:
 ex:
 
 | TYPE | NAME | VALUE | TTL |
-|---|---|---|---|---|
+|---|---|---|---|
 | CName  | * | username.xyz | auto |
 | CName  | blog | username.github.io | auto |
+
 更多請參考「[購買網域到設定DNS](http://blog.marsen.me/2016/08/21/setting_DNS_with_google/)」.
 
 ## 透過Hexo部署

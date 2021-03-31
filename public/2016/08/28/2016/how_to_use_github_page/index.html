@@ -13,7 +13,7 @@
 <meta property="og:description" content="前置作業 你要有一個 GitHub 帳號  建立github page如果不排斥看原文，可以直接參考    建立一個 Repository , 並且命名為 username.github.io , 這裡的 username 請使用你的 GitHub 帳號的 username.    clone username.github.io 到你的本機上. 1git clone https:&#x2F;&#x2F;github">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2016-08-27T20:56:27.000Z">
-<meta property="article:modified_time" content="2021-01-26T07:22:42.132Z">
+<meta property="article:modified_time" content="2021-03-31T04:48:00.053Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="Git">
@@ -133,7 +133,29 @@ username.xyz
 username.xyz</code></pre></li>
 <li>在Name Servers (例如<a target="_blank" rel="noopener" href="https://www.cloudflare.com/">cloudflare</a>)上設定 <code>CNAME</code> 到github page,<br>將 <code>blog.username.xyz</code> 綁定到 <code>username.github.io</code><br>ex:</li>
 </ol>
-<p>| TYPE | NAME | VALUE | TTL |<br>|—|—|—|—|—|<br>| CName  | * | username.xyz | auto |<br>| CName  | blog | username.github.io | auto |<br>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
+<table>
+<thead>
+<tr>
+<th>TYPE</th>
+<th>NAME</th>
+<th>VALUE</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CName</td>
+<td>*</td>
+<td>username.xyz</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>CName</td>
+<td>blog</td>
+<td>username.github.io</td>
+<td>auto</td>
+</tr>
+</tbody></table>
+<p>更多請參考「<a href="http://blog.marsen.me/2016/08/21/setting_DNS_with_google/">購買網域到設定DNS</a>」.</p>
 <h2 id="透過Hexo部署"><a href="#透過Hexo部署" class="headerlink" title="透過Hexo部署"></a>透過Hexo部署</h2><p>Hexo基本概念可以參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/index.html">官方中文文件</a> .</p>
 <ol>
 <li><p>重點在於 <code>_config.yml</code> 的設定</p>
