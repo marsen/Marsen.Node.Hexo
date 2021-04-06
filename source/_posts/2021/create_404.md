@@ -55,6 +55,8 @@ date: 2021-04-06 10:36:15
 這個主要也是為了讓使用者"感覺"他仍然在同一個網站之中,  
 而減低跳轉率.  
 
+下面可以使用 markdown 語法編輯
+
 ## 參考
 
 - [Creating a custom 404 page for your GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site)
