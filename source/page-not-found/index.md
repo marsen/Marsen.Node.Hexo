@@ -1,9 +1,10 @@
 ---
-title: '404 NOT FOUND (+^ω^+)'
-date: 2020-09-12 23:01:35
+title: '404 NOT FOUND'
 comments: false
 layout: true
 permalink: /404.html
 ---
 
-## Page Not Found
+你所找尋的頁面不存在.
+
+(fin)
