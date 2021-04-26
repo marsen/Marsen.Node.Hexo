@@ -13,7 +13,7 @@
 <meta property="og:description" content="原文描述 Visual Studio 的 Test Explorer 在跑測試，如果遇到失敗，會直接中斷，比如說有 2000 個測試案例 跑到第 1300 個時測試失敗就會中斷剩下的 700 個案例會不執行直接略過。  情境實際狀況並不是一跑到錯誤就會中斷測試，而是跑了 3 個失敗後中斷測試，另外執行的測試專案，是使用 SpecRun.Runner 撰寫 Cucumber 語法跑 BDD 測試。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2018-11-19T03:40:45.000Z">
-<meta property="article:modified_time" content="2021-02-02T17:18:30.363Z">
+<meta property="article:modified_time" content="2021-04-23T07:51:28.423Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="Testing">
 <meta property="article:tag" content="踩雷筆記">
@@ -47,7 +47,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -118,6 +118,7 @@ ga('send', 'pageview');
 <p>MsTest 的 [TestMethod] 或是 NUnit 的[Test](XUnit 是 [Fact])，其實就是層 Wrapper<br>你在方法裡面寫的內容，只要有引發 Exception 的例外，<br>都會被這層 Wrapper 攔下來，轉成測試結果的內容。</p>
 <h2 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h2><p>測試專案根目錄應該有一份 <code>Default.srprofile</code> 檔，如下<br>將 <code>stopAfterFailures</code> 調整至適當的值(ex:500)，將會顯示所有失敗測試。<br>本案例開啟後，實際失敗的測試有 37 個</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Execution</span> <span class="attr">stopAfterFailures</span>=<span class="string">&quot;3&quot;</span> <span class="attr">testThreadCount</span>=<span class="string">&quot;1&quot;</span> <span class="attr">testSchedulingMode</span>=<span class="string">&quot;Sequential&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/specrun/yR6VVH8bDKg">SpecRun skipping testing rather than running them when executing more than 16</a></li>
 <li><a target="_blank" rel="noopener" href="https://specflow.org/plus/documentation/SpecFlowPlus-Runner-Profiles/">SpecFlow+ Runner Profiles</a></li>
@@ -313,7 +314,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰","你在我左邊，覺得我太右;我在你左邊，你覺得我太左。我不知道我在哪裡，世界是圓的，而你是中心。","Those who can, do, and those who can't, teach."];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰","你在我左邊，覺得我太右;我在你左邊，你覺得我太左。我不知道我在哪裡，世界是圓的，而你是中心。","Those who can, do, and those who can't, teach.","良好的習慣不是枷鎖，而是讓你更忠於自已"];
 </script>
   
 

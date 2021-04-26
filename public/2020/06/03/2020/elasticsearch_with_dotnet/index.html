@@ -5,15 +5,15 @@
   
   <title>[實作筆記] Elasticsearch Insert Data with .Net   | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前篇 上次使用 Nlog 直接與 ElasticSearch 作結合，這次來看看怎麼賽入資料給 ElasticSearch 。 NEST一般來說，ElasticSearch 只要透過呼叫 API 就可但是我將使用 C# 的 Nuget 套件 NEST 來簡化呼叫 API 的行為。 步驟安裝套件1Install-Package NEST 建立連線123var node &#x3D; new Uri(&amp;quot">
+  <meta name="description" content="前篇 上次使用 Nlog 直接與 ElasticSearch 作結合，這次來看看怎麼賽入資料給 ElasticSearch 。 NEST一般來說，ElasticSearch 只要透過呼叫 API 就可但是我將使用 C# 的 Nuget 套件 NEST 來簡化呼叫 API 的行為。 步驟安裝套件1Install-Package NEST  建立連線123var node &#x3D; new Uri(&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[實作筆記] Elasticsearch Insert Data with .Net  ">
 <meta property="og:url" content="https://blog.marsen.me/2020/06/03/2020/elasticsearch_with_dotnet/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="前篇 上次使用 Nlog 直接與 ElasticSearch 作結合，這次來看看怎麼賽入資料給 ElasticSearch 。 NEST一般來說，ElasticSearch 只要透過呼叫 API 就可但是我將使用 C# 的 Nuget 套件 NEST 來簡化呼叫 API 的行為。 步驟安裝套件1Install-Package NEST 建立連線123var node &#x3D; new Uri(&amp;quot">
+<meta property="og:description" content="前篇 上次使用 Nlog 直接與 ElasticSearch 作結合，這次來看看怎麼賽入資料給 ElasticSearch 。 NEST一般來說，ElasticSearch 只要透過呼叫 API 就可但是我將使用 C# 的 Nuget 套件 NEST 來簡化呼叫 API 的行為。 步驟安裝套件1Install-Package NEST  建立連線123var node &#x3D; new Uri(&amp;quo">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-06-03T02:11:06.000Z">
-<meta property="article:modified_time" content="2020-06-26T14:49:59.012Z">
+<meta property="article:modified_time" content="2021-04-23T07:51:28.476Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -112,14 +112,19 @@ ga('send', 'pageview');
 <p>上次使用 Nlog 直接與 ElasticSearch 作結合，<br>這次來看看怎麼賽入資料給 ElasticSearch 。</p>
 <h2 id="NEST"><a href="#NEST" class="headerlink" title="NEST"></a>NEST</h2><p>一般來說，ElasticSearch 只要透過呼叫 API 就可<br>但是我將使用 C# 的 Nuget 套件 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/introduction.html">NEST</a> 來簡化呼叫 API 的行為。</p>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package NEST</span><br></pre></td></tr></table></figure>
+
 <h3 id="建立連線"><a href="#建立連線" class="headerlink" title="建立連線"></a>建立連線</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node = <span class="keyword">new</span> Uri(<span class="string">&quot;http://localhost:9200&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> settings = <span class="keyword">new</span> ConnectionSettings(node);</span><br><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> ElasticClient(settings);</span><br></pre></td></tr></table></figure>
+
 <h3 id="寫入資料"><a href="#寫入資料" class="headerlink" title="寫入資料"></a>寫入資料</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="keyword">new</span></span><br><span class="line">&#123;</span><br><span class="line">    name = <span class="string">&quot;test name&quot;</span>,</span><br><span class="line">    timestamp = DateTime.Now.ToString(<span class="string">&quot;yyyy-MM-ddTHH:mm:ss.fffffffK&quot;</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">string</span> indexName = <span class="string">$&quot;test-index-<span class="subst">&#123;DateTime.Now:yyyy.MM.dd&#125;</span>&quot;</span>;</span><br><span class="line">client.Index(json, idx =&gt; idx.Index(indexName));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Create-Index-Pattern"><a href="#Create-Index-Pattern" class="headerlink" title="Create Index Pattern"></a>Create Index Pattern</h3><p>連線進入 Kibana (<a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601/</a>),  </p>
 <p>Setting &gt; Kibana &gt; Index patterns &gt; Create index pattern  </p>
 <p>Step 1 of 2: Define index pattern<br>輸入 <code>test-index-*</code>  </p>
 <p>Step 2 of 2: Configure settings<br>記得選取時間軸(x軸)為 <code>timestamp</code>，這裡會透過 automap 對應欄位，<br>故在產生測試資料時，記得先產出時間資料，<br>這個範例我使用的格式為</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DateTime.Now.ToString(<span class="string">&quot;yyyy-MM-ddTHH:mm:ss.fffffffK&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <h2 id="設計共用型別"><a href="#設計共用型別" class="headerlink" title="設計共用型別"></a>設計共用型別</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Record</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> DateTime Created &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Type &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> Object Record &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>想法是通用類別，或許用抽像類別繼承也可以 ?<br>Created 欄位用來記錄資料產生時間，<br>Type 用來記錄 Record 的型別，<br>Record 用來記錄實際的資料。</p>
 <p>預計未來可能會需要取出 Json 資料再轉成物件操作。</p>
 <p>大概就醬。</p>
@@ -357,7 +362,7 @@ ga('send', 'pageview');
 
 
 <script>  
-  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰","你在我左邊，覺得我太右;我在你左邊，你覺得我太左。我不知道我在哪裡，世界是圓的，而你是中心。","Those who can, do, and those who can't, teach."];
+  var sayings = ["","理性與感性的界線在好奇心","There's only one way to avoid criticism: do nothing, say nothing, and be nothing.--- Aristotle","Genius is in the idea. Impact comes from action. --- Together is better","The best way to find out if it will work is to do it. --- Together is better","To go fast, go alone. To go far, go together. --- African proverb","保持距離才能安穩飛翔","永遠不夠糟到會往下掉，但也永遠不夠好到可以贏得任何東西，那停滯的狀態讓你沮喪到想要尖叫。--- Fever Pitch","無論多麼精明，也無法改變一個事實：所有的知識都是關於過去的，所有的決定都是關於未來的。--- Ian E. Wilson","知者不言，言者不知。--- 老子","人們只能預見恰巧符合他們意願的未來，而那些最為明顯的事實在不受歡迎之時將被忽視。--- 喬治·奧威爾","預測創造了未來可知的海市蜃樓。--- 彼得·伯恩斯坦","我從不考慮未來，它旋即就到。--- 阿爾伯特·愛因斯坦","在未來到來的時候你自然就會知道，在此之前，不要管它。--- 埃斯庫羅斯","預測通常告訴我們更多預測者自身的情況，而並非未來。--- 沃倫·巴菲特","三個點才可以拉出一個平面,這是三元理論的基礎","假裝是沒有用的，你必須持續假裝，才有可能看起來像真的。","這個圈子很小，也許是你沒有走出去","我們總是騎著大象去摸象","原則上，原則是用來打破的…","知之為知之，不知為不知 --- 孔子","論語告訴我們的事，古代就有毒雞湯","Black Lives Matter 那個不要文字獄","別問，你也會這樣作，不然那就是我為什麼比你優秀的地方","習慣面對失敗，而不是習慣失敗","如果我擁有改變世界的神奇力量，我會希望在不造成痛苦和折磨下，減少地球人口。 --- Jane Goodall","因為我們的數量太多了，我們快要將地球有限的資源消耗完了，這代表未來將會有很多苦難。--- Jane Goodall","Tradition is not the worship of ashes, but the preservation of fire. - Gustav Mahler","要多成熟，才能自然的說出「我很幼稚」呢?","Design is not just what it looks like and feels like. Design is how it works. --- Steve Jobs","成熟是種無奈，長大是種必然","Never mistake motion for action --- Hemingway","天堂裡沒有幽默，因為幽默的祕密來源不是喜悅，而是悲傷。 --- Mark Twain","不要停止懷疑，不要停止信仰","你在我左邊，覺得我太右;我在你左邊，你覺得我太左。我不知道我在哪裡，世界是圓的，而你是中心。","Those who can, do, and those who can't, teach.","良好的習慣不是枷鎖，而是讓你更忠於自已"];
 </script>
   
 
