@@ -41,7 +41,7 @@ ga('send', 'pageview');
 
 
   <meta property ="og:image" content="https://avatars1.githubusercontent.com/u/4269720?s=460&v=4" /> 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
   <div id="container">
@@ -83,6 +83,51 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-2018/node_set_registry" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/29/2018/node_set_registry/" class="article-date">
+  <time datetime="2018-07-29T08:21:22.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/29/2018/node_set_registry/">[實作筆記] 設定 NPM Registry</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>最近換了新電腦，在家工作時發生了 npm install Error;<br>錯誤訊息如下，明顯看到 npm 嚐試去連線 <code>http://npm.mycompany.io</code><br><a target="_blank" rel="noopener" href="http://npm.mycompany.io">http://npm.mycompany.io</a> 是公司內部的私有網路;<br>印象中沒有特別設定，可能是公司內的預設安裝設定的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS D:\Repo\Marsen\Marsen.Node.Express&gt; npm i -g gulp</span><br><span class="line">npm ERR! code ETIMEDOUT</span><br><span class="line">npm ERR! errno ETIMEDOUT</span><br><span class="line">npm ERR! network request to http://npm.mycompany.io/gulp failed, reason: connect ETIMEDOUT ***.***.***.***:80</span><br><span class="line">npm ERR! network This is a problem related to network connectivity.</span><br><span class="line">npm ERR! network In most cases you are behind a proxy or have bad network settings.</span><br><span class="line">npm ERR! network</span><br><span class="line">npm ERR! network If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! network &#x27;proxy&#x27; config is set properly.  See: &#x27;npm help config&#x27;</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Mark Lin\AppData\Roaming\npm-cache\_logs\2018-07-29T07_17_25_263Z-debug.log</span><br></pre></td></tr></table></figure>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>一個簡單的方法是 VPN 回公司內部網路;<br>另一個方法是重新設定，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">http://npm.mycompany.io</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm <span class="built_in">set</span> registry https://registry.npmjs.org</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> npm get registry</span></span><br><span class="line">https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<p>(fin)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.marsen.me/2018/07/29/2018/node_set_registry/" data-id="ckne1130z003cxsuggy6v7trf" class="article-share-link">Share</a>
+      
+        <a href="https://blog.marsen.me/2018/07/29/2018/node_set_registry/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GulpJs/" rel="tag">GulpJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag">實作筆記</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2018/books/book_the_great_scurm_master_ch2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/2018/books/book_the_great_scurm_master_ch2/" class="article-date">
@@ -118,22 +163,18 @@ ga('send', 'pageview');
 <h3 id="教導和輔導"><a href="#教導和輔導" class="headerlink" title="教導和輔導"></a>教導和輔導</h3><p>初期需要一再解釋為什麼要實施 Scrum 和 Agile 方法和如何運作，<br>團隊成熟後，共享經驗，並且更多的實踐</p>
 <h3 id="移除障礙"><a href="#移除障礙" class="headerlink" title="移除障礙"></a>移除障礙</h3><p>排除團隊的障礙，是將<strong>責任、活動和所有權</strong>都下放給團隊，讓團隊可以自行解決問題</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">實務上資安、權限和風險上的控管似乎不可行?</span><br><span class="line">雖然說信任團隊，但是上述的角度來看，這些限制是必要之惡。</span><br><span class="line">新創團隊怎麼作 ? 規模擴大後的團隊又該怎麼作 ? </span><br><span class="line">系統思考?</span><br></pre></td></tr></table></figure>
-
 <h3 id="引導"><a href="#引導" class="headerlink" title="引導"></a>引導</h3><p>確保會議有效率，使每次談話有目標/結果。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">開會前確認討論的主題與範圍，</span><br><span class="line">開會中確保有效討論與時間控制; </span><br><span class="line">開會完產出相對的決定/行為/文件。</span><br><span class="line">其中以行為最為重要，也是所謂的action item</span><br><span class="line">或是下一步清單。</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.cheers.com.tw/blog/blogTopic.action?id=662&nid=10065">無效會議的3種狀況：會而不議、議而不決、決而不行</a></li>
 </ul>
 <h3 id="教練"><a href="#教練" class="headerlink" title="教練"></a>教練</h3><p>Scrum Master 最重要技能之一，關注個人成長也關注團隊自組織、責任感與所有權</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">不知道這本書在供三小，知道的人請告訴我</span><br><span class="line">我比較推薦以下這篇的說法，教導是單向的，教練則是的迴圈</span><br><span class="line">教導比較像是說明、講解、指示;或許有點像上課、聽演講或是看一本書</span><br><span class="line">教練比較有互動性，除了上述所說也包含了給予回饋、示範與局部修正</span><br><span class="line">指導者與被指導者都會參與其中。</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.projectidealism.com/posts/2010/03/difference-between-teaching-and.html">The difference between teaching and coaching</a></li>
 </ul>
 <h3 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h3><p>觀察、聆聽而不是干預;保持耐心再採取行動。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">20180724讀書會回饋:</span><br><span class="line">1. Scrum Master 要有意識的不作為(Actively Doing Nothing)</span><br><span class="line">2. 移除障礙:還是先觀察，讓團隊自行解決問題，個人的問題或許不是團隊的問題; </span><br><span class="line">    站立會議是個人尋求團隊意見的好時機。</span><br><span class="line">3. 引導的方法就是問問題與對話。</span><br><span class="line">4. 引導分為個人與團隊</span><br><span class="line">    - 個人</span><br><span class="line">        引導作對方想作或是 Scrum Master 想作的事 </span><br><span class="line">    - 團隊</span><br><span class="line">        尋找一個目標，發散 → 收斂 → 執行</span><br><span class="line">        再找下一個目標，發散 → 收斂 → 執行</span><br><span class="line">        持續這樣的步驟，並隨時回頭看看效果如何，</span><br><span class="line">        有些想法或許會被錯過</span><br></pre></td></tr></table></figure>
-
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="教練的實例"><a href="#教練的實例" class="headerlink" title="教練的實例"></a>教練的實例</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ucSdnwSTJSo">提問篇</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gJRMatocP7o">解答篇</a><br><a target="_blank" rel="noopener" href="https://www.facebook.com/NextGenTPE/videos/450757555322367/">Coaching example : Kasatkina</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zcCm9QichHk">Coaching example : 跆拳道</a><br><a target="_blank" rel="noopener" href="https://youtu.be/ooAOc9Fwg0U">Coaching example : 空手道</a></p>
 <p>(fin)</p>
 
@@ -179,7 +220,6 @@ ga('send', 'pageview');
         <h6 id="ScrumMasterWay"><a href="#ScrumMasterWay" class="headerlink" title="#ScrumMasterWay"></a>#ScrumMasterWay</h6><h2 id="第一個層次-—-我的團隊"><a href="#第一個層次-—-我的團隊" class="headerlink" title="第一個層次 — 我的團隊"></a>第一個層次 — 我的團隊</h2><p>Scrum Master 只對開發團隊負責，<br><strong>「如何讓自已每天都發揮作用?」</strong><br>建立具有敏捷思維與 Scrum 價值觀的自組織團隊是個長期活動。<br>第一步是觀察，並抑制親力親為的衝動(具體建議/親自排解障礙)，</p>
 <p>可能的問題在於，團隊缺乏理解、所有權、責任感與經驗;<br>或是團隊的抵制。  </p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">回饋:</span><br><span class="line">沒有主管並不會讓團隊自組織！給團隊解決不能只靠再想想</span><br><span class="line">https://www.facebook.com/91agile/posts/986977734810178</span><br></pre></td></tr></table></figure>
-
 <h3 id="Scrum-的價值觀"><a href="#Scrum-的價值觀" class="headerlink" title="Scrum 的價值觀"></a>Scrum 的價值觀</h3><ul>
 <li>承諾、專注、開放、尊重、勇氣</li>
 <li>– ScrumAlliance 《Scaling Lean &amp; Agile Development》</li>
@@ -205,7 +245,6 @@ ga('send', 'pageview');
 </li>
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">開發團隊與 Scrum 團隊不是組織中唯一的團隊 ?</span><br><span class="line">持續存在的團隊 ? 專案團隊 ? DevOps ? </span><br><span class="line">短暫存在的團隊 ? 救火團 ? 跨專案團隊 ? </span><br><span class="line">這些團隊的資源從何而來 ?</span><br><span class="line">持續存在又特殊的團隊? 維運?</span><br><span class="line">花很多時間釐清問題，卻沒有辦法解決問題?</span><br><span class="line">受限於什麼原因 ? </span><br><span class="line">技術不足 ? 沒有人領導 ? 沒有所有權 ? 風險導向 ? 不受重視 ?</span><br></pre></td></tr></table></figure>
-
 <h2 id="第三個層次—整個系統"><a href="#第三個層次—整個系統" class="headerlink" title="第三個層次—整個系統"></a>第三個層次—整個系統</h2><p>Scrum 是「一種生活方式」，成為生活哲學的一部份，改造整個系統(世界)。</p>
 <h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul>
 <li>先觀察</li>
@@ -215,7 +254,6 @@ ga('send', 'pageview');
 <li>不要停留在開發層次，融入工作生活之中</li>
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">太高大上了，跟不上…</span><br><span class="line">問個問題，如果障礙是組織內的要員或大主管呢 ? </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="Scrum-Master-小組"><a href="#Scrum-Master-小組" class="headerlink" title="Scrum Master 小組"></a>Scrum Master 小組</h2><p>如果要讓組織敏捷，核心是一個強大的 Scrum Master 小組。<br>如果組織在「第一個層次 — 我的團隊」中擁有一個強大的 Scrum Master 小組，<br>那麼 Scrum Master 只需要完善團隊就好了;<br>比起單獨創立完善一個 Scrum Team 或是依賴 Agile Couch，<br>Scrum Master 小組是改變組織最好的起點。  </p>
 <h3 id="Scrum-Master-小組的目標"><a href="#Scrum-Master-小組的目標" class="headerlink" title="Scrum Master 小組的目標"></a>Scrum Master 小組的目標</h3><ul>
 <li>替其它人作好系統層次的準備</li>
@@ -269,11 +307,8 @@ ga('send', 'pageview');
 <li>Chaotic : 上線後引發 SQL 問題當下是混亂的</li>
 </ol>
 <h2 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">組織或團隊會抗拒改變;</span><br><span class="line">又或者組識本身的價值觀與 Scrum 有所抵觸。</span><br><span class="line">以這個層面來說 Scrum Master 能作得很有限，</span><br><span class="line">所以又有 Agile Coach 的產生 ? → 說穿了就是顧問 ?</span><br><span class="line">第一現場的工作者給的問題，如果不虛心接受</span><br><span class="line">以現場角度思考，全盤歸疚於心態問題，是在逃避問題</span><br><span class="line">抱著過往成功不放，不願具體改變或聆聽異議，  </span><br><span class="line">由上而下獨幹而非由下而上改變，喊喊口號「速度感起來了!」  </span><br><span class="line">敏捷淪為口號，實踐就成了宗教儀式。</span><br><span class="line">不論是 Scrum Master 或是 Agile Coach 都是觀察者/顧問的角色，</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">轉型的路上我質疑一切</span><br><span class="line">質疑主管、質疑公司、質疑理論、質疑作法; </span><br><span class="line">甚至質疑我自已，然後我的心態還不能崩了，</span><br><span class="line">真是有病…</span><br><span class="line">要正心，保持陽光。</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Unit Tests Team ?</span><br><span class="line">為什麼有這樣的想法 ? 單元測試很重要，卻沒有人寫。</span><br><span class="line">原因1. 沒有時間</span><br><span class="line">原因2. 流程內未包含寫單元測試與執行單元測試，</span><br><span class="line">Scrum 的 User Story 或 Task 也不會包含，驗收條件也不包含 Unit Tests。</span><br><span class="line">原因3. 責任規屬不明? QA Team 專心作測試，RD Team 專心作開發</span><br><span class="line">沒有一個團隊專門來處理單元測試</span><br><span class="line">原因4. 導入失敗 </span><br><span class="line"> - 跨領域 BeckEnd、F2E、IOS、Android 缺乏足夠知識</span><br><span class="line"> - 跨專案開發資源就不夠了，怎麼寫測試 ?</span><br><span class="line"> - 遺留代碼難以開發，技術水平不夠，缺乏領頭羊。</span><br><span class="line"> - 讀書會成為逆向宣傳。</span><br><span class="line"> - 沒有人專職導入，導入船過水無痕。 </span><br></pre></td></tr></table></figure>
-
 <p><img src="https://i.imgur.com/151g6vV.jpg" alt="Unit Tests Team ?"></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://ruddyblog.wordpress.com/tag/scrum價值觀/">Scrum的價值觀</a></li>
@@ -348,7 +383,6 @@ ga('send', 'pageview');
 <li>Agile 與 Scrum 思想的專家(信徒)</li>
 </ul>
 <h4 id="質疑"><a href="#質疑" class="headerlink" title="質疑"></a>質疑</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我一直認為盲信是相當危險的，這個世界與其說*沒有銀子彈*，</span><br><span class="line">不如說沒有狼人，或是說你面對的永遠不只是狼人，而是未知。</span><br><span class="line">現場看到太多的 Scrum But(我比較喜歡叫 Scrum Buffet 或敏捷自助餐)</span><br><span class="line">當人人都說「敏捷大法好」的時候，我分不清邪教大典/直銷與敏捷的差別了…</span><br><span class="line">還是鬼島就是神祕力量能將好東西質變成孬東西呢？</span><br></pre></td></tr></table></figure>
-
 <h3 id="自組織"><a href="#自組織" class="headerlink" title="自組織"></a>自組織</h3><p><strong>我們應該如何組織我們自已，達成目標?</strong></p>
 <ul>
 <li>決定誰作什麼</li>
@@ -435,7 +469,6 @@ ga('send', 'pageview');
 </li>
 </ul>
 <h5 id="回饋"><a href="#回饋" class="headerlink" title="回饋"></a>回饋</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">20180717 讀書會</span><br><span class="line">Q:Scrum Master 應該先成為觀察者的角色，</span><br><span class="line">再進一步作引導或指導，兼任多支團隊的情況下，</span><br><span class="line">可能會受限於環境，導致無法作第一線的觀察，而導致效果不佳。</span><br><span class="line">A:較成熟的團隊可以稍微放一下，多參與初心團隊，</span><br><span class="line">自組織的成熟團隊就不必要每件事。</span><br><span class="line">feedback:</span><br><span class="line">1. 不成熟的 Scrum Mater 應該跟著成熟的 Scrum Master 共事。</span><br><span class="line">2. 不成熟的團隊應由成熟的 Scrum Mater 帶領。</span><br><span class="line">3. 成熟的團隊 Scrum Mater 的角色仍在，但是可以淡出。 </span><br></pre></td></tr></table></figure>
-
 <h3 id="Scrum-Master-領導"><a href="#Scrum-Master-領導" class="headerlink" title="Scrum Master 領導"></a>Scrum Master 領導</h3><ul>
 <li>Scrum Master要注重整個組織，非單一支 Scrum 團隊，</li>
 <li>關心長期目標與策略。</li>
@@ -560,7 +593,6 @@ ga('send', 'pageview');
         <h2 id="下玉山"><a href="#下玉山" class="headerlink" title="下玉山"></a>下玉山</h2><p>登玉山是我的年度計劃之一，至少已經規劃 3 年了<br>過程也是一波三折，如果不是身體發生的狀況<br>現在這篇文章應該是登玉山的甘苦談了，<br>簡單的說一下原因，我是帶著落枕上山的，<br>爬山的過程中，身體為了保護脖子，不自然的動作導致了肩膀也傷痛<br>目前還在復健中，這跟後來的病痛有沒有關係，我就不知道了</p>
 <h2 id="5月9日晚上"><a href="#5月9日晚上" class="headerlink" title="5月9日晚上"></a>5月9日晚上</h2><p>當天晚上的計劃是閱讀<strong>單元測試的藝術</strong>，<br>這是在公司參加的讀書會，剛好下山後的那個禮拜就是我負責的章節，<br>因為身體還在很疲累的狀態，所以我只打算在床上稍作閱讀，<br>沒有計劃要刻 Code 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">程式相關的書跟其它書籍最大的不同是，</span><br><span class="line">如果裡面有程式碼，你很容易去實踐書裡面的內容，</span><br><span class="line">有好有壞，它不像一些高大上的東西，說得到作不到(光說不練)(就是幹話)  </span><br><span class="line">程式寫下來，跑一下就可以很清楚作者要表達的東西。</span><br></pre></td></tr></table></figure>
-
 <h3 id="症狀"><a href="#症狀" class="headerlink" title="症狀"></a>症狀</h3><p>一開始是看不清楚一兩個字，單純以為是眼花了而已。<br>隨即發現這跟平常的眼花並不一樣，左邊的視野完全消失了，<br>當下立即對自我作了一下檢查，不論是左眼右眼看到的東西是相同的，<br>就是左邊的視野是糢糊不清。<br><img src="https://i.imgur.com/czkqPZE.jpg" alt=""></p>
 <p>當下時間已經是凌晨 1:00 多了，從來沒有這樣的症狀，<br>很害怕是視網膜剝離或是急性青光眼之類的，<br>真的是有想到各種失去視力的恐怖想像，<br>不過症狀卻隨著我到達醫院消失了，</p>
 <p>當下醫生也只有量血壓，看起來也正常，<br>也沒有其它症狀，就被趕回家了……</p>
@@ -782,22 +814,19 @@ ga('send', 'pageview');
 <li><p>安裝 Node.js®</p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="https://chocolatey.org/packages/nodejs">https://chocolatey.org/packages/nodejs</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs -y</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs -y</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>註冊公司內部 NPM Server</p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="http://company.npm.server">http://company.npm.server</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> registry http://company.npm.server</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> registry http://company.npm.server</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>安裝 RUBY</p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="https://chocolatey.org/packages/ruby/2.5.1.1">https://chocolatey.org/packages/ruby/2.5.1.1</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby -y</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install ruby -y</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>下載 RubyGems</p>
@@ -811,8 +840,7 @@ ga('send', 'pageview');
 <li><p>安裝 compass</p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="https://rubygems.org/gems/compass/versions/1.0.3">https://rubygems.org/gems/compass/versions/1.0.3</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install compass</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install compass</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>檢查 PATH</p>
@@ -822,8 +850,7 @@ ga('send', 'pageview');
 <li><p>執行 compass</p>
 <ul>
 <li><p>使用 Command Line</p>
-  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp compass</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp compass</span><br></pre></td></tr></table></figure></li>
 <li><p>使用工作執行器總管</p>
 <p>  <img src="https://i.imgur.com/2sEzAx5.jpg" alt="工作執行器總管"></p>
 </li>
@@ -885,7 +912,6 @@ ga('send', 'pageview');
 <li>重建前台專案</li>
 </ol>
 <h2 id="3-Chocolatey"><a href="#3-Chocolatey" class="headerlink" title="3.Chocolatey"></a>3.Chocolatey</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">choco install googlechrome -y</span><br><span class="line">choco install dropbox -y</span><br><span class="line">choco install evernote -y</span><br><span class="line"></span><br><span class="line">choco install git -y</span><br><span class="line">choco install nodejs -y</span><br><span class="line">choco install putty -y</span><br><span class="line">choco install visualstudiocode -y</span><br><span class="line"></span><br><span class="line">choco install winmerge -y</span><br><span class="line">choco install slack -y</span><br><span class="line">choco install linqpad -y</span><br><span class="line">choco install 7zip -y</span><br><span class="line"> </span><br><span class="line">choco install gitkraken -y</span><br><span class="line"><span class="meta">#</span><span class="bash">choco install sourcetree -y</span></span><br></pre></td></tr></table></figure>
-
 <p>(fin)</p>
 
       
@@ -897,84 +923,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag">實作筆記</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/08/2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/" class="article-date">
-  <time datetime="2018-04-08T15:22:20.000Z" itemprop="datePublished">2018-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/08/2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/">[翻譯] 為什麼IBM/Google/Microsoft都要在今年增加對台投資?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a><a target="_blank" rel="noopener" href="https://www.forbes.com/sites/ralphjennings/2018/04/04/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/#4fda82d5c721">原文</a></h2><h2 id="重點節錄"><a href="#重點節錄" class="headerlink" title="重點節錄"></a>重點節錄</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.blog.google/topics/google-asia/intelligent-taiwan/">Google 宣布要在台灣顧用300名員工並訓練5000名學生在人工智能領域</a></li>
-<li><a target="_blank" rel="noopener" href="https://news.microsoft.com/apac/2018/01/12/microsoft-launches-artificial-intelligence-research-hub-taiwan/">微軟也表明未來要在台灣發展AI業務,5年內投資3400萬鎂並招聘200人</a></li>
-<li><a target="_blank" rel="noopener" href="https://meet.bnext.com.tw/intl/articles/view/42553">IBM也表示將在台灣擴展AI/區塊鏈/雲計算等相關的研發中心,並增聘100人以上</a></li>
-</ol>
-<h2 id="美國的投資與台灣的人材"><a href="#美國的投資與台灣的人材" class="headerlink" title="美國的投資與台灣的人材"></a>美國的投資與台灣的人材</h2><h3 id="台灣的優點"><a href="#台灣的優點" class="headerlink" title="台灣的優點"></a>台灣的優點</h3><ol>
-<li>人材容易訓練適應AI等新產業的工作<ul>
-<li>通常大學畢業生都有基礎工程知識</li>
-<li>台灣的擁有製造業供應鏈(跨軟韌硬體)的人材</li>
-<li>便宜(Orz)</li>
-</ul>
-</li>
-<li>地理優勢(東北亞\東南亞\中國)</li>
-<li>台灣目前政策<ul>
-<li>IoT(物聯網)與智能機器</li>
-<li>正在進行產業轉型(硬轉軟)</li>
-</ul>
-</li>
-<li>其它<ul>
-<li>穩定且便宜的電力與其它基礎建設</li>
-<li>合理的成本結構</li>
-</ul>
-</li>
-</ol>
-<h3 id="中國的競爭"><a href="#中國的競爭" class="headerlink" title="中國的競爭"></a>中國的競爭</h3><ol>
-<li>人材更便宜</li>
-<li>美中貿易戰的擔心<ul>
-<li>資訊安全</li>
-<li>智慧財產</li>
-</ul>
-</li>
-</ol>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://careers.google.com/jobs#t=sq&q=j&li=20&l=false&jl=25.0329636%3A121.56542680000007%3ATaipei+City%2C+Taiwan%3ATW%3A%3A13.76366184019967%3AADMIN_1&jld=10&&jcoid=7c8c6665-81cf-4e11-8fc9-ec1d6a69120c&jcoid=e43afd0d-d215-45db-a154-5386c9036525&">Google 在台職缺</a></li>
-<li><strong><a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/crash-course/">Google 的 Machine Learning 教程</a></strong></li>
-<li><a target="_blank" rel="noopener" href="https://krb-sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=26059&siteid=5016&cm_mc_uid=66190819784615216541845&cm_mc_sid_50200000=93350001523199145451#keyWordSearch=&locationSearch=Taiwan&City%20%2F%20Township%20%2F%20Village=TAIPEI&Country%2FRegion=Taiwan">IBM 職缺</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2018/04/08/2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/" data-id="ckne11315003wxsug3rbthn0w" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2018/04/08/2018/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AD%86%E8%A8%98/" rel="tag">生活筆記</a></li></ul>
 
     </footer>
   </div>
@@ -999,6 +947,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2021/05/24/2021/book_tdd_by_example/">[實作筆記] Kent Beck 的測試驅動開發 Ch12 Ch13</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/07/2021/about_habits/">[閱讀筆記] 原子習慣/驚人習慣力/烏托邦的日常/象與騎象人</a>
           </li>
         
@@ -1014,10 +966,6 @@ ga('send', 'pageview');
             <a href="/2021/04/06/2021/create_404/">[實作筆記] 怎麼建立一個網站？(五) - Hexo 的 404 頁面</a>
           </li>
         
-          <li>
-            <a href="/2021/03/22/2021/next_bank_update/">[生活筆記] 將來銀行與純網銀一些有的沒的</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1027,7 +975,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">彙整</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
