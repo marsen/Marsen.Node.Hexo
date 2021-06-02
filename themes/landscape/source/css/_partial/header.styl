@@ -47,7 +47,13 @@ $logo-text
   text-decoration: none
   color: #fff
   font-weight: 300
-  text-shadow: 3 3px 5px #FF0000
+  text-shadow: 3px 3px 5px rgba(255, 0, 0, 1)
+  -webkit-animation: breathing 5s ease-out infinite 
+
+@-webkit-keyframes breathing 
+  0%    {text-shadow: 3px 3px 5px rgba(255, 0, 0, 0)}
+  60%    {text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.9)}
+  100%    {text-shadow: 3px 3px 20px rgba(255, 0, 0, 1)}
 
 #logo
   @extend $logo-text
