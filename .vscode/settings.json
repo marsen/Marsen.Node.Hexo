@@ -1,3 +1,6 @@
 {
     "vsicons.presets.angular": false,
+    "i18n-ally.localesPaths": [
+        "themes/landscape/languages"
+    ],
 }
