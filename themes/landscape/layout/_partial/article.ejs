@@ -37,9 +37,9 @@
 
 <% if (!index && post.comments && config.disqus_shortname){ %>
 <section id="comments">
-<% if (config.likecoin_id){ %>
-  <div id="gitalk-container">
-  <div id="likecoin">
+  <div id="gitalk-container"></div>
+  <% if (config.likecoin_id){ %>
+    <div id="likecoin">
   Please enable JavaScript to view the LikeCoin.
   </div>
 <% } %>
