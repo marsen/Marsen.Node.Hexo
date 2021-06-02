@@ -1,0 +1,12 @@
+<script>
+<% if (config.likecoin_id){ %>
+  (function(){
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "https://button.like.co/in/embed/<%= config.likecoin_id%>/button?referrer=<%= encodeURIComponent(page.permalink) %>");      
+    ifrm.setAttribute("sandbox","allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
+    ifrm.frameborder = "0";
+    ifrm.scrolling = "no";
+    (document.getElementById("likecoin").replaceChild(ifrm, document.getElementById("likecoin").childNodes[0]));
+  })();
+<% } %>
+</script>
