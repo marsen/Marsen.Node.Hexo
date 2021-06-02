@@ -35,7 +35,7 @@
   <% } %>
 </article>
 
-<% if (!index && post.comments && config.disqus_shortname){ %>
+<% if (!index && post.comments && (config.disqus_shortname || config.likecoin_id ||config.gitalk.enable)){ %>
 <section id="comments">
   <% if (config.gitalk.enable){ %>
     <div id="gitalk-container" >
