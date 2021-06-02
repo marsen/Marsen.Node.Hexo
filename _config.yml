@@ -90,9 +90,14 @@ disqus_shortname: marsenlin
 # LikeCoind
 likecoin_id: marsenlin
 # Git Talk
-git_talk: 
+gitalk: 
   enable: true
-
+  clientID: 386c8c11178846ff9a31
+  clientSecret: 969a7543f3dc518b9e540d1e335df2fcb9c2df57
+  repo: marsen.github.io
+  owner: marsen
+  admin: marsen
+  
 # sayings
 sayings: ['',
 '理性與感性的界線在好奇心',
