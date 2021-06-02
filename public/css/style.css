@@ -368,7 +368,19 @@ body {
   text-decoration: none;
   color: #fff;
   font-weight: 300;
-  text-shadow: 3 3px 5px #f00;
+  text-shadow: 3px 3px 5px #f00;
+  -webkit-animation: breathing 5s ease-out infinite;
+}
+@-webkit-keyframes breathing {
+  0% {
+    opacity: 0.1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }
 #logo {
   font-size: 40px;
@@ -394,7 +406,7 @@ body {
   color: #fff;
   opacity: 0.6;
   text-decoration: none;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
+  text-shadow: 0 1px rgba(0,0,0,0.2);
   -webkit-transition: opacity 0.2s;
   -moz-transition: opacity 0.2s;
   -ms-transition: opacity 0.2s;
