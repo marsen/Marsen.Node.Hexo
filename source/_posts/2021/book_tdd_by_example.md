@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Kent Beck 的測試驅動開發 Ch12 Ch13"
+title: "[實作筆記] Kent Beck 的測試驅動開發 Ch12~Ch17"
 date: 2021/05/24 20:55:16
 ---
 
