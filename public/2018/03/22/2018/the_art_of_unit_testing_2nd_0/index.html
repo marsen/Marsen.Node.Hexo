@@ -308,6 +308,21 @@ ga('send', 'pageview');
   
   
     <div id="likecoin">
+Please enable JavaScript to view the LikeCoin. :P
+</div>
+<script>
+
+  (function(){
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "https://button.like.co/in/embed/marsenlin/button?referrer=https%3A%2F%2Fblog.marsen.me%2F2018%2F03%2F22%2F2018%2Fthe_art_of_unit_testing_2nd_0%2F");      
+    ifrm.setAttribute("sandbox","allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
+    ifrm.frameborder = "0";
+    ifrm.scrolling = "no";
+    (document.getElementById("likecoin").replaceChild(ifrm, document.getElementById("likecoin").childNodes[0]));
+  })();
+
+</script>
+    <div id="likecoin">
     Please enable JavaScript to view the LikeCoin.
     </div>
   
@@ -441,6 +456,9 @@ ga('send', 'pageview');
   })();
 </script>
 
+<div id="likecoin">
+Please enable JavaScript to view the LikeCoin. :P
+</div>
 <script>
 
   (function(){
