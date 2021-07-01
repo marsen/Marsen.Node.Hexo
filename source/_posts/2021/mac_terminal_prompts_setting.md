@@ -31,11 +31,18 @@ tag:
 
 ![import .itemcolors](https://i.imgur.com/d9qHicD.png)
 
-- Preferences > Profiles > Windows 
+Profiles 裡有更多的設定, 字型、顏色  
+比如說, 調整啟始視窗大小與背景透明度, 可以前往 Windows 進行設定.
+更多的細部設定可以自行摸索.  **記得有些效果需要手動重啟 iTerm**
 
-調整啟始大小與背景透明度
+## 第二步, 安裝 [oh-my-zsh](https://ohmyz.sh/)
 
+```sh
+ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
+安裝相當簡單, 更多資訊可以參考 [Github](https://github.com/ohmyzsh/ohmyzsh)
+這裡要了解如何對 `~/.zshrc` 進行編輯
 ## Power1[]
 
 ## 參考
