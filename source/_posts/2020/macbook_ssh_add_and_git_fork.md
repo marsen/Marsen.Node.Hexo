@@ -19,7 +19,7 @@ tag:
 
 ![fork](/images/2020/3/030901_fork_setting_ssh.png)  
 
-於是我很輕鬆娛快的設定了一組 ssh key 我命名為 `MacBook`  
+於是我很輕鬆愉快的設定了一組 ssh key 我命名為 `MacBook`  
 也可以很正常的在 fork 裡面作一些 git 的操作 ，  
 比如說 fetch push pull 等。
 
