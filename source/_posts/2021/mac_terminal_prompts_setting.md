@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Macbook Terminal 美化與設計"
+title: "[實作筆記] MacBook Terminal 美化與設計"
 date: 2021/07/01 23:10:02
 tag:
     - 實作筆記
@@ -8,7 +8,7 @@ tag:
 ## 前情提要
 
 3 年前寫過[如何讓 windows 也有美美命令提示視窗](https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/),  
-不過在去年我開始使用 Macbook Pro 了, 當然也想要美美的 Terminal 啦.  
+不過在去年我開始使用 MacBook Pro 了, 當然也想要美美的 Terminal 啦.  
 但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個浮誇的東西.  
 不過在防疫期間重新看了一遍[高見龍的即將失傳的古老技藝](https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI),  
 除了把 Vim 再熟悉一遍外, 同時也觸動了心中浮誇的那塊.  
@@ -19,15 +19,15 @@ tag:
 - 下載 iTerm2
 - 設定 iTerm2
 - 安裝 oh-my-zsh
-- 安裝 powerlevel10]
+- 安裝 powerlevel10k
 
 ## 第一步 下載並安裝 [iTerm2](https://[term2.com/)
 
 ### 設定 iTerm2 的外觀  
 
 1. 可以在這裡尋找[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-2. Create the .itemcolors files
-3. Peferences > Profiles > Colors > Choose Presets > import
+2. Create the `.itemcolors` files
+3. Preferences > Profiles > Colors > Choose Presets > import
 
 ![import .itemcolors](https://i.imgur.com/d9qHicD.png)
 
