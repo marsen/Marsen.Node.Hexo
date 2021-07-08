@@ -65,6 +65,8 @@ sudo docker-compose rm -fsv appsmith-internal-server nginx && sudo docker-compos
 ## 參考
 
 - [certbot](https://certbot.eff.org/)
-- [certbot](https://certbot.eff.org/)
+- [mongodb](https://www.mongodb.com/live)
+- [appsmith](https://docs.appsmith.com/)
+- [sendgrid](https://sendgrid.com/)
 
 (fin)
