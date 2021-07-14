@@ -114,6 +114,7 @@ B 的邏輯, 表示位置與數字相同, 這裡我會發現不存在數字比�
 3. 實作介面, 測試轉移到這個實作之中, 猜數字的測試改用相依性注入作 Mock
 4. C# 語言特性並沒有對集合的洗牌擴充方法, 抽出這一部份單獨實作, 並使用整合測試進行測試
 5. 改寫隨機的洗牌方法以符合 [Fisher–Yates 的演算法](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+   - [動畫顯示](https://codepen.io/haoyang/pen/jrvrQq)
 
 ## 參考
 
