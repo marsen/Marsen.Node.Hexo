@@ -97,6 +97,13 @@ gitalk:
   repo: marsen.github.io
   owner: marsen
   admin: marsen
+
+codepen:
+  userId: "thisismygithub"
+  theme: "33713"
+  default_tabs: "js,result"
+  height: 500
+  width: "100%"
   
 # sayings
 sayings: ['',
