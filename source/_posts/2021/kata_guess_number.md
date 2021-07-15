@@ -116,6 +116,8 @@ B 的邏輯, 表示位置與數字相同, 這裡我會發現不存在數字比�
 5. 改寫隨機的洗牌方法以符合 [Fisher–Yates 的演算法](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
    - [動畫顯示](https://codepen.io/haoyang/pen/jrvrQq)
 
+{% codepen JjNEzdd result %}
+
 ## 參考
 
 - [Number Guess](https://github.com/recca0120/guess-number-20210710)
