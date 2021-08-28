@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://blog.marsen.me/2021/08/24/images/2021/function_app_key_vault_create_key_vault.png">
 <meta property="og:image" content="https://blog.marsen.me/2021/08/24/images/2021/function_app_key_vault_overview.png">
 <meta property="article:published_time" content="2021-08-24T00:51:43.000Z">
-<meta property="article:modified_time" content="2021-08-24T07:53:27.190Z">
+<meta property="article:modified_time" content="2021-08-28T17:46:48.431Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -169,8 +169,11 @@ ga('send', 'pageview');
 <blockquote>
 <p>反思 Best Practice 應該怎麼作???<br>設定檔散落在不同的層級, 還是應該集中管理, 再用 Config 橋接???</p>
 </blockquote>
-<h3 id="修改-Function-的代碼"><a href="#修改-Function-的代碼" class="headerlink" title="修改 Function 的代碼"></a>修改 Function 的代碼</h3><p>下列我們用 <code>TestKV</code> 這組設定與 C# 作為範例:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get</span></span><br><span class="line"><span class="keyword">var</span> testKV =</span><br><span class="line">  Environment.GetEnvironmentVariable(<span class="string">&quot;TestKV&quot;</span>, EnvironmentVariableTarget.Process);</span><br><span class="line"><span class="comment">// do something update TestKV  </span></span><br><span class="line"><span class="comment">// Set</span></span><br><span class="line">Environment.SetEnvironmentVariable(<span class="string">&quot;TestKV&quot;</span>, testKV);</span><br></pre></td></tr></table></figure>
+<h3 id="修改-Function-的代碼"><a href="#修改-Function-的代碼" class="headerlink" title="修改 Function 的代碼"></a>修改 Function 的代碼</h3><p>下列我們用 <code>TestKV</code> 這組設定與 C# 作為範例:<br>透過環境變數取得 Key Vault 的資料</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get</span></span><br><span class="line"><span class="keyword">var</span> testKV =</span><br><span class="line">  Environment.GetEnvironmentVariable(<span class="string">&quot;TestKV&quot;</span>, EnvironmentVariableTarget.Process);</span><br></pre></td></tr></table></figure>
+
+<p>另外一種方式可以使用 <code>Azure SDK Client Library</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Azure.Identity;</span><br><span class="line"><span class="keyword">using</span> Azure.Security.KeyVault.Secrets;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> Skip ...</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Set</span></span><br><span class="line">    <span class="keyword">var</span> kvUri = <span class="string">$&quot;https://<span class="subst">&#123;KeyVaultName&#125;</span>.vault.azure.net&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> client = <span class="keyword">new</span> SecretClient(<span class="keyword">new</span> Uri(kvUri), <span class="keyword">new</span> DefaultAzureCredential());</span><br><span class="line">    client.SetSecret(<span class="string">$&quot;<span class="subst">&#123;SecretKey&#125;</span>&quot;</span>, <span class="string">$&quot;<span class="subst">&#123;SecretValue&#125;</span>&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>其它語言可以<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal#use-application-settings">參考</a></p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
@@ -179,6 +182,7 @@ ga('send', 'pageview');
 <li><a target="_blank" rel="noopener" href="https://denny.qollie.com/2016/05/22/serverless-simple-crud/">淺析 serverless 架構與實作</a></li>
 <li><a target="_blank" rel="noopener" href="https://adamtheautomator.com/azure-functions-tutorial/">Azure Function Tutorial</a></li>
 <li><a target="_blank" rel="noopener" href="https://build5nines.com/azure-functions-extend-execution-timeout-past-5-minutes/">Azure Functions: Extend Execution Timeout Past 5 Minutes</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme#defaultazurecredential">DefaultAzureCredential</a></li>
 </ul>
 <p>(fin)</p>
 

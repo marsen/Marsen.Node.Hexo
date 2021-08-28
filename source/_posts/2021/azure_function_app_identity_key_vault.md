@@ -159,14 +159,24 @@ Copy-Paste 會造成維護上很大的困難, 我們會希望維持一組就好.
 ### 修改 Function 的代碼
 
 下列我們用 `TestKV` 這組設定與 C# 作為範例:
+透過環境變數取得 Key Vault 的資料
 
 ```csharp
 // Get
 var testKV =
   Environment.GetEnvironmentVariable("TestKV", EnvironmentVariableTarget.Process);
-// do something update TestKV  
-// Set
-Environment.SetEnvironmentVariable("TestKV", testKV);
+```
+
+另外一種方式可以使用 `Azure SDK Client Library`
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+/// Skip ...
+    /// Set
+    var kvUri = $"https://{KeyVaultName}.vault.azure.net";
+    var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+    client.SetSecret($"{SecretKey}", $"{SecretValue}");
 ```
 
 其它語言可以[參考](https://docs.microsoft.com/zh-tw/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal#use-application-settings)
@@ -178,5 +188,6 @@ Environment.SetEnvironmentVariable("TestKV", testKV);
 - [淺析 serverless 架構與實作](https://denny.qollie.com/2016/05/22/serverless-simple-crud/)
 - [Azure Function Tutorial](https://adamtheautomator.com/azure-functions-tutorial/)
 - [Azure Functions: Extend Execution Timeout Past 5 Minutes](https://build5nines.com/azure-functions-extend-execution-timeout-past-5-minutes/)
+- [DefaultAzureCredential](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme#defaultazurecredential)
 
 (fin)
