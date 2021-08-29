@@ -48,7 +48,7 @@ Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的�
 這次的案例，使用者會在瀏覽器提供給我們一組 Token ,
 而我們會拿這組 Token 與第三方互動換回我們需要的 Key,  
 最後我們會把這組 Key 存進 Key Vault 給其它服務使用.  
-![流程簡介](../../images/2021/function_app_key_vault_flow.png)
+![流程簡介](/images/2021/function_app_key_vault_flow.png)
 
 你可能會好奇, 在上圖中 Managed Identity 扮演的角色為何 ?
 就是在 Function Apps 存取 Key Vault 這一段,  
@@ -123,7 +123,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
 找到 Key Vault > key vault section > Settings > Secrets , 建立一組 Secret
 
-![建立 Key Vault](../../images/2021/function_app_key_vault_create_key_vault.png)
+![建立 Key Vault](/images/2021/function_app_key_vault_create_key_vault.png)
 
 點選剛剛建立的 Secret 並且選擇 CURRENT VERSION 取得 Secret Identifier(複製下來, 待會會用到)
 
@@ -151,7 +151,7 @@ Value 請參加下面的範例, 將前面步驟取得的 `Secret Identifier` 填
 我的回答是, 這樣子其它的服務也需要這個資料怎麼辦呢？
 Copy-Paste 會造成維護上很大的困難, 我們會希望維持一組就好.
 放在 Key Vault 可以讓我們不同的服務共用. 　
-![Overview](../../images/2021/function_app_key_vault_overview.png)
+![Overview](/images/2021/function_app_key_vault_overview.png)
 
 > 反思 Best Practice 應該怎麼作???
 > 設定檔散落在不同的層級, 還是應該集中管理, 再用 Config 橋接???
@@ -167,7 +167,7 @@ var testKV =
   Environment.GetEnvironmentVariable("TestKV", EnvironmentVariableTarget.Process);
 ```
 
-另外一種方式可以使用 `Azure SDK Client Library`
+而如果你需要寫入請使用 `Azure SDK Client Library`
 
 ```csharp
 using Azure.Identity;
