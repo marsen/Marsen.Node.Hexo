@@ -1,0 +1,12 @@
+{
+  "name": "hexo-theme-landscape",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~1.0.2",
+    "load-grunt-tasks": "~4.0.0",
+    "grunt-git": "~1.0.9",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-copy": "~1.0.0"
+  }
+}

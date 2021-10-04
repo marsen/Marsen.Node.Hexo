@@ -1,0 +1,12 @@
+{
+    "vsicons.presets.angular": false,
+    "i18n-ally.localesPaths": [
+        "themes/landscape/languages"
+    ],
+    "cSpell.words": [
+        "conor",
+        "gregor",
+        "kktix",
+        "mc"
+    ],
+}
