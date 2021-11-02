@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://i.imgur.com/Fo4Ml5M.jpg">
 <meta property="og:image" content="https://i.imgur.com/8FYzhdg.gif">
 <meta property="article:published_time" content="2017-07-19T17:04:14.000Z">
-<meta property="article:modified_time" content="2021-05-05T09:24:00.766Z">
+<meta property="article:modified_time" content="2021-11-02T05:59:08.587Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="Google">
 <meta property="article:tag" content="API">
@@ -127,7 +127,7 @@ ga('send', 'pageview');
 <li>下載JSON放置專案的指定位置.</li>
 <li>如何取得授權與取得資料，請參考<a target="_blank" rel="noopener" href="https://developers.google.com/sheets/api/quickstart/nodejs">QuickStart</a><ul>
 <li>安全考量,我不會將client_secret.json與取回的token 加入版本控制</li>
-<li>以Google 試算表為例，如何取得<a target="_blank" rel="noopener" href="https://developers.google.com/sheets/api/guides/concepts">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex:</span><br><span class="line">https:&#x2F;&#x2F;docs.google.com&#x2F;spreadsheets&#x2F;d&#x2F;1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps&#x2F;edit#gid&#x3D;0</span><br><span class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</span><br></pre></td></tr></table></figure>
+<li>以Google 試算表為例，如何取得<a target="_blank" rel="noopener" href="https://developers.google.com/sheets/api/guides/concepts">spreadsheetId</a>? 很簡單，網址上就可以取得。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex:</span><br><span class="line">https://docs.google.com/spreadsheets/d/1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps/edit#gid=0</span><br><span class="line">的spreadsheetId就是1qpyC0XzvTcKT6EISywvqESX3A0MwQoFDE8p-Bll4hps</span><br></pre></td></tr></table></figure>
 <h3 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h3>以 QuickStart 的程式為例 ,<br>下載回來的檔案 <code>client_secret.json</code><br>可以提供 <code>clientSecret</code>、<code>clientId</code> 與授權後轉導的 url ,<br>當程式執行時, 便會透 <code>googleAuth</code> 去取得授權 ,<br>過程之中會需要使用者作驗証, 驗証完成即取得授權 ,<br>授權有一定的效期, 故一段時間之後需要重新取得授權 </li>
 </ul>
 </li>

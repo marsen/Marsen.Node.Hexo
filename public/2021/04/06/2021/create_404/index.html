@@ -13,7 +13,7 @@
 <meta property="og:description" content="What什麼是 404 頁面呢 ?其實這是一個 HTTP 狀態碼，代表「網頁不存在」,與另外一種常見錯誤代碼(500&#x2F;503)，代表的意義並不相同,500&#x2F;503 通常是指服務整個掛了,而 404 是指所要的資源(頁面、檔案、圖片)並不存在.   以下提供一些常見的狀態碼與代表意義  200 OK 403 Forbidden 500 Internal Server Error 503 Servic">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-04-06T01:49:12.000Z">
-<meta property="article:modified_time" content="2021-05-05T09:24:00.812Z">
+<meta property="article:modified_time" content="2021-11-02T05:59:08.619Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@ ga('send', 'pageview');
 </blockquote>
 <h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><p>首先執行 <code>hexo new page 404</code> , 這是 Hexo 用來建立新頁面的語法,<br>上述的語法執行後, 會產生一個 404.md 檔, 如果你不喜歡這個檔名你也可以換掉,<br>ex: <code>hexo new page page_not_found</code></p>
 <p>產生的頁面如下:</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line">title: page_not_found</span><br><span class="line">date: 2021-04-06 10:36:15</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line">title: page_not_found</span><br><span class="line">date: 2021-04-06 10:36:15</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>這個時候我們需要調整一個重要屬性 <code>permalink: /404.html</code>,<br>這樣當 Github Page 找不到頁面時,<br>才會出現我們設定的 404 頁面.  </p>
 <p>另外我們可以設定 <code>layout:true</code> 的布林值來決定是否套用原本的樣式(預設為 true),<br>這個主要也是為了讓使用者”感覺”他仍然在同一個網站之中,<br>而減低跳轉率.  </p>
