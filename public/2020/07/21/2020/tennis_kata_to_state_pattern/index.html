@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_02.jpg">
 <meta property="og:image" content="https://blog.marsen.me/images/2020/7/tennis_kata_to_state_pattern_03.jpg">
 <meta property="article:published_time" content="2020-07-21T00:16:27.000Z">
-<meta property="article:modified_time" content="2021-05-05T09:24:00.810Z">
+<meta property="article:modified_time" content="2021-11-02T05:59:08.617Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta property="article:tag" content="Unit Testing">
@@ -231,7 +231,7 @@ ga('send', 'pageview');
 <li><a target="_blank" rel="noopener" href="https://github.com/marsen/Marsen.NetCore.Dojo/commit/145d3cb408ed5b39a729c4a9b22fb6744b62c48f">145d3c</a></li>
 </ul>
 <p>以 <code>ServerScore</code> 方法為例，<br>本來是在定義在 Abstract Class State 之中的抽像方法，<br>由各個 State (Normal、Same、Deuce、Adv 與 Win)實作，<br>但是我們可以明顯發現， <code>Context.ServerPoint++</code> 是重複的，<br>而 <code>ChangeState</code> 才是真正抽像的地方，<br>所以我們可以在 Abstract Class State 加入以下的方法與抽像方法，  </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ServerScore</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Context.ServerPoint++;</span><br><span class="line">    ChangeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">ChangeState</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ServerScore</span>(<span class="params"></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Context.ServerPoint++;</span><br><span class="line">    ChangeState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">ChangeState</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>這不就恰巧是 <code>Template Method Pattern</code> 嗎 ?<br>同樣的手段可以放在 <code>ReceiverScore</code> 方法再重構一次。  </p>
 <p>實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。<br>在學習 Design Pattern 的路上，不是硬套，而是找出適用場景。  </p>
