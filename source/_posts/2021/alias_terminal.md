@@ -15,7 +15,7 @@ tag:
 
 ## 設定檔案
 
-`.bashrc` 或是 `.zshrc`, 我使用 iTerm 所以要在 `.zshrc` 裡設定.  
+需要修改 `.bashrc` 或是 `.zshrc` 檔, 因為我使用 iTerm 所以要在 `.zshrc` 裡設定.  
 目前我最常使用的為 git,此外 hexo (一種靜態網站的發佈策略, 我用來設定我的 blog),  
 設定如下:
 
