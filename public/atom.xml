@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.marsen.me/"/>
-  <updated>2021-11-05T03:30:16.466Z</updated>
+  <updated>2021-11-14T15:48:09.719Z</updated>
   <id>https://blog.marsen.me/</id>
   
   <author>
@@ -17,13 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image</title>
     <link href="https://blog.marsen.me/2021/11/05/2021/mac_m1_with_docker/"/>
     <id>https://blog.marsen.me/2021/11/05/2021/mac_m1_with_docker/</id>
-    <published>2021-11-05T03:30:16.466Z</published>
-    <updated>2021-11-05T03:30:16.466Z</updated>
+    <published>2021-11-05T03:31:07.000Z</published>
+    <updated>2021-11-14T15:48:09.719Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>新工作配發了新的 MacBook 搭載最新的 M1 晶片,<br>沒想到反而遇到了許多問題, 不會有太多的文字說明,<br>僅用來記錄我實作有效的解決方法</p><h3 id="情境-在-Docker-跑-MySQL"><a href="#情境-在-Docker-跑-MySQL" class="headerlink" title="情境:在 Docker 跑 MySQL"></a>情境:在 Docker 跑 MySQL</h3><p>當執行以下語法時，</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql </span><br></pre></td></tr></table></figure><p>會得到錯誤訊息如下</p><p>no matching manifest for linux/arm64/v8 in the manifest list entries</p><h3 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull --platform linux/amd64 mysql</span><br></pre></td></tr></table></figure><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://github.com/docker-library/mysql/issues/778">https://github.com/docker-library/mysql/issues/778</a></li></ul><p>(fin)</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前情提要&quot;&gt;&lt;a href=&quot;#前情提要&quot; class=&quot;headerlink&quot; title=&quot;前情提要&quot;&gt;&lt;/a&gt;前情提要&lt;/h2&gt;&lt;p&gt;新工作配發了新的 MacBook 搭載最新的 M1 晶片,&lt;br&gt;沒想到反而遇到了許多問題, 不會有太多的文字說明,&lt;br&gt;
+      
     
     </summary>
     
