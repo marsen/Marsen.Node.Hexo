@@ -159,6 +159,26 @@ ZSH_DISABLE_COMPFIX="true"
 
     > ln ./.vim/.vimrc .
 
+### 20211114 補充 3
+
+讓命令呈現 highlight 語法,  
+使用 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+
+#### Oh-my-zsh 的安裝方法
+
+Clone this repository in oh-my-zsh's plugins directory:
+
+```shell
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+編輯 `~/.zshrc` 開啟外掛
+
+> plugins=( [plugins...] zsh-syntax-highlighting)
+
+example:
+
+> plugins=( git zsh-syntax-highlighting)
 
 ## 參考
 
