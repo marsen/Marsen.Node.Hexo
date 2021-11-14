@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://i.imgur.com/d9qHicD.png">
 <meta property="og:image" content="https://i.imgur.com/E4lSCit.png">
 <meta property="article:published_time" content="2021-07-01T15:10:02.000Z">
-<meta property="article:modified_time" content="2021-11-14T16:55:50.629Z">
+<meta property="article:modified_time" content="2021-11-14T17:37:53.676Z">
 <meta property="article:author" content="Marsen L.">
 <meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
@@ -172,6 +172,18 @@ ga('send', 'pageview');
 </blockquote>
 </li>
 </ol>
+<h3 id="20211114-補充-3"><a href="#20211114-補充-3" class="headerlink" title="20211114 補充 3"></a>20211114 補充 3</h3><p>讓命令呈現 highlight 語法,<br>使用 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">zsh-syntax-highlighting</a></p>
+<h4 id="Oh-my-zsh-的安裝方法"><a href="#Oh-my-zsh-的安裝方法" class="headerlink" title="Oh-my-zsh 的安裝方法"></a>Oh-my-zsh 的安裝方法</h4><p>Clone this repository in oh-my-zsh’s plugins directory:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+
+<p>編輯 <code>~/.zshrc</code> 開啟外掛</p>
+<blockquote>
+<p>plugins=( [plugins…] zsh-syntax-highlighting)</p>
+</blockquote>
+<p>example:</p>
+<blockquote>
+<p>plugins=( git zsh-syntax-highlighting)</p>
+</blockquote>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11">How to make a beautiful terminal</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">Oh my zsh</a></li>
