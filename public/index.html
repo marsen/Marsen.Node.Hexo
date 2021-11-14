@@ -818,7 +818,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>3 年前寫過<a href="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/">如何讓 windows 也有美美命令提示視窗</a>,<br>不過在去年我開始使用 MacBook Pro 了, 當然也想要美美的 Terminal 啦.<br>但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個浮誇的東西.<br>不過在防疫期間重新看了一遍<a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI">高見龍的即將失傳的古老技藝</a>,<br>除了把 Vim 再熟悉一遍外, 同時也觸動了心中浮誇的那塊.<br>實作比 Windows 簡單很多, 在這裡稍作記錄.  </p>
+        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>3 年前寫過<a href="https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/">如何讓 windows 也有美美命令提示視窗</a>,<br>不過在去年我開始使用 MacBook Pro 了, 當然也想要美美的 Terminal 啦.<br>但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個<del>浮誇</del>的東西.<br>不過在防疫期間重新看了一遍 <a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI">高見龍的即將失傳的古老技藝</a> 影片,<br>除了把 Vim 再熟悉一遍外, 同時也觸動了心中浮誇的那塊.<br>實作上比 Windows 簡單很多, 在這裡稍作記錄.  </p>
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
 <li>下載 iTerm2</li>
 <li>設定 iTerm2</li>
@@ -879,7 +879,7 @@ ga('send', 'pageview');
 </blockquote>
 </li>
 </ol>
-<h3 id="20211114-補充-3"><a href="#20211114-補充-3" class="headerlink" title="20211114 補充 3"></a>20211114 補充 3</h3><p>讓命令呈現 highlight 語法,<br>使用 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">zsh-syntax-highlighting</a></p>
+<h3 id="20211114-補充-3"><a href="#20211114-補充-3" class="headerlink" title="20211114 補充 3"></a>20211114 補充 3</h3><p>讓命令呈現 highlight 語法,<br>使用 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">zsh-syntax-highlighting</a><br>這個設定可以帶來的好處是, 視覺上可以第一時間知道你有沒有打錯命令</p>
 <h4 id="Oh-my-zsh-的安裝方法"><a href="#Oh-my-zsh-的安裝方法" class="headerlink" title="Oh-my-zsh 的安裝方法"></a>Oh-my-zsh 的安裝方法</h4><p>Clone this repository in oh-my-zsh’s plugins directory:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
 
@@ -891,6 +891,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>plugins=( git zsh-syntax-highlighting)</p>
 </blockquote>
+<p>最後重啟終端機即可</p>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11">How to make a beautiful terminal</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">Oh my zsh</a></li>
