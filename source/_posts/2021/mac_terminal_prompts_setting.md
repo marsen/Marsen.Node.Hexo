@@ -9,10 +9,10 @@ tag:
 
 3 年前寫過[如何讓 windows 也有美美命令提示視窗](https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/),  
 不過在去年我開始使用 MacBook Pro 了, 當然也想要美美的 Terminal 啦.  
-但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個浮誇的東西.  
-不過在防疫期間重新看了一遍[高見龍的即將失傳的古老技藝](https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI),  
+但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個~~浮誇~~的東西.  
+不過在防疫期間重新看了一遍 [高見龍的即將失傳的古老技藝](https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI) 影片,  
 除了把 Vim 再熟悉一遍外, 同時也觸動了心中浮誇的那塊.  
-實作比 Windows 簡單很多, 在這裡稍作記錄.  
+實作上比 Windows 簡單很多, 在這裡稍作記錄.  
 
 ## Overview
 
@@ -163,6 +163,7 @@ ZSH_DISABLE_COMPFIX="true"
 
 讓命令呈現 highlight 語法,  
 使用 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+這個設定可以帶來的好處是, 視覺上可以第一時間知道你有沒有打錯命令
 
 #### Oh-my-zsh 的安裝方法
 
@@ -179,6 +180,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 example:
 
 > plugins=( git zsh-syntax-highlighting)
+
+最後重啟終端機即可
 
 ## 參考
 
