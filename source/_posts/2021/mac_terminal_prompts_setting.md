@@ -138,7 +138,7 @@ ZSH_DISABLE_COMPFIX="true"
 附上成果圖
 ![my iTerm2](https://i.imgur.com/E4lSCit.png)
 
-## 20211114 補充
+### 20211114 補充
   
 但是在一些工具預設會用原本的 Terminal (終端機)開啟,  
 比如說 [git-fork](https://git-fork.com/), 就會開啟原始的終端機,  
@@ -149,10 +149,23 @@ ZSH_DISABLE_COMPFIX="true"
 
 - Preference > Integration > Terminal Client 調整開啟的終端機為 iTerm2
 
+### 20211114 補充 2
+
+我已經將 .vim 資料夾入版控,  
+未來只要在
+
+1. 在 ~ 目錄下 Clone [.vim Repo](https://github.com/marsen/.vim) 即可
+2. 在 ~ 目錄下設定連結  
+
+    > ln ./.vim/.vimrc .
+
+
 ## 參考
 
 - [How to make a beautiful terminal](https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11)
 - [Oh my zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- [DAY 22 使用 Vim 外掛](https://www.youtube.com/watch?v=aOfeDgu0SQA)
+- [DAY 23 好用的 Vim 外掛介紹](https://www.youtube.com/watch?v=xSHOf6cFcrk)
 
 (fin)
