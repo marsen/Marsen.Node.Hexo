@@ -138,6 +138,17 @@ ZSH_DISABLE_COMPFIX="true"
 附上成果圖
 ![my iTerm2](https://i.imgur.com/E4lSCit.png)
 
+## 20211114 補充
+  
+但是在一些工具預設會用原本的 Terminal (終端機)開啟,  
+比如說 [git-fork](https://git-fork.com/), 就會開啟原始的終端機,  
+如果沒有更換字型, 就會看到一些不正常顯示的`?`符號, 可以在  
+終端機 > 偏好設定 > 描述檔 > 文字 > 字體 作更改  
+我使用的字體是: *MesloLGS NF*  
+另外，git-fork 可以在  
+
+- Preference > Integration > Terminal Client 調整開啟的終端機為 iTerm2
+
 ## 參考
 
 - [How to make a beautiful terminal](https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11)
