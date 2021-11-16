@@ -183,6 +183,19 @@ example:
 
 最後重啟終端機即可
 
+### 20211116 補充
+
+如何讓錯誤訊息 Highlight,
+
+iTerm > Help > Trigger 或是  
+iTerm > Preferences > Advanced > Trigger > Edit  
+
+以下是我的設定:
+
+>(?i:.*error.*)                     // Yellow on Red  
+(?i:.*(warning|warn).*)            // Yellow  
+(?i:.*FATAL.*)                     // Red
+
 ## 參考
 
 - [How to make a beautiful terminal](https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11)
