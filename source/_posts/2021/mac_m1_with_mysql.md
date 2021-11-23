@@ -42,19 +42,22 @@ no matching manifest for linux/arm64/v8 in the manifest list entries
 
 ### 使用原始 root 密碼登入 mysql  
 
-bash-4.4# mysql -u root -p
-Enter password:
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 25
-Server version: 8.0.27
+> bash-4.4# mysql -u root -p
+> Enter password:
 
-Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+輸入原始的 root 密碼後，
+會看到畫面如下:
 
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+> Welcome to the MySQL monitor.  Commands end with ; or \g.  
+Your MySQL connection id is 25  
+Server version: 8.0.27  
+>
+> Copyright (c) 2000, 2021, Oracle and/or its affiliates.  
+>
+> Oracle is a registered trademark of Oracle Corporation and/or its  
+affiliates. Other names may be trademarks of their respective owners.  
+>
+> Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.  
 
 ### 重設密碼
 

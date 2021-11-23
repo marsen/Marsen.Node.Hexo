@@ -13,7 +13,7 @@
 <meta property="og:description" content="前情提要新工作配發了新的 MacBook 搭載最新的 M1 晶片,沒想到反而遇到了許多問題, 不會有太多的文字說明,僅用來記錄我實作有效的解決方法 情境:在 Docker 跑 MySQL當執行以下語法時， 1docker pull mysql   會得到錯誤訊息如下 no matching manifest for linux&#x2F;arm64&#x2F;v8 in the manifest list entri">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-11-05T03:31:07.000Z">
-<meta property="article:modified_time" content="2021-11-23T06:59:03.707Z">
+<meta property="article:modified_time" content="2021-11-23T07:03:29.903Z">
 <meta property="article:author" content="Marsen L.">
 <meta name="twitter:card" content="summary">
   
@@ -125,10 +125,16 @@ ga('send', 'pageview');
 <h3 id="連線至-container-的-image-執行-mysql-指令"><a href="#連線至-container-的-image-執行-mysql-指令" class="headerlink" title="連線至 container 的 image 執行 mysql 指令"></a>連線至 container 的 image 執行 mysql 指令</h3><blockquote>
 <p>docker exec -it mysql bash</p>
 </blockquote>
-<h3 id="使用原始-root-密碼登入-mysql"><a href="#使用原始-root-密碼登入-mysql" class="headerlink" title="使用原始 root 密碼登入 mysql"></a>使用原始 root 密碼登入 mysql</h3><p>bash-4.4# mysql -u root -p<br>Enter password:<br>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 25<br>Server version: 8.0.27</p>
-<p>Copyright (c) 2000, 2021, Oracle and/or its affiliates.</p>
-<p>Oracle is a registered trademark of Oracle Corporation and/or its<br>affiliates. Other names may be trademarks of their respective<br>owners.</p>
-<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<h3 id="使用原始-root-密碼登入-mysql"><a href="#使用原始-root-密碼登入-mysql" class="headerlink" title="使用原始 root 密碼登入 mysql"></a>使用原始 root 密碼登入 mysql</h3><blockquote>
+<p>bash-4.4# mysql -u root -p<br>Enter password:</p>
+</blockquote>
+<p>輸入原始的 root 密碼後，<br>會看到畫面如下:</p>
+<blockquote>
+<p>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 25<br>Server version: 8.0.27  </p>
+<p>Copyright (c) 2000, 2021, Oracle and/or its affiliates.  </p>
+<p>Oracle is a registered trademark of Oracle Corporation and/or its<br>affiliates. Other names may be trademarks of their respective owners.  </p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.  </p>
+</blockquote>
 <h3 id="重設密碼"><a href="#重設密碼" class="headerlink" title="重設密碼"></a>重設密碼</h3><blockquote>
 <p>ALTER USER USER() IDENTIFIED BY ‘password’;</p>
 </blockquote>
@@ -138,9 +144,6 @@ ga('send', 'pageview');
 <h3 id="修改-root-密碼"><a href="#修改-root-密碼" class="headerlink" title="修改 root 密碼"></a>修改 root 密碼</h3><blockquote>
 <p>ALTER USER ‘root’@’%’ IDENTIFIED WITH mysql_native_password BY ‘password’;<br>flush privileges;</p>
 </blockquote>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/docker-library/mysql/issues/778">https://github.com/docker-library/mysql/issues/778</a></li>
-</ul>
 <p>(fin)</p>
 
       
