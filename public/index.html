@@ -115,7 +115,7 @@ ga('send', 'pageview');
 <p>docker pull mysql/mysql-server:latest</p>
 </blockquote>
 <h3 id="建立-mysql-container"><a href="#建立-mysql-container" class="headerlink" title="建立 mysql container"></a>建立 mysql container</h3><blockquote>
-<p>docker run –name mysql -p 3306:3306 -d mysql/mysql-server</p>
+<p>docker run -d –name mysql -p 3306:3306 mysql/mysql-server:latest</p>
 </blockquote>
 <h3 id="取得原始-root-密碼"><a href="#取得原始-root-密碼" class="headerlink" title="取得原始 root 密碼"></a>取得原始 root 密碼</h3><blockquote>
 <p>docker logs mysql 2&gt;&amp;1 | grep GENERATED<br>[Entrypoint] GENERATED ROOT PASSWORD: C8BUCn2Co_43%2H&amp;h2+#4Ny1@,HjDq+x</p>
