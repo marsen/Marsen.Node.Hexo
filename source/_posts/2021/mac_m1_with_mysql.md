@@ -29,7 +29,7 @@ no matching manifest for linux/arm64/v8 in the manifest list entries
 
 ### 建立 mysql container
 
-> docker run --name mysql -p 3306:3306 -d mysql/mysql-server
+> docker run -d --name mysql -p 3306:3306 mysql/mysql-server:latest
 
 ### 取得原始 root 密碼
 
@@ -42,7 +42,7 @@ no matching manifest for linux/arm64/v8 in the manifest list entries
 
 ### 使用原始 root 密碼登入 mysql  
 
-> bash-4.4# mysql -u root -p
+> mysql -u root -p
 > Enter password:
 
 輸入原始的 root 密碼後，
