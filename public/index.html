@@ -83,9 +83,9 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-2021/mac_m1_with_docker" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021/mac_m1_with_mysql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/05/2021/mac_m1_with_docker/" class="article-date">
+    <a href="/2021/11/05/2021/mac_m1_with_mysql/" class="article-date">
   <time datetime="2021-11-05T03:31:07.000Z" itemprop="datePublished">2021-11-05</time>
 </a>
     
@@ -97,7 +97,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/05/2021/mac_m1_with_docker/">[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image</a>
+      <a class="article-title" href="/2021/11/05/2021/mac_m1_with_mysql/">[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image</a>
     </h1>
   
 
@@ -111,8 +111,31 @@ ga('send', 'pageview');
 
 <p>會得到錯誤訊息如下</p>
 <p>no matching manifest for linux/arm64/v8 in the manifest list entries</p>
-<h3 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull --platform linux/amd64 mysql</span><br></pre></td></tr></table></figure>
-
+<h2 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h2><h3 id="拉取映像檔"><a href="#拉取映像檔" class="headerlink" title="拉取映像檔"></a>拉取映像檔</h3><blockquote>
+<p>docker pull mysql/mysql-server:latest</p>
+</blockquote>
+<h3 id="建立-mysql-container"><a href="#建立-mysql-container" class="headerlink" title="建立 mysql container"></a>建立 mysql container</h3><blockquote>
+<p>docker run –name mysql -p 3306:3306 -d mysql/mysql-server</p>
+</blockquote>
+<h3 id="取得原始-root-密碼"><a href="#取得原始-root-密碼" class="headerlink" title="取得原始 root 密碼"></a>取得原始 root 密碼</h3><blockquote>
+<p>docker logs mysql 2&gt;&amp;1 | grep GENERATED<br>[Entrypoint] GENERATED ROOT PASSWORD: C8BUCn2Co_43%2H&amp;h2+#4Ny1@,HjDq+x</p>
+</blockquote>
+<h3 id="連線至-container-的-image-執行-mysql-指令"><a href="#連線至-container-的-image-執行-mysql-指令" class="headerlink" title="連線至 container 的 image 執行 mysql 指令"></a>連線至 container 的 image 執行 mysql 指令</h3><blockquote>
+<p>docker exec -it mysql bash</p>
+</blockquote>
+<h3 id="使用原始-root-密碼登入-mysql"><a href="#使用原始-root-密碼登入-mysql" class="headerlink" title="使用原始 root 密碼登入 mysql"></a>使用原始 root 密碼登入 mysql</h3><p>bash-4.4# mysql -u root -p<br>Enter password:<br>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 25<br>Server version: 8.0.27</p>
+<p>Copyright (c) 2000, 2021, Oracle and/or its affiliates.</p>
+<p>Oracle is a registered trademark of Oracle Corporation and/or its<br>affiliates. Other names may be trademarks of their respective<br>owners.</p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<h3 id="重設密碼"><a href="#重設密碼" class="headerlink" title="重設密碼"></a>重設密碼</h3><blockquote>
+<p>ALTER USER USER() IDENTIFIED BY ‘password’;</p>
+</blockquote>
+<h3 id="授權"><a href="#授權" class="headerlink" title="授權"></a>授權</h3><blockquote>
+<p>CREATE USER ‘root’@’%’ IDENTIFIED BY ‘root’;<br>GRANT ALL ON <em>.</em> TO ‘root’@’%’;<br>flush privileges;</p>
+</blockquote>
+<h3 id="修改-root-密碼"><a href="#修改-root-密碼" class="headerlink" title="修改 root 密碼"></a>修改 root 密碼</h3><blockquote>
+<p>ALTER USER ‘root’@’%’ IDENTIFIED WITH mysql_native_password BY ‘password’;<br>flush privileges;</p>
+</blockquote>
 <h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/docker-library/mysql/issues/778">https://github.com/docker-library/mysql/issues/778</a></li>
 </ul>
@@ -121,9 +144,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2021/11/05/2021/mac_m1_with_docker/" data-id="ckvluo8ok0000qx103vr0gex0" class="article-share-link">Share</a>
+      <a data-url="https://blog.marsen.me/2021/11/05/2021/mac_m1_with_mysql/" data-id="ckwbqzd7f0000vv1034663jr2" class="article-share-link">Share</a>
       
-        <a href="https://blog.marsen.me/2021/11/05/2021/mac_m1_with_docker/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://blog.marsen.me/2021/11/05/2021/mac_m1_with_mysql/#disqus_thread" class="article-comment-link">留言</a>
       
       
     </footer>
@@ -940,7 +963,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2021/11/05/2021/mac_m1_with_docker/">[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image</a>
+            <a href="/2021/11/05/2021/mac_m1_with_mysql/">[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image</a>
           </li>
         
           <li>
