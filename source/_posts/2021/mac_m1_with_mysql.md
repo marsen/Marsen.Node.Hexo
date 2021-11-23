@@ -21,14 +21,54 @@ docker pull mysql
 
 no matching manifest for linux/arm64/v8 in the manifest list entries
 
-### 解決方案
+## 解決方案
 
-```shell
-docker pull --platform linux/amd64 mysql
-```
+### 拉取映像檔
 
-## 參考
+> docker pull mysql/mysql-server:latest
 
-- <https://github.com/docker-library/mysql/issues/778>
+### 建立 mysql container
+
+> docker run --name mysql -p 3306:3306 -d mysql/mysql-server
+
+### 取得原始 root 密碼
+
+> docker logs mysql 2>&1 | grep GENERATED  
+[Entrypoint] GENERATED ROOT PASSWORD: C8BUCn2Co_43%2H&h2+#4Ny1@,HjDq+x
+
+### 連線至 container 的 image 執行 mysql 指令
+
+> docker exec -it mysql bash
+
+### 使用原始 root 密碼登入 mysql  
+
+bash-4.4# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 25
+Server version: 8.0.27
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+### 重設密碼
+
+> ALTER USER USER() IDENTIFIED BY 'password';
+
+### 授權
+
+> CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+> GRANT ALL ON *.* TO 'root'@'%';
+> flush privileges;
+
+### 修改 root 密碼
+
+> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+> flush privileges;
 
 (fin)
