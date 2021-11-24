@@ -118,13 +118,14 @@ ga('send', 'pageview');
 <p>docker run -d –name mysql -p 3306:3306 mysql/mysql-server:latest</p>
 </blockquote>
 <h3 id="取得原始-root-密碼"><a href="#取得原始-root-密碼" class="headerlink" title="取得原始 root 密碼"></a>取得原始 root 密碼</h3><blockquote>
-<p>docker logs mysql 2&gt;&amp;1 | grep GENERATED<br>[Entrypoint] GENERATED ROOT PASSWORD: C8BUCn2Co_43%2H&amp;h2+#4Ny1@,HjDq+x</p>
+<p>docker logs mysql 2&gt;&amp;1 | grep GENERATED  </p>
 </blockquote>
+<p><strong>[Entrypoint] GENERATED ROOT PASSWORD: mysql_password_shows_here</strong> </p>
 <h3 id="連線至-container-的-image-執行-mysql-指令"><a href="#連線至-container-的-image-執行-mysql-指令" class="headerlink" title="連線至 container 的 image 執行 mysql 指令"></a>連線至 container 的 image 執行 mysql 指令</h3><blockquote>
 <p>docker exec -it mysql bash</p>
 </blockquote>
 <h3 id="使用原始-root-密碼登入-mysql"><a href="#使用原始-root-密碼登入-mysql" class="headerlink" title="使用原始 root 密碼登入 mysql"></a>使用原始 root 密碼登入 mysql</h3><blockquote>
-<p>bash-4.4# mysql -u root -p<br>Enter password:</p>
+<p>mysql -u root -p<br>Enter password:</p>
 </blockquote>
 <p>輸入原始的 root 密碼後，<br>會看到畫面如下:</p>
 <blockquote>

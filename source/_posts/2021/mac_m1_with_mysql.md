@@ -34,7 +34,8 @@ no matching manifest for linux/arm64/v8 in the manifest list entries
 ### 取得原始 root 密碼
 
 > docker logs mysql 2>&1 | grep GENERATED  
-[Entrypoint] GENERATED ROOT PASSWORD: C8BUCn2Co_43%2H&h2+#4Ny1@,HjDq+x
+
+**[Entrypoint] GENERATED ROOT PASSWORD: mysql_password_shows_here** 
 
 ### 連線至 container 的 image 執行 mysql 指令
 
