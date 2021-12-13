@@ -192,10 +192,14 @@ ga('send', 'pageview');
 <h3 id="錯誤-當使用-MacBook-M1-當作-RUNNER"><a href="#錯誤-當使用-MacBook-M1-當作-RUNNER" class="headerlink" title="錯誤: 當使用 MacBook M1 當作 RUNNER"></a>錯誤: 當使用 MacBook M1 當作 RUNNER</h3><p>在 RUNNER JOB 中執行 flutter pub get 時<br><code>$ flutter pub get</code><br>發生錯誤訊息如下，當我換了一個 intel 晶片的 MacBook 當作 RUNNER 就不會有問題了。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Running &quot;flutter pub get&quot; in rettulf...</span><br><span class="line">   ===== CRASH =====</span><br><span class="line">   si_signo=Trace/breakpoint trap(5), si_code=128, si_addr=(nil)</span><br><span class="line">   version=2.14.4 (stable) (Wed Oct 13 11:11:32 2021 +0200) on &quot;linux_x64&quot;</span><br><span class="line">   pid=57, thread=116, isolate_group=main(0x4002e9fc00), isolate=main(0x4002e7d000)</span><br><span class="line">   isolate_instructions=4001cf2ec0, vm_instructions=4001cf2ec0</span><br><span class="line">   pc 0x0000ffffab7e28ec fp 0x000000400a1af838 Unknown symbol</span><br><span class="line">   pc 0x0000ffffab49ed0f fp 0x000000400a1af898 Unknown symbol</span><br><span class="line">   pc 0x0000ffffab78114d fp 0x000000400a1af8d8 Unknown symbol</span><br><span class="line">   pc 0x0000ffffacaa294c fp 0x000000400a1af940 Unknown symbol</span><br><span class="line">   pc 0x0000ffffacaa220b fp 0x000000400a1af980 Unknown symbol</span><br><span class="line">   pc 0x0000ffffacd028ff fp 0x000000400a1af9f8 Unknown symbol</span><br><span class="line">   pc 0x0000004001e6a123 fp 0x000000400a1afaa0 dart::DartEntry::InvokeCode(dart::Code const&amp;, unsigned long, dart::Array const&amp;, dart::Array const&amp;, dart::Thread*)+0x153</span><br><span class="line">   pc 0x0000004001e69f75 fp 0x000000400a1afb00 dart::DartEntry::InvokeFunction(dart::Function const&amp;, dart::Array const&amp;, dart::Array const&amp;, unsigned long)+0x165</span><br><span class="line">   pc 0x0000004001e6c55d fp 0x000000400a1afb50 dart::DartLibraryCalls::HandleMessage(dart::Object const&amp;, dart::Instance const&amp;)+0x15d</span><br><span class="line">   pc 0x0000004001e93e46 fp 0x000000400a1afc30 dart::IsolateMessageHandler::HandleMessage(std::__2::unique_ptr&lt;dart::Message, std::__2::default_delete&lt;dart::Message&gt; &gt;)+0x596</span><br><span class="line">   pc 0x0000004001ebe7ac fp 0x000000400a1afca0 dart::MessageHandler::HandleMessages(dart::MonitorLocker*, bool, bool)+0x14c</span><br><span class="line">   pc 0x0000004001ebeecf fp 0x000000400a1afd00 dart::MessageHandler::TaskCallback()+0x1df</span><br><span class="line">   pc 0x0000004001fdde48 fp 0x000000400a1afd80 dart::ThreadPool::WorkerLoop(dart::ThreadPool::Worker*)+0x148</span><br><span class="line">   pc 0x0000004001fde27c fp 0x000000400a1afdb0 dart::ThreadPool::Worker::Main(unsigned long)+0x5c</span><br><span class="line">   pc 0x0000004001f57a48 fp 0x000000400a1afe70 /sdks/flutter/bin/cache/dart-sdk/bin/dart+0x1f57a48</span><br><span class="line">   -- End of DumpStackTrace</span><br><span class="line">   qemu: uncaught target signal 6 (Aborted) - core dumped</span><br><span class="line">   /sdks/flutter/bin/internal/shared.sh: line 225:    57 Aborted                 &quot;$DART&quot; --disable-dart-dev --packages=&quot;$FLUTTER_TOOLS_DIR/.packages&quot; $FLUTTER_TOOL_ARGS &quot;$SNAPSHOT_PATH&quot; &quot;$@&quot;</span><br><span class="line">   Cleaning up project directory and file based variables</span><br></pre></td></tr></table></figure>
 
-<h2 id="DIND-Docker-In-Docker"><a href="#DIND-Docker-In-Docker" class="headerlink" title="DIND(Docker In Docker)"></a>DIND(Docker In Docker)</h2><p>我們的 Gitlab-Runner 是執行在 Docker 上，<br>而當我需要 build Docker Images 時，我會在 Container 中建立 docker  </p>
-<h3 id="如何在-DIND-中-Docker-Login"><a href="#如何在-DIND-中-Docker-Login" class="headerlink" title="如何在 DIND 中 Docker Login"></a>如何在 DIND 中 Docker Login</h3><p>參考以下的 <code>.gitlab-ci.yml</code></p>
+<h2 id="DIND-Docker-In-Docker"><a href="#DIND-Docker-In-Docker" class="headerlink" title="DIND(Docker In Docker)"></a>DIND(Docker In Docker)</h2><p>我們的 Gitlab-Runner 是執行在 Docker 上，<br>而當我需要 build Docker Images 時，我會在 Container 中建立 docker<br>這時 Container 所使用的 Image 會是 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/docker">Docker Image</a><br>就被稱為 DIND (Docker In Docker)</p>
+<h3 id="在-Gitlab-CI-中-Docker-Login"><a href="#在-Gitlab-CI-中-Docker-Login" class="headerlink" title="在 Gitlab CI 中 Docker Login"></a>在 Gitlab CI 中 Docker Login</h3><p>參考以下的 <code>.gitlab-ci.yml</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">before_script:</span><br><span class="line">   - echo &quot;$DOCKER_REGISTRY_PASS&quot; | docker login -u $DOCKER_REGISTRY_USER --password-stdin</span><br></pre></td></tr></table></figure>
 
+<h4 id="異常紀錄與解決方案"><a href="#異常紀錄與解決方案" class="headerlink" title="異常紀錄與解決方案"></a>異常紀錄與解決方案</h4><blockquote>
+<p>$ echo -n $LOGIN_KEY | docker login -u _json_key_base64 –password-stdin <a target="_blank" rel="noopener" href="https://xxxx-docker.pkg.dev">https://xxxx-docker.pkg.dev</a><br>Error: Cannot perform an interactive login from a non TTY device</p>
+</blockquote>
+<p>主因是讀不到 <code>$LOGIN_KEY</code> 的環境變數，使用 Gitlab-CI 的話要注意 <a target="_blank" rel="noopener" href="https://docs.gitlab.com/ee/ci/variables/index.html#protect-a-cicd-variable">Protect Variable</a>  </p>
 <h3 id="無法對-docker-hub-registry"><a href="#無法對-docker-hub-registry" class="headerlink" title="無法對 docker hub registry"></a>無法對 docker hub registry</h3><p>在 RUNNER JOB 中執行 <code>docker push</code> 時<br>錯誤訊息如下:  </p>
 <p><code>dial tcp: lookup docker on x.x.x.x:53: no such host error runner inside docker on armhf</code>  </p>
 <p>這裡要修改 RUNNER 中的設定檔 <code>config.toml</code> , 路徑參考如下:  </p>
@@ -216,7 +220,7 @@ ga('send', 'pageview');
 
 <h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><ol>
 <li>gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?</li>
-<li>當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息<br>Configuration loaded                                builds=0<br>listen_address not defined, metrics &amp; debug endpoints disabled  builds=0<br>[session_server].listen_address not defined, session endpoints disabled  builds=0</li>
+<li>當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?<br>Configuration loaded                                builds=0<br>listen_address not defined, metrics &amp; debug endpoints disabled  builds=0<br>[session_server].listen_address not defined, session endpoints disabled  builds=0</li>
 </ol>
 <p>(fin)</p>
 
@@ -1087,12 +1091,20 @@ ga('send', 'pageview');
   
 </nav>
     <div id="likecoin">
-  <script type="text/javascript">
-    document.write(
-      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/marsenlin/button?referrer=" +
-      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
-  </script>
+Please enable JavaScript to view the LikeCoin. :P
 </div>
+<script>
+
+  (function(){
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "https://button.like.co/in/embed/marsenlin/button?referrer=undefined");      
+    ifrm.setAttribute("sandbox","allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
+    ifrm.frameborder = "0";
+    ifrm.scrolling = "no";
+    (document.getElementById("likecoin").replaceChild(ifrm, document.getElementById("likecoin").childNodes[0]));
+  })();
+
+</script>
 <script>
 
   var disqus_shortname = 'marsenlin';

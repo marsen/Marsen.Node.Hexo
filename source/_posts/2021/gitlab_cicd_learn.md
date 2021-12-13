@@ -154,8 +154,10 @@ Running "flutter pub get" in rettulf...
 
 我們的 Gitlab-Runner 是執行在 Docker 上，
 而當我需要 build Docker Images 時，我會在 Container 中建立 docker  
+這時 Container 所使用的 Image 會是 [Docker Image](https://hub.docker.com/_/docker)
+就被稱為 DIND (Docker In Docker)
 
-### 如何在 DIND 中 Docker Login
+### 在 Gitlab CI 中 Docker Login
 
 參考以下的 `.gitlab-ci.yml`
 
@@ -163,6 +165,13 @@ Running "flutter pub get" in rettulf...
    before_script:
       - echo "$DOCKER_REGISTRY_PASS" | docker login -u $DOCKER_REGISTRY_USER --password-stdin
 ```
+
+#### 異常紀錄與解決方案
+
+> $ echo -n $LOGIN_KEY | docker login -u _json_key_base64 --password-stdin https://xxxx-docker.pkg.dev
+Error: Cannot perform an interactive login from a non TTY device
+
+主因是讀不到 `$LOGIN_KEY` 的環境變數，使用 Gitlab-CI 的話要注意 [Protect Variable](https://docs.gitlab.com/ee/ci/variables/index.html#protect-a-cicd-variable)  
 
 ### 無法對 docker hub registry  
 
@@ -202,7 +211,7 @@ apt-get install vim     # now finally this will work !!!
 ### 問題
 
 1. gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?
-2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息
+2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?
 Configuration loaded                                builds=0
 listen_address not defined, metrics & debug endpoints disabled  builds=0
 [session_server].listen_address not defined, session endpoints disabled  builds=0
