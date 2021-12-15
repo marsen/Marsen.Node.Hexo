@@ -218,7 +218,25 @@ ga('send', 'pageview');
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install apt-file</span><br><span class="line">apt-file update</span><br><span class="line">apt-get install vim     # now finally this will work !!!</span><br></pre></td></tr></table></figure>
 
-<h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><ol>
+<h3 id="GCP-Artifact-Registry"><a href="#GCP-Artifact-Registry" class="headerlink" title="GCP Artifact Registry"></a>GCP Artifact Registry</h3><p>這裡都以台灣的 region 為範例，<br>所以都是 ‘asia-east1-docker.pkg.dev‘ 不同的 region 請再參考 GCP 文件</p>
+<h4 id="推上去"><a href="#推上去" class="headerlink" title="推上去"></a>推上去</h4><p>記得要先登入</p>
+<blockquote>
+<p>docker login -u _json_key_base64 –password-stdin <a target="_blank" rel="noopener" href="https://asia-east1-docker.pkg.dev">https://asia-east1-docker.pkg.dev</a></p>
+</blockquote>
+<p>推上去</p>
+<blockquote>
+<p>docker push “asia-east1-docker.pkg.dev/{env_name}/docker/{project_name}:{version_tag}</p>
+</blockquote>
+<h4 id="拉下來"><a href="#拉下來" class="headerlink" title="拉下來"></a>拉下來</h4><p>需要先調整 Docker configuration file 取得授權，請<a target="_blank" rel="noopener" href="https://cloud.google.com/sdk/gcloud/reference/auth/configure-docker">參考</a></p>
+<blockquote>
+<p>gcloud auth configure-docker asia-east1-docker.pkg.dev</p>
+</blockquote>
+<p>再執行</p>
+<blockquote>
+<p>docker pull asia-east1-docker.pkg.dev/{env_name}/docker/{project_name}:{version_tag}</p>
+</blockquote>
+<p>註冊</p>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><ol>
 <li>gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?</li>
 <li>當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?<br>Configuration loaded                                builds=0<br>listen_address not defined, metrics &amp; debug endpoints disabled  builds=0<br>[session_server].listen_address not defined, session endpoints disabled  builds=0</li>
 </ol>
