@@ -208,7 +208,33 @@ apt-file update
 apt-get install vim     # now finally this will work !!!
 ```
 
-### 問題
+### GCP Artifact Registry
+
+這裡都以台灣的 region 為範例，  
+所以都是 ‘asia-east1-docker.pkg.dev‘ 不同的 region 請再參考 GCP 文件
+
+#### 推上去
+
+記得要先登入
+> docker login -u _json_key_base64 --password-stdin https://asia-east1-docker.pkg.dev
+
+推上去
+
+> docker push "asia-east1-docker.pkg.dev/{env_name}/docker/{project_name}:{version_tag}
+
+#### 拉下來
+
+需要先調整 Docker configuration file 取得授權，請[參考](https://cloud.google.com/sdk/gcloud/reference/auth/configure-docker)
+
+> gcloud auth configure-docker asia-east1-docker.pkg.dev
+
+再執行
+
+> docker pull asia-east1-docker.pkg.dev/{env_name}/docker/{project_name}:{version_tag}
+
+註冊
+
+## 問題
 
 1. gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?
 2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?
