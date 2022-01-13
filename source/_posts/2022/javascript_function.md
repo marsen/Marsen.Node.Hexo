@@ -2,7 +2,7 @@
 title: "[學習筆記] Javascript function 幾種不同的寫法"
 date: 2022/01/13 11:59:54
 tag: 
-  - Javascript
+  - JavaScript
 ---
 
 ## 回傳純值的函數
