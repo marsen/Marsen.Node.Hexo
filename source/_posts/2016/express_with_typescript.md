@@ -19,7 +19,7 @@ tag:
 
 - grunt/gulp/webpack
   - 選擇 gulp希望能切換到webpack
-- typescript
+- TypeScript
 
 ## 初期目標
 

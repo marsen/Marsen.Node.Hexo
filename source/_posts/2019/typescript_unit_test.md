@@ -4,7 +4,7 @@ date: 2019/05/16 13:18:16
 tag:
     - Unit Testing
     - TDD
-    - TypeScript
+    #- TypeScript
     - Node.js
     - 實作筆記
 ---
@@ -18,7 +18,7 @@ tag:
 - 所以我要寫測試
 - node 版本 v8.11.1
 - npm 版本 5.6.0
-- typescript 版本 3.3.3333
+- TypeScript 版本 3.3.3333
 
 ## Context & User Stories  
 
