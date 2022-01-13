@@ -31,6 +31,6 @@
   },
   "resolutions": {
     "minimist": "^1.2.5",
-    "stylus": "^0.54.8"
+    "stylus": "^0.56.0"
   }
 }
