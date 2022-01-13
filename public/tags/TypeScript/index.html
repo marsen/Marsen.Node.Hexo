@@ -3,23 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>[實作筆記] Reshaper Code Template | Marsen&#39;s Blog</title>
+  <title>Tag: TypeScript | Marsen&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前情提要我通常會作一些 Code Snippet 來加速開發，避免同樣的代碼要重複的寫，除了避免重複，能交給工具的儘量交給工具去作，只要是人為的操作就有可能犯錯，就算是簡單的剪下貼上，讓工具作事，用心去檢驗，這是我在 2019 練習的小心得。   比如說我使用無蝦米輸入法、刻意練習英打速度，購買 Reshaper 等…，都是為了提昇生產力。今天就是要說說 Reshaper 的 Template ，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="[實作筆記] Reshaper Code Template">
-<meta property="og:url" content="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Marsen&#39;s Blog">
+<meta property="og:url" content="https://blog.marsen.me/tags/TypeScript/index.html">
 <meta property="og:site_name" content="Marsen&#39;s Blog">
-<meta property="og:description" content="前情提要我通常會作一些 Code Snippet 來加速開發，避免同樣的代碼要重複的寫，除了避免重複，能交給工具的儘量交給工具去作，只要是人為的操作就有可能犯錯，就算是簡單的剪下貼上，讓工具作事，用心去檢驗，這是我在 2019 練習的小心得。   比如說我使用無蝦米輸入法、刻意練習英打速度，購買 Reshaper 等…，都是為了提昇生產力。今天就是要說說 Reshaper 的 Template ，">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://blog.marsen.me/images/2020/1/reshaper_template_01.jpg">
-<meta property="og:image" content="https://blog.marsen.me/images/2020/1/reshaper_template_02.jpg">
-<meta property="article:published_time" content="2020-01-08T09:17:17.000Z">
-<meta property="article:modified_time" content="2021-11-02T05:59:08.616Z">
 <meta property="article:author" content="Marsen L.">
-<meta property="article:tag" content="實作筆記">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.marsen.me/images/2020/1/reshaper_template_01.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Marsen&#39;s Blog" type="application/atom+xml">
   
@@ -89,118 +81,146 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2020/reshaper_tempalte" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/08/2020/reshaper_tempalte/" class="article-date">
-  <time datetime="2020-01-08T09:17:17.000Z" itemprop="datePublished">2020-01-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      [實作筆記] Reshaper Code Template
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/18/2021/storybook_typescript/" class="archive-article-date">
+  <time datetime="2021-01-18T08:01:35.000Z" itemprop="datePublished">1月 18</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/18/2021/storybook_typescript/">[實作筆記] React 與 Storybook 開發</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>我通常會作一些 Code Snippet 來加速開發，<br>避免同樣的代碼要重複的寫，<br>除了避免重複，能交給工具的儘量交給工具去作，<br>只要是人為的操作就有可能犯錯，就算是簡單的剪下貼上，<br>讓工具作事，用心去檢驗，這是我在 2019 練習的小心得。  </p>
-<p>比如說我使用無蝦米輸入法、刻意練習英打速度，<br>購買 Reshaper 等…，都是為了提昇生產力。<br>今天就是要說說 Reshaper 的 Template ，<br>這是一個跟 Code Snippet 相同的功能 。  </p>
-<h2 id="本文"><a href="#本文" class="headerlink" title="本文"></a>本文</h2><p>Template 與 Code Snippet 並不使用共同的範例檔，<br>所以要如何將已有的 Snippet 轉移過來呢 ? 如果有人知道請跟我說。<br>另一個問題是，他真的比原本的 Snippet 好用嗎 ?</p>
-<p>因為我的 Snippet 並不多，大約 10 個左右<br>為了馬上增加生產力，我手動將主要有用到的 2個重建了<br>剩下的如果真的很少用，就讓他自然淘汰吧。<br>常用的如果有用到再來重建。</p>
-<p>第二件事，我使用上手感是差不多的<br>據說 Resharper 會更智慧化，所以我會選用 Code Template  </p>
-<h2 id="如何新增"><a href="#如何新增" class="headerlink" title="如何新增"></a>如何新增</h2><p>以 Visual Studio 2019 與 Resharper Ultimate 為例，<br>在搜尋框輸入 <code>Template</code> 找到 <code>Template Explorer</code><br>點擊新增圖示，進行編輯，<br>其它就跟原本的 Snippet 差不多，也可以提供參數化入與 short cut<br><img src="/images/2020/1/reshaper_template_01.jpg" alt="Create Template"></p>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>如果已經安裝了 Resharper Ultimate 但是 Template 不工作的話記得看一下設定</p>
-<p>Resharper &gt; Option &gt; Intellisense &gt; General</p>
-<p><img src="/images/2020/1/reshaper_template_02.jpg" alt="Option"></p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/vs-code-snippet-with-resharper/">https://blog.darkthread.net/blog/vs-code-snippet-with-resharper/</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/resharper/Creating_a_File_Template.html">https://www.jetbrains.com/help/resharper/Creating_a_File_Template.html</a></li>
-</ul>
-<p>(fin)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/" data-id="ckne1131k0056xsugbrox5j9d" class="article-share-link">Share</a>
-      
-        <a href="https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%A6%E4%BD%9C%E7%AD%86%E8%A8%98/" rel="tag">實作筆記</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/01/14/2020/requestbin/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          [實作筆記] 使用 Request Bin 測試第三方 Webhook 與 Callback 
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/12/25/2019/about_sql_acid_and_srgs/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">[學習筆記] SQL 大小事 Isolation Level 與 SARGs</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
-<section id="comments">
   
-    <div id="gitalk-container" >
-  Please enable JavaScript to view the Gitalk. :D
-</div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
-<script>
-  (function(){
-    const gitalk = new Gitalk({
-      'clientID': '386c8c11178846ff9a31',
-      'clientSecret': '969a7543f3dc518b9e540d1e335df2fcb9c2df57',
-      'repo': 'marsen.github.io',
-      'owner': 'marsen',
-      'admin': ['marsen'],
-      'id': md5(location.pathname),      // Ensure uniqueness and length less than 50( use md5)
-      'distractionFreeMode': false  // Facebook-like distraction free mode
-    })
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/05/16/2019/typescript_unit_test/" class="archive-article-date">
+  <time datetime="2019-05-16T05:18:16.000Z" itemprop="datePublished">5月 16</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/05/16/2019/typescript_unit_test/">[實作筆記] Unit Testing With TypeScript</a>
+    </h1>
+  
 
-    gitalk.render('gitalk-container')
-  })();
-</script>
-
-  
-  
-    <div id="likecoin">
-  <script type="text/javascript">
-    document.write(
-      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/marsenlin/button?referrer=" +
-      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
-  </script>
-</div>
-  
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </header>
   </div>
-</section>
+</article>
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/10/23/2017/weekly_learn/20171023/" class="archive-article-date">
+  <time datetime="2017-10-23T03:47:27.000Z" itemprop="datePublished">10月 23</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/10/23/2017/weekly_learn/20171023/">20171023本周要聞/心得/學習擷錄</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/10/14/2016/todolist_by_typescript_2/" class="archive-article-date">
+  <time datetime="2016-10-14T02:34:27.000Z" itemprop="datePublished">10月 14</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/14/2016/todolist_by_typescript_2/">[KATA] 用 TypeScript 作一個簡易的 TodoList(二) - 用JQuery實作</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/10/08/2016/todolist_by_typescript_1/" class="archive-article-date">
+  <time datetime="2016-10-08T02:34:27.000Z" itemprop="datePublished">10月 8</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/08/2016/todolist_by_typescript_1/">[KATA] 用typescript作一個簡易的 TodoList(一) - 前置作業</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
 </section>
         
           <aside id="sidebar">
@@ -316,13 +336,11 @@ ga('send', 'pageview');
 
   var disqus_shortname = 'marsenlin';
   
-  var disqus_url = 'https://blog.marsen.me/2020/01/08/2020/reshaper_tempalte/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 
