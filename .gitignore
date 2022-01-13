@@ -8,3 +8,4 @@ coverage/
 yarn.lock
 \.deploy_git
 package-lock.json
+public
