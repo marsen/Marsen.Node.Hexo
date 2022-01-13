@@ -1,11 +1,10 @@
 ---
-title: '[KATA]用 typescript 作一個簡易的 TodoList(二) - 用JQuery實作'
+title: '[KATA] 用 TypeScript 作一個簡易的 TodoList(二) - 用JQuery實作'
 date: 2016/10/14 10:34:27
 tag: 
 - TypeScript
 - BootStrap
 - NPM
-- JavaScript
 ---
 ## 設計理念
 
