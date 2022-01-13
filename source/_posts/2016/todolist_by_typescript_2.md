@@ -5,7 +5,7 @@ tag:
 - TypeScript
 - BootStrap
 - NPM
-- JQuery
+- JavaScript
 ---
 ## 設計理念
 
