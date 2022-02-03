@@ -2,8 +2,8 @@
 title: "[實作筆記] Github 結合 Stryker 作變異測試"
 date: 2020/05/06 09:03:30
 tag:
-    - CI/CD
-    - 實作筆記
+  - CI/CD
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -15,7 +15,7 @@ tag:
 
 ## Stryker.Net
 
-跟據[Stryker Handbook](https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md)，
+根據 [Stryker Handbook](https://github.com/stryker-mutator/stryker-handbook/blob/master/dashboard.md)，
 Stryker 主要有三個專案，
 
 - Stryker (Javascript & TypeScript)
@@ -46,7 +46,7 @@ dotnet stryker -tp "['./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests
 最主的功能是將報告上傳。  
 $STRYKER_DASHBOARD_API_KEY 是 [Github 的 Secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
 
-你可以執行 `dotnet stryker -h` 查看更多原始說明  
+你可以執行 `dotnet stryker -h` 查看更多原始說明
 
 ```shell
   -tp|--test-projects Specify what test projects should run on the project under test.
@@ -59,17 +59,14 @@ $STRYKER_DASHBOARD_API_KEY 是 [Github 的 Secrets](https://help.github.com/en/a
 
 新增一個 `stryker-config.json`  
 對我來說，最重要的是要記得設定 `stryker-config > reporters > dashboard` 這筆資料。  
-[詳細的說明的可以參考這篇](https://github.com/stryker-mutator/stryker-net/blob/master/docs/Configuration.md)  
+[詳細的說明的可以參考這篇](https://github.com/stryker-mutator/stryker-net/blob/master/docs/Configuration.md)
 
 ```json
 {
   "stryker-config": {
     "dashboard-project": "github.com/marsen/Marsen.NetCore.Dojo",
     "dashboard-version": "master",
-    "reporters": [
-      "json",
-      "dashboard"
-    ]
+    "reporters": ["json", "dashboard"]
   }
 }
 ```
@@ -78,7 +75,7 @@ $STRYKER_DASHBOARD_API_KEY 是 [Github 的 Secrets](https://help.github.com/en/a
 
 首先你必須在 [Dashboard](https://dashboard.stryker-mutator.io/)中 Enable Repository
 
-![Enable Repository](/images/2020/5/github_action_with_stryker_mutator_01.jpg)  
+![Enable Repository](/images/2020/5/github_action_with_stryker_mutator_01.jpg)
 
 然後產生一組 Key
 
