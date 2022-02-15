@@ -2,9 +2,10 @@
 title: "[閱讀筆記] 重構---改善既有程式的設計，第一章"
 date: 2019/03/01 11:17:16
 tag:
-  - 重構  
+  - 重構
   - Testing
 ---
+
 ## 為什麼
 
 ### 知道自已不知道
@@ -30,13 +31,13 @@ tag:
 第一個問題就是我找不到書中說的「線上範例」，  
 即使找到我也沒有 `Java` 的開發環境，所以心一橫就開始了改寫成 `C#` 的計劃  
 這部份比我想像中的簡單很多，兩個語言是相同類似的，  
-[第1章，第一個案例](https://github.com/marsen/Marsen.NetCore.Dojo/commit/6e600db029fe2f62df724d0179b708c97a0b3313)
+[第 1 章，第一個案例](https://github.com/marsen/Marsen.NetCore.Dojo/commit/6e600db029fe2f62df724d0179b708c97a0b3313)
 
 **接下來只要照著書上一步一步作就會...覺得越來越沒 fu …**
 為什麼 ???
 
 其實 Martin 大叔在書中有提到「為即將修改的程式建立可靠的測試…畢竟是人，可能會犯錯。所以我需要可靠的測試」。  
-沒fu的原因就是**我沒加測試**，即使重構了，我也不知道好壞。
+沒 fu 的原因就是**我沒加測試**，即使重構了，我也不知道好壞。
 沒有反饋是很糟糕的一件事。
 
 ### CH1 重構，第一個案例，加上測試
@@ -46,13 +47,15 @@ tag:
 會針對不同的情境回傳不同的字串。
 
 簡單的說，我只要讓測試覆蓋這個方法就可以開始重構了，  
-我選擇[dotCover](https://www.jetbrains.com/dotcover/)來檢驗我的覆蓋率。  
-選擇的原因很簡單，因為我有買[ReSharper](https://www.jetbrains.com/resharper/?)，  
-如果有更好用更便宜的工具也請介紹給我。
+我選擇 [dotCover](https://www.jetbrains.com/dotcover/)來檢驗我的覆蓋率。  
+選擇的原因很簡單，因為我買了 [ReSharper](https://www.jetbrains.com/resharper/?)，  
+其中就包含這個好用的工具。  
+試著投資一些金錢在工具上的回報是相當值得的。
+~~如果有更好用更便宜的工具也請介紹給我。~~
 
 > OS:課金真的能解決很多人生問題啊(茶)...
 
-最後的結果，我開了一個[分支](https://github.com/marsen/Marsen.NetCore.Dojo/commit/d8d6f463960572af6ffdb3a5612fd00623d0d7e2)包含了100%的測試覆蓋率，  
+最後的結果，我開了一個[分支](https://github.com/marsen/Marsen.NetCore.Dojo/commit/d8d6f463960572af6ffdb3a5612fd00623d0d7e2)包含了 100%的測試覆蓋率，  
 這樣就可以開開心心重構了，相信我有測試真得很有感覺。
 
 重構的技法請自行看書，我只稍微作個記錄，有興趣可以 fork 回去玩。
@@ -64,7 +67,7 @@ tag:
 - Replace Conditional with Polymorphism
 - Self Encapsulate Field
 
-在重構的過程中我儘可能讓步驟小(Baby Step)，看我的commit歷程即可知道，但是最好可以自已作作看。
+在重構的過程中我儘可能讓步驟小(Baby Step)，看我的 commit 歷程即可知道，但是最好可以自已作作看。
 另外有一些心法，也稍作個記錄
 
 - 把一坨爛 Code 抽到獨立的方法之中
@@ -79,7 +82,7 @@ tag:
   - 儘可能的把它消除
   - 要考慮效能的問題(書上後面會說。)
 - 保持小步調、頻繁測試
-  - 使用中繼方法可以縮小重構步調(特別是對public的方法)
+  - 使用中繼方法可以縮小重構步調(特別是對 public 的方法)
   - 讓新的 return 值插在舊的 return 之前
   - 測試 ok 就可以刪掉舊 code (有時刪不掉也還是可以運作的)
   - 善用[變異測試](https://blog.marsen.me/2018/03/20/2018/mutation_testing/)
@@ -91,15 +94,15 @@ tag:
 
 第一章的範例完成後的結果大致如下  
 ![100%!!!](/images/2019/3/test_cover_100.jpg)  
-很帥氣的100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，  
+很帥氣的 100%啊，這樣的 code 測試覆蓋率 100 % 全綠燈，  
 而且完成了重構，根本是現場不可能出現的完全體程式碼!!!  
 代碼的部份我會放在最後的參考區塊。
 
 ![我有沒有可能讓它更好？或是找出他的缺陷呢？](/images/2019/3/cell.jpg)  
-下一步，我有沒有可能讓它更好？或是找出他的缺陷呢？  
+下一步，我有沒有可能讓它更好？或是找出他的缺陷呢？
 
 這個時候我想起了[變異測試](https://blog.marsen.me/2018/03/20/2018/mutation_testing/)  
-還沒有實作過，來玩看看好了。  
+還沒有實作過，來玩看看好了。
 
 首先要選擇測試工具，這裡使用了[Stryker Mutator](https://stryker-mutator.io/)，  
 但是注意只能用在 .Net Core 的版本
@@ -122,11 +125,11 @@ return result;
 
 變異點發生在 `daysRented > 2` 的判斷式之中，  
 現有的測試在變異發生(`daysRented >= 2`)時，無法提出警訊，也就是測試上的不足。
-不過依現有的邏輯，不論是進入 `if` 進行了加0運算，或是直接回傳 result，  
+不過依現有的邏輯，不論是進入 `if` 進行了加 0 運算，或是直接回傳 result，  
 都是等價的(回傳 2 )，目前還沒有想法怎麼強化我的測試，  
 希望有先進願意不嗇指點，實務上跟本沒在跑變異測試。
 
-## 後記2
+## 後記 2
 
 回歸一下我們當初 Kata 的目的:
 
@@ -144,10 +147,10 @@ return result;
   - 指法要正確(特別在特殊符號)
   - 快速切換中英(建議加入英文輸入法用 win + space 之切換過去)
 - 英文能力。命名是開發很重要的一課，英文不好看不懂寫得差，命名自然不會好。
-- 熟悉工具，特別是你的IDE與外掛
+- 熟悉工具，特別是你的 IDE 與外掛
   - Visual Studio
   - Resharper
-  - OzCode  
+  - OzCode
   - more ..
 - Vim
   - Vim Basic 基本功(v、c、i、s、j、k、g、h、l....)
@@ -156,7 +159,7 @@ return result;
 彼此學習方面需要相當的軟技能，  
 溝通、尊重、謙虛…;這些一生的功課我就不贅言了。  
 Pair Programming 一半是 Pair 一半是 Programming；  
-而在進入 Programming 之前請搞懂你**要作什麼**。  
+而在進入 Programming 之前請搞懂你**要作什麼**。
 
 同樣的在 TDD 的過程之中，我們沒有事先理好需求，  
 沒有想好作好需求分析，隨便選了測試案例就開始進行，  
@@ -171,7 +174,7 @@ Pair Programming 一半是 Pair 一半是 Programming；
 ## 參考
 
 - [Ratatype](https://www.ratatype.com/)
-- [重構─改善既有程式的設計， 2/e (Refactoring: Improving The Design of Existing Code)](https://www.tenlong.com.tw/products/9789861547534)
+- [重構 ─ 改善既有程式的設計， 2/e (Refactoring: Improving The Design of Existing Code)](https://www.tenlong.com.tw/products/9789861547534)
 - [dotCover: A Code Coverage Tool for .NET by JetBrains](https://www.jetbrains.com/dotcover/)
 - [Java inheritance vs. C# inheritance](https://stackoverflow.com/questions/13323099/java-inheritance-vs-c-sharp-inheritance)
 - [marsen/Marsen.NetCore.Dojo](https://github.com/marsen/Marsen.NetCore.Dojo/tree/Refactoring_Improving_The_Design_of_Existing_Code_With_Test)

@@ -17,7 +17,7 @@ SonarCloud 可以幫我檢查代碼，跑跑測試覆蓋率，刷新一下 Budge
 如果有異常(覆蓋率下降、壞味道等…)最好再發個通知給我。
 這些功能要怎麼作到呢 ?
 
-然後我會實際用在我的[SideProject](https://github.com/marsen/Marsen.NetCore.Dojo)上，  
+然後我會實際用在我的 [SideProject](https://github.com/marsen/Marsen.NetCore.Dojo) 上，  
 這個 Project 單純只是為了練習而生，  
 專注於我個人的測試項目，主要語言為 Csharp 也有一些 TypeScript 。
 
