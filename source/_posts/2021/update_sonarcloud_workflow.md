@@ -1,6 +1,6 @@
 ---
 title: "[實作筆記] SonarCloud Move analysis to Java 11 更新 Github Action"
-date: 2021/02/03 
+date: 2021/02/03
 ---
 
 ## 前情提要
@@ -18,7 +18,7 @@ Temporarily you can set the property 'sonar.scanner.force-deprecated-java-versio
 This will only work until Mon Feb 15 09:00:00 UTC 2021, afterwards all scans will fail.
 You can find more information here: https://sonarcloud.io/documentation/upcoming/
 
-ERROR: 
+ERROR:
 The SonarScanner did not complete successfully
 08:24:36.417  Post-processing failed. Exit code: 1
 Error: Process completed with exit code 1.
@@ -29,11 +29,11 @@ Error: Process completed with exit code 1.
 移除掉原本的 SonarScanner
 
 ```text
-- name: SonarScanner Begin    
-  run: dotnet sonarscanner begin /k:"marsen_Marsen.NetCore.Dojo" /o:"marsen-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$SONAR_LOGIN
+- name: SonarScanner Begin
+  run: dotnet sonarscanner begin /k:"Marsen.NetCore.Dojo" /o:"marsen-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$SONAR_LOGIN
 ## 中略
 - name: SonarScanner End
-  run: dotnet sonarscanner end /d:"sonar.login="$SONAR_LOGIN 
+  run: dotnet sonarscanner end /d:"sonar.login="$SONAR_LOGIN
 ```
 
 在整個方案的根目錄加上一個檔案`sonar-project.properties`,
@@ -43,7 +43,7 @@ sonar.organization=<replace with your SonarCloud organization key>
 sonar.projectKey=<replace with the key generated when setting up the project on SonarCloud>
 
 # relative paths to source directories. More details and properties are described
-# in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/ 
+# in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/
 sonar.sources=.
 ```
 

@@ -2,8 +2,8 @@
 title: "[實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇"
 date: 2020/04/30 15:30:43
 tag:
-    - CI/CD
-    - 實作筆記
+  - CI/CD
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -19,7 +19,7 @@ tag:
 我的分類方法，單一類別的 public 方法就用單元測試包覆。
 不同的類別之如果有組合的交互行為，就用整合測試包覆。
 
-舉個簡單的例子，以購物流程來說，我有的類別如下 :  
+舉個簡單的例子，以購物流程來說，我有的類別如下 :
 
 - Cart(購物車)
   - Add (加入商品)
@@ -62,12 +62,12 @@ dotnet test ./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests.csproj --
 ```
 
 測試報告會產生一份 `result.trx` 檔，在測試專案目錄底下的 `TestResults` 資料夾裡。
-如果要在 SonarCloud 上使用請設定 sonar.cs.vstest.reportsPaths (VSTest適用)，更多資訊請[參考](https://docs.sonarqube.org/latest/analysis/coverage/)。
+如果要在 SonarCloud 上使用請設定 sonar.cs.vstest.reportsPaths (VSTest 適用)，更多資訊請[參考](https://docs.sonarqube.org/latest/analysis/coverage/)。
 
-![result.trx](/images/2020/4/sonarqube_run_with_github_action_04.jpg)  
+![result.trx](/images/2020/4/sonarqube_run_with_github_action_04.jpg)
 
 ```shell
-dotnet sonarscanner begin /k:"marsen_Marsen.NetCore.Dojo" /o:"marsen-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$SONAR_LOGIN
+dotnet sonarscanner begin /k:"Marsen.NetCore.Dojo" /o:"marsen-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login="$SONAR_LOGIN
 dotnet build ".\Marsen.NetCore.Dojo.Integration.Test.sln"
 dotnet test ./test/Marsen.NetCore.Dojo.Tests/Marsen.NetCore.Dojo.Tests.csproj --logger:trx;LogFileName=result.trx
 dotnet sonarscanner end /d:"sonar.login="$SONAR_LOGIN
@@ -84,11 +84,13 @@ dotnet sonarscanner end /d:"sonar.login="$SONAR_LOGIN
 這裡實作上很簡單，但是在選擇上有一些困難與試誤，稍微作個記錄。
 
 1. dotconver (棄選)
+
    - 似乎要綁定 resharper 的 lincese
    - 有 30 天的限制，不知道會不會影響功能
    - 不知道怎麼用 commandline 下載執行程式至 Github Action 執行實體上。
 
 2. vstest.console.exe (棄選)
+
    - ~~似乎只能在 windows 上執行~~
    - 可以透過參數開始功能 `--collect:"Code Coverage"`，但產生的 .cover 檔 SonarCloud 不支援需要轉換格式
    - 不知道如何將 .cover 轉換為 .coverxml ， 可能是 visual studio enter prise 才有的功能 ?
@@ -127,25 +129,23 @@ Configuration > Format 請記得填寫 `opencover`
 
 最後至 `SonarCloud` 上設定 `sonar.cs.opencover.reportsPaths` 的路徑
 
-![result.trx](/images/2020/4/sonarqube_run_with_github_action_05.jpg)  
+![result.trx](/images/2020/4/sonarqube_run_with_github_action_05.jpg)
 
 最後的最後，就來個 Budget 大集合吧
 
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=bugs)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=code_smells)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=coverage)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=ncloc)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=alert_status)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=security_rating)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=sqale_index)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=marsen_Marsen.NetCore.Dojo&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=marsen_Marsen.NetCore.Dojo)](https://sonarcloud.io/dashboard?id=marsen_Marsen.NetCore.Dojo)
-
-
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=bugs)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=code_smells)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=coverage)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=ncloc)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=alert_status)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=security_rating)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Marsen.NetCore.Dojo&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Marsen.NetCore.Dojo)](https://sonarcloud.io/dashboard?id=Marsen.NetCore.Dojo)
 
 ## 參考
 
