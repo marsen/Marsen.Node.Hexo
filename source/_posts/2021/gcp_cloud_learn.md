@@ -60,18 +60,43 @@ code: 'ERR_OSSL_EVP_UNSUPPORTED'
 ## Build Image
 
 如果選擇 Artifacts Registry 與 Cloud Run 的 solution  
-必須撰寫 Dockerfile 來建立 Docker Images  
+必須撰寫 Dockerfile 來建立 Docker Images
 
-### 問題 [Dart] no active package dhttpd  
+### 問題 [Dart] no active package dhttpd
 
 [dhttpd](https://pub.dev/packages/dhttpd) 是 Dart 的靜態網站解決方案，  
 不過在部署到 Cloud Run 時會發生錯誤，  
 更多資訊請參考 [stackoverflow](https://stackoverflow.com/questions/70388111/can-not-run-flutter-web-app-on-google-cloud-runner) 的提問與 [issueTracker](https://issuetracker.google.com/issues/211083676) 的後續
 
-暫解是使用其它的靜態網站服務或套件 ,  
-EX: [NGINX](https://www.nginx.com/) 、 npm 的 [serve](https://www.npmjs.com/package/serve) 套件,  
-或是其它你熟悉的靜態網站服務。  
-請參考以下 Dockerfile
+#### 20220308 已有解決方案，更新
+
+加上 dart global activate 指令，這會在執行前啟用 dhttpd 的服務，
+RUN 是建立鏡像檔的語法, CMD 才是 docker image 啟動時會執行的語法，  
+所以應該將 activate 指令放在啟動
+
+```yml
+FROM docker.io/dart
+
+WORKDIR /flutter
+
+ENV PATH $PATH:$HOME/.pub-cache/bin
+
+COPY build/web ./
+COPY start.sh ./
+EXPOSE 8082
+
+CMD dart pub global activate dhttpd && dart pub global run dhttpd --port=8082 --host=0.0.0.0
+```
+
+參考聯結
+
+- [StackOverflow](https://stackoverflow.com/questions/70388111/can-not-run-flutter-web-app-on-google-cloud-runner)
+- [Google Issue Report](https://issuetracker.google.com/issues/211083676)
+
+~~暫解是使用其它的靜態網站服務或套件 ,~~  
+~~EX: [NGINX](https://www.nginx.com/) 、 npm 的 [serve](https://www.npmjs.com/package/serve) 套件,~~  
+~~或是其它你熟悉的靜態網站服務。~~  
+~~請參考以下 Dockerfile~~
 
 ```yml
 # pull official base image
@@ -105,20 +130,20 @@ CMD serve -p 8080
 參考部份的 .gitlab-ci.yml
 
 ```yml
-  script:
-    - echo "Compiling the image..."
-    - echo -n $GCR_KEY | docker login -u _json_key_base64 --password-stdin https://asia-east1-docker.pkg.dev  
-    - docker build -t $CI_PROJECT_NAME . --no-cache
-    - docker tag "$CI_PROJECT_NAME" "asia-east1-docker.pkg.dev/company_registry/docker/$CI_PROJECT_NAME:$ver"
-    - docker push "asia-east1-docker.pkg.dev/company_registry/docker/$CI_PROJECT_NAME:$ver"    
-    - echo "Compile image complete."
+script:
+  - echo "Compiling the image..."
+  - echo -n $GCR_KEY | docker login -u _json_key_base64 --password-stdin https://asia-east1-docker.pkg.dev
+  - docker build -t $CI_PROJECT_NAME . --no-cache
+  - docker tag "$CI_PROJECT_NAME" "asia-east1-docker.pkg.dev/company_registry/docker/$CI_PROJECT_NAME:$ver"
+  - docker push "asia-east1-docker.pkg.dev/company_registry/docker/$CI_PROJECT_NAME:$ver"
+  - echo "Compile image complete."
 ```
 
 接下手動設定 Cloud Run(這部份應該也可以自動化，未實作故無記錄)
 
-1. Create Service  
-2. Container > General > Container Image URL > SELECT > ARTIFACT REGISTRY > 選取上面部署上去的 images  
-3. Container Port 8080  
+1. Create Service
+2. Container > General > Container Image URL > SELECT > ARTIFACT REGISTRY > 選取上面部署上去的 images
+3. Container Port 8080
 4. DEPLOY
 
 缺點是每次 CI 跑完 Image 推上 Artifact 後，仍要手動到 Cloud Run 執行 Deploy。  
@@ -130,16 +155,16 @@ CMD serve -p 8080
 非常簡單，只需要 `gsutil rsync -R` 將前一個 job 建置的檔案推到 Cloud Storage 即可
 
 ```yml
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+deploy-job: # This job runs in the deploy stage.
+  stage: deploy # It only runs when *both* jobs in the test stage complete successfully.
   image: google/cloud-sdk
   needs:
     - job: build-job
       artifacts: true
-  script:      
+  script:
     # - gcloud auth list # Show the ACTIVE  ACCOUNT *
     - gsutil rsync -R build gs://your_bucket_name
-    - echo "Application successfully deployed." 
+    - echo "Application successfully deployed."
 ```
 
 這裡有一個盲點是我未知的，gsutil 命令會需要權限才能對 Cloud Storage 寫入，
@@ -154,7 +179,7 @@ deploy-job:      # This job runs in the deploy stage.
 1. GCP > Network Service > Load Balancing
 2. Create Load Balancer
 3. Backend configuration > Create A Backend Bucket
-   - 自已取一個 Backend Bucket name  
+   - 自已取一個 Backend Bucket name
    - Cloud Storage Bucket > Browse > 選取 CI 推上的 Bucket
    - 不勾選 Enable Cloud CDN, 相關的設定與應用程式的應用有關, 較為複雜之後再進行處理
 4. Host and path rules > Simple host and path rule
@@ -164,18 +189,18 @@ deploy-job:      # This job runs in the deploy stage.
 
 可以參考 GCP 的教學與我們實作上的細微差異
 
-- Create a bucket. → 手動建立只需要處理一次  
+- Create a bucket. → 手動建立只需要處理一次
 - Upload and share your site's files. → CI 執行
-- Set up a load balancer and SSL certificate. → 手動建立只需要處理一次  
-- Connect your load balancer to your bucket. → 手動建立只需要處理一次  
+- Set up a load balancer and SSL certificate. → 手動建立只需要處理一次
+- Connect your load balancer to your bucket. → 手動建立只需要處理一次
 - Point your domain to your load balancer using an A record. → 未處理
-- Test the website.  
+- Test the website.
 
 大部份的工作只需要設定一次，未來只需要 CI 將新版的靜態網站上傳到 Cloud Storage 網站就會更新。
 
 ## 參考
 
-- <https://cloud.google.com/storage/docs/hosting-static-website>e
+- <https://cloud.google.com/storage/docs/hosting-static-website>
 - <https://cloud.google.com/load-balancing/docs/https/ext-load-balancer-backend-buckets>
 
 (fin)
