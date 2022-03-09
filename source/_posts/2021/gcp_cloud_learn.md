@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 靜態網站部署整合 GCP(I) --- Artifacts Registry & Cloud Run"
+title: "[實作筆記] 靜態網站部署整合 GCP (一) --- Artifacts Registry & Cloud Run"
 date: 2021/12/22 17:48:42
 tag:
   - 實作筆記
