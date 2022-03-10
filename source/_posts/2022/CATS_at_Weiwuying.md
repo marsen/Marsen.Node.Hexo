@@ -72,6 +72,7 @@ Near the grimy road of Tottenham Court
 - Mistoffelees 是芭蕾的表演，特別是連續轉圈(The Conjuring Turn)
 - 我以為演員會讓我認不出來，但是化裝真的很厲害，就像是有臉譜一樣，跟 DVD 版本沒有什麼差別
 - Grizabella 被趕走的時候讓我想到取消文化與 [Lindy Dancer Max](http://www.yehoodi.com/blog/2017/4/18/max-pitruzzella-accused-of-sexual-assault-by-5-women) 的事件
+- 2019 電影版是邪典加悲劇，我反而希望可以買到 DVD 版本的數位檔
 
 ## 參考
 
