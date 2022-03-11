@@ -3,9 +3,10 @@ title: "[生活筆記]　 2022 貓劇感想"
 date: 2022/03/06 11:08:53
 ---
 
-高中第一次看到貓劇時，是在音樂課上老師所播放的 DVD，  
-僅僅是一個小片段，具體的內容也記不清了---當時的老師常常放影片，  
-比如說用廚具演奏的樂團、貓劇等，---總之，當初只覺得特別，甚至有點詭異。
+第一次看到貓劇是在高中音樂課上，老師所播放了 DVD 的片段，  
+具體的內容也記不清了——當時的老師常常放影片上課，  
+比如說用廚具演奏的樂團、貓劇等，——  
+當初只覺得特別，甚至有點詭異，並沒有什麼感觸。
 
 大學畢業後，等待當兵的時間，不知道在什麼時間點，我再次接觸了貓劇。  
 這次就陷入狂熱(FEVER)，一開始是在網路上找片段看，後來也買了 DVD，  
@@ -25,8 +26,9 @@ Near the grimy road of Tottenham Court
 
 2018 年我開始學習 Lindy Dance 與聽爵士樂，2020 在課堂上認識了一些朋友有在看音樂劇，  
 聊天過後，再次激起心中的火花。2021 雖然歷經疫情，但是台灣國內的狀況一直相對穩定，  
-所以開售當天馬上買了票，在朋友的推薦下，大手筆直接買了衛武營 5800 的票，雖然票價不便宜，
-但是這次的體驗真的值得。
+所以開售當天馬上買了票，在朋友的推薦下，大手筆直接買了衛武營 5800 的票，
+結果疫情爆發，就拖到了 2022 年。
+雖然票價不便宜，但是這次的體驗真的值得。
 
 好的初體驗，第一次看音樂劇就是史上有名的劇，位置在前排中間的位置;
 先說說硬體設施，前排是看不到字幕的，不過貓不是一部需要字幕的戲劇，  
@@ -47,7 +49,7 @@ Near the grimy road of Tottenham Court
 
 但是也是有缺點的部份，首先是視覺的角度較低，在
 
-- 衛武營第一排有時會被燈箱(或是風扇、提詞機)檔住
+- 衛武營第一排有時會被燈箱(或是風扇、提詞機)或貓檔住
 - 當貓咪圍成圈的時候也會被檔住
 - 側面進場的貓咪要轉頭才知道，沒有機會互動
 
@@ -64,7 +66,7 @@ Near the grimy road of Tottenham Court
 - Mungojerrie And Rumpelteazer 的排舞有點像馬戲團的表演，不太確定舞蹈風格
 - Growltiger >> Griddlebone 的表演像義大利歌劇
 - Tantomile & Coricopat 通常會率先作出反應
-- Victoria 在 Old deuteronomy 歌詞中 Victoria's accession 被提到時會被 Munkustrap Cue 一下這點很可愛
+- Victoria 在 Old Deuteronomy 歌詞中 Victoria's accession 被提到時會被 Munkustrap Cue 一下這點很可愛
   - 常在 C 位
   - solo 的部份我覺得更像體操或芭蕾
   - 舞會 spotlight 的部份搭配的是 Plato/George/Admetus(名字不一定)
@@ -73,6 +75,7 @@ Near the grimy road of Tottenham Court
 - 我以為演員會讓我認不出來，但是化裝真的很厲害，就像是有臉譜一樣，跟 DVD 版本沒有什麼差別
 - Grizabella 被趕走的時候讓我想到取消文化與 [Lindy Dancer Max](http://www.yehoodi.com/blog/2017/4/18/max-pitruzzella-accused-of-sexual-assault-by-5-women) 的事件
 - 2019 電影版是邪典加悲劇，我反而希望可以買到 DVD 版本的數位檔
+- 2022 年在台灣有幫 Old Deuteronomy 脫口罩(好像是 Alonzo), 有一種現實的可愛無奈
 
 ## 參考
 
