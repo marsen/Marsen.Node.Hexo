@@ -47,13 +47,14 @@ Location type 有三種
 等四種不同的設定，  
 與檔案的使用頻率有關，對於網站來說建議使用 Standard 。
 收費可以參考下表
-| | Standard | Nearline | Coldline | Archive |
-| -------- | -------- | -------- | -------- | -------- |
-| Storage(per GB-Month) | $0.026 | $0.01 | $0.007 | $0.004 |
-| retrieval(per GB-Month) | Free | $0.01 | $0.02 | $0.05 |
-| Class A Operations(per 1000ops) | $0.005 | $0.01 | $0.01 | $0.05 |
-| Class B Operations(per 1000 ops) | $0.0004 | $0.001 | $0.005 | $0.05 |
-| SLA | 99.95% | 99.9% | 99.9% | 99.9% |
+
+|                                  | Standard | Nearline | Coldline | Archive |
+| -------------------------------- | -------- | -------- | -------- | ------- |
+| Storage(per GB-Month)            | $0.026   | $0.01    | $0.007   | $0.004  |
+| retrieval(per GB-Month)          | Free     | $0.01    | $0.02    | $0.05   |
+| Class A Operations(per 1000ops)  | $0.005   | $0.01    | $0.01    | $0.05   |
+| Class B Operations(per 1000 ops) | $0.0004  | $0.001   | $0.005   | $0.05   |
+| SLA                              | 99.95%   | 99.9%    | 99.9%    | 99.9%   |
 
 接下來是 Choose how to control access to objects 的設定，  
 不要勾選 Enforce public access prevention on this bucket，  
