@@ -1,7 +1,7 @@
 ---
 title: "[學習筆記] Javascript function 幾種不同的寫法"
 date: 2022/01/13 11:59:54
-tag: 
+tag:
   - JavaScript
 ---
 
@@ -53,7 +53,6 @@ console.log("foo7(1,2) is", foo7(1, 2)());
 //curry
 let foo8 = (a) => (b) => a + b;
 console.log("foo8(1,2) is", foo8(1)(2));
-
 ```
 
 (fin)
