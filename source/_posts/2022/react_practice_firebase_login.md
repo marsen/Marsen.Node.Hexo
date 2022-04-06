@@ -2,7 +2,8 @@
 title: "[實作筆記] React Practice (一) Firebase 與 React Login"
 date: 2022/01/27 17:57:59
 tag:
-  - JavaScript
+  - React
+  - Firebase
 ---
 
 ## 前情提要
