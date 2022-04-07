@@ -24,7 +24,7 @@ Header = (props: { sighOut: () => void; auth?: Auth }) => {
 ```
 
 這裡我們先不討論 Auth 的邏輯是否應該與 Header 相依(嗯，這裡看起來是個壞味道)，  
-而是在我們的 Storybook 撰寫測試案例時，應該如何 mock Auth 物件。  
+**而是在我們的 Storybook 撰寫測試案例時，應該如何 mock Auth 物件。**  
 我的程式都是用 TypeScript 與 tsx 寫的，  
 所以如果不符合型別，IDE 會直接報錯，程式跟本無法執行
 
@@ -45,7 +45,7 @@ const Template: ComponentStory<typeof Header> = () => (
 - ts-mockito
 - ts-auto-mock
 
-以上的方法有得有成功，有得失敗，最大的問題是在配置與撰寫其實很麻煩，  
+以上的方法有的成功，有的失敗，最大的問題是在配置與撰寫其實很麻煩，  
 甚至會有同事說為什麼要用 TypeScript 自找麻煩呢 ?
 
 逐一 mock 所有 interface 的屬性，對於一個像 Auth 這樣複雜的介面實作上相當麻煩，  
