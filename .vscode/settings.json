@@ -9,6 +9,7 @@
         "gregor",
         "kktix",
         "mc",
+        "mockito",
         "opencover"
     ],
 }
