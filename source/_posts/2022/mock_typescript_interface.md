@@ -13,8 +13,8 @@ date: 2022/04/08 02:20:08
 ## 問題
 
 我作了一個簡單的 Header 組件，
-這通常是網站或 APP 上方的區塊，通常會提供一些額外的資訊或功能，
-例如: 登入/登出，而這裡我使用 Firebase 作為實作登入/登出的功能，
+這通常是網站或 APP 上方的區塊，通常會提供一些額外的資訊或功能，  
+例如: 登入/登出，而這裡我使用 Firebase 作為實作登入/登出的功能，  
 作為主要的邏輯判斷，firebase 的 Auth 物件會被傳入
 
 ```tsx
@@ -23,9 +23,9 @@ Header = (props: { sighOut: () => void; auth?: Auth }) => {
 };
 ```
 
-這裡我們先不討論 Auth 的邏輯是否應該與 Header 相依(嗯，這裡看起來是個壞味道)，
-而是在我們的 Storybook 撰寫測試案例時，應該如何 mock Auth 物件。
-我的程式都是用 TypeScript 與 tsx 寫得，所以如果不符合型別，IDE 會直接報錯，程式跟本無法執行
+這裡我們先不討論 Auth 的邏輯是否應該與 Header 相依(嗯，這裡看起來是個壞味道)，  
+而是在我們的 Storybook 撰寫測試案例時，應該如何 mock Auth 物件。  
+我的程式都是用 TypeScript 與 tsx 寫得，所以如果不符合型別，IDE 會直接報錯，程式跟本無法執行  
 
 ```tsx
 const Template: ComponentStory<typeof Header> = () => (
