@@ -7,8 +7,8 @@ date: 2022/04/08 02:20:08
 
 我目前在實作一個 React 的專案，並結合 Storybook 來實現 CDD(component driven development)，  
 我很喜歡 CDD 的概念，這裡解決 TDD 對 View 難以趨動開發的痛點，  
-但是又維持了 Unit Test 的基本精神，甚至結合 Chromatic 是一個相當有幫助的工具，  
-可以作為與 PO/PM/UX/UI/DESIGNER 之間的溝通橋梁。
+但是又維持了 Unit Test 的基本精神，進一步結合 Chromatic 可以提供視覺化的檢核頁面，  
+作為與 PO/PM/UX/UI/DESIGNER 之間的溝通工具非常好用。
 
 ## 問題
 
