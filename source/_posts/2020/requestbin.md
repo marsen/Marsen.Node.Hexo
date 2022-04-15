@@ -2,7 +2,7 @@
 title: "[實作筆記] 使用 Request Bin 測試第三方 Webhook 與 Callback "
 date: 2020/01/14 15:31:17
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 ## 案例說明
@@ -11,9 +11,9 @@ tag:
 情境是主子帳號的綁定，  
 Stripe 可以透過 Oauth 的方式綁定不同的 Stripe 帳戶，  
 對於電子商務的平台來說，相當的方便，  
-它可以透過簡單的[授權機制](https://stripe.com/docs/connect/standard-accounts#revoked-access)，取得客戶的金流資訊，  
+它可以透過簡單的[授權機制](https://stripe.com/docs/connect/standard-accounts#revoked-access)，取得客戶的金流資訊，
 
-![Strip Oauth Flow](/images/2020/1/requested_01.jpg)
+![Strip Oauth Flow](/images/2020/1/requestbin_01.jpg)
 
 這時候問題來了，營運部門發現有的時候客戶會不小心將授權解除，  
 這會導致帳務上的問題，所以需要在第一時間被通知，  
@@ -27,9 +27,9 @@ ex: Line、E-mail、簡訊甚至是電話，
 如果這段不通，就算 Event 確實會發生，就算通知務服務是正常的，  
 仍然會收不到通知。
 
-**有沒有辦法快速驗証Webhook呢?**
-**有沒有辦法快速驗証Webhook呢?**
-**有沒有辦法快速驗証Webhook呢?**
+**有沒有辦法快速驗証 Webhook 呢?**
+**有沒有辦法快速驗証 Webhook 呢?**
+**有沒有辦法快速驗証 Webhook 呢?**
 
 ## 網路上的 Solution
 
