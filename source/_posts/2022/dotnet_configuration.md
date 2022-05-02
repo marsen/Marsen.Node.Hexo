@@ -13,17 +13,16 @@ tag:
 
 ### DI Configuration
 
-WebApi 的專案只要注入 IConfiguration 就可以直接取得組態設定
+dotnet webapi 專案預設會注入 IConfiguration ，
+在專案中的程式建構子放入 `IConfiguration` 就可以直接取得組態設定
 
 ```csharp=
 private readonly IConfiguration _config;
 
-public WeatherForecastController( IConfiguration config)
+public WeatherForecastController(IConfiguration config)
 {
-    _logger = logger;
     _config = config;
 }
-...
 
 [HttpGet(Name = "GetWeatherForecast")]
 public string Get()
@@ -32,13 +31,15 @@ public string Get()
 }
 ```
 
-在你可以將組態設定在 `appsettings.json` 之中
-或是使用環境變數，使用環境變數有幾種作法
-開發環境可以使用
+你可以將組態設定在 `appsettings.json` 之中
+或是透過環境變數，使用環境變數有幾種作法
 
-- 設定在機器上或是 Cloud Service 所提供的組態管理工具之中
-- `launchSettings.json` 在 profiles>(project_name|IIS Express)> environmentVariables 中設定，
-  這樣可以不需要真的在開發機的環境中設定環境變數，對重度開發者而言，可以有效隔離不同的專案變數，避免彼此影響污染
+- 設定在機器上
+- 設定在 Cloud Service 所提供的組態管理工具之中
+- 使用 `launchSettings.json`
+
+在開發環境我會使用 `launchSettings` 好處是可以不需要真的在開發機的環境中設定環境變數，
+對同時擁有多個專案的開發者而言，可以有效隔離不同的專案變數，避免彼此影響污染
 
 ### 組態的層次
 
@@ -121,15 +122,17 @@ Options Pattern 可以提供一種更物件導向的組態配置解決方案，
   var key = _options.Value.First.Key;
 ```
 
-兩種方法都可以，物件化的方法需要建立多個物件，但是在取用組態的過程就不會有寫死的字串在;  
+兩種方法都可以，物件化的方法需要建立多個物件，
+但是在取用組態的過程就不會有 hard coding string;  
 反之 Dictionary 的方法可以少寫很多物件。
 
-反思一下，對我而言我比較偏向使用 Object 的方法去處理，只要適當的用資料夾分類，  
-物件多並不是問題，而且通常一次不會增加太多的組態，可以迭代增量。  
-追加一題，如果組態檔層次太多，會不會是另一個困擾 ? 我的建議是，如果組態的深度到達 3 時，  
+對我而言我比較偏向使用 Object 的方法去處理，只要適當的分類，  
+物件多並不是問題，而且通常一次不會增加太多的組態，可以迭代增量。
+
+順代一提，如果組態檔層次太多，會是另一個困擾 ? 我的建議是，如果組態的深度到達 3 時，  
 需要考慮這是不是一個壞味道，是不是過度優化了 ?  
 實務上來說，我會避免建立超過 3 層，也很難會有一定要超過 3 層的情境，  
-如果你有什麼案例，可以留言給我，我們可以一起討論。
+如果你有什麼情境上需要超過 3 層，可以留言給我，我們可以一起討論。
 
 ### 在 Program.cs 使用
 
@@ -156,4 +159,9 @@ builder.Services.AddHttpClient("OtherService", (provider, client) =>
 
 ## 參考
 
-(fin)
+- [ASP.NET Core 的設定](https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/configuration/?view=aspnetcore-6.0)
+- [ASP.NET Core 中的選項模式](https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0)
+- [.NET 中的選項模式](https://docs.microsoft.com/zh-tw/dotnet/core/extensions/options)
+- [Looking inside ConfigurationManager in .NET 6](https://andrewlock.net/exploring-dotnet-6-part-1-looking-inside-configurationmanager-in-dotnet-6/)
+
+  (fin)
