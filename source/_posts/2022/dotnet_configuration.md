@@ -163,5 +163,6 @@ builder.Services.AddHttpClient("OtherService", (provider, client) =>
 - [ASP.NET Core 中的選項模式](https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0)
 - [.NET 中的選項模式](https://docs.microsoft.com/zh-tw/dotnet/core/extensions/options)
 - [Looking inside ConfigurationManager in .NET 6](https://andrewlock.net/exploring-dotnet-6-part-1-looking-inside-configurationmanager-in-dotnet-6/)
+- [你可能不知道的.Net Core Configuration(Evernote 備份)](https://www.evernote.com/shard/s36/sh/20abd4ce-f7e2-47ef-9bc6-36971709348a/d0d0525f9b4b7e5dcf1493eca0b8c232)
 
-  (fin)
+(fin)
