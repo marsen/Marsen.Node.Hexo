@@ -57,4 +57,31 @@ dotnet pack -o <output folder> -c NUGET --no-dependencies --force  -p:PackageVer
 dotnet nuget push -s SourceName <Packed Version>
 ```
 
+## 建立共用的 HttpClient
+
+在 Program.cs 中註冊
+
+```csharp
+builder.Services.AddHttpClient("ThirdService", (provider, client) =>
+{
+    var o = provider.GetRequiredService<IOptions<ThirdServiceOptions>>();
+    client.BaseAddress = new Uri($"{o.Value.Url}/");
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", o.Value.Token);
+});
+```
+
+再透過 HttpClientFactory 具名取用
+
+```csharp
+public MyService(IHttpClientFactory httpClientFactory)
+{
+  HttpClient _httpClient = httpClientFactory.CreateClient("ThirdService");
+}
+```
+
+## 參考
+
+- [在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求](https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/http-requests?view=aspnetcore-6.0)
+
 (fin)
