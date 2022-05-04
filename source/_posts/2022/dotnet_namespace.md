@@ -80,7 +80,7 @@ public MyService(IHttpClientFactory httpClientFactory)
 }
 ```
 
-## 最小化 docker image
+## 最小化 Docker Image
 
 這一種被稱為 Multiple Stage Builds 的 Docker 技巧，
 主要的概念是將建置(Build)與部署(Deploy)的步驟分開，
