@@ -69,7 +69,7 @@ pagination_dir: page
 #RSS订阅
 plugin:
 - hexo-generator-feed
-#Feed Atom
+# Feed Atom
 feed:
 type: atom
 path: atom.xml
