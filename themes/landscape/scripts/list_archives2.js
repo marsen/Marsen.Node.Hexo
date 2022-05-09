@@ -72,7 +72,6 @@ function listArchivesHelper(options = {}) {
   };
 
   if (style === "list") {
-    result = "<script>function toggle(p){ }</script>";
     result += `<ul class="${className}-list">`;
 
     for (let i = 0, len = limit; i < len; i++) {
@@ -90,7 +89,7 @@ function listArchivesHelper(options = {}) {
 
       result += "</li>";
     }
-    result += "<span id='aaa' style='display:none'>";
+    result += "<span id='list_archives2' style='display:none'>";
     for (let i = limit, len = data.length; i < len; i++) {
       const item = data[i];
 
@@ -108,7 +107,7 @@ function listArchivesHelper(options = {}) {
     }
     result += "</span>";
     result += "<span id=''></span>";
-    result += `<span onclick="document.getElementById('aaa').style.display===''?document.getElementById('aaa').style='display:none':document.getElementById('aaa').style=''">toggle...</span>`;
+    result += `<span onclick="var d=document.getElementById('list_archives2'); d.style.display===''?d.style='display:none':d.style=''">toggle...</span>`;
     result += "</ul>";
   } else {
     for (let i = 0, len = data.length; i < len; i++) {
