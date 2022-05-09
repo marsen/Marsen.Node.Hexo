@@ -5,7 +5,8 @@ date: 2022/05/03 15:13:12
 
 ## Web/Api 專案統一錯誤處理
 
-首先建立一個新的類別 `ErrorHandlingFilter` 繼承 `ExceptionFilterAttribute` 並複寫 `OnException` 函數
+首先建立一個新的類別 `ErrorHandlingFilter`  
+繼承 `ExceptionFilterAttribute` 並複寫 `OnException` 函數
 
 ```csharp
 public class ErrorHandlingFilter : ExceptionFilterAttribute
