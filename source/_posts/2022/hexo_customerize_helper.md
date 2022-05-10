@@ -59,5 +59,6 @@ hexo.extend.helper.register("helper_name", require("./helper_file_name"));
 
 - [Hexo 輔助函數](https://hexo.bootcss.com/api/helper.html)
 - [詳解 Hexo 輔助函數](https://blog.haysc.tech/custom-helper-hexo/)
+- [將 Hexo 的 Markdown 渲染引擎換成 markdown-it](https://titangene.github.io/article/hexo-markdown-it.html)
 
 (fin)
