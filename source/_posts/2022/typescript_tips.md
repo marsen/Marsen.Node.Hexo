@@ -1,6 +1,6 @@
 ---
 title: "[活動筆記] 線上活動　TypeScript tips and Tricks with Matt"
-date: 2022/02/15 10:00:57
+date: 2022/05/15 10:00:57
 ---
 
 ## 前情提要
