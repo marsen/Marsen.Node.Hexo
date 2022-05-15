@@ -294,5 +294,7 @@ Q&A 或是最後的挑戰都有相當多有趣的東西的可挖掘，
 - [Today in TypeScript: the keyof operator](https://dev.to/samwightt/today-in-typescript-the-keyof-operator-445b)
 - [zod](https://www.npmjs.com/package/zod)
 - [ts-toolbelt](https://www.npmjs.com/package/ts-toolbelt)
+- [Matt 目前的專案 stately](https://stately.ai/)
+- [Matt 的推特](https://twitter.com/mpocock1)
 
 (fin)
