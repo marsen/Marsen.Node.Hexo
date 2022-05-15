@@ -12,4 +12,8 @@
         "mockito",
         "opencover"
     ],
+    "editor.fontFamily": "'JetBrains Mono',Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.smoothScrolling": true,
+    "editor.letterSpacing": 0.4,
 }
