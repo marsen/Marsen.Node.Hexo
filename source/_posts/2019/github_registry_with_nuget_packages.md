@@ -2,7 +2,7 @@
 title: "[實作筆記] 用 Github Registry 作自已的 Nuget Server"
 date: 2019/10/11 11:55:41
 tag:
- - 實作筆記 
+  - 實作筆記
 ---
 
 ## 目標
@@ -22,7 +22,7 @@ GitHub Package Registry 還在 Beta 階段，需要申請才能取得試用。
 
 實測的結果，`nuget push` 並無法建立 Repository ，  
 並且會導致發佈失敗，故必需 **優先建立 Packages 的 Repository** 。
-Repository 可以包含多個專案，並獨立發佈(發佈指令詳見下文)。  
+Repository 可以包含多個專案，並獨立發佈(發佈指令詳見下文)。
 
 #### 建立 .nuget 文檔
 
@@ -47,7 +47,7 @@ Repository 可以包含多個專案，並獨立發佈(發佈指令詳見下文)�
 
 ### 取得授權 token
 
-請參考[Configuring NuGet for use with GitHub Package Registry](https://help.github.com/en/articles/configuring-nuget-for-use-with-github-package-registry#authenticating-to-github-package-registry) 或是 [Creating a personal access token for the command line](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
+請參考 [Configuring NuGet for use with GitHub Package Registry](https://help.github.com/en/articles/configuring-nuget-for-use-with-github-package-registry#authenticating-to-github-package-registry) 或是 [Creating a personal access token for the command line](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
 **至少需要以下權限**
 
 - [ ] repo Full control of private repositories
@@ -62,9 +62,9 @@ Repository 可以包含多個專案，並獨立發佈(發佈指令詳見下文)�
 
 1. [下載 Latest Nuget](https://www.nuget.org/downloads)，取得 nuget.exe
 2. 設定 Path (以 Windows 10 為例)
-    - 控制台
-    - 系統設定>進階設定
-    - 環境變數 > Path
+   - 控制台
+   - 系統設定>進階設定
+   - 環境變數 > Path
 3. 設定完 path 記得重啟 Terminal Session
 
 ### 新增 Nuget Source
@@ -118,7 +118,7 @@ nuget push c:\local_nugets\Marsen.Utility.1.0.0.nupkg -Source "Marsen Nuget Sour
 
 1. 每次都要打版號好麻煩，能不能自動化 ?
 2. 透過 CI 建立，並傳入參數作為版號 ?
-3. 每次 commit 只要通過 UT 測試就發佈.beta版 ? CI 發佈正式版 ?
+3. 每次 commit 只要通過 UT 測試就發佈.beta 版 ? CI 發佈正式版 ?
 
 more...
 
