@@ -134,6 +134,10 @@ Burp 可以在你的本機建立一個 Proxy Server,
   - <https://github.com/WebAssembly/content-security-policy/blob/main/proposals/CSP.md>
   - <https://hackmd.io/@Eotones/BkOX6u5kX>
   - <https://runebook.dev/zh-CN/docs/http/headers/content-security-policy>
+  - <https://mmazzarolo.com/blog/2021-12-14-lessons-learned-publishing-a-content-security-policy/>
+  - <https://www.appsecmonkey.com/blog/content-security-policy>
+  - <https://bugs.chromium.org/p/chromium/issues/detail?id=915648>
+  - <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy>
 
 - <https://hackercat.org/burp-suite-tutorial/web-pentesting-burp-suite-total-tutorial>
 
