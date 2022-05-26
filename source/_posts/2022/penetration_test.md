@@ -31,7 +31,7 @@ date: 2022/05/24 11:33:04
 
 - `DENY`
 - `SAMEORIGIN`
-- `ALLOW-FROM uri`
+- `ALLOW-FROM <uri>`
 
 ### X-XSS-Protection
 
