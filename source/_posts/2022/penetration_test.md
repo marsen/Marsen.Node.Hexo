@@ -6,13 +6,15 @@ date: 2022/05/24 11:33:04
 ## 前情提要，測試報告
 
 測試廠商使用 Acunetix 掃描與 Burp Suite 攔截封包進行測試:
-報告大綱如下
+報告為以下幾個 Header 未加而使網站存在風險
 
-1. X-Frame-Options:Acunetix 發現相關弱點，且經 Burp 檢視 HTTP Response，發現於特定路徑尚未設定使用。
-2. X-XSS-Protection:經 Burp 檢視 HTTP Response，發現 於特定路徑尚未設定使用。
-3. X-Content-Type-Options:經 Burp 檢視 HTTP Response ，發現於特定路徑尚未設定使用。
-4. Strict-Transport-Security:經 Burp 檢視 HTTP Response ，發現於特定路徑尚未設定使用。。
-5. Content-Security-Policy:經 Burp 檢視 HTTP Response ，發現於特定路徑尚未設定使用。
+1. X-Frame-Options
+2. X-XSS-Protection
+3. X-Content-Type-Options
+4. Strict-Transport-Security
+5. Content-Security-Policy
+
+除了第五項，以下將會介紹各個 Header 賦於瀏覽器的行為，以及防範何種可能的攻擊
 
 ## Header 的用意
 
