@@ -90,7 +90,27 @@ date: 2022/05/24 11:33:04
 可以透過另一個 Header [Content-Security-Policy-Report-Only](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only)，
 產生報告逐一修正 Policy。
 
-## 補充: 如何在 GCP Bucket 加上 header
+## 補充
+
+### 如何使用 How to use testssl
+
+testssl.sh 是一個免費的 command tool，  
+它檢查任何端口上的服務器服務是否支持 TLS/SSL 、  
+協議以及最近的密碼缺陷等。
+
+安裝
+
+```shell
+brew install testssl
+```
+
+使用
+
+```shell
+testssl.sh {uri}
+```
+
+### 如何在 GCP Bucket 加上 header
 
 GCP > Network Services > Load Balancing
 

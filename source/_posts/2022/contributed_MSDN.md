@@ -21,7 +21,7 @@ date: 2022/05/26 20:51:33
 
 進一步我去微軟 MSDN 找到正確的文件查詢 [`ConfigurationManager.GetSection`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.configurationmanager.getsection?view=dotnet-plat-ext-6.0)，發現並沒有註明是否區分大小寫。
 
-所以我就想~~解成就~~貢獻一下一已力，  
+所以我就想~~解~~貢獻一下~~成就~~一之已力，  
 幫微軟加上說明，並好奇多久可以將修改的文件上線
 
 ## 歷程
