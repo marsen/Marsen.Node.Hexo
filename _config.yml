@@ -150,5 +150,8 @@ sayings: ['',
 'Any fool can write code that a computer can understand. Good programmers write code that humans can understand --- Martin fowler',
 '沒有對立，沒有中立',
 '明亮寧靜，而又清澈懷念的文體，帶著一絲小任性，充滿了嚴格和深奧的文體，宛如夢境般的美麗化為現實的真切文體。 --- 原民喜',
-'When to use iterative development? You should use iterative development only on projects that you want to succeed. --- Martin Fowler'
+'When to use iterative development? You should use iterative development only on projects that you want to succeed. --- Martin Fowler',
+'Make It Work Make It Right Make It Fast --- KentBeck',
+'Premature optimization is the root of all evil --- Donald Knuth',
+'Where `work` is making tests pass, `right` is refactoring the code, and `fast` is optimizing the code --- Learn Go with tests'
 ]
