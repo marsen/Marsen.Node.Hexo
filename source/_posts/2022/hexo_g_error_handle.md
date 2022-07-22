@@ -42,7 +42,7 @@ FATAL {
 
 這個錯誤訊息 `OperationalError: EPERM: operation not permitted, unlink…` .  
 是一個非常籠統的錯誤訊息，來自作業系統的底層，中間經過 hexo 與 node 的流程，  
-如果不深入鑽研(但是我們沒有要深入)，我們難以知道錯誤的細節。
+如果不深入鑽研(但是**我沒有要深入**)，我們難以知道錯誤的細節。
 
 好在，我發現當刪除了 `public` 資料夾之後，  
 再次執行 `hexo g` 就不會有錯誤訊息。
