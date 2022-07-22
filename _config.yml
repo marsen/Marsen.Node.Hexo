@@ -79,7 +79,7 @@ theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/zh-tw/docs/one-command-deployment.html
-email: thisismysoul@gmail.com
+email: admin@marsen.me
 deploy:
   type: git
   repository: https://github.com/marsen/marsen.github.io.git
