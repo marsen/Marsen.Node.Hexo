@@ -11,7 +11,7 @@ tag:
 流程是：
 
 1. 撰寫文章
-2. 執行　`hexo g` 建立靜態檔
+2. 執行 `hexo g` 建立靜態檔
 3. 如果想在本地看 Blog 的效果，可以用 `hexo s`
 4. 執行 `hexo d` 部署到 Github
 
@@ -58,7 +58,9 @@ rm -rf public | hexo -g
 
 再進一步，我修改了 `alias` 指令如下
 
-> alias hxg="rm -rf public | hexo g"
+```cmd
+alias hxg="rm -rf public | hexo g"
+```
 
 如此一來，每次我執行 `hxg` 的時，就會依上述步驟先刪除再建立 `public` 靜態資料。  
 有關 alias 的設定，可以參考我之前寫的[文章](https://blog.marsen.me/2021/07/09/2021/alias_terminal/)
