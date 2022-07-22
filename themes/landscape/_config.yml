@@ -13,6 +13,7 @@ sidebar: right
 widgets:
 - recent_posts
 - archive
+- cc
 - tagcloud
 - tag
 - category
