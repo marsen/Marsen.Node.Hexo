@@ -63,7 +63,7 @@ alias hxg="rm -rf public | hexo g"
 ```
 
 如此一來，每次我執行 `hxg` 的時，就會依上述步驟先刪除再建立 `public` 靜態資料。  
-有關 alias 的設定，可以參考我之前寫的[文章](https://blog.marsen.me/2021/07/09/2021/alias_terminal/)
+有關 alias 的設定，可以參考[這篇文章](https://blog.marsen.me/2021/07/09/2021/alias_terminal/)
 
 ## 參考
 
