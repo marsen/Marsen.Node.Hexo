@@ -7,7 +7,7 @@ tag:
 
 ## 前情提要
 
-我的 Blog 是透過 Hexo 這套系統建立出來的，
+我的 Blog 是透過 [Hexo](https://hexo.io/zh-tw/) 這套框架建立出來的，
 流程是：
 
 1. 撰寫文章
