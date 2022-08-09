@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 12-Factor Config 使用 Golang (with Viper)"
+title: "[實作筆記] 12-Factor Config 使用 Golang (with Viper) I"
 date: 2022/07/19 18:00:08
 tag:
   - Golang
@@ -74,7 +74,7 @@ Golang 的實作如下:
 - default 默認值
 
 程式如下，先讀取設定檔或環境變數的順序並沒有差，  
-**因為 Viper 已經提供這樣功能實踐(env 環境變數>config 設定檔)**
+**因為 Viper 已經提供這樣功能實踐(env 環境變數優先於 config 設定檔)**
 
 ```golang=
 var instance *Config
