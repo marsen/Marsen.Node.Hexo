@@ -71,7 +71,7 @@ export default function Counter() {
 </DialogContent>
 ```
 
-這個神奇方法就是[cloneElement](https://zh-hant.reactjs.org/docs/react-api.html#cloneelement)，
+這個神奇方法就是 [cloneElement](https://zh-hant.reactjs.org/docs/react-api.html#cloneelement)，
 從官方文件可知，我們可以透過 config 參數提供 prop、key 與 ref 給 clone 出來的元素，
 
 ```tsx
