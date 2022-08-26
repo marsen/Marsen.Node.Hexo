@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Github 結合 Stryker 作變異測試"
+title: " [實作筆記] Github 結合 Stryker 作變異測試"
 date: 2020/05/06 09:03:30
 tag:
   - CI/CD

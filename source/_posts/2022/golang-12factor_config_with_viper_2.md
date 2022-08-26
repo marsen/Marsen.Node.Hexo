@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 12-Factor Config 使用 Golang (with Viper) II"
+title: " [實作筆記] 12-Factor Config 使用 Golang (with Viper) II"
 date: 2022/08/09 11:56:00
 tag:
   - Golang

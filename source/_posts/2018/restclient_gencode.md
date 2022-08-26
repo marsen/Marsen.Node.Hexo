@@ -1,8 +1,8 @@
 ---
-title: "[實作筆記] 用 Restclient GenCode"
+title: " [實作筆記] 用 Restclient GenCode"
 date: 2018/12/30 11:58:43
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 [REST Client](https://github.com/Huachao/vscode-restclient) 是一套 Visual Studio Code 的套件。

@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記] Dotnet Logger 整合 Kibana Kibana 與 Elasticsearch"
+title: " [實作筆記] Dotnet Logger 整合 Kibana Kibana 與 Elasticsearch"
 date: 2020/05/13 15:47:03
 tag:
-    - CI/CD
-    - 實作筆記
-    - AOP
+  - CI/CD
+  - 實作筆記
+  - AOP
 ---
 
 ## 前情提要
@@ -34,37 +34,36 @@ Logger 使用 NLog ，載體我使用 Elasticsearch ，
 - `elasticsearch-data:` 實務上我想需要指定一個 storage(硬碟或 File System 之類的)
 
 ```yaml
-version: '3.1'
+version: "3.1"
 
 services:
-
   elasticsearch:
-   container_name: elasticsearch
-   image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
-   ports:
-    - 9200:9200
-   volumes:
-    - elasticsearch-data:/usr/share/elasticsearch/data
-   environment:
-    - xpack.monitoring.enabled=true
-    - xpack.watcher.enabled=false
-    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    - discovery.type=single-node
-   networks:
-    - elastic
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    networks:
+      - elastic
 
   kibana:
-   container_name: kibana
-   image: docker.elastic.co/kibana/kibana:7.6.2
-   ports:
-    - 5601:5601
-   depends_on:
-    - elasticsearch
-   environment:
-    - ELASTICSEARCH_URL=http://localhost:9200
-   networks:
-    - elastic
-  
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.6.2
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://localhost:9200
+    networks:
+      - elastic
+
 networks:
   elastic:
     driver: bridge
@@ -107,8 +106,8 @@ Install-package NLog.Targets.ElasticSearch
 ```json
 {
   "ConnectionsString": {
-    "ElasticSearchServerAddress": "http://localhost:9200/"  
-  },
+    "ElasticSearchServerAddress": "http://localhost:9200/"
+  }
   ///...
 }
 ```
@@ -202,10 +201,10 @@ public Result MyMethod(Context ctx)
 我發現 ESC 並未接收到 Log ，更奇怪的事情是，在我本機端 docker 所建置服務仍然收到了 Log。
 
 查詢了一下最新的[Nlog ElasticSearch Wiki](https://github.com/markmcdowell/NLog.Targets.ElasticSearch/wiki)後，  
-應該改用 `uri` 屬性設定 EndPoint ，而沒有設定的情況下預設為 `localhost:9200` ，  
+應該改用 `uri` 屬性設定 EndPoint ，而沒有設定的情況下預設為 `localhost:9200` ，
 
 ```text
-uri - Uri of a Elasticsearch node. Multiple can be passed comma separated.  
+uri - Uri of a Elasticsearch node. Multiple can be passed comma separated.
 Ignored if cloud id is provided. Layout Default: http://localhost:9200
 ```
 
@@ -226,7 +225,7 @@ Ignored if cloud id is provided. Layout Default: http://localhost:9200
   requireAuth="true"
   username="**********"
   password="******************">
-<!--略-->  
+<!--略-->
 ```
 
 ## Dotnet Core AOP
@@ -235,7 +234,7 @@ Ignored if cloud id is provided. Layout Default: http://localhost:9200
 想法是方法的 in / out 我將想知道資訊記錄下來。
 比如輸入的參數或是回傳值。
 題外話，因為 AOP 的特性，如果方法處理到一半想要記錄是作不到的，
-這是不是意味著必須重構將方法一分為二 ?  
+這是不是意味著必須重構將方法一分為二 ?
 
 [參考這篇](https://www.cnblogs.com/jlion/p/12394949.html)，我會使用最基本的 Filter 實作 AOP，  
 ![Filter　簡介](https://i.imgur.com/iZ391Rb.png)
@@ -283,7 +282,7 @@ public Result MyMethod(Context ctx)
 ```
 
 這裡就有一件討厭的事，因為我的 Logger 都是透過建構子注入產生，  
-而自已本身也比較傾向不要使用公開 Property Injection 的方式*。
+而自已本身也比較傾向不要使用公開 Property Injection 的方式\*。
 但是使用建構子在這裡會產生另一個問題，
 我將無法使用掛載 Attribute 的方式處理 Logger  
 解決的方式是透過另一個 Attribute `ServiceFilterAttribute` 作間接掛載

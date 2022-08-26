@@ -1,8 +1,8 @@
 ---
-title: "[實作筆記] AWS DeepRacer"
+title: " [實作筆記] AWS DeepRacer"
 date: 2019/05/18 15:11:38
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 ## 概念
@@ -13,7 +13,7 @@ tag:
 
 強化學習(Reinforcement Learning , 簡稱 RL),  
 就好像在訓練寵物坐下或握手一樣，  
-透過獎勵(Reward)特定的行為(Action)來達到訓練的目標，  
+透過獎勵(Reward)特定的行為(Action)來達到訓練的目標，
 
 ### DeepRacer 的角色
 
@@ -75,7 +75,7 @@ def reward_function(params):
 ## 使用資源與服務
 
 - DeepRacer
-- Reinforcement learning >　Reinforcement learning
+- Reinforcement learning >　 Reinforcement learning
 - CloudWatch > Log Groups
 - IAM
   - AWSDeepRacerServiceRole

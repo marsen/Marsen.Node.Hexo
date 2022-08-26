@@ -1,6 +1,6 @@
 ---
-title: "[實作筆記] 簡單工廠與工廠方法"
-date: 2021/04/13 16:55:49 
+title: " [實作筆記] 簡單工廠與工廠方法"
+date: 2021/04/13 16:55:49
 tag:
   - 實作筆記
 ---
@@ -8,7 +8,7 @@ tag:
 ## 前情提要
 
 最近被要求介紹一下 Factory Method 這個 Design Pattern，
-以前看大話設計模式的時候，這個 Pattern 總會跟 Simple Factory 一起講. 
+以前看大話設計模式的時候，這個 Pattern 總會跟 Simple Factory 一起講.
 有了一些工作經驗後，現在回頭來重新看這兩個模式.
 
 ## 問題
@@ -94,7 +94,7 @@ public class EmailFactory()
 public class NotifyFactory()
 {
     public static INotification Create(string type){
-    
+
         INotification notify;
         switch (type) {
            case "DevOpsEmail":
@@ -102,19 +102,19 @@ public class NotifyFactory()
               notify.from = "system@mail.com";
               notify.to = "devOps@mail.com";
               return notify;
-    
+
            case "CustomerServiceEmail":
               notify = new Email();
               notify.from = "system@mail.com";
               notify.to = "customerService@mail.com";
               return notify;
-    
+
            case "VoiceCall":
               notify = new VoiceCall();
               notify.server = "voiceCall.server";
               notify.port = "9527";
               return notify;
-  
+
            default:
               throw new UnsupportedOperationException("不支援該操作");
        }
@@ -165,7 +165,7 @@ public class EmailFactory()
 public class NotifyFactory()
 {
     public static INotification Create(string type){
-    
+
         INotification notify;
         switch (type) {
            //// 中間省略
@@ -184,7 +184,7 @@ public class NotifyFactory()
 每次加入一個新的 Notify 都會異動，  
 這違反**開放封閉原則**.  
 改用工廠方法, 我們只需要新增一個新的工廠方法,  
-並在 Client 呼叫使用工廠, 不再傳遞任何參數.  
+並在 Client 呼叫使用工廠, 不再傳遞任何參數.
 
 ![Client 相依於工廠介面上，需要呼叫指定工廠取得物件](https://i.imgur.com/FoMuHwG.jpg)
 
@@ -195,22 +195,24 @@ public class NotifyFactory()
 
 1. 利用測試作為 Client 寫出測試案例
 2. 測試案例先簡單使用 `new` 通過測試
-    - 因為是概念性的測試，所以會缺乏實作細節，實務上可能會不只有 `new`  
 
-    到這一步只是一般建立物件，  
-    下一步開始是趨動成為簡單工廠，  
-    但實際上你是可以跳過簡單工廠，直接 TDD 出工廠方法的  
+   - 因為是概念性的測試，所以會缺乏實作細節，實務上可能會不只有 `new`
+
+   到這一步只是一般建立物件，  
+   下一步開始是趨動成為簡單工廠，  
+   但實際上你是可以跳過簡單工廠，直接 TDD 出工廠方法的
 
 3. 再寫一個測試案例，來製造(Notify)功能的重複(Email、SNS)
 4. 功能重複讓我們可以抽出介面
 5. 建立簡單工廠使用邏輯分支回傳不同的(Notify)功能實作
 6. 在簡單工廠的邏輯分支使用不同工廠方法實作
+
    - 因為封裝了實作細節，方法簽章應該不需要任何參數，回傳值應該為 `void`
 
-    下一步開始趨動成為工廠方法
+   下一步開始趨動成為工廠方法
 
 7. 讓 Client 端直接呼叫不同的工廠
-   - 簡單工廠類別就會變成多餘無用的類別 
+   - 簡單工廠類別就會變成多餘無用的類別
 8. 因為有相同的方法簽章，所以可以抽出工廠介面
 9. 讓 Client 端相依工廠介面
 

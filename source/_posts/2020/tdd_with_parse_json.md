@@ -1,12 +1,11 @@
 ---
-title: "[實作筆記] 記錄用 TDD 寫一個 Entity Parser "
+title: " [實作筆記] 記錄用 TDD 寫一個 Entity Parser "
 date: 2020/01/17 00:14:31
 tag:
-    - TDD
-    - Unit Testing
-    - 實作筆記
+  - TDD
+  - Unit Testing
+  - 實作筆記
 ---
-
 
 ## 如何用 TDD 寫一個 Entity Parser
 
@@ -23,8 +22,8 @@ tag:
 我想轉換成 C# Entity ，
 這個 Entity 裡面包含兩個商業邏輯
 
-  1. 提供全名
-  2. 提供年紀
+1. 提供全名
+2. 提供年紀
 
 ex:
 
@@ -66,7 +65,7 @@ new PersonEntity {
 
 #### Step1
 
-第一個案例，我會只驗証 Name 的組合邏輯  
+第一個案例，我會只驗証 Name 的組合邏輯
 
 ```csharp
 [Fact]
@@ -244,11 +243,11 @@ public PersonaEntity Parse(string json)
 
 #### Step2
 
-第二個案例，我會驗証 Age 的計算邏輯  
+第二個案例，我會驗証 Age 的計算邏輯
 
 #### Case 2. Age 是現在時間減去生日的年份差
 
-首先，要如何處理 **現在時間**  ??  
+首先，要如何處理 **現在時間** ??  
 一般的 Production Code 會用 `DateTime.Now`  
 這是一個 struct 的 static 方法。
 
@@ -391,7 +390,7 @@ public void parse_age_today_is_2030()
 
 ### 後續
 
-- 如果未來有多新的欄位再逐步加上測試。  
+- 如果未來有多新的欄位再逐步加上測試。
 - 但在實務上我極有可能會同時驗証大量的欄位 ，比如說欄位是一對一的 Mapping
 - 想省略 PersonaOriginEntity ，有可能用 Dynamic 嗎 ?
 

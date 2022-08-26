@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Gitlab Runner"
+title: " [實作筆記] Gitlab Runner"
 date: 2021/12/03 10:42:10
 tag:
   - 實作筆記
@@ -22,20 +22,20 @@ tag:
 
 ![概觀，每個多邊型都應該可以被置換](https://i.imgur.com/rdrDJ9g.png)
 
-如上圖，每個多邊型都應該可以被置換，  
+如上圖，每個多邊型都應該可以被置換，
 
 - Application 可以被換成 Nodejs/.Net Core/ ...
 - Gitlab Runner 有三種，本文中會使用 specific runners ，另外有 2 種
   - Shared runners(需要信用卡認証身分，每月限制 400 分鐘)
   - Group runners (在 Gitlab 上可以)
-  我將 Gitlab 設定在本機 ( MacBook Pro ) 環境上，下文會講解細節，  
-  也可以置換到雲端的伺服器上，搭配 K8S
-  ex:
+    我將 Gitlab 設定在本機 ( MacBook Pro ) 環境上，下文會講解細節，  
+    也可以置換到雲端的伺服器上，搭配 K8S
+    ex:
     - GKE: Google Cloud Platform Kubernetes Engine
     - EKS: Amazon Web Services’ Elastic Kubernetes Services
     - AKS: Microsoft Azure Kubernetes Service
 - Container Registry 這裡我使用最主流的 Docker Hub Registry
-   以雲原生的三大平台都有對應的功能，如果有機會應該優先選用。
+  以雲原生的三大平台都有對應的功能，如果有機會應該優先選用。
 
 ## 工具準備
 
@@ -93,12 +93,12 @@ Docker , 簡單說我們的工作只有兩個步驟
    - Enter the tags associated with the runner, separated by commas. You can change this value later in the GitLab user interface.
    - Provide the runner executor. For most use cases, enter docker.
    - If you entered docker as your executor, you’ll be asked for the default image to be used for projects that do not define one in .gitlab-ci.yml.
-GitLab instance URL 是 <https://gitlab.com/>
-你可以在專案中的 Settings > CI/CD  找到 token，  
-description 會顯示在 Runner List 中，可以用易懂的描述，  
-tags 可以更多的參考這[本篇文章設定](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#use-tags-to-control-which-jobs-a-runner-can-run) 
-executor 選用 docker 記得需要安裝 docker daemon  
-executor 為 docker 時，需要註明預設的 image，我是選用 `docker:stable`
+     GitLab instance URL 是 <https://gitlab.com/>
+     你可以在專案中的 Settings > CI/CD 找到 token，  
+     description 會顯示在 Runner List 中，可以用易懂的描述，  
+     tags 可以更多的參考這[本篇文章設定](https://docs.gitlab.com/ee/ci/runners/configure_runners.html#use-tags-to-control-which-jobs-a-runner-can-run)
+     executor 選用 docker 記得需要安裝 docker daemon  
+     executor 為 docker 時，需要註明預設的 image，我是選用 `docker:stable`
 
 ### 執行 RUNNER
 
@@ -168,36 +168,36 @@ Running "flutter pub get" in rettulf...
 
 #### 異常紀錄與解決方案
 
-> $ echo -n $LOGIN_KEY | docker login -u _json_key_base64 --password-stdin https://xxxx-docker.pkg.dev
-Error: Cannot perform an interactive login from a non TTY device
+> $ echo -n $LOGIN_KEY | docker login -u \_json_key_base64 --password-stdin https://xxxx-docker.pkg.dev
+> Error: Cannot perform an interactive login from a non TTY device
 
-主因是讀不到 `$LOGIN_KEY` 的環境變數，使用 Gitlab-CI 的話要注意 [Protect Variable](https://docs.gitlab.com/ee/ci/variables/index.html#protect-a-cicd-variable)  
+主因是讀不到 `$LOGIN_KEY` 的環境變數，使用 Gitlab-CI 的話要注意 [Protect Variable](https://docs.gitlab.com/ee/ci/variables/index.html#protect-a-cicd-variable)
 
-### 無法對 docker hub registry  
+### 無法對 docker hub registry
 
 在 RUNNER JOB 中執行 `docker push` 時  
-錯誤訊息如下:  
+錯誤訊息如下:
 
-`dial tcp: lookup docker on x.x.x.x:53: no such host error runner inside docker on armhf`  
+`dial tcp: lookup docker on x.x.x.x:53: no such host error runner inside docker on armhf`
 
-這裡要修改 RUNNER 中的設定檔 `config.toml` , 路徑參考如下:  
+這裡要修改 RUNNER 中的設定檔 `config.toml` , 路徑參考如下:
 
->You can find the config.toml file in:
+> You can find the config.toml file in:
 >
-> - /etc/gitlab-runner/ on *nix systems when GitLab Runner is executed as root (this is also the path for service configuration)
-> - ~/.gitlab-runner/ on*nix systems when GitLab Runner is executed as non-root
+> - /etc/gitlab-runner/ on \*nix systems when GitLab Runner is executed as root (this is also the path for service configuration)
+> - ~/.gitlab-runner/ on\*nix systems when GitLab Runner is executed as non-root
 > - ./ on other systems
 
-在  [[runners]] > [runner.docker] 加入 `image = docker:stable` 或是 `privileged = true`  
+在 [[runners]] > [runner.docker] 加入 `image = docker:stable` 或是 `privileged = true`  
 ![just add image = docker:stable  and privileged = true](https://i.imgur.com/BBl9oxo.png)  
-這可能不是一個正確的 solution , 可以更多的參考這篇[討論](https://gitlab.com/gitlab-org/gitlab-runner/-/issues/4794)  
+這可能不是一個正確的 solution , 可以更多的參考這篇[討論](https://gitlab.com/gitlab-org/gitlab-runner/-/issues/4794)
 
 ### 在 DIND 編輯文件
 
 如上題，我們需要在 container 之中編輯文件，  
 這裡我會使用 vim，  
 不過安裝前記得先更新 apt-get  
-不然會出現以下錯誤  
+不然會出現以下錯誤
 
 > E: Unable to locate package vim on Debian jessie simplified Docker container
 
@@ -216,7 +216,8 @@ apt-get install vim     # now finally this will work !!!
 #### 推上去
 
 記得要先登入
-> docker login -u _json_key_base64 --password-stdin https://asia-east1-docker.pkg.dev
+
+> docker login -u \_json_key_base64 --password-stdin https://asia-east1-docker.pkg.dev
 
 推上去
 
@@ -238,8 +239,8 @@ apt-get install vim     # now finally this will work !!!
 
 1. gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?
 2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?
-Configuration loaded                                builds=0
-listen_address not defined, metrics & debug endpoints disabled  builds=0
-[session_server].listen_address not defined, session endpoints disabled  builds=0
+   Configuration loaded builds=0
+   listen_address not defined, metrics & debug endpoints disabled builds=0
+   [session_server].listen_address not defined, session endpoints disabled builds=0
 
 (fin)

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Stryker 升級與 CI 調整"
+title: " [實作筆記] Stryker 升級與 CI 調整"
 date: 2022/02/03 20:48:54
 ---
 

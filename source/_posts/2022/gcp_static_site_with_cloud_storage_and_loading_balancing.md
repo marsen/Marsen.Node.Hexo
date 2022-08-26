@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 靜態網站部署整合 GCP (二) --- Load Balancing & Cloud Storage"
+title: " [實作筆記] 靜態網站部署整合 GCP (二) --- Load Balancing & Cloud Storage"
 date: 2022/03/09 10:53:48
 tag:
   - 實作筆記

@@ -1,23 +1,23 @@
 ---
-title: "[實作筆記] Macbook SSH 設置與疑問 "
+title: " [實作筆記] Macbook SSH 設置與疑問 "
 date: 2020/03/10 02:02:31
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 ## 前情提要
 
 最近轉換了一下跑道 ，  
 剛好又了一點時間就想說順便換一下 OS 學一點新東西，
-就敗了一台 MacBook ， 這幾天就忙著整理開發環境 。  
-在 ssh 上卡住了點 ， 就作點記錄順便上來提問 。
+就敗了一台 MacBook ，  這幾天就忙著整理開發環境  。  
+在 ssh 上卡住了點 ， 就作點記錄順便上來提問  。
 
 ## 情境
 
 我安裝了 [git-fork](https://git-fork.com/) 作為我的 Git GUI 工具。
-裡面有一個很方便的功能可以快速的設定 ssh ，  
+裡面有一個很方便的功能可以快速的設定 ssh ，
 
-![fork](/images/2020/3/030901_fork_setting_ssh.png)  
+![fork](/images/2020/3/030901_fork_setting_ssh.png)
 
 於是我很輕鬆愉快的設定了一組 ssh key 我命名為 `MacBook`  
 也可以很正常的在 fork 裡面作一些 git 的操作 ，  
@@ -30,14 +30,14 @@ tag:
 錯誤訊息如下
 
 ```sh
-git@github.com: Permission denied (publickey).  
-fatal: Could not read from remote repository.  
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
 Please make sure you have the correct access rights and the repository exists.
 ```
 
 很明顯是權限不足的原因。
 但是我查找了 `~/.ssh` 資料夾 ，  
-我設定的 private key `MacBook` 確實存在。  
+我設定的 private key `MacBook` 確實存在。
 
 所以我透過一個指令來取得更多資訊
 
@@ -54,7 +54,7 @@ debug1: Connecting to github.com [192.30.253.112] port 22.
 debug1: Connection established.
 debug1: identity file /Users/marsen/.ssh/id_rsa type -1
 debug1: identity file /Users/marsen/.ssh/id_rsa-cert type -1
-中間省略...  
+中間省略...
 debug1: Trying private key: /Users/marsen/.ssh/id_ecdsa
 debug1: Trying private key: /Users/marsen/.ssh/id_ed25519
 debug1: Trying private key: /Users/marsen/.ssh/id_xmss

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 簡單的方法 Mock TypeScript Interface"
+title: " [實作筆記] 簡單的方法 Mock TypeScript Interface"
 date: 2022/04/08 02:20:08
 ---
 

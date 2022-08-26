@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記] 用 TDD 寫一個 API Pay "
+title: " [實作筆記] 用 TDD 寫一個 API Pay "
 date: 2020/01/29 12:46:14
 tag:
-    - TDD
-    - Unit Testing
-    - 實作筆記
+  - TDD
+  - Unit Testing
+  - 實作筆記
 ---
 
 ## 需求說明
@@ -18,18 +18,18 @@ tag:
 
 1. 打 API 取得 RequestId
 
-    ```bash
-    GET {{url}}/api/{{version}}/requestId
-    ```
+   ```bash
+   GET {{url}}/api/{{version}}/requestId
+   ```
 
 2. 組合付款資料與 RequestId
 3. 打 API 完成付款
 
-    ```bash
-    POST {{url}}/api/{{version}}/pay/CreditCard/{{transationId}}
-    ```
+   ```bash
+   POST {{url}}/api/{{version}}/pay/CreditCard/{{transationId}}
+   ```
 
-## 第一個 Case，Pay 的時候應該呼叫 GET reguestId 1次
+## 第一個 Case，Pay 的時候應該呼叫 GET reguestId 1 次
 
 問題，我需要驗証 HttpClient 呼叫的 `url`與`次數`。
 
@@ -59,7 +59,7 @@ tag:
 接著馬上建立類別 `HttpClientProxy` 實作 `IHttpClient`,  
 這個時候我會知道我會使用 GetAsync 的方法，  
 所以我會讓 `IHttpClient` 長出這個同名方法，
-實作很單純，就是呼叫  HttpClient().GetAsync 方法。
+實作很單純，就是呼叫 HttpClient().GetAsync 方法。
 
 {% blockquote %}
 幾個想法，

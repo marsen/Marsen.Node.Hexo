@@ -1,10 +1,11 @@
 ---
-title: "[實作筆記] 單元測試與重構記錄(二) 發問篇"
+title: " [實作筆記] 單元測試與重構記錄(二) 發問篇"
 date: 2017/12/08 19:04:42
 tag:
   - Unit Testing
   - Integrated Testing
 ---
+
 ## Q1 Controller 要測試嗎？
 
 ### Logics in controller
@@ -22,7 +23,7 @@ public JsonResult GetMemberList(long Id, string cc = "f")
 
     try
     {
-        var memberList = this.memberService.GetMemberList(Id, cleanCache);            
+        var memberList = this.memberService.GetMemberList(Id, cleanCache);
         //// logics here
         if (memberList.Any())
         {
@@ -38,7 +39,7 @@ public JsonResult GetMemberList(long Id, string cc = "f")
     catch (Exception ex)
     {
         //// logics here
-        //// do something ...                
+        //// do something ...
     }
 }
 ```
@@ -46,10 +47,10 @@ public JsonResult GetMemberList(long Id, string cc = "f")
 #### 自問自答
 
 我認為要，
-但是對於WebAPI回傳的`JsonResult`或是`ActionResult`  
+但是對於 WebAPI 回傳的`JsonResult`或是`ActionResult`  
 需要轉形才能作驗証  
 可以考慮整合測試勝於單元測試,
-Controller的通常是面對 Client Side 的呼叫.
+Controller 的通常是面對 Client Side 的呼叫.
 
 ## Q2 當 Controller 只有取資料的邏輯
 
@@ -57,7 +58,7 @@ Controller的通常是面對 Client Side 的呼叫.
 
 ```csharp
 public ActionResult Index()
-{    
+{
     return this.Service.GetIndex();
 }
 ```
@@ -68,7 +69,7 @@ public ActionResult Index()
 
 ```csharp
 public Member Get(long id)
-{    
+{
     return this.DataAccessor.GetMember(id);
 }
 ```
@@ -78,13 +79,13 @@ public Member Get(long id)
 我認為不要,
 要測試商業邏輯,不要在意覆蓋率
 
-## Q4. 當Service只有取Catch資料的邏輯
+## Q4. 當 Service 只有取 Catch 資料的邏輯
 
 ### No Logics in Service , just call another service
 
 ```csharp
 public Member Get(long id)
-{   
+{
     var enableCache = true;
     var result = this.CacheService.GetCacheData(
         cacheKey,
@@ -92,7 +93,7 @@ public Member Get(long id)
             return this.DataAccessor.GetMember(id);
         },
         enableCache
-    );    
+    );
 }
 ```
 
@@ -101,15 +102,15 @@ public Member Get(long id)
 同上,仍然不需要,
 要測試商業邏輯,不要在意覆蓋率,  
 要注意的或許是`CacheService.GetCacheData`是不是有包測試 ?
-一般來說,Cache的功能很泛用,測試的報酬率很高
+一般來說,Cache 的功能很泛用,測試的報酬率很高
 
-## Q5. 承上,當邏輯存在Func參數之中？
+## Q5. 承上,當邏輯存在 Func 參數之中？
 
 ### Logics in Func
 
 ```csharp
 public Member Get(long id)
-{   
+{
     var enableCache = true;
     var result = this.CacheService.GetCacheData(
         cacheKey,
@@ -122,21 +123,21 @@ public Member Get(long id)
             {
                 return this.MemberV2Accessor.GetMember(id);
             }
-            
+
         },
         enableCache
-    );    
+    );
 }
 ```
 
 #### Q5.自問自答
 
 暫時無解,
-或許是這樣Pattern不適合測試,需要調整架構嗎？
+或許是這樣 Pattern 不適合測試,需要調整架構嗎？
 為了測試多包成一個公開方法,反而失去匿名函數的彈性優點,
 不在匿名函數內寫邏輯更不合理,待求解答
 
-## Q6.當邏輯在DA層或ORM的Query中要如何測試？
+## Q6.當邏輯在 DA 層或 ORM 的 Query 中要如何測試？
 
 ### Logics in ORM
 
@@ -152,7 +153,7 @@ using (var transactionScope = new TransactionScope(TransactionScopeOption.Requir
                     a.Activies_EndDateTime >= now &&
                     a.Activies_ShopId == shopId &&
                     a.ActiviesCondition.Any(i => i.Activies_ValidFlag
-                    && TypeList.Contains(i.Activies_TypeDef))                    
+                    && TypeList.Contains(i.Activies_TypeDef))
                     select a;
     }
 }
@@ -162,7 +163,7 @@ using (var transactionScope = new TransactionScope(TransactionScopeOption.Requir
 
 不適用單元測試,應該整合測試作包覆
 
-## Q7. 當邏輯在MappingProfile該如何測試?
+## Q7. 當邏輯在 MappingProfile 該如何測試?
 
 ### Logics in MappingProfile
 
@@ -179,9 +180,9 @@ Mapper.CreateMap<PageEntity, UserPageEntity>()
 
 #### Q7. 自問自答
 
-要作測試,檢查欄位Mapping是否正確,
-但實務上若重用性不高,寫MappingProfile不如直接在代碼內轉換.
-可以少寫MappingProfile的測試.
+要作測試,檢查欄位 Mapping 是否正確,
+但實務上若重用性不高,寫 MappingProfile 不如直接在代碼內轉換.
+可以少寫 MappingProfile 的測試.
 
 待解答...
 

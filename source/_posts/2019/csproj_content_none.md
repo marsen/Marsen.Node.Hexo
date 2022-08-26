@@ -1,9 +1,9 @@
 ---
-title: "[實作筆記] ASP.NET 專案部署地雷-消失的靜態檔"
+title: " [實作筆記] ASP.NET 專案部署地雷-消失的靜態檔"
 date: 2019/04/12 16:38:16
 tag:
-- .Net Framework
-- 實作筆記
+  - .Net Framework
+  - 實作筆記
 ---
 
 ## 應該知道的事

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] ElasticSearch Reindex"
+title: " [實作筆記] ElasticSearch Reindex"
 date: 2020/10/20 15:10:59
 ---
 
@@ -47,56 +47,57 @@ Memory 只有 1 GB，Storage 有 30 GB。
 
 1. 確保 maximum shards 的足夠
    ESS 為了避免 Oversharding 導致整個 Cluster 崩潰會有設定一個上限值，
-   7.x 版本預設為 1000 ，而 Reindex 每一個 Index 都會需要 2 個 Shards (猜測是SWAP機制)  
+   7.x 版本預設為 1000 ，而 Reindex 每一個 Index 都會需要 2 個 Shards (猜測是 SWAP 機制)  
    以我為例，原本我的 Shards 已達 999 ，當我試著要 Reindex 時會拿到以下會錯誤。
 
    `this action would add [2] total shards, but this cluster currently has [1000]/[1000] maximum shards open`
 
-    處理的方法也很簡單，只要透過 `/_cluster/settings` 加大 `cluster.max_shards_per_node` 即可。
+   處理的方法也很簡單，只要透過 `/_cluster/settings` 加大 `cluster.max_shards_per_node` 即可。
 
-    ```shell
-    curl -X PUT localhost:9200/_cluster/settings -H "Content-Type: application/json" -d '{ "persistent": { "cluster.max_shards_per_node": "3000" } }'
-    ```
+   ```shell
+   curl -X PUT localhost:9200/_cluster/settings -H "Content-Type: application/json" -d '{ "persistent": { "cluster.max_shards_per_node": "3000" } }'
+   ```
 
-    實務上我 Reindex 後會刪除碎小的 index，刪除後 Shards 的數量也會下降，  
+   實務上我 Reindex 後會刪除碎小的 index，刪除後 Shards 的數量也會下降，  
     當 Shards 剩餘數量足夠時，我會重設回 1000。
 
 2. 執行 reindex ，請確保新舊 index 符合商業邏輯
-    example:
+   example:
 
-    ```json
-    {
-        "source": {
-            "index": "staging-aaa-service-2020.06.*"
-        },
-        "dest": {
-            "index": "staging-aaa-service-2020.06"
-        }
-    }
-    ```
+   ```json
+   {
+     "source": {
+       "index": "staging-aaa-service-2020.06.*"
+     },
+     "dest": {
+       "index": "staging-aaa-service-2020.06"
+     }
+   }
+   ```
 
 3. 確保查詢一致
+
    - query 數量為 N
-   - Reindex  
+   - Reindex
    - query 數量為 2N
    - delete
    - query 數量為 N
 
 4. 執行紀錄
-   - staging-aaa-system-*
-   - staging-bbb-server-*
-   - staging-ccc-service-*
-   - prod-aaa-system-*
-   - prod-bbb-server-*
-   - prod-ccc-service-*
-     - prod-ccc-service-2020.09-* 有掉資料(12萬筆→9萬筆)  
-![Loss Data](/images/2020/10/ess_reindex/loss_data.jpg)
+
+   - staging-aaa-system-\*
+   - staging-bbb-server-\*
+   - staging-ccc-service-\*
+   - prod-aaa-system-\*
+   - prod-bbb-server-\*
+   - prod-ccc-service-_ - prod-ccc-service-2020.09-_ 有掉資料(12 萬筆 →9 萬筆)  
+     ![Loss Data](/images/2020/10/ess_reindex/loss_data.jpg)
 
 5. 結果評估
-Memory 只有 2 GB，Storage 有 60 GB 時。  
-ReIndex 並刪除碎小 Indices 前 `JVM memory pressure` 常態性達 40%，  
-執行後，`JVM memory pressure` 約為 20%。
-也就是說我可以改用更小(便宜的配置處理目前的資料量)。
+   Memory 只有 2 GB，Storage 有 60 GB 時。  
+   ReIndex 並刪除碎小 Indices 前 `JVM memory pressure` 常態性達 40%，  
+   執行後，`JVM memory pressure` 約為 20%。
+   也就是說我可以改用更小(便宜的配置處理目前的資料量)。
 
 ![JVM Memory Pressure Down](/images/2020/10/ess_reindex/jvm_pressure_down.jpg)
 
@@ -106,7 +107,7 @@ ReIndex 並刪除碎小 Indices 前 `JVM memory pressure` 常態性達 40%，
 - 下次 reindex 遇到大量資料，要切成更小的單位進行，
   比如說每 10 天或每天，減少一次性 reindex 的資料量，
   減少失敗與掉資料的可能性發生。
-- 需要將系統改用較長的時間周期去建立 Index  
+- 需要將系統改用較長的時間周期去建立 Index
 - 縮小雲端系統配置。
 
 ## 進階思考

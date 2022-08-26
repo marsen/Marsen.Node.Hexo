@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)"
+title: " [實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(一)"
 date: 2020/02/26 10:40:14
 tag:
-    - TDD
-    - Unit Testing
-    - 實作筆記
+  - TDD
+  - Unit Testing
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -26,7 +26,7 @@ tag:
 6. 狀態不正確，通知商家，人工處理。
 
 這次 TDD 進行的部份為流程上的第 4 步，  
-往下看我怎麼做的  
+往下看我怎麼做的
 
 整體流程如下
 
@@ -37,7 +37,7 @@ Step0 . 這次不是從無到有，而是在遺留代碼之中建立測試，
 
 Step1 . 這次 TDD 先不是 Test 而 TODO，  
 直接對 Production Code 寫下 Todo List，  
-這個 TODO 的過程其實就是一種分析，一種需求拆分。  
+這個 TODO 的過程其實就是一種分析，一種需求拆分。
 
 這裡我先簡單拆成兩步，
 
@@ -64,7 +64,7 @@ Step 2 . [隨著過程把 TODO 拆的更細](https://github.com/marsen/Marsen.Ne
 ### 第一個測試，但是沒有 Assert
 
 我目前對測試案例沒有任何的想法(這是個壞味道)，  
-但是我打算直接[透過測試呼叫我的 Production Code](https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0)  
+但是我打算直接[透過測試呼叫我的 Production Code](https://github.com/marsen/Marsen.NetCore.Dojo/commit/12936d65ce60aec90c385716fe3fe90dfb8abad0)
 
 ```csharp
 [Fact]
@@ -78,7 +78,7 @@ public void Case1_Just_Run()
 ```
 
 因為沒有想法，所以沒有 `Assert`  
-這不算是測試，頂多是**一個小工具**可以隨時呼叫我的 Production Code 而已  
+這不算是測試，頂多是**一個小工具**可以隨時呼叫我的 Production Code 而已
 
 ### [Do Todo 建立 HttpClient](https://github.com/marsen/Marsen.NetCore.Dojo/commit/1c1102457355992c1e75fcf47846404d60310f3d)
 
@@ -117,7 +117,7 @@ Committed 然後發 Pull Request
 所以要包含物件轉換成 Json String 的行為，  
 需要參考 JsonSerializer 。  
 如果是不太熟悉的開發人員可能會另開 TODO，  
-但是我這裡就一次性的作掉了 。  
+但是我這裡就一次性的作掉了 。
 
 ```csharp
 -           //// TODO 3.準備 HttpContent 資料
@@ -165,7 +165,7 @@ mock api 的服務為 [Mocky](https://www.mocky.io/)，
 ### 第一次 TODO 作完之後
 
 當初規劃的 TODO Task 都作完了，  
-但是其實工作並沒有完成。  
+但是其實工作並沒有完成。
 
 我會再作進一步的分析，  
 可以看到原本的 TODO 產生了更多的 TODO ，  
@@ -181,13 +181,13 @@ mock api 的服務為 [Mocky](https://www.mocky.io/)，
 ```csharp
 + //// TODO Parse Response Entity
 + //// TODO Switch Status
-+ //// TODO Return ShippingOrderUpdateEntity List  
++ //// TODO Return ShippingOrderUpdateEntity List
 ```
 
 可以得知，我最終會回傳一包 List，  
 這個時候我可以 Assert 了
 
-### 修改第一個測試案例  
+### 修改第一個測試案例
 
 這個階段我開始撥雲見日，我要很明確的寫下第一個測試案例，  
 第一個案例我會直接作 Happy Case ，  
@@ -197,7 +197,7 @@ mock api 的服務為 [Mocky](https://www.mocky.io/)，
 這裡進一步作需求分析，
 呼叫完 API 我會收到一大包 JSON 資料，  
 需要轉成我可以處理的物件，  
-其中最重要的欄位 lastStatusId 會回傳各種狀態，  
+其中最重要的欄位 lastStatusId 會回傳各種狀態，
 
 - DONE
 - FAIL
@@ -251,7 +251,7 @@ mock api 的服務為 [Mocky](https://www.mocky.io/)，
 但在網路狀況異常下，測試仍會紅燈
 
 在作 Dummy API 的前提下，要能抽換 URL  
-所以我會先作 TODO url 抽參數  
+所以我會先作 TODO url 抽參數
 
 重構如下:
 
@@ -389,7 +389,7 @@ TDD 不一定要用單元測試,
 試著在這個時間點加上測試就好，  
 這樣的開發方式，會比較貼近你的開發方式，  
 同時也可以練習寫測試，你會發現很多問題。  
-比如說:  
+比如說:
 
 - 你跟本沒有足夠了解需求，導致你寫不出驗收條件。
 - 你根本不熟悉測試框架或是相關的 Library。

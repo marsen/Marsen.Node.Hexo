@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記]使用 Windows PowerShell 批次上傳 AWS S3"
+title: " [實作筆記]使用 Windows PowerShell 批次上傳 AWS S3"
 date: 2019/02/20 19:09:18
 tag:
-    - PowerShell
-    - AWS
-    - 實作筆記
+  - PowerShell
+  - AWS
+  - 實作筆記
 ---
 
 ## 目標
@@ -37,7 +37,7 @@ $bucketName = "********************-your_bucket_name"
 $path = "Your\s3\path\"
 
 Get-ChildItem -Filter *.pdf |
-ForEach-Object -Begin{$i=0} {  
+ForEach-Object -Begin{$i=0} {
   $i++;
   $key = $path+$_ ;
   ## 進度顯示

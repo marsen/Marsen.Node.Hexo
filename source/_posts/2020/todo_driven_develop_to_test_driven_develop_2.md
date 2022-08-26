@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(二)"
+title: " [實作筆記] 從 TDD 到 TDD ，Todo 到 Test 趨動開發(二)"
 date: 2020/04/04 18:22:40
 tag:
-    - TDD
-    - Unit Testing
-    - 實作筆記
+  - TDD
+  - Unit Testing
+  - 實作筆記
 ---
 
 承[上篇](https://blog.marsen.me/2020/02/26/2020/todo_driven_develop_to_test_driven_develop_1/)
@@ -74,7 +74,7 @@ Production Code 就單純很多了
 ```
 
 因為這裡會拋出 Exception ，
-所以無法直接呼叫  GetUpdateStatus
+所以無法直接呼叫 GetUpdateStatus
 要修改前一個測試
 
 ```csharp

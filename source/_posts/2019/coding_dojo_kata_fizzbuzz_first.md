@@ -1,12 +1,12 @@
 ---
-title: "[實作筆記] Coding Dojo 第一個 Kata FizzBuzz"
+title: " [實作筆記] Coding Dojo 第一個 Kata FizzBuzz"
 date: 2019/02/06 04:11:17
 tag:
-    - TDD
-    - 重構
-    - Unit Testing
-    - 實作筆記
-    - Testing
+  - TDD
+  - 重構
+  - Unit Testing
+  - 實作筆記
+  - Testing
 ---
 
 ## 前情提要
@@ -33,19 +33,19 @@ tag:
 
 有沒有必要寫這麼多測試呢？
 比如說 1、2、4 的測試是不是重複了？
-日前 91 大有過類似的討論，  
+日前 91 大有過類似的討論，
 
 ```text
-第一個 test case 挑最簡單的，讓你可以從紅燈變綠燈。驅動出你需要的產品代碼。  
-接下來後面的幾個，都可以只是拿來「確認」是否滿足你期望的情境，  
-也就是你寫新的測試案例，你期望他就是綠燈了，然後驗證是否符合你的期望。  
-目的是「驗證」，不是「驅動」  
+第一個 test case 挑最簡單的，讓你可以從紅燈變綠燈。驅動出你需要的產品代碼。
+接下來後面的幾個，都可以只是拿來「確認」是否滿足你期望的情境，
+也就是你寫新的測試案例，你期望他就是綠燈了，然後驗證是否符合你的期望。
+目的是「驗證」，不是「驅動」
 ```
 
 測試的不是只有「驅動開發」而已。
 而好的程式碼，也不能只依靠測試。
 
-### 第一個測試案例，1 回傳 1  
+### 第一個測試案例，1 回傳 1
 
 我一開始就寫成這樣，所以後面的 2、4 案例也都會是綠燈。
 
@@ -89,7 +89,7 @@ public string GetResult(int number)
 ```
 
 相信這是很好理解的，雖然我的案例是從 1、2、3 而來，  
-但是在我的腦海中已經思考好了這個程式碼的「餘數規則」，  
+但是在我的腦海中已經思考好了這個程式碼的「餘數規則」，
 
 ### 所有測試案例
 
@@ -382,7 +382,7 @@ public class BuzzRule : IRule
 這步我踩得有小，可以更直接一點重構，  
 一樣的問題，我仍然沒有意識最後一個`if(?:)`其實也是一種 `IRule`，  
 也沒有意識到 `result+=XXX` 與 `return YYY?number.ToString() : result;` 其實應該是屬於 `IRule` 的一部份  
-這時的複雜度仍然是 4  
+這時的複雜度仍然是 4
 
 ```csharp
 public class FizzBuzz
@@ -415,7 +415,7 @@ public class FizzBuzz
 實際上複雜度完全沒有下降。
 關鍵的 `result += rule.Word;` 與  
 `return string.IsNullOrEmpty(result) ? number.ToString() : result;`  
-我繼續忽視它。  
+我繼續忽視它。
 
 ```csharp
 public class FizzBuzz
@@ -475,7 +475,7 @@ public class FizzBuzz
 
 終於將`result += rule.Word;`的邏輯從 `FizzBuzz` 抽離到 `IRule` 之中，  
 再由各自的 Rule 實作，這個時候就會覺得 `IRule.Check` 與 `IRule.Word` 有點累贅，  
-基於 SOLID 原則，這部份邏輯甚至不該被揭露在 `FizzBuzz`之中。  
+基於 SOLID 原則，這部份邏輯甚至不該被揭露在 `FizzBuzz`之中。
 
 ```csharp
 public interface IRule
@@ -545,7 +545,7 @@ public class FizzBuzz
 另外，這個時間點 `IRule.Check` 與 `IRule.Word` 作為 public 的資訊就顯得相當多餘了。  
 所以我會進一步將這些資訊從 `IRule` 介面中拿掉，  
 這也會使得 `FizzBuzz` Class 產生 Error，趁這個時候把 `.Where()` 與 `.ToList()` 一併拿掉，  
-但是要記得將 `IRule.Check` 與 `IRule.Word` 包含至 `IRule.Apply` 之中。  
+但是要記得將 `IRule.Check` 與 `IRule.Word` 包含至 `IRule.Apply` 之中。
 
 ```csharp
 public interface IRule
