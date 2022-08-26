@@ -1,8 +1,8 @@
 ---
-title: "[實作筆記] MacBook Terminal 美化與設計"
+title: " [實作筆記] MacBook Terminal 美化與設計"
 date: 2021/07/01 23:10:02
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -12,7 +12,7 @@ tag:
 但是這個想法一直在放心裡面沒有實踐, 畢竟只是一個~~浮誇~~的東西.  
 不過在防疫期間重新看了一遍 [高見龍的即將失傳的古老技藝](https://www.youtube.com/playlist?list=PLBd8JGCAcUAH56L2CYF7SmWJYKwHQYUDI) 影片,  
 除了把 Vim 再熟悉一遍外, 同時也觸動了心中浮誇的那塊.  
-實作上比 Windows 簡單很多, 在這裡稍作記錄.  
+實作上比 Windows 簡單很多, 在這裡稍作記錄.
 
 ## Overview
 
@@ -23,7 +23,7 @@ tag:
 
 ## 第一步 下載並安裝 [iTerm2](https://[term2.com/)
 
-### 設定 iTerm2 的外觀  
+### 設定 iTerm2 的外觀
 
 1. 可以在這裡尋找[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 2. Create the `.itemcolors` files
@@ -33,7 +33,7 @@ tag:
 
 Profiles 裡有更多的設定, 字型、顏色  
 比如說, 調整啟始視窗大小與背景透明度, 可以前往 Windows 進行設定.
-更多的細部設定可以自行摸索.  **記得有些效果需要手動重啟 iTerm**
+更多的細部設定可以自行摸索. **記得有些效果需要手動重啟 iTerm**
 
 ## 第二步, 安裝 [oh-my-zsh](https://ohmyz.sh/)
 
@@ -49,7 +49,7 @@ Profiles 裡有更多的設定, 字型、顏色
 vim ~/.zshrc
 ```
 
-### 安裝 Powerlevel10k  
+### 安裝 Powerlevel10k
 
 前往 [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 我們使用 oh-my-zsh 的方式安裝
@@ -58,7 +58,7 @@ vim ~/.zshrc
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-安裝後編輯 `~/.zshrc` 設定參如下:  
+安裝後編輯 `~/.zshrc` 設定參如下:
 
 `ZSH_THEME="powerlevel10k/powerlevel10k"`
 
@@ -94,7 +94,7 @@ Choice [ynq]:
  ZSH_THEME="powerlevel10k/powerlevel10k" # 設定使用 powerlevel10k 主題
 ```
 
-安裝完 oh-my-zsh 後如果有資料夾問題, 會出現以下訊息
+安裝完 oh-my-zsh  後如果有資料夾問題, 會出現以下訊息
 
 ```sh
 [oh-my-zsh] For safety, we will not load completions from these directories until
@@ -139,13 +139,13 @@ ZSH_DISABLE_COMPFIX="true"
 ![my iTerm2](https://i.imgur.com/E4lSCit.png)
 
 ### 20211114 補充
-  
+
 但是在一些工具預設會用原本的 Terminal (終端機)開啟,  
 比如說 [git-fork](https://git-fork.com/), 就會開啟原始的終端機,  
 如果沒有更換字型, 就會看到一些不正常顯示的`?`符號, 可以在  
 終端機 > 偏好設定 > 描述檔 > 文字 > 字體 作更改  
-我使用的字體是: *MesloLGS NF*  
-另外，git-fork 可以在  
+我使用的字體是: _MesloLGS NF_  
+另外，git-fork 可以在
 
 - Preference > Integration > Terminal Client 調整開啟的終端機為 iTerm2
 
@@ -155,9 +155,9 @@ ZSH_DISABLE_COMPFIX="true"
 未來只要在
 
 1. 在 ~ 目錄下 Clone [.vim Repo](https://github.com/marsen/.vim) 即可
-2. 在 ~ 目錄下設定連結  
+2. 在 ~ 目錄下設定連結
 
-    > ln ./.vim/.vimrc .
+   > ln ./.vim/.vimrc .
 
 ### 20211114 補充 3
 
@@ -188,13 +188,13 @@ example:
 如何讓錯誤訊息 Highlight,
 
 iTerm > Help > Trigger 或是  
-iTerm > Preferences > Advanced > Trigger > Edit  
+iTerm > Preferences > Advanced > Trigger > Edit
 
 以下是我的設定:
 
->(?i:.*error.*)                     // Yellow on Red  
-(?i:.*(warning|warn).*)            // Yellow  
-(?i:.*FATAL.*)                     // Red
+> (?i:._error._) // Yellow on Red  
+> (?i:._(warning|warn)._) // Yellow  
+> (?i:._FATAL._) // Red
 
 ## 參考
 

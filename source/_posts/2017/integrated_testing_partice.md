@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 單元測試與重構記錄(一)"
+title: " [實作筆記] 單元測試與重構記錄(一)"
 date: 2017/10/31 00:42:10
 tag:
   - Unit Testing
@@ -40,9 +40,9 @@ tag:
 ![作了太多事](https://i.imgur.com/NU0PqCh.jpg)
 
 程式碼有壞味道,卻不能修改(重構).  
-因為沒有單元測試保護.  
+因為沒有單元測試保護.
 
-單一的Process，複雜度過高的方法(12)
+單一的 Process，複雜度過高的方法(12)
 
 `CalculateShoppingCartPromotionDiscountV2Processor.Process()`
 
@@ -51,11 +51,11 @@ tag:
 ### 目標與執行順序
 
 1. 由 PM 或 QA 補足整合測試情境到足夠
-    - 由實務上的需求來認定
+   - 由實務上的需求來認定
 2. 刪除台灣的測試
-3. 解析 `CalculateShoppingCartPromotionDiscountV2Processor`  
+3. 解析 `CalculateShoppingCartPromotionDiscountV2Processor`
 4. 補上單元測試
-    - Code Coverage(測試覆蓋率)
+   - Code Coverage(測試覆蓋率)
 5. 重構
 
 ## 最終的目標是重構
@@ -63,12 +63,12 @@ tag:
 - 心態:[沒有時間，完美的借口](http://www.danielteng.com/2012/09/25/no-time-to-learn-perfect-excuse/)
 - 重構前要先作整合測試
 - 現有的整合測試的缺陷
-    1. 測試項目不符合馬來西亞現狀
-    2. 測試項目未處理多語系
-    3. 測試項目未處理小數點
-    4. 測試項目難以閱讀
-    5. 測試項目有重覆的覆蓋範圍
-- RD與PM與QA合作
+  1. 測試項目不符合馬來西亞現狀
+  2. 測試項目未處理多語系
+  3. 測試項目未處理小數點
+  4. 測試項目難以閱讀
+  5. 測試項目有重覆的覆蓋範圍
+- RD 與 PM 與 QA 合作
 
 ### UAT 讓「人」讀得懂
 
@@ -119,7 +119,7 @@ tag:
    | 25         | 25               | 0                 |
 ```
 
-#### 「人」寫的UAT  
+#### 「人」寫的 UAT
 
 ```gherkin
 場景: 商品有兩檔活動，全店活動與商品活動；
@@ -155,7 +155,7 @@ tag:
 
 當 計算活動折扣
 
-那麼 購物車商品折扣金額及折扣後小計為 
+那麼 購物車商品折扣金額及折扣後小計為
     | Title | SalePageId | Price | Qty | PromotionDiscount | TotalPayment |
     | 商品A   | 25         | 7.45  | 2   | -2.55             | 12.35        |
     | 商品B   | 26         | 4.45  | 2   | -1.11             | 7.79         |
@@ -172,7 +172,7 @@ tag:
 台灣的測試便可以退場了.
 實際上也不符合現況, 如多語系、時差與小數點等問題
 
-### 解析 `CalculateShoppingCartPromotionDiscountV2Processor`  
+### 解析 `CalculateShoppingCartPromotionDiscountV2Processor`
 
 ![解析](https://i.imgur.com/FioG5NG.jpg)
 
@@ -181,20 +181,20 @@ tag:
 3. 排序
 4. 計算折扣金額
 5. 看見相依
-    1. 程式碼中有 new 別的 class 的部份
-    2. 程式碼中有使用靜態方法的部份
+   1. 程式碼中有 new 別的 class 的部份
+   2. 程式碼中有使用靜態方法的部份
 
 ### 補上單元測試
 
 最簡單的重構,就是將整個方法內的四個邏輯  
 拆成四塊個子方法,並為他們加上單元測試.  
 修改的過程,如果有紅燈就要修改成綠燈,  
-而整個成品要保證整合測試與單元測試都是綠燈.  
+而整個成品要保證整合測試與單元測試都是綠燈.
 
 此外,重構的過程中如果過到靜態方法,  
 或是 new 新物件, 都很有可能是種相依,  
 可以透過一些方法作解耦,  
-參考之前的文章[單元測試這樣玩就對了](/2017/04/23/unitestwriting/)  
+參考之前的文章[單元測試這樣玩就對了](/2017/04/23/unitestwriting/)
 
 ### 重構
 

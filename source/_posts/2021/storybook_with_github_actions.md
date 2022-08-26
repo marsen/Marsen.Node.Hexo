@@ -1,6 +1,6 @@
 ---
-title: "[實作筆記] Storybook CI 使用 Github Actions"
-date: 2021/01/19 
+title: " [實作筆記] Storybook CI 使用 Github Actions"
+date: 2021/01/19
 ---
 
 ## 前情提要
@@ -50,7 +50,7 @@ yarn chromatic --project-token=<project-token>
 ```yaml
 # .github/workflows/chromatic.yml
 # name of our action
-name: 'Chromatic Deployment'
+name: "Chromatic Deployment"
 # the event that will trigger the action
 on:
   # Trigger the workflow on push or pull request,
@@ -68,7 +68,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: cd src/marsen.react && yarn && yarn build && yarn build-storybook
       - uses: chromaui/action@v1
-        with:          
+        with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           storybookBuildDir: storybook-static
@@ -85,14 +85,14 @@ jobs:
 
 ```yaml
 # 上略
-    steps:
-      - uses: actions/checkout@v2
-      - run: cd src/marsen.react && yarn && yarn build && yarn build-storybook
-      - uses: marsen/chromatic-cli@v1
-        with:
-          workingDir: ./src/marsen.react
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-# 下略          
+steps:
+  - uses: actions/checkout@v2
+  - run: cd src/marsen.react && yarn && yarn build && yarn build-storybook
+  - uses: marsen/chromatic-cli@v1
+    with:
+      workingDir: ./src/marsen.react
+      projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+# 下略
 ```
 
 ### 驗收

@@ -1,9 +1,10 @@
 ---
-title: "[實作筆記] 自我簽署憑証, localhost run with https "
+title: " [實作筆記] 自我簽署憑証, localhost run with https "
 date: 2021/08/08 15:34:10
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
+
 ## 前情提要
 
 最近有一批學生在學習 Express 開發網站,  
@@ -26,7 +27,7 @@ Facebook 的[文件](https://developers.facebook.com/docs/facebook-login/securit
 > ### 使用 HTTPS
 >
 > 使用具有加密功能的 HTTPS 作為網際網路通訊協定，而非 HTTP。HTTPS 會維護傳送資料的隱私，保護其不受竊聽攻擊。  
-> 此外，也能保護資料在傳送過程中不遭到置入廣告或惡意程式碼的竄改。  
+> 此外，也能保護資料在傳送過程中不遭到置入廣告或惡意程式碼的竄改。
 >
 > 在 2018 年 10 月 6 日，所有應用程式都必須使用 HTTPS。
 
@@ -50,7 +51,7 @@ Facebook 的[文件](https://developers.facebook.com/docs/facebook-login/securit
 
 ```javascript
 //const app = express()
-const app = require("https-localhost")()
+const app = require("https-localhost")();
 ```
 
 基本這樣就完成了。
@@ -63,7 +64,7 @@ const app = require("https-localhost")()
 
 ## 自我簽署憑証
 
-接下來我們會深入一點細節，並了解背後的機制。  
+接下來我們會深入一點細節，並了解背後的機制。
 
 ### 憑証機制簡介
 
@@ -71,11 +72,11 @@ const app = require("https-localhost")()
 或是未來有機會再補充。  
 總而言之，當你使用 Https 時，有一個很重要的觀念是，  
 你的 Server 應該提供一組`公鑰`給 User 作為資料的加解密。  
-那延伸的問題就是**怎麼確認這組公鑰是可以信任的呢?**  
+那延伸的問題就是**怎麼確認這組公鑰是可以信任的呢?**
 
 簡單說就是透過第三方的公正單位進行認証，所謂憑証認証機構(CA)。  
 我們相信這些機構，而機構也會幫我們進行審核。  
-而一般來說你的應用程式，比如說瀏覽器會先安裝好可信任的根憑証。  
+而一般來說你的應用程式，比如說瀏覽器會先安裝好可信任的根憑証。
 
 一個經典的說明是這樣的:
 
@@ -83,11 +84,11 @@ const app = require("https-localhost")()
 > 鮑伯與愛麗絲事先可能互不認識，但鮑伯與愛麗絲都信任伊凡，  
 > 愛麗絲使用認證機構伊凡的公鑰驗證數位簽章，如果驗證成功，便可以信任鮑勃的公鑰是真正屬於鮑伯的。[1]  
 > 愛麗絲可以使用憑證上的鮑勃的公鑰加密明文，得到密文並傳送給鮑伯。  
-> 鮑伯可以可以用自己的私鑰把密文解密，得到明文。  
+> 鮑伯可以可以用自己的私鑰把密文解密，得到明文。
 
 以開發者而言，你可以自我簽署憑証，  
 這裡你要同時扮演鮑伯，愛麗絲與伊凡，  
-所以常有人會在其中迷失方向，角色錯亂。  
+所以常有人會在其中迷失方向，角色錯亂。
 
 ### 伊凡(local CA)
 
@@ -104,7 +105,7 @@ const app = require("https-localhost")()
 分別為憑証 `localhost.pem`
 與私錀 `localhost-key.pem`
 
-### 鮑伯(Server)  
+### 鮑伯(Server)
 
 這個時候我們角色切換至鮑伯(Server)
 鮑伯在這個過程中最重要的發行公錀，
@@ -113,18 +114,24 @@ const app = require("https-localhost")()
 這裡需要修改一下 Server 的程式碼
 
 ```javascript
-const fs = require('fs')
-const https = require('https')
+const fs = require("fs");
+const https = require("https");
 
 /// 中略…
 
-https.createServer({
-  key: fs.readFileSync('localhost-key.pem'),
-  cert: fs.readFileSync('localhost.pem')
-}, app)
-.listen(3000, function () {
-  console.log('Example app listening on port 3000! Go to https://localhost:3000/')
-})
+https
+  .createServer(
+    {
+      key: fs.readFileSync("localhost-key.pem"),
+      cert: fs.readFileSync("localhost.pem"),
+    },
+    app
+  )
+  .listen(3000, function () {
+    console.log(
+      "Example app listening on port 3000! Go to https://localhost:3000/"
+    );
+  });
 ```
 
 這樣我們就可以允許愛麗絲透過 Https 與我們溝通囉。
@@ -136,7 +143,7 @@ https.createServer({
 
 安裝 `mkcert` 完畢後，其實會在你的機器(與瀏覽器)上安裝根憑証，
 這樣愛麗絲才會信任伊凡  
-可以透過以下語法查詢安裝路徑(不同 OS 會有差異)  
+可以透過以下語法查詢安裝路徑(不同 OS 會有差異)
 
 > mkcert -CAROOT
 
@@ -160,13 +167,13 @@ https.createServer({
 回到 facebook 應用程式登入的問題，  
 別忘了去設定 callback 網址，並且確定是走 https  
 **用戶端 OAuth 設定 > 有效的 OAuth 重新導向 URI**  
-不然會得到以下錯誤  
+不然會得到以下錯誤
 
 ![忘了設定 callback URL](../../images/2021/fb_login_fail_wrong_domain.png)
 
 ## 小計
 
-文末的聯結有需多是透過  OpenSSL 的作法供參考，  
+文末的聯結有需多是透過 OpenSSL 的作法供參考，  
 但是會多一步驟需要安裝手動憑証(愛麗絲該作的事)。
 
 另外仍然需要修改程式這點我不是很滿意，  
@@ -181,7 +188,7 @@ https.createServer({
 ## 參考
 
 - [https-localhost](https://www.npmjs.com/package/https-localhost?activeTab=readme)
-- [[推薦] 快速產生本地端開發用SSL憑證工具-mkcert](https://xenby.com/b/205-%E6%8E%A8%E8%96%A6-%E5%BF%AB%E9%80%9F%E7%94%A2%E7%94%9F%E6%9C%AC%E5%9C%B0%E7%AB%AF%E9%96%8B%E7%99%BC%E7%94%A8ssl%E6%86%91%E8%AD%89%E5%B7%A5%E5%85%B7-mkcert)
+- [[推薦] 快速產生本地端開發用 SSL 憑證工具-mkcert](https://xenby.com/b/205-%E6%8E%A8%E8%96%A6-%E5%BF%AB%E9%80%9F%E7%94%A2%E7%94%9F%E6%9C%AC%E5%9C%B0%E7%AB%AF%E9%96%8B%E7%99%BC%E7%94%A8ssl%E6%86%91%E8%AD%89%E5%B7%A5%E5%85%B7-mkcert)
 - [mkcert, you changed my life!!](https://medium.com/@shriramsharma/mkcert-you-changed-my-life-b157466880bf)
 - [一文搞懂 HTTP 和 HTTPS 是什麼？兩者有什麼差別](https://tw.alphacamp.co/blog/http-https-difference)
 - [極速打造 https://localhost](https://onlinemad.medium.com/%E6%A5%B5%E9%80%9F%E6%89%93%E9%80%A0-https-localhost-431d89a0c2e4)
@@ -189,6 +196,6 @@ https.createServer({
 - [Running express.js server over HTTPS](https://timonweb.com/javascript/running-expressjs-server-over-https/)
 - [使用 localhost 建立憑證](https://letsencrypt.org/zh-tw/docs/certificates-for-localhost/)
 - [如何使用 OpenSSL 建立開發測試用途的自簽憑證 (Self-Signed Certificate)
-](https://blog.miniasp.com/post/2019/02/25/Creating-Self-signed-Certificate-using-OpenSSL)
+  ](https://blog.miniasp.com/post/2019/02/25/Creating-Self-signed-Certificate-using-OpenSSL)
 
 (fin)

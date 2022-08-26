@@ -1,10 +1,10 @@
 ---
-title: "[實作筆記]在 Windows Subsystem for Linux 執行 docker"
+title: " [實作筆記]在 Windows Subsystem for Linux 執行 docker"
 date: 2019/01/07 17:18:13
 tag:
-    - Docker
-    - Container
-    - 實作筆記
+  - Docker
+  - Container
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -21,54 +21,54 @@ tag:
 1. Windows 10 安裝 Ubantu
 2. 在 Ubantu 安裝 Docker
 
-    更新 apt-get
+   更新 apt-get
 
-    ```bash
-    sudo apt-get update
-    ```
+   ```bash
+   sudo apt-get update
+   ```
 
-    允許 apt-get 透過 https
+   允許 apt-get 透過 https
 
-    ```bash
-    sudo apt-get install \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        software-properties-common
-    ```
+   ```bash
+   sudo apt-get install \
+       apt-transport-https \
+       ca-certificates \
+       curl \
+       software-properties-common
+   ```
 
-    加入 Docker 官方 GPG KEY
+   加入 Docker 官方 GPG KEY
 
-    ```shell
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    ```
+   ```shell
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   ```
 
-    然後可以驗証一下
+   然後可以驗証一下
 
-    ```shell
-    sudo apt-key fingerprint 0EBFCD88
-    ```
+   ```shell
+   sudo apt-key fingerprint 0EBFCD88
+   ```
 
-    加入 Docker 的 apt-repository
+   加入 Docker 的 apt-repository
 
-    ```shell
-    $ sudo add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-    ```
+   ```shell
+   $ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+   ```
 
-    再次更新 apt-get
+   再次更新 apt-get
 
-    ```shell
-    sudo apt-get update
-    ```
+   ```shell
+   sudo apt-get update
+   ```
 
-    安裝 Docker CE
+   安裝 Docker CE
 
-    ```shell
-    sudo apt-get install docker-ce
-    ```
+   ```shell
+   sudo apt-get install docker-ce
+   ```
 
 3. Run Docker
 
@@ -87,7 +87,7 @@ See 'docker run --help'.
 
 1. Windows 上要安裝 Docker for Windows
 2. 勾選 Docker for Windows → Setting → Expose Daemon on tcp://localhost:2375 Without TLS
-![Docker](/images/2019/1/docker.jpg)
+   ![Docker](/images/2019/1/docker.jpg)
 
 3. 回到 Ubantu , 執行以下命令
 

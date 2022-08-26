@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] ASP.Net Core Logger"
+title: " [實作筆記] ASP.Net Core Logger"
 date: 2019/04/06 12:21:17
 tag:
   - .Net Framework
@@ -110,18 +110,18 @@ fail: Marsen.NetCore.Site.Controllers.HomeController[0]
 
 [LogLevel](https://docs.microsoft.com/zh-tw/dotnet/api/microsoft.extensions.logging.loglevel?view=aspnetcore-2.2)說明了 `None` 的意義就是不記錄任何訊息，
 
-| Enum | Level | Description |
-| -------- | -------- | -------- |
-| Trace    | 0    |Logs that contain the most detailed messages. These messages may contain sensitive application data. These messages are disabled by default and should never be enabled in a production environment.   |
-| Debug     | 1     | Logs that are used for interactive investigation during development. These logs should primarily contain information useful for debugging and have no long-term value.     |
-| Information     | 2     | Logs that track the general flow of the application. These logs should have long-term value.    |
-|Warning |3|Logs that highlight an abnormal or unexpected event in the application flow， but do not otherwise cause the application execution to stop.|
-| Error     | 4     | Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity， not an application-wide failure.     |
-| Critical     | 5     | Logs that describe an unrecoverable application or system crash， or a catastrophic failure that requires immediate attention.     |
-| None     | 6     | Not used for writing log messages. Specifies that a logging category should not write any messages.    |
+| Enum        | Level | Description                                                                                                                                                                                          |
+| ----------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trace       | 0     | Logs that contain the most detailed messages. These messages may contain sensitive application data. These messages are disabled by default and should never be enabled in a production environment. |
+| Debug       | 1     | Logs that are used for interactive investigation during development. These logs should primarily contain information useful for debugging and have no long-term value.                               |
+| Information | 2     | Logs that track the general flow of the application. These logs should have long-term value.                                                                                                         |
+| Warning     | 3     | Logs that highlight an abnormal or unexpected event in the application flow， but do not otherwise cause the application execution to stop.                                                          |
+| Error       | 4     | Logs that highlight when the current flow of execution is stopped due to a failure. These should indicate a failure in the current activity， not an application-wide failure.                       |
+| Critical    | 5     | Logs that describe an unrecoverable application or system crash， or a catastrophic failure that requires immediate attention.                                                                       |
+| None        | 6     | Not used for writing log messages. Specifies that a logging category should not write any messages.                                                                                                  |
 
 Log 的作用範圍會受 `appsettings.json` 影響，  
-另外要注意 appsettings.json 的載入順序.  
+另外要注意 appsettings.json 的載入順序.
 
 ```json
   "Logging": {
@@ -144,14 +144,14 @@ Log 的作用範圍會受 `appsettings.json` 影響，
 如下圖作了設定，  
 ![PerfView](/images/2019/4/perfview.jpg)  
 不過我並沒有取得記錄，  
-![PerfView Log](/images/2019/4/perfview.jpg)  
+![PerfView Log](/images/2019/4/perfview.jpg)
 
 錯誤訊息如下  
  `EventSource Microsoft-Extensions-Logging: Object reference not set to an instance of an object`  
 暫時不打算深追查，
 ETW 可以記錄的 Memory 、Disc IO 、CPU 等資訊，  
 其實與我想要的應用程式記錄有所差異，稍稍記錄一下以後也許用得到。  
-如果有人能留言給我一些方向，也是非常歡迎。  
+如果有人能留言給我一些方向，也是非常歡迎。
 
 ## 自訂 Filelog 與 EventLog
 
@@ -169,10 +169,10 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 這裡我使用 `Microsoft.Extensions.Logging.EventLog` 處理 EventLog 可以在 Event View 中看見記錄;  
-而 file log 我使用 `Serilog.Extensions.Logging.File` ， 特別要注意以下兩點  
+而 file log 我使用 `Serilog.Extensions.Logging.File` ， 特別要注意以下兩點
 
-- Nuget 使用的版本為 2.0.0 以上版本，目前仍然不是穩定版本  
-- AddFile 傳入的是記錄檔的完整 Path 而非目錄  
+- Nuget 使用的版本為 2.0.0 以上版本，目前仍然不是穩定版本
+- AddFile 傳入的是記錄檔的完整 Path 而非目錄
 
 ## 自訂 Elmah
 

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 錯誤處理 the gcp auth plugin is deprecated "
+title: " [實作筆記] 錯誤處理 the gcp auth plugin is deprecated "
 date: 2022/06/08 15:53:51
 ---
 

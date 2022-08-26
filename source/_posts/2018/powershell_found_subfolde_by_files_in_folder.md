@@ -1,9 +1,9 @@
 ---
-title: "[實作筆記] 用 Command Line 取得資料夾內包含特定檔案的子資料夾"
+title: " [實作筆記] 用 Command Line 取得資料夾內包含特定檔案的子資料夾"
 date: 2018/11/23 13:43:00
 tag:
-    - PowerShell
-    - 實作筆記
+  - PowerShell
+  - 實作筆記
 ---
 
 ## 情境
@@ -19,11 +19,11 @@ tag:
 有的專案會沒有，而每個專案的資料夾結構又不一定相同，  
 所以要找出這些 .tt 是有點麻煩的，另外我的目標並不是 .tt 檔，  
 而是所在的專案，再用 IDE 開啟進行修改，  
-為此我需要列出**專案資料夾**  
+為此我需要列出**專案資料夾**
 
 ## 目標
 
-用 Command Line 取得Repo資料夾內包含.tt檔案的專案資料夾名稱  
+用 Command Line 取得 Repo 資料夾內包含.tt 檔案的專案資料夾名稱
 
 ## 作法
 
@@ -33,14 +33,14 @@ D:\Repo\Taiwan\******.******.Repofolder
 ```
 
 ```sh
-Name  
-----  
-FacebookShop  
-LineOrderFinish  
-LineOrderNotify  
-Mail  
-NMQMonitor  
-OrderMonitor  
+Name
+----
+FacebookShop
+LineOrderFinish
+LineOrderNotify
+Mail
+NMQMonitor
+OrderMonitor
 SyncImageToOthers
 ```
 

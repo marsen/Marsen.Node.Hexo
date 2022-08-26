@@ -1,12 +1,12 @@
 ---
-title: "[實作筆記] Tennis KATA 與 State Pattern "
+title: " [實作筆記] Tennis KATA 與 State Pattern "
 date: 2020/07/21 08:16:27
 tag:
-    - TDD
-    - Unit Testing
-    - 實作筆記
-    - OOP
-    - Design Pattern
+  - TDD
+  - Unit Testing
+  - 實作筆記
+  - OOP
+  - Design Pattern
 ---
 
 ## 前情提要
@@ -22,7 +22,7 @@ Tennis Kata 是我最常練習的一個題目，
 第一天 91 大也有透過 Tennis Kata 展示了一下火力，  
 那個時候又有提到可以使用 State Pattern 來實作，  
 最近工作上又恰巧有使用到 State Pattern。  
-於是我便決定要試著用 State Pattern 來進行 Tennis Kata 。  
+於是我便決定要試著用 State Pattern 來進行 Tennis Kata 。
 
 有兩種方法，一種是無到有的 Kata，  
 一種是將現有 Tennis Production Code，  
@@ -39,7 +39,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 上圖是我第一次畫的 State ，  
 現在回過頭來想想，圖型上其實可以很明顯看出重複的壞味道。  
 但是我當下完全沒有「覺察」，明明是想要消除 if else，  
-卻在 State 裡面產生了大量的 if else。  
+卻在 State 裡面產生了大量的 if else。
 
 ## 第二次不成功
 
@@ -56,7 +56,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 - LoveAll
   - 產生 Context 類別與 Score 方法
   - 產生 LoveAll State
-  - 產生 IState 介面，包含 Score方法，讓 LoveAllState 實作 IState 介面
+  - 產生 IState 介面，包含 Score 方法，讓 LoveAllState 實作 IState 介面
 - FifteenLove
   - 產生 ServerScore 方法
   - 產生 FifteenLove State
@@ -72,16 +72,16 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
   - 產生 LoveForty State
 - FifteenAll
   - 產生 FifteenAll State
-略…
+    略…
 - **覺察重複，重構**
   - 產生 NormalState
-  - 產生 ServerPoint  
-  - 產生 ReceiverPoint  
+  - 產生 ServerPoint
+  - 產生 ReceiverPoint
   - 使用 Dictionary 消除 if else
   - 產生 SameState
 - Deuce
   - 產生 DeuceState
-以下略…
+    以下略…
 
 ![Final State](/images/2020/7/tennis_kata_to_state_pattern_02.jpg)
 
@@ -97,13 +97,13 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 第三次將它補上了。
 ![Final State](/images/2020/7/tennis_kata_to_state_pattern_03.jpg)
 
-| States   | Sample           | Next States             |
-| -------- | --------         | --------                |
-| Same     | 0-0,1-1,2-2      | Normal                  |
-| Normal   | 0-1,0-2,1-2,1-3  | Same、Normal、Deuce、Win|
-| Deuce    | 3-3,4-4,5-5      | Advantage               |
-| Advantage| 3-4,5-6          | Deuce、Win              |
-| Win      | 5-3,5-7          |                         |
+| States    | Sample          | Next States              |
+| --------- | --------------- | ------------------------ |
+| Same      | 0-0,1-1,2-2     | Normal                   |
+| Normal    | 0-1,0-2,1-2,1-3 | Same、Normal、Deuce、Win |
+| Deuce     | 3-3,4-4,5-5     | Advantage                |
+| Advantage | 3-4,5-6         | Deuce、Win               |
+| Win       | 5-3,5-7         |                          |
 
 參考上表製作測試案例，
 這裡我想強調的是狀態改變的動線，  
@@ -124,7 +124,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 並且可以觀察到兩個 State 的共通性，這個時候就會重構出 `IState` 介面。
 
 一樣看圖開發，  
-`NormalState` 是最為複雜的一個狀態，他的狀態可能為  
+`NormalState` 是最為複雜的一個狀態，他的狀態可能為
 
 - 保持原樣 : `NormalState`
 - 退回平手 : `SameState`
@@ -178,7 +178,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 這次還是有用到一些常用的重構套路，  
 比如說，用 Dictionary 消除 if else 的手段。
 另一個則是 `Template Method Pattern`，
-讓我們看看以下的 commit  
+讓我們看看以下的 commit
 
 - [e8ddf8](https://github.com/marsen/Marsen.NetCore.Dojo/commit/e8ddf89fdee94d6a82115f4449e213a4874269f8)
 - [145d3c](https://github.com/marsen/Marsen.NetCore.Dojo/commit/145d3cb408ed5b39a729c4a9b22fb6744b62c48f)
@@ -188,7 +188,7 @@ Test Case 設計不良，所以很難自然而然的讓 State 產生
 由各個 State (Normal、Same、Deuce、Adv 與 Win)實作，
 但是我們可以明顯發現， `Context.ServerPoint++` 是重複的，  
 而 `ChangeState` 才是真正抽像的地方，  
-所以我們可以在 Abstract Class State 加入以下的方法與抽像方法，  
+所以我們可以在 Abstract Class State 加入以下的方法與抽像方法，
 
 ```csharp
 public void ServerScore()
@@ -201,10 +201,10 @@ protected abstract void ChangeState();
 ```
 
 這不就恰巧是 `Template Method Pattern` 嗎 ?  
-同樣的手段可以放在 `ReceiverScore` 方法再重構一次。  
+同樣的手段可以放在 `ReceiverScore` 方法再重構一次。
 
 實務上 Design Pattern 本來就應該星月交輝，而非千里獨行。
-在學習 Design Pattern 的路上，不是硬套，而是找出適用場景。  
+在學習 Design Pattern 的路上，不是硬套，而是找出適用場景。
 
 也是我比較建議的作法，透過重構自然走向 Pattern，  
 透過限制改變來提昇品質，首先要有測試保護，再找尋套路或壞味道重構，  

@@ -1,9 +1,9 @@
 ---
-title: "[實作筆記]查找與重建 Table 的索引值"
+title: " [實作筆記]查找與重建 Table 的索引值"
 date: 2019/01/05 13:13:29
 tag:
-    - SQL
-    - 實作筆記
+  - SQL
+  - 實作筆記
 ---
 
 查詢指定 Table 目前的索引值
@@ -13,9 +13,9 @@ DBCC CHECKIDENT (yourtable)
 Example
 
 ```sql
-USE AdventureWorks2012;  
-GO  
-DBCC CHECKIDENT ('Person.AddressType');  
+USE AdventureWorks2012;
+GO
+DBCC CHECKIDENT ('Person.AddressType');
 GO  DBCC CHECKIDENT (memberAccount)
 ```
 
@@ -24,10 +24,10 @@ GO  DBCC CHECKIDENT (memberAccount)
 DBCC CHECKIDENT (yourtable, reseed, new index)
 
 ```sql
-USE AdventureWorks2012;  
-GO  
-DBCC CHECKIDENT ('Person.AddressType', RESEED, 10);  
-GO  
+USE AdventureWorks2012;
+GO
+DBCC CHECKIDENT ('Person.AddressType', RESEED, 10);
+GO
 ```
 
 ## 參考

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Hexo 更新 Google Analytics 4"
+title: " [實作筆記] Hexo 更新 Google Analytics 4"
 date: 2022/04/26 20:12:53
 tag:
   - 實作筆記

@@ -1,8 +1,8 @@
 ---
-title: "[實作筆記] Azure Functions 存取 Key Vault"
+title: " [實作筆記] Azure Functions 存取 Key Vault"
 date: 2021/08/24 08:51:43
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -13,35 +13,35 @@ tag:
 
 說明一下需求，在實作授權的
 
-在這裡我會使用到 Azure Cloud 的三個服務,  
+在這裡我會使用到 Azure Cloud 的三個服務,
 
-1. [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)  
-2. [Managed Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)  
+1. [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)
+2. [Managed Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
 3. [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview)
 
-### 使用的服務簡介 TL;DR  
+### 使用的服務簡介 TL;DR
 
->說明一下我理解的三個服務:
->  
-Azure Functions 是微軟無伺服器(Serverless),  
-Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的成本,  
-並且提供極度彈性的可擴展性，並且可以使用更少的資源(更低的成本),  
-最大的限制是[運算時間(timeout)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json#functiontimeout),  
-但就我個人而言的 Best Practice 在 300 秒內完成不了的運算, 應考量整體架構的瓶頸在哪裡,  
-而不是採取無限制的付費方案(Plan Type)。
-稍微作個 ORK 評量，應該在 0.2 | 10 | 300 秒內完成計算。
+> 說明一下我理解的三個服務:
 >
->Managed Identity 是微軟用來作身份認証與授權的服務,  
-與其它雲服務最大的差別應該是它是基於 Azure Active Directory (Azure AD) 之上,  
-一般來說會建議使用遵循(Role-based Access Control),  
-下面的圖片很好的說明了其概念。
+> Azure Functions 是微軟無伺服器(Serverless),  
+> Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的成本,  
+> 並且提供極度彈性的可擴展性，並且可以使用更少的資源(更低的成本),  
+> 最大的限制是[運算時間(timeout)](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json#functiontimeout),  
+> 但就我個人而言的 Best Practice 在 300 秒內完成不了的運算, 應考量整體架構的瓶頸在哪裡,  
+> 而不是採取無限制的付費方案(Plan Type)。
+> 稍微作個 ORK 評量，應該在 0.2 | 10 | 300 秒內完成計算。
 >
->![如何使用適用於 Azure 資源的受控識別？](https://docs.microsoft.com/zh-tw/azure/active-directory/managed-identities-azure-resources/media/overview/when-use-managed-identities.png)
+> Managed Identity 是微軟用來作身份認証與授權的服務,  
+> 與其它雲服務最大的差別應該是它是基於 Azure Active Directory (Azure AD) 之上,  
+> 一般來說會建議使用遵循(Role-based Access Control),  
+> 下面的圖片很好的說明了其概念。
+>
+> ![如何使用適用於 Azure 資源的受控識別？](https://docs.microsoft.com/zh-tw/azure/active-directory/managed-identities-azure-resources/media/overview/when-use-managed-identities.png)
 >
 > Key Vault 是個相對簡單的概念, 在開發中我們會接觸到需多的密鑰、証書、連線字串等等資訊...  
-這些資訊有敏感性, 但對開發過程又不是最重要的東西,  
-這些資訊在單體架構(Monolithic)時常常面臨開發與資安的兩難,  
-而 Key Vault 可以解決這個問題(當然不同的 Cloud 也有類似的解決方案)
+> 這些資訊有敏感性, 但對開發過程又不是最重要的東西,  
+> 這些資訊在單體架構(Monolithic)時常常面臨開發與資安的兩難,  
+> 而 Key Vault 可以解決這個問題(當然不同的 Cloud 也有類似的解決方案)
 
 ### 案例說明
 
@@ -61,7 +61,7 @@ Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的�
 1. 建立 Function App 與 function
 2. 啟用 Function App 的 Managed Identity
 3. 建立 Key Vault
-4. 設定 Key Vault Access policies  
+4. 設定 Key Vault Access policies
 5. 設定 Function App Configuration
 6. 修改 Function
 
@@ -69,7 +69,7 @@ Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的�
 
 ### 建立 Function Apps 與 function
 
-開始前先作名詞解釋, 因為微軟的命名會讓剛接觸的人十分混淆  
+開始前先作名詞解釋, 因為微軟的命名會讓剛接觸的人十分混淆
 
 - Azure Functions : 微軟的 Serverless 產品名稱, 我們可以在這個服務下建立許多 Function Apps 的實體
 - Functions Apps : 主要運作的實體, 也是我們要設定的地方，每個 App 裡面可以有多個 function
@@ -77,7 +77,7 @@ Serverless 的概念是讓開發人員專注開發, 減少對伺服器維運的�
 
 [建立 Function Apps](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal#create-a-function-app) 的步驟較為簡單，請依照微軟文件即可，  
 接下來選擇 Function Apps > 選擇剛剛建立的 Functions App > Create > Http Trigger C#,  
-選擇這個範本我們將以 C# 語言實作，授權等級我選擇 Anonymous .  
+選擇這個範本我們將以 C# 語言實作，授權等級我選擇 Anonymous .
 
 建立好後，可以在 Code + Test 裡面查看預設的程式.  
 這裡建立的是 C# 指令碼, 開發上的細節請參考[官方文件](https://docs.microsoft.com/zh-tw/azure/azure-functions/functions-reference-csharp#reusing-csx-code)
@@ -111,14 +111,14 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
 移動到 Functions Apps 的 Settings > Identity,
 可以看 System assigned > Status 將它切換為 `On`.
-這一步的設定是為了讓服務之間可以受到 AAD 控管而不需要你自行處理.  
+這一步的設定是為了讓服務之間可以受到 AAD 控管而不需要你自行處理.
 
 ### 建立 Key Vault
 
 在建立之前也是需要一些名詞解釋，
 
 - Key Vault: 微軟的服務名稱
-- key vault section: Key Vault 的實體區塊(可以想像成一個實體檔案，裡面可以存很多 Key, 並且我們可以對這個檔案進一步設定,也可以參考[官方的文件快速建立](https://docs.microsoft.com/en-us/azure/key-vault/general/quick-create-portal))
+- key vault section: Key Vault 的實體區塊(可以想像成一個實體檔案，裡面可以存很多 Key, 並且我們可以對這個檔案進一步設定,也可以參考 [官方的文件快速建立](https://docs.microsoft.com/en-us/azure/key-vault/general/quick-create-portal))
 - Keys : 在 key vault section 的 settings 中有三種類型的資料，Keys、Secrets 與 Certificates,
 
 找到 Key Vault > key vault section > Settings > Secrets , 建立一組 Secret
@@ -127,12 +127,12 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
 點選剛剛建立的 Secret 並且選擇 CURRENT VERSION 取得 Secret Identifier(複製下來, 待會會用到)
 
-### 設定 Key Vault Access policies  
+### 設定 Key Vault Access policies
 
 一樣在 Key Vault > Settings > Access policies > Add access policy ,
 在 Select principal 找到剛剛建立的 Function App,
-在　Configure from template (optional) 我們直接套用 Secret Management,  
-這允許我們的 Function App 會取得管理 Key Vault Secret 的權限.  
+在　 Configure from template (optional) 我們直接套用 Secret Management,  
+這允許我們的 Function App 會取得管理 Key Vault Secret 的權限.
 
 ### 設定 Function App Configuration
 
@@ -140,7 +140,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 我們要在這裡新加一個 Application Setting
 
 Name 自已取但是請記得，我們稍後就會用到，這裡我先命名為 `TestKV`,  
-Value 請參加下面的範例, 將前面步驟取得的 `Secret Identifier` 填到 SecretUri 之後. 　
+Value 請參加下面的範例, 將前面步驟取得的 `Secret Identifier` 填到 SecretUri 之後.
 
 ```text
 @Microsoft.KeyVault(SecretUri=https://mykv.vault.azure.net/secrets/RefreshToken/xxxx)
@@ -158,7 +158,7 @@ Copy-Paste 會造成維護上很大的困難, 我們會希望維持一組就好.
 
 ### 修改 Function 的代碼
 
-下列我們用 `TestKV` 這組設定與 C# 作為範例:
+下列我們用 `TestKV` 這組設定與 C# 作為範例 :
 透過環境變數取得 Key Vault 的資料
 
 ```csharp
@@ -183,7 +183,7 @@ using Azure.Security.KeyVault.Secrets;
 
 ## 參考
 
-- [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)  
+- [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)
 - [Integrate Key Vault Secrets With Azure Functions](https://daniel-krzyczkowski.github.io/Integrate-Key-Vault-Secrets-With-Azure-Functions/)
 - [淺析 serverless 架構與實作](https://denny.qollie.com/2016/05/22/serverless-simple-crud/)
 - [Azure Function Tutorial](https://adamtheautomator.com/azure-functions-tutorial/)

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Hexo Update 與 npm 修復漏洞"
+title: " [實作筆記] Hexo Update 與 npm 修復漏洞"
 date: 2018/10/20 11:41:05
 tag:
   - 實作筆記
@@ -17,7 +17,7 @@ tag:
 如前面所說，這個 Blog 是透過 Github 作存放的空間，  
 雖然 [Github 最近被 Microsoft 收購](https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/)了;  
 不過它仍是開發人員最常使用的代碼托管服務與社群，  
-而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。  
+而且微軟近年轉型相同成功 –— 未來會怎麼樣我們可以觀察後再下定論。
 
 Github 一直以來都有一個很棒的功能，  
 [GitHub's security alerts for vulnerable dependencies](https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/)
@@ -30,13 +30,13 @@ Github 一直以來都有一個很棒的功能，
 
 ### 解決方式
 
-使用 [`npm update`](https://docs.npmjs.com/cli/update) , 這個命令會更新專案的 package 到最新版本  
+使用 [`npm update`](https://docs.npmjs.com/cli/update) , 這個命令會更新專案的 package 到最新版本
 
 ```sh
 npm update
 ```
 
-可能會看到類似以下的結果，同時提示你可以使用 [`npm audit fix`](https://docs.npmjs.com/cli/audit) 更新有風險的 package 以修複這些漏洞  
+可能會看到類似以下的結果，同時提示你可以使用 [`npm audit fix`](https://docs.npmjs.com/cli/audit) 更新有風險的 package 以修複這些漏洞
 
 ```sh
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\nunjucks\node_modules\fsevents):

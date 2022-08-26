@@ -1,9 +1,9 @@
 ---
-title: "[實作筆記] 讓 SonarQube 檢查你的代碼 "
+title: " [實作筆記] 讓 SonarQube 檢查你的代碼 "
 date: 2019/05/16 17:13:18
 tag:
-   - 實作筆記
-   - .Net Framework
+  - 實作筆記
+  - .Net Framework
 ---
 
 ## 前情提要
@@ -29,10 +29,10 @@ tag:
    - 需要允許 SonarCloud 存取 Github 的專案 Repo
    - 建立一組 Token, 用來作身份驗証，可以重複使用請勿外流
    - 如果要刪除 Token 請至 My Account > Security 找到並 Revoke
-      ![建立 token](/images/2019/5/sonarcloud_gen.jpg)  
-      ![建立 token2](/images/2019/5/sonarcloud_gentoken.jpg)  
+     ![建立 token](/images/2019/5/sonarcloud_gen.jpg)  
+      ![建立 token2](/images/2019/5/sonarcloud_gentoken.jpg)
    - 下載 SonarQube 執行檔，請選擇你的語言
-      ![執行命令](/images/2019/5/sonarcloud_command.jpg)
+     ![執行命令](/images/2019/5/sonarcloud_command.jpg)
 
 2. 執行掃瞄前的準備作業
 

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Bowling Kata"
+title: " [實作筆記] Bowling Kata"
 date: 2021/06/25 09:20:55
 ---
 
@@ -26,7 +26,7 @@ date: 2021/06/25 09:20:55
 先改善前幾次的問題,  
 由於這次由我一個人進行開發, 所以不會有想法不一致的狀況, 實務上或許需要更多的溝通,  
 規則的部份我[參考](https://ronjeffries.com/xprog/articles/acsbowling/),  
-詳細內容如下:
+詳細內容如下 :
 
 ```text
 - Each game, or “line” of bowling, includes ten turns, or “frames” for the bowler.
@@ -57,7 +57,7 @@ date: 2021/06/25 09:20:55
 ```
 
 有了基本規則後, 我要參考 TDD By Example 一書的作法,  
-寫下  Todo List　用來記錄我要作的事情, 當然這也會是一份湧現式的清單.  
+寫下 Todo List 　用來記錄我要作的事情, 當然這也會是一份湧現式的清單.
 
 ## 第一次 Kata 的 Todolist
 
@@ -85,7 +85,7 @@ date: 2021/06/25 09:20:55
 - [x] API，給定一個數列，回傳一個分數
   - [x] 0 分不等於沒有分
   - [x] 初始分數是沒有分
-  - [x] 第一球就洗溝，~~0分~~ 沒有分
+  - [x] 第一球就洗溝，~~0 分~~ 沒有分
     - [x] 第二球就打倒１瓶，0 分
   - [x] 第一球就打倒１瓶，~~1 分~~ 沒有分
     - [x] 第二球就打倒 0 瓶，1 分
@@ -99,12 +99,12 @@ date: 2021/06/25 09:20:55
 
 ### 第一次 Kata 的檢討
 
-設計上仍然不足, 單純只想靠測試→開發其實是有點鄉愿的,  
+設計上仍然不足, 單純只想靠測試 → 開發其實是有點鄉愿的,  
 TDD 的概念應該是以 Client(TestCase)的角度去使用 Production Code,  
 這個案例中, 我想設計的 API 是一次將目前擊倒的瓶數組合成一個 List 傳給 BowlingLine,  
-計算後回傳總分.  
+計算後回傳總分.
 
-這樣的設計, 對 Client　來說簡單好用, 但是對　BowlingLine 來說似乎職責太多了,  
+這樣的設計, 對 Client 　來說簡單好用, 但是對　 BowlingLine 來說似乎職責太多了,  
 另外 Frame 的概念就消失在 Client 的視野之中, 但 BowlingLine 應該要能夠區分出 Frame  
 所以我預計寫下 Frame 的測試案例. 再來, 我們發現分數在某些情況是尚未決定的,  
 比如說擊出 Strike/Spare 或是只擊出該 Frame 的第一次時, 是無法計分的.  
@@ -112,7 +112,7 @@ TDD 的概念應該是以 Client(TestCase)的角度去使用 Production Code,
 
 ### 重塑認知
 
-1. 總分是Frame 的分數的加總
+1. 總分是 Frame 的分數的加總
 2. Frame 的分數由兩次 try 與 bonus 作計算
 3. 兩次 try 的加總等於 10 才有 bonus
 4. 有 bonus 的話必須計算完 bonus 才有分數
@@ -195,7 +195,7 @@ public void TestFrameScore()
 ```
 
 有了 Frame 之後我要來處理之前第一次 Kata 產生的遺留代碼
-首先, *Game 的總分是 Frame 的分數的加總* 這條規則吸引了我,  
+首先, _Game 的總分是 Frame 的分數的加總_ 這條規則吸引了我,  
 理論上所有只有一個 Frame 的測試, 在我用 Frame 的寫法後, 　
 測試應該都會通過. 而且幸運的是, 我之前的測試只有 2 個測試的情境進行到了 2 個 Frame,  
 所以頂多壞 2 個測試, 我可以嚐試修復它.
@@ -262,7 +262,7 @@ public void TestFrameScore()
     }
 ```
 
-我們建一個 For Loop 目標要將這些醜醜的 if　判斷式移到　Loop 之中
+我們建一個 For Loop 目標要將這些醜醜的 if 　判斷式移到　 Loop 之中
 結果大致如下,　過程當然也是逐步的抽離
 
 ```csharp
@@ -293,7 +293,7 @@ public void TestFrameScore()
     }
 ```
 
-前面的 Frame 在計算分數的時候, 並未考慮 Strike 或是 Spare 完成 Bonus 的情況,  
+前面的 Frame 在計算分數的時候, 並未考慮 Strike 或是 Spare 完成 Bonus 的情況 ,  
 所以接下來我們會用測試案例來趨動, 而最小的案例就是只有兩個 Frame 的計分狀況
 比如說, 這樣的測試案例
 
@@ -333,7 +333,7 @@ Bonus 也是我寫法改變最多的地方之一
     for (int i = 0; i < fellPins.Count; i++)
 ```
 
-不過更重要的是, *為什麼 Bonus　與 BowlingLine 有關？* 　
+不過更重要的是, _為什麼 Bonus 　與 BowlingLine 有關？_ 　
 我們已知這個 Frame 與接下來兩次的擊球數與 Bonus 才有正相關,  
 所以我應該把這個職責移到 Bonus 身上, 原始判斷 Strike 與 Spare 的邏輯,  
 SetBonus 的邏輯, 也應該一併移到 Frame 身上, 這也是 OOP 的體現
@@ -412,7 +412,7 @@ SetBonus 的邏輯, 也應該一併移到 Frame 身上, 這也是 OOP 的體現
     public int? Calculate(List<int> fellPins)
     {
         FrameList = new List<Frame>();
-        FellPins = fellPins; 
+        FellPins = fellPins;
         for (var i = 0; i < FellPins.Count; i++)
         {
             var firstTry = FirstTry(i);

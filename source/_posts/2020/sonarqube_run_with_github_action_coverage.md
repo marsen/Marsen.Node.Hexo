@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇"
+title: " [實作筆記] Github 結合 SonarCloud 作代碼質量檢查 - 測試覆蓋率篇"
 date: 2020/04/30 15:30:43
 tag:
   - CI/CD

@@ -1,9 +1,10 @@
 ---
-title: "[實作筆記] 使用 IIS 作為 Reverse Proxy Server"
+title: " [實作筆記] 使用 IIS 作為 Reverse Proxy Server"
 date: 2020/04/24 10:31:22
 tag:
-    - 實作筆記
+  - 實作筆記
 ---
+
 ## 情境
 
 1. 作業系統為 Windows 10
@@ -28,13 +29,13 @@ IIS 建立網站，繫結我設定為 `dev.site.test:80`，
 應用程式集區我沒有特別處。
 到 IIS 選取站台的 Url Rewrite 新增規則  
 ![到 IIS 選取站台的 Url Rewrite 新增規則](/images/2020/4/iis_reverse_proxy_01.jpg)  
-選取 Reverse Proxy 規則  
+選取 Reverse Proxy 規則
 
-![選取 Reverse Proxy 規則](/images/2020/4/iis_reverse_proxy_02.jpg)  
+![選取 Reverse Proxy 規則](/images/2020/4/iis_reverse_proxy_02.jpg)
 
 填寫 `localhost:3000`
 
-![填寫 `localhost:3000`](/images/2020/4/iis_reverse_proxy_03.jpg)  
+![填寫 `localhost:3000`](/images/2020/4/iis_reverse_proxy_03.jpg)
 
 這個時候前往 dev.site.test 就可以看到站台囉。
 

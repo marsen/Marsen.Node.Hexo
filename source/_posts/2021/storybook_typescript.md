@@ -1,8 +1,8 @@
 ---
-title: "[實作筆記] React 與 Storybook 開發"
+title: " [實作筆記] React 與 Storybook 開發"
 date: 2021/01/18 16:01:35
 tags:
-    - TypeScript
+  - TypeScript
 ---
 
 ## 前情提要
@@ -10,20 +10,20 @@ tags:
 不論是 App 或是 Web, 與使用者第一線互動的就是 UI 了。  
 另一面在需求設計上, 我們總會想像一個畫面，  
 想像著使用者如何使用我們的產品，  
-也就是說 UI 是理想與真實的邊界。  
+也就是說 UI 是理想與真實的邊界。
 
 Designer 完成了設計, Engineer 將之實作出來,  
-主流的開發方式會透過 Component 來節省時間。  
+主流的開發方式會透過 Component 來節省時間。
 
 ## 為什麼我們需要 Storybook ?
 
-但是真的能節省時間嗎 ?  
+但是真的能節省時間嗎 ?
 
 開發人員彼此之間會不會重複造輪子? 他們又要怎麼溝通?  
 修改到底層元件會不會影響到上層元件? 會不會改 A 壞 B?  
-複雜的 Component, 特殊的情境如何測試 ?  
+複雜的 Component, 特殊的情境如何測試 ?
 
-Storybook 恰恰能解決這些問題,  
+Storybook 恰恰能解決這些問題,
 
 - 作為開發人員的指南和文件
 - 獨立於應用程式建立 Component
@@ -45,15 +45,15 @@ Component 與 State Management。
 僅介紹我聽過的主流 Library,  
 Component 與 State Management 沒有絕對的搭配關係。
 
-| Component | State Management |
-| -------- | -------- |
-| [React](https://reactjs.org/)    | [Flux](https://facebook.github.io/flux/)     |
-| [Angular](https://angular.io/)  | [Redux](https://redux.js.org/)     |
-| [Vue](https://vuejs.org/)      | [Akita](https://datorama.github.io/akita/)     |
+| Component                      | State Management                           |
+| ------------------------------ | ------------------------------------------ |
+| [React](https://reactjs.org/)  | [Flux](https://facebook.github.io/flux/)   |
+| [Angular](https://angular.io/) | [Redux](https://redux.js.org/)             |
+| [Vue](https://vuejs.org/)      | [Akita](https://datorama.github.io/akita/) |
 
 ## 改編 Storybook 教程
 
-為什麼要改編 [Storybook教程(React Version)](https://www.learnstorybook.com/intro-to-storybook/react/en/get-started/) ?
+為什麼要改編 [Storybook 教程(React Version)](https://www.learnstorybook.com/intro-to-storybook/react/en/get-started/) ?
 
 這個教程會以一個簡單的 Todo List,  
 從創建應用程式、簡單的 Component 到複雜,  
@@ -62,7 +62,7 @@ Component 與 State Management 沒有絕對的搭配關係。
 但是他缺了一味，[TypeScript](https://www.typescriptlang.org/),  
 所以我自已用 TypeScript 進行了改寫並稍作一下記錄。
 
-### 環境  
+### 環境
 
 - 作業系統 : [Windows 10 Pro](https://www.microsoft.com/zh-tw/windows/compare-windows-10-home-vs-pro)
 - 瀏覽器 : Chrome
@@ -112,13 +112,13 @@ yarn start
 
 下載 [CSS](https://github.com/chromaui/learnstorybook-code/edit/master/src/index.css),存檔至 src/index.css
 
-安裝 degit  
+安裝 degit
 
 ```cmd
 npm i degit
 ```
 
-加入 Add assets (字型與Icon)
+加入 Add assets (字型與 Icon)
 
 ```cmd
 npx degit chromaui/learnstorybook-code/src/assets/font src/assets/font
@@ -302,7 +302,7 @@ Ran all test suites related to changed files.
 `Task.stories.js` 為 `Task.stories.tsx`.  
 測試檔案 `storybook.test.js` 也一併修改 `storybook.test.ts`
 
-並修改 `.storybook/main.js`  
+並修改 `.storybook/main.js`
 
 ```javascript=
 module.exports = {
@@ -317,7 +317,7 @@ module.exports = {
 > tsc --init
 ```
 
-用 TypeScript 改寫  
+用 TypeScript 改寫
 
 ```typescript=
 // src/components/Task.tsx
@@ -387,7 +387,7 @@ export default {
 
 const Template:Story<TaskArgs> = args => <Task {...args} />;
 
-var defaultItem:TaskItem = { 
+var defaultItem:TaskItem = {
   id:'1',
   title:'Test Task',
   state:TaskState.Inbox,
@@ -407,12 +407,12 @@ var archivedItem = Copy(defaultItem);
 archivedItem.state=TaskState.Archived;
 Archived.args = {item: archivedItem};
 
-function Copy(obj:any) {  
+function Copy(obj:any) {
   return Object.assign({},obj);
 }
 ```
 
-#### 組合成複雜的 component (TypeScript版本)
+#### 組合成複雜的 component (TypeScript 版本)
 
 與教程最主要的不同之處在於使用了 TypeScript 的語法撰寫
 
@@ -427,15 +427,15 @@ export interface TaskListProps {
   loading?:boolean;
   tasks: TaskItem[];
   onArchiveTask: (id:string)=>void;
-  onPinTask: (id:string)=>void;  
+  onPinTask: (id:string)=>void;
 }
 
-export function PureTaskList(props:TaskListProps) {     
-  const events = { 
+export function PureTaskList(props:TaskListProps) {
+  const events = {
     onArchiveTask:props.onArchiveTask,
     onPinTask:props.onPinTask,
    };
-  
+
   const LoadingRow = (
     <div className="loading-item">
       <span className="glow-checkbox" />
@@ -445,7 +445,7 @@ export function PureTaskList(props:TaskListProps) {
     </div>
   );
 
-  if (props.loading) {    
+  if (props.loading) {
     return (
       <div className="list-items">
         {LoadingRow}
@@ -457,7 +457,7 @@ export function PureTaskList(props:TaskListProps) {
       </div>
     );
   }
-  
+
   if (props.tasks === undefined || props.tasks.length === 0) {
     return (
         <div className="list-items">
@@ -488,7 +488,7 @@ export function PureTaskList(props:TaskListProps) {
 export default connect(
   (props:TaskListProps) => ({
     tasks: props.tasks.filter(t => t.state === TaskState.Inbox || t.state === TaskState.Pinned ),
-  })  
+  })
 )(PureTaskList);
 ```
 
@@ -511,7 +511,7 @@ export default {
 
 const Template:Story<TaskListArgs> = args => <TaskList {...args} />
 
-var defaultItem:TaskItem = { 
+var defaultItem:TaskItem = {
   id:'1',
   title:'Test Task',
   state:TaskState.Inbox,
@@ -519,7 +519,7 @@ var defaultItem:TaskItem = {
 };
 
 export const Default = Template.bind({});
-Default.args = { 
+Default.args = {
   tasks: [
     { ...defaultItem, id: '1', title: 'Task 1' },
     { ...defaultItem, id: '2', title: 'Task 2' },
@@ -531,7 +531,7 @@ Default.args = {
 };
 
 export const WithPinnedTasks = Template.bind({});
-WithPinnedTasks.args = {  
+WithPinnedTasks.args = {
   tasks: [
     ...Default.args.tasks!.slice(0,5),
     { id: '6', title: 'Task 6 (pinned)', state: TaskState.Pinned },
@@ -545,7 +545,7 @@ Loading.args = {
 };
 
 export const Empty = Template.bind({});
-Empty.args = {  
+Empty.args = {
   ...Loading.args,
   loading: false,
 };
@@ -553,7 +553,7 @@ Empty.args = {
 
 #### 介接 Store 資料
 
-建立 Redux  
+建立 Redux
 
 ```typescript=
 // src/lib/redux.ts
@@ -586,7 +586,7 @@ export const reducer = (state: any, action: { id:string; type: TaskState; }) => 
 
 // The initial state of our store when the app loads.
 // Usually you would fetch this from a server
-const defaultTasks:Array<TaskItem> = [  
+const defaultTasks:Array<TaskItem> = [
   { id: '1', title: 'Something', state: TaskState.Inbox },
   { id: '2', title: 'Something more', state: TaskState.Inbox },
   { id: '3', title: 'Something else', state: TaskState.Inbox },
@@ -641,7 +641,7 @@ import { connect } from 'react-redux';
 import TaskList from './TaskList';
 
 export class InboxScreenArgs {
-  error:string | undefined 
+  error:string | undefined
 }
 
 export function InboxScreen(args:InboxScreenArgs) {
@@ -673,7 +673,7 @@ export default connect((props:InboxScreenArgs) => (props))(PureInboxScreen);
 ```
 
 一樣也加上 Story ,`InboxScreen.stories.tsx`  
-讓我們可以透過 Storybook 作人工 E2E 測試  
+讓我們可以透過 Storybook 作人工 E2E 測試
 
 ```typescript=
 //src/components/InboxScreen.stories.tsx
