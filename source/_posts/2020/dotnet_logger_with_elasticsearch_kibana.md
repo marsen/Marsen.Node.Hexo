@@ -29,7 +29,7 @@ Logger 使用 NLog ，載體我使用 Elasticsearch ，
 
 - 起一個 elasticsearch，port : 9200
 - 起一個 kibana ，port : 5601，設定環境變數 `ELASTICSEARCH_URL` 為 `http://localhost:9200`
-- 網路名命為 elastic 使用 birdge 讓兩個 container 連起來
+- 網路名命為 elastic 使用 bridge 讓兩個 container 連起來
 - `elasticsearch-data:` 實務上我想需要指定一個 storage(硬碟或 File System 之類的)
 
 ```yaml
