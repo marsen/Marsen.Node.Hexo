@@ -4,6 +4,7 @@ date: 2018/02/12 02:12:47
 tag:
   - .Net Framework
 ---
+
 ## 出處
 
 <http://www.dotnetcurry.com/csharp/1417/csharp-common-mistakes>
@@ -16,18 +17,18 @@ tag:
 
 C#是個好棒棒的言語,但是它仍會有超乎你想像的行為,  
 而且就算你是有經驗的開發者,你也要看一看這篇文章.  
-這篇文章不講幹話,還會給你代碼喔  
+這篇文章不講幹話,還會給你代碼喔
 
 ![C# Quiz](https://i.imgur.com/wXjvug6.jpg)
 
 ### Null Value
 
 Null 很危險啦, 你別在 Null 身上調用方法  
-(譯注:在公司的維運人員應該還蠻常見這個錯誤的 一ω一)  
+(譯注:在公司的維運人員應該還蠻常見這個錯誤的 一 ω 一)
 
 > We are all aware that null values can be dangerous, if not handled properly.  
 > Dereferencing a null-valued variable (i.e. calling a method on it or accessing one of its properties)  
-> will result in a NullReferenceException, as demonstrated with the following sample code:  
+> will result in a NullReferenceException, as demonstrated with the following sample code:
 
 ```csharp
 object nullValue = null;
@@ -36,13 +37,13 @@ bool areNullValuesEqual = nullValue.Equals(null);
 
 就安全的角度,好像我們要不停的檢查 reference type 是不是 null ,  
 雖然這件事常常發生,好像也很難說成是非預期的行為了...  
-(譯注:又有種中槍的感覺)  
+(譯注:又有種中槍的感覺)
 
 > To be on the safer side, we should always make sure that reference type values are not null before dereferencing them.  
 > Failing to do so could result in an unhandled exception in a specific edge case.  
-> Although such a mistake occasionally happens to everyone, we could hardly call it unexpected behavior.  
+> Although such a mistake occasionally happens to everyone, we could hardly call it unexpected behavior.
 
-看看這個代碼, null 值在 runtime 的時候不會有 type 的  
+看看這個代碼, null 值在 runtime 的時候不會有 type 的
 
 ```csharp
 string nullString = (string)null;
@@ -53,14 +54,14 @@ bool isStringType = nullString is string;
 **No**, null 值在 runtime 的時候不會有 type 的  
 **No**, null 值在 runtime 的時候不會有 type 的  
 很重要所以說三次,  
-當然你也別想呼叫 `GetType()` 方法  
+當然你也別想呼叫 `GetType()` 方法
 
-> The correct answer is **No**.  
+> The correct answer is **No**.
 >
-> A null value has no type at runtime.  
+> A null value has no type at runtime.
 >
 > In a way, this also affects reflection.  
-> Of course, you can’t call GetType() on a null value because a NullReferenceException would get thrown:  
+> Of course, you can’t call GetType() on a null value because a NullReferenceException would get thrown:
 
 ```csharp
 object nullValue = null;
@@ -76,14 +77,14 @@ bool areTypesEqual = intValue.GetType() == nullableIntValue.GetType();
 ```
 
 那我們可不可能用反射(reflection)區分 nullable 跟 non-nullable 的值？  
-答案是不可能, 看看後面的代碼  
+答案是不可能, 看看後面的代碼
 
-> Is it possible to distinguish between a nullable and a non-nullable value type using reflection?  
+> Is it possible to distinguish between a nullable and a non-nullable value type using reflection?
 >
-> The answer is **No**.  
+> The answer is **No**.
 >
 > The same type will be returned for both variables in the above code: System.Int32.  
-> This does not mean that reflection has no representation for Nullable<T>, though.  
+> This does not mean that reflection has no representation for Nullable<T>, though.
 
 ```csharp
 Type intType = typeof(int);
@@ -91,8 +92,8 @@ Type nullableIntType = typeof(Nullable<int>);
 bool areTypesEqual = intType == nullableIntType;
 ```
 
-上面兩段程式在runtime拿到的type很不一樣喔,  
-一個是`System.Int32`一個是 `System.Nullable'1\[System.Int32\]`  
+上面兩段程式在 runtime 拿到的 type 很不一樣喔,  
+一個是`System.Int32`一個是 `System.Nullable'1\[System.Int32\]`
 
 ### 當 null 遇上多載方法 (Handling Null values in Overloaded methods)
 
@@ -109,7 +110,7 @@ private string OverloadedMethod(string arg)
 ```
 
 上面有兩個`OverloadedMethod`  
-猜猜看,傳入 null 時會呼叫哪一個方法？  
+猜猜看,傳入 null 時會呼叫哪一個方法？
 
 ```csharp
 var result = OverloadedMethod(null);
@@ -118,9 +119,9 @@ var result = OverloadedMethod(null);
 有人會猜編譯失敗嗎？
 MAGIC ! 竟然可以編譯成功, 而回傳的值是 **"string parameter"** ,  
 一般來說,在編譯時期會作型別檢查,相同簽章的方法參數可以被轉型成另一個型別時,是可以編譯成功的喔.  
-而有明確型別的方法將被優先調用(譯注:求這段.Net Framework的原碼來看一下,知道的人請告訴我)  
+而有明確型別的方法將被優先調用(譯注:求這段.Net Framework 的原碼來看一下,知道的人請告訴我)
 
-如果要指定 null 參數呼叫的多載方法就要對 null 轉型唷,可以參考下面的方法.  
+如果要指定 null 參數呼叫的多載方法就要對 null 轉型唷,可以參考下面的方法.
 
 ```csharp
 var result = OverloadedMethod((object)null);
@@ -129,7 +130,7 @@ var result = OverloadedMethod((object)null);
 ### 算術運算 (Arithmetic Operations)
 
 好像很少用位移運算吼？  
-回憶一下 左移移 右移移  
+回憶一下 左移移 右移移
 
 ```csharp
 var shifted = 0b1 << 1; // = 0b10
@@ -140,11 +141,11 @@ var shifted = 0b1 >> 1; // = 0b0
 ```
 
 bits 跑到底並不會重頭開始喔,一直移位到爆掉就變 0 了.  
-(這裡會用32是因為 int 是32bit的數值,你可以試試放超過32的數值到for loop裡會發生什麼事)  
+(這裡會用 32 是因為 int 是 32bit 的數值,你可以試試放超過 32 的數值到 for loop 裡會發生什麼事)
 
 > The bits don’t wrap around when they reach the end.  
 > That’s why the result of the second expression is 0.  
-> The same would happen if we shifted the bit far enough to the left (32 bits because integer is a 32-bit number):  
+> The same would happen if we shifted the bit far enough to the left (32 bits because integer is a 32-bit number):
 
 ```csharp
 var shifted = 0b1;
@@ -154,39 +155,39 @@ shifted = shifted << 1;
 }
 ```
 
-> The result would again be 0.  
+> The result would again be 0.
 
 那我們是不是可以一次移 32 bit,讓它一次變成 0 呢？  
 靠北啊 竟然不行捏, 你只會拿到 1,  
 這跟運算子(operator)基本運算有關,在作位元運算的時候,  
 會拿第一個運算數除以第二個運算數後取餘數,  
 這導致我們只會拿 32 % 32 的結果 , 也就是 1 啦  
-(譯注:這段其實我不是很確定,如果錯誤請糾正)  
+(譯注:這段其實我不是很確定,如果錯誤請糾正)
 
 > However, the bit shifting operators have a second operand.  
-> Instead of shifting to the left by 1 bit 32 times, we can shift left by 32 bits and get the same result.  
+> Instead of shifting to the left by 1 bit 32 times, we can shift left by 32 bits and get the same result.
 
 ```csharp
 var shifted = 0b1 << 32;
 ```
 
-> Right? **Wrong.**  
+> Right? **Wrong.**
 >
-> The result of this expression will be 1. Why?  
+> The result of this expression will be 1. Why?
 >
 > Because that’s how the operator is defined. Before applying the operation,  
 > the second operand will be normalized to the bit length of the first operand with the modulo operation,  
-> i.e. by calculating the remainder of dividing the second operand by the bit length of the first operand.  
+> i.e. by calculating the remainder of dividing the second operand by the bit length of the first operand.
 >
 > The first operand in the example we just saw was a 32-bit number, hence: 32 % 32 = 0.  
-> Our number will be shifted left by 0 bits. That’s not the same as shifting it left by 1 bit 32 times.  
+> Our number will be shifted left by 0 bits. That’s not the same as shifting it left by 1 bit 32 times.
 
 好棒棒 你竟然可以看到這裡,  
 那我們繼續討論 & (and) 跟 | (or) 運算子吧,  
-這兩個運算子跟一般的運算子有點不一樣  
+這兩個運算子跟一般的運算子有點不一樣
 
-- 通常只要看運算子的第一個運算數就能得知結果  
-- 在有掛 [Flag] attribute 的列舉它們好好用(看一下範例)  
+- 通常只要看運算子的第一個運算數就能得知結果
+- 在有掛 [Flag] attribute 的列舉它們好好用(看一下範例)
 
 ```csharp
 [Flags]
@@ -206,7 +207,7 @@ bool isRed = (color & Colors.Red) == Colors.Red;
 
 上面這個刮號可不能省略喔, 因為(&)運算符的優先順序低於(==)運算符,  
 不過這段程式沒有刮號的話連編譯都不會過,真是好加在  
-另外在 .NET framework 4.0 之後的版本提供更棒的方法去檢查flags  
+另外在 .NET framework 4.0 之後的版本提供更棒的方法去檢查 flags
 
 ```csharp
 bool isRed = color.HasFlag(Colors.Red);
@@ -214,40 +215,40 @@ bool isRed = color.HasFlag(Colors.Red);
 
 ### Math.Round()
 
-猜一下這個值會是多少？  
+猜一下這個值會是多少？
 
 ```csharp
 var rounded = Math.Round(1.5);
 ```
 
-猜2的就答對了, 下一題  
-猜一下這個值會是多少？  
+猜 2 的就答對了, 下一題  
+猜一下這個值會是多少？
 
 ```csharp
 var rounded = Math.Round(2.5);
 ```
 
-還是2 ,
+還是 2 ,
 因為預設會取最接近的偶數
 
 > **No.** The result will be 2 again. By default,  
 > the midpoint value will be rounded to the nearest even value.  
-> You could provide the second argument to the method to request such behavior explicitly:  
+> You could provide the second argument to the method to request such behavior explicitly:
 
 ```csharp
 var rounded = Math.Round(2.5, MidpointRounding.ToEven);
 ```
 
-這個行為可以透過`MidpointRounding`參數改變  
+這個行為可以透過`MidpointRounding`參數改變
 
 ```csharp
 var rounded = Math.Round(2.5, MidpointRounding.AwayFromZero);
 ```
 
 另外要小心浮點數的精度問題,  
-以下的例子結果會是1,( 因為float的0.1實際上小於0.1 一ω一 )  
+以下的例子結果會是 1,( 因為 float 的 0.1 實際上小於 0.1 一 ω 一 )  
 這提醒我們在處理精確數值時,應轉換成整數處理.  
-(譯注:使用 [dotnet fiddle](https://dotnetfiddle.net) 時並不會有這個問題, 在windows 環境下測試的確會有問題)  
+(譯注:使用 [dotnet fiddle](https://dotnetfiddle.net) 時並不會有這個問題, 在 windows 環境下測試的確會有問題)
 
 ```csharp
 var value = 1.4f;
@@ -286,17 +287,17 @@ public class FailingClass
 }
 ```
 
-當我們嚐試實例化FailingClass時,你會得到Exception;  
+當我們嘗試實例化 FailingClass 時,你會得到 Exception;  
 值得注意的事,你拿到的會是`TypeInitializationException`  
-而並不是`InvalidOperationException`,  
+而並不是`InvalidOperationException`,
 
-那麼我們是不是可以試著透過try catch補捉錯誤,  
-並修改靜態屬性,重新實體化class呢？
+那麼我們是不是可以試著透過 try catch 補捉錯誤,  
+並修改靜態屬性,重新實體化 class 呢？
 **答案是不行**
 
 一個靜態建構值,如果它拋出一個異常,  
 那麼無論何時你想創建一個實例或以任何其他方式訪問這個類,  
-這個異常都會被重新拋出.  
+這個異常都會被重新拋出.
 
 ```csharp
 try
@@ -310,15 +311,15 @@ var instance = new FailingClass();
 
 這個類別在程序重啟前是不能再被使用了(會拋出錯誤),  
 這在 C# 是個非常糟糕的實踐,  
-千萬別這樣設計你的類別.  
+千萬別這樣設計你的類別.
 
 > The static constructor for a class is only called once.
 > If it throws an exception, then this exception will be rethrown  
-> whenever you want to create an instance or access the class in any other way.  
+> whenever you want to create an instance or access the class in any other way.
 >
 > The class becomes effectively unusable until the process (or the application domain) is restarted.  
 > Yes, having even a minuscule chance that the  
-> static constructor will throw an exception, is a very bad idea.  
+> static constructor will throw an exception, is a very bad idea.
 
 #### 繼承與類別初始化
 
@@ -359,7 +360,7 @@ public class DerivedClass : BaseClass
 var instance = new DerivedClass();
 ```
 
-你會得到一個除0的錯誤 `DivideByZeroException`  
+你會得到一個除 0 的錯誤 `DivideByZeroException`  
 這與執行順序有關
 
 1. 呼叫 BaseClass 建構子
@@ -369,7 +370,7 @@ var instance = new DerivedClass();
 ## 多形 Polymorphism
 
 這個例子只是要說明多形的概念與應用,  
-你可以透過轉形呼叫基底類別的方法.  
+你可以透過轉形呼叫基底類別的方法.
 
 ```csharp
 var instance = new DerivedClass();
@@ -402,7 +403,7 @@ public class DerivedClass : BaseClass
 另外一個例子是明確實作介面方法,  
 如果你的類別已經有同名的方法的話.  
 雖然沒有什麼好理由建議你這樣作.
-(譯注:實務上我有在遇到歷史共業這樣作過...)  
+(譯注:實務上我有在遇到歷史共業這樣作過...)
 
 ```csharp
 var instance = new DerivedClass();
@@ -466,7 +467,7 @@ public class Context : IDisposable
 
 假設我們 foreach 呼叫 GetEnumerable 方法,  
 你預期 Context 類別會有什麼樣的行為？  
-我們會印出以下的output嗎？
+我們會印出以下的 output 嗎？
 
 > Context created
 > 1
@@ -564,7 +565,7 @@ log.AppendLine("after enumeration");
 > before end
 > after enumeration
 
-值得注意的事, 如果你在loop當中重複執行以上的代碼,  
+值得注意的事, 如果你在 loop 當中重複執行以上的代碼,  
 那麼 Iterators 也會重複執行
 
 ```csharp
