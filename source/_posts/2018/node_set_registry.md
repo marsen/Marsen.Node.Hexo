@@ -10,7 +10,7 @@ tag:
 ## 原因
 
 最近換了新電腦，在家工作時發生了 npm install Error;  
-錯誤訊息如下，明顯看到 npm 嚐試去連線 `http://npm.mycompany.io`  
+錯誤訊息如下，明顯看到 npm 嘗試去連線 `http://npm.mycompany.io`  
 <http://npm.mycompany.io> 是公司內部的私有網路;  
 印象中沒有特別設定，可能是公司內的預設安裝設定的。
 
