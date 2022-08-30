@@ -1,5 +1,5 @@
 ---
-title: " [實作筆記] Dotnet Logger 整合 Kibana Kibana 與 Elasticsearch"
+title: " [實作筆記] Dotnet Logger 整合 Kibana 與 Elasticsearch"
 date: 2020/05/13 15:47:03
 tag:
   - CI/CD
