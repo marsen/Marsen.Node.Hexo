@@ -26,8 +26,8 @@ Go 的優勢常見如下：
 5. 測試內建:這點我覺得真是棒，我的學習之路就是由 [Learn Go with tests](https://quii.gitbook.io/learn-go-with-tests/) 開始的
 6. IOP:介面導向程式設計，目前還無法體會其哲學，不過因為其語言的特性會促使人思考，這點我還在慢慢嚐試
 
-不過對我而言，一個新的語言我會從測試開始學，
-這表示你通常會需要這些工具:測試框架、相依注入、Mocking、語意化 Assert，
+不過對我而言，一個新的語言我會從測試開始學，  
+這表示你通常會需要這些工具:測試框架、相依注入、Mocking、語意化 Assert，  
 本文會專注在使用相依注入的套件 **WIRE**
 
 ## WIRE
@@ -123,12 +123,12 @@ func main() {
 }
 ```
 
-在上面的程式中，可以明顯看到 `ConcatService` 相依於 `HttpClient` 與 `Logger`，
-而　`HttpClient` 本身又與　`Logger` 耦合。
+在上面的程式中，可以明顯看到 `ConcatService` 相依於 `HttpClient` 與 `Logger`，  
+而　`HttpClient` 本身又與　`Logger` 耦合。  
 這是一種高耦合，在這個例子裡 `Logger` 還會產生兩份實體，但實際上我們只需要一份。
 
 Golang 實際上不像 C# 有建構子(Constructor)的設計，不過常見的實踐會用大寫 New 開頭的方法作為一種類似建構子的應用，  
-比如說上面例子的 `NewConcatService` 與 `NewHttpClient`。
+比如說上面例子的 `NewConcatService` 與 `NewHttpClient`。  
 我們可以透過這個方法來注入我們相依的服務。
 
 ### 相依注入
