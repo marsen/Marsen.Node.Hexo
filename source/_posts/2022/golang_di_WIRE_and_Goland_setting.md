@@ -1,0 +1,342 @@
+---
+title: " [實作筆記] Golang DI Wire 使用範例與編輯器 GoLand 設定"
+date: 2022/09/05 12:15:46
+tag:
+  - 實作筆記
+  - Golang
+---
+
+## 前情提要
+
+學習 Golang 一陣子了，最近開始使用在正式的產品上，  
+老實說我還不覺得有用到它的特色。
+
+在學習程式語言上的一個現實是，我在台灣面臨的商業規模大多瓶頸並不在語言本身，  
+開發者的寫法(甚至稱不上演算法)、軟硬架構基本上可以解決大部份的問題。
+
+我的背景是 C#、JavaScript(TypeScript) 為主要開發項目，
+除此之外，也有寫過 C、C++、Java、Php、VB.NET、Ruby 與 Python
+
+Go 的優勢常見如下：
+
+1. 讓人容易了解的語意：作為漢語母語者我感受不強烈，我的英文不夠好可以感受到這點(同樣我對 Python 的感受也不深)
+2. 容易上手的多緒：這個有感，相比 C# 的確易懂好寫
+3. 靜態語言:我個人也比較偏好靜態語言，原本寫 Python 的開發人員可能比較有感，我自已覺得這是基本
+4. 高效，快:不論是執行或是編譯，目前的專案複雜性還未可以感到其差異，或許需要壓測用實際數據比較。經驗上是，錯誤的架構或寫法往往才是瓶頸之所在。
+5. 測試內建:這點我覺得真是棒，我的學習之路就是由 [Learn Go with tests](https://quii.gitbook.io/learn-go-with-tests/) 開始的
+6. IOP:介面導向程式設計，目前還無法體會其哲學，不過因為其語言的特性會促使人思考，這點我還在慢慢嚐試
+
+不過對我而言，一個新的語言我會從測試開始學，
+這表示你通常會需要這些工具:測試框架、相依注入、Mocking、語意化 Assert，
+本文會專注在使用相依注入的套件 **WIRE**
+
+## WIRE
+
+### 一些 Q&A
+
+#### 為什麼選用 WIRE ?
+
+google 官方推薦 [Wire](https://github.com/google/wire)
+
+#### 還有哪些選擇 ?
+
+- [[dig] Uber DI Framework](https://github.com/uber-go/dig)
+- [[inject] Facebook DI Framework](https://github.com/facebookarchive/inject)
+- [[di]sarulabs DI Container，同事在用的 DI](https://github.com/sarulabs/di)
+
+#### 有什麼不同
+
+官方推薦，本質上更像代碼生成器(Code Generator)
+
+> Clear is better than clever ，Reflection is never clear.
+> — Rob Pike
+
+## 示範
+
+參考本篇[文章](https://blog.drewolson.org/go-dependency-injection-with-wire)
+
+### 高耦合版本
+
+```golang
+package main
+
+import (
+  "bytes"
+  "fmt"
+)
+
+type Logger struct{}
+
+func (logger *Logger) Log(message string) {
+  fmt.Println(message)
+}
+
+type HttpClient struct {
+  logger *Logger
+}
+
+func (client *HttpClient) Get(url string) string {
+  client.logger.Log("Getting " + url)
+
+  // make an HTTP request
+  return "my response from " + url
+}
+
+func NewHttpClient() *HttpClient {
+  logger := &Logger{}
+  return &HttpClient{logger}
+}
+
+type ConcatService struct {
+  logger *Logger
+  client *HttpClient
+}
+
+func (service *ConcatService) GetAll(urls ...string) string {
+  service.logger.Log("Running GetAll")
+
+  var result bytes.Buffer
+
+  for _, url := range urls {
+    result.WriteString(service.client.Get(url))
+  }
+
+  return result.String()
+}
+
+func NewConcatService() *ConcatService {
+  logger := &Logger{}
+  client := NewHttpClient()
+
+  return &ConcatService{logger, client}
+}
+
+func main() {
+  service := NewConcatService()
+
+  result := service.GetAll(
+    "http://example.com",
+    "https://drewolson.org",
+  )
+
+  fmt.Println(result)
+}
+```
+
+在上面的程式中，可以明顯看到 `ConcatService` 相依於 `HttpClient` 與 `Logger`，
+而　`HttpClient` 本身又與　`Logger` 耦合。
+這是一種高耦合，在這個例子裡 `Logger` 還會產生兩份實體，但實際上我們只需要一份。
+
+Golang 實際上不像 C# 有建構子(Constructor)的設計，不過常見的實踐會用大寫 New 開頭的方法作為一種類似建構子的應用，  
+比如說上面例子的 `NewConcatService` 與 `NewHttpClient`。
+我們可以透過這個方法來注入我們相依的服務。
+
+### 相依注入
+
+```golang
+package main
+
+import (
+  "bytes"
+  "fmt"
+)
+
+type Logger struct{}
+
+func (logger *Logger) Log(message string) {
+  fmt.Println(message)
+}
+
+type HttpClient struct {
+  logger *Logger
+}
+
+func (client *HttpClient) Get(url string) string {
+  client.logger.Log("Getting " + url)
+
+  // make an HTTP request
+  return "my response from " + url
+}
+
+func NewHttpClient(logger *Logger) *HttpClient {
+  return &HttpClient{logger}
+}
+
+type ConcatService struct {
+  logger *Logger
+  client *HttpClient
+}
+
+func (service *ConcatService) GetAll(urls ...string) string {
+  service.logger.Log("Running GetAll")
+
+  var result bytes.Buffer
+
+  for _, url := range urls {
+    result.WriteString(service.client.Get(url))
+  }
+
+  return result.String()
+}
+
+func NewConcatService(logger *Logger, client *HttpClient) *ConcatService {
+  return &ConcatService{logger, client}
+}
+
+func main() {
+  logger := &Logger{}
+  client := NewHttpClient(logger)
+  service := NewConcatService(logger, client)
+
+  result := service.GetAll(
+    "http://example.com",
+    "https://drewolson.org",
+  )
+
+  fmt.Println(result)
+}
+
+```
+
+我們把焦點放在 `main` 函數中，實作實體與注入會在這裡發生，當你的程式變得複雜時，這裡也變得更複雜。
+一個簡單的思路是我們可以把重構這些邏輯，
+到另一個檔案 `container.go` 的 `CreateConcatService` 方法中。
+
+```golang
+// container.go
+package main
+
+func CreateConcatService() *ConcatService {
+  logger := &Logger{}
+  client := NewHttpClient(logger)
+  return NewConcatService(logger, client)
+}
+```
+
+```golang
+func main() {
+  service := CreateConcatService()
+
+  result := service.GetAll(
+    "http://example.com",
+    "https://drewolson.org",
+  )
+
+  fmt.Println(result)
+}
+```
+
+接下來我們看看怎麼透過 `wire` 實作
+
+### 使用 Wire
+
+安裝 wire
+
+```terminal
+go get github.com/google/wire/cmd/wire
+```
+
+接下來改寫 `container.go`
+
+```golang
+//go:build wireinject
+
+package main
+
+import "github.com/google/wire"
+
+func CreateConcatService() *ConcatService {
+  panic(wire.Build(
+    wire.Struct(new(Logger), "*"),
+    NewHttpClient,
+    NewConcatService,
+  ))
+}
+
+```
+
+在專案中執行
+
+```terminal
+wire
+```
+
+wire 將會產生 `wire_gen.go` 檔，裡面幫你實作 `CreateConcatService` 函數
+
+```golang
+//wire_gen.go
+// Code generated by Wire. DO NOT EDIT.
+
+//go:generate go run github.com/google/wire/cmd/wire
+//go:build !wireinject
+// +build !wireinject
+
+package main
+
+// Injectors from container.go:
+
+func CreateConcatService() *ConcatService {
+  logger := &Logger{}
+  httpClient := NewHttpClient(logger)
+  concatService := NewConcatService(logger, httpClient)
+  return concatService
+}
+```
+
+簡單回顧一下：
+
+1. 我們需要針對特定的 Service 寫出一個方法的殼
+
+   ```golang
+     func CreateConcatService() *ConcatService {
+     ////skip
+     }
+   ```
+
+2. 在方法中透過 `wire.Build` 加入相依的類別，實際上我們不需要 return 實體，所以用 `panic` 包起來
+
+   ```golang
+   func CreateConcatService() *ConcatService {
+     panic(wire.Build(
+       wire.Struct(new(Logger), "*"),
+       NewHttpClient,
+       NewConcatService,
+     ))
+   }
+   ```
+
+3. 執行 wire 建立檔案
+4. 實務上需要這個 Service 時，直接呼叫 Create 方法
+
+   ```golang
+     service := CreateConcatService()
+   ```
+
+## GoLand 設定
+
+如果你跟我一樣使用 GoLand 作為主要編輯器，
+應該會收到 customer tags 的警告
+![customer tags](https://i.imgur.com/g3nO9GQ.png)
+
+解決方法：  
+GoLand > Preferences > Build Tags & Vendoring > Editor Constraints > Custom Tags
+設定為 `wireinject` 即可
+
+## 參考
+
+- [go 语言 web 框架比较：gin vs iris vs echo](https://segmentfault.com/a/1190000013394345)
+- [The Pros And Cons Of Programming In Go](https://mobcoder.com/blog/golang-pros-and-cons/)
+- [Learn Go with tests](https://quii.gitbook.io/learn-go-with-tests/)
+- [Wire Tutorial](https://github.com/google/wire/blob/main/_tutorial/README.md)
+- [[Golang] Struct](https://pjchender.dev/golang/structs/)
+- [Wire:Best Practices](https://github.com/google/wire/blob/main/docs/best-practices.md)
+- [Defer, Panic, and Recover](https://go.dev/blog/defer-panic-and-recover)
+- [[wire] Google 官方推薦 DI Framework](https://go.dev/blog/wire)
+- [Go Dependency Injection with Wire](https://blog.drewolson.org/go-dependency-injection-with-wire)
+- [Golang 簡潔架構實戰](https://www.readfog.com/a/1661397494021591040)
+- [理解一下依赖注入，以及如何用 wire](https://farer.org/2021/04/21/go-dependency-injection-wire/)
+- [Golang 依赖注入框架 wire 使用详解](https://zhuanlan.zhihu.com/p/338926709)
+- [Go 依赖注入(DI)工具-wire 使用](https://www.cnblogs.com/jiujuan/p/16136633.html)
+- [一文讀懂 wire](https://medium.com/@dche423/master-wire-cn-d57de86caa1b)
+
+(fin)
