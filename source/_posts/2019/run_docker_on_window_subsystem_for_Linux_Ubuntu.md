@@ -121,7 +121,7 @@ export DOCKER_HOST=localhost:2375
 - [Get Docker CE for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [取得 Ubuntu - Microsoft Store zh-TW](https://www.microsoft.com/zh-tw/p/ubuntu/9nblggh4msv6?activetab=pivot%3Aoverviewtab)
 - [Docker CE Desktop Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
-- [如何安裝 Docker for Windows ?](https://oomusou.io/docker/docker-for-windows/)
+- [如何安裝 Docker for Windows ?](https://old-oomusou.goodjack.tw/docker/docker-for-windows/)
 - [Windows 上的 Linux 容器](https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/deploy-containers/linux-containers)
 
 (fin)
