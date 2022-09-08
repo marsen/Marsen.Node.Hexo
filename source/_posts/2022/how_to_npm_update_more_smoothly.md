@@ -11,10 +11,10 @@ tag:
 有幾個原因，  
 首先，使用 javascript 作為開發語言，用弱型別直譯式的語言來開發大型專案是痛苦的。  
 不論在 TDD、重構或是除錯上…我始終作不到[極速開發](https://www.facebook.com/91agile/posts/pfbid022QhYJSeWzH4sHq1mBW91Q5LjxNB7iD4oHS6Eks3jtPLdVhLFHkW63CXxua1aEuFhl)那樣流暢的感覺，  
-很希望有機會可以跟這樣的高手交流。  
-即使改用 TypeScript，儘管看到 [TypeScript 另人驚豔的開發方式](https://www.youtube.com/watch?v=p6dO9u0M7MQ)，這樣的感覺還是揮之不去。
+即使改用 TypeScript，儘管看到 [TypeScript 的可能性](https://www.youtube.com/watch?v=p6dO9u0M7MQ)，這樣的感覺還是揮之不去。
+很希望有機會可以跟這樣的高手交流。
 
-再者，node_modules 是出了名的零碎肥大，網路上甚至為它作了迷音，如下圖  
+再者，node_modules 是出了名的零碎肥大，網路上甚至為它作了迷因，如下圖  
 ![node_modules](https://i.imgur.com/Zkhmx8m.jpg)
 
 第三點，專案的 npm 更新是相當麻煩的，也是這篇文章我們要面對的問題，  
