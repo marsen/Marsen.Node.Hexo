@@ -3,7 +3,7 @@ title: "[KATA] 用 TypeScript 作一個簡易的 TodoList (二) - 用JQuery實�
 date: 2016/10/14 10:34:27
 tag:
   - TypeScript
-  - NPM
+  - Nodejs
 ---
 
 ## 設計理念

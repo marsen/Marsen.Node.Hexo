@@ -4,7 +4,7 @@ date: 2018/10/20 11:41:05
 tag:
   - 實作筆記
   - Hexo
-  - Node.js
+  - Nodejs
 ---
 
 好久沒有作 hexo 更新了，  
