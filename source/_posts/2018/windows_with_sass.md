@@ -1,13 +1,16 @@
 ---
-title: " [實作筆記] 在 Windows 環境編輯 SCSS"
+title: " [實作筆記] 在 Windows 環境編輯 Compass"
 date: 2018/04/26 14:16:34
 tag:
-  - Windows
-  - SCSS
-  - Ruby
   - Nodejs
   - 實作筆記
 ---
+
+## 敗破警告
+
+這篇文章提及的內容過於老舊，不建議浪費你寶貴生命閱讀
+
+## 原文
 
 1. 安裝 Windows 套件管理工具 Chocolatey
    - <https://chocolatey.org>
