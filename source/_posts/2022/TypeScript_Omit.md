@@ -69,9 +69,74 @@ console.log(example2);
 
 這些 Utility Types 蠻有趣的，有時間應該將它們補完。
 
+## 20220913 補充
+
+進一步探討 `Omit`
+
+1. `Omit` 適用於 `type` 與 `interface`
+2. 與 `Omit` 相反的就是 `Pick`
+3. `Omit` 與 `Exclude` 的差別
+
+   - `Omit` 移除指定 Type 的欄位
+   - `Exclude` 移除 union literal Type 當中的成員
+   - `Exclude` 可以適用於 `enum`
+
+舉例說明:
+
+下面兩個例子分別使用了 `union literal` 與 `enum`,  
+在這種情況下如需要忽略部份的成員, 請使用 `Exclude`,  
+你要用 `Omit` 也不會報錯, 但是無法達到編譯時期警告的效果
+
+```typescript
+type TrafficLight = "red" | "yellow" | "green";
+
+type RedLight = Exclude<TrafficLight, "yellow" | "green">;
+type GreenLight = Omit<TrafficLight, "red">;
+
+const sighs: {
+  Danger: RedLight;
+  Warning: TrafficLight;
+  Safe: GreenLight;
+} = {
+  Danger: "red", // if you use other words would get error
+  Warning: "yellow",
+  Safe: "there is no constraint any string",
+};
+
+console.log(sighs);
+```
+
+[範例](https://codesandbox.io/s/typescrip-utiliy-types-exclude-union-literal-g2tp73?file=/src/index.ts)
+
+```typescript
+enum TrafficLight {
+  red,
+  yellow,
+  green,
+}
+
+type RedLight = Exclude<TrafficLight, TrafficLight.yellow | TrafficLight.green>;
+type GreenLight = Omit<TrafficLight, TrafficLight.red>;
+
+const sighs: {
+  Danger: RedLight;
+  Warning: TrafficLight;
+  Safe: GreenLight;
+} = {
+  Danger: TrafficLight.red, // if you use yellow or green would get error
+  Warning: TrafficLight.yellow,
+  Safe: TrafficLight.red,
+};
+
+console.log(sighs);
+```
+
+[範例](https://codesandbox.io/s/typescrip-utiliy-types-exclude-56h2ni?file=/src/index.ts)
+
 ## 參考
 
 - <https://bobbyhadz.com/blog/typescript-override-interface-property>
+- <https://timmousk.com/blog/typescript-omit/>
 - <https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys>
 - <https://ithelp.ithome.com.tw/articles/10269471>
 
