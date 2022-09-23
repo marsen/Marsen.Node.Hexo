@@ -153,5 +153,7 @@ sayings: ['',
 'When to use iterative development? You should use iterative development only on projects that you want to succeed. --- Martin Fowler',
 'Make It Work Make It Right Make It Fast --- KentBeck',
 'Premature optimization is the root of all evil --- Donald Knuth',
-'Where `work` is making tests pass, `right` is refactoring the code, and `fast` is optimizing the code --- Learn Go with tests'
+'Where `work` is making tests pass, `right` is refactoring the code, and `fast` is optimizing the code --- Learn Go with tests',
+'When life seems hard, the courageous do not lie down and accept defeat;instead, they are all the more determined to struggle for a better future.',
+'學習並不是追求更多的知識，而是要尋找更好的決策依據 - Charles Munger.'
 ]
