@@ -120,25 +120,114 @@ first 其實就是處理 Effect 函數，我們可以把 Effect 寫在這裡，
 
 ### Clean up functions
 
-TBW
-上一段所說的函數，可以回傳一個 callback function 用來清除 side Effect，
-想像我們有兩個 tab 用來切換不同的使用者資料，在切換的過程中會去 fetch 不同使用者的資料,  
-假設我們在一個慢速網路的情境底，快速的切換頁，那很有可能會看到頁面的資料閃爍，
-原因是我們先點 user1 的 tab 取 user1 資料(此時資料還沒回來)，  
-再點 user2 的 tab 取 user2 資料(user2 的資料也還沒回來)，
-這時，user1 資料回來了，畫面會渲染 user1 資料(實際上我想看 user2 的資料)，
+useEffect 的第一個參數是一個函數，可以回傳一個 callback function 用來清除 side Effect。
+
+舉例說明:
+想像我們有兩個連結用來切換不同的使用者資料，
+在切換的過程中會打 api 取得不同使用者(user1 與 user2)的資料,
+
+我們會先點 user1 的連結取 user1 資料(因網速過慢，此時資料還沒回來)，  
+再點 user2 的連結取取 user2 資料(user2 的資料也還沒回來)，
+這時，user1 資料回來了，畫面會渲染 user1 資料(實際上，這時候我想看 user2 的資料)，
 再過一會兒，user2 資料回來了，畫面閃爍，渲染 user2 資料。
 
-這是很惱人的，TBW
+[線上範例看這](https://codesandbox.io/s/useeffect-clean-function-wlleou?file=/src/App.tsx),使用網速網路會更明顯。
+
+這是表示當我們點擊 user2 的連結時，其實我們已經拋棄了點擊 user1 的結果(對我們來說已經不需要了)，
+這時候 Clean up function 就是用來處理這個不再需要的 side-effect。
+
+我們可以簡單設定一個 toggle 來處理這個問題
+
+```tsx
+useEffect(() => {
+  let fetching = true;
+  fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (fetching) {
+        setUser(data);
+      }
+    });
+  return () => {
+    fetching = false;
+  };
+}, [id]);
+```
+
+我們也可使用 [AbortController](https://developer.mozilla.org/zh-TW/docs/Web/API/AbortController),  
+有關 AbortController 的相關資訊可以參考隨附連結，或是留言給我再作介紹。
+
+```tsx
+useEffect(() => {
+  const controller = new AbortController();
+  const signal = controller.signal;
+  fetch(`https://jsonplaceholder.typicode.com/users/${id}`,{ signal })
+    .then((res) => res.json())
+    .then((data) => {
+        setUser(data);
+    })
+    .catch(err=>{
+      if(err.name === "AbortError){
+        console.log("cancelled!")
+      }else{
+        //todo:handle error
+      }
+    });
+  return () => {
+    controller.abort();
+  };
+}, [id]);
+```
+
+以上，我們就介紹完了 useEffect 的三個部份(函數、回呼函數與相依數列)與用法。
+
+如果你使用常見的套件 [axios](https://axios-http.com/docs/intro) 應該怎麼作 clean up，  
+補充範例如下:
+
+```tsx
+useEffect(() => {
+  const cancelToken = axios.cancelToken.source();
+  axios(`https://jsonplaceholder.typicode.com/users/${id}`,{ cancelToken:cancelToken.token })
+    .then((res) =>
+        setUser(res.data);
+    })
+    .catch(err=>{
+      if(axios.isCancel(err)){
+        console.log("cancelled!")
+      }else{
+        //todo:handle error
+      }
+    });
+  return () => {
+    cancelToken.cancel();
+  };
+}, [id]);
+```
 
 ### why render twice with React.StrictMode
 
-TBW
+請參考[官方文章](https://reactjs.org/docs/strict-mode.html),  
+StrictMode 可以幫助開發者即早發現諸如下列的問題:
 
-## When and how it runs
+- Identifying components with unsafe life-cycles
+- Warning about legacy string ref API usage
+- Warning about deprecated findDOMNode usage
+- Detecting unexpected side effects
+- Detecting legacy context API
+- Ensuring reusable state
 
-- Render Component
--
+## 小結
+
+- React.StrictMode 可以幫助你檢查組件的生命周期(不僅僅 useEffect)
+- React.StrictMode 很有用不應該考慮移除它
+- useEffect 包含三個部份
+  - 第一個參數(function)，處理 side-Effect 的商業邏輯
+  - 第一個參數的回傳值(clean-up function)，處理 side-Effect 中斷時的邏輯(拋錯、釋放資源 etc…)
+  - 第二個參數表示相依的參數陣列
+    - 不傳值將會導致每次渲染都觸發副作用
+    - 傳空陣列將會只執行一次
+    - 相依的參數需注意 Primitive 與 Non-primitive
+    - useMemo 可以協助處理 Primitive 與 Non-primitive
 
 ## 參考
 
@@ -147,4 +236,5 @@ TBW
 - <https://morioh.com/p/a8366f4ec07a?f=603c719d1528b00f7934320a&fbclid=IwAR07igsz8cQ49y1AQYElDBxPk23vqv-9WDYTlbrCf-yBcXhapz9WzAa9lhQ>
 - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax>
 - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters>
+- <https://www.zhoulujun.cn/html/webfront/SGML/html5/2022_0530_8824.html>
   (fin)
