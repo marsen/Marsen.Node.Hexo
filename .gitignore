@@ -7,7 +7,6 @@ Thumbs.db
 coverage/
 yarn.lock
 \.deploy_git
-package-lock.json
 public
 db.json
 .deploy*/ # 不推送開頭為 .deploy 的目錄
