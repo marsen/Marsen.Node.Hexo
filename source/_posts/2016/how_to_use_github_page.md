@@ -4,6 +4,7 @@ date: 2016/08/28 4:56:27
 tag:
   - 實作筆記
   - Git
+  - Hexo
 ---
 
 ## 前置作業
@@ -14,44 +15,41 @@ tag:
 
 如果不排斥看原文，可以直接[參考](https://pages.github.com/)
 
-1.  建立一個 Repository , 並且命名為 `username.github.io` , 這裡的 username 請使用你的 GitHub 帳號的 username.
-2.  clone `username.github.io` 到你的本機上.
+1. 建立一個 Repository , 並且命名為 `username.github.io` , 這裡的 username 請使用你的 GitHub 帳號的 username.
+2. clone `username.github.io` 到你的本機上.
 
-        ```shell
-         git clone https://github.com/username/username.github.io
-        ```
+   ```shell
+   git clone https://github.com/username/username.github.io
+   ```
 
-3.  建立一個靜態網頁 `index.html` , 隨便打點什麼。
+3. 建立一個靜態網頁 `index.html` , 隨便打點什麼。
 
-        ```html
-        <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-        <HTML>
-                <HEAD>
-                        <TITLE>
-                                Hello world
-                        </TITLE>
-                </HEAD>
-        <BODY>
-                <H1>Hello world</H1>
-                <P>This is my github page</P>
-        </BODY>
-        </HTML>
-        ```
+   ```html
+   <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+   <html>
+     <head>
+       <title>Hello world</title>
+     </head>
+     <body>
+       <h1>Hello world</h1>
+       <p>This is my github page</p>
+     </body>
+   </html>
+   ```
 
-4.  commit 之後,push 到 github 上 > git add --all > git commit -m "Initial commit" > git push -u origin master
-
-5.  瀏覽 <http://username.github.io> 即完成
+4. commit 之後,push 到 github 上 > git add --all > git commit -m "Initial commit" > git push -u origin master
+5. 瀏覽 <http://username.github.io> 即完成
 
 ## 使用自訂的 Domain
 
 1. 首先準備好一個 domain ex: username.xyz
 2. 需要在根目錄底下，放入一個 CName file
-   檔案的內容只需要你的 domain 即可  
+   檔案的內容只需要你的 domain 即可
    ex:
-   blog.username.xyz  
-    username.xyz
+   blog.username.xyz
    username.xyz
-3. 在 Name Servers (例如[cloudflare](https://www.cloudflare.com/))上設定 `CNAME` 到 github page,  
+   username.xyz
+3. 在 Name Servers (例如[cloudflare](https://www.cloudflare.com/))上設定 `CNAME` 到 github page,
    將 `blog.username.xyz` 綁定到 `username.github.io`
    ex:
 
