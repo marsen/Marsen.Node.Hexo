@@ -60,7 +60,7 @@ tag:
 2. 配置 Github Workflow
    這步驟就相當簡單了，可以直接參考 HEXO-ACTION 的配置，或是看看我的 [workflow](https://github.com/marsen/Marsen.Node.Hexo/blob/main/.github/workflows/main.yml) 配置
 
-## 心得
+## 後續
 
 一些小錯誤要注意一下
 
@@ -81,6 +81,12 @@ deploy:
 
 如此一來，未來我寫好文章，只要 push 上 Hexo Source，就可以打完收工了，
 再也不用額外的手動作業囉，這篇文章剛好就是第一篇，馬上來試試看。
+
+## 心得
+
+相關的技術與知識我都有兩年以上了，  
+但是一直沒有發現應該將其結合起來，可以省下許多時間，
+讓我想到 91 大說的綜效，我應該要讓想像力再開放一些，儘可能的把知識與資訊變成真正的價值。
 
 ## 參考
 
