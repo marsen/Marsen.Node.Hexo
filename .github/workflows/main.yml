@@ -33,11 +33,9 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    # #no need now
-    # #https://github.com/marketplace/actions/hexo-action#how-to-install-additional-third-party-node-modules
-    # - name: Install Dependencies
-    #  if: steps.cache.outputs.cache-hit != 'true'
-    #  run: npm ci
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
     
     # Deploy hexo blog website.
     - name: Deploy
