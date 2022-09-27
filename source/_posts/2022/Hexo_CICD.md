@@ -90,9 +90,9 @@ deploy:
 
 ## 參考
 
-- <https://blog.marsen.me/tags/Hexo/>
-- <https://www.ssh.com/academy/ssh/keygen>
-- <https://github.com/sma11black/hexo-action>
-- <https://israynotarray.com/nodejs/20211027/1827968017/>
+- [Hexo 系列文章](https://blog.marsen.me/tags/Hexo/)
+- [ssh-keygen](https://www.ssh.com/academy/ssh/keygen)
+- [hexo-action](https://github.com/sma11black/hexo-action)
+- [npm ci](https://israynotarray.com/nodejs/20211027/1827968017/)
 
 (fin）
