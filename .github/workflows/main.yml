@@ -50,3 +50,7 @@ jobs:
     - name: Get the output
       run: |
         echo "${{ steps.deploy.outputs.notify }}"
+    - name: ncu-upgrade
+    # You may pin to the exact commit or the version.
+    # uses: thzero/ncu-upgrade@b31df75c1c32884757c6cabb76286d683de28275
+      uses: thzero/ncu-upgrade@v0.23-beta    
