@@ -6,7 +6,7 @@
     "version": "6.2.0"
   },
   "dependencies": {
-    "hexo": "^6.2.0",
+    "hexo": "^6.3.0",
     "hexo-cli": "^4.3.0",
     "hexo-codepen": "^0.1.1",
     "hexo-codepen-v2": "^0.2.3",
@@ -26,7 +26,7 @@
     "ajv": "^8.11.0",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.23.0",
+    "eslint": "^8.24.0",
     "minimist": "^1.2.6"
   },
   "resolutions": {
