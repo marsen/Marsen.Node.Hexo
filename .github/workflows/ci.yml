@@ -20,6 +20,7 @@ jobs:
     name: Continuous Integration
     steps:
     - name: ncu-upgrade
+      uses: actions/checkout@v1
       run: |
         npm i -g npm-check-updates
         ncu -u 
