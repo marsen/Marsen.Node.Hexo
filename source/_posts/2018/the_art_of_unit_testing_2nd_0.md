@@ -4,7 +4,7 @@ date: 2018/03/22 01:20:12
 tag:
   - TDD
   - Unit Testing
-  - Integrated Testing
+  - Testing
 ---
 
 ## 要知道的事
@@ -47,9 +47,9 @@ tag:
 
 有寫測試, 也不保証專案成功,  
 一個失敗的單元測試案例,  
-作者歸納原因如下,  
+作者歸納原因如下,
 
-- 脆弱的測試(Prod改一點,測試就錯一大片)
+- 脆弱的測試(Prod 改一點,測試就錯一大片)
 - 不易維護
 - 測試間相護依賴
 - 可讀性差
@@ -93,7 +93,7 @@ tag:
 ### 什麼是優秀的單元測試
 
 1. 自動化, 可重複執行
-2. 容易實現*
+2. 容易實現\*
 3. 到第二天還有存在的意義(非臨時性的,ex:hotfix)
 4. 任何都可以一鍵執行
 5. 執行速度快
@@ -106,7 +106,7 @@ tag:
 
 1. 整合測試相依於真實物件
 2. 整合測試的結果不穩定
-3. 整合測試與單元測試應該被分開(見ch7.2.2)
+3. 整合測試與單元測試應該被分開(見 ch7.2.2)
 4. 整合測試執行時間長
 5. 依據現實狀況無法完全控制
 6. 缺點: 一次測試的東西太多
@@ -119,11 +119,11 @@ tag:
    2. 寫一個符合測試預期的產品程式碼,以通過測試
    3. 重構
 
-### TDD的核心技能
+### TDD 的核心技能
 
 1. 可維護、可讀、可靠(這本書的目的)
-2. 寫出可維護、可讀、可靠的測試不等於TDD,至於如何寫優秀的TDD,作者推薦閱讀[〈Test-Driven Development:by Example〉](https://www.tenlong.com.tw/products/9780321146533)
-3. 就算執行TDD,也不保証能設計一個完善的系統,作者推薦閱讀[Growing Object-Oriented Software, Guided by Tests](http://tl.big5.zxhsd.com/kgsm/ts/big5/2010/07/30/1801246.shtml)與[無瑕的程式碼](https://www.tenlong.com.tw/products/9789862017050)
+2. 寫出可維護、可讀、可靠的測試不等於 TDD,至於如何寫優秀的 TDD,作者推薦閱讀[〈Test-Driven Development:by Example〉](https://www.tenlong.com.tw/products/9780321146533)
+3. 就算執行 TDD,也不保証能設計一個完善的系統,作者推薦閱讀[Growing Object-Oriented Software, Guided by Tests](http://tl.big5.zxhsd.com/kgsm/ts/big5/2010/07/30/1801246.shtml)與[無瑕的程式碼](https://www.tenlong.com.tw/products/9789862017050)
 
 簡單說就是:
 
