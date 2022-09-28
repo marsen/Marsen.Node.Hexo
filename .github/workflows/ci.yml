@@ -23,4 +23,4 @@ jobs:
       run: |
         npm i -g npm-check-updates
         ncu -u 
-        if git diff-index --quiet HEAD; then echo none; else echo change; fi
+        if git diff-index --quiet HEAD; then echo none; else git commit -m 'update package by ci';git push; fi
