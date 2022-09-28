@@ -27,4 +27,7 @@ jobs:
       run: |
         npm i -g npm-check-updates
         ncu -u 
+        git config --global user.email "admin@marsen.me"
+        git config --global user.name "Marsen"
         if git diff-index --quiet HEAD; then echo none; else git commit -m 'update package by ci';git push; fi
+
