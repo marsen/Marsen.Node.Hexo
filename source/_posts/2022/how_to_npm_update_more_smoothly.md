@@ -79,6 +79,8 @@ tag:
 再次執行 `npm outdated` 將不會看到任何顯示，表示你目前專案的相依套件都在最新的穩定版本  
 定期執行或是透過 CI/CD 周期性協助你更新並 commit，是不是就會省下了許多時間呢 ?
 
+## 20220928 後記
+
 ## 參考
 
 - [How to Update NPM Dependencies](https://www.freecodecamp.org/news/how-to-update-npm-dependencies/)
