@@ -29,5 +29,8 @@ jobs:
         ncu -u 
         git config --global user.email "admin@marsen.me"
         git config --global user.name "Marsen"
-        if git diff-index --quiet HEAD; then echo none; else git commit -m 'update package by ci';git push; fi
+        if git diff-index --quiet HEAD; then echo none; else
+        git add .; 
+        git commit -m 'update package by ci';
+        git push; fi
 
