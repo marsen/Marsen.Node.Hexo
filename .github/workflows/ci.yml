@@ -27,12 +27,9 @@ jobs:
       run: |
         npm i -g npm-check-updates
         ncu -u 
-        git config --global user.email "admin@marsen.me"
-        git config --global user.name "Marsen"
-        if git diff-index --quiet HEAD; then echo none; else
-        git status;
-        git add .; 
-        git commit -m 'update package by ci';
-        git push origin HEAD:main;
-        fi
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.HEXO_PRIVATE }}
+
 
