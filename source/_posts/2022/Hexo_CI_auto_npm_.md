@@ -87,5 +87,7 @@ steps:
 - <https://blog.marsen.me/2022/09/26/2022/Hexo_CICD/>
 - <https://blog.marsen.me/2022/09/08/2022/how_to_npm_update_more_smoothly/>
 - [GitHub Actions: GITHUB_TOKEN Explained](https://www.youtube.com/watch?v=jEK07KPEjnY)
+- [GitHub Action for GitHub Commit & Push](https://github.com/marketplace/actions/github-commit-push)
+- [Checkout V3](https://github.com/marketplace/actions/checkout)
 
 (fin)
