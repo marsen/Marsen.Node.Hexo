@@ -33,5 +33,6 @@ jobs:
         git status;
         git add .; 
         git commit -m 'update package by ci';
-        git push; fi
+        git push origin HEAD:main;
+        fi
 
