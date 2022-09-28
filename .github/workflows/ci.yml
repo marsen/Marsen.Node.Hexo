@@ -20,13 +20,15 @@ jobs:
     name: Continuous Integration
     steps:
     - name: Checkout
-      uses: actions/checkout@v2.4.2
+      uses: actions/checkout@v1
+      with:
+        submodules: true
     - name: ncu-upgrade
       run: |
         npm i -g npm-check-updates
         ncu -u 
     - name: Commit & Push changes
-      uses: actions-js/push@v1.3
+      uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
