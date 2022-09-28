@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Hexo CI/CD 設置"
+title: "[實作筆記] Hexo CI 更新相依套件"
 date: 2022/09/26 15:35:20
 tag:
   - CI/CD
