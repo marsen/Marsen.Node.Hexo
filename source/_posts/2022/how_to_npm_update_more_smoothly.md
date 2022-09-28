@@ -81,7 +81,7 @@ tag:
 
 ## 20220928 後記
 
-- <https://blog.marsen.me/2022/09/26/2022/Hexo_CI_auto_npm_/>
+- [透過 CI/CD 自動執行的實作記錄在此](https://blog.marsen.me/2022/09/28/2022/Hexo_CI_auto_npm_/)
 
 ## 參考
 
