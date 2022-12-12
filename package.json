@@ -23,10 +23,10 @@
     "hexo-tag-youku": "^1.0.2"
   },
   "devDependencies": {
-    "ajv": "^8.11.0",
+    "ajv": "^8.11.2",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.26.0",
+    "eslint": "^8.29.0",
     "minimist": "^1.2.7"
   },
   "resolutions": {
