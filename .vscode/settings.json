@@ -10,7 +10,8 @@
         "kktix",
         "mc",
         "mockito",
-        "opencover"
+        "opencover",
+        "vimrc"
     ],
     "editor.fontFamily": "'JetBrains Mono',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
