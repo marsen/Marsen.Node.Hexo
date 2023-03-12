@@ -26,8 +26,8 @@
     "ajv": "^8.12.0",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.33.0",
-    "minimist": "^1.2.7"
+    "eslint": "^8.36.0",
+    "minimist": "^1.2.8"
   },
   "resolutions": {
     "minimist": "^1.2.5",
