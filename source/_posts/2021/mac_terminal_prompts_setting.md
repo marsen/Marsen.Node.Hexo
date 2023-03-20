@@ -21,7 +21,7 @@ tag:
 - 安裝 oh-my-zsh
 - 安裝 powerlevel10k
 
-## 第一步 下載並安裝 [iTerm2](https://[term2.com/)
+## 第一步 下載並安裝 [iTerm2](https://iterm2.com/downloads.html)
 
 ### 設定 iTerm2 的外觀
 
