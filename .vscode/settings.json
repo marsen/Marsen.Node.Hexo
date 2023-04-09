@@ -11,6 +11,7 @@
         "mc",
         "mockito",
         "opencover",
+        "Pointlike",
         "vimrc"
     ],
     "editor.fontFamily": "'JetBrains Mono',Menlo, Monaco, 'Courier New', monospace",
