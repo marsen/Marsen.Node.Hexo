@@ -21,13 +21,16 @@ tag:
 - 安裝 oh-my-zsh
 - 安裝 powerlevel10k
 
-## 第一步 下載並安裝 [iTerm2](https://[term2.com/)
+## 第一步 下載並安裝 [iTerm2](https://iterm2.com/downloads.html)
 
 ### 設定 iTerm2 的外觀
 
-1. 可以在這裡尋找[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-2. Create the `.itemcolors` files
-3. Preferences > Profiles > Colors > Choose Presets > import
+1. 從網站 iTerm2-Color-Schemes (https://github.com/mbadolato/iTerm2-Color-Schemes) 下載你喜歡的配色方案，例如 "DimmedMonokai.itermcolors"。
+2. 開啟 iTerm2，點擊菜單欄的 "iTerm2"，選擇 "Preferences"。
+3. 在偏好設定視窗中，選擇 "Profiles" 選項卡，然後選擇你要更改配色方案的會話配置文件。
+4. 在 "Colors" 選項卡下，點擊 "Color Presets" 按鈕，選擇 "Import..."。
+5. 找到剛才下載的配色方案檔案，例如 "DimmedMonokai.itermcolors"，點擊 "Open"。
+6. 選擇 "DimmedMonokai" 作為你的 iTerm2 配色方案。
 
 ![import .itemcolors](https://i.imgur.com/d9qHicD.png)
 
