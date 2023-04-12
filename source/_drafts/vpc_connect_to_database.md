@@ -11,14 +11,14 @@ GCP SQL是Google Cloud Platform上的一個全管理式的關聯式資料庫服�
 
 現在我建立一個 QA 環境的 GCP SQL 沒有 public IP，  
 不設定 public IP 連線 GCP SQL，可提高資安性並降低成本，  
-因為可以避免公開暴露資料庫（比如某 Rent），也不需要額外支付 Public IP 的費用。
+因為可以避免公開暴露資料庫（比如 xRent），也不需要額外支付 Public IP 的費用。
 那要如何安全的連線資料庫？這是一個常見的問題，因為沒有開啟 Public IP，必須要透過其他方式來連接。　　
 
 ## 可能的方案
 
 1. Cloud SQL Proxy
 2. 建立 VPN 連線 VPC
-3. 以及使用 SSH 隧道
+3. 以及使用 SSH Tunnel
 
 ### Cloud SQL Proxy
 
