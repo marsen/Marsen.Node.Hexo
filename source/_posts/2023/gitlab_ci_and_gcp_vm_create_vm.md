@@ -70,10 +70,8 @@ server {
 }
 ```
 
-有關憑証(ssl與https)相關設定的設定，我選擇了[Certbot](https://certbot.eff.org/)，  
-唯一需要注意的東西是，Web Server 有設定 public 的 ip 以對外提供服務，  
-但是同時在我的情境當中(我在建立一台測試環境的 Web Server)，有建立防火牆。  
-有機會再補寫一篇，另外還有 DNS 相關的設定在這裡就不過多的展開。
+在建立測試環境的 Web Server 時，需設定 public IP 以對外提供服務，  
+但同時需要建立防火牆以保障安全性。其他如 DNS、憑證、防火牆等設定，之後再補充。  
 
 ## 建立 Vue 專案
 
