@@ -107,8 +107,9 @@ nginx -s start
 
 - [GCP-Compute Engine](https://cloud.google.com/compute)
 - [Certbot-get your site on Lock https://](https://certbot.eff.org/)
-- 相關文章
-  - [[實作筆記] Gitlab CI/CD 與 CGP - 架構全貌](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)
+- [實作筆記] Gitlab CI/CD 與 CGP相關文章
+  - [架構全貌](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)
+  - [建立 Web Server VM](https://blog.marsen.me/2023/04/14/2023/gitlab_ci_and_gcp_vm_create_vm/)
 
 - [Vue.js](https://vuejs.org/)
 
