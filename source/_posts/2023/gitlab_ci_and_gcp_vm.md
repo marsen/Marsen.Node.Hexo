@@ -1,6 +1,8 @@
 ---
 title: "[實作筆記] Gitlab CI/CD 與 CGP - 架構全貌"
 date: 2023/04/13 18:09:50
+tag:
+  - CI/CD
 ---
 
 ## 前言
