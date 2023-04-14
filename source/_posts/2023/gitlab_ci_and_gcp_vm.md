@@ -1,6 +1,6 @@
 ---
 title: "[實作筆記] Gitlab CI/CD 與 CGP - 架構全貌"
-date: 2023/04/13 18:09:50:10
+date: 2023/04/13 18:09:50
 ---
 
 ## 前言
@@ -40,5 +40,9 @@ date: 2023/04/13 18:09:50:10
 - 最後，我會在 Web Server 上設定好使用者、群組與 Nginx 的 Hot reload。
 
 以上的步驟將協助我們建立基於 Gitlab 與 GCP 的 CI/CD 流程，並以此提供程式開發的品質和穩定性。
+
+## 參考
+
+- [[實作筆記] Gitlab CI/CD 與 CGP - 架構全貌](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)
 
 (fin)
