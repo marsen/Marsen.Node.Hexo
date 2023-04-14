@@ -37,7 +37,7 @@ date: 2023/04/13 18:09:50:10
 - 設定適當的防火牆規則，讓 Gitlab Runner 可以存取 Web Server
 - 讓 GitLab Runner VM 的 Docker 容器可以存取我們的 Web Server，我會設定相應的公鑰和私鑰，以確保安全的連線。
 - 我會撰寫一個適合的 gitlab-ci.yml 檔案，來定義建置和部署的流程，並將其配置在 GitLab CI/CD 中，以實現自動化的流程。
-- 最後，我會確保 Web Server 上已設定好使用者、群組與 Nginx 的熱更新，以確保應用程式的正確運行和高可用性。
+- 最後，我會在 Web Server 上設定好使用者、群組與 Nginx 的 Hot reload。
 
 以上的步驟將協助我們建立基於 Gitlab 與 GCP 的 CI/CD 流程，並以此提供程式開發的品質和穩定性。
 
