@@ -5,8 +5,9 @@ date: 2023/04/14 10:41:50
 
 ## 前言
 
-請參考[前篇](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)今天將來建立兩台 VM，  
+請參考[前篇](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)，我們將建立兩台 VM，  
 一台作為 CI/CD 用的 Gitlab Runner，另一台作為 Web Server，  
+本篇將介紹 Web Server 的相關設定，  
 架構如下
 ![GCP 與 Gitlab](/images/2023/gitlab-gcp.jpg)
 
