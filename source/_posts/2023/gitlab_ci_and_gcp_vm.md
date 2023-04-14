@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 CGP"
+title: "[實作筆記] Gitlab CI/CD 與 CGP - 架構全貌"
 date: 2023/04/13 18:09:50:10
 ---
 
@@ -34,10 +34,11 @@ date: 2023/04/13 18:09:50:10
 
 - 在 GCP 上建立兩個虛擬機器（VM），一個作為我們的 Web Server，另一個作為 GitLab Runner。
 - 將 GitLab Runner VM 註冊為 GitLab Group runner，以便進行自動化的建置和部署。
+- 設定適當的防火牆規則，讓 Gitlab Runner 可以存取 Web Server
 - 讓 GitLab Runner VM 的 Docker 容器可以存取我們的 Web Server，我會設定相應的公鑰和私鑰，以確保安全的連線。
 - 我會撰寫一個適合的 gitlab-ci.yml 檔案，來定義建置和部署的流程，並將其配置在 GitLab CI/CD 中，以實現自動化的流程。
 - 最後，我會確保 Web Server 上已設定好使用者、群組與 Nginx 的熱更新，以確保應用程式的正確運行和高可用性。
 
-以上的步驟將協助我們在團隊合作開發中實現高效的 CI/CD 流程，並確保程式碼的品質和穩定性。
+以上的步驟將協助我們建立基於 Gitlab 與 GCP 的 CI/CD 流程，並以此提供程式開發的品質和穩定性。
 
 (fin)
