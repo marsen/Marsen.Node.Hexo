@@ -1,6 +1,8 @@
 ---
 title: "[實作筆記] Gitlab CI/CD 與 CGP - 建立 Gitlab Runner VM"
 date: 2023/04/14 15:55:41
+tag:
+  - CI/CD
 ---
 
 ## 前言
