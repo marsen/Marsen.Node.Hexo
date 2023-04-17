@@ -32,9 +32,9 @@ tag:
 
 ## 註冊 Group Runner
 
-1. 安裝 GitLab Runner, 參考 [GitLab Runner 官方文件](https://docs.gitlab.com/runner/install/) 上的指南進行安裝。
+1. 安裝 GitLab Runner， 參考 [GitLab Runner 官方文件](https://docs.gitlab.com/runner/install/) 上的指南進行安裝。
 2. 將該 Runner 註冊到您的 GitLab 項目中。注意 Runner 有 Group/Project/Shared 之分。
-3. 我們選擇 Group Runner, 請安裝 CLI  
+3. 我們選擇 Group Runner， 請安裝 CLI  
 
     ```terminal
     # 添加 Gitlab Runner 存儲庫的 GPG 金鑰
@@ -60,7 +60,7 @@ $ gitlab-runner register
 您可以在 GitLab 網站的項目設定中找到 Runner 註冊的相關資訊，並按照指南進行註冊。  
 下面是 2023 年的實作記錄，如果你有遇到任何狀況，再查閱 Gitlab 相關文件.
 > 註: 需注意 Gitlab 的官方文章指出，未來將計劃棄用 Gitlab Register Token 的方式
-> > The new registration process is expected to become available in %16.0,  
+> > The new registration process is expected to become available in %16.0，  
 > > and the legacy registration process will be available side-by-side  
 > > for a few milestones before the being sunset through a feature flag.  
 > > Removal is planned for %17.0.
@@ -69,11 +69,11 @@ $ gitlab-runner register
   
 首先，你必須是 Group Owner。  
 接下來在 Group > CI/CD > Register a group runner > Registration token > 👁️ 取得 Token
-執行 `gitlab-runner register`, 依提示輸入
+執行 `gitlab-runner register`， 依提示輸入
 
 - url 這是指 gitlab 的 服務網址，如果你不是自已架設的 gitlab server 請輸入 "https://gitlab.com/"  
 - registration-token 這是在前面步驟取得的 token ，但這個作法預計在 Gitlab 17 版被棄用需注意
-- executor 請輸入 "docker" , 更多資訊請[參考](https://docs.gitlab.com/runner/executors/)
+- executor 請輸入 "docker" ， 更多資訊請[參考](https://docs.gitlab.com/runner/executors/)
 
 其它參數請[參考](https://docs.gitlab.com/runner/register/)
 執行命令後，應該可以在　Group > CI/CD >　Runner 看到它，記得要啟動才會開始作業

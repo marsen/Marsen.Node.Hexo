@@ -17,8 +17,8 @@ tag:
 5. 應該使用雲原生的技術與 know how
 
 這次我們專注在第 3 點的 CI/CD 上，為了第 1 點，我建置的專案為 flutter  
-選用的 CI/CD Server 為 Gitlab , 我將會在這裡作較多的著墨，  
-最終的產出物是 flutter app image, 並推送到 image registry 上 。
+選用的 CI/CD Server 為 Gitlab ， 我將會在這裡作較多的著墨，  
+最終的產出物是 flutter app image， 並推送到 image registry 上 。
 
 ![概觀，每個多邊型都應該可以被置換](https://i.imgur.com/rdrDJ9g.png)
 
@@ -39,11 +39,11 @@ tag:
 
 ## 工具準備
 
-首先需要 [Gitlab](https://gitlab.com/) Account ，我們選用 Gitlab 作為 CI/CD Server,  
+首先需要 [Gitlab](https://gitlab.com/) Account ，我們選用 Gitlab 作為 CI/CD Server，  
 這個階段我們只會作到持續整合，而未部署，相當於只有 CI 的部份。
-理論上也可以選用其它的 CI/CD 服務，像是 Azure 或是 GitHub , 這裡就不作過多的展開。
+理論上也可以選用其它的 CI/CD 服務，像是 Azure 或是 GitHub ， 這裡就不作過多的展開。
 
-Docker , 簡單說我們的工作只有兩個步驟
+Docker ， 簡單說我們的工作只有兩個步驟
 
 1. 在 Gitlab 你的專案 > Settings > CI/CD > Runners 註冊 [Runner Executors](https://docs.gitlab.com/runner/executors/)
    - 一般來說，我們會選用 docker 或 Kubernetes，本章我會用 docker 為例
@@ -90,9 +90,9 @@ Docker , 簡單說我們的工作只有兩個步驟
    - Enter your GitLab instance URL (also known as the gitlab-ci coordinator URL).
    - Enter the token you obtained to register the runner.
    - Enter a description for the runner. You can change this value later in the GitLab user interface.
-   - Enter the tags associated with the runner, separated by commas. You can change this value later in the GitLab user interface.
-   - Provide the runner executor. For most use cases, enter docker.
-   - If you entered docker as your executor, you’ll be asked for the default image to be used for projects that do not define one in .gitlab-ci.yml.
+   - Enter the tags associated with the runner， separated by commas. You can change this value later in the GitLab user interface.
+   - Provide the runner executor. For most use cases， enter docker.
+   - If you entered docker as your executor， you’ll be asked for the default image to be used for projects that do not define one in .gitlab-ci.yml.
      GitLab instance URL 是 <https://gitlab.com/>
      你可以在專案中的 Settings > CI/CD 找到 token，  
      description 會顯示在 Runner List 中，可以用易懂的描述，  
@@ -125,21 +125,21 @@ Docker , 簡單說我們的工作只有兩個步驟
 ```shell
 Running "flutter pub get" in rettulf...
    ===== CRASH =====
-   si_signo=Trace/breakpoint trap(5), si_code=128, si_addr=(nil)
+   si_signo=Trace/breakpoint trap(5)， si_code=128， si_addr=(nil)
    version=2.14.4 (stable) (Wed Oct 13 11:11:32 2021 +0200) on "linux_x64"
-   pid=57, thread=116, isolate_group=main(0x4002e9fc00), isolate=main(0x4002e7d000)
-   isolate_instructions=4001cf2ec0, vm_instructions=4001cf2ec0
+   pid=57， thread=116， isolate_group=main(0x4002e9fc00)， isolate=main(0x4002e7d000)
+   isolate_instructions=4001cf2ec0， vm_instructions=4001cf2ec0
    pc 0x0000ffffab7e28ec fp 0x000000400a1af838 Unknown symbol
    pc 0x0000ffffab49ed0f fp 0x000000400a1af898 Unknown symbol
    pc 0x0000ffffab78114d fp 0x000000400a1af8d8 Unknown symbol
    pc 0x0000ffffacaa294c fp 0x000000400a1af940 Unknown symbol
    pc 0x0000ffffacaa220b fp 0x000000400a1af980 Unknown symbol
    pc 0x0000ffffacd028ff fp 0x000000400a1af9f8 Unknown symbol
-   pc 0x0000004001e6a123 fp 0x000000400a1afaa0 dart::DartEntry::InvokeCode(dart::Code const&, unsigned long, dart::Array const&, dart::Array const&, dart::Thread*)+0x153
-   pc 0x0000004001e69f75 fp 0x000000400a1afb00 dart::DartEntry::InvokeFunction(dart::Function const&, dart::Array const&, dart::Array const&, unsigned long)+0x165
-   pc 0x0000004001e6c55d fp 0x000000400a1afb50 dart::DartLibraryCalls::HandleMessage(dart::Object const&, dart::Instance const&)+0x15d
-   pc 0x0000004001e93e46 fp 0x000000400a1afc30 dart::IsolateMessageHandler::HandleMessage(std::__2::unique_ptr<dart::Message, std::__2::default_delete<dart::Message> >)+0x596
-   pc 0x0000004001ebe7ac fp 0x000000400a1afca0 dart::MessageHandler::HandleMessages(dart::MonitorLocker*, bool, bool)+0x14c
+   pc 0x0000004001e6a123 fp 0x000000400a1afaa0 dart::DartEntry::InvokeCode(dart::Code const&， unsigned long， dart::Array const&， dart::Array const&， dart::Thread*)+0x153
+   pc 0x0000004001e69f75 fp 0x000000400a1afb00 dart::DartEntry::InvokeFunction(dart::Function const&， dart::Array const&， dart::Array const&， unsigned long)+0x165
+   pc 0x0000004001e6c55d fp 0x000000400a1afb50 dart::DartLibraryCalls::HandleMessage(dart::Object const&， dart::Instance const&)+0x15d
+   pc 0x0000004001e93e46 fp 0x000000400a1afc30 dart::IsolateMessageHandler::HandleMessage(std::__2::unique_ptr<dart::Message， std::__2::default_delete<dart::Message> >)+0x596
+   pc 0x0000004001ebe7ac fp 0x000000400a1afca0 dart::MessageHandler::HandleMessages(dart::MonitorLocker*， bool， bool)+0x14c
    pc 0x0000004001ebeecf fp 0x000000400a1afd00 dart::MessageHandler::TaskCallback()+0x1df
    pc 0x0000004001fdde48 fp 0x000000400a1afd80 dart::ThreadPool::WorkerLoop(dart::ThreadPool::Worker*)+0x148
    pc 0x0000004001fde27c fp 0x000000400a1afdb0 dart::ThreadPool::Worker::Main(unsigned long)+0x5c
@@ -180,7 +180,7 @@ Running "flutter pub get" in rettulf...
 
 `dial tcp: lookup docker on x.x.x.x:53: no such host error runner inside docker on armhf`
 
-這裡要修改 RUNNER 中的設定檔 `config.toml` , 路徑參考如下:
+這裡要修改 RUNNER 中的設定檔 `config.toml` ， 路徑參考如下:
 
 > You can find the config.toml file in:
 >
@@ -190,7 +190,7 @@ Running "flutter pub get" in rettulf...
 
 在 [[runners]] > [runner.docker] 加入 `image = docker:stable` 或是 `privileged = true`  
 ![just add image = docker:stable  and privileged = true](https://i.imgur.com/BBl9oxo.png)  
-這可能不是一個正確的 solution , 可以更多的參考這篇[討論](https://gitlab.com/gitlab-org/gitlab-runner/-/issues/4794)
+這可能不是一個正確的 solution ， 可以更多的參考這篇[討論](https://gitlab.com/gitlab-org/gitlab-runner/-/issues/4794)
 
 ### 在 DIND 編輯文件
 
@@ -238,9 +238,9 @@ apt-get install vim     # now finally this will work !!!
 ## 問題
 
 1. gitlab-ci-multi-runner 與 gitlab-runner 的差異為何 ?
-2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息, 這代表什麼意思 ?
+2. 當 docker gitlab-runner image 的 instance 執行 gitlab-runner run 會產生以下訊息， 這代表什麼意思 ?
    Configuration loaded builds=0
-   listen_address not defined, metrics & debug endpoints disabled builds=0
-   [session_server].listen_address not defined, session endpoints disabled builds=0
+   listen_address not defined， metrics & debug endpoints disabled builds=0
+   [session_server].listen_address not defined， session endpoints disabled builds=0
 
 (fin)
