@@ -19,8 +19,8 @@ Load Balancing 的主要目的是確保系統的可靠性、高可用性和性�
 
 ![GCP LB](/images/2023/gcp_lb.jpg)
 
-如圖所示，我有兩台 VM ， 一台用來放置 api 相關的服務，比如說:member　會員系統，  
-另外還有一些整合性的服務，分別使用 Php 與 Nodejs 開發，  
+如圖所示，我有兩台 VM ， 一台用來放置 api 相關的服務，比如說，member 會員系統，  
+另外還有一些整合性的服務，分別使用 Php 與 Nodejs 開發，簡單想成 api Server 就好，  
 實際上在 VM 當中有掛載 Nginx 系統來管理其相對應的路由設定。  
 另一台 VM 也不單純，儘管他只提供靜態的 Landing Page 網頁與 Vue 建置 SPA 網站，  
 但在可預知的未來他會 Host 更多的靜態網站。  
