@@ -17,7 +17,7 @@ Load Balancing 的主要目的是確保系統的可靠性、高可用性和性�
 
 ## 架構
 
-![GCP LB](/images/2023/gcp-lb.jpg)
+![GCP LB](/images/2023/gcp_lb.jpg)
 
 如圖所示，我有兩台 VM , 一台用來放置 api 相關的服務，比如說:member　會員系統，  
 另外還有一些整合性的服務，分別使用 Php 與 Nodejs 開發，  
