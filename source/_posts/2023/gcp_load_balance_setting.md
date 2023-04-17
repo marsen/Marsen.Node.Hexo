@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] CGP Load Balancer"
+title: "[實作筆記] GCP Load Balancer"
 date: 2023/04/17 14:47:41
 ---
 

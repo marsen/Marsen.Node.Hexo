@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 CGP - 建立 Gitlab Runner VM"
+title: "[實作筆記] Gitlab CI/CD 與 GCP - 建立 Gitlab Runner VM"
 date: 2023/04/14 15:55:41
 tag:
   - CI/CD
@@ -113,7 +113,7 @@ $ gitlab-runner register
   - [Deprecation - Support for registration tokens and server-side runner configuration parameters in `gitlab-runner register` command](https://gitlab.com/gitlab-org/gitlab/-/issues/380872)
   - [Gitlab Runner Executor](https://docs.gitlab.com/runner/executors/)
   - [Gitlab Variable](https://docs.gitlab.com/ee/ci/variables/#for-an-instance)
-- [實作筆記] Gitlab CI/CD 與 CGP 相關文章
+- [實作筆記] Gitlab CI/CD 與 GCP 相關文章
   - [架構全貌](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)
   - [建立 Web Server VM](https://blog.marsen.me/2023/04/14/2023/gitlab_ci_and_gcp_vm_create_server/)
   - [建立 Gitlab Runner VM](https://blog.marsen.me/2023/04/14/2023/gitlab_ci_and_gcp_vm_cretae_runner/)
