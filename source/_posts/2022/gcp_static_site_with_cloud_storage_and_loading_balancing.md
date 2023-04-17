@@ -58,7 +58,7 @@ Location type 有三種
 
 接下來是 Choose how to control access to objects 的設定，  
 不要勾選 Enforce public access prevention on this bucket，  
-Access control 選擇 Uniform , 這裡的設定是為了避免從 internet 存取 bucket 的資料，  
+Access control 選擇 Uniform ， 這裡的設定是為了避免從 internet 存取 bucket 的資料，  
 但是我們的目的是放置靜態網站的資料，所以不需設定。
 
 再來是 Choose how to protect object data  
@@ -83,10 +83,10 @@ New Principals > 選擇 allUsers > Storage Object Viewer.
 3. Backend configuration > Create A Backend Bucket
    - 自已取一個 Backend Bucket name
    - Cloud Storage Bucket > Browse > 選取之前所建立的 Bucket
-   - 不勾選 Enable Cloud CDN, 相關的設定與應用程式的應用有關, 較為複雜之後再進行處理
+   - 不勾選 Enable Cloud CDN， 相關的設定與應用程式的應用有關， 較為複雜之後再進行處理
 4. Host and path rules > Simple host and path rule
 5. Frontend IP and PORT > Add Frontend IP And Port
-   - Protocol > HTTP (正常應使用 HTTPS, 這次為了求快而未作相關設定)
+   - Protocol > HTTP (正常應使用 HTTPS， 這次為了求快而未作相關設定)
    - Network Service Tier > Premium
 
 可以參考 GCP 的教學與我們實作上的細微差異

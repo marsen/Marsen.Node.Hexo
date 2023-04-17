@@ -14,7 +14,7 @@ tag:
 
 ## Build Web
 
-build 建置網站, EX: `flutter build web`、`npm rub build` ...
+build 建置網站， EX: `flutter build web`、`npm rub build` ...
 
 - flutter 建置的 web 靜態檔位置在 `build/web`
 - `react-scripts build` 靜態檔位置在 `build` 底下
@@ -29,8 +29,8 @@ build 建置網站, EX: `flutter build web`、`npm rub build` ...
 請參考以下的 package.json > scripts
 
 ```json
-    "build": "react-scripts build",
-    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "build": "react-scripts build"，
+    "build:dev": "env-cmd -f .env.development react-scripts build"，
 ```
 
 #### ERR_OSSL_EVP_UNSUPPORTED
@@ -44,9 +44,9 @@ Latest Features 為 `v17.3.0`
 Error: error:0308010C:digital envelope routines::unsupported
 … …
 …
-opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],
-library: 'digital envelope routines',
-reason: 'unsupported',
+opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ]，
+library: 'digital envelope routines'，
+reason: 'unsupported'，
 code: 'ERR_OSSL_EVP_UNSUPPORTED'
 ```
 
@@ -72,7 +72,7 @@ code: 'ERR_OSSL_EVP_UNSUPPORTED'
 #### 20220308 已有解決方案，更新
 
 加上 dart global activate 指令，這會在執行前啟用 dhttpd 的服務，
-RUN 是建立鏡像檔的語法, CMD 才是 docker image 啟動時會執行的語法，  
+RUN 是建立鏡像檔的語法， CMD 才是 docker image 啟動時會執行的語法，  
 所以應該將 activate 指令放在啟動
 
 ```yml
@@ -94,8 +94,8 @@ CMD dart pub global activate dhttpd && dart pub global run dhttpd --port=8082 --
 - [StackOverflow](https://stackoverflow.com/questions/70388111/can-not-run-flutter-web-app-on-google-cloud-runner)
 - [Google Issue Report](https://issuetracker.google.com/issues/211083676)
 
-~~暫解是使用其它的靜態網站服務或套件 ,~~  
-~~EX: [NGINX](https://www.nginx.com/) 、 npm 的 [serve](https://www.npmjs.com/package/serve) 套件,~~  
+~~暫解是使用其它的靜態網站服務或套件 ，~~  
+~~EX: [NGINX](https://www.nginx.com/) 、 npm 的 [serve](https://www.npmjs.com/package/serve) 套件，~~  
 ~~或是其它你熟悉的靜態網站服務。~~  
 ~~請參考以下 Dockerfile~~
 
