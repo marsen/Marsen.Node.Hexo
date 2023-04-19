@@ -15,16 +15,16 @@ tag:
 所以權衡對系統和終端使用者的影響降至最少，選擇正確的方式是非常重要的。
 本文將著重討論如下部署策略：
 
-- 重建部署：版本A下線後版本B上線 
-- 滾動部署（滾動更新或者增量釋出）：版本B緩慢更新並替代版本A 
-- 藍綠部署：版本B並行與版本A釋出，然後流量切換到版本B 
-- 金絲雀部署：版本B向一部分使用者釋出，然後完全放開 
-- A/B部署布：版本B只向特定條件的使用者釋出 
-- 影子部署：版本B接受真實的流量請求，但是不產生響應 
+- 重建部署：版本A下線後版本B上線  
+- 滾動部署（滾動更新或者增量釋出）：版本B緩慢更新並替代版本A  
+- 藍綠部署：版本B並行與版本A釋出，然後流量切換到版本B  
+- 金絲雀部署：版本B向一部分使用者釋出，然後完全放開  
+- A/B部署布：版本B只向特定條件的使用者釋出  
+- 影子部署：版本B接受真實的流量請求，但是不產生響應  
 
 我們來看一下每個策略最適合哪種使用者使用場景。  
 爲了簡化，我們使用 [Kubernetes](https://kubernetes.io) ，並用 [Minikube](https://github.com/ContainerSolutions/k8s-deployment-strategies) 進行例子演示。  
-每個策略的配置例子和詳細步驟都可以在這個 [git倉庫](https://github.com/ContainerSolutions/k8s-deployment-strategies) 上找到。   
+每個策略的配置例子和詳細步驟都可以在這個 [git倉庫](https://github.com/ContainerSolutions/k8s-deployment-strategies) 上找到。  
 
 ### 重建部署
 
