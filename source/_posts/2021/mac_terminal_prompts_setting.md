@@ -199,6 +199,12 @@ iTerm > Preferences > Advanced > Trigger > Edit
 > (?i:._(warning|warn)._) // Yellow  
 > (?i:._FATAL._) // Red
 
+### 20230419 補充
+
+無限歷史行數，一般來說預設為 1000 行，  
+這個數量隨便執行一些語法就到頂了。
+iTerm2 > Settings > Profiles > Terminal，打勾 Unlimited scrollback
+
 ## 參考
 
 - [How to make a beautiful terminal](https://dev.to/techschoolguru/how-to-make-a-beautiful-terminal-j11)
