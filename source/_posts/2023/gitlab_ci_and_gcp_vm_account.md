@@ -90,7 +90,7 @@ drwx------ 87 mark.lin  rd      2784  4 12 13:21 Library
 ## 建立 VM 的 Account
 
 在GCP的實作上我們不需要直接建立帳戶與群組，記得架構圖中的 SSH Key 嗎?  
-當我們在 Compute Engine Metadata 建立 SSH KEYS 時，就會依照這把 KEY 的　Comments　建立一個 Linux VM 帳號　　
+當我們在 Compute Engine Metadata 建立 SSH KEYS 時，就會依照這把 KEY 的 Comments 建立一個 Linux VM 帳號  
 因此我們的 VM 就會有對應的帳號資料
 
 ## 參考

@@ -34,7 +34,7 @@ date: 2023/03/12 20:40:10
 > 這樣就可以在瀏覽器中運行。而當設置為 "preserve" 時，TypeScript 不會對  
 > JSX 進行任何轉換，而是將其保留為原始的 JSX 代碼。
 
-### Q:為什麼我看到的設定是　"jsx":"react-jsx"
+### Q:為什麼我看到的設定是 "jsx":"react-jsx"
 
 > 在 TypeScript 4.1 之前，jsx 選項僅有兩個可選值，分別是 preserve 與 react。  
 > 其中 preserve 會保留 JSX 並將其轉換為對應的 React.createElement 函式，  

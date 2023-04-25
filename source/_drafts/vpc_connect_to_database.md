@@ -12,7 +12,7 @@ GCP SQL是Google Cloud Platform上的一個全管理式的關聯式資料庫服�
 現在我建立一個 QA 環境的 GCP SQL 沒有 public IP，  
 不設定 public IP 連線 GCP SQL，可提高資安性並降低成本，  
 因為可以避免公開暴露資料庫（比如 xRent），也不需要額外支付 Public IP 的費用。
-那要如何安全的連線資料庫？這是一個常見的問題，因為沒有開啟 Public IP，必須要透過其他方式來連接。　　
+那要如何安全的連線資料庫？這是一個常見的問題，因為沒有開啟 Public IP，必須要透過其他方式來連接。  
 
 ## 可能的方案
 
@@ -27,7 +27,7 @@ GCP SQL是Google Cloud Platform上的一個全管理式的關聯式資料庫服�
 缺點：需要安裝和配置 Cloud SQL Proxy，整體而言比較麻煩。
 
 1. 下載 Cloud SQL Proxy ,設定執行權限
-2. 建立 CSP 的 IAM　,並下載設定金鑰
+2. 建立 CSP 的 IAM ,並下載設定金鑰
 3. 連線的 SQL 沒有 public IP 會有以下錯誤  
    > Failed to connect to instance: Config error: instance does not have IP of type "PUBLIC"
 4. 連線的 SQL 沒有 private IP 時需要使用 VPN 連線 VPC  
@@ -58,6 +58,8 @@ GCP SQL是Google Cloud Platform上的一個全管理式的關聯式資料庫服�
 
 ## 小結
 
-透過 DataGrip SSH 建立 SSH 隧道來連接到 GCP SQL，是一種簡單而有效的方法。使用這個方法，我們可以不必為 GCP SQL 啟用 public IP，同時又能夠安全地連接到資料庫。當然，這個方法也有一些限制和缺點，需要根據實際情況進行選擇和應用。
+透過 DataGrip SSH 建立 SSH 隧道來連接到 GCP SQL，是一種簡單而有效的方法。  
+使用這個方法，我們可以不必為 GCP SQL 啟用 public IP，同時又能夠安全地連接到資料庫。  
+當然，這個方法也有一些限制和缺點，需要根據實際情況進行選擇和應用。
 
 (fin)

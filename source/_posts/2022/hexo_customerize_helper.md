@@ -17,9 +17,9 @@ tag:
 
 ## 實作
 
-首先是檔案位置，一個是在根目錄底下建立　`scripts`　資料夾，  
+首先是檔案位置，一個是在根目錄底下建立 `scripts` 資料夾，  
 或者你正在使用主題(Theme)底下。  
-以我的例子來說，我會放在　`themes/landscape/scripts` 底下
+以我的例子來說，我會放在 `themes/landscape/scripts` 底下
 
 參考下面的圖示
 

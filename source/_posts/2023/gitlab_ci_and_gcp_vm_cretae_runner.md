@@ -15,7 +15,7 @@ tag:
 
 ## 建立 VM
 
-建立　GCP VM 步驟如下：
+建立 GCP VM 步驟如下：
 
 1. 登入 GCP 控制台並選擇適合的專案。
 2. 在主選單中選擇「Compute Engine」，進入虛擬機器的管理頁面。
@@ -76,16 +76,16 @@ $ gitlab-runner register
 - executor 請輸入 "docker" ， 更多資訊請[參考](https://docs.gitlab.com/runner/executors/)
 
 其它參數請[參考](https://docs.gitlab.com/runner/register/)
-執行命令後，應該可以在　Group > CI/CD >　Runner 看到它，記得要啟動才會開始作業
+執行命令後，應該可以在 Group > CI/CD > Runner 看到它，記得要啟動才會開始作業
 
 ## 建立 Group Variable
 
-我們現在完成了 Gitlab-Runner，如果你也完成了你的服務伺服器設定，回頭看一下架構圖，　　
+我們現在完成了 Gitlab-Runner，如果你也完成了你的服務伺服器設定，回頭看一下架構圖，  
 可以注意到，我們會透過 docker container 執行我們的 CI/CD 工作，
-並且存取 GCP 的資源，在我們的例子中是使用 VM ，讓我們先忽略防火牆與使用者帳號的相關設定，　　
-單純的連線機器實體，我會採用 SSH 的連線方式。　　
+並且存取 GCP 的資源，在我們的例子中是使用 VM ，讓我們先忽略防火牆與使用者帳號的相關設定，  
+單純的連線機器實體，我會採用 SSH 的連線方式。  
 
-在一般的情況，我們會在　Client 端機器上生成 Private Key 與 Public Key，並且將　Public Key 放到 Server 端(服務伺服器)上，　　
+在一般的情況，我們會在 Client 端機器上生成 Private Key 與 Public Key，並且將 Public Key 放到 Server 端(服務伺服器)上，  
 不過在使用 docker container 的情況下，我們的 Client 端可以想像成是一個拋棄式的機器，  
 每次都建立新的 Private/Public Key 會讓 Server 端記錄著一大堆沒有用的 Public Key，  
 所以我們先建立好一組 Key，然後透過 [Gitlab Variable](https://docs.gitlab.com/ee/ci/variables/#for-an-instance) 的機制傳遞到 Docker Container。

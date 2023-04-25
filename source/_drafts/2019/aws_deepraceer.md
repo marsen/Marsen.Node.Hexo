@@ -75,7 +75,7 @@ def reward_function(params):
 ## 使用資源與服務
 
 - DeepRacer
-- Reinforcement learning >　 Reinforcement learning
+- Reinforcement learning >  Reinforcement learning
 - CloudWatch > Log Groups
 - IAM
   - AWSDeepRacerServiceRole
