@@ -15,8 +15,8 @@ date: 2021/05/24 20:55:16
 ## 本書介紹
 
 這本書分為三大部份,分別是第一部份貨幣範例,  
-第二部份　 xUnit 範例, 最後一部份是介紹 TDD 模式。
-本篇文章著重在第一部份　 Ch12 與　 Ch13 　章的部份,  
+第二部份  xUnit 範例, 最後一部份是介紹 TDD 模式。
+本篇文章著重在第一部份  Ch12 與  Ch13  章的部份,  
 這裡有大量的實作, 書中作者是用 Java 實現的, 我是試著用 C# 與 xUnit 去實作。
 
 這裡作者的思路對我來說實在是難以理解,  
@@ -50,8 +50,8 @@ five 是個簡單的 Money 物件，代表 5 美元。
 
 > 在書中我比較能接受是錢包裡面有很多國家錢幣的概念
 > 不過我可能還是會用一個 List 丟給計算器，而不是透過運算式
-> 運算式我會想像成我有 5 美元紙鈔跟　 5 元法郎(現在先簡化成美元）‘five.plus(five);‘
-> 然後請銀行依匯率（目前暫時沒有換匯的需求）算錢給我　‘bank.reduce(sum,"USD");‘
+> 運算式我會想像成我有 5 美元紙鈔跟  5 元法郎(現在先簡化成美元）‘five.plus(five);‘
+> 然後請銀行依匯率（目前暫時沒有換匯的需求）算錢給我 ‘bank.reduce(sum,"USD");‘
 
 第一個問題是, 雖然測試綠燈, 不過其實是假的
 Hard Code 寫死回傳 10 美元, `return Money.dollar(10);`
@@ -92,7 +92,7 @@ public Money reduce(IExpression expression, string currency)
     }
 ```
 
-這裡有兩個問題, Class Sum 還沒有建立, 　
+這裡有兩個問題, Class Sum 還沒有建立,  
 這是小問題, 下一個 [Commit](https://github.com/marsen/Marsen.NetCore.Dojo/pull/36/commits/54d8fda10da4984b38a3aedd3734343fd1900e8e) 我們就把他實作出來  
 另外一個問題是 NotImplementedException 並沒有被測試包覆,  
 但這不是我主要的情境, 讓我學習 Kent Beck 寫到待辦清單吧。
@@ -139,7 +139,7 @@ TODO List
     }
 ```
 
-到這一步就通過測試了, 現在只有 Sum 會回傳　`return Money.dollar(10);`
+到這一步就通過測試了, 現在只有 Sum 會回傳 `return Money.dollar(10);`
 書中則是另外寫了一個測試, 但過程中我總會改壞另一個測試, 現在的步驟比較適合我
 
 再看一下我們的待辦清單
@@ -183,9 +183,9 @@ TODO List
 
 ### Step 7
 
-回傳計算結果, 這個職責在此回到 expression 手上, 　
+回傳計算結果, 這個職責在此回到 expression 手上,  
 那 Bank 要作什麼？
-在我的想像中將會是匯率與幣別的運算, 　
+在我的想像中將會是匯率與幣別的運算,  
 總之, 目前還輪不到它,
 
 ```csharp
@@ -203,7 +203,7 @@ public class Bank
 
 ### Step 8
 
-讓 Sum 實作　 reduce 邏輯
+讓 Sum 實作  reduce 邏輯
 
 ```csharp
     public class Sum : IExpression
@@ -238,7 +238,7 @@ public class Bank
 
 ### 加上換匯的測試案例
 
-這裡書上的範例會跑出 addRate 的方法, 　
+這裡書上的範例會跑出 addRate 的方法,  
 以 TDD 原則上來說不應該先有這方法才對,  
 不過以 Todo List 的想法, 反而可以接受這樣的空方法(回傳或實作皆為空)  
 未了避免忘記, 我會加上 `//Todo` ,  

@@ -59,9 +59,9 @@ Near the grimy road of Tottenham Court
 
 - 三大母貓的舞蹈很多也很好看(dvd 看不到完整的)
   - Demeter >> Munkustrap
-  - Bombalurina 　>> Rum Tum Tugger
+  - Bombalurina  >> Rum Tum Tugger
   - Jellylorum >> Gus(Growltiger >> Griddlebone)
-- JennyAnyDots 有一大段的 TAP 表演（有點像火焰之舞）在　 DVD 是刪減版
+- JennyAnyDots 有一大段的 TAP 表演（有點像火焰之舞）在  DVD 是刪減版
 - 群舞時有很多三層次的編排在 DVD 看不出來，太近也會看不清楚
 - Mungojerrie And Rumpelteazer 的排舞有點像馬戲團的表演，不太確定舞蹈風格
 - Growltiger >> Griddlebone 的表演像義大利歌劇

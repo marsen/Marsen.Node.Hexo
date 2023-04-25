@@ -59,7 +59,7 @@ special_characters: "[ John ] & { Jane } - <Doe>"
 
 # 多行字符串可以使用“文字塊”（使用|）或“折疊塊”（使用'>'）來寫入。
 # 文字塊會將字符串中的每個換行符轉換為文字換行符（\n）。
-#　折疊塊則刪除字符串中的換行符。
+# 折疊塊則刪除字符串中的換行符。
 literal_block: |
   This entire block of text will be the value of the 'literal_block' key,
   with line breaks being preserved.
@@ -98,10 +98,10 @@ block_keep: >+
   trailing blank line being kept.
 
 ####################
-# 　　　集合類型　　　 #
+#    集合類型    #
 ####################
 
-# 巢狀結構使用縮排. 建議值為　2 個空白 (非必要).
+# 巢狀結構使用縮排. 建議值為 2 個空白 (非必要).
 a_nested_map:
   key: value
   another_key: Another Value
@@ -112,7 +112,7 @@ a_nested_map:
 0.25: a float key
 
 # Keys 也可以很複雜, 比如多行物件
-# 我們用 ?|　開頭表示複雜的物件
+# 我們用 ?| 開頭表示複雜的物件
 ? |
   This is a key
   that has multiple lines
@@ -125,7 +125,7 @@ a_nested_map:
   - Real Madrid
 : [ 2001-01-01, 2002-02-02 ]
 
-# 序列（Sequences　或 lists 或 arrays) 看起來像這樣
+# 序列（Sequences 或 lists 或 arrays) 看起來像這樣
 # (注意 '-' 有縮排):
 a_sequence:
   - Item 1
@@ -139,7 +139,7 @@ a_sequence:
     - - - Nested sequence indicators
         - can be collapsed
 
-# 因為 YAML 是 JSON　的超集, 你也可以寫出 JSON-風格的　maps 與　sequences:
+# 因為 YAML 是 JSON 的超集, 你也可以寫出 JSON-風格的 maps 與 sequences:
 json_map: { "key": "value" }
 json_seq: [ 3, 2, 1, "takeoff" ]
 and quotes are optional: { key: [ 3, 2, 1, takeoff ] }
@@ -148,7 +148,7 @@ and quotes are optional: { key: [ 3, 2, 1, takeoff ] }
 # 額外 YAML 功能 #
 #######################
 
-# YAML 很方便的功能叫　'anchors', 讓你可以很輕易的複製文件內容
+# YAML 很方便的功能叫 'anchors', 讓你可以很輕易的複製文件內容
 # 使用 & 來定義值
 # 使用 * 來呼叫值
 # 下面兩個 key 有相同的值

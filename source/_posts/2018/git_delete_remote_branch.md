@@ -33,7 +33,7 @@ Step1. 可以透過正規表示式查詢大量分支。
  git branch -r | awk -Forigin/ '/\/feature\/BTS14/{print $2}'
 ```
 
-Step2. 同上的語法，但是後面　 pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)
+Step2. 同上的語法，但是後面  pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)
 
 ```shell
  git branch -r | awk -Forigin/ '/\/feature\/BTS14/{print $2}'| xargs -I {} git push origin :{}
@@ -53,7 +53,7 @@ Step1. 可以透過正規表示式查詢大量分支。
 git branch | grep "pattern"
 ```
 
-Step2. 同上的語法，但是後面　 pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)
+Step2. 同上的語法，但是後面  pipeline 串接 xargs push 到指定的遠端(這個例子是 origin)
 
 ```shell
 git branch | grep "pattern" | xargs git branch -D

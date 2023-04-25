@@ -126,7 +126,7 @@ func main() {
 ```
 
 在上面的程式中，可以明顯看到 `ConcatService` 相依於 `HttpClient` 與 `Logger`，  
-而　`HttpClient` 本身又與　`Logger` 耦合。  
+而 `HttpClient` 本身又與 `Logger` 耦合。  
 這是一種高耦合，在這個例子裡 `Logger` 還會產生兩份實體，但實際上我們只需要一份。
 
 Golang 實際上不像 C# 有建構子(Constructor)的設計，不過常見的實踐會用大寫 New 開頭的方法作為一種類似建構子的應用，  

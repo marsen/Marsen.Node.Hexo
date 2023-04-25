@@ -95,7 +95,7 @@ public void CacheData()
 (File Cache 寫入真實案例,多緖的錯誤不佳會使得IIS無法處理錯誤,進而中斷程序(w3wp.exe))
 2. AWS S3 是走 Https Protocal
 3. Redis Delete/Backup 會 Lock Thread
-4. Redis Command Timeout 極短，所以要注意單一　Cache　資料量大小 (建議資料要小於1k?)
+4. Redis Command Timeout 極短，所以要注意單一 Cache 資料量大小 (建議資料要小於1k?)
 
 ## 參考
 - [Redis](https://redis.io/)

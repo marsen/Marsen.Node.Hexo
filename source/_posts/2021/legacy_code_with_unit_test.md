@@ -12,7 +12,7 @@ tags:
 - Extract and Override 的 SOP
   - 找到 Dependency
   - Extract Method
-  - private →　protected
+  - private → protected
   - 建立 SUT 的子類
   - Override Dependency
   - Create Setter
@@ -127,7 +127,7 @@ tags:
 - OOP & UT
 - Fp & UT
 - UT & Refactor & Design Pattern
-- Pattern　工廠／簡單工廠／
+- Pattern 工廠／簡單工廠／
 - 存在監控 Running Code 計算方法呼叫次數的工具嗎 ?
 - 快速打出六個０ ?
 

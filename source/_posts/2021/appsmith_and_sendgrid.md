@@ -57,7 +57,7 @@ APPSMITH_MAIL_SMTP_TLS_ENABLED=true
 APPSMITH_MAIL_USERNAME=apikey
 APPSMITH_MAIL_PASSWORD=YOUR_SENDGRID_API_KEY #把 sendgrid 的 api key 放這裡
 APPSMITH_MAIL_SMTP_AUTH=true
-　　``` 4. 重啟 docker 與服務
+  ``` 4. 重啟 docker 與服務
 
 ```shell
 sudo docker-compose rm -fsv appsmith-internal-server nginx && sudo docker-compose up -d

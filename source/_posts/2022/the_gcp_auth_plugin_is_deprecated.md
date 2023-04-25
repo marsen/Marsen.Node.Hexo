@@ -7,7 +7,7 @@ date: 2022/06/08 15:53:51
 
 環境 Mac OS，  
 安裝了
-Docker daemon 　版本　 4.8.2(79419)
+Docker daemon  版本  4.8.2(79419)
 gcloud
 版本資訊如下
 
@@ -98,7 +98,7 @@ For the latest full release notes, please visit:
 Do you want to continue (Y/n)?  y
 ```
 
-再次執行 kubectl 　相關的指令就不會噴錯了
+再次執行 kubectl  相關的指令就不會噴錯了
 
 ## 參考
 

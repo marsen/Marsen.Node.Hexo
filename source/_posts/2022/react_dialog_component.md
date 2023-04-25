@@ -12,7 +12,7 @@ tag:
 
 ### 需求
 
-首先 Dialog Button 的設計上是一個按鈕，被點擊後會開啟一個 Dialog，　　
+首先 Dialog Button 的設計上是一個按鈕，被點擊後會開啟一個 Dialog，  
 它可以是表單、一個頁面、另一個組件或是一群組件的集合。  
 簡單的說 Dialog 可以是任何的 Component。
 

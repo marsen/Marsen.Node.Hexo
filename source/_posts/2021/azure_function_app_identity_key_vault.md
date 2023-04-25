@@ -131,7 +131,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
 一樣在 Key Vault > Settings > Access policies > Add access policy ,
 在 Select principal 找到剛剛建立的 Function App,
-在　 Configure from template (optional) 我們直接套用 Secret Management,  
+在  Configure from template (optional) 我們直接套用 Secret Management,  
 這允許我們的 Function App 會取得管理 Key Vault Secret 的權限.
 
 ### 設定 Function App Configuration
@@ -147,10 +147,10 @@ Value 請參加下面的範例, 將前面步驟取得的 `Secret Identifier` 填
 ```
 
 這裡有小朋友問我, 那為什麼不把資料設定在 Function App Configuration 就好,  
-這樣子開發人員也碰不到資料, 要修改也是很有彈性的. 　
+這樣子開發人員也碰不到資料, 要修改也是很有彈性的.  
 我的回答是, 這樣子其它的服務也需要這個資料怎麼辦呢？
 Copy-Paste 會造成維護上很大的困難, 我們會希望維持一組就好.
-放在 Key Vault 可以讓我們不同的服務共用. 　
+放在 Key Vault 可以讓我們不同的服務共用.  
 ![Overview](/images/2021/function_app_key_vault_overview.png)
 
 > 反思 Best Practice 應該怎麼作???

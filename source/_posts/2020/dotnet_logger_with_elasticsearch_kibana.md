@@ -236,7 +236,7 @@ Ignored if cloud id is provided. Layout Default: http://localhost:9200
 這是不是意味著必須重構將方法一分為二 ?
 
 [參考這篇](https://www.cnblogs.com/jlion/p/12394949.html)，我會使用最基本的 Filter 實作 AOP，  
-![Filter　簡介](https://i.imgur.com/iZ391Rb.png)
+![Filter 簡介](https://i.imgur.com/iZ391Rb.png)
 依據 `Filter` 的特性我在這裡會實作 `IActionFilter`
 
 ```csharp

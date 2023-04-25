@@ -171,7 +171,7 @@ mock api 的服務為 [Mocky](https://www.mocky.io/)，
 可以看到原本的 TODO 產生了更多的 TODO ，  
 另外打完 API 後的處理也是個問題。
 
-這邊要用到 [walking skeleton](https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/) 的概念，　　
+這邊要用到 [walking skeleton](https://blog.marsen.me/2018/12/27/2018/csm/to_sum_up_scrum/) 的概念，  
 簡單說就是，先打通再迭代。
 
 前面產生的 TODO 項目並不是「最」重要的，  
