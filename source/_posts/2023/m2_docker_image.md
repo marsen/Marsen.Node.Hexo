@@ -73,6 +73,6 @@ docker buildx build --platform linux/amd64 -t Image-name:tag --load .
 
 使用了 Docker for Mac 的「多架構建置（Buildx）」功能,  
 讓我在 M2 Mac 上也可以成功建立 x86 架構的 Docker Image。
-使用這個 Image 讓我們可以省下 89% 的時間(3 分鐘 →20 秒)
+使用這個 Image 讓我可以省下 89% 的時間(3 分鐘 →20 秒)
 
 (fin)
