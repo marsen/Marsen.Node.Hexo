@@ -8,7 +8,10 @@ tags:
 
 ## 前情提要
 
-我的部落格是基於 Hexo 建立的靜態網站，相關的有三個儲存庫：
+我的部落格是基於 Hexo 建立的靜態網站，
+前幾天，我發佈了一篇新文章，但樣式出現了錯亂。
+為了了解發生的問題與解決方案，必須先知道我們的架構，  
+相關的有三個儲存庫：
 
 ![Gitlab Group](/images/2023/github_page_hexo-action.png)
 
@@ -26,8 +29,6 @@ tags:
 ### [Source](https://github.com/marsen/Marsen.Node.Hexo)
 
 這是我們撰寫文章的主要地方，也是整個部落格的功能和版面設計的編排處。
-
-前幾天，我發佈了一篇新文章，但發現樣式出現了錯亂。
 
 ## 問題追蹤記錄
 
@@ -47,15 +48,25 @@ tags:
 
 從這個記錄中可以得知，問題出在 `hexo-renderer-stylus` 的更新，而且是一個較大的版本變動。  
 接下來我嘗試在本地端測試，但卻沒有發現問題。  
-我開始思考是不是我的部署環境(CI/CD)的 Node 版本太舊了（12.x.x），所以我先更新了本機的 Node 版本到 20.x.x。
+我開始思考是不是我的部署環境(CI/CD)與本機環境的差異，  
+第一個是 Node 版本太舊了（12.x.x），所以我先更新了本機的 Node 版本到 20.x.x。
 所以我修改了 [hexo action](https://github.com/marsen/hexo-action)，使用最新的 Node 20.x 版本的映像檔。  
-然而，重新執行部落格的持續部署作業仍然失敗。
+然而，重新執行部落格的持續部署作業仍然失敗，無法產生 `style.css`。
 
-## 解決方式
+## 盲點與解決方式
 
-在這個問題上，我卡住了很久，始終找不到原因。  
-我決定再次追蹤持續部署的流程，結果發現我使用的 hexo-action 版本為 v1.0.5。  
+在這裡我卡住了很久，始終找不到原因。  
+再次梳理持續部署的流程，結果發現我使用的 hexo-action 版本為 v1.0.5。  
 原來我忽略了一個步驟，需要為 [hexo action](https://github.com/marsen/hexo-action) 添加新的標籤。  
-此外，在我們的 [Source](https://github.com/marsen/Marsen.Node.Hexo) 的流程中，也需要修改為新的 action 標籤 uses: marsen/hexo-action@v1.0.6。
+此外，在我們的 [Source](https://github.com/marsen/Marsen.Node.Hexo) 的流程中(.github/workflows)，  
+也需要修改為新的 action 標籤 `uses: marsen/hexo-action@v1.0.6`。
+
+```yaml
+    # Deploy hexo blog website.
+    - name: Deploy
+      id: deploy
+-     uses: marsen/hexo-action@v1.0.6
++     uses: marsen/hexo-action@v1.0.6
+```
 
 (fin)
