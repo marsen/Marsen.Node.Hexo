@@ -84,6 +84,43 @@ CI/CD Variables 是在 GitLab CI/CD 過程中使用的環境變數,可以在項�
 
 如果你更好的作法請推薦給我
 
+## 20230607 補充
+
+使用 CI 建置不同環境的 `.env` 檔是一件痛苦的事，再更好的方法出現前，我只能儘量減少重複，  
+下面是一個例子，我需要建立 QA 與 Production 的 `.env` 檔，  
+而我目前的作法會在 Gitlab 的 CI/CD Variables 建立不同的 Key,  
+像是 `MY_QA_APP_KEY` 與 `MY_PROD_APP_KEY`，  
+而基礎的設定值又來自不同的檔案 `.env.qa`　與 `.env.production` apl
+這真是一個糟糕的實作，不過為了動態組出不同的 key，  
+可以參考以下的寫法，[**注意單雙引號有不同行為**](https://phoenixnap.com/kb/bash-single-vs-double-quotes)
+
+```yaml
+.config_temp: &config_script
+  script:
+    # Create Env
+    - echo "KEY:$(eval echo '${'${PREFIX}'APP_KEY}')"
+    - sed -e "s|#{APP_KEY}|$(eval echo '${'${PREFIX}'APP_KEY}')|"
+      -e "s|#{GOOGLE_CLIENT_ID}|$(eval echo '${'${PREFIX}'GOOGLE_CLIENT_ID}')|"
+      -e "s|#{GOOGLE_CLIENT_SECRET}|$(eval echo '${'${PREFIX}'GOOGLE_CLIENT_SECRET}')|"
+      .env.${suffix} > .env
+# 中略
+config-qa:
+  stage: build
+  variables:
+    PREFIX: "MY_QA_"
+    suffix: "qa"
+  needs: [build]
+  <<: *config_script
+
+config-production:
+  stage: build
+  variables:
+    PREFIX: "MY_PROD_"
+    suffix: "production"
+  needs: [build]
+  <<: *config_script
+```
+
 ## 參考
 
 - [Consul](https://www.consul.io/)
