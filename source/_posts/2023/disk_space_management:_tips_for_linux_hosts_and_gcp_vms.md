@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Linux 主機與 GCP VM 的磁碟"
+title: "[實作筆記]管理 Linux 主機與 GCP VM 的磁碟"
 date: 2023/06/09 14:04:02
 ---
 
@@ -30,6 +30,7 @@ du -h --max-depth=1 /path/to/directory
 ```
 
 這將顯示指定目錄或資料夾的磁碟使用情況，並以人類可讀的格式顯示結果。
+可以查詢到一些 cache 或是 log 如果沒有必要的話，可以將之刪除。
 
 要清除 Docker 的磁碟空間，可以使用以下語法：
 
@@ -49,6 +50,7 @@ docker system prune -f
 
 ## 小結
 
-無論是清理磁碟空間還是擴展磁碟空間，都能讓我們確保足夠的存儲空間供 GitLab Runner 使用，確保順利運行 CI Jobs！
+無論是清理磁碟空間還是擴展磁碟空間，都是為了讓我能確保足夠的空間供 GitLab Runner 使用，  
+確保順利運行 CI Jobs！
 
 (fin)
