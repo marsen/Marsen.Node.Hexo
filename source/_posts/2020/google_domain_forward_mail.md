@@ -25,7 +25,7 @@ tag:
 加上 Google 的服務常常說收就收, 有商務需求的人還是不建議這個方式喔.  
 電子郵件 > 新增電子別名,輸入自已想要的名字,然後填入`現有收件者電子郵件地址`
 
-![新增電子郵件別名](/images/2020/10/email/add_forward.jpgJ
+![新增電子郵件別名](/images/2020/10/email/add_forward.jpg)
 
 ![輸入轉寄電子郵件](/images/2020/10/email/add_name.jpg)
 
