@@ -106,6 +106,7 @@ bottom: 0;
 
 這是我最後選擇的方法，原文的討論相當精彩有趣，
 但是我需要的其實是置底，而不是捲軸。
+順帶一提我的專是基於 vue 與 tailwindcss，所以下面是 vue 與 tailwindcss 的寫法
 
 ```vue
 <div class="fixed bottom-0 top-0">
