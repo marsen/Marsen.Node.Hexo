@@ -21,7 +21,7 @@ date: 2023/06/27 18:19:33
 
 ### 測試規劃
 
-![mongo atlas 連線的測試架構](../../images/2023/mongo_atlas_test_infra.png))
+![mongo atlas 連線的測試架構](../../images/2023/mongo_atlas_test_infra.png)
 
 如圖，為了不影響原有的環境，我打算建一組新的 VPC Network 進行實驗，  
 並在這個網路中建立一台實體的 VM 機器，待 Mongo Atlas 設定完成後，  
@@ -41,7 +41,7 @@ date: 2023/06/27 18:19:33
 這時候可以到 Network Access 查看 IP Access List 的清單，應該會有你網路上設定的對外 IP,  
 這個流程是自動化的，但是我個人認為不是固定 IP 的話可能會有問題，如果有人可以給我一些提點會十分感激。
 
-![mongo atlas 連線的測試架構](../../imgaes/2023/mongo_atlas_ip_access_list.png)
+![IP Access List](../../images/2023/mongo_atlas_ip_access_list.png)
 
 ### 建立 VM
 
