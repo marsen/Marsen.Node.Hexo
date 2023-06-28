@@ -84,7 +84,7 @@ db.grantRolesToUser("username", [{ role: "readWriteAnyDatabase", db: "mydb" }])
 db.revokeRolesFromUser("usernmae", [{ role: "readWrite", db: "admin" }])
 ```
 
-### 前置作業:GCP VPC 　與 Firewall Rules 設定
+### 前置作業: GCP VPC 與 Firewall Rules 設定
 
 為了避免影響原有的系統，  
 建立 GCP 一組新的 VPC Network : `vpc-lab`，一般來說 GCP 的專案會有自動建立一組 `default` VPC Network，
