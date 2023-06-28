@@ -32,7 +32,8 @@ date: 2023/06/27 18:19:33
 第一種，IP Access List，使用 GUI 建立 Cluster 的當下會自動加入一組你所在網路對外的 IP，  
 如果不是固定 IP 可能會有問題  
 第二種，Peering ，要付錢的版本 M10 以上才可用，也是我們這次實作的重點目標  
-最後一種，Create a Private Endpoint，也是　 M10 以上才可用，但是不是我們這次的主要實作項目，所以不過多的展開。
+最後一種，Create a Private Endpoint，也是  
+M10 以上才可用，但是不是我們這次的主要實作項目，所以不過多的展開。
 
 ### 從 GCP Marketing 建立 Mongo Atlas
 
@@ -130,12 +131,27 @@ mongosh mongodb+srv://{user:pwd}@{atlas_cluster_name}.mongodb.net/my_db
 
 ### Peering 實作
 
-1. GCP 的防火牆設定
+首先需要在 Mongo Atlas 進行設定，
+Network Access > Peering > Add Peering Connection  
+在 Cloud Provider 中選擇 GCP，
 
-   1. SSH 連線
-   2. Tags
-      1. mongo-atlas-0614
-      2. mongo-atlas-req-0614
+![Mongo Atlas Setting](../../images/2023/mongo_atlas_setting.png)
+
+設定 Project ID、VPC Name 與 Atlas CIDR，  
+比較特殊的是 Atlas CIDR 在 GUI 的說明是
+
+> An Atlas GCP CIDR block must be a /18 or larger.
+> You cannot modify the CIDR block if you have an existing cluster.
+
+**但我遇到的狀況是，無法修改預設值為 `192.168.0.0/16`**
+建立後會產生一組 Peering 的資料，請記住 Atlas GCP Project ID 與 Atlas VPC Name
+
+![Mongo Atlas Peering](../../images/2023/mongo_atlas_peering.png)
+
+接下來到 GCP > VPC Network > GCP Network Peering 選擇 Create peering connection
+在 Peered VPC network 中選擇 Other Project，並填入上面的 Atlas GCP Project ID 與 Atlas VPC Name
+
+大概等待一下子就會生效了(網路上寫 10 分鐘，實測不到 3 分鐘)
 
 ## 參考
 
