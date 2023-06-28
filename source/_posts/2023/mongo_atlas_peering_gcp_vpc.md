@@ -1,21 +1,24 @@
 ---
-title: "[實作筆記] MongoDB 解決方案評估(未完成)"
+title: "[實作筆記] MongoDB 解決方案評估-- Mongo Atlas"
 date: 2023/06/27 18:19:33
 ---
 
 ## 前情提要
 
-1. 方案的比較
+最近在 VM 部署了 MongoDB, 不知道為什麼同事在 QA 與正式環境採取了兩個不同的作法，  
+因此產生了一些版本不一致的問題。
+為此需要更換 MongoDB 版本，進而有一些討論，　　
+決策的考量主要有兩個面向，一、維運的成本。二、實際應付的帳務成本。
+可行的方案比較如下，
 
-   - Mongo Atlas(Start from GCP Marketing)
-   - GCP VM with MongoDB
-   - Azure VM with MongoDB
-   - Mongo Atlas(Start from other Cloud Service:AWS、Azure)
-
-2. 決策的考量
-
-   - 成本與帳務
-   - 維運的代價
+- VM 部署 MongoDB
+  - GCP
+  - Azure
+  - Other Cloud ...
+- Mongo Atlas(Start from GCP Marketing)
+  - GCP VM with MongoDB(Pay as You Go)
+  - Azure VM with MongoDB
+- Azure CosmosDB
 
 ## 實作隨筆：Mongo Atlas(Start from GCP Marketing)
 
@@ -135,7 +138,7 @@ mongosh mongodb+srv://{user:pwd}@{atlas_cluster_name}.mongodb.net/my_db
 Network Access > Peering > Add Peering Connection  
 在 Cloud Provider 中選擇 GCP，
 
-![Mongo Atlas Setting](../../images/2023/mongo_atlas_setting.png)
+![Mongo Atlas Setting](../../images/2023/mongo_atlas_settings.png)
 
 設定 Project ID、VPC Name 與 Atlas CIDR，  
 比較特殊的是 Atlas CIDR 在 GUI 的說明是
