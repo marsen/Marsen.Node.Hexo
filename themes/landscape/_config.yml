@@ -33,6 +33,7 @@ show_count: true
 # Miscellaneous
 #google_analytics: G-RF47NNRE5G
 #google_adSense: ca-pub-1885096025224905
+google_analytics: GTM-NTDGNJZ
 favicon: /favicon.ico
 twitter:
 google_plus:
