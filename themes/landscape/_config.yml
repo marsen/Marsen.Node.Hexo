@@ -31,9 +31,8 @@ archive_type: 'monthly'
 show_count: true
 
 # Miscellaneous
-#google_analytics
-google_analytics: G-RF47NNRE5G
-google_adSense: ca-pub-1885096025224905
+#google_analytics: G-RF47NNRE5G
+#google_adSense: ca-pub-1885096025224905
 favicon: /favicon.ico
 twitter:
 google_plus:
