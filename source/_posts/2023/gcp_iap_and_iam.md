@@ -69,6 +69,23 @@ IAP 提供了精確的身份驗證和授權，只有經過驗證的使用者才�
 - 連線的目標主機仍然需要設定 SSH 金鑰
 - `35.235.240.0/20` 是 GCP 中 IAP 使用的特定 IP 範圍，不可修改
 
+#### 20230711 補充
+
+透過 IAP 連線會出現　"Increasing the IAP TCP upload bandwidth"　的警告
+可以參考[官方文件](https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth)
+
+下載 Numpy
+
+```shell
+$(gcloud info --format="value(basic.python_location)") -m pip install numpy
+```
+
+設定環境變數
+
+```shell
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+```
+
 ## 參考
 
 - [IAP Concepts Overview](https://cloud.google.com/iap/docs/concepts-overview)
