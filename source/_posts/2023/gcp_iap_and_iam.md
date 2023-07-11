@@ -88,7 +88,8 @@ export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 ## 參考
 
-- [IAP Concepts Overview](https://cloud.google.com/iap/docs/concepts-overview)
+- [IAP Concepts Overview](https://cloud.google.com/iap/docs/concepts-overview) '
+- [Preparing your project for IAP TCP forwarding](https://cloud.google.com/iap/docs/using-tcp-forwarding#preparing_your_project_for_tcp_forwarding)
 - [新世代資安概念：零信任安全模型介紹(Zero Trust)](https://www.webcomm.com.tw/blog/zero-trust-security-model/)
 - [Zero Trust 安全性 | 什麼是 Zero Trust 網路？](https://www.cloudflare.com/zh-tw/learning/security/glossary/what-is-zero-trust/)
 - [[GCP] 你還在用 VPN 連線嗎？ 快點試試 Cloud IAP，資安手法大開公 | Giving it a Try to let Cloud IAP protect your system (上)](https://joehuang-pop.github.io/2020/10/25/GCP-%E4%BD%A0%E9%82%84%E5%9C%A8%E7%94%A8VPN%E9%80%A3%E7%B7%9A%E5%97%8E%EF%BC%9F-%E5%BF%AB%E9%BB%9E%E8%A9%A6%E8%A9%A6Cloud-IAP%EF%BC%8C%E8%B3%87%E5%AE%89%E6%89%8B%E6%B3%95%E5%A4%A7%E9%96%8B%E5%85%AC-Giving-it-a-Try-to-let-Cloud-IAP-protect-your-system-%E4%B8%8A/)
