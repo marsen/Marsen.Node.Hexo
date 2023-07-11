@@ -60,10 +60,22 @@ M10 以上才可用，但是不是我們這次的主要實作項目，所以不�
 use mydb
 ```
 
+#### 查詢目前 DB 狀態
+
+```sql
+db.status()
+```
+
 #### Create User
 
 ```sql
 db.createUser({ user: "username", pwd: "password", roles: [{ role: "roleName", db: "databaseName" }] });
+```
+
+#### Drop User
+
+```sql
+db.dropUser("username");
 ```
 
 #### 查詢 User
