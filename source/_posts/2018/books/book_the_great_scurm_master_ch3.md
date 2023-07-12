@@ -1,7 +1,7 @@
 ---
 title: "[閱讀筆記] The Great Scrum Master 第三章"
 date: 2018/07/23 18:49:19
-tag:
+tags:
   - Scrum
   - 閱讀筆記
   - Agile

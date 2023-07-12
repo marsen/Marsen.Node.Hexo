@@ -1,7 +1,7 @@
 ---
 title: "CSM Day2-3 Scrum Master"
 date: 2018/12/16 02:45:08
-tag:
+tags:
   - Scrum
   - Agile
 ---

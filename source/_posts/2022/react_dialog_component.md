@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Dialog Button 實作 React 父子元件交互作用"
 date: 2022/08/22 15:46:00
-tag:
+tags:
   - 實作筆記
   - React
 ---

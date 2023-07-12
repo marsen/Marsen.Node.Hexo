@@ -1,9 +1,10 @@
 ---
 title: "[生活筆記] 我對單元測試的想法"
 date: 2021/03/02 15:29:04
-tag:
+tags:
   - Unit Testing
 ---
+
 ## 問題
 
 你對所謂 "單元" 測試的想法爲何。
@@ -14,7 +15,7 @@ tag:
 目的是為了「品質」，從兩個角度來說:
 
 1. 對客戶來說: 功能符合需求
-2. *對開發者來說: 好擴充易修改
+2. \*對開發者來說: 好擴充易修改
 
 額外的好處:
 
@@ -22,7 +23,7 @@ tag:
 - Test Case 就是文件、就是 Use Case
 - TDD 要從 UT 開始寫，讓開發者優先考慮與其互動的 Service 或 Module 會怎麼使用這個方法
 - UT 是重構的基礎，有了 UT 作保護網，可以大膽重構
-- *重構才能往 Design Pattern 的方向走
+- \*重構才能往 Design Pattern 的方向走
 
 ![Mindset](https://i.imgur.com/WbIlLiz.jpg)
 
@@ -66,20 +67,20 @@ tag:
 最近參加了 [Implementing Domain-driven Design](https://www.tenlong.com.tw/products/9787121224485) 的讀書會，  
 像是導師所說，學習了單元測試與 TDD 後，  
 試著應用在實務上還是有所困難的，  
-所以我刻意建立了一些專案用來學習。  
+所以我刻意建立了一些專案用來學習。
 
 Test First 或 TDD 不應該省略設計的部份，  
 Domain-driven **Design** 常被縮寫成 DDD，  
 TDD 則為 Test-Driven **Development**。  
 而當華語文人士整天說著 ATDD、BDD、DDD 與 TDD 時，  
-有注意到這個 D(Design) 不是 D(Development) 嗎 ?  
+有注意到這個 D(Design) 不是 D(Development) 嗎 ?
 
 進一步來說，TDD 的要求開發之前先寫測試，意味著要先寫測試案例，  
-這個步驟會讓你思考「你要怎麼呼叫你的代碼」，也就是說「你要如何設計的代碼」，  
+這個步驟會讓你思考「你要怎麼呼叫你的代碼」，也就是說「你要如何設計的代碼」，
 
 接下來，我會用一個購物車的開發作為案例，  
 試著用這個過程找到自已的盲點。  
-![購物車 Sample](/images/2021/unittest_mindset_for_me_sample.jpg)  
+![購物車 Sample](/images/2021/unittest_mindset_for_me_sample.jpg)
 
 購物車的畫面如上，我會使用 C# 的 ASP.NET Core 進行開發，  
 雖然我會延用 ASP.NET 所提供的 MVC 框架，但我也會試著使用 DDD 的概念去設計，  
@@ -88,6 +89,6 @@ MVC 的 Controller 我會視為 DDD 的 Application Service，
 這裡會出現 View Model，不同於 Domain Model，View Model 由 UI 所需要的資料決定。
 更多的細節會記錄在後續的筆記當中。
 
-![DDD](/images/2021/unittest_mindset_for_me_ddd.jpg)  
+![DDD](/images/2021/unittest_mindset_for_me_ddd.jpg)
 
 (fin)

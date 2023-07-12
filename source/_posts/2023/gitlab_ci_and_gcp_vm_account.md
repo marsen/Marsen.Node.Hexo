@@ -1,7 +1,7 @@
 ---
 title: "[實作筆記] Gitlab CI/CD 與 GCP - User Account"
 date: 2023/04/24 20:01:33
-tag:
+tags:
   - CI/CD
 ---
 

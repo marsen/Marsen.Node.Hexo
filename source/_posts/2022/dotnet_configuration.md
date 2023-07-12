@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] ASP.Net Core Config 的隨筆"
 date: 2022/05/02 02:05:12
-tag:
+tags:
   - 實作筆記
 ---
 

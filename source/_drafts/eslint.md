@@ -1,8 +1,9 @@
 ---
 title: "[實作筆記] 建立團隊可用的 ESLint(一)"
 date: 2023/03/12 18:10:41
+tags:
+  - 實作筆記
 ---
-
 
 ## 前言
 
@@ -17,7 +18,7 @@ date: 2023/03/12 18:10:41
 所以程式碼的檢查要包含 React 與 Tsx;  
 接下來要同步相關的 Eslint，讓任何取得專案的人，都必須遵守其規範。  
 進一步的話，我希望可以使用大公司的基本設定，站在巨人的肩膀之上。  
-最後，我要能實作客制化 Lint 規則，並整合至 CI/CD 之後。  
+最後，我要能實作客制化 Lint 規則，並整合至 CI/CD 之後。
 
 ## 實作流程
 
@@ -43,54 +44,54 @@ npx eslint --init
 
 上述命令將提示我們回答一系列問題，以便根據我們的需求來生成設定檔。一些常見問題包括：
 
-- 我們想使用 ESLint 來檢查什麼？  
+- 我們想使用 ESLint 來檢查什麼？
 - 我們的專案使用的模塊是哪種類型？
 - 我們使用哪個框架？
 - 我們的代碼運行在哪裡？
-根據我們的答案，ESLint 將生成一個設定檔，以便在代碼檢查期間使用。
+  根據我們的答案，ESLint 將生成一個設定檔，以便在代碼檢查期間使用。
 
-以下是我的設定:  
+以下是我的設定:
 
 > ❯ npx eslint --init  
-> You can also run this command directly using 'npm init @eslint/config'.  
->  
+> You can also run this command directly using 'npm init @eslint/config'.
+>
 > ✔ How would you like to use ESLint?  
 > To check syntax only  
 > To check syntax and find problems  
-> ❯ To check syntax, find problems, and enforce code style  
->  
+> ❯ To check syntax, find problems, and enforce code style
+>
 > ✔ What type of modules does your project use?  
 > ❯ JavaScript modules (import/export)  
 > CommonJS (require/exports)  
-> None of these  
->  
+> None of these
+>
 > ✔ Which framework does your project use?  
 > ❯ React  
 > Vue.js  
-> None of these  
->  
+> None of these
+>
 > ✔ Does your project use TypeScript?  
-> Yes  
->  
+> Yes
+>
 > ✔ Where does your code run? (Press \<space\> to select, \<a\> to toggle all, \<i\> to invert selection)  
-✔ Browser  
-✔ Node  
->  
+> ✔ Browser  
+> ✔ Node
+>
 > ✔ How would you like to define a style for your project?  
 > ❯ Use a popular style guide  
-> Answer questions about your style  
->  
+> Answer questions about your style
+>
 > ✔ Which style guide do you want to follow?  
 > ❯ Standard: <https://github.com/standard/eslint-config-standard-with-typescript>  
-> XO: <https://github.com/xojs/eslint-config-xo-typescript>  
->  
+> XO: <https://github.com/xojs/eslint-config-xo-typescript>
+>
 > ✔ What format do you want your config file to be in?  
 > ❯ JavaScript  
 > YAML  
-> JSON  
->  
+> JSON
+>
 > Checking peerDependencies...
-> ✔ Would you like to install them now?  Yes
+> ✔ Would you like to install them now? Yes
 
 安裝完套件後，我們可以打開 eslintrc.js 檔案，並根據需要對其進行修改。我們可以根據自己的風格偏好，自訂不同的規則
 

@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] SendGrid 設定 on Appsmith"
 date: 2021/07/08 14:43:10
-tag:
+tags:
   - 實作筆記
 ---
 
@@ -41,7 +41,7 @@ appsmith 是一個簡單網站應用, 可以快速客製表單應用,
 2. 設定 [sendgird](https://docs.appsmith.com/setup/docker/email/sendgrid),也可以參考上面的說明
 3. 設定 `docker.env`
 
-```dockerfile
+````dockerfile
 
 ## **\*** Email ****\*\*****
 
@@ -61,7 +61,7 @@ APPSMITH_MAIL_SMTP_AUTH=true
 
 ```shell
 sudo docker-compose rm -fsv appsmith-internal-server nginx && sudo docker-compose up -d
-```
+````
 
 ## 參考
 

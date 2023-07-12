@@ -1,8 +1,8 @@
 ---
 title: "[生活筆記] L 的轉職閒聊與問題"
 date: 2020/09/22 12:54:51
-tag:
-    - 生活筆記
+tags:
+  - 生活筆記
 ---
 
 ## 前情提要
@@ -75,7 +75,7 @@ tag:
 
 HTML、CSS、JavaScript 是前端工程師的必須項目，  
 門檻也不高但是 JavaScript 會有很多特異的行為要注意。
-學好後再學主流的 Framework(Angular、Vue 或 React)。  
+學好後再學主流的 Framework(Angular、Vue 或 React)。
 
 - Html & Css
 - JavaScript

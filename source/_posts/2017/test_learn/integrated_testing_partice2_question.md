@@ -1,7 +1,8 @@
 ---
 title: " [實作筆記] 單元測試與重構記錄(二) 發問篇"
 date: 2017/12/08 19:04:42
-tag:
+tags:
+  - 實作筆記
   - Unit Testing
   - Testing
 ---

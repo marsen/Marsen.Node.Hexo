@@ -1,7 +1,7 @@
 ---
 title: "CSM Day2-2 Daily Scrum 與 Sprint Review 與 Retrospective"
 date: 2018/11/4 00:08:47
-tag:
+tags:
   - Scrum
   - Agile
 ---

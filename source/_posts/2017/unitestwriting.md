@@ -1,9 +1,10 @@
 ---
 title: "[活動筆記] 單元測試這樣玩就對了"
 date: 2017/04/23 00:01:39
-tag:
+tags:
   - Unit Testing
 ---
+
 ## 應該知道的事
 
 - 使用 C# , 但是其他語言也適用
@@ -11,7 +12,7 @@ tag:
 - 案例一有基本數理的專有名詞
   - 上界(Upper Bound)、下界(lower Bound)、左邊界(Left Bound)、右邊界(Right Bound)
 - 報名資訊(已結束)
-[Agile Meetup 2017/04 意外版: 單元測試這樣玩就對了](http://www.accupass.com/go/unitestwriting)
+  [Agile Meetup 2017/04 意外版: 單元測試這樣玩就對了](http://www.accupass.com/go/unitestwriting)
 
 ## 案例一、數值區間
 
@@ -29,8 +30,8 @@ ex:
 如上範例所示,
 「(」「)」小括號(parentheses)表示`OPEN`(不包含,大於或小於)
 「[」「]」中括號(square brackets)表示`CLOSE`(包含,大於等於或小於等於)
- (1,6] , 代表這個區間大於1小於等於6,包含的整數有 2、3、4、5、6
- [-2,4), 代表這個區間大於等於-2小於4,包含的整數有-2、-1、0、1、2、3
+(1,6] , 代表這個區間大於 1 小於等於 6,包含的整數有 2、3、4、5、6
+[-2,4), 代表這個區間大於等於-2 小於 4,包含的整數有-2、-1、0、1、2、3
 
 ![解析](https://i.imgur.com/TDHhx0A.png)
 
@@ -49,7 +50,7 @@ ex:
 
 1. 假設區間為(0,1),這個區間是不包含任何整數
 2. 假設區間為(1,1),這個區間是不包含任何整數,且不包含任何數值
-3. 假設區間為[1,1],這個區間恰巧包含1個整數,且只包含1這個整數
+3. 假設區間為[1,1],這個區間恰巧包含 1 個整數,且只包含 1 這個整數
 4. 假設"區間"為[2,1],或任何左邊界大右邊界的表示,這不是一個正確的區間,將要作例外處理。
 
 讓我們回歸單元測試,
@@ -80,7 +81,7 @@ public void IncludeWhenLeftOpenRightClose()
 再寫一個測試去測試這個方法是對的‧
 ```
 
-### 版本1
+### 版本 1
 
 最簡單的寫法:
 
@@ -108,12 +109,12 @@ public void GetNowString()
 }
 ```
 
-#### 解析1
+#### 解析 1
 
 `GetNowString`與系統的時間`DateTime.Now`,
-是具有耦合性,要解耦需要透過一些IoC的手段去處理。
+是具有耦合性,要解耦需要透過一些 IoC 的手段去處理。
 
-### 版本2
+### 版本 2
 
 利用繼承的方法,作出假的類別
 
@@ -163,20 +164,20 @@ public void GetNowString()
 }
 ```
 
-#### 解析2
+#### 解析 2
 
 基本上這樣就可以測試了,
 原來的代碼,經過一定的重構,
-透過`virtual`方法GetNow,
+透過`virtual`方法 GetNow,
 將`Datetime.Now`作了隔離
-適當利用假類別,取代掉GetNow的方法。
+適當利用假類別,取代掉 GetNow 的方法。
 
 這樣夠好了,但是我們可以看看另一種作法
 
-### 版本3
+### 版本 3
 
 先看看我們的`DateHelper`,
-在這裡我們將GetNow交由IDateProvider的類別去實作,
+在這裡我們將 GetNow 交由 IDateProvider 的類別去實作,
 如此一來就斷開了耦合性。
 
 ```csharp
@@ -188,7 +189,7 @@ public class DateHelper
   {
     this.DateProvider = dateProvider;
   }
-  
+
   public string GetNowString()
   {
     var now = this.DateProvider.GetNow();
@@ -197,7 +198,7 @@ public class DateHelper
 }
 ```
 
-實作IDateProvider的類別,
+實作 IDateProvider 的類別,
 在這裡其實不重要.
 
 ```csharp
@@ -213,7 +214,7 @@ public class DateProviderV1 : IDateProvider
 讓我們看看測試,
 在這裡我們透過一個假的`IDateProvider`的實作`DateProviderStub`,
 完成了測試,
-IDateProvider將`DateTime.Now`作了隔離,
+IDateProvider 將`DateTime.Now`作了隔離,
 並且提供更容易修改的假物件(僅僅需要實作觀注的方法即可,不用擔心繼承帶來的附作用)
 
 ```csharp
@@ -271,21 +272,21 @@ public class DateProviderStub : IDateProvider
 
 事先聲明,這題沒有程式碼,
 有興趣實作的人可以試試看.
-如果可以分享實作後的資訊給我更好XD
+如果可以分享實作後的資訊給我更好 XD
 
 > Q:註冊發送郵件如何寫單元測試？
 
 **解析**
 很明顯的發送郵件需要依賴外部的郵件系統,
-這裡就會有耦合性,我們可以參考案例2的方式解耦
+這裡就會有耦合性,我們可以參考案例 2 的方式解耦
 不過發送郵件並不會有回傳值,
 我們要如何驗証正確性呢？
 
 A:檢查調用次數、參數
 
 **圖例解析**
-在案例2的單元測試,
-我們透過STUB偽造的回傳值完成測試
+在案例 2 的單元測試,
+我們透過 STUB 偽造的回傳值完成測試
 並執行驗証.  
 但是在沒有回傳的值的方法中(被稱作`MOCK`)
 我們只能透過傳遞的參數(如果有多載)
@@ -298,7 +299,7 @@ A:檢查調用次數、參數
 - 單元測試要能清楚表達測試的目的(**達意**)
   - 命名
   - 減少意外的細節
-- 單元測試一次只作一件事  
+- 單元測試一次只作一件事
 - new 本身就是一種邏輯 一種偶合
 - static 是一種高偶合
 - 繼承也是高偶合,能使用繼承的情境很少
@@ -309,7 +310,7 @@ A:檢查調用次數、參數
 
 ## 其它
 
-- SLIM  
+- SLIM
 - 注入相依的幾種方式
   - Pool
   - Constructor
@@ -320,8 +321,8 @@ A:檢查調用次數、參數
 
 _如果連結失效,煩請告知._
 
-- [影片1](https://www.facebook.com/AgileCommunity.tw/videos/948509765286712/)
-- [影片2](https://www.facebook.com/AgileCommunity.tw/videos/948548118616210/)
+- [影片 1](https://www.facebook.com/AgileCommunity.tw/videos/948509765286712/)
+- [影片 2](https://www.facebook.com/AgileCommunity.tw/videos/948548118616210/)
 
 文章內容如有謬誤,煩請指正.
 

@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 怎麼建立一個網站？(二) - 簡單用github page 建立靜態網站"
 date: 2016/08/28 4:56:27
-tag:
+tags:
   - 實作筆記
   - Git
   - Hexo

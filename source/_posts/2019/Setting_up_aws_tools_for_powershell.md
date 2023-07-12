@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記]使用 Windows PowerShell 批次上傳 AWS S3"
 date: 2019/02/20 19:09:18
-tag:
+tags:
   - PowerShell
   - AWS
   - 實作筆記

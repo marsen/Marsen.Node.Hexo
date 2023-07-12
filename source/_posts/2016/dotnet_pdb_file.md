@@ -1,26 +1,25 @@
 ---
 title: .NET PDB File 介紹
 date: 2016/11/28 23:54:55
-tag:
+tags:
   - .Net Framework
 ---
 
-
 ### PDB(Program Database Files )
 
-**.Net原始碼在Debug mode建置後，將產生.pdb檔案，其中記錄了.dll、.exe與原始碼之間的對應關係。**
+**.Net 原始碼在 Debug mode 建置後，將產生.pdb 檔案，其中記錄了.dll、.exe 與原始碼之間的對應關係。**
 
 #### MSDN 這樣說
 
 程式資料庫 (.pdb) 檔案也稱為符號檔，可將您在原始程式檔中為類別、  
 方法和其他程式碼建立的識別項對應至專案之編譯的可執行檔中使用的識別項。
 
-原文:  
+原文:
 
->_A program database (.pdb) file, also called a symbol file,_  
-_maps the identifiers that you create in source files for classes,_  
-_methods, and other code to the identifiers that are used in the_  
-_compiled executables of your project._
+> _A program database (.pdb) file, also called a symbol file,_  
+> _maps the identifiers that you create in source files for classes,_  
+> _methods, and other code to the identifiers that are used in the_  
+> _compiled executables of your project._
 
 ### PDB 記什麼
 
@@ -37,20 +36,20 @@ _compiled executables of your project._
 ### .pdb 檔案與.dll(或可執行檔)需要完全符合
 
 偵錯工具只會載入與可執行檔建置時所建立的 .pdb 檔案完全相同之可執行檔的 .pdb 檔案  
-*相同原始碼在不同機器建置的執行檔與PDB，偵錯工具將無法進行偵錯
+\*相同原始碼在不同機器建置的執行檔與 PDB，偵錯工具將無法進行偵錯
 
-### 看看.pdb檔的內容
+### 看看.pdb 檔的內容
 
 1. 開啟 %ProgramFiles(x86)%\Microsoft Visual Studio 14.0\DIA SDK\Samples\DIA2Dump\dia2dump.sln
 
-2. 執行以下命令  
+2. 執行以下命令
 
 ```cmd
 > Dia2Dump pdbfilepath >> dumpfileName.txt
 > Dia2Dump C:\myproj\bin\debug\myproj.pdb >> myproj_dump.txt`
 ```
 
-1. 輸出的結果大致如下  
+1. 輸出的結果大致如下
 
 ```text
 Function       : In MetaData, [00001F16][0001:00001F16], len = 000000ED, GetBookList

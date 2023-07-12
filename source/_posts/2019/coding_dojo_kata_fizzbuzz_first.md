@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Coding Dojo 第一個 Kata FizzBuzz"
 date: 2019/02/06 04:11:17
-tag:
+tags:
   - TDD
   - 重構
   - Unit Testing

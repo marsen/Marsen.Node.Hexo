@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Golang DI Wire 使用範例與編輯器 GoLand 設定"
 date: 2022/09/05 12:15:46
-tag:
+tags:
   - 實作筆記
   - Golang
 ---

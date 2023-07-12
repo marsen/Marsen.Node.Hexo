@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 自定義 Hexo Helper"
 date: 2022/05/10 10:17:05
-tag:
+tags:
   - 實作筆記
   - Hexo
 ---

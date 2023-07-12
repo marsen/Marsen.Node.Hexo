@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Azure Functions 存取 Key Vault"
 date: 2021/08/24 08:51:43
-tag:
+tags:
   - 實作筆記
 ---
 
@@ -131,7 +131,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
 一樣在 Key Vault > Settings > Access policies > Add access policy ,
 在 Select principal 找到剛剛建立的 Function App,
-在  Configure from template (optional) 我們直接套用 Secret Management,  
+在 Configure from template (optional) 我們直接套用 Secret Management,  
 這允許我們的 Function App 會取得管理 Key Vault Secret 的權限.
 
 ### 設定 Function App Configuration

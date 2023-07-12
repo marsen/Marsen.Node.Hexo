@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] MacBook Terminal 美化與設計"
 date: 2021/07/01 23:10:02
-tag:
+tags:
   - 實作筆記
 ---
 

@@ -1,20 +1,20 @@
 ---
 title: "[生活筆記] 簽署軟體工藝宣言"
 date: 2020/10/28 11:16:17
-tag:
-    - 生活筆記
+tags:
+  - 生活筆記
 ---
 
 As aspiring Software Craftsmen we are raising the bar of  
 professional software development by practicing it and helping  
-others learn the craft. Through this work we have come to value:  
+others learn the craft. Through this work we have come to value:
 
 Not only working software, but also `well-crafted software`
 Not only responding to change, but also `steadily adding value`
 Not only individuals and interactions, but also `a community of professionals`
 Not only customer collaboration, but also `productive partnerships`
 
-That is, in pursuit of the items on the left we have found the items on the right to be indispensable.  
+That is, in pursuit of the items on the left we have found the items on the right to be indispensable.
 
 作為有理想的軟件工匠，我們一直身體力行，
 提升專業軟件開發的標準，並幫助他人學習此工藝。
@@ -31,14 +31,14 @@ That is, in pursuit of the items on the left we have found the items on the righ
 
 這些價值觀我是相同認同的,  
 可是這個網站的感覺並沒有呈現出那樣價值觀啊…
-或許還少了一點美感.  
+或許還少了一點美感.
 
 我的簽署資訊如下,  
 `30196   Marsen (Taiwan) 2020/10/28`,  
 查詢功能不能查 ID 與國家有點弱,
-沒有正體中文的翻譯,  補充資料的部份很不錯,  
+沒有正體中文的翻譯, 補充資料的部份很不錯,  
 但是也只是沒有系統的散落在那裡.  
-想給點回饋,也找不到留言區或討論區, 或是網站的 Repository.  
+想給點回饋,也找不到留言區或討論區, 或是網站的 Repository.
 
 ## 參考
 

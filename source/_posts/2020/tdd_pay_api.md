@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 用 TDD 寫一個 API Pay "
 date: 2020/01/29 12:46:14
-tag:
+tags:
   - TDD
   - Unit Testing
   - 實作筆記

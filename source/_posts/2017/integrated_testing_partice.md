@@ -1,7 +1,8 @@
 ---
 title: " [實作筆記] 單元測試與重構記錄(一)"
 date: 2017/10/31 00:42:10
-tag:
+tags:
+  - 實作筆記
   - Unit Testing
   - Integrated Testing
 ---

@@ -1,6 +1,8 @@
 ---
 title: "[實作筆記] passport 與 passport-local 原始碼分析"
 date: 2023/02/08 04:41:13
+tags:
+  - 實作筆記
 ---
 
 ## 前言
@@ -26,11 +28,11 @@ Passport 是這樣介紹自已的
 頁面就會直接轉導，無法看到錯誤訊(有關 req.flash 的部份，本文不會談到)。
 
 ```javascript
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })
+passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/users/login",
+  failureFlash: true,
+});
 ```
 
 當然我們很清楚有設定 `failureRedirect`  
@@ -42,14 +44,17 @@ Passport 是這樣介紹自已的
 在 Strategy.prototype.authenticate 可以發現以下程式
 
 ```javascript
-  if (!username || !password) {
-    return this.fail({ message: options.badRequestMessage || 'Missing credentials' }, 400);
-  }
+if (!username || !password) {
+  return this.fail(
+    { message: options.badRequestMessage || "Missing credentials" },
+    400
+  );
+}
 ```
 
 簡單的說，它預設回傳一個 400 錯誤，而我們又設定了一個錯誤轉導。  
 使用這類的第三方套件就怕這類的非預期行為，  
-好在這個套件的文件與測項開源且清楚，我們才能快速定位問題。  
+好在這個套件的文件與測項開源且清楚，我們才能快速定位問題。
 
 ## 參考
 

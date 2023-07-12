@@ -1,7 +1,7 @@
 ---
 title: "[實作筆記] Gitlab CI/CD 與 GCP - 建立 Gitlab Runner VM"
 date: 2023/04/14 15:55:41
-tag:
+tags:
   - CI/CD
 ---
 
@@ -34,21 +34,21 @@ tag:
 
 1. 安裝 GitLab Runner， 參考 [GitLab Runner 官方文件](https://docs.gitlab.com/runner/install/) 上的指南進行安裝。
 2. 將該 Runner 註冊到您的 GitLab 項目中。注意 Runner 有 Group/Project/Shared 之分。
-3. 我們選擇 Group Runner， 請安裝 CLI  
+3. 我們選擇 Group Runner， 請安裝 CLI
 
-    ```terminal
-    # 添加 Gitlab Runner 存儲庫的 GPG 金鑰
-    $ curl -L https://packages.gitlab.com/gpgkey/gitlab-runner/gpgkey | apt-key add -
+   ```terminal
+   # 添加 Gitlab Runner 存儲庫的 GPG 金鑰
+   $ curl -L https://packages.gitlab.com/gpgkey/gitlab-runner/gpgkey | apt-key add -
 
-    # 添加 Gitlab Runner 存儲庫
-    $ curl -L https://packages.gitlab.com/runner/gitlab-runner/ubuntu/$(lsb_release -cs)/
+   # 添加 Gitlab Runner 存儲庫
+   $ curl -L https://packages.gitlab.com/runner/gitlab-runner/ubuntu/$(lsb_release -cs)/
 
-    # 更新 apt 軟體包索引
-    $ apt-get update
+   # 更新 apt 軟體包索引
+   $ apt-get update
 
-    # 安裝 Gitlab Runner
-    $ apt-get install gitlab-runner
-    ```
+   # 安裝 Gitlab Runner
+   $ apt-get install gitlab-runner
+   ```
 
 4. 執行註冊
 
@@ -59,19 +59,21 @@ $ gitlab-runner register
 
 您可以在 GitLab 網站的項目設定中找到 Runner 註冊的相關資訊，並按照指南進行註冊。  
 下面是 2023 年的實作記錄，如果你有遇到任何狀況，再查閱 Gitlab 相關文件.
+
 > 註: 需注意 Gitlab 的官方文章指出，未來將計劃棄用 Gitlab Register Token 的方式
+>
 > > The new registration process is expected to become available in %16.0，  
 > > and the legacy registration process will be available side-by-side  
 > > for a few milestones before the being sunset through a feature flag.  
 > > Removal is planned for %17.0.
->  
+>
 > 請[參考](https://gitlab.com/gitlab-org/gitlab/-/issues/380872)
-  
+
 首先，你必須是 Group Owner。  
 接下來在 Group > CI/CD > Register a group runner > Registration token > 👁️ 取得 Token
 執行 `gitlab-runner register`， 依提示輸入
 
-- url 這是指 gitlab 的 服務網址，如果你不是自已架設的 gitlab server 請輸入 "https://gitlab.com/"  
+- url 這是指 gitlab 的 服務網址，如果你不是自已架設的 gitlab server 請輸入 "https://gitlab.com/"
 - registration-token 這是在前面步驟取得的 token ，但這個作法預計在 Gitlab 17 版被棄用需注意
 - executor 請輸入 "docker" ， 更多資訊請[參考](https://docs.gitlab.com/runner/executors/)
 
@@ -83,7 +85,7 @@ $ gitlab-runner register
 我們現在完成了 Gitlab-Runner，如果你也完成了你的服務伺服器設定，回頭看一下架構圖，  
 可以注意到，我們會透過 docker container 執行我們的 CI/CD 工作，
 並且存取 GCP 的資源，在我們的例子中是使用 VM ，讓我們先忽略防火牆與使用者帳號的相關設定，  
-單純的連線機器實體，我會採用 SSH 的連線方式。  
+單純的連線機器實體，我會採用 SSH 的連線方式。
 
 在一般的情況，我們會在 Client 端機器上生成 Private Key 與 Public Key，並且將 Public Key 放到 Server 端(服務伺服器)上，  
 不過在使用 docker container 的情況下，我們的 Client 端可以想像成是一個拋棄式的機器，  

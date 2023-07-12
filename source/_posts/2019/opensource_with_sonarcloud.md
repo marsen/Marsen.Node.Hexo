@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 讓 SonarQube 檢查你的代碼 "
 date: 2019/05/16 17:13:18
-tag:
+tags:
   - 實作筆記
   - .Net Framework
 ---

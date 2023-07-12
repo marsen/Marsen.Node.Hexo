@@ -1,22 +1,23 @@
 ---
 title: "[翻譯] 為什麼IBM/Google/Microsoft都要在今年增加對台投資?"
 date: 2018/04/08 23:22:20
-tag:
+tags:
   - 生活筆記
 ---
+
 ## [原文](https://www.forbes.com/sites/ralphjennings/2018/04/04/why-google-ibm-and-microsoft-all-decided-to-expand-in-taiwan-this-year/#4fda82d5c721)
 
 ## 重點節錄
 
-1. [Google 宣布要在台灣顧用300名員工並訓練5000名學生在人工智能領域](https://www.blog.google/topics/google-asia/intelligent-taiwan/)
-2. [微軟也表明未來要在台灣發展AI業務,5年內投資3400萬鎂並招聘200人](https://news.microsoft.com/apac/2018/01/12/microsoft-launches-artificial-intelligence-research-hub-taiwan/)
-3. [IBM也表示將在台灣擴展AI/區塊鏈/雲計算等相關的研發中心,並增聘100人以上](https://meet.bnext.com.tw/intl/articles/view/42553)
+1. [Google 宣布要在台灣顧用 300 名員工並訓練 5000 名學生在人工智能領域](https://www.blog.google/topics/google-asia/intelligent-taiwan/)
+2. [微軟也表明未來要在台灣發展 AI 業務,5 年內投資 3400 萬鎂並招聘 200 人](https://news.microsoft.com/apac/2018/01/12/microsoft-launches-artificial-intelligence-research-hub-taiwan/)
+3. [IBM 也表示將在台灣擴展 AI/區塊鏈/雲計算等相關的研發中心,並增聘 100 人以上](https://meet.bnext.com.tw/intl/articles/view/42553)
 
 ## 美國的投資與台灣的人材
 
 ### 台灣的優點
 
-1. 人材容易訓練適應AI等新產業的工作
+1. 人材容易訓練適應 AI 等新產業的工作
    - 通常大學畢業生都有基礎工程知識
    - 台灣的擁有製造業供應鏈(跨軟韌硬體)的人材
    - 便宜(Orz)
