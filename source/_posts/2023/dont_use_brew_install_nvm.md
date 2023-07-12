@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 不要用 Homebrew 安裝 nvm"
+title: " [實作筆記] 不要用 Homebrew 安裝 nvm"
 date: 2023/03/22 15:48:38
 tags:
   - 實作筆記

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] TDD 二元搜尋樹(Binary Search)"
+title: " [實作筆記] TDD 二元搜尋樹(Binary Search)"
 date: 2022/10/22 18:27:27
 tags:
   - 實作筆記

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Hexo CI 自動執行 ncu -u 更新相依套件"
+title: " [實作筆記] Hexo CI 自動執行 ncu -u 更新相依套件"
 date: 2022/09/28 19:18:35
 tags:
   - 實作筆記
