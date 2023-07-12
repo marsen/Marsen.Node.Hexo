@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 GCP - 架構全貌"
+title: " [實作筆記] Gitlab CI/CD 與 GCP - 架構全貌"
 date: 2023/04/13 18:09:50
 tags:
   - 實作筆記

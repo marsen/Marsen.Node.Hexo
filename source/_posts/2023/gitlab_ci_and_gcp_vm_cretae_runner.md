@@ -1,7 +1,8 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 GCP - 建立 Gitlab Runner VM"
+title: " [實作筆記] Gitlab CI/CD 與 GCP - 建立 Gitlab Runner VM"
 date: 2023/04/14 15:55:41
 tags:
+  - 實作筆記
   - CI/CD
 ---
 

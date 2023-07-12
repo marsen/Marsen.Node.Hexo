@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 GCP - 機敏資料的處理"
+title: " [實作筆記] Gitlab CI/CD 與 GCP - 機敏資料的處理"
 date: 2023/05/29 16:41:02
 tags:
   - 實作筆記

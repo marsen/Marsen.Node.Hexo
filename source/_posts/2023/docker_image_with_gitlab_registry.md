@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 基於 Docker 的 CI Docker 映像檔加速構建流程"
+title: " [實作筆記] 基於 Docker 的 CI Docker 映像檔加速構建流程"
 date: 2023/06/01 17:05:57
 tags:
   - 實作筆記

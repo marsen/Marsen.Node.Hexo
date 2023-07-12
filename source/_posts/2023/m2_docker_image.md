@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Mac M2 建立 Docker Image"
+title: " [實作筆記] Mac M2 建立 Docker Image"
 date: 2023/06/01 16:33:41
 tags:
   - 實作筆記

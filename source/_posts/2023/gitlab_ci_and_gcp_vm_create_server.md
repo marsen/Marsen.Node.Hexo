@@ -1,7 +1,8 @@
 ---
-title: "[實作筆記] Gitlab CI/CD 與 GCP - 建立 Web Server VM"
+title: " [實作筆記] Gitlab CI/CD 與 GCP - 建立 Web Server VM"
 date: 2023/04/14 10:41:50
 tags:
+  - 實作筆記
   - CI/CD
 ---
 
