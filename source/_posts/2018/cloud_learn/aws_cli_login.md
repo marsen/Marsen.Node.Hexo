@@ -1,10 +1,10 @@
 ---
 title: "[學習筆記] AWS EC2 學習筆記 AWS CLI 與 Login"
 date: 2018/03/25 23:01:24
-tag:
+tags:
   - AWS
   - Docker
-  - Container 
+  - Container
 ---
 
 ## [安裝 AWS CLI](https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/installing.html)
@@ -16,7 +16,7 @@ tag:
 ![EC2 開機](https://i.imgur.com/dNGygaT.jpg)
 
 - 直接開機跳過網路設定(也還沒有辦法設)
-- 第5步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助
+- 第 5 步驟設定 TAG ,對找尋 ec2 的 instance 很有幫助
 
 ## 設定 [Putty](https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console)
 
@@ -24,7 +24,7 @@ tag:
 
 ![連線機器](https://i.imgur.com/xIQsEac.jpg)
 
-ex:  
+ex:
 
 ```bash
 ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
@@ -61,13 +61,13 @@ sudo chkconfig docker on
 ### 雷包
 
 - 重啟機器的話 public dns 會改變.(意味連線的命令參數會變)
-- 注意使用的AIM, 不同的 Linux OS 會有不同的套件執行命令
+- 注意使用的 AIM, 不同的 Linux OS 會有不同的套件執行命令
 - ubuntu `apt-get`
 - CentOS `yum`
 
 ### 參考
 
 - [Docker —— 從入門到實踐](https://philipzheng.gitbooks.io/docker_practice)
-- [全面易懂的Docker指令大全](https://www.gitbook.com/book/joshhu/dockercommands/details)
+- [全面易懂的 Docker 指令大全](https://www.gitbook.com/book/joshhu/dockercommands/details)
 
 (fin)

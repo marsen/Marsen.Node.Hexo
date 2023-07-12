@@ -1,7 +1,7 @@
 ---
 title: 如何讓 Google Analytics 追踪你的 Hexo Blog
 date: 2016/08/25 14:12:07
-tag:
+tags:
   - Hexo
   - Google
 ---

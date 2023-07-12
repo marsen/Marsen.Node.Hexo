@@ -1,6 +1,8 @@
 ---
 title: "[翻譯] TypeScript 寫給 C#/Java 工程師"
 date: 2023/04/09 16:50:10
+tags:
+  - 實作筆記
 ---
 
 ## 前言
@@ -24,7 +26,7 @@ date: 2023/04/09 16:50:10
 ## 翻譯
 
 本文出處為[TypeScript for Java/C# Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)  
-我不會逐字翻譯，只針對我認為重要的觀念作筆記。  
+我不會逐字翻譯，只針對我認為重要的觀念作筆記。
 
 ### Class 的反思
 
@@ -32,25 +34,25 @@ date: 2023/04/09 16:50:10
 而在 TypeScript/JavaScript 當中 Function 才是程式語言的基本單位。  
 Function 可以自由的存在，而不需要寄生在 Class 之中。  
 這帶來了靈活性的優點，在思考 TypeScript 時，應以此作為考量。  
-因此，C#和Java的某些結構，如 Singleton 和 Static Class 在 TypeScript 中是不必要的。  
+因此，C#和 Java 的某些結構，如 Singleton 和 Static Class 在 TypeScript 中是不必要的。
 
 ### Type 的反思
 
 Nominal Reified Type Systems vs Structural System
 C#/Java 使用 Nominal Reified Type Systems ，  
 這表示 C#/Java 程式中所使用的值或物件，一定會是 null 或基本型別(int、string、boolean 等…)或具體的 Class。  
-而在TypeScript中，類別只是個集合。
+而在 TypeScript 中，類別只是個集合。
 你可以這樣描述一個值同時可能是 string 或 number
 
 ```typescript
-let stringNumber: string | number 
-stringNumber = 1
-stringNumber = "123"
+let stringNumber: string | number;
+stringNumber = 1;
+stringNumber = "123";
 ```
 
 同時在作型別的推導的時候， C#/Java 會有具體的型別，而 TypeScript 會使用結構作推導，  
 參考下面的例子，我們沒有給 obj 具體的型別，但是在結構上符合 Pointlike 與 Named 所擁有的屬性，  
-使得呼叫方法時的型別推導在 TypeScript 是合法的。  
+使得呼叫方法時的型別推導在 TypeScript 是合法的。
 
 ```typescript
 interface Pointlike {
@@ -60,28 +62,28 @@ interface Pointlike {
 interface Named {
   name: string;
 }
- 
+
 function logPoint(point: Pointlike) {
   console.log("x = " + point.x + ", y = " + point.y);
 }
- 
+
 function logName(x: Named) {
   console.log("Hello, " + x.name);
 }
- 
+
 const obj = {
   x: 0,
   y: 0,
   name: "Origin",
 };
- 
+
 logPoint(obj);
 logName(obj);
 ```
 
 這樣的設計在 runtime 的時候，我們無法具體的知道型別是什麼，  
 下面的概念在 TypeScript 將不可行，  
-即使用 JavaScript 的 typeof 或 instanceof 你也只會拿到 "object"，而非具體的型別  
+即使用 JavaScript 的 typeof 或 instanceof 你也只會拿到 "object"，而非具體的型別
 
 ```csharp
 // C#
@@ -91,7 +93,7 @@ static void LogType<T>() {
 ```
 
 即使如此，這樣的設計在編譯時期的檢查在實務上是足夠的，  
-另外兩個例子與長時間開發 C#/Java 的概念上可能會有所不同，  
+另外兩個例子與長時間開發 C#/Java 的概念上可能會有所不同，
 
 #### Empty Type
 
@@ -100,11 +102,11 @@ Typescript 允許設計無屬性的 Type，而基於 Structural System
 
 ```Typescript
 class Empty {}
- 
+
 function fn(arg: Empty) {
   // do something?
 }
- 
+
 // No error, but this isn't an 'Empty' ?
 fn({ k: 10 });
 ```
@@ -128,8 +130,8 @@ class Golfer {
 let w: Car = new Golfer();
 ```
 
-一樣基於 Structural System  的設計，有相同的屬性與方法簽章的兩個不同物件，  
-是允許這樣子的行為，而以官方的看法來說，實務上並不太容易發生這種情形(兩個不同的模型，卻有相同的方法、屬性等…)。  
+一樣基於 Structural System 的設計，有相同的屬性與方法簽章的兩個不同物件，  
+是允許這樣子的行為，而以官方的看法來說，實務上並不太容易發生這種情形(兩個不同的模型，卻有相同的方法、屬性等…)。
 
 ## 小結
 

@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] SonarCloud Move analysis to Java 11 更新 Github Action"
 date: 2021/02/03
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要

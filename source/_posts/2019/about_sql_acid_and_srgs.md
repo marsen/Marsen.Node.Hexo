@@ -1,9 +1,9 @@
 ---
 title: "[學習筆記] SQL 大小事 Isolation Level 與 SARGs"
 date: 2019/12/25 02:25:55
-tag:
- - Database
- - SQL 
+tags:
+  - Database
+  - SQL
 ---
 
 ## ACID 與 Isolation Level
@@ -11,21 +11,21 @@ tag:
 ### 什麼是 ACID
 
 - Atomicity（原子性）：
-    一個交易（transaction）中的所有操作，要嘛全部完成，要嘛全部不完成，  
-    不會在中間某個環節中斷。交易在執行過程中發生錯誤，會被回滾（Rollback）到交易開始前的狀態，  
-    就像這個交易從來沒有執行過一樣。即，交易不可分割、不可約簡。  
+  一個交易（transaction）中的所有操作，要嘛全部完成，要嘛全部不完成，  
+   不會在中間某個環節中斷。交易在執行過程中發生錯誤，會被回滾（Rollback）到交易開始前的狀態，  
+   就像這個交易從來沒有執行過一樣。即，交易不可分割、不可約簡。
 - Consistency（一致性）：
-    在交易開始之前和交易結束以後，資料庫的完整性沒有被破壞。  
-    這表示寫入的資料必須完全符合所有的預設約束、觸發器、級聯回滾等。  
+  在交易開始之前和交易結束以後，資料庫的完整性沒有被破壞。  
+   這表示寫入的資料必須完全符合所有的預設約束、觸發器、級聯回滾等。
 - Isolation（隔離性）：
-    資料庫允許多個並發交易同時對其數據進行讀寫和修改的能力，  
-    隔離性可以防止多個交易並發執行時由於交叉執行而導致數據的不一致。  
-    交易隔離分為不同級別，  
-    包括未提交讀（Read uncommitted）、  
-    提交讀（read committed）、  
-    可重複讀（repeatable read）和串行化（Serializable）。
+  資料庫允許多個並發交易同時對其數據進行讀寫和修改的能力，  
+   隔離性可以防止多個交易並發執行時由於交叉執行而導致數據的不一致。  
+   交易隔離分為不同級別，  
+   包括未提交讀（Read uncommitted）、  
+   提交讀（read committed）、  
+   可重複讀（repeatable read）和串行化（Serializable）。
 - Durability（持久性）：
-    交易處理結束後，對數據的修改就是永久的，即便系統故障也不會丟失。
+  交易處理結束後，對數據的修改就是永久的，即便系統故障也不會丟失。
 
 ### 問題，欄位 price 現在為 100，兩筆交易同時發生，A 交易為 price+10, B 交易為 price-15 請問最終的值為何
 
@@ -78,7 +78,7 @@ Rollback Transaction
 Session 2，
 設定 TRANSACTION ISOLATION LEVEL 為 READ COMMITTED，  
 目前 ACIDSample_Price = 100  
-執行查詢，在 READ COMMITTED 的情境況下，會等待延遲結束後取得資料  
+執行查詢，在 READ COMMITTED 的情境況下，會等待延遲結束後取得資料
 
 ```sql
 -- SET TRANSACTION ISOLATION LEVEL
@@ -88,7 +88,7 @@ SELECT ACIDSample_Price FROM ACIDSample WHERE ACIDSample_ID = 1
 
 ### Sample READ UNCOMMITTED
 
-Session 1，與前一個範例相同，執行 Update 後延遲 10 秒後 Rollback  
+Session 1，與前一個範例相同，執行 Update 後延遲 10 秒後 Rollback
 
 ```sql
 BEGIN TRANSACTION
@@ -101,7 +101,7 @@ Rollback Transaction
 ```
 
 Session 2，執行查詢，在 READ UNCOMMITTED 的情境況下，  
-會立即取得未 Commit 的資料(Dirty Data)，不需要等待10秒  
+會立即取得未 Commit 的資料(Dirty Data)，不需要等待 10 秒
 
 ```sql
 -- SET TRANSACTION ISOLATION LEVEL
@@ -113,7 +113,7 @@ SELECT ACIDSample_Price FROM ACIDSample WHERE ACIDSample_ID = 1
 
 Session 1  
 設定 TRANSACTION ISOLATION LEVEL 為 Repeatable Read
-執行以下SQL後，立即執行 Session 2 的 SQL，
+執行以下 SQL 後，立即執行 Session 2 的 SQL，
 等待 10 秒(Delay)後執行 Session 3 的 SQL
 
 ```sql
@@ -142,7 +142,7 @@ DELETE ACIDSample WHERE ACIDSample_Name = 'Cat'
 ```
 
 等待 Delay 結束後，可以看到查詢結果如下
-第2次的查詢會與第3次一致，但是實際上的資料已經被刪除了
+第 2 次的查詢會與第 3 次一致，但是實際上的資料已經被刪除了
 
 ```text
 ACIDSample_Id        ACIDSample_Name                                                                                      ACIDSample_Price
@@ -254,16 +254,17 @@ SQL 效能調校的一些 GuideLine
 
 ### 建議使符合「查詢參數(Search ARGument SARGs)」規則
 
-- SARGs的格式：
+- SARGs 的格式：
+
   - 「資料欄位 部份運算子 <常數或變數>
   - 常數或變數> 部份運算子 資料欄位」
   - 運算子：=、<、>、>=、<=、BETWEEN、LIKE '關鍵字%'
 
-- 非SARGs格式：
+- 非 SARGs 格式：
   - 對資料欄位做運算
   - 負向查詢：NOT、!=、<>、!>、!<、NOT EXISTS、NOT IN、NOT LIKE
   - 對資料欄位使用函數
-  - 使用OR運算子
+  - 使用 OR 運算子
 
 ---
 

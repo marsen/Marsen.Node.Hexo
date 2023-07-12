@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] terminal 設定 alias"
 date: 2021/07/09 10:02:43
-tag:
+tags:
   - 實作筆記
   - Hexo
 ---

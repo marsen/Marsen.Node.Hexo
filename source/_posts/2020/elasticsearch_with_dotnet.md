@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Elasticsearch Insert Data with .Net  "
 date: 2020/06/03 10:11:06
-tag:
+tags:
   - 實作筆記
 ---
 

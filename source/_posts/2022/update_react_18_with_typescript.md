@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] 升級現有基於 TypeScript 的 React 17 專案到 React 18"
 date: 2022/04/08 02:20:08
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要

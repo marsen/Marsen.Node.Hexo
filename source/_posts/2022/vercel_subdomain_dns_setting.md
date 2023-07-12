@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] 設定 Vercel 的 DNS"
 date: 2022/12/18 20:42:20
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要
@@ -67,7 +69,7 @@ Vercel 這個服務也可以自定 domain，
 
 - [【Side Project】(全圖文教學) 用 Python flask 實作類似 ChatGPT 的 Linebot，並部屬至 Vercel 上 (updated: 2022/12/15)](https://www.wongwonggoods.com/portfolio/personal_project/gpt-linebot-python-flask-for-vercel/#comment-330)
 - [OPEN AI x ChatGPT x LineBot 串接完整全紀錄](https://vocus.cc/article/639da520fd89780001e965d7) python 不採用，教學隨附影片的聲音好吵
-- [ChatGPT LINE Bot](https://github.com/isdaviddong/chatGPTLineBot)  C# 不採用，對機敏資料的處理方式我不喜歡
+- [ChatGPT LINE Bot](https://github.com/isdaviddong/chatGPTLineBot) C# 不採用，對機敏資料的處理方式我不喜歡
 - [用 Node.js 建立你的第一個 LINE Bot 聊天機器人以 OpenAI GPT-3 為例](https://israynotarray.com/nodejs/20221210/1224824056/) Nodejs 未採用，就找到適合的專案了
 
 (fin)

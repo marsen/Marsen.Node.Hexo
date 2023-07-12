@@ -1,7 +1,7 @@
 ---
 title: "[閱讀筆記] The Great Scrum Master 第二章"
 date: 2018/07/25 10:43:19
-tag:
+tags:
   - Scrum
   - 閱讀筆記
   - Agile

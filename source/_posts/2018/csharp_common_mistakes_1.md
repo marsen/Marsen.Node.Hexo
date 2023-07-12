@@ -1,7 +1,7 @@
 ---
 title: "[翻譯] C# 的常見錯誤"
 date: 2018/02/12 02:12:47
-tag:
+tags:
   - .Net Framework
 ---
 

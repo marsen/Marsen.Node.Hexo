@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] 錯誤處理 dotnet core @ GKE logger "
 date: 2022/06/09 16:37:53
+tags:
+  - 實作筆記
 ---
 
 ## 問題

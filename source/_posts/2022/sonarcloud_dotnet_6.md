@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] SonarCloud with .NET 6.0.x"
 date: 2022/02/15 10:00:57
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要

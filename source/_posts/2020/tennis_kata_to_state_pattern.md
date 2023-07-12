@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] Tennis KATA 與 State Pattern "
 date: 2020/07/21 08:16:27
-tag:
+tags:
   - TDD
   - Unit Testing
   - 實作筆記

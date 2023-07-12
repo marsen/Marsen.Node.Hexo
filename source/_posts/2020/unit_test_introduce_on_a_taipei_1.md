@@ -1,10 +1,9 @@
 ---
 title: "[A社筆記] Introduce Unit Test --- 心法篇"
 date: 2020/06/11 17:03:11
-tag:
-    - 實作筆記
+tags:
+  - 實作筆記
 ---
-
 
 ## Why Unit Test 心法篇
 
@@ -55,7 +54,7 @@ tag:
 
 ### 3A
 
-程式寫的是 AAA (正序)心裡想的是AAA(逆序)
+程式寫的是 AAA (正序)心裡想的是 AAA(逆序)
 
 - Arrange
 - Act
@@ -67,23 +66,23 @@ tag:
 
 ## 第一天分享
 
-pair programming 30 min，QA 約 20分鐘。
+pair programming 30 min，QA 約 20 分鐘。
 先請同事實作 1+1 的 Unit Test 看一下他對測試的理解。
 
 - 建立測試專案，可以選用 xUnit
 
-    ```text
-    不選 MsTest 的理由是，我比較喜歡建構子與解構子的寫法，  
-    勝過 TestInitialize/TestCleanup 的 Attribute 的寫法
-    ```
+  ```text
+  不選 MsTest 的理由是，我比較喜歡建構子與解構子的寫法，
+  勝過 TestInitialize/TestCleanup 的 Attribute 的寫法
+  ```
 
 - 引導由測試寫出方法。
 
-    ```text
-    logic → function → class method  
-    透過寫測試讓 Production 在思考中產生
-    引導的沒有很成功
-    ```
+  ```text
+  logic → function → class method
+  透過寫測試讓 Production 在思考中產生
+  引導的沒有很成功
+  ```
 
 - 3A 的寫法，未來會介紹沒有 3A 的寫法(為了更好的理解)
 - ~~方法~~測試案例的命名
@@ -105,7 +104,7 @@ pair programming 30 min，QA 約 20分鐘。
 
 - 開發~~完~~後，自已會完全不自已測試就丟給 QA 或客戶嗎 ?
 - 什麼是 Dojo ?
-  - 日文的道場，把寫程式想像成是在練功，建立一個練功的環境。  
+  - 日文的道場，把寫程式想像成是在練功，建立一個練功的環境。
 - 什麼是 Kata ?
   - 日文的形，或是可以說是套路/招式，一樣透過練習招式來強化自已的能力。
 

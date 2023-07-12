@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] AWS DeepRacer"
 date: 2019/05/18 15:11:38
-tag:
+tags:
   - 實作筆記
 ---
 
@@ -75,7 +75,7 @@ def reward_function(params):
 ## 使用資源與服務
 
 - DeepRacer
-- Reinforcement learning >  Reinforcement learning
+- Reinforcement learning > Reinforcement learning
 - CloudWatch > Log Groups
 - IAM
   - AWSDeepRacerServiceRole

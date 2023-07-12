@@ -1,6 +1,8 @@
 ---
 title: "[實作筆記] MongoDB 解決方案評估-- Mongo Atlas"
 date: 2023/06/27 18:19:33
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要

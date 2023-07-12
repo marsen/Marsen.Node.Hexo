@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] Bowling Kata"
 date: 2021/06/25 09:20:55
+tags:
+  - 實作筆記
 ---
 
 ## 前言
@@ -57,7 +59,7 @@ date: 2021/06/25 09:20:55
 ```
 
 有了基本規則後, 我要參考 TDD By Example 一書的作法,  
-寫下 Todo List  用來記錄我要作的事情, 當然這也會是一份湧現式的清單.
+寫下 Todo List 用來記錄我要作的事情, 當然這也會是一份湧現式的清單.
 
 ## 第一次 Kata 的 Todolist
 
@@ -104,7 +106,7 @@ TDD 的概念應該是以 Client(TestCase)的角度去使用 Production Code,
 這個案例中, 我想設計的 API 是一次將目前擊倒的瓶數組合成一個 List 傳給 BowlingLine,  
 計算後回傳總分.
 
-這樣的設計, 對 Client  來說簡單好用, 但是對  BowlingLine 來說似乎職責太多了,  
+這樣的設計, 對 Client 來說簡單好用, 但是對 BowlingLine 來說似乎職責太多了,  
 另外 Frame 的概念就消失在 Client 的視野之中, 但 BowlingLine 應該要能夠區分出 Frame  
 所以我預計寫下 Frame 的測試案例. 再來, 我們發現分數在某些情況是尚未決定的,  
 比如說擊出 Strike/Spare 或是只擊出該 Frame 的第一次時, 是無法計分的.  
@@ -262,7 +264,7 @@ public void TestFrameScore()
     }
 ```
 
-我們建一個 For Loop 目標要將這些醜醜的 if  判斷式移到  Loop 之中
+我們建一個 For Loop 目標要將這些醜醜的 if 判斷式移到 Loop 之中
 結果大致如下, 過程當然也是逐步的抽離
 
 ```csharp
@@ -333,7 +335,7 @@ Bonus 也是我寫法改變最多的地方之一
     for (int i = 0; i < fellPins.Count; i++)
 ```
 
-不過更重要的是, _為什麼 Bonus  與 BowlingLine 有關？_  
+不過更重要的是, _為什麼 Bonus 與 BowlingLine 有關？_  
 我們已知這個 Frame 與接下來兩次的擊球數與 Bonus 才有正相關,  
 所以我應該把這個職責移到 Bonus 身上, 原始判斷 Strike 與 Spare 的邏輯,  
 SetBonus 的邏輯, 也應該一併移到 Frame 身上, 這也是 OOP 的體現

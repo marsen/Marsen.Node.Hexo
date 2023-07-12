@@ -1,7 +1,7 @@
 ---
 title: "[生活筆記] 2019 常用工具整理"
 date: 2019/09/26 17:41:17
-tag:
+tags:
   - 生活筆記
 ---
 
@@ -12,7 +12,7 @@ tag:
 ## 網站
 
 - [Slant 工具比較](https://www.slant.co/)
-- [開發常用的工具網站 JSON/YAML/SQL](https://blog.marsen.me/2019/04/11/2019/tool_sites/ )
+- [開發常用的工具網站 JSON/YAML/SQL](https://blog.marsen.me/2019/04/11/2019/tool_sites/)
 - [亂數假文產生器 - 中文](http://www.richyli.com/tool/loremipsum/)
 - [亂數假文產生器 - 英文](https://www.lipsum.com/feed/html)
 - [資訊收集/廢文發佈](https://zh-tw.facebook.com/)
@@ -20,7 +20,7 @@ tag:
 ## PC 工具
 
 - 文字比較工具
-  - Win Merge  
+  - Win Merge
 - Git GUI
   - ~~GitKraken(需收費)~~
   - Fork
@@ -34,13 +34,13 @@ tag:
   - Dropbox
 - 截圖錄影工具
   - ShareX
-  - Skitch  
+  - Skitch
 - 遠端桌面管理
   - Remote Desktop Manager Free (試用中)
   - Remote Desktop Connection Manager
 - windows 仿 linux 指令
   - cygwin
-  
+
 ## 筆記工具
 
 - Evernote

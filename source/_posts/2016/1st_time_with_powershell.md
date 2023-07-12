@@ -1,7 +1,7 @@
 ---
 title: "[記錄]PowerShell 初體驗"
-date: 2016/10/21 13:27:53 
-tag:
+date: 2016/10/21 13:27:53
+tags:
   - PowerShell
   - Database
   - MsSQL
@@ -9,25 +9,25 @@ tag:
 
 ## 需求
 
-1. 將指定的Log記錄，匯入資料庫，產生row data
-2. 將row data 轉換成為需要的報表資料
+1. 將指定的 Log 記錄，匯入資料庫，產生 row data
+2. 將 row data 轉換成為需要的報表資料
 3. 產生報表
 
 ## 規劃
 
 1. powershell 讀取檔案
 2. powershell 連接資料庫
-3. powershell 執行SQL
-4. powershell 作BulkInsert
+3. powershell 執行 SQL
+4. powershell 作 BulkInsert
 5. powershell 寫入檔案
 
 ![PowerShell](/images/2016/102216_095355_PM.jpg)
 
 ### 簡記要點
 
-- ***powershell 可以直接取用 .Net Framework 或 COM 元件***
-- ***宣告變用要用`$`字號***
-- ***`#` 是註解***
+- **_powershell 可以直接取用 .Net Framework 或 COM 元件_**
+- **_宣告變用要用`$`字號_**
+- **_`#` 是註解_**
 
 ### 讀取檔案
 
@@ -35,7 +35,7 @@ tag:
 #用New-Object 建立.Net StreamReader 物件
 $reader = New-Object System.io.streamReader(get-item $filePath)
 #使用`[]`建立靜態類別讀取檔案
-$file = [System.IO.File]::ReadAllLines($filePath)  
+$file = [System.IO.File]::ReadAllLines($filePath)
 #直接使用Get-Content讀取文檔
 $file = Get-Content  "C:\filepath\file"
 ```
@@ -52,7 +52,7 @@ $connection.Close()
 
 ### BulkInsert
 
-- 從檔案建立DataTable
+- 從檔案建立 DataTable
 
 ```powershell
 $table = New-Object System.Data.DataTable
@@ -74,7 +74,7 @@ foreach($file in $files){
 $table.Rows.Add($dr);
 ```
 
-- 透過BulkCopy將DataTable寫入資料庫
+- 透過 BulkCopy 將 DataTable 寫入資料庫
 
 ```powershell
 $connection.Open()

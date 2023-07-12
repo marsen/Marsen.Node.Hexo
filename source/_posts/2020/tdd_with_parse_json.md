@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 記錄用 TDD 寫一個 Entity Parser "
 date: 2020/01/17 00:14:31
-tag:
+tags:
   - TDD
   - Unit Testing
   - 實作筆記

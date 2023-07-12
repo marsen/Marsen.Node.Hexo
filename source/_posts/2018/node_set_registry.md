@@ -1,7 +1,7 @@
 ---
 title: " [實作筆記] 設定 NPM Registry"
 date: 2018/07/29 16:21:22
-tag:
+tags:
   - Nodejs
   - GulpJs
   - 實作筆記

@@ -1,7 +1,7 @@
 ---
 title: "[活動筆記] 蝦皮購物新加坡研發團隊技術分享會"
 date: 2018/03/15 17:00:12
-tag:
+tags:
 	- 活動筆記
 ---
 
@@ -9,7 +9,7 @@ tag:
 
 1. 雖然是「技術分享會」實際上在徵才
 2. 不過還是有半場的技術分享
-3. 91app 至少去了10 個人(含前員工)
+3. 91app 至少去了 10 個人(含前員工)
 4. 這篇文章對你應該沒有幫助
 
 ## 有關蝦皮
@@ -57,7 +57,7 @@ tag:
 
 > 什麼樣的情境適合增加伺服器數量來增進效能?
 > stateless
-> 那有狀態怎麼辦 ?  
+> 那有狀態怎麼辦 ?
 
 ### 6
 
@@ -88,12 +88,12 @@ tag:
 3. Redis 的資料超過 64G 就無法用 [bgsave](http://redisdoc.com/server/bgsave.html) 有效存檔
 4. 在 Production 千萬別用 Redis 的 [key](https://redis.io/commands/keys) 指令
 5. 衡量的基準(benchmark)為何？
-6. 不要對邏輯下command(不要寫前因後果)
+6. 不要對邏輯下 command(不要寫前因後果)
    - Don't command How
    - Command Why
 7. 道
-    - Collect your dots first
-    - Connecting the dots
+   - Collect your dots first
+   - Connecting the dots
 
 ## 持久發展的研發團隊
 
@@ -121,7 +121,7 @@ tag:
   - countries PM
   - function PM
 - Scrum 是跑給老闆看的(!!?)
-- 馬來西亞不用小豬ICON(各地風俗民情不同)
+- 馬來西亞不用小豬 ICON(各地風俗民情不同)
 
 ## 參考
 

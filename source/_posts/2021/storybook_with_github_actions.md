@@ -1,6 +1,8 @@
 ---
 title: " [實作筆記] Storybook CI 使用 Github Actions"
 date: 2021/01/19
+tags:
+  - 實作筆記
 ---
 
 ## 前情提要

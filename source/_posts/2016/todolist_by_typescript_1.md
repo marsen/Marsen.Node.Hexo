@@ -1,7 +1,7 @@
 ---
 title: "[KATA] 用 TypeScript 作一個簡易的 TodoList (一) - 前置作業"
 date: 2016/10/08 10:34:27
-tag:
+tags:
   - TypeScript
   - Nodejs
 ---

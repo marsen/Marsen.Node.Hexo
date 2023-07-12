@@ -1,7 +1,7 @@
 ---
 title: "CSM 之後 Scrum 總結"
 date: 2018/12/27 11:29:45
-tag:
+tags:
   - Scrum
   - Agile
 ---
