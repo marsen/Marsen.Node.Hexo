@@ -40,7 +40,7 @@ jobs:
     # Deploy hexo blog website.
     - name: Deploy
       id: deploy
-      uses: marsen/hexo-action@v1.0.6
+      uses: marsen/hexo-action@v1.0.7
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         # user_name: marsen  # (or delete this input setting to use bot account)
