@@ -7,12 +7,12 @@ tags:
 
 ## 前情提要
 
-GitHub Actions 是一個強大的自動化工作流程工具，可讓您在 GitHub 存儲庫中執行各種自動化任務。　　
-它允許您根據事件觸發工作流程，例如提交代碼或創建拉取請求。　　
-您可以使用預設的操作或自定義操作來建立工作流程，並將其用於自動化測試、部署、持續集成等開發流程。　　
+GitHub Actions 是一個強大的自動化工作流程工具，可讓您在 GitHub 存儲庫中執行各種自動化任務。  
+它允許您根據事件觸發工作流程，例如提交代碼或創建拉取請求。  
+您可以使用預設的操作或自定義操作來建立工作流程，並將其用於自動化測試、部署、持續集成等開發流程。  
 GitHub Actions 提供了一個靈活、可擴展和可自訂的方式來增強您的開發工作流程。
 
-而我實務上的情境是用來寫 Blog，並進行自動部署，而我注意到了一個警告訊息
+而我實務上的情境是用來寫 Blog，並進行自動部署，而我注意到了一個警告訊息。
 
 ```shell
 Warning: The `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see: https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
@@ -27,7 +27,8 @@ Warning: The `set-output` command is deprecated and will be disabled soon. Pleas
 
 ### 補充
 
-實際上根據 Github 觀測數據顯示，這些命令的使用率相當高。考慮到受影響的客戶數量，而推遲了移除的時間。
+實際上根據 Github 觀測數據顯示，這些命令的使用率相當高。  
+考慮到受影響的客戶數量，而推遲了移除的時間。
 
 ## 我的情況
 
@@ -57,8 +58,8 @@ Deploy 直接用了我的另一專案進行部署，內部的工作簡單的說�
 3. 執行相關指令 ex: `hexo g`
 4. 部署完成印出成功訊息
 
-問題就出在這個第四步，在 Github Runner 啟動的 image 執行過程的輸出，　　
-並不會顯示在 Action Steps 的 Output 資料之中。
+問題就出在這個第四步，在 Github Runner 啟動的 image 執行過程的輸出，  
+並不會顯示在 Action Steps 的 Output 資料之中。  
 所以在這個專案多作一步 `Get the output` 來印出這個訊息。
 
 ```yaml
@@ -67,7 +68,7 @@ Deploy 直接用了我的另一專案進行部署，內部的工作簡單的說�
     echo "${{ steps.deploy.outputs.notify }}"
 ```
 
-可以知道我們的訊息是放在 `steps.deploy.outputs.notify` 之中，
+可以知道我們的訊息是放在 `steps.deploy.outputs.notify` 之中，  
 而原始接出資料的方式如下，這個作法即將被逃汰了(為了避免無意間的資訊外洩)
 
 ```shell
