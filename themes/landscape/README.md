@@ -8,8 +8,8 @@ A brand new default theme for [Hexo].
 
 ### Install
 
-``` bash
-$ git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape
+```bash
+git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape
 ```
 
 **Landscape requires Hexo 2.4 and above.**
@@ -20,14 +20,14 @@ Modify `theme` setting in `_config.yml` to `landscape`.
 
 ### Update
 
-``` bash
+```bash
 cd themes/landscape
 git pull
 ```
 
 ## Configuration
 
-``` yml
+```yml
 # Header
 menu:
   Home: /
@@ -41,11 +41,11 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- category
-- tag
-- tagcloud
-- archives
-- recent_posts
+  - category
+  - tag
+  - tagcloud
+  - archives
+  - recent_posts
 
 # Miscellaneous
 google_analytics:
