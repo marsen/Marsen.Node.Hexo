@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記] GCP 使用 IAP 連線 VM"
+title: "[踩雷筆記] 移除 VM 外部 IP 後 GCS 檢查異常的問題"
 date: 2023/07/12 17:57:23
 tags:
   - 踩雷筆記
@@ -12,7 +12,7 @@ tags:
 我們主要使用的工具是 `gcloud` 並且在 VM 上設定了某個 Service Account，  
 並且一切運作順利。
 
-某日因為資安考量我們移除了 VM 的 External IP，而搬檔的排程就異常了。  
+某日因為資安考量我們移除了 VM 的 External IP，而搬檔到 GSC 的排程就異常了。  
 我們簡單使用以下指令作檢查
 
 ```shell
