@@ -1,5 +1,5 @@
 ---
-title: " [踩雷筆記] Gitlab CI 執行 Command 結果與本地環境不一致(草稿)"
+title: " [踩雷筆記] Gitlab CI 執行 Command 結果與本地環境不一致"
 date: 2023/07/31 17:16:56
 tags:
   - 踩雷筆記
@@ -7,9 +7,9 @@ tags:
 
 ## 前情提要
 
-在建立 CI 的一個目標是讓繁鎖的工作流程自動化，  
-而自動化的前題是標準化，而自動化的未來是可以規模化。
-每一次的自動化，就像是在為工作流程添加加速器
+我們建立 CI 的一個目標是讓繁鎖的工作流程自動化，  
+而自動化的前題是標準化，而自動化的未來是可以規模化。  
+每一次的自動化，就像是在為工作流程添加柴火，讓未來的的每一步可以走的更穩更快。
 
 ## 問題
 
@@ -38,20 +38,32 @@ bash: pm2: command not found
 
 ## 根本原因
 
-原來所謂的 shell，有分為 Interactive 與 Non-Interactive 兩種，
-這兩種的取得的基本設定(Path)，不會一樣，導致即使用了相同的帳號登入了相同的機器，  
-能夠運行的指令可能還是不一樣。
+原來在 Unix-like 系統中，shell 分為 Interactive Shell（互動式）和 Non-Interactive Shell（非互動式）。  
+兩者環境變數和 PATH 不同，導致在 CI 或遠程機器上執行命令可能與本地不一致
+
+查詢了一下兩者的 PATH 如下
+
+Interactive Shell
+
+> /home/gitlab-runner/.nvm/versions/node/v20.4.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Non-Interactive Shell
+
+> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+明顯可見的差異在於`NVM`的路徑設定,這個 PATH 是在安裝 `NVM` 時被加上去的
 
 ## 解法
+
+我們可以選擇重新 export NVM_DIR 這個作法
 
 ```shell
 - ssh -i ~/.ssh/id_rsa gitlab-runner@$VM 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" &&
       pm2 restart app.js
 ```
 
-這裡其實有多種解法，而我選擇了重新 export NVM_DIR 這個作法。
-
-另一種作法會多上一層 shell 我覺得較不易理解
+另一種作法會多上一層 shell，並再次執行互動式的 bash 我覺得較不易理解  
+不好維護，故不採用。
 
 ```shell
 - ssh -i ~/.ssh/id_rsa gitlab-runner@$VM 'bash -i -l -c "pm2 restart app.js"'
@@ -59,4 +71,6 @@ bash: pm2: command not found
 
 ## 參考
 
-- <https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html>
+- [What is an Interactive Shell?](https://www.gnu.org/software/bash/manual/html_node/What-is-an-Interactive-Shell_003f.html)
+
+(fin)
