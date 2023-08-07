@@ -150,6 +150,8 @@ function sendMessage(msg) {
 
 ## 後端實作，只送不收
 
+使用技術: php
+
 ```php
 <?php
 include "./vendor/autoload.php";
@@ -172,7 +174,12 @@ $client->close();
 ## 後記
 
 實務上在股票看盤即時更新、多人聊天室、多人網頁遊戲上或許十分有用，  
-但實際上在這此的案例上就有些大材小用了。當作學習。
+但實際上在這此的案例上就有些大材小用了，先當作學習了。  
+在查找資料的過程有[一段話](https://www.quora.com/What-is-the-best-language-to-program-a-websocket-server-in)很受用,  
+我稍作總結如下：
+當討論到 WebSocket 時，不應用 Http 的標準去審視它，  
+更應該關注這些 Connection 會持續連接多久? Connection 之間交互的行為是什麼?　　
+是運算密集的行為還是讀寫密集的行為？…等等，才是你決策的關鍵。
 
 ## 參考
 
