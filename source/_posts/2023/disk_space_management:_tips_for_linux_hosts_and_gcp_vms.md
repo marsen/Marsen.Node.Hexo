@@ -1,5 +1,5 @@
 ---
-title: " [實作筆記]管理 Linux 主機與 GCP VM 的磁碟"
+title: " [實作筆記] 管理 Linux 主機與 GCP VM 的磁碟"
 date: 2023/06/09 14:04:02
 tags:
   - 實作筆記
