@@ -51,5 +51,6 @@ const sayings = [
   "學習並不是追求更多的知識，而是要尋找更好的決策依據 - Charles Munger.",
   "幸福的祕密，就是去欣賞世界上所有的奇特景觀，但不要忘了湯匙裡的油。 --- 牧羊少年奇幻之旅",
   "你人生的快樂取決於你思想的品質 --- Marcus Aurelius",
-  "我們在想像中受的苦比在現實中還多 --- Lucius Annaeus Seneca minor"
+  "我們在想像中受的苦比在現實中還多 --- Lucius Annaeus Seneca minor",
+  "He who can, does. He who cannot, teaches"
 ]
