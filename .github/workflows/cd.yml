@@ -41,7 +41,7 @@ jobs:
     # Deploy hexo blog website.
     - name: Deploy
       id: deploy
-      uses: marsen/hexo-action@v1.0.9
+      uses: marsen/hexo-action@v1.0.8
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         user_name: marsen  # (or delete this input setting to use bot account)
