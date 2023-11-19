@@ -58,4 +58,10 @@ unknown block tag: youtube {% youtube XXXX %}
 3. hexo g
 4. hexo d
 
+## 參考
+
+<https://rs11.xyz/articles/2.html>
+https://hexo.io/docs/tag-plugins.html#google_vignette
+https://github.com/hexojs/hexo-tag-embed
+
 (待續)
