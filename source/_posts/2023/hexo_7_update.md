@@ -99,6 +99,10 @@ unknown block tag: youtube {% youtube XXXX %}
 3. hexo g
 4. hexo d
 
+### 檔案路徑異動
+
+hexo-util/lib 改成 hexo-util/dist
+
 ## 參考
 
 <https://rs11.xyz/articles/2.html>
