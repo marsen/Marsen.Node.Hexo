@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0"
   },
   "dependencies": {
     "hexo": "^7.0.0",
@@ -20,13 +20,14 @@
     "hexo-renderer-marked": "^6.1.1",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
+    "hexo-tag-embed": "^1.0.0",
     "hexo-tag-youku": "^1.0.2"
   },
   "devDependencies": {
     "ajv": "^8.12.0",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.53.0",
+    "eslint": "^8.54.0",
     "minimist": "^1.2.8"
   },
   "resolutions": {
