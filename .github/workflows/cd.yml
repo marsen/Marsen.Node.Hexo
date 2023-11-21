@@ -41,12 +41,12 @@ jobs:
     # Deploy hexo blog website.
     - name: Deploy
       id: deploy
-      uses: marsen/hexo-action@v1.0.8
+      uses: marsen/hexo-action@v1.0.11
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
-        # user_name: marsen  # (or delete this input setting to use bot account)
-        # user_email: admin@marsen.me  # (or delete this input setting to use bot account)
-        # commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
+        user_name: marsen  # (or delete this input setting to use bot account)
+        user_email: admin@marsen.me  # (or delete this input setting to use bot account)
+        commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
     # Use the output from the `deploy` step(use for test action)
     - name: Get the output
       run: |
