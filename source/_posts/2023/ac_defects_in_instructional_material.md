@@ -129,10 +129,11 @@ test("", async function() {
 
 當我們在測試案例為 100 時，會限入無窮迴圈，而 JavaScript 單緒的特性將無法離開這個測試，
 雖然也不會報錯…
-這驅使我加上一個測試案例，當執行次數超過 10 次時拋出例外。  
+**但這驅使我加上一個測試案例**，當執行次數超過 10 次時拋出例外。  
 而學生使用的範本，我希望儘可能不去修改它，
-這裡要對 jest 與 javascript 有足夠的理解才可以寫的好測試，  
-所幸在 AI 的加持下難度下降了。
+這裡要對 jest 與 javascript 要有足夠的理解才可以寫的好，  
+同時也需  
+所幸在這個時代，有 AI 與 google 的加持下難度下降了。
 
 最後的測試程式如下
 
@@ -192,12 +193,11 @@ describe('Guessing Game', () => {
 });
 ```
 
-給學生的原始程式如下
+給學生的出題程式
 
 ```javascript
-console.log('random is', Math.random());
 const answer = Math.floor(Math.random() * 100) + 1;
-console.log(`answer is ${answer}`);
+
 // start coding
 
 let min = 1;
@@ -207,13 +207,13 @@ let count = 1;
 
 function getResult() {
   console.log(`Guess number is ${guess}`);
-  while (guess !== answer) {
-    if () {
-      
+  while (    ) {
+    if (    ) {
+
     } else if () {
-      
+
     }
-    guess = Math.floor((max + min) / 2); //每次猜測為最大值與最小值之中間值
+
     count++;
     if (count > 10) {
       throw new Error('超過10次了，請重新開始');
@@ -223,8 +223,6 @@ function getResult() {
 }
 
 // 以下為測試檔，請勿更動
-// getResult();
-
 module.exports = {
   guess,
   answer,
@@ -233,12 +231,11 @@ module.exports = {
 };
 ```
 
-範本解答如下
+[解答範本](https://replit.com/@Marsen/10-Ci-Nei-Cai-Dui-assignment-add-test-cases-and-model-answer)
 
 ```javascript
-console.log('random is', Math.random());
 const answer = Math.floor(Math.random() * 100) + 1;
-console.log(`answer is ${answer}`);
+
 // start coding
 
 let min = 1;
@@ -256,10 +253,8 @@ function getResult() {
       min = guess; //猜太小取代最小值
       console.log(`第${count}回合，您猜${guess}，太小了，請猜介於${min}~${max}之間的數字`);
     }
-    guess = Math.floor((max + min) / 2); //每次猜測為最大值與最小值之中間值
-    if (max - min === 1) {
-      guess = max; // 當 max 和 min 只差 1 時，將 guess 設為 max
-    }
+    guess = (max === min + 1) ? max : Math.floor((max + min) / 2);
+
     count++;
     if (count > 10) {
       throw new Error('超過10次了，請重新開始');
@@ -269,8 +264,6 @@ function getResult() {
 }
 
 // 以下為測試檔，請勿更動
-// getResult();
-
 module.exports = {
   guess,
   answer,
@@ -281,12 +274,13 @@ module.exports = {
 
 ## 學習與教訓
 
-整個課程的調整與測試改寫，大概花了我 4~8 小時處理。
-當然有些部份可能是我過度完美化了，但是如果需要與製作教材的人討論，
+整個課程的調整與測試改寫，大概花了我 4~12 小時處理。
+有些部份是我較要求完美化了，但是如果需要與製作教材的人討論，
 整個時間可能會更久。這題目我有興趣就順手解決了。
-不過可惜的是，只算 A 校的制度下這個調整我拿不到合理的費用。
+可惜的是，我拿不到任何費用。
 
 也再一次印証 AI 的強大，未來的人材需要有更高的整合能力，  
 寫測試寫程式，讀技術文章賺取資訊落的錢應該會越來越難賺。
+但是能高度整合的人應該會更為搶手。
 
 (fin)
