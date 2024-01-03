@@ -73,4 +73,8 @@ sudo systemctl status clamav-daemon
 
 這樣，您可以確保 ClamAV 已經更新、服務已經啟動，並檢查服務的當前運行狀態。
 
+## 參考
+
+- <https://blog.yslifes.com/archives/3129>
+
 (fin)
