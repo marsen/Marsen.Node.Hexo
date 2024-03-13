@@ -186,6 +186,7 @@ deploy-prod:
 - <https://www.youtube.com/watch?v=4vajaXzHN08>
 - [GCP IAM generateAccessToken](https://cloud.google.com/iam/docs/reference/credentials/rest/v1/projects.serviceAccounts/generateAccessToken)
 - [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest)
+- [Workload 可能的資安風險:How Attackers Can Exploit GCP’s Multicloud Workload Solution](https://ermetic.com/blog/gcp/how-attackers-can-exploit-gcps-multicloud-workload-solution/)
 - OIDC 相關
   - [OIDC(OpenID Connection)](https://hackmd.io/@Burgess/rkjLdxbmU#)
   - [Ory - OAuth2 and OpenID Connect](https://www.ory.sh/docs/oauth2-oidc)
