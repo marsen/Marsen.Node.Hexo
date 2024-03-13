@@ -195,6 +195,10 @@ deploy-prod:
   - [彻底搞懂OAuth2.0第三方授权免登原理](https://juejin.cn/post/7340481613144293395)
   - [認識 OAuth 2.0：一次了解各角色、各類型流程的差異](https://www.technice.com.tw/experience/12520/)
   - [Google Oauth2 API Explained](https://medium.com/@pumudu88/google-oauth2-api-explained-dbb84ff97079)
+  - [深入淺出 OpenID Connect (一)](https://shuninjapan.medium.com/%E6%B7%B1%E5%85%A5%E6%B7%BA%E5%87%BA-openid-connect-%E4%B8%80-8701bbf00958)
+  - [Use Workload Identity Federation with another GCP project](https://medium.com/google-cloud/use-workload-identity-federation-with-another-gcp-project-98dc3b1c236c)
+  - [How does the GCP Workload Identity Federation work with Github Provider?](https://medium.com/google-cloud/how-does-the-gcp-workload-identity-federation-work-with-github-provider-a9397efd7158)
+  - [How to use GCP services securely from AWS with Workload Identity Federation](https://medium.com/@derek10cloud/how-to-use-gcp-services-securely-from-aws-with-workload-identity-federation-cc15fd8d7960)
 - [實作筆記] Gitlab CI/CD 與 GCP 相關文章
   - [架構全貌](https://blog.marsen.me/2023/04/13/2023/gitlab_ci_and_gcp_vm/)
   - [建立 Web Server VM](https://blog.marsen.me/2023/04/14/2023/gitlab_ci_and_gcp_vm_create_server/)
