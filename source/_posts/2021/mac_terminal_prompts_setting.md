@@ -5,6 +5,10 @@ tags:
   - 實作筆記
 ---
 
+## 2024更新
+
+重寫此文，請[參考]()，部份資訊仍有用途故，舊文不刪
+
 ## 前情提要
 
 3 年前寫過[如何讓 windows 也有美美命令提示視窗](https://blog.marsen.me/2018/11/25/2018/colorfull_cmder/),  
@@ -18,7 +22,7 @@ tags:
 
 - 下載 iTerm2
 - 設定 iTerm2
-- 安裝 oh-my-zsh
+- ~~安裝 oh-my-zsh~~
 - 安裝 powerlevel10k
 
 ## 第一步 下載並安裝 [iTerm2](https://iterm2.com/downloads.html)
