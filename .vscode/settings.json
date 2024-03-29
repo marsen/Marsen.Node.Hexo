@@ -18,7 +18,9 @@
         "Pointlike",
         "userdel",
         "usermod",
-        "vimrc"
+        "vimrc",
+        "zimfw",
+        "zimrc"
     ],
     "editor.fontFamily": "'JetBrains Mono',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,

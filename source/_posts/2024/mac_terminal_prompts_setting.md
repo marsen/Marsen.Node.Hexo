@@ -5,16 +5,12 @@ tags:
   - 實作筆記
 ---
 
-## 2024更新
-
-重寫此文，部份資訊仍有用途，故舊文不刪
-
 ## 前情提要
 
-參考[前文](https://blog.marsen.me/2021/07/01/2021/mac_terminal_prompts_setting/)，受同事啟發，改用 zim 取代 oh-my-zsh，
-用更高效與精煉的方式設定 terminal 環境，
-看看下面的小故事與 [Zim 的官網](https://zimfw.sh/#install)，
-這就我選擇更換的原因。
+參考[前文](https://blog.marsen.me/2021/07/01/2021/mac_terminal_prompts_setting/)，受同事啟發，改用 zim 取代 oh-my-zsh，  
+用更高效與精煉的方式設定 terminal 環境，  
+看看下面的小故事與 [Zim 的官網](https://zimfw.sh/#install)，  
+這就我選擇更換的原因。  
 
 ### 小故事
 
@@ -37,18 +33,20 @@ Zim 還提供了各種主題和模塊，並且易於安裝和管理。
 
 ### 設定 iTerm2 的外觀
 
-1. 從網站 iTerm2-Color-Schemes (<https://github.com/mbadolato/iTerm2-Color-Schemes>) 下載你喜歡的配色方案，例如 "DimmedMonokai.itermcolors"。
-2. 開啟 iTerm2，點擊菜單欄的 "iTerm2"，選擇 "Preferences"。
-3. 在偏好設定視窗中，選擇 "Profiles" 選項卡，然後選擇你要更改配色方案的會話配置文件。
-4. 在 "Colors" 選項卡下，點擊 "Color Presets" 按鈕，選擇 "Import..."。
-5. 找到剛才下載的配色方案檔案，例如 "DimmedMonokai.itermcolors"，點擊 "Open"。
-6. 選擇 "DimmedMonokai" 作為你的 iTerm2 配色方案。
+1. 從網站 iTerm2-Color-Schemes (<https://github.com/mbadolato/iTerm2-Color-Schemes>) 下載你喜歡的配色方案，  
+2. 例如 "DimmedMonokai.itermcolors"。  
+3. 開啟 iTerm2，點擊菜單欄的 "iTerm2"，選擇 "Preferences"。
+4. 在偏好設定視窗中，選擇 "Profiles" 選項卡，然後選擇你要更改配色方案的會話配置文件。
+5. 在 "Colors" 選項卡下，點擊 "Color Presets" 按鈕，選擇 "Import..."。
+6. 找到剛才下載的配色方案檔案，例如 "DimmedMonokai.itermcolors"，點擊 "Open"。
+7. 選擇 "DimmedMonokai" 作為你的 iTerm2 配色方案。
 
 ![import .itemcolors](https://i.imgur.com/d9qHicD.png)
 
 Profiles 裡有更多的設定, 字型、顏色  
 比如說, 調整啟始視窗大小與背景透明度, 可以前往 Windows 進行設定.
-更多的細部設定可以自行摸索. **記得有些效果需要手動重啟 iTerm**
+更多的細部設定可以自行摸索. 　
+**記得重新載入才能看到效果**
 
 ## 第二步, 安裝 [zim](https://zimfw.sh)
 
@@ -125,6 +123,10 @@ zmodule romkatv/powerlevel10k --use degit
 之後重啟 iTerm2 將會有一連串設定問題, 依照喜歡的設定即可,
 可以參考這個[影片](https://www.youtube.com/watch?v=JnJm4gRrWN8&t=326s),  
 如果設定完後不喜歡, 可以執行 `p10k configure` 重新設定
+比較一下，效果我覺得都不錯
+
+![爆](/../../images/2024/mac_terminal_prompts_setting_zim.png)
+![爆](/../../images/2024/mac_terminal_prompts_setting_p10k.png)
 
 ## 參考
 
