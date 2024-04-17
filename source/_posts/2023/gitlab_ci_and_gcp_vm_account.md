@@ -159,5 +159,6 @@ mark:mark：擁有者和群組名之間使用冒號分隔，這裡將 /www/api �
   - [機敏資料的處理](https://blog.marsen.me/2023/05/29/2023/gitlab_ci_and_gcp_vm_secret_config/)
   - [錯誤處理](https://blog.marsen.me/2023/11/16/2023/gitlab_ci_error_handle/)
   - [Workload Identity Federation](https://blog.marsen.me/2024/03/13/2024/gitlab_ci_and_gcp_workload_federation/)
+  - [Cloud Run](https://blog.marsen.me/2024/04/17/2024/gitlab_ci_and_gcp_cloud_run/)
 
 (fin)
