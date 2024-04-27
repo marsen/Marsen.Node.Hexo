@@ -1,5 +1,5 @@
 ---
-title: " [實作筆記] Gitlab CI/CD 與 GCP - Cloud Run"
+title: " [實作筆記] Gitlab CI/CD 與 GCP - Cloud Run 方案選擇過程記錄"
 date: 2024/04/17 10:18:25
 tags:
   - 實作筆記
@@ -52,7 +52,30 @@ Cloud Run 較適合有點複雜度，但是可以容器化的應用。
 用　`GCP Workload Identity Federation` 管理 `Service Account`  
 管理的對像有 2 個，CI 的 Service Account 與執行程式的 Cloud Run 的 Service Account.  
 
-後續有考慮透過 Cloud Run 提供 `Swagger` 之類的 API 文檔，但現階段先共享 `Postman` 資訊處理。  
+後續有考慮透過 Cloud Run 提供 `Swagger` 之類的 API 文檔，但現階段先共享 `Postman` 資訊處理。
+
+#### 20240427 更新
+
+我的 CI 腳本如下  
+
+```yaml
+export CLOUDSDK_AUTH_ACCESS_TOKEN={provider by workload identify federation}
+gcloud builds submit --tag your-registry/your-app:latest .
+gcloud run services update your-app --image=your-registry/your-app:latest 
+```
+
+我的 Gitlab Runner 是透過 GCP 上 A Project 的 VM 建立並註冊的，  
+而我的 Cloud Run 需要部署並運作在 GCP B Project 上，  
+預設執行的身份會是 AProj 的 Compute Engine default service account，以下簡稱 A_CE_Account，  
+而 `CLOUDSDK_AUTH_ACCESS_TOKEN` 代表的是 B Project 的 Gitlab Runner Service Account，以下簡稱 B_GR_Service_Account，  
+另外在運作 B Project 的 Cloud Run 需要的是 B Project 的 Cloud Run Service Account，以下簡稱　B_CR_Service_Account，  
+
+Gitlab Runner 在執行時，執行 `gcloud auth list` 會顯示 `A_CE_Account`，  
+但是由於有設定 `CLOUDSDK_AUTH_ACCESS_TOKEN`，所以相關命令的執行身份是　`B_GR_Service_Account`，  
+這會有足夠的權限執行　`gcloud builds submit --tag your-registry/your-app:latest .`  
+但是沒有權限執行　`gcloud run services update your-app --image=your-registry/your-app:latest`  
+原因是 Cloud Run 的執行身份是 `B_GR_Service_Account`，  
+為此，我們需要賦予 `B_GR_Service_Account` 角色 `Service Account User`
 
 ## 參考關鍵字
 
