@@ -1,5 +1,5 @@
 ---
-title: " [實作筆記] 清理 CI/CD(Gitlab-runner) "
+title: " [實作筆記] 清理 CI/CD (Gitlab-runner) "
 date: 2024/04/17 10:25:21
 tags:
   - 實作筆記
