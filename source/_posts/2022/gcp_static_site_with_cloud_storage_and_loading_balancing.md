@@ -98,7 +98,7 @@ New Principals > 選擇 allUsers > Storage Object Viewer.
 - Point your domain to your load balancer using an A record. → 未處理
 - Test the website.
 
-## CI/CD 的相關設定
+## CI/CD 的相關設定　(已過時)
 
 參考以下部份的 .gitlab-ci.yml 檔  
 非常簡單，只需要 `gsutil rsync -R` 將前一個 job 建置的檔案推到 Cloud Storage 即可
@@ -116,7 +116,7 @@ deploy-job: # This job runs in the deploy stage.
     - echo "Application successfully deployed."
 ```
 
-## 其它
+## 其它（已過時）
 
 這裡仍有一個未知的設定，gsutil 命令會需要權限才能對 Cloud Storage 寫入，  
 如何讓 Gitlab-Runner 底下的 Container 擁有指定的 GCP 權限呢 ?  
