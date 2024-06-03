@@ -20,7 +20,7 @@ gcloud storage ls
 ```
 
 這個指令會列出我們 GCS 上的資源，  
-當 VM 有 External IP 時一切運作正常，而移除時會豪無回應。
+當 VM 有 External IP 時一切運作正常，而移除時會無回應。
 
 ## 解決方法
 
