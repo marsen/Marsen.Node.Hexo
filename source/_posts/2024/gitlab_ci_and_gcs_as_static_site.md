@@ -1,5 +1,5 @@
 ---
-title: " [踩雷筆記] Gitlab CI/CD 與 GCP - 靜態網站部署整合"
+title: " [踩雷筆記] Gitlab CI/CD 與 GCP - 靜態網站部署整合 404 與 `/`"
 date: 2024/05/14 11:42:53
 tags:
   - 實作筆記
