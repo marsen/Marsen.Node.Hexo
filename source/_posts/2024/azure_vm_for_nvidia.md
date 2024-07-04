@@ -115,6 +115,33 @@ sudo reboot
   nvidia-smi
   ```
 
+　看到下面的畫面就是成功
+  
+  ```sh
+  > nvidia-smi
+  Mon Jul  1 09:21:24 2024
+  +---------------------------------------------------------------------------------------+
+  | NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
+  |-----------------------------------------+----------------------+----------------------+
+  | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+  | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+  |                                         |                      |               MIG M. |
+  |=========================================+======================+======================|
+  |   0  Tesla T4                       Off | 00000001:00:00.0 Off |                  Off |
+  | N/A   31C    P8               9W /  70W |    140MiB / 16384MiB |      0%      Default |
+  |                                         |                      |                  N/A |
+  +-----------------------------------------+----------------------+----------------------+
+
+  +---------------------------------------------------------------------------------------+
+  | Processes:                                                                            |
+  |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+  |        ID   ID                                                             Usage      |
+  |=======================================================================================|
+  |    0   N/A  N/A      1095      G   /usr/lib/xorg/Xorg                          130MiB |
+  |    0   N/A  N/A      1356      G   /usr/bin/gnome-shell                          7MiB |
+  +---------------------------------------------------------------------------------------+
+  ```
+
 ## 參考
 
 - [Sizes for virtual machines in Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview)
