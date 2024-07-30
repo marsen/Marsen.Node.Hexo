@@ -107,5 +107,6 @@ Tue Jul 30 08:07:18 2024
 - [Ubuntu 網站](https://packages.ubuntu.com/focal/kernel/)
 - [NVIDIA drivers installation | Ubuntu](https://ubuntu.com/server/docs/nvidia-drivers-installation)
 - [參考官方文件 **3.9. Ubuntu**](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#ubuntu)
+- [前篇Blog](https://blog.marsen.me/2024/07/03/2024/azure_vm_for_nvidia/)
 
 (fin)
