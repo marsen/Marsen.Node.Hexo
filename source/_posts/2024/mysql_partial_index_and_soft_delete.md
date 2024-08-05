@@ -13,16 +13,16 @@ date: 2024/08/05 13:53:10
 ### 表格設計
 
 ```sql
-CREATE TABLE Demo_User (
+CREATE TABLE User (
     Id SERIAL PRIMARY KEY,
-    Account VARCHAR(255) NOT NULL,
-    IsActive BOOLEAN DEFAULT TRUE
+    Username VARCHAR(255) NOT NULL,
+    IsDeleted BOOLEAN DEFAULT TRUE
 );
 ```
 
-簡化設計的用戶表格 Demo_User，其中包含 ID、ACCOUNT 和 IsACTIVE 欄位。  
-依商業需求，當 IsActive 為 1 時，Account 必須唯一。  
-而且很有可能會有多筆相同的帳號被刪除，當 IsActive 為 0 時，Account 不會限制只有一筆（允許多筆）
+簡化設計的用戶表格包含 Id、Username 和 IsDeleted 欄位。  
+依商業需求，當 IsDeleted 為 0 時，Username 必須唯一。  
+而且很有可能會有多筆相同的帳號被刪除，當 IsDeleted 為 1 時，Account 不會限制只有一筆（允許多筆）
 
 後端工程師建議使用觸發器（Trigger）或在應用層（Backend）實現這個約束，  
 根據我的記憶，在微軟的 SQL Server 中，有一種稱為「條件約束」的設定，能夠針對特定條件創建索引。
@@ -105,31 +105,32 @@ SET QUOTED_IDENTIFIER ON;
 SET ANSI_NULLS ON;
 
 -- 創建表
-CREATE TABLE Demo_User (
+CREATE TABLE [User] (
     Id INT IDENTITY(1000, 1) PRIMARY KEY,
-    Account VARCHAR(255) NOT NULL,
-    IsActive BIT DEFAULT 1
+    Username VARCHAR(255) NOT NULL,
+    IsDeleted BIT DEFAULT 0
 );
 
 -- 創建篩選唯一索引
-CREATE UNIQUE INDEX unique_active_account ON Demo_User(Account)
-WHERE IsActive = 1;
+CREATE UNIQUE INDEX unique_active_account ON [User](Username)
+WHERE IsDeleted = 0;
 
 -- 插入範例數據
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user1', 1);  -- 成功
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user2', 1);  -- 成功
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user3', 0);  -- 成功，因為 IsActive = 0 不受唯一索引限制
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user4', 1);  -- 成功
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user5', 0);  -- 成功，因為 IsActive = 0 不受唯一索引限制
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user1', 0);  -- 成功
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user2', 0);  -- 成功
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user3', 1);  -- 成功，因為 IsDeleted = 1 不受唯一索引限制
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user4', 0);  -- 成功
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user5', 1);  -- 成功，因為 IsDeleted = 1 不受唯一索引限制
 
--- 測試重複的 Account 插入，應該失敗
--- INSERT INTO Demo_User (Account, IsActive) VALUES ('user1', 1);  -- 失敗，因為 user1 已經存在且 IsActive = 1
+-- 測試重複的 Username 插入，應該失敗
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user1', 0);  -- 失敗，因為 user1 已經存在且 IsDeleted = 0
 
--- 測試重複的 Account 插入，但 IsActive = 0，應該成功
-INSERT INTO Demo_User (Account, IsActive) VALUES ('user1', 0);  -- 成功，因為 IsActive = 0 不受唯一索引限制
+-- 測試重複的 Username 插入，但 IsDeleted = 1，應該成功
+INSERT INTO [User] (Username, IsDeleted) VALUES ('user1', 1);  -- 成功，因為 IsDeleted = 1 不受唯一索引限制
 
 -- 檢查插入結果
-SELECT * FROM Demo_User;
+
+SELECT * FROM [User];
 ```
 
 ## 小結
