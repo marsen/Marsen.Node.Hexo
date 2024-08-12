@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記] Azure Function 開關虛據機與錯誤排除"
+title: "[踩雷筆記] Azure Function 開關虛擬機與錯誤排除"
 date: 2024/08/12 14:09:10
 ---
 
