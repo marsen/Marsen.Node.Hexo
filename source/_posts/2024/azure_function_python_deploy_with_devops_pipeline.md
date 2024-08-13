@@ -1,6 +1,6 @@
 ---
 title: "[踩雷筆記] Gitlab 整合 Azure DevOps Pipeline 以 python on Azure Functions 為例"
-date: 2024/08/12 14::42:09
+date: 2024/08/13 11:17:42
 ---
 
 ## 前情提要
