@@ -10,15 +10,15 @@ date: 2024/08/13 11:17:42
 因商務需求最近開始探索第二朵雲 Azure。  
 雖然 Azure DevOps 也有提供 CI／CD 與 Repo 的解決方案;  
 但為了減少邏輯與認知負擔，我希望能將 GitLab 與 Azure DevOps Pipeline 進行整合。  
-具體來說，如果我要在 Azure Functions 上部署 Python 應用程式，  
-我應該一樣將我的程式往 Gitlab 推送就好，而不用特別區分這個服務在哪朵雲上，需要不同的部署方式。  
-面對這樣的需求，我想找到最簡單且高效的解決方案。  
+具體來說，這次要在 Azure Functions 上部署 Python 應用程式，  
+我想要 RD 往 Gitlab 推送並執行 CI/CD 就好，而不用特別因為服務在不同的雲上，而需要推送到不到同 Repo 中 。  
+面對這樣的需求，下面是我找到的解決方案。  
 
 ## 實作
 
-以這次的例來說，我需要控管 Azure 的 Serverless 解決方案「Azure Functions」的程式。  
+以這次的例子來說，我需要控管 Azure 的 Serverless 解決方案「Azure Functions」的程式。  
 但是 Azure DevOps Pipeline 有相當高度的整合 Azure Cloud，只要能將程式推送到 Azure DevOps Repo，  
-部署就會相當簡單。
+部署就會相當簡單，**而無需處理繁鎖的授權問題**。
 CI／CD 流程大致如下
 
 - 建立相對應的權限與憑証並提供給 Gitlab-Runner
