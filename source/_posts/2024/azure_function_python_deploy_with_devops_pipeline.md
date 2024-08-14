@@ -126,7 +126,7 @@ pip3.6 install setuptools
 pip3.6 install -r requirements.txt
 ```
 
-需要修改成才能作用，不確定 Azure 會提出修正或新的 template
+需要修改成才能作用，不確定 Azure 會不會提出修正或新的 template
 
 ```shell
 python3.10 -m venv .python_packages
