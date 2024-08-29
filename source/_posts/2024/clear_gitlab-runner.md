@@ -51,6 +51,74 @@ NM;DR
   - 可以的話想整入 CI/CD 作業中，但在 DinD[*2] 的環境不確定怎麼實作
 - log 與 cache 也有看到較高的資料成長曲線，未來也要納入評估
 
+### 20240829 更新設置定期清理腳本
+
+建立 cleanup.sh，並將其放置在 root 根目錄下：
+
+```bash
+sudo cp /path/to/cleanup.sh /root/
+sudo chmod +x /root/cleanup.sh
+```
+
+cleanup.sh 的內容：
+
+```bash
+#!/bin/bash
+
+# 清理未使用的 Docker 資源
+sudo docker system prune -a --force --volumes
+
+# 清理未使用的 Docker 卷
+sudo docker volume prune --force
+
+# 縮減系統日誌大小
+sudo journalctl --vacuum-time=30d
+```
+
+#### 設置排程
+
+以 root 用戶創建定期排程以每月執行清理腳本：
+
+打開 cron 編輯器：
+
+```bash
+sudo crontab -e
+```
+
+在 cron 編輯器中添加以下行：
+
+```bash
+0 0 1 * * /root/cleanup.sh > /root/cleanup.log 2>&1
+```
+
+- 0 0 1 * *：每月的第一天午夜執行。
+- /root/cleanup.sh：執行清理腳本。
+- > /root/cleanup.log 2>&1：將輸出和錯誤重定向到 /root/cleanup.log。
+
+#### 驗證和檢查
+
+手動運行清理腳本以驗證它是否按預期工作：
+
+```bash
+sudo /root/cleanup.sh
+```
+
+#### 查看 cron 日誌
+
+檢查 cron 日誌以確保定期任務已成功運行：
+
+在 Ubuntu/Debian 系統上：
+
+```bash
+sudo grep CRON /var/log/syslog
+```
+
+使用 journalctl（如果使用 systemd）：
+
+```bash
+sudo journalctl -u cron
+```
+
 ## 註解
 
 1. Gitlab-Runner 是　Gitlab Solution 中執行工作的實體，可以是多台，此案只有單台
