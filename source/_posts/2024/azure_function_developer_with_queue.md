@@ -115,6 +115,65 @@ func start
 
 這條命令會啟動你的本地 Azure Functions 執行環境，使你可以在本機上測試和調試你的函數。
 
+### 3. 代碼檢查和格式化
+
+#### 安裝與配置 Pylint
+
+Pylint 是一個 Python 代碼靜態分析工具，可以檢查代碼中的錯誤和不符合最佳實踐的地方。首先，安裝 Pylint：
+
+```terminal
+pip install pylint
+```
+
+配置 Pylint，創建或修改 .pylintrc 文件來包含你的檢查規則：
+
+```conf
+[MESSAGES CONTROL]
+disable=C0114,C0115,C0116
+
+[FORMAT]
+max-line-length=120
+```
+
+使用 Pylint 進行代碼檢查
+
+運行以下命令來檢查所有 Python 文件：
+
+```terminal
+pylint *.py
+```
+
+#### 安裝與使用 Black 進行代碼格式化
+
+Black 是一個自動格式化 Python 代碼的工具，能夠保持代碼風格的一致性。首先，安裝 Black：
+
+```terminal
+pip install black
+```
+
+格式化整個專案的所有 Python 文件：
+
+```terminal
+black .
+```
+
+整合檢查和格式化工具
+
+你可以將代碼檢查和格式化工具整合到一個命令中，這樣可以簡化工作流程：
+
+```terminal
+pylint *.py && black .
+```
+
+#### 例外
+
+在 Azure Functions 中，某些函數參數不符合 Pylint 的命名規則，這可能會導致部署失敗。你可以忽略這些特定的 Pylint 警告，例如：
+
+```python
+# pylint: disable=C0103
+def dispatch_worker(inputQueue: func.QueueMessage, watchQueue: func.Out[str]):
+```
+
 ## 問題與排除
 
 - 如果 Azurite 無法啟動，請檢查是否已正確安裝 Azurite 以及是否有其他應用程序佔用了相關端口。
