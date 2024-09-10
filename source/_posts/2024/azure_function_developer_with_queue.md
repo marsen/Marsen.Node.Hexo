@@ -8,13 +8,15 @@ date: 2024/09/09 17:47:01
 Azure Functions 提供了在雲端執行無伺服器函數的強大能力，  
 但在本地環境中開發和測試這些函數可以大大提高開發效率。  
 為了模擬 Azure Storage 服務，我們可以使用 Azurite，這是一個 Storage 的本地模擬器。  
-本文將指導你如何在本機上設置 Azure Functions 開發環境建立本機的 Queue 進行開發。
+本文將記錄我如何在本機上設置建立本機的 Azurite Queue 進行開發。
+
+註:本文假設你已具備[建立 Azure Functions 的前置基礎](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-azure-developer-cli?pivots=programming-language-python&tabs=linux%2Cget%2Cbash%2Cpowershell)
 
 ## 實作記錄
 
 ### 1. 建立和設定本機開發環境
 
-安裝 Azurite
+#### 安裝 Azurite
 
 Azurite 是用於模擬 Azure Storage 服務的本地工具，您可以通過以下命令進行安裝：
 
@@ -22,7 +24,7 @@ Azurite 是用於模擬 Azure Storage 服務的本地工具，您可以通過以
 npm install -g azurite
 ```
 
-啟動 Azurite
+#### 啟動 Azurite
 
 啟動 Azurite 並指定 Storage 位置和日誌文件。
 
@@ -41,11 +43,12 @@ Azurite Queue service is starting at http://127.0.0.1:10001
 Azurite Table service is starting at http://127.0.0.1:10002
 ```
 
-設定本機 Azure Storage 連線字串
+#### 設定本機 Azure Storage 連線字串
 
 為了方便操作本機 Azure Storage，  
 我們需要設置 AZURE_STORAGE_CONNECTION_STRING 環境變數：  
 這裡要查看[微軟官方文件取得地端連線字串](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#connect-to-azurite-with-sdks-and-tools)  
+你們可以看到
 這個例子中我們只使用了 Azurite Queue Service  
 
 ```terminal
@@ -115,7 +118,7 @@ func start
 
 這條命令會啟動你的本地 Azure Functions 執行環境，使你可以在本機上測試和調試你的函數。
 
-### 3. 代碼檢查和格式化
+### 3. 加碼，代碼檢查和格式化
 
 #### 安裝與配置 Pylint
 
