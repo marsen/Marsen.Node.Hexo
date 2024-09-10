@@ -48,7 +48,7 @@ Azurite Table service is starting at http://127.0.0.1:10002
 為了方便操作本機 Azure Storage，  
 我們需要設置 AZURE_STORAGE_CONNECTION_STRING 環境變數：  
 這裡要查看[微軟官方文件取得地端連線字串](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#connect-to-azurite-with-sdks-and-tools)  
-你們可以看到
+你們可以看到它包含了一組 AccountKey 與 Account(devstoreaccount1)
 這個例子中我們只使用了 Azurite Queue Service  
 
 ```terminal
