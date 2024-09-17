@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] 重構使用 Introduce Variable for Substring"
+title: " [學習筆記] 重構使用 Introduce Variable for Substring"
 date: 2019/07/09 20:02:13
 ---
 

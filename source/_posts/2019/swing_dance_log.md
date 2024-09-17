@@ -1,5 +1,5 @@
 ---
-title: "[生活筆記] Swing Dance 雜記"
+title: " [生活筆記] Swing Dance 雜記"
 date: 2019/11/07 17:03:56
 ---
 

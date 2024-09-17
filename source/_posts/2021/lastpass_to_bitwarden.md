@@ -1,5 +1,5 @@
 ---
-title: "[生活筆記] 拋棄 LastPass 擁抱 BitWarden"
+title: " [生活筆記] 拋棄 LastPass 擁抱 BitWarden"
 date: 2021/09/14 09:15:44
 ---
 

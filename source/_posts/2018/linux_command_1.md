@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] Linux 語法學習筆記 一"
+title: " [學習筆記] Linux 語法學習筆記 一"
 date: 2018/03/26 00:23:01
 tags:
   - Unix

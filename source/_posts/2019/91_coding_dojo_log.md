@@ -1,5 +1,5 @@
 ---
-title: "[上課筆記] 熱血 Coding Dojo 第一梯次"
+title: " [上課筆記] 熱血 Coding Dojo 第一梯次"
 date: 2019/01/13 11:17:16
 tags:
   - TDD

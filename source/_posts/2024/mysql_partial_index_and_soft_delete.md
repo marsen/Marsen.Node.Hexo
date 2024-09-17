@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] SQL 軟刪除與索引 (MySQL/MSSQL/PostgreSQL)"
+title: " [學習筆記] SQL 軟刪除與索引 (MySQL/MSSQL/PostgreSQL)"
 date: 2024/08/05 13:53:10
 ---
 

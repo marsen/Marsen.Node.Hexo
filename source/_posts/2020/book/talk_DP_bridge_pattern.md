@@ -1,5 +1,5 @@
 ---
-title: "[閱讀筆記] 大話設計模式 --- 橋接模式(Bridge Pattern)"
+title: " [閱讀筆記] 大話設計模式 --- 橋接模式(Bridge Pattern)"
 date: 2020/08/12 08:22:18
 tags:
   - 閱讀筆記

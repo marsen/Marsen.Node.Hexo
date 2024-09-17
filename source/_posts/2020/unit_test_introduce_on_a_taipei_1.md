@@ -1,5 +1,5 @@
 ---
-title: "[A社筆記] Introduce Unit Test --- 心法篇"
+title: " [A社筆記] Introduce Unit Test --- 心法篇"
 date: 2020/06/11 17:03:11
 tags:
   - 實作筆記

@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] TypeScript Omit 的用法"
+title: " [學習筆記] TypeScript Omit 的用法"
 date: 2022/09/12 10:34:53
 tags:
   - TypeScript

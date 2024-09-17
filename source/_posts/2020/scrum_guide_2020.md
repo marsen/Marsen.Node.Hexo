@@ -1,5 +1,5 @@
 ---
-title: "[活動筆記] 2020 SCRUM GUIDE UPDATE"
+title: " [活動筆記] 2020 SCRUM GUIDE UPDATE"
 date: 2020/11/20 17:32:02
 tags:
   - Scrum

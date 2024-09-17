@@ -1,5 +1,5 @@
 ---
-title: "[閱讀筆記] The Great Scrum Master 第三章"
+title: " [閱讀筆記] The Great Scrum Master 第三章"
 date: 2018/07/23 18:49:19
 tags:
   - Scrum

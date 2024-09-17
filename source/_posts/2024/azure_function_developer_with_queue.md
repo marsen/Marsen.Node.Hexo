@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Azure Function Queue Trigger 開發(以Python為例) "
+title: " [實作筆記] Azure Function Queue Trigger 開發(以Python為例) "
 date: 2024/09/09 17:47:01
 ---
 

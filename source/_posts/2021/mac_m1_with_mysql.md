@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記] MacBook M1 silicon X Docker X MySQL Image"
+title: " [踩雷筆記] MacBook M1 silicon X Docker X MySQL Image"
 date: 2021/11/05 11:31:07
 ---
 

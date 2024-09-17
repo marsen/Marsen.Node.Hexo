@@ -1,5 +1,5 @@
 ---
-title: "[翻譯] 為什麼IBM/Google/Microsoft都要在今年增加對台投資?"
+title: " [翻譯] 為什麼IBM/Google/Microsoft都要在今年增加對台投資?"
 date: 2018/04/08 23:22:20
 tags:
   - 生活筆記

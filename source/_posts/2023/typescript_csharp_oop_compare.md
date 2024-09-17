@@ -1,5 +1,5 @@
 ---
-title: "[翻譯] TypeScript 寫給 C#/Java 工程師"
+title: " [翻譯] TypeScript 寫給 C#/Java 工程師"
 date: 2023/04/09 16:50:10
 tags:
   - 實作筆記

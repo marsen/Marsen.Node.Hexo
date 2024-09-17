@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] GitHub Actions：停用 save-state 和 set-output 命令的措施"
+title: " [實作筆記] GitHub Actions：停用 save-state 和 set-output 命令的措施"
 date: 2023/07/14 18:12:02
 tags:
   - 實作筆記

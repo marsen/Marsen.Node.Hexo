@@ -1,5 +1,5 @@
 ---
-title: "[記錄]VS2015 StyleCop 誤判SA0102"
+title: " [記錄]VS2015 StyleCop 誤判SA0102"
 date: 2017/01/11 14:51:25
 tags:
   - .Net Framework

@@ -1,5 +1,5 @@
 ---
-title: "[記錄]PowerShell 初體驗"
+title: " [記錄]PowerShell 初體驗"
 date: 2016/10/21 13:27:53
 tags:
   - PowerShell

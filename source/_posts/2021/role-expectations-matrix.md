@@ -1,5 +1,5 @@
 ---
-title: "[活動筆記] Role Expectations Matrix 角色期望矩陣"
+title: " [活動筆記] Role Expectations Matrix 角色期望矩陣"
 date: 2021/01/22 16:50:07
 tags:
     - Agile
