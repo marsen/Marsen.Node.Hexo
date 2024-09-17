@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記] Hexo 網站跑版"
+title: " [踩雷筆記] Hexo 網站跑版"
 date: 2023/06/02 16:02:33
 tags:
   - CI/CD

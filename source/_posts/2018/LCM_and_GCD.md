@@ -1,5 +1,5 @@
 ---
-title: "[KATA] 最大公因數與最小公倍數"
+title: " [KATA] 最大公因數與最小公倍數"
 date: 2018/09/18 00:36:51
 tags:
   - .Net Framework

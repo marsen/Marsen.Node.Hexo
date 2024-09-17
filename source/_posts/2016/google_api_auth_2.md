@@ -1,5 +1,5 @@
 ---
-title: "[記錄]串接 GOOGLE API 取得資料(二)"
+title: " [記錄]串接 GOOGLE API 取得資料(二)"
 date: 2017/07/20 01:04:14
 tags:
   - Google

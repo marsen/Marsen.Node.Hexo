@@ -1,5 +1,5 @@
 ---
-title: "[閱讀筆記] The Great Scrum Master 第一章"
+title: " [閱讀筆記] The Great Scrum Master 第一章"
 date: 2018/07/15 10:19:08
 tags:
   - Scrum

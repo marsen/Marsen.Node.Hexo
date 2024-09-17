@@ -1,5 +1,5 @@
 ---
-title: "[AI 共筆] tsconfig 中的 tsx 設定"
+title: " [AI 共筆] tsconfig 中的 tsx 設定"
 date: 2023/03/12 20:40:10
 ---
 

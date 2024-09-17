@@ -1,5 +1,5 @@
 ---
-title: "[生活筆記] Young Marvel 1.0 小結 --- 需改善消化系統"
+title: " [生活筆記] Young Marvel 1.0 小結 --- 需改善消化系統"
 date: 2020/09/21 14:51:17
 tags:
   - 生活筆記

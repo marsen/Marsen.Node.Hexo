@@ -1,5 +1,5 @@
 ---
-title: "[內部分享]Cache 使用 Files 與 Redis"
+title: " [內部分享]Cache 使用 Files 與 Redis"
 date: 2018/09/03 15:45:42
 tags:
   - Cache

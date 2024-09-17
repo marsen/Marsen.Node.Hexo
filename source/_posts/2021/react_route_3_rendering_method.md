@@ -1,5 +1,5 @@
 ---
-title: "[翻譯] react-router 的三種渲染方法(component、render、children)"
+title: " [翻譯] react-router 的三種渲染方法(component、render、children)"
 date: 2021/10/12 11:24:46
 ---
 

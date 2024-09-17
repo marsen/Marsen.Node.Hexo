@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 初體驗設定 Nvidia GPU 的 Azure VM"
+title: " [實作筆記] 初體驗設定 Nvidia GPU 的 Azure VM"
 date: 2024/07/03 15:59:02
 ---
 

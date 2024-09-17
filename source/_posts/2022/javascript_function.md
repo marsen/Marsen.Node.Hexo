@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] JavaScript function 幾種不同的寫法"
+title: " [學習筆記] JavaScript function 幾種不同的寫法"
 date: 2022/01/13 11:59:54
 ---
 

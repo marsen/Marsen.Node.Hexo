@@ -1,5 +1,5 @@
 ---
-title: "[踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI "
+title: " [踩雷筆記] .Net專案升級 SpecRun.Runner 與調整 CI "
 date: 2018/08/27 18:42:16
 tags:
   - Unit Testing

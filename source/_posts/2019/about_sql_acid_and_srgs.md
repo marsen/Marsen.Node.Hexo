@@ -1,5 +1,5 @@
 ---
-title: "[學習筆記] SQL 大小事 Isolation Level 與 SARGs"
+title: " [學習筆記] SQL 大小事 Isolation Level 與 SARGs"
 date: 2019/12/25 02:25:55
 tags:
   - Database

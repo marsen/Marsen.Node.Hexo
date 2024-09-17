@@ -1,5 +1,5 @@
 ---
-title: "[翻譯] AHA Programming 💡"
+title: " [翻譯] AHA Programming 💡"
 date: 2020/09/30 14:44:53
 ---
 

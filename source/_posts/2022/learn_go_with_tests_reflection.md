@@ -1,5 +1,5 @@
 ---
-title: "[閱讀筆記] Learn Go with tests"
+title: " [閱讀筆記] Learn Go with tests"
 date: 2022/06/27 12:16:20
 ---
 
