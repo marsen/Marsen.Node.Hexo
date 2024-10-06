@@ -65,7 +65,7 @@ type PCGame = {
 
 ```
 
-當我們將這三個型別聯合起來形成 MusicProduct 並嘗試使用 Omit 排除 id 時，結果卻不是我們預期的。
+當我們將這三個型別聯合起來形成 GameProduct 並嘗試使用 Omit 排除 id 時，結果卻不是我們預期的。
 
 ```typescript
 type GameProduct = Game | VideoGame | PCGame;
@@ -124,7 +124,7 @@ type GameProductWithoutId =
   { name: string; systemRequirements: string; hasDLC: boolean };
 ```
 
-現在，MusicProductWithoutId 正確地成為了每個型別的 Union Type，並且成功地排除了 id 屬性。
+現在，GameProductWithoutId 正確地成為了每個型別的 Union Type，並且成功地排除了 id 屬性。
 
 ### Distributive Pick
 
