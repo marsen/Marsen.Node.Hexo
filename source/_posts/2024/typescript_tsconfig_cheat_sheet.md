@@ -7,12 +7,12 @@ tags:
 
 ## 前情提要
 
-tsconfig.json 文件是一個 TypeScript 專案的配置文件，它位於根目錄中，並定義了專案的編譯器選項。
-提供給開發人員輕鬆配置TypeScript 編譯器，並確保專案的程式碼在不同的環境中始終保持一致。
-你可以使用 `tsc --init` 指令自動產生。
-也可以參考 Matt Pocock 的[TSConfig Cheat Sheet](https://www.totaltypescript.com/tsconfig-cheat-sheet)
+tsconfig.json 文件是一個 TypeScript 專案的配置文件，它位於根目錄中，並定義了專案的編譯器選項。  
+提供給開發人員輕鬆配置 TypeScript 編譯器，並確保專案的程式碼在不同的環境中始終保持一致。  
+你可以使用 `tsc --init` 指令自動產生。  
+也可以參考 Matt Pocock 的 [TSConfig Cheat Sheet](https://www.totaltypescript.com/tsconfig-cheat-sheet)
 
-TSConfig 有上百個配置，本文將用來重點記錄一些相關的配置
+TSConfig 有上百個配置，本文將用來重點記錄一些相關的配置  
 
 ## 本文
 
@@ -84,7 +84,7 @@ TSConfig 有上百個配置，本文將用來重點記錄一些相關的配置
 
 ### Compiler Options
 
-這部份是 tsconfig 相關設定的主體，有需要時來[這裡](https://www.typescriptlang.org/tsconfig/#compilerOptions)查就好
+這部份是 tsconfig 相關設定的主體，有需要時來[這裡](https://www.typescriptlang.org/tsconfig/#compilerOptions)查就好  
 下面的例子是一些常用的設定說明:
 
 ```json
