@@ -1,8 +1,6 @@
 ---
-title: " [實作筆記] Azure Communication Services email"
-date: 2024/06/07 17:58:53
-tags:
-  - 實作筆記
+title: " [實作筆記] 個人經歷 STAR 試寫"
+date: 2024/11/04 09:22:58
 ---
 
 
