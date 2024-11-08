@@ -71,8 +71,7 @@ TypeScript 會急切地將其轉換為單純的 string，因此在 Hover 時會�
 
 ```ts
 type Race = 'human' | 'demon' | string ;
-// Hover 時會顯示：
-type Race = string
+// Hover 時會顯示： type Race = string
 ```
 
 換句話說，TypeScript 在使用前就忘記了 human 和 demon。  
@@ -80,13 +79,12 @@ type Race = string
 
 ```ts
 type Race = 'human' | 'demon' | (string & {});
-// Hover 時會顯示：
-type Race = 'human' | 'demon' | (string & {});
+// Hover 時會顯示： type Race = 'human' | 'demon' | (string & {});
 ```
 
 這樣，我們在使用 Race 型別時，TypeScript 就能記得 human 和 demon，並給出對應的建議。
 
-值得注意的是，string & {} 實際上和單純的 string 是相同的類型，因此不會影響我們傳入的任何字串：
+值得注意的是，`string & {}` 實際上和單純的 string 是相同的類型，因此不會影響我們傳入的任何字串：
 
 ```ts
   <Hero name="alice" race="human" />
@@ -103,7 +101,7 @@ type Race = 'human' | 'demon' | (string & {});
 
 總結來說，當你想允許使用者輸入任意字串但又想提供已知字串常值的自動補全建議時，可以考慮使用 `string & {}` 這個技巧：  
 
-它防止 TypeScript 過早將 string | "literal" 合併成單純的 string。  
+它防止 TypeScript 過早將 `string | 'literal'` 合併成單純的 string。  
 實際使用時行為與 string 一樣，但會多提供自動補全功能。  
 這或許不是最正式的解法，但目前仍是一個可以信賴的方式。  
 也許未來 TypeScript 能夠原生解決這個問題，但在那之前，這個小技巧可以為開發帶來便利。  
