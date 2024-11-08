@@ -8,17 +8,17 @@ tags:
 
 ## 前情提要
 
-在使用 TypeScript 時，我們常常會利用條件語句來進行 Narrowing Types，確保程式邏輯的正確性。
+在使用 TypeScript 時，我們常常會利用條件語句來收窄型別(Narrowing Types)，確保程式邏輯的正確性。
 例如:
 Narrowing Types的例子：使用 typeof
 
 ```typescript
 const processValue = (value: string | number) => {
   if (typeof value === "string") {
-    // 在這裡 TypeScript 已經收窄為 string
+    // 在這裡 TypeScript 已經收窄為 string，所以可以使用 .toUpperCase 的方法
     console.log(`String value: ${value.toUpperCase()}`);
   } else {
-    // 在這裡 TypeScript 已經收窄為 number
+    // 在這裡 TypeScript 已經收窄為 number，所以可以使用 .toFixed 的方法
     console.log(`Number value: ${value.toFixed(2)}`);
   }
 };
@@ -120,8 +120,6 @@ if (!!input) {
   console.log(input);  // input 被收窄為 string
 }
 ```
-
-因此，雖然 Boolean(input) 返回的是一個布林值，但它並沒有改變 input 的實際類型，這就導致了 Narrowing Types失敗。
 
 ## 替代方案：自定義判斷函數
 
