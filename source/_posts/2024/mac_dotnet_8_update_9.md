@@ -86,4 +86,30 @@ warning SYSLIB0051: 'Exception.Exception(SerializationInfo, StreamingContext)' �
 很簡單，依據他的建議，改用 `using Microsoft.Data.SqlClient;` 即可。  
 當然要先從 Nuget 安裝 package
 
+處理完警告後，修改所有`csproj`內的 TargetFramework 標籤內容如下:  
+
+```xml
+<TargetFramework>net9.0</TargetFramework>
+```
+
+CICD 相關的設定也要改為 dotnet 9.0
+
+像是 `.github/workflows` 腳本中的 dotnet-version
+
+```yaml
+   steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '9.0.x'
+```
+
+或是 sonarscan-dotnet 中使用的版本(這部份如果原始 repo 尚未更新，可以試著自已更新看看)
+
+```yaml
+    - name: SonarCloud Scan
+      # support dotnet9.0
+      uses: marsen/sonarscan-dotnet@v2.4.1
+```
+
 (fin)
