@@ -69,5 +69,6 @@ Targets ＞ Target tags 請設定為 `lb-health-check`
 - [GCP HEALTH CHECK CONCEPT](https://cloud.google.com/load-balancing/docs/health-check-concepts)
 - [Use health checks](https://cloud.google.com/load-balancing/docs/health-checks)
 - [Use VPC firewall rules](https://cloud.google.com/vpc/docs/using-firewalls)
+- [建立 Load Balancer 的整體架構和步驟](https://hkmci.com/zh-hant/learning-column/google-cloud-zh-hant/gcp-kol-x-master-concept-the-overall-architecture-and-procedure-for-establishing-a-load-balancer/)
 
 (fin)
