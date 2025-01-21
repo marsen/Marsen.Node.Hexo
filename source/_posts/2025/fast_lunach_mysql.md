@@ -47,12 +47,6 @@ init.sql
 CREATE DATABASE IF NOT EXISTS sample;
 USE sample;
 
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 ```
 
 ### 步驟 2: 建構與啟動容器
