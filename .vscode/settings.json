@@ -14,6 +14,7 @@
         "mc",
         "mockito",
         "Munger",
+        "ollama",
         "opencover",
         "Pointlike",
         "userdel",
