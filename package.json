@@ -17,7 +17,7 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^7.0.0",
+    "hexo-renderer-marked": "^7.0.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-tag-embed": "^1.0.0",
@@ -27,7 +27,7 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^9.21.0",
+    "eslint": "^9.22.0",
     "minimist": "^1.2.8"
   },
   "resolutions": {
