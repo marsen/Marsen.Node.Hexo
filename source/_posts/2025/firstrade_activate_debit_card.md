@@ -42,5 +42,6 @@ Firstrade Debit 卡適合那些在　Firstrade 賬戶中有至少 $25,000 存款
 
 - <https://www.firstrade.com/zh-TW/resources/guides/stocks/debit#debit01>
 - <https://rich01.com/how-to-apply-firstrade-debit-card/>
+- <https://sleepyinvest.com/firstrade-debit-card/>
 
 (fin)
