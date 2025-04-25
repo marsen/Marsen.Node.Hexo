@@ -1,5 +1,5 @@
 ---
-title: " [學習筆記] TypeScript 的 Immutable Objects 與 Record<T1,T2>
+title: " [學習筆記] TypeScript 的 Immutable Objects 與 Record<T1,T2>"
 date: 2025/01/31 15:41:28
 tags:
   - 學習筆記
