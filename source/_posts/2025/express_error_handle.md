@@ -213,9 +213,12 @@ app.listen(3000, () => {
 | 類型           | 會自動處理？         | 解法                                      |
 | -------------- | -------------------- | ----------------------------------------- |
 | 同步錯誤       | ✅ Express 自動處理   | 直接 throw 就好                           |
-| async/await 錯誤 | ❌ Express 4 不會處理<br>✅ Express 5 自動處理 | 用 asyncWrapper（Express 4）<br>或直接寫 async function（Express 5） |
+| async/await 錯誤 | ❌ Express 4 不會處理 | 用 asyncWrapper（Express 4） |
+|                  | ✅ Express 5 自動處理 | 或直接寫 async function（Express 5） |
 | Stream error   | ❌ 完全不會處理       | 監聽 stream.on('error', next)             |
 
 ## 參考
 
 - <https://github.com/marsen/express-handle-err>
+
+(fin)
