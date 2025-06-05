@@ -117,7 +117,7 @@ tags:
 
 7. Docker-in-Docker 設定
 
-    DOCKER_TLS_CERTDIR='' 是為了讓 dind 關閉 TLS，讓 CI job 可以直接用明文 TCP 連線 docker daemon，避免 TLS 憑證錯誤。
+    `DOCKER_TLS_CERTDIR=''` 是為了讓 dind 關閉 TLS，讓 CI job 可以直接用明文 TCP 連線 docker daemon，避免 TLS 憑證錯誤。
 
     ```yaml
     services:
