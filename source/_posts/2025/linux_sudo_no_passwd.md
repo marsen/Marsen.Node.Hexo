@@ -27,15 +27,15 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 
 1. 開啟 `sudoers` 編輯器：
 
-```bash
-sudo visudo
-```
+    ```bash
+    sudo visudo
+    ```
 
 2. 在檔案中新增以下內容：
 
-```bash
-aiplux ALL=(ALL) NOPASSWD: /usr/lib/node_modules/pm2/bin/pm2
-```
+  ```bash
+  aiplux ALL=(ALL) NOPASSWD: /usr/lib/node_modules/pm2/bin/pm2
+  ```
 
 這樣的設定可以確保 `aiplux` 帳號在執行 `/usr/lib/node_modules/pm2/bin/pm2` 時不需要輸入密碼，同時避免開放過多權限。
 
