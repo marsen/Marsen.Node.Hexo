@@ -76,7 +76,6 @@ tags:
 
 ## 參考
 
-- **HackMD 筆記** (<https://hackmd.io/@fL8pq60EQsG3RplVzWfGWA/SkNhLpNGe>)
 - 個人整理的相關筆記（連結需權限）
 - <https://claude.ai/chat/>
 - <https://openai.com/index/introducing-codex/>
