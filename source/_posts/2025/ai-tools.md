@@ -25,6 +25,48 @@ tags:
 - 風格比較直接犀利，會吐槽（特色）
 - 需要 X Premium 會員才能使用
 
+### Gemini (Google)
+
+- **Gemini** (<https://gemini.google.com/>)
+- Google 最新多模態 AI 助手，支援文字、圖片、程式碼等多種輸入
+- 已整合進 Google Workspace、Android、Chrome 等生態系
+
+### Microsoft Copilot
+
+- **Copilot** (<https://copilot.microsoft.com/>)
+- 微軟全家桶 AI 助手，整合於 Windows 11、Edge、Office 365
+- 支援 Word、Excel、PowerPoint 直接 AI 協作
+
+### Perplexity AI
+
+- **Perplexity** (<https://www.perplexity.ai/>)
+- 強調即時網路搜尋與問答，支援多語言、引用來源
+- 適合知識查詢、研究輔助
+
+### Notion AI
+
+- **Notion AI** (<https://www.notion.so/product/ai>)
+- 整合於 Notion 筆記/知識管理平台的 AI 助手
+- 支援自動摘要、重寫、腦力激盪等功能
+
+### ChatGPT (OpenAI)
+
+- **ChatGPT** (<https://chat.openai.com/>)
+- OpenAI 的對話式 AI，支援 GPT-4/4o，應用於對話、程式、資料分析等
+- 免費/付費版皆有
+
+### Kimi Chat（Moonshot AI）
+
+- **Kimi Chat** (<https://kimi.moonshot.cn/>)
+- 中文社群討論度高，支援長文閱讀、PDF 分析
+
+### Phind
+
+- **Phind** (<https://www.phind.com/>)
+- 專為工程師設計的 AI 搜尋與問答平台，程式碼解釋、技術文件查找很強
+
+---
+
 ## 程式開發工具
 
 ### 程式碼生成與協助
@@ -89,6 +131,13 @@ tags:
 - <https://studio.firebase.google.com/>
 - <https://notebooklm.google.com/>
 - <https://www.anthropic.com/claude-code>
+- <https://gemini.google.com/>
+- <https://copilot.microsoft.com/>
+- <https://www.perplexity.ai/>
+- <https://www.notion.so/product/ai>
+- <https://chat.openai.com/>
+- <https://kimi.moonshot.cn/>
+- <https://www.phind.com/>
 
 ## 小結
 
