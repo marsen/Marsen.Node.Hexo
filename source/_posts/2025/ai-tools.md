@@ -13,21 +13,21 @@ tags:
 
 ### Claude
 
-- **Claude Chat** (<https://claude.ai/chat/>)
+- [**Claude Chat**](https://claude.ai/chat/)
 - Anthropic 開發的 AI 助手，擅長寫作、分析、程式開發
 - 支援多模態輸入（文字、圖片、文件）
 - 免費版有使用限制，付費版更穩定
 
 ### Grok
 
-- **Grok** (<https://grok.com/>)
+- [**Grok**](https://grok.com/)
 - xAI 推出的對話式 AI
 - 風格比較直接犀利，會吐槽（特色）
 - 需要 X Premium 會員才能使用
 
 ### Gemini (Google)
 
-- **Gemini** (<https://gemini.google.com/>)
+- [**Gemini**](https://gemini.google.com/)
 - Google 最新多模態 AI 助手，支援文字、圖片、程式碼等多種輸入
 - 已整合進 Google Workspace、Android、Chrome 等生態系
 
@@ -39,30 +39,30 @@ tags:
 
 ### Perplexity AI
 
-- **Perplexity** (<https://www.perplexity.ai/>)
+- [**Perplexity**](https://www.perplexity.ai/)
 - 強調即時網路搜尋與問答，支援多語言、引用來源
 - 適合知識查詢、研究輔助
 
 ### Notion AI
 
-- **Notion AI** (<https://www.notion.so/product/ai>)
+- [**Notion AI**](https://www.notion.so/product/ai)
 - 整合於 Notion 筆記/知識管理平台的 AI 助手
 - 支援自動摘要、重寫、腦力激盪等功能
 
 ### ChatGPT (OpenAI)
 
-- **ChatGPT** (<https://chat.openai.com/>)
+- [**ChatGPT**](https://chat.openai.com/)
 - OpenAI 的對話式 AI，支援 GPT-4/4o，應用於對話、程式、資料分析等
 - 免費/付費版皆有
 
 ### Kimi Chat（Moonshot AI）
 
-- **Kimi Chat** (<https://kimi.moonshot.cn/>)
+- [**Kimi Chat**](https://kimi.moonshot.cn/)
 - 中文社群討論度高，支援長文閱讀、PDF 分析
 
 ### Phind
 
-- **Phind** (<https://www.phind.com/>)
+- [**Phind**](https://www.phind.com/)
 - 專為工程師設計的 AI 搜尋與問答平台，程式碼解釋、技術文件查找很強
 
 ---
