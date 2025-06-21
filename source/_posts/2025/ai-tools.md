@@ -95,8 +95,13 @@ tags:
 ### 應用開發
 
 - **Firebase Studio** (<https://studio.firebase.google.com/>)
-- Google 的應用開發平台
-- 整合多種後端服務
+  - Google 的應用開發平台
+  - 整合多種後端服務
+
+- **DeepWiki** (<https://deepwiki.com/>)
+  - AI 驅動的知識搜尋與摘要工具
+  - 支援多語言、快速整理主題重點，適合研究、學習、資料彙整
+  - 可用於技術、學術、產業等多種領域
 
 ## 雜七雜八
 
