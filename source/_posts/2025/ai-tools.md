@@ -92,6 +92,11 @@ tags:
   - 讓開發者直接從終端委託程式開發任務給 Claude
   - 目前還在研究預覽階段
 
+- [**AugmentCode**](https://augmentcode.com/)
+  - AI 驅動的程式碼搜尋與理解平台
+  - 支援跨專案、跨語言的程式碼查詢、摘要與自動解釋
+  - 適合大型專案維護、協作與知識傳承
+
 ### 應用開發
 
 - [**Firebase Studio**](https://studio.firebase.google.com/)
