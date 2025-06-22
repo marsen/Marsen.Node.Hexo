@@ -44,21 +44,16 @@ curl http://localhost:11434/api/generate \
 
 Ollama 把這些都幫你搞定了。
 
-## 實作
+## 選擇
 
 ### 目前採用：Ollama Container + 指令初始化
 
-經過評估，暫時保留傳統的 ollama container 方案，透過指令的 init 方法來取模型。
+經過評估，選擇 ollama container 方案最穩定且彈性也最高，
 
-**為什麼選這個？**
-- 穩定，bug 少
-- 好 debug，每個步驟都可控
-- 彈性高，要調整什麼都很容易
-
-**痛點**
-- 需要手動操作（未來會優化成全自動）
+只要需要透過指令的方法來就可以來取模型。
 
 基本用法：
+
 ```bash
 # 啟動 ollama container
 docker run -d --name ollama -p 11434:11434 ollama/ollama
@@ -69,25 +64,33 @@ docker exec -it ollama ollama pull llama3.2
 
 ### Docker Model Runner：值得關注但暫不採用
 
-DMR 在 2025 年 4月推出 Beta 版，看起來很有潛力，但目前不打算用在產品上。
+DMR 在 2025 年 3月隨 Docker Desktop 4.40 推出 Beta 版，
 
-**問題點**
-1. **平台差異**：Linux 上的啟用方法跟 Mac 不一樣，需要額外適配
-2. **實驗階段**：API 和功能還在快速變化，對產品開發風險太高
-3. **跨平台支援**：雖然最新的 Docker Desktop 4.41 已經支援 Windows，但整體成熟度還需觀察
+看起來很有潛力，但目前不打算用在產品上。
 
-會持續觀察，如果穩定性和跨平台支援改善，未來可能會是主流選擇。
+主因如下
 
-### Podman AI Lab：理想與現實的差距
+- 平台支援階段性：最初只支援 Apple Silicon (M1-M4)，5月的 Docker Desktop 4.41 才加入 Windows NVIDIA GPU 支援
+- 實驗階段：工具變化快速，預期會持續改進，對產品開發風險較高
+- Linux 支援：目前在 Linux (包含 WSL2) 上支援 Docker CE，但整體生態還在發展中
 
-概念上跟 DMR 類似，但有個致命問題：**模型清單限制**。
+會持續觀察，最新的 Docker Desktop 4.42 甚至支援了 Windows Qualcomm 晶片，發展很快。
 
-**問題**
-- 只能用官方清單中的模型
-- 清單不夠齊全（連 Gemma3 都沒有）
-- 比 DMR 的模型支援少很多
+### Podman AI Lab：概念不錯但有使用限制
 
-雖然最近跟 RamaLama 整合，但模型支援的局限性讓我直接 pass。
+Podman AI Lab 提供一份精選的開源 AI 模型清單，概念上跟 DMR 類似，但實際使用上有些考量。
+
+現況 支援 GGUF、PyTorch、TensorFlow 等常見格式
+
+提供精選的 recipe 目錄，幫助導航 AI 使用案例和模型
+
+最近與 RamaLama 整合，簡化本地 AI 模型執行
+
+但採用精選模型清單的策略，可能不包含所有想要的模型
+
+相對於 Ollama 的廣泛模型支援，選擇較為有限
+
+不過隨著 RamaLama 能從任何來源簡化 AI 模型的本地服務，未來可能會更靈活。
 
 ## 一些要注意的小問題
 
