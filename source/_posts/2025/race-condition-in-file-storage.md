@@ -27,7 +27,7 @@ T3: 請求A 執行 mkdir(fullPath) → 成功建立目錄
 T4: 請求B 執行 mkdir(fullPath) → 可能拋出 EEXIST 錯誤
 ```
 
-雖然使用了 `recursive: true`，但在某些作業系統或 Node.js 版本中，仍可能因為目錄已存在而拋出錯誤。
+雖然使用了 `recursive: true`，那前面的檢查很可能是不必要的行為。
 
 ### 為什麼會這樣？
 
