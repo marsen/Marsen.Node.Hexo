@@ -24,7 +24,7 @@ if (!await this.exists(fullPath)) {
 T1: 請求A 執行 this.exists(fullPath) → 返回 false (目錄不存在)
 T2: 請求B 執行 this.exists(fullPath) → 返回 false (目錄不存在)
 T3: 請求A 執行 mkdir(fullPath) → 成功建立目錄
-T4: 請求B 執行 mkdir(fullPath) → 可能拋出 EEXIST 錯誤
+T4: 請求B 執行 mkdir(fullPath) → 可能拋出 EEXIST 錯誤(fs.promises.mkdir 已在底層排除這個問題)
 ```
 
 雖然使用了 `recursive: true`，那前面的檢查很可能是不必要的行為。
@@ -103,14 +103,12 @@ await fs.promises.mkdir(fullPath, { recursive: true })  // 系統調用1: mkdir(
 
 ## 經驗教訓
 
-1. **避免 Check-Then-Act 模式**：這是併發程式設計的經典陷阱
+1. **避免 Check-Then-Act 模式**：這是併發程式設計的經典陷阱，不過這次案例，執行的底層實作已處理好，所以不會有問題
 2. **信任系統調用**：現代 API 通常已經考慮了併發場景
 3. **簡單就是美**：移除不必要的檢查邏輯，程式碼更簡潔也更安全
 
-## 小結
+## 參考
 
-這次 code review 發現的問題提醒我們，併發問題往往藏在看似無害的程式碼中。「檢查然後執行」的模式在單執行緒環境下沒問題，但在併發環境下就是定時炸彈。
-
-修復的核心思想很簡單：**信任系統調用，避免手動檢查**。Node.js 的 `mkdir({ recursive: true })` 就是為了處理這種情況而設計的，我們應該善用它。
+- [Nodejs - fsPromises.mkdir(path[, options])](https://nodejs.org/api/fs.html#fsmkdirpath-options-callback)
 
 (fin)
