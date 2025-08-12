@@ -7,9 +7,11 @@ tags:
 
 ## 前情提要
 
-最近在 Code Review 時遇到一個有趣的討論：檔案上傳功能中，檔案編碼修復應該放在 Middleware 還是 UseCase？
+最近在 Code Review 時遇到一個有趣的題目：
 
-這個問題引發了我對 Clean Architecture 分層職責的重新思考，也讓我意識到這是一個很好的面試題目。畢竟，分層架構不只是把程式碼分資料夾這麼簡單，背後有著更深層的設計哲學。
+檔案上傳功能中，檔案編碼修復應該放在 Middleware 還是 UseCase？
+
+這個問題引發了我對 Clean Architecture 分層職責的重新思考，與團隊背後的設計哲學。
 
 ## 問題背景
 
@@ -35,71 +37,32 @@ tags:
 4. **JWT Token 驗證** - 檢查使用者身份
 5. **檔案內容解析** - 提取 PDF/Word 文件內容
 
-## 分析思路
+分析思路 --- 職責角度
 
-### Middleware 的職責：技術基礎設施
+### Middleware 的職責：偏向基礎設施
 
-```typescript
-// ✅ 適合放 Middleware
-// authMiddleware.ts - HTTP 認證技術處理
-- JWT token 解析和驗證  
-- HTTP 權限檢查
-- 將認證結果附加到 req.user
+控制進出流程 → 例：API 請求進來先檢查 Token
 
-// errorHandler.ts - HTTP 錯誤處理  
-- 將系統錯誤轉換為 HTTP 狀態碼
-- 統一錯誤格式回應
-- 錯誤日誌記錄
+過濾與轉換資料 → 例：將日期字串轉成標準格式
 
-// uploadFiles.ts - 檔案上傳技術處理
-- 檔案編碼修復 (HTTP 上傳技術問題) ✅
-- Multer 設定和記憶體存儲
-```
+保護系統邊界 → 例：攔截未授權的存取
 
-### UseCase 的職責：業務邏輯驗證
-
-```typescript
-// ✅ 適合放 UseCase
-// UploadKnowledgeFiles.ts - 知識庫檔案業務邏輯
-class UploadKnowledgeFiles {
-  private readonly validMimeTypes = {
-    'application/pdf': 'pdf',
-    'text/plain': 'txt',
-    'application/msword': 'word',
-    'image/jpeg': 'image',
-    'image/png': 'image',
-    // ... 更多類型
-  } as const
-  
-  // 檔案類型白名單驗證 (業務規則)
-  // 檔案大小限制檢查 (業務需求)  
-  // 檔案數量限制驗證 (業務邏輯)
-}
-
-// UploadContractFile.ts - 合約檔案業務邏輯
-class UploadContractFile {
-  // 不同類型合約的檔案限制 (業務場景)
-  private readonly validMimeTypesForOrigin = {
-    'application/pdf': 'pdf',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'word',
-  } as const
-
-  private readonly validMimeTypesForNonOrigin = {
-    'application/pdf': 'pdf',  // 簽署後只能 PDF
-  } as const
-}
-```
-
-## 設計原則
-
-### Middleware 處理的是...
+以下不舉例:
 
 - **跨領域技術問題** (認證、編碼、錯誤處理)
 - **HTTP 協議相關** (請求解析、回應格式)  
 - **基礎設施關注點** (日誌、監控、安全)
 - **與業務無關的技術細節**
 
-### UseCase 處理的是...
+### Use Case 的職責：偏向商業邏輯
+
+驅動核心行為 → 例：建立一筆訂單流程
+
+執行業務規則 → 例：檢查庫存是否足夠
+
+協調內外資源 → 例：呼叫付款服務並更新資料庫
+
+以下不舉例:
 
 - **特定業務場景的規則** (不同業務有不同檔案限制)
 - **領域知識驗證** (合約標題、內容檢查)
@@ -108,90 +71,29 @@ class UploadContractFile {
 
 ## 實際案例分析
 
-### 檔案編碼問題：技術問題 → Middleware ✅
+### 檔案編碼問題
 
-```typescript
-// uploadFiles.ts
-const fixFilenameEncoding = (filename: string): string => {
-  return Buffer.from(filename, 'latin1').toString('utf8')
-}
+技術問題 → 整個系統一體適用，選 Middleware ✅
 
-const upload = multer({
-  storage: multer.memoryStorage(),
-  fileFilter: (_req, file, cb) => {
-    file.originalname = fixFilenameEncoding(file.originalname)
-    cb(null, true)
-  },
-})
-```
-
-**為什麼放 Middleware？**
+細節分析:
 
 - 這是 HTTP 上傳過程中的技術問題，不是業務邏輯
 - 所有檔案上傳都需要這個處理，跨多個 UseCase
 - 屬於請求處理層面的責任
 
-### 檔案類型限制：業務邏輯 → UseCase ✅
+### 檔案類型限制
 
-```typescript
-// UploadContractFile.ts  
-class UploadContractFile {
-  execute(files: Express.Multer.File[], isOrigin: boolean) {
-    const validTypes = isOrigin 
-      ? this.validMimeTypesForOrigin 
-      : this.validMimeTypesForNonOrigin
-      
-    // 業務邏輯：根據合約類型決定允許的檔案格式
-    this.validateFileTypes(files, validTypes)
-  }
-}
-```
+業務邏輯 → 不同的上傳任務有不同限制，屬商業邏輯，選 UseCase ✅
 
-**為什麼放 UseCase？**
+細節分析:
 
 - 不同業務場景有不同的檔案類型限制
 - 這是領域知識，需要業務邏輯判斷
 - 可能隨著業務需求變化而調整
 
-## 進階思考
+### 這頭給你想
 
-### 如果檔案大小限制要動態調整呢？
-
-```typescript
-// UseCase 層處理動態業務配置
-class UploadKnowledgeFiles {
-  constructor(
-    private configService: ConfigService,
-    private userService: UserService
-  ) {}
-  
-  async execute(files: Express.Multer.File[], userId: string) {
-    const user = await this.userService.findById(userId)
-    const maxSize = user.isVip 
-      ? this.configService.get('VIP_MAX_FILE_SIZE')
-      : this.configService.get('NORMAL_MAX_FILE_SIZE')
-      
-    this.validateFileSize(files, maxSize)
-  }
-}
-```
-
-這樣的設計對測試也更友好：
-
-```typescript
-// 可以輕鬆 mock 依賴，測試不同的業務場景
-describe('UploadKnowledgeFiles', () => {
-  it('should allow larger files for VIP users', async () => {
-    // Arrange
-    mockUserService.findById.mockResolvedValue({ isVip: true })
-    mockConfigService.get.mockReturnValue(100 * 1024 * 1024) // 100MB
-    
-    // Act & Assert
-    await expect(uploadUseCase.execute(largeFiles, 'vip-user-id'))
-      .resolves.not.toThrow()
-  })
-})
-```
+如果檔案大小限制要動態調整呢？
 
 ## 總結
 
@@ -209,7 +111,5 @@ describe('UploadKnowledgeFiles', () => {
 - 這個處理邏輯需要在多個地方重複嗎？
 
 Clean Architecture 的精神就在於：**讓業務邏輯獨立於技術細節**。
-
-面試時遇到類似問題，記得從職責分離的角度思考，相信你會有不錯的表現！
 
 (fin)
