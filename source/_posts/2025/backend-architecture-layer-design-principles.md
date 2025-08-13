@@ -1,5 +1,5 @@
 ---
-title: " [架構筆記] Clean Architecture 分層職責：一道值得深思的面試題"
+title: " [架構筆記] Clean Architecture 分層職責的反思"
 date: 2025/08/12 13:29:15
 tags:
   - 學習筆記
