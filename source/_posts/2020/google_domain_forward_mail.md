@@ -59,6 +59,16 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 
 為了解決這個問題，請參考[在 Gmail 中使用別名傳送電子郵件](https://support.google.com/domains/answer/9437157)，
 
+## 20250826 補充
+
+目前無法寄信，調研解方中
+
+## 20201118 解法(已過時)
+
+2020 年的解法已過時，Google 不再建議使用[應用程式密碼](https://myaccount.google.com/apppasswords), 實測仍可以取得密碼，並且設定後可以寄信，不過收到的信會有未驗証的警告，不太適合使用。
+
+![Use App Passowrd](/images/send_by_gmail_smtp.png)
+
 1. 產生應用程式密碼
 
    - 登入 Google 帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。
