@@ -1,9 +1,14 @@
-# [實作筆記] 自訂網域 EMail 解決方案 - Brevo 救援記
+---
+title: " [實作筆記] 怎麼建立一個網站？(四) - 自訂網域 EMail 收寄信(使用 Cloudflare 與 Brevo)"
+date: 2025/08/27 22:19:02
+tags:
+  - 實作筆記
+---
 
 ## 前情提要
 
 四年前「[怎麼建立一個網站？(四) - 自訂網域 EMail](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)」已過時了，
-當時透過 Google Domain 設定了自己的網域信箱，那種擁有 `marsen@marsen.me` 的專業度真的是滿到溢出來。
+當時透過 Google Domain 設定了自己的網域信箱，那種擁有 `admin@marsen.me` 的專業度真的是滿到溢出來。
 
 但是，現實總是殘酷的。
 
@@ -24,8 +29,8 @@ Google 對 Gmail SMTP 的使用限制越來越嚴格。
 
 需求：
 
-- 能夠使用 `marsen@marsen.me` 收信，已完成(在 Cloudflare 設定 Email Forwarding)
-- 能夠以 `marsen@marsen.me` 寄信，而且不會被標記為可疑郵件
+- 能夠使用 `admin@marsen.me` 收信，已完成(在 Cloudflare 設定 Email Forwarding)
+- 能夠以 `admin@marsen.me` 寄信，而且不會被標記為可疑郵件
 - 免費或便宜的解決方案
 - 設定要簡單快速
 
@@ -67,16 +72,24 @@ Brevo 會要求你在 DNS 域名設定中添加幾筆記錄(我是使用 Cloudfl
 
 DNS 生效後，Brevo 就會驗證通過。
 
-設定 Email Forwarding 本篇不
+### Step 3: 設定收信
+
+設定 Email Forwarding 這部分我直接在 Cloudflare 設定：
+
+「Email」→「Email Routing」→「Routes」
+
+添加轉發規則：
+
+從：`admin@marsen.me` 到我的 gmail
 
 這樣就能收到寄往自訂域名的信了。
 
-### Step 3: 設定 Gmail 使用 Brevo SMTP
+### Step 4: 設定 Gmail 使用 Brevo SMTP
 
 進入 Gmail 設定 > 帳戶和匯入 > 新增另一個電子郵件地址：
 
 - 名稱：Marsen
-- 電子郵件地址：`marsen@marsen.me`
+- 電子郵件地址：`admin@marsen.me`
 - SMTP 伺服器：`smtp-relay.brevo.com`
 - 通訊埠：587
 - 使用者名稱：你的 Brevo 帳號 email
@@ -87,8 +100,8 @@ DNS 生效後，Brevo 就會驗證通過。
 
 設定完成實測：
 
-- ✅ 收信正常：寄到 `marsen@marsen.me` 的信都能在 Gmail 收到
-- ✅ 寄信正常：從 Gmail 可以選擇用 `marsen@marsen.me` 寄信
+- ✅ 收信正常：寄到 `admin@marsen.me` 的信都能在 Gmail 收到
+- ✅ 寄信正常：從 Gmail 可以選擇用 `admin@marsen.me` 寄信
 - ✅ 信譽良好：收件者不會看到「未驗證」警告
 
 整個設定過程不到 20 分鐘。
