@@ -65,7 +65,7 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 
 2020 年的解法已過時，Google 不再建議使用[應用程式密碼](https://myaccount.google.com/apppasswords), 實測仍可以取得密碼，並且設定後可以寄信，不過收到的信會有未驗証的警告，不太適合使用。
 
-![Use App Passowrd](/images/send_by_gmail_smtp.png)
+![Use App Passowrd](/images/2025/send_by_gmail_smtp.png)
 
 
 ## 20201118 解法(已過時)
