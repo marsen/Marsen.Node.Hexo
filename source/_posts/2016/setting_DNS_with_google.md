@@ -75,6 +75,8 @@ blog.myDomain.me
 - [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/2016/setting_DNS_with_google/)
 - [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/)
 - [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2_by_cloudflare/)
-- [怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)
+- ~~[怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)~~
+- [怎麼建立一個網站？(四)](https://blog.marsen.me/2025/08/27/2025/brevo_smtp/)
+- [怎麼建立一個網站？(五)](https://blog.marsen.me/2021/04/06/2021/create_404/)
 
 (fin)
