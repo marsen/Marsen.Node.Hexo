@@ -148,51 +148,47 @@ EOF
 uv sync
 ```
 
-### 4. CI/CD 自動化發布
+### 4. CI/CD 中存取私有 Registry
 
-設定 GitLab CI 自動構建並推送套件到 registry：
+專案在 GitLab CI/CD 中需要存取私有 Registry 時，有以下幾種方式：
+
+#### 方法 1：使用 CI_JOB_TOKEN（推薦）
 
 ```yaml
 # .gitlab-ci.yml
 variables:
-  REGISTRY_PATH: registry.gitlab.com/$GROUP_PATH/$PROJECT_NAME
+  PIP_INDEX_URL: https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/api/v4/projects/${REGISTRY_PROJECT_ID}/packages/pypi/simple
+  PIP_EXTRA_INDEX_URL: https://pypi.org/simple
 
-stages:
-  - build
-  - publish
-
-build-package:
+build:
   stage: build
   script:
-    # 構建 Python 套件
-    - pip install build
-    - python -m build
-  artifacts:
-    paths:
-      - dist/
+    - pip install -e .
+    - # 其他構建步驟
+```
 
-publish-to-registry:
-  stage: publish
-  dependencies:
-    - build-package
+#### 方法 2：使用 Deploy Token
+
+在 CI/CD 變數中設定 `GITLAB_DEPLOY_TOKEN`：
+
+```yaml
+build:
+  stage: build
   script:
-    # 設定認證
-    - pip install twine
-    - |
-      cat > ~/.pypirc <<EOF
-      [distutils]
-      index-servers = gitlab
-      
-      [gitlab]
-      repository = https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi
-      username = gitlab-ci-token
-      password = ${CI_JOB_TOKEN}
-      EOF
-    
-    # 上傳到 GitLab Package Registry
-    - python -m twine upload --repository gitlab dist/*
-  only:
-    - main
+    - export PIP_INDEX_URL="https://deploy-token-{TOKEN_ID}:${GITLAB_DEPLOY_TOKEN}@gitlab.com/api/v4/projects/${REGISTRY_PROJECT_ID}/packages/pypi/simple"
+    - pip install -e .
+```
+
+#### 方法 3：配合 uv 使用
+
+```yaml
+build:
+  stage: build
+  before_script:
+    - export GITLAB_TOKEN=${CI_JOB_TOKEN}
+  script:
+    - uv sync
+    - # 其他構建步驟
 ```
 
 ### 6. Docker 映像支援多架構
