@@ -191,25 +191,6 @@ build:
     - # 其他構建步驟
 ```
 
-### 6. Docker 映像支援多架構
-
-為了支援不同的硬體平台，使用 buildx 構建多架構映像：
-
-```yaml
-build-multi-arch:
-  stage: build
-  script:
-    # 設定 buildx
-    - docker buildx create --use
-    
-    # 構建並推送多架構映像
-    - |
-      docker buildx build \
-        --platform linux/amd64,linux/arm64 \
-        -t $REGISTRY_PATH:$NEW_TAG \
-        --push .
-```
-
 ## 常見問題與解決方案
 
 ### Deploy Token 權限不足？
