@@ -209,7 +209,7 @@ build:
 
 GitLab PyPI registry URL 格式為：
 
-```
+```text
 https://gitlab.com/api/v4/projects/{PROJECT_ID}/packages/pypi/simple
 ```
 
