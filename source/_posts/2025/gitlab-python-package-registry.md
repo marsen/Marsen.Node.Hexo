@@ -201,10 +201,6 @@ build:
 
 使用 `uv` 的 resolution markers 功能，明確指定版本解析策略。
 
-### 多架構構建失敗？
-
-檢查 Docker buildx 是否正確安裝，並確認基礎映像支援目標架構。
-
 ### Registry URL 格式錯誤？
 
 GitLab PyPI registry URL 格式為：
@@ -222,7 +218,7 @@ https://gitlab.com/api/v4/projects/{PROJECT_ID}/packages/pypi/simple
 - **特製版本管理**：Jetson 平台的特殊 ONNX Runtime 版本需求
 - **依賴一致性**：所有環境使用相同版本的套件
 - **安全性提升**：減少對外部來源的依賴
-- **自動化流程**：CI/CD 自動構建並發布套件
+- **存取便利性**：開發者和 CI/CD 都能輕鬆存取私有套件
 
 這個架構不僅適用於 ONNX Runtime，也可以擴展到其他需要特殊管理的依賴套件。
 
