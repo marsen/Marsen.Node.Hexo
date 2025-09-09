@@ -35,6 +35,34 @@ tags:
 
 ## 實作步驟
 
+### 發佈套件到 GitLab Package Registry
+
+在設定和使用私有 Registry 之前，我們需要先將套件上傳到 GitLab Package Registry。
+
+#### 使用 twine 上傳套件
+
+twine 是 Python 官方推薦的套件上傳工具，會自動從 wheel 檔案中提取 metadata：
+
+```bash
+# 安裝 twine
+pip install twine
+
+# 上傳到 GitLab PyPI registry
+twine upload --repository-url https://gitlab.com/api/v4/projects/{PROJECT_ID}/packages/pypi \
+             --username gitlab+deploy-token-{TOKEN_ID} \
+             --password {TOKEN} \
+             your_package.whl
+```
+
+實際範例（以 ONNX Runtime 為例）：
+
+```bash
+twine upload --repository-url https://gitlab.com/api/v4/projects/70410750/packages/pypi \
+             --username gitlab+deploy-token-9097451 \
+             --password gldt-tQVwLxzydZBhn3WWnwtt \
+             onnxruntime_gpu-1.23.0-cp310-cp310-linux_aarch64.whl
+```
+
 ### 設定 GitLab Package Registry
 
 首先，在 GitLab 專案中啟用 Package Registry，並建立 Deploy Token：
@@ -96,7 +124,7 @@ dependencies = [
 
 這裡的關鍵是使用條件依賴，根據不同平台安裝不同版本的套件。
 
-### 3. 開發者使用私有 Registry
+### 開發者使用私有 Registry
 
 根據專案的安全策略，RD 有幾種方式存取私有 registry：
 
@@ -148,7 +176,7 @@ EOF
 uv sync
 ```
 
-### 4. CI/CD 中存取私有 Registry
+### CI/CD 中存取私有 Registry
 
 專案在 GitLab CI/CD 中需要存取私有 Registry 時，有以下幾種方式：
 
