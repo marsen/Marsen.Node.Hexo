@@ -6,7 +6,7 @@
     "version": "7.0.0"
   },
   "dependencies": {
-    "hexo": "^7.3.0",
+    "hexo": "^8.0.0",
     "hexo-cli": "^4.3.2",
     "hexo-codepen": "^0.1.1",
     "hexo-codepen-v2": "^0.2.3",
