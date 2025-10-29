@@ -109,13 +109,13 @@ User Story、Acceptance Criteria 這些輕量級的規格，主要是為了確�
 
 典型流程
 
-### Ideation → Prototype → All-in Sprint → Crash Delivery → Postmortem
+### 老闆一句話 → 隨便硬幹出來 → 夠奴就加班 → 交付疊加態 → 塊逃啊
 
-- Ideation：靈感一來就開幹，需求模糊。
-- Prototype：原型被誤當產品，直接上線。
-- All-in Sprint：團隊燃燒工時與理智，一次衝到底。
-- Crash Delivery：產品墜市，問題一齊爆發。
-- Postmortem：事後檢討變成例行公祭。
+- 老闆一句話：靈感一來就開幹，需求模糊。
+- 隨便硬幹出來：原型被誤當產品，直接上線。
+- 夠奴就加班：團隊燃燒工時與理智，一次衝到底。
+- 交付疊加態：交付內容沒人知，時程沒人知，測沒測沒人知。
+- 塊逃啊：事後檢討變成批鬥大會，成功不在你，但失敗一定有份。
 
 ### 特點與本質
 
