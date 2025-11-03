@@ -7,7 +7,9 @@ tags:
 
 ## 輕量級方法百花齊放
 
-由於原始工程的冗長沉重，各式輕量的方法被提出，RAD(Rapid Application Development)/DSDM（Dynamic Systems Development Method/Crystal 等等…
+由於原始工程的冗長沉重，各式輕量的方法被提出，
+
+XP/Scrum/RAD(Rapid Application Development)/DSDM（Dynamic Systems Development Method/Crystal 等等…
 
 [Scrum](https://zh.wikipedia.org/zh-tw/Scrum) 更是自 1986 就提出，雖然到 1995 才整理成為完整的方法論。
 
