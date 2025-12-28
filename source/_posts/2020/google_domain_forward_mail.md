@@ -1,5 +1,5 @@
 ---
-title: " [實作筆記] 怎麼建立一個網站？(四) - 自訂網域 EMail"
+title: " 已過時[實作筆記] 怎麼建立一個網站？(四) - 自訂網域 EMail"
 date: 2020/10/22 11:02:59
 tags:
   - 實作筆記
@@ -59,6 +59,18 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 
 為了解決這個問題，請參考[在 Gmail 中使用別名傳送電子郵件](https://support.google.com/domains/answer/9437157)，
 
+## 20250826 補充
+
+***！！！目前無法寄信，調研解方中！！！***
+
+2020 年的解法已過時，Google 不再建議使用[應用程式密碼](https://myaccount.google.com/apppasswords), 實測仍可以取得密碼，並且設定後可以寄信，不過收到的信會有未驗証的警告，不太適合使用。
+
+![Use App Passowrd](/images/2025/send_by_gmail_smtp.png)
+
+
+## 20201118 解法(已過時)
+
+
 1. 產生應用程式密碼
 
    - 登入 Google 帳戶後，前往[Google 帳戶](https://myaccount.google.com/)頁面。
@@ -94,6 +106,8 @@ DNS 的 MX 記錄 Google 會自動幫你處理到好.
 - [怎麼建立一個網站？(一)](https://blog.marsen.me/2016/08/21/2016/setting_DNS_with_google/)
 - [怎麼建立一個網站？(二)](https://blog.marsen.me/2016/08/28/2016/how_to_use_github_page/)
 - [怎麼建立一個網站？(三)](https://blog.marsen.me/2016/09/04/2016/http2_by_cloudflare/)
-- [怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)
+- ~~[怎麼建立一個網站？(四)](https://blog.marsen.me/2020/10/22/2020/google_domain_forward_mail/)~~
+- [怎麼建立一個網站？(四)](https://blog.marsen.me/2025/08/27/2025/brevo_smtp/)
+- [怎麼建立一個網站？(五)](https://blog.marsen.me/2021/04/06/2021/create_404/)
 
 (fin)
