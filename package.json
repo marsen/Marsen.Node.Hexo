@@ -13,7 +13,7 @@
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
-    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-feed": "^4.0.0",
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
@@ -24,10 +24,10 @@
     "hexo-tag-youku": "^1.0.2"
   },
   "devDependencies": {
-    "ajv": "^8.17.1",
+    "ajv": "^8.18.0",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "minimist": "^1.2.8"
   },
   "resolutions": {
