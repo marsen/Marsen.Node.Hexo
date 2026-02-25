@@ -27,7 +27,7 @@
     "ajv": "^8.18.0",
     "ajv-keywords": "^5.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.2",
     "minimist": "^1.2.8"
   },
   "resolutions": {
