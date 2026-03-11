@@ -1,12 +1,13 @@
 ---
-title: "[實作筆記] 簡單了解 Next.js Hydration"
+title: "[實作筆記] Next.js Hydration 與隨機性：從問題到正確架構"
 date: 2026/02/18 02:24:28
+tags:
+  - 實作筆記
 ---
-
 
 ## 前情提要
 
-最近在開發 Next.js 專案時，有 A B 測試的需求，結果遇到一個奇怪的錯誤：
+最近在開發 Next.js 專案時，有 A/B 測試的需求，結果遇到一個奇怪的錯誤：
 
 ```text
 Error: Hydration failed because the initial UI does not match what was rendered on the server.
@@ -26,53 +27,115 @@ Next.js 的頁面渲染分兩個步驟：
 
 Hydration 的核心規則：**Server 產生的 HTML 和 Client 產生的 HTML 必須一模一樣。**
 
-Client 不是重新渲染，而是「接手」Server 的 HTML。如果兩邊不一樣，React 就會報 hydration error。
-
 問題在於 `Math.random()` 在 Server 和 Client 各自執行一次：
 
 ```text
 Server  跑 Math.random() → 0.3 → 選 Layout A → 產生 HTML
-Client  跑 Math.random() → 0.7 → 選 Layout B → 跟 Server 的 HTML 對不上 → 💥
+Client  跑 Math.random() → 0.7 → 選 Layout B → 跟 Server 的 HTML 對不上 → 爆炸
 ```
 
-兩邊各自產生隨機數，結果不同，HTML 就不同，hydration 就炸了。
+## 初步解法：繞開 SSR，在前端處理
 
-## 解法
+要解決 mismatch，核心思路是讓 `Math.random()` 只在 Client 端跑一次。有兩種做法：
 
-最簡單的修法：用 `useState` + `useEffect`，讓隨機選擇只發生在 Client 端。
+### 做法一：dynamic({ ssr: false })
+
+直接告訴 Next.js 這個 component 跳過 SSR：
 
 ```typescript
-const [variant, setVariant] = useState<string | null>(null);
+// ABComponent.tsx
+'use client'
+export default function ABComponent() {
+  const variant = Math.random() < 0.5 ? 'a' : 'b'
+  return <Layout variant={variant} />
+}
 
-useEffect(() => {
-  setVariant(Math.random() < 0.5 ? "a" : "b");
-}, []);
-
-if (!variant) return null;
+// page.tsx
+const ABComponent = dynamic(() => import('./ABComponent'), { ssr: false })
 ```
 
-整個流程是這樣的：
+component 完全不在 Server 端跑，`Math.random()` 只在瀏覽器執行，沒有 mismatch。
 
-**Server 渲染：** `variant = null` → return null → 產生空 HTML
+### 做法二：useState + useEffect
 
-**Client Hydration：** `variant = null` → return null → 跟 Server 一致，hydration 成功
+讓 component 在 Server 和 Client 第一次都 render `null`，mount 後才隨機：
 
-**Client 掛載後（useEffect 執行）：** `Math.random()` → 0.3 → `setVariant("a")` → 重新渲染 → 顯示 Layout A
+```typescript
+const [variant, setVariant] = useState<string | null>(null)
 
-關鍵在於：Server 和 Client 第一次渲染都是 `null`，保持一致。隨機選擇延遲到 Client 掛載後才發生，完全繞開了 hydration 的限制。
+useEffect(() => {
+  setVariant(Math.random() < 0.5 ? 'a' : 'b')
+}, [])
+
+if (!variant) return null
+```
+
+兩邊第一次渲染結果一致，hydration 成功，mount 後才決定變體。
+
+### 哪個比較好？
+
+**做法一（dynamic）比較好。** 程式碼更簡單，意圖也更清楚：「這個 component 不需要 Server Side Render」。
+
+做法二的 `useState + useEffect` 除了更繁瑣，還可能被部分嚴格的 lint rule 擋住，lint auto-fix 之後反而重新引入 hydration bug，修 A 破 B。
+
+不過兩種做法有一個共同的致命問題：
+
+**同一個用戶每次重整都重新隨機，這次看 A、下次看 B，A/B 測試數據完全沒意義。**
+
+## 正確做法：Middleware 決定，Server Side 處理
+
+讓 Server 在第一次請求時決定變體，存進 cookie，之後每次讀同一個值。
+
+```text
+Middleware 執行 Math.random()，結果存進 cookie
+    ↓
+Server Component 讀 cookie 取得變體值
+    ↓
+以 prop 傳給 Client Component
+    ↓
+Server render 和 Client hydration 讀到同一個 prop → 沒有 mismatch
+```
+
+### middleware.ts
+
+```typescript
+export function middleware(request: NextRequest) {
+  const response = NextResponse.next()
+
+  if (!request.cookies.get('ab-variant')) {
+    const variant = Math.random() < 0.5 ? 'a' : 'b'
+    response.cookies.set('ab-variant', variant, { httpOnly: true })
+  }
+
+  return response
+}
+```
+
+### page.tsx（Server Component）
+
+```typescript
+import { cookies } from 'next/headers'
+
+export default function Page() {
+  const variant = cookies().get('ab-variant')?.value ?? 'a'
+  return <Layout variant={variant} />
+}
+```
+
+同一個用戶拿到同一個 cookie，每次看到同一個版本，A/B 測試數據才有意義。
 
 ## 小結
 
-任何在 Server 和 Client 執行結果可能不同的程式碼，都不能直接放在 render 階段：
+這次踩坑之後整理出一個原則：
 
-- `Math.random()`
-- `Date.now()`
-- `window`、`localStorage` 等 browser-only API
+**隨機、時間、用戶身份這類「非確定性資料」，應該從 Server 端注入，Client 只負責呈現。**
 
-如果可以在前端執行，這些都要移到 `useEffect` 裡面，讓它只在 Client 掛載後執行。
+| 資料類型 | 不建議做法 | 建議做法 |
+| --- | --- | --- |
+| 隨機值（A/B 測試） | Client `useState + Math.random()` | Middleware 寫 cookie，Server 讀取傳入 |
+| 當前時間 | Client `Date.now()` | Server props 傳入 |
+| 用戶身份 | Client 讀 localStorage | Server 讀 session cookie |
 
-如果一定要在 Server 端決定，解法是把隨機結果當成 props 傳下來，而不是讓 Client 自己再跑一次。
-
-`useState` 的初始值設為 `null`，讓 Server 和 Client 第一次渲染時保持一致，這是解決 hydration mismatch 的標準思路。
+下次再給我選的話，我會選用在 Server Side 決定隨機性，而不在前端。
 
 (fin)
