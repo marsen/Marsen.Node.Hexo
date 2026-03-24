@@ -7,32 +7,15 @@ tags:
 
 ## 前情提要
 
-在本機開發 LINE Bot，撞上了第一道牆：LINE Messaging API 的 Webhook 只接受 HTTPS endpoint，
-`localhost` 根本不在它的認知裡。
+在本機開發時需要 Webhook 來接受第三方的回呼，
 
-第一反應是用 Quick Tunnel，指令一行就能跑：
+例如「LINE Bot 的 Messaging API 」 通常需要真實的 HTTPS endpoint 的 Callback Url，
 
-```bash
-cloudflared tunnel --url http://localhost:3000
-```
+第一反應是用 ngrok，指令一行就能跑：
 
-跑起來，去 LINE Console 貼上 URL，Verify 成功。
-隔天重開，URL 換了，再去貼一次。
-第三次之後決定換個做法。
+但是每次重開 URL 都會換不一樣，需要再去設定一次。
 
----
-
-## 其他常見做法與沒選的原因
-
-| 方案 | 為什麼沒選 |
-| ------ | ----------- |
-| **ngrok** | 免費版 URL 每次重啟都變，跟 Quick Tunnel 一樣的問題 |
-| **localtunnel** | 開源，URL 可指定但不保證穩定，偶有被佔用的情況 |
-| **smee.io** | Webhook 轉發專用，需要額外的 client 程式，多一層複雜度 |
-| **VS Code Dev Tunnels** | 綁定 VS Code，換編輯器就失效 |
-| **Tailscale Funnel** | 要先建 Tailscale 網路，對沒在用的人成本高 |
-| **直接部署到雲端** | URL 穩定，但每次改 code 都要重部署，開發迭代太慢 |
-| **Cloudflare Quick Tunnel** | URL 每次重啟都換，手動更新 Webhook 很煩 |
+所以我決定換個做法。
 
 選 **Cloudflare Named Tunnel** 的原因：
 
@@ -40,7 +23,9 @@ cloudflared tunnel --url http://localhost:3000
 - 已有 Cloudflare 管理 domain，沒有額外成本
 - 搭配 launchd 開機自啟，幾乎感覺不到它的存在
 
----
+前兩項是必要前置條件，剛好我都有，沒有的小朋友可能需要設定一下
+
+或是找其它解法，文末有提供一些別的方法給你參考
 
 ## 前置條件
 
@@ -139,6 +124,18 @@ LINE 打來的 Webhook 是外部流量，建議選高號碼 port（49152–65535
 在 `config.yml` 的 `service` 欄位對應好本機 port 即可。
 
 ---
+
+## 其他常見做法與沒選的原因
+
+| 方案 | 為什麼沒選 |
+| ------ | ----------- |
+| **ngrok** | 免費版 URL 每次重啟都變，跟 Quick Tunnel 一樣的問題 |
+| **localtunnel** | 開源，URL 可指定但不保證穩定，偶有被佔用的情況 |
+| **smee.io** | Webhook 轉發專用，需要額外的 client 程式，多一層複雜度 |
+| **VS Code Dev Tunnels** | 綁定 VS Code，換編輯器就失效 |
+| **Tailscale Funnel** | 要先建 Tailscale 網路，對沒在用的人成本高 |
+| **直接部署到雲端** | URL 穩定，但每次改 code 都要重部署，開發迭代太慢 |
+| **Cloudflare Quick Tunnel** | URL 每次重啟都換，手動更新 Webhook 很煩 |
 
 ## 小結
 
