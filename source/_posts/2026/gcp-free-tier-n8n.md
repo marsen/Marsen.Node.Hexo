@@ -13,12 +13,12 @@ tags:
 
 ## 核心概念
 
-「補捉資料」、「整理資料」、「發送報告」拆成三種抽象概念元件，
+「捕捉資料」、「整理資料」、「發送報告」拆成三種抽象概念元件，
 
 隨時可以組合或替換。
 
 ```text
-Sources（補捉資料）  →  Processors（整理）  →  Sinks（發送）
+Sources（捕捉資料）  →  Processors（整理）  →  Sinks（發送）
 ─────────────────     ─────────────────      ─────────────
 AI 新聞               摘要整理                LINE
 RSS 訂閱              翻譯                    Email
@@ -36,9 +36,15 @@ Gmail                 格式化                  GitHub
 
 而且可以自己架，不用把資料交給第三方。
 
-也有考慮過 Claude Code Remote 或是用 VM 加上排程程式執行。
+也有考慮過其他方案：
 
-但是考慮控制力與學習新技能(n8n)，最後選擇以下方案。
+| 方案 | 優點 | 缺點 |
+|---|---|---|
+| CCR（Claude Code Remote，Anthropic 雲端排程 agent） | 免維護 | 無法自訂節點、靈活度低 |
+| VM + cron | 自由度高 | 要自己維護腳本 |
+| n8n | 視覺化、可擴充、節點生態豐富 | 需要維護 VM |
+
+考慮控制力與學習新技能，最後選 n8n。
 
 一、跑在 GCP e2-micro，always free，完全不用花錢。
 
@@ -150,7 +156,7 @@ n8n 容器裡的 `node` 用戶 UID 是 1000。
 
 先把 volume 目錄的 owner 設成 1000，避免容器啟動後出現 permission denied：
 
-port 我用預設的 `5678` 也可以換成其他號碼，提昇一點安全?
+port 使用預設的 `5678`。後面會用 cloudflared tunnel 轉發，這個 port 不會對外暴露，改不改都一樣。
 
 ```bash
 mkdir -p ~/.n8n
@@ -170,7 +176,7 @@ sudo docker run -d \
 | --- | --- |
 | `--restart unless-stopped` | VM 重開機自動重啟 n8n |
 | `-v ~/.n8n:/home/node/.n8n` | 資料持久化，不會因為容器重建而消失 |
-| `N8N_SECURE_COOKIE=false` | 先用 HTTP 測試，等 HTTPS 設好再拿掉 |
+| `N8N_SECURE_COOKIE=false` | n8n 預設要求 HTTPS 才設定 cookie。對外雖然是 HTTPS，但 cloudflared 到 n8n 的內部連線是 HTTP，所以這個設定要保留 |
 
 n8n 映像檔本來就用非 root 的 `node` 用戶執行，不需要加 `--user`。
 
