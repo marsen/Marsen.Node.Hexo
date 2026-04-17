@@ -78,23 +78,27 @@ gcloud compute instances create n8n-server \
 
 ---
 
-## 步驟二：設定 SSH
+## 步驟二：設定 SSH（OS Login）
 
-gcloud 預設會把 SSH key 存在 `~/.ssh/`，但是我不想依賴 ssh key 登入
+預設的 SSH key 方式要管理本機的 key 檔案，換機器或多人共用都麻煩。
+OS Login 改用 Google 帳號做身份驗證，key 綁在帳號上，不依賴本機檔案。
 
-所以改用 OS Login，用 Google 帳號認證：
+開啟 OS Login：
 
 ```bash
 gcloud compute instances add-metadata n8n-server \
   --metadata enable-oslogin=TRUE \
-  --zone=us-east1-b
+  --zone=us-east1-b \
+  --project=YOUR_PROJECT_ID
 ```
 
-之後連線就直接：
+之後連線就直接，不需要帶任何 key 參數：
 
 ```bash
-gcloud compute ssh n8n-server --zone=us-east1-b
+gcloud compute ssh n8n-server --zone=us-east1-b --project=YOUR_PROJECT_ID
 ```
+
+第一次連會問你要不要建立 SSH key，輸入 `y` 就好，之後不用再動。
 
 ---
 
