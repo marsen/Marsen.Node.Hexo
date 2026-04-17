@@ -130,22 +130,26 @@ tunnel 連上但瀏覽器開不了，先查 n8n log：
 sudo docker logs n8n --tail 20
 ```
 
-若出現 `EACCES: permission denied, open '/home/node/.n8n/config'`，
-是容器裡的 `node` 用戶沒有寫入 volume 目錄的權限。
+若出現 `EACCES: permission denied, open '/home/node/.n8n/config'`，問題在 volume 目錄的 owner。
 
-解法：重建容器加 `--user $(id -u):$(id -g)`，讓容器以當前用戶身份執行：
+**根本原因**：`~/.n8n` 是第一次啟動時由 Docker（root）自動建立的，
+但容器裡的 `node` 用戶（UID 1000）不是 root，所以沒有寫入權限。
+
+解法：把 host 上的 `~/.n8n` 改成讓 `node`（UID 1000）擁有，再重建容器：
 
 ```bash
+sudo chown -R 1000:1000 ~/.n8n
 sudo docker rm -f n8n
 sudo docker run -d \
   --name n8n \
   --restart unless-stopped \
   -p 5678:5678 \
   -v ~/.n8n:/home/node/.n8n \
-  --user $(id -u):$(id -g) \
   -e N8N_SECURE_COOKIE=false \
   docker.n8n.io/n8nio/n8n
 ```
+
+n8n 映像檔本來就用非 root 的 `node` 用戶執行，不需要加 `--user`。
 
 ---
 
