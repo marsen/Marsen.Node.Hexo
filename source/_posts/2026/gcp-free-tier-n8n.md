@@ -7,21 +7,18 @@ tags:
 
 ## 前情提要
 
-我想建一個可以自由擴充的個人內容自動化平台，
-核心概念是把「抓資料」、「處理內容」、「發送到哪裡」拆成三種元件，
+最近想整合 AI 與自已的職能，建立一些小工具。
+
+第一個想法是資料搜集器，可以自由擴充的個人內容自動化平台。
+
+## 核心概念
+
+「補捉資料」、「整理資料」、「發送報告」拆成三種抽象概念元件，
+
 隨時可以組合或替換。
 
-選 n8n 當 runtime，因為它本來就是這個思路設計的，
-而且可以自己架，不用把資料交給第三方。
-
-跑在 GCP e2-micro，always free，完全不用花錢。
-
----
-
-## 架構概念
-
 ```text
-Sources（抓資料）  →  Processors（處理）  →  Sinks（發送）
+Sources（補捉資料）  →  Processors（整理）  →  Sinks（發送）
 ─────────────────     ─────────────────      ─────────────
 AI 新聞               摘要整理                LINE
 RSS 訂閱              翻譯                    Email
@@ -33,9 +30,17 @@ Gmail                 格式化                  GitHub
 一條 pipeline = 選幾個 Source + Processor + Sink 組合起來。
 加新管道只需要加一個 Sink 節點，不動其他邏輯。
 
----
+## 技術選擇與環境規格
 
-## 環境規格
+選 n8n 當 runtime，因為它本來就是這個思路設計的，
+
+而且可以自己架，不用把資料交給第三方。
+
+也有考慮過 Claude Code Remote 或是用 VM 加上排程程式執行。
+
+但是考慮控制力與學習新技能(n8n)，最後選擇以下方案。
+
+一、跑在 GCP e2-micro，always free，完全不用花錢。
 
 GCP Always Free 的條件：
 
@@ -46,9 +51,15 @@ GCP Always Free 的條件：
 
 個人用的 n8n 排程任務，這個規格完全夠。
 
+二、在 GCP 的 VM 上安裝 n8n(文章待補)
+
+三、在 n8n 上設定 pipeline(文章待補)
+
 ---
 
 ## 步驟一：建立 VM
+
+以下我直接讓 AI 執行，你也可以手動或是使用瀏覽器的圖形介面操作
 
 先裝 gcloud CLI：
 
@@ -81,7 +92,10 @@ gcloud compute instances create n8n-server \
 ## 步驟二：設定 SSH（OS Login）
 
 預設的 SSH key 方式要管理本機的 key 檔案，換機器或多人共用都麻煩。
-OS Login 改用 Google 帳號做身份驗證，key 綁在帳號上，不依賴本機檔案。
+
+我個人比較喜歡　OS Login 改用 Google 帳號做身份驗證，key 綁在帳號上，不依賴本機檔案。
+
+實際上還是有 ssh key 只是不用特別在意它。
 
 開啟 OS Login：
 
@@ -133,7 +147,10 @@ sudo usermod -aG docker $USER
 ## 步驟五：跑 n8n
 
 n8n 容器裡的 `node` 用戶 UID 是 1000。
+
 先把 volume 目錄的 owner 設成 1000，避免容器啟動後出現 permission denied：
+
+port 我用預設的 `5678` 也可以換成其他號碼，提昇一點安全?
 
 ```bash
 mkdir -p ~/.n8n
@@ -150,7 +167,7 @@ sudo docker run -d \
 幾個參數說明：
 
 | 參數 | 說明 |
-|---|---|
+| --- | --- |
 | `--restart unless-stopped` | VM 重開機自動重啟 n8n |
 | `-v ~/.n8n:/home/node/.n8n` | 資料持久化，不會因為容器重建而消失 |
 | `N8N_SECURE_COOKIE=false` | 先用 HTTP 測試，等 HTTPS 設好再拿掉 |
