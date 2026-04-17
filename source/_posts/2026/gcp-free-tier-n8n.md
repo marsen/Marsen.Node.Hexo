@@ -134,11 +134,12 @@ sudo usermod -aG docker $USER
 
 ```bash
 mkdir -p ~/.n8n
-docker run -d \
+sudo docker run -d \
   --name n8n \
   --restart unless-stopped \
   -p 5678:5678 \
   -v ~/.n8n:/home/node/.n8n \
+  --user $(id -u):$(id -g) \
   -e N8N_SECURE_COOKIE=false \
   docker.n8n.io/n8nio/n8n
 ```
@@ -149,6 +150,7 @@ docker run -d \
 |---|---|
 | `--restart unless-stopped` | VM 重開機自動重啟 n8n |
 | `-v ~/.n8n:/home/node/.n8n` | 資料持久化，不會因為容器重建而消失 |
+| `--user $(id -u):$(id -g)` | 讓容器以當前用戶身份執行，避免 `~/.n8n` 出現 permission denied |
 | `N8N_SECURE_COOKIE=false` | 先用 HTTP 測試，等 HTTPS 設好再拿掉 |
 
 確認有跑起來：
