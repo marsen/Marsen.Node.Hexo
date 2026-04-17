@@ -80,8 +80,9 @@ gcloud compute instances create n8n-server \
 
 ## 步驟二：設定 SSH
 
-gcloud 預設會把 SSH key 存在 `~/.ssh/`，但如果你的 home 在 Dropbox 這類同步資料夾裡，
-key 可能會壞掉。解法是開 OS Login，用 Google 帳號認證，不依賴 key：
+gcloud 預設會把 SSH key 存在 `~/.ssh/`，但是我不想依賴 ssh key 登入
+
+所以改用 OS Login，用 Google 帳號認證：
 
 ```bash
 gcloud compute instances add-metadata n8n-server \
@@ -149,29 +150,25 @@ docker run -d \
 確認有跑起來：
 
 ```bash
-docker ps
-docker logs n8n --tail 20
+sudo docker ps
+sudo docker logs n8n --tail 20
 ```
 
----
+正常的話會看到 port `0.0.0.0:5678->5678/tcp`，STATUS 是 `Up`。
 
-## 步驟六：開 Firewall（待補）
-
-目前 n8n 跑在 port 5678，還需要：
-
-- GCP 防火牆規則開 5678
-- 或用 cloudflared tunnel 對外，不直接暴露 port
-
-cloudflared 的好處是不用改防火牆，直接用 Cloudflare 的 CDN 代理，
-還能順便拿到 HTTPS。這部分後續文章再補。
+log 裡可能有 community packages 的 error，是 n8n 找不到額外套件，不影響運作，忽略即可。
 
 ---
 
 ## 小結
 
+到這裡，n8n 已經在 GCP 免費 VM 上跑起來了。
+
 - GCP e2-micro 免費，加 swap 跑 n8n 沒問題
-- OS Login 比 SSH key 好管，不依賴本機檔案
-- n8n 的 Source/Processor/Sink 模型天然適合個人自動化 pipeline
-- cloudflared tunnel 是下一步，解決對外存取問題
+- OS Login 用 Google 帳號認證，不依賴本機 SSH key 檔案
+- n8n image 約 2.3GB，第一次 pull 要等幾分鐘
+- `--restart unless-stopped` 確保 VM 重開機後 n8n 自動恢復
+
+目前 n8n 只能從 VM 內部存取，下一篇會用 cloudflared tunnel 讓它可以從外部用 HTTPS 開啟，不用動防火牆。
 
 (fin)
