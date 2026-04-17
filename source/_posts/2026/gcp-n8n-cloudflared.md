@@ -103,7 +103,49 @@ cloudflared tunnel route dns butler butler.marsen.me
 
 ---
 
-## 步驟五：啟動 Tunnel（待補）
+## 步驟五：啟動 Tunnel
+
+```bash
+cloudflared tunnel run butler
+```
+
+看到 `Registered tunnel connection` 就是連上了。
+
+### 踩坑一：localhost 解析成 IPv6
+
+第一次跑時 config 寫的是 `http://localhost:5678`，
+cloudflared 把 `localhost` 解析成 IPv6 的 `[::1]`，但 n8n 只監聽 IPv4，所以連不到。
+
+解法：把 config 裡的 `localhost` 改成 `127.0.0.1`：
+
+```bash
+sed -i 's|http://localhost:5678|http://127.0.0.1:5678|' ~/.cloudflared/config.yml
+```
+
+### 踩坑二：n8n connection reset by peer
+
+tunnel 連上但瀏覽器開不了，先查 n8n log：
+
+```bash
+sudo docker logs n8n --tail 20
+```
+
+若出現 `EACCES: permission denied, open '/home/node/.n8n/config'`，
+是容器裡的 `node` 用戶沒有寫入 volume 目錄的權限。
+
+解法：重建容器加 `--user $(id -u):$(id -g)`，讓容器以當前用戶身份執行：
+
+```bash
+sudo docker rm -f n8n
+sudo docker run -d \
+  --name n8n \
+  --restart unless-stopped \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  --user $(id -u):$(id -g) \
+  -e N8N_SECURE_COOKIE=false \
+  docker.n8n.io/n8nio/n8n
+```
 
 ---
 
