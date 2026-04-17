@@ -153,18 +153,79 @@ n8n 映像檔本來就用非 root 的 `node` 用戶執行，不需要加 `--user
 
 ---
 
-## 步驟六：設定開機自動啟動（待補）
+## 步驟六：設定開機自動啟動
+
+讓 cloudflared 在 VM 重開機後自動啟動，不用每次手動跑。
+
+`cloudflared service install` 預設找 `~/.cloudflared/config.yml`，
+但用 `sudo` 跑時 home 會變成 root 的，所以要明確指定 config 路徑：
+
+```bash
+sudo cloudflared --config /home/<USER>/.cloudflared/config.yml service install
+sudo systemctl start cloudflared
+sudo systemctl status cloudflared
+```
+
+把 `<USER>` 換成你的 OS Login 用戶名稱（OS Login 帳號格式是 Gmail 帳號把 `.` 和 `@` 換成 `_`，例如 `thisismysoul_gmail_com`）。
+
+看到 `active (running)` 就完成了。之後 VM 重開機，cloudflared 和 n8n 都會自動恢復。
 
 ---
 
-## 步驟七：Cloudflare Access（待補）
+## 步驟七：Cloudflare Access
 
-加一層 Google 帳號驗證，讓 `butler.marsen.me` 不是誰都能開。
+n8n 對外之後，`butler.marsen.me` 是全公開的，任何人都能看到登入頁面。
+加一層 Cloudflare Access，讓驗證擋在 n8n 前面。
+
+### 為什麼要在 n8n 設定前先做這步？
+
+你一開 n8n 就會看到「Set up owner account」頁面。
+如果這個頁面是公開的，任何人都能搶先填、搶走 owner 帳號。
+
+正確順序：**先設 Access → 再設 n8n owner account**。
+
+### 操作步驟
+
+進 Cloudflare 主控台 → 左側找 **Zero Trust**。
+
+第一次進入需要選擇團隊名稱（之後可以改），Free 方案 50 人以下免費。
+
+進去後選：**安全地存取私人 Web 應用程式** → **連結私人 Web 應用程式**
+
+填入應用程式資訊：
+
+| 欄位 | 填什麼 |
+|---|---|
+| 應用程式名稱 | `n8n` |
+| 內部主機名稱或 IP | `127.0.0.1` |
+| 通訊協定 | HTTP |
+| 連接埠 | `5678` |
+| 子網域 | `butler` |
+| 網域 | `marsen.me` |
+
+**為什麼 IP 填 `127.0.0.1` 而不是 GCP 外部 IP？**
+
+因為 cloudflared 已經在 VM 裡跑了，它負責把流量從 Cloudflare 帶進來。
+Access 只需要知道「cloudflared 要連哪裡」，也就是 VM 內部的 `127.0.0.1:5678`。
+GCP 不用開防火牆，外部 IP 不需要暴露。
+
+```text
+使用者瀏覽器
+    ↓ HTTPS
+Cloudflare Access（驗證身份）
+    ↓ 通過後
+cloudflared tunnel（在 VM 裡跑）
+    ↓ 本機連線
+127.0.0.1:5678（n8n）
+```
 
 ---
 
 ## 小結
 
-（待補）
+- cloudflared tunnel 讓 n8n 對外，不用開 GCP 防火牆、不暴露任何 port
+- Cloudflare Access 擋在前面，只有通過驗證的 email 才能進到 n8n
+- cloudflared 設成 systemd service，VM 重開機自動恢復，不需要手動啟動
+- 整條鏈路：瀏覽器 → Cloudflare Access（驗證）→ cloudflared tunnel → n8n
 
 (fin)
