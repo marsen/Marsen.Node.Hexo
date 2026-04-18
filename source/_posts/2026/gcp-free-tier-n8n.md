@@ -83,7 +83,7 @@ gcloud config set project YOUR_PROJECT_ID
 建立 VM：
 
 ```bash
-gcloud compute instances create ai-butler-vm00 \
+gcloud compute instances create n8n-server \
   --zone=us-east1-b \
   --machine-type=e2-micro \
   --image-family=debian-12 \
@@ -92,10 +92,6 @@ gcloud compute instances create ai-butler-vm00 \
   --boot-disk-type=pd-standard \
   --tags=http-server,https-server
 ```
-
-VM 名稱可以自己取，這裡用 `ai-butler-vm00`：
-- `ai-butler`：這台機器的定位是 AI 自動化後台（管家）
-- `vm00`：第一台，之後擴充可以叫 `vm01`
 
 ---
 
@@ -110,7 +106,7 @@ VM 名稱可以自己取，這裡用 `ai-butler-vm00`：
 開啟 OS Login：
 
 ```bash
-gcloud compute instances add-metadata ai-butler-vm00 \
+gcloud compute instances add-metadata n8n-server \
   --metadata enable-oslogin=TRUE \
   --zone=us-east1-b \
   --project=YOUR_PROJECT_ID
@@ -119,7 +115,7 @@ gcloud compute instances add-metadata ai-butler-vm00 \
 之後連線就直接，不需要帶任何 key 參數：
 
 ```bash
-gcloud compute ssh ai-butler-vm00 --zone=us-east1-b --project=YOUR_PROJECT_ID
+gcloud compute ssh n8n-server --zone=us-east1-b --project=YOUR_PROJECT_ID
 ```
 
 第一次連會問你要不要建立 SSH key，輸入 `y` 就好，之後不用再動。
