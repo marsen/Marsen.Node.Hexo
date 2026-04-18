@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 用 cloudflared tunnel 讓 n8n 安全對外，不開防火牆"
+title: "個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel"
 date: 2026/04/17 14:54:04
 tags:
   - 實作筆記
@@ -49,10 +49,9 @@ Cloudflare Access 是加在 tunnel 前面的門禁：
 ## 這篇的步驟順序
 
 1. 安裝 cloudflared
-2. 登入 Cloudflare、建立 tunnel、設定路由
-3. 設定 Cloudflare Access，加上身份驗證（**先做，tunnel 上線前就有門禁**）
-4. 啟動 tunnel
-5. 設定 systemd，讓 tunnel 開機自動啟動
+2. 登入 Cloudflare、建立 tunnel、設定 config、新增 DNS
+3. 設定 Cloudflare Access（**先做，tunnel 上線前就有門禁**）
+4. 設定 systemd 並啟動 tunnel
 
 ---
 
@@ -61,12 +60,12 @@ Cloudflare Access 是加在 tunnel 前面的門禁：
 在 VM 上執行：
 
 ```bash
-curl -L https://pkg.cloudflare.com/cloudflared-stable-linux-amd64.deb -o /tmp/cloudflared.deb
-sudo dpkg -i /tmp/cloudflared.deb
-cloudflared --version
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared bookworm main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+sudo apt update && sudo apt install cloudflared
 ```
 
-看到版本號就安裝成功了。
+看到 `Setting up cloudflared` 就安裝成功了。
 
 ---
 
@@ -75,9 +74,10 @@ cloudflared --version
 這台 VM 不只跑 n8n，之後可能還有其他自動化服務。
 所以 tunnel 和 subdomain 都以機器用途命名，而不是以某個服務命名。
 
-選 `butler`（管家），因為這台機器的定位是「幫你自動處理事情的後台」。
+以這篇為例，選 `butler`（管家），因為這台機器的定位是「幫你自動處理事情的後台」。
 
-- Tunnel 名稱：`butler`
+- `<TUNNEL_NAME>` = `butler`
+- `<YOUR_DOMAIN>` = `marsen.me`
 - 對外網址：`butler.marsen.me`
 
 之後如果加新服務，在 config 裡多加一條 ingress 規則就好。
@@ -92,7 +92,7 @@ cloudflared --version
 cloudflared tunnel login
 ```
 
-它會印出一個 URL，複製到瀏覽器，選你要授權的 domain（這裡是 `marsen.me`）。
+它會印出一個 URL，複製到瀏覽器，選你要授權的 domain（這裡是 `<YOUR_DOMAIN>`）。
 
 授權完成後 cert 會自動存到：
 
@@ -105,14 +105,14 @@ cloudflared tunnel login
 ## 步驟二：建立 Tunnel
 
 ```bash
-cloudflared tunnel create butler
+cloudflared tunnel create <TUNNEL_NAME>
 ```
 
 成功後會顯示 tunnel ID（UUID 格式），同時在 `~/.cloudflared/` 產生一個 credentials JSON 檔。
 
 ```text
 Tunnel credentials written to /home/USER/.cloudflared/<tunnel-id>.json
-Created tunnel butler with id <tunnel-id>
+Created tunnel <TUNNEL_NAME> with id <tunnel-id>
 ```
 
 把 tunnel ID 記下來，後面要用。
@@ -127,7 +127,7 @@ tunnel: <your-tunnel-id>
 credentials-file: /home/<USER>/.cloudflared/<your-tunnel-id>.json
 
 ingress:
-  - hostname: butler.marsen.me
+  - hostname: <TUNNEL_NAME>.<YOUR_DOMAIN>
     service: http://127.0.0.1:5678
   - service: http_status:404
 EOF
@@ -154,7 +154,7 @@ cloudflared tunnel ingress validate
 ## 步驟四：新增 DNS 記錄
 
 ```bash
-cloudflared tunnel route dns butler butler.marsen.me
+cloudflared tunnel route dns <TUNNEL_NAME> <TUNNEL_NAME>.<YOUR_DOMAIN>
 ```
 
 這會在 Cloudflare DNS 自動加一筆 CNAME，指向你的 tunnel。
@@ -165,28 +165,30 @@ cloudflared tunnel route dns butler butler.marsen.me
 
 **在啟動 tunnel 之前先設好 Access**，這樣 n8n 上線的那一刻就已經有門禁，不會有公開暴露的空窗期。
 
-進 Cloudflare 主控台 → 左側找 **Zero Trust**。
+> **注意：不要用 Onboarding 精靈。** Zero Trust 首次進入會有引導精靈，精靈的「指派 Tunnel」步驟需要 tunnel 已在執行中才能選取。我們要先設 Access 再啟動 tunnel，所以改用手動建立 Application。
 
-第一次進入需要選擇團隊名稱（之後可以改），Free 方案 50 人以下免費。
+進 Cloudflare 主控台 → **Zero Trust** → **Access → Applications** → **+ Add an application** → 選 **Self-hosted**。
 
-進去後選：**安全地存取私人 Web 應用程式** → **連結私人 Web 應用程式**
+第一次進入 Zero Trust 需要選擇團隊名稱（之後可以改），Free 方案 50 人以下免費。
 
 填入應用程式資訊：
 
 | 欄位 | 填什麼 |
 | --- | --- |
-| 應用程式名稱 | `n8n` |
-| 內部主機名稱或 IP | `127.0.0.1` |
-| 通訊協定 | HTTP |
-| 連接埠 | `5678` |
-| 子網域 | `butler` |
-| 網域 | `marsen.me` |
+| Application name | `<APP_NAME>` |
+| Subdomain | `<TUNNEL_NAME>` |
+| Domain | `<YOUR_DOMAIN>` |
 
-**為什麼 IP 填 `127.0.0.1` 而不是 GCP 外部 IP？**
+下一步設定 Policy：
 
-因為 cloudflared 在 VM 裡跑，負責把流量從 Cloudflare 帶進來。
-Access 只需要知道「cloudflared 要連哪裡」，也就是 VM 內部的 `127.0.0.1:5678`。
-GCP 不用開防火牆，外部 IP 不需要暴露。
+| 欄位 | 填什麼 |
+| --- | --- |
+| Policy name | `allow` |
+| Action | Allow |
+| Selector | Emails |
+| 值 | `<YOUR_EMAIL>` |
+
+存檔。Access 現在保護 `<TUNNEL_NAME>.<YOUR_DOMAIN>`，只有通過驗證的 email 才能進去。
 
 ```text
 使用者瀏覽器
@@ -198,9 +200,6 @@ cloudflared tunnel（在 VM 裡跑）
 127.0.0.1:5678（n8n）
 ```
 
-設定 Policy：選 **One-time PIN**（Cloudflare 寄驗證碼到你的 email），
-並填入允許的 email，只有這個 email 能通過驗證。
-
 ### 為什麼要在 tunnel 啟動前先做？
 
 你一開 n8n 就會看到「Set up owner account」頁面，這個頁面是公開的。
@@ -208,18 +207,7 @@ cloudflared tunnel（在 VM 裡跑）
 
 ---
 
-## 步驟六：啟動 Tunnel
-
-```bash
-cloudflared tunnel run butler
-```
-
-看到 `Registered tunnel connection` 就是連上了。
-這時開 `https://butler.marsen.me`，應該會先看到 Cloudflare Access 的驗證頁面。
-
----
-
-## 步驟七：設定開機自動啟動
+## 步驟六：設定開機自動啟動並啟動 Tunnel
 
 讓 cloudflared 在 VM 重開機後自動啟動，不用每次手動跑。
 
@@ -234,7 +222,11 @@ sudo systemctl status cloudflared
 
 把 `<USER>` 換成你的 OS Login 用戶名稱（Gmail 帳號把 `.` 和 `@` 換成 `_`，例如 `yourname_gmail_com`）。
 
-看到 `active (running)` 就完成了。之後 VM 重開機，cloudflared 和 n8n 都會自動恢復。
+看到 `active (running)` 就完成了。
+
+這時開 `https://<TUNNEL_NAME>.<YOUR_DOMAIN>`，應該會先看到 Cloudflare Access 的驗證頁面。
+
+之後 VM 重開機，cloudflared 和 n8n 都會自動恢復。
 
 ---
 
