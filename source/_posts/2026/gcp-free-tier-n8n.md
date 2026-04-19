@@ -211,6 +211,13 @@ log 裡可能有 community packages 的 error，是 n8n 找不到額外套件，
 
 ---
 
+## 參考
+
+- [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/gcp-n8n-cloudflared/)
+- [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/gcp-n8n-rebuild/)
+
+---
+
 ## 小結
 
 到這裡，n8n 已經在 GCP 免費 VM 上跑起來了。

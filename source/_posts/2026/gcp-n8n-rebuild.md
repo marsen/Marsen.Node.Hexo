@@ -66,16 +66,12 @@ gcloud compute instances delete ai-butler-vm00 \
 
 確認後輸入 `Y`，VM 和磁碟都會一起移除。
 
----
+## 參考
 
-## 重建步驟
+清理完成後，照以下兩篇文章重建
 
-清理完成後，照以下兩篇文章重建：
-
-1. [個人自動化平台(一) n8n & GCP VM](/2026/gcp-free-tier-n8n/)
-2. [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/gcp-n8n-cloudflared/)
-
----
+- [個人自動化平台(一) n8n & GCP VM](/2026/gcp-free-tier-n8n/)
+- [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/gcp-n8n-cloudflared/)
 
 ## 小結
 
