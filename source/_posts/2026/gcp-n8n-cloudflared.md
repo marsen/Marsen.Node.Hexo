@@ -276,6 +276,7 @@ n8n 映像檔本來就用非 root 的 `node` 用戶執行，不需要加 `--user
 ## 參考
 
 - [個人自動化平台(一) n8n & GCP VM](/2026/gcp-free-tier-n8n/)
+- [個人自動化平台(三) 取、讀、寫：三層可插拔管道設計](/2026/automation-pipeline-fetch-read-write/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/gcp-n8n-rebuild/)
 
 ## 小結

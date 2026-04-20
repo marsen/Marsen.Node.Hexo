@@ -214,6 +214,7 @@ log 裡可能有 community packages 的 error，是 n8n 找不到額外套件，
 ## 參考
 
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/gcp-n8n-cloudflared/)
+- [個人自動化平台(三) 取、讀、寫：三層可插拔管道設計](/2026/automation-pipeline-fetch-read-write/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/gcp-n8n-rebuild/)
 
 ---
