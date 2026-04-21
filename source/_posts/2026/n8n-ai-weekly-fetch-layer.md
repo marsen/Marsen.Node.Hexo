@@ -75,7 +75,7 @@ https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
 
 在 RSS Read 後加 **Filter** 節點，條件：
 
-```
+```text
 isoDate → is after → {{ $now.minus({days: 7}).toISO() }}
 ```
 
@@ -116,9 +116,11 @@ n8n 官方說明：
 這個設定限制的是**被呼叫端**（destination）——也就是「這組 key 只能被送往哪些 domain」，不是「誰能在 n8n 裡使用這組 key」。
 
 **能防護的範圍**：
+
 - 攻擊者透過 HTTP Request 節點把 key 帶著打到外部惡意 server
 
 **防護不到的範圍**：
+
 - n8n 原生節點（如 Google Gemini Chat Model）
 - 直接存取 n8n 資料庫
 - 從 n8n UI 讀取 credential
