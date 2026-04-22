@@ -1,3 +1,12 @@
+---
+title: " [實作筆記] ASP.NET Worker Thread 與 IO Thread — DDoS 攻擊下的 ThreadPool 耗盡事故"
+date: 2016/11/04 10:24:37
+tags:
+  - 實作筆記
+  - .Net Framework
+  - Redis
+  - ASP.NET
+---
 
 ## 前情提要
 
@@ -50,17 +59,17 @@
 
 ## 錯誤原因
 
-1. CLR 建立執行緒需要時間 , 一秒鐘最多只能建立兩條 Thread [註一](#comment1)
+1. CLR 建立執行緒需要時間 , 一秒鐘最多只能建立兩條 Thread [註一](#註釋)
 2. 瞬間的 Request 量超過 ThreadPool 中的 Thread 數量
 3. ThreadPool 建立 Thread 中 , 仍持續有 Request 進來引發錯誤
-4. 因為我的[測試環境](#testEnvironment)有四核心,依文件所說
+4. 因為我的[測試環境](#環境與工具)有四核心,依文件所說
 
 ## 實驗流程
 
 1. 建立監視器
     參考 [How To: Monitor the ASP.NET Thread Pool Using Custom Counters](https://msdn.microsoft.com/zh-tw/library/ff650682.aspx)
 
-    1. 建立一個 console 專案, [MyAspNetThreadCounters](#MyAspNetThreadCounters)
+    1. 建立一個 console 專案, [MyAspNetThreadCounters](#myaspnetthreadcounters)
     2. 編譯並執行 console 專案
     3. 開啟`Regedit.exe` 檢查 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services` 應包含以下值
 
@@ -74,14 +83,14 @@
     ```
 
 2. 建立ASP.NET專案
-    1. 建立[Global.asax](#global)
-    2. 建立[StartWebApp.aspx](#startWebApp)
-    3. 建立[Sleep.aspx](#sleep)
+    1. 建立[Global.asax](#globalasax)
+    2. 建立[StartWebApp.aspx](#startwebappaspx)
+    3. 建立[Sleep.aspx](#sleepaspx)
 
 3. 開啟 `perfmon.exe` 新增計數器 , 選取我們自定義的 `MyAspNetThreadCounters`
 4. 連結網頁 `localhost\StartWebApp.aspx` 以啟動網站,可以得到以下數據
 
-    ```
+    ```text
     MaxWorkerThreads:32767.
     MaxIOThreads:1000.
     MinWorkerThreads:4.
@@ -89,6 +98,7 @@
     AvailableWorker:32766.
     AvailableIO:1000.
     ```
+
 5. 執行大量 redis 連線,觀察結果 AvailableWorker Threads 會往下掉,  
 故推斷 redis connection 是透過 Worker Threads 建立.
 
@@ -100,7 +110,7 @@
 
 ## 程式碼
 
-### <span id="MyAspNetThreadCounters">MyAspNetThreadCounters</span>
+### MyAspNetThreadCounters
 
 ```csharp
   using System;
@@ -189,7 +199,7 @@
   }
 ```
 
-### <span id="global">Global.asax</span>
+### Global.asax
 
 ```csharp
   public class Global : System.Web
@@ -364,7 +374,7 @@
   }
 ```
 
-### <span id="startWebApp">StartWebApp.aspx</span>
+### StartWebApp.aspx
 
 ```csharp
   protected void Page_Load(object sender, EventArgs e)
@@ -388,7 +398,7 @@
   }
 ```
 
-###  <span id="sleep">Sleep.aspx</span>
+### Sleep.aspx
 
 ```csharp
   void Page_Load(Object sender, EventArgs e)
@@ -440,10 +450,10 @@
   }
 ```
 
-## <span id="testEnvironment">環境與工具</span>
+## 環境與工具
 
 - Visual Studio 2015 Professional UPDATE 3
-- Windows 10 
+- Windows 10
 - .NET Framework 4.5
 - StackExchange.Redis 1.0.481
 - CPU `Intel® Core™ i7-5500U` 四核心
@@ -481,11 +491,11 @@
 |maxconnection| 2 | 12*CPUs |
 |executionTimeout| 90s  | 未建議 |
 
-* maxWorkerThreads,minWorkerThreads,maxIoThreads,minIoThreads 設定的數值需要乘上CPU的數量,  
+- maxWorkerThreads,minWorkerThreads,maxIoThreads,minIoThreads 設定的數值需要乘上CPU的數量,  
 
 例: 4 核心設定 minWorkerThreads 值 20 ,實際上的值為 80
 
-## <span id="comment1">註釋<span>
+## 註釋
 
 1. ThreadPool 中會有一個 queue , 其中隱含一個半秒機制 , 當 queue 靜止超過半秒 , 就會在 ThreadPool 建立一個新的 Thread  
 
