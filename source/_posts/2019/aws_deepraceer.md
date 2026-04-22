@@ -20,9 +20,12 @@ tags:
 #### Agent
 
 在比賽中是真實的縮小迷你車(1:18)，車上帶有鏡頭可以拍攝路況，
-在訓練中則是使用模擬器,可以模
 
-- Enviroment
+在訓練中則是使用模擬器,可以模擬真實世界開車時會遇到的變數，
+
+註：這只是模型車，真實世界的車子會更複雜，變數會更多更不可測。
+
+- Environment
 - Action
 - Reward
 - State
@@ -94,5 +97,6 @@ def reward_function(params):
 - [aws-samples/aws-deepracer-workshops](https://github.com/aws-samples/aws-deepracer-workshops/tree/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1)
 - [Introduction to Reinforcement Learning](https://d2k9g1efyej86q.cloudfront.net/)
 - [Train and Evaluate AWS DeepRacer Models Using the AWS DeepRacer Console - AWS DeepRacer](https://docs.aws.amazon.com/en_us/deepracer/latest/developerguide/deepracer-console-train-evaluate-models.html)
+- [從 DeepRacer 到 Robotaxi：Tesla vs Waymo 的自動駕駛終局](https://blog.marsen.me/2026/04/22/2026/deepracer-to-robotaxi/)
 
 (fin)
