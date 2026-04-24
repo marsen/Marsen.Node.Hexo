@@ -8,6 +8,7 @@ tags:
 ## 前情提要
 
 Gap year 期間收到一封獵頭的 LinkedIn 邀約，職位是 AI Workflow Tech Lead。  
+
 獵頭來自一家 HR Consulting 公司，背後的客戶公司（以下稱 B 社）資訊目前尚未公開。
 
 ---
@@ -36,7 +37,8 @@ Gap year 期間收到一封獵頭的 LinkedIn 邀約，職位是 AI Workflow Tec
 - mentor 團隊成員
 
 值得注意的是，JD 描述偏向「內部 AI 工具建設者」，但獵頭口頭說的比較像帶產品團隊的 Tech Lead。  
-兩者定位有落差，預計在 meet 時釐清。
+
+兩者定位有落差，預計在 meet 時釐清。  
 
 ---
 
@@ -57,9 +59,11 @@ Gap year 期間收到一封獵頭的 LinkedIn 邀約，職位是 AI Workflow Tec
 ## 自我梳理
 
 對方特別在意兩件事：n8n 以外的 AI workflow 工具廣度，以及 AI Agent 系統設計的實際深度。
+
 這讓我重新整理了一下自己在這塊的積累。
 
 技術工具不是重點，思路才是。我做 AI 相關系統時，習慣先把任務拆成多個 step，
+
 用 workflow 控制整個流程，而不是只寫一段 prompt 然後祈禱它跑對。
 
 具體做過的事：
@@ -79,6 +83,7 @@ Gap year 期間收到一封獵頭的 LinkedIn 邀約，職位是 AI Workflow Tec
 技術面的吻合度高，AI Agent 系統設計、RAG、導入 AI 開發流程都是近期實際做過的事。
 
 主要的疑慮是角色定位的模糊，以及混合遠距的實際彈性。  
-這兩點是 meet 的優先確認項目。
+
+這兩點是一面時的優先確認項目。
 
 (fin)
