@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-上一篇定好了「收集、處理、輸出」三層架構，這篇開始實作第一層：取。
+上一篇定好了「收集、處理、輸出」三層架構，這篇開始實作第一層：收集。
 
 目標是從四個 AI 新聞來源拉資料，輸出統一格式，交給處理層處理。
 
@@ -64,7 +64,7 @@ Schedule Trigger → RSS Read → Filter（只保留近 7 天文章）
 
 ### 步驟一：建立 Workflow
 
-新增 Workflow，命名 `[取] The Verge AI`。
+新增 Workflow，命名 `[收集] The Verge AI`。
 
 觸發節點選 **Schedule Trigger**，預設每天午夜執行即可（之後調整為週報頻率）。
 
