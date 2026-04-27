@@ -75,6 +75,7 @@ gcloud compute instances delete ai-butler-vm00 \
 - [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
 - [個人自動化平台(四) n8n 實作：收集層，RSS 資料來源](/2026/n8n-5-pipeline-fetch/)
 - [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/n8n-6-pipeline-process/)
+- [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/n8n-7-pipeline-output/)
 
 ## 小結
 
