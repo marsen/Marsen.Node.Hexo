@@ -139,6 +139,6 @@ n8n 的 sub-workflow 機制很適合做這件事：
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/n8n-4-rebuild-infromation/)
 - [個人自動化平台(四) n8n 實作：收集層，RSS 資料來源](/2026/n8n-5-pipeline-fetch/)
-- [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/n8n-6-pipeline-read/)
+- [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/n8n-6-pipeline-process/)
 
 (fin)

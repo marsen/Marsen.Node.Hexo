@@ -15,23 +15,13 @@ tags:
 
 ---
 
-## 為什麼要 Aggregate 層
+## 為什麼要 Aggregate？
 
-這層算是 fetch 與 process 層之間的橋接器，
+收集層輸出的是多筆獨立資料（以 RSS 為例，一次可能拿到 10 筆）。
 
-至於屬於哪一層也許之後還會調整，簡單說在處理資料時，我們希望把資料整理成原型資料，
+Basic LLM Chain 預設對每筆各送一次請求，10 筆 = 10 次 API call，超過 Gemini 免費版 5 RPM 限制。
 
-而我們的 fetch 層也是可以替換的，那取得得資料會需要這個整合處理過後才能再給處理層加工
-
-比如說，上一層我們用 RSS Read 取得資料後會輸出多筆資料(10筆)，對免費版的語言模型不友善
-
-> Basic LLM Chain 預設會對每筆各送一次請求。
->
-> 多次的 API call，會超過 Gemini 免費版 5 RPM 限制。
-
-改用 **Aggregate** 節點把 10 筆合成一筆，再送一次請求給 AI，請它整理成一份週報。
-
-這也更符合「週報」的本意——要的是一份完整報告，不是 10 篇獨立摘要。
+用 **Aggregate** 節點先把多筆合成一筆，再送一次請求給 AI。這也更符合「週報」的本意——要的是一份完整報告，不是 10 篇獨立摘要。
 
 ```text
 Edit Fields → Aggregate（All Item Data）→ Basic LLM Chain（Google Gemini）
