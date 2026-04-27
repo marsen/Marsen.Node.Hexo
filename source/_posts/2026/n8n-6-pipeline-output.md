@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-取層（RSS 抓資料）和讀層（Gemini 整理週報）都跑通了，接下來要實作寫層：把 AI 整理好的內容自動發布到社群媒體。
+收集層（RSS 抓資料）和處理層（Gemini 整理週報）都跑通了，接下來要實作輸出層：把 AI 整理好的內容自動發布到社群媒體。
 
 這篇記錄從「選哪個平台」到「拿到 Instagram Long-lived Token」的完整過程，包含踩到的坑和解法。
 
@@ -184,9 +184,6 @@ git push origin main
 ```
 
 prebuilt 的好處是 CI 與 deploy 分離，確保 lint/type-check/test 通過才部署；代價是 env var 更新要重新 build。
-
----
-
 
 ---
 
