@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 個人自動化平台(五) n8n 實作：寫層，Instagram API 取得 Token 全記錄"
+title: "[實作筆記] 個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄"
 date: 2026/04/23 02:14:41
 tags:
   - 實作筆記
