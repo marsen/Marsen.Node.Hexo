@@ -72,7 +72,7 @@ gcloud compute instances delete ai-butler-vm00 \
 
 - [個人自動化平台(一) n8n & GCP VM](/2026/n8n-1-in-gcp-free-tier-vm/)
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
-- [個人自動化平台(三) 取、讀、寫：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
+- [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
 
 ## 小結
 

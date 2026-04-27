@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 個人自動化平台(四) n8n 實作：取層，RSS 資料來源"
+title: "[實作筆記] 個人自動化平台(四) n8n 實作：收集層，RSS 資料來源"
 date: 2026/04/20 18:15:17
 tags:
   - 實作筆記
@@ -7,9 +7,9 @@ tags:
 
 ## 前情提要
 
-上一篇定好了「取、讀、寫」三層架構，這篇開始實作第一層：取。
+上一篇定好了「收集、處理、輸出」三層架構，這篇開始實作第一層：取。
 
-目標是從四個 AI 新聞來源拉資料，輸出統一格式，交給讀層處理。
+目標是從四個 AI 新聞來源拉資料，輸出統一格式，交給處理層處理。
 
 ---
 
@@ -36,7 +36,7 @@ curl -s -o /dev/null -w "%{http_code} %{url_effective}\n" <RSS_URL>
 
 ## n8n 節點選擇
 
-取層有兩種做法：
+收集層有兩種做法：
 
 | | RSS Feed Trigger + 暫存層 | RSS Read + Filter |
 | -- | -- | -- |
@@ -108,7 +108,7 @@ isoDate → is after → {{ $now.minus({days: 7}).toISO() }}
 }
 ```
 
-四個步驟完成，取層跑通。每次執行會輸出統一格式的文章列表，準備交給讀層處理。
+四個步驟完成，收集層跑通。每次執行會輸出統一格式的文章列表，準備交給處理層處理。
 
 ---
 
@@ -142,12 +142,12 @@ n8n 官方說明：
 
 - [個人自動化平台(一) n8n & GCP VM](/2026/n8n-1-in-gcp-free-tier-vm/)
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
-- [個人自動化平台(三) 取、讀、寫：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
+- [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/n8n-4-rebuild-infromation/)
 
 ## 小結
 
-- 取層用 RSS Read + Filter 過濾近 7 天，四個來源統一輸出格式
+- 收集層用 RSS Read + Filter 過濾近 7 天，四個來源統一輸出格式
 - Credential 的 Allowed HTTP Request Domains 是縱深防禦，主防線還是 Cloudflare Access
 - RSS Read 是「簡單優先」的選擇，之後有需要再加暫存層優化
 
