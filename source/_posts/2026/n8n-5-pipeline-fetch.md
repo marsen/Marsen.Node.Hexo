@@ -36,22 +36,27 @@ curl -s -o /dev/null -w "%{http_code} %{url_effective}\n" <RSS_URL>
 
 ## n8n 節點選擇
 
-取層用兩個節點組合：
+取層有兩種做法：
 
-- **Schedule Trigger**：控制執行時機（每週一次）
-- **RSS Read**：拉取完整 feed 內容
+| | RSS Feed Trigger + 暫存層 | RSS Read + Filter |
+| -- | -- | -- |
+| 抓取方式 | 增量，只抓新的 | 全量，每次重抓 |
+| 重複抓取 | 不會 | 會（Filter 擋掉舊的） |
+| Token 消耗 | 較省 | 稍多 |
+| 架構複雜度 | 高（需外部暫存） | 低（無狀態） |
+| 適合 sub-workflow | 不適合（Trigger 節點限制） | 適合 |
 
-為什麼不用 **RSS Feed Trigger**？
+### 現況的選擇：RSS Read + Filter
 
-RSS Feed Trigger 會記住上次讀到哪，只推送新增項目。概念上正確，但它是 Trigger 節點，不適合被主流程呼叫（sub-workflow 架構）。
+現階段優先走通整條流程，不想多依賴一個外部暫存服務。
 
-若要用 RSS Feed Trigger，需要搭配暫存層（如 Supabase / Google Sheets），每天增量存入，週報時再一次撈出，架構更複雜。在沒有暫存層的前提下，改用 **RSS Read + Filter 節點過濾日期**是更簡單的選擇：
+RSS Read 是普通節點，可以被 sub-workflow 呼叫，搭配 Filter 過濾近 7 天的文章，邏輯乾淨：
 
 ```text
 Schedule Trigger → RSS Read → Filter（只保留近 7 天文章）
 ```
 
-這樣取層不需要管狀態，邏輯乾淨，日期範圍由 Filter 節點統一控制。
+等之後有需要優化 token 消耗，再評估加暫存層。
 
 ---
 
@@ -103,6 +108,8 @@ isoDate → is after → {{ $now.minus({days: 7}).toISO() }}
 }
 ```
 
+四個步驟完成，取層跑通。每次執行會輸出統一格式的文章列表，準備交給讀層處理。
+
 ---
 
 ## API Credential 的資安決策
@@ -131,43 +138,6 @@ n8n 官方說明：
 
 ---
 
-## 讀層：Aggregate + Basic LLM Chain
-
-取層跑通後，接讀層。
-
-### 為什麼要先 Aggregate？
-
-RSS Read 輸出 10 筆獨立資料，Basic LLM Chain 預設對每筆各送一次請求。10 筆 = 10 次 API call，超過免費版 5 RPM 限制。
-
-正確做法：先用 **Aggregate** 節點把 10 筆合成一筆，再送一次請求給 AI，請它整理成一份週報。這也更符合「週報」的本意——要的是一份完整報告，不是 10 篇獨立摘要。
-
-```text
-Edit Fields → Aggregate（All Item Data）→ Basic LLM Chain（Google Gemini）
-```
-
-### Prompt 設計
-
-```text
-週報日期：{{ $now.toFormat('yyyy年MM月dd日') }}
-
-以下是本週 AI 新聞，請用繁體中文整理成一份週報。
-每則新聞說明「是什麼」和「為什麼重要」，條列呈現。
-
-{{ $json.data.map(i => `【${i.source}】${i.title}\n${i.content}`).join('\n\n') }}
-```
-
-執行結果：日期正確，內容有條理，每篇清楚說明「是什麼」和「為什麼重要」。
-
-### 踩坑：Rate Limit
-
-第一次直接把 10 筆送給 LLM，遇到 `429 Too Many Requests`：
-
-```text
-quota exceeded: limit 5 requests/minute (gemini-2.5-flash free tier)
-```
-
-解法：加 Aggregate 節點合併成一筆，從 10 次請求降為 1 次，問題消失。
-
 ## 參考
 
 - [個人自動化平台(一) n8n & GCP VM](/2026/n8n-1-in-gcp-free-tier-vm/)
@@ -178,9 +148,7 @@ quota exceeded: limit 5 requests/minute (gemini-2.5-flash free tier)
 ## 小結
 
 - 取層用 RSS Read + Filter 過濾近 7 天，四個來源統一輸出格式
-- 讀層用 Aggregate 合併後一次送 AI，解決 Gemini free tier 5 RPM 限制
 - Credential 的 Allowed HTTP Request Domains 是縱深防禦，主防線還是 Cloudflare Access
-
-目前架構可以跑通，但不是最優解。更好的做法是 **RSS Feed Trigger + 暫存層**：每天增量收文章，累積一週後才送 AI 整理。這樣每篇文章只抓一次，token 消耗也最省。待之後有需要再優化。
+- RSS Read 是「簡單優先」的選擇，之後有需要再加暫存層優化
 
 (fin)
