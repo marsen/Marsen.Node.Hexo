@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 個人自動化平台(四) n8n 實作：取層，RSS 資料來源"
+title: "[實作筆記] 個人自動化平台(四) n8n 實作：收集層，RSS 資料來源"
 date: 2026/04/20 18:15:17
 tags:
   - 實作筆記
@@ -7,9 +7,9 @@ tags:
 
 ## 前情提要
 
-上一篇定好了「取、讀、寫」三層架構，這篇開始實作第一層：取。
+上一篇定好了「收集、處理、輸出」三層架構，這篇開始實作第一層：取。
 
-目標是從四個 AI 新聞來源拉資料，輸出統一格式，交給讀層處理。
+目標是從四個 AI 新聞來源拉資料，輸出統一格式，交給處理層處理。
 
 ---
 
@@ -36,22 +36,27 @@ curl -s -o /dev/null -w "%{http_code} %{url_effective}\n" <RSS_URL>
 
 ## n8n 節點選擇
 
-取層用兩個節點組合：
+收集層有兩種做法：
 
-- **Schedule Trigger**：控制執行時機（每週一次）
-- **RSS Read**：拉取完整 feed 內容
+| | RSS Feed Trigger + 暫存層 | RSS Read + Filter |
+| -- | -- | -- |
+| 抓取方式 | 增量，只抓新的 | 全量，每次重抓 |
+| 重複抓取 | 不會 | 會（Filter 擋掉舊的） |
+| Token 消耗 | 較省 | 稍多 |
+| 架構複雜度 | 高（需外部暫存） | 低（無狀態） |
+| 適合 sub-workflow | 不適合（Trigger 節點限制） | 適合 |
 
-為什麼不用 **RSS Feed Trigger**？
+### 現況的選擇：RSS Read + Filter
 
-RSS Feed Trigger 會記住上次讀到哪，只推送新增項目。概念上正確，但它是 Trigger 節點，不適合被主流程呼叫（sub-workflow 架構）。
+現階段優先走通整條流程，不想多依賴一個外部暫存服務。
 
-改用 **RSS Read + Filter 節點過濾日期**：
+RSS Read 是普通節點，可以被 sub-workflow 呼叫，搭配 Filter 過濾近 7 天的文章，邏輯乾淨：
 
 ```text
 Schedule Trigger → RSS Read → Filter（只保留近 7 天文章）
 ```
 
-這樣取層不需要管狀態，邏輯乾淨，日期範圍由 Filter 節點統一控制。
+等之後有需要優化 token 消耗，再評估加暫存層。
 
 ---
 
@@ -103,6 +108,8 @@ isoDate → is after → {{ $now.minus({days: 7}).toISO() }}
 }
 ```
 
+四個步驟完成，收集層跑通。每次執行會輸出統一格式的文章列表，準備交給處理層處理。
+
 ---
 
 ## API Credential 的資安決策
@@ -133,50 +140,15 @@ n8n 官方說明：
 
 ## 參考
 
-- [個人自動化平台(一) n8n & GCP VM](/2026/gcp-free-tier-n8n/)
-- [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/gcp-n8n-cloudflared/)
-- [個人自動化平台(三) 取、讀、寫：三層可插拔管道設計](/2026/automation-pipeline-fetch-read-write/)
-- [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/gcp-n8n-rebuild/)
-
-## 讀層：Aggregate + Basic LLM Chain
-
-取層跑通後，接讀層。
-
-### 為什麼要先 Aggregate？
-
-RSS Read 輸出 10 筆獨立資料，Basic LLM Chain 預設對每筆各送一次請求。10 筆 = 10 次 API call，超過免費版 5 RPM 限制。
-
-正確做法：先用 **Aggregate** 節點把 10 筆合成一筆，再送一次請求給 AI，請它整理成一份週報。這也更符合「週報」的本意——要的是一份完整報告，不是 10 篇獨立摘要。
-
-```text
-Edit Fields → Aggregate（All Item Data）→ Basic LLM Chain（Google Gemini）
-```
-
-### Prompt 設計
-
-```text
-週報日期：{{ $now.toFormat('yyyy年MM月dd日') }}
-
-以下是本週 AI 新聞，請用繁體中文整理成一份週報。
-每則新聞說明「是什麼」和「為什麼重要」，條列呈現。
-
-{{ $json.data.map(i => `【${i.source}】${i.title}\n${i.content}`).join('\n\n') }}
-```
-
-執行結果：日期正確，內容有條理，每篇清楚說明「是什麼」和「為什麼重要」。
-
-### 踩坑：Rate Limit
-
-第一次直接把 10 筆送給 LLM，遇到 `429 Too Many Requests`：
-
-```text
-quota exceeded: limit 5 requests/minute (gemini-2.5-flash free tier)
-```
-
-解法：加 Aggregate 節點合併成一筆，從 10 次請求降為 1 次，問題消失。
+- [個人自動化平台(一) n8n & GCP VM](/2026/n8n-1-in-gcp-free-tier-vm/)
+- [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
+- [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
+- [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/n8n-4-rebuild-infromation/)
 
 ## 小結
 
-（待補）
+- 收集層用 RSS Read + Filter 過濾近 7 天，四個來源統一輸出格式
+- Credential 的 Allowed HTTP Request Domains 是縱深防禦，主防線還是 Cloudflare Access
+- RSS Read 是「簡單優先」的選擇，之後有需要再加暫存層優化
 
 (fin)
