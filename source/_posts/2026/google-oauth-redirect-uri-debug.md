@@ -17,6 +17,18 @@ tags:
 
 ## 事件時間線
 
+### 背景：Google 登入其實一直是壞的
+
+`NEXT_PUBLIC_BASE_URL` 沒設值時，`env.baseUrl` 是 `undefined`，Google OAuth 送出的 redirect URI 是：
+
+```text
+undefined/api/auth/google/callback
+```
+
+這個字串不可能通過 Google 驗證。但 production 上一直沒有人試過 Google 登入，所以沒被發現。
+
+開發階段只在本機跑，`NEXT_PUBLIC_BASE_URL=http://localhost:3000`，Google Console 也登記了 `http://localhost:3000/api/auth/google/callback`，本機一切正常。
+
 ### 起點：Instagram OAuth callback 回錯誤的 URL
 
 在設定 IG Token 工具時，Instagram 授權完成後，callback 沒有導回 `https://demo.marsen.me/admin/tools/ig-token`，而是跑到 Vercel 內部 URL。
