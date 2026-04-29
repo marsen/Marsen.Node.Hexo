@@ -22,7 +22,7 @@ VM 重開機沒問題，但容器砍掉重建、或換 VM，workflow 和 credent
 |---|---|
 | 備份整個 `.n8n` 目錄 | SQLite 每次執行都寫入，幾乎天天變動，太肥 |
 | 只備份 workflow JSON | 沒有 credentials 無法完整還原 |
-| n8n Source Control（GitOps） | Enterprise/Business 付費功能，Community 版不支援 |
+| n8n Source Control（GitOps） | Enterprise/Business 付費功能，Community 版不支援。設定 `N8N_SOURCE_CONTROL_ENABLED=true` 無效，UI 不會出現該選項 |
 | CLI export workflow + credentials | 可行，輕量，Community 版都有 |
 
 最終選 **CLI export + GitHub private repo**，搭配 cron job 每天自動跑。
