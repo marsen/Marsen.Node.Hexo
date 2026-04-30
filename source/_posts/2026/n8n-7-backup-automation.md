@@ -35,10 +35,10 @@ VM 重開機沒問題，但容器砍掉重建、或換 VM，workflow 和 credent
 GCP VM（cron job 每天凌晨 3 點）
   └─ docker exec n8n → export workflow + credentials JSON
        └─ bind mount（/home/user/.n8n）
-            └─ 複製到 repo backup/ → git diff 檢查 → git commit + push → GitHub
+            └─ 複製到 repo backup/YYYYMMDD-NNN/ → git commit + push → GitHub
 ```
 
-重點：**有變動才 commit**，沒有變動就跳過，不製造垃圾 commit。
+每次跑都建立新的日期資料夾（`20260430-001`、`20260430-002`），保留最近 30 份，舊的自動刪除。就算刪了，git log 還是查得到歷史。
 
 ---
 
@@ -52,8 +52,9 @@ Marsen.Butler.n8n.Backup/
 ├── install.sh    ← 一次性安裝，設定 cron job
 ├── backup.sh     ← 每次執行的備份邏輯
 └── backup/
-    ├── workflows/
-    └── credentials/
+    └── 20260430-001/
+        ├── workflows/
+        └── credentials/
 ```
 
 ### backup.sh 核心邏輯
@@ -61,35 +62,25 @@ Marsen.Butler.n8n.Backup/
 ```bash
 # container name 預設 n8n，可用環境變數覆蓋
 N8N_CONTAINER="${N8N_CONTAINER:-n8n}"
+KEEP_COUNT="${KEEP_COUNT:-30}"
 
-# 確認容器在跑
-docker ps --format '{{.Names}}' | grep -q "^${N8N_CONTAINER}$"
+# 產生日期流水號資料夾
+DATE_TAG="$(date +%Y%m%d)"
+SERIAL=$(printf "%03d" $(( $(ls -d backup/${DATE_TAG}-* 2>/dev/null | wc -l) + 1 )))
+BACKUP_DIR="backup/${DATE_TAG}-${SERIAL}"
 
-# 在容器裡 export
-docker exec "$N8N_CONTAINER" \
-  n8n export:workflow --all --pretty --separate \
-  --output=/home/node/.n8n/exports/workflows/
+# 確認容器在跑，export，複製到 repo...
 
-docker exec "$N8N_CONTAINER" \
-  n8n export:credentials --all --pretty --decrypted=false \
-  --output=/home/node/.n8n/exports/credentials/
-
-# 從 bind mount 複製到 repo
-BIND_MOUNT_DIR=$(docker inspect "$N8N_CONTAINER" \
-  --format '{{range .Mounts}}{{if eq .Destination "/home/node/.n8n"}}{{.Source}}{{end}}{{end}}')
-
-cp -r "${BIND_MOUNT_DIR}/exports/workflows/." "${BACKUP_DIR}/workflows/"
-cp -r "${BIND_MOUNT_DIR}/exports/credentials/." "${BACKUP_DIR}/credentials/"
-
-# 有變動才 commit
-if git diff --quiet && git diff --cached --quiet && \
-   [ -z "$(git ls-files --others --exclude-standard backup/)" ]; then
-  echo "No changes detected, skipping commit."
-else
-  git add backup/
-  git commit -m "backup $(date +%Y%m%d-%H%M%S)"
-  git push
+# 刪除舊備份（保留最近 KEEP_COUNT 份）
+TOTAL=$(ls -d backup/[0-9]* 2>/dev/null | wc -l)
+if [ "$TOTAL" -gt "$KEEP_COUNT" ]; then
+  ls -d backup/[0-9]* | sort | head -n $(( TOTAL - KEEP_COUNT )) | xargs rm -rf
 fi
+
+# 每次都 commit
+git add backup/
+git commit -m "backup ${DATE_TAG}-${SERIAL}"
+git push
 ```
 
 `docker inspect` 自動找 bind mount 路徑，不寫死，換 VM 也通用。
@@ -175,6 +166,10 @@ docker run -d \
   --restart unless-stopped \
   docker.n8n.io/n8nio/n8n
 
+# 取最新備份
+LATEST=$(ls -d ~/n8n-backup/backup/[0-9]* | sort | tail -1)
+cp -r "${LATEST}/workflows/." /home/user/.n8n/exports/workflows/
+cp -r "${LATEST}/credentials/." /home/user/.n8n/exports/credentials/
 docker exec n8n n8n import:workflow --separate --input=/home/node/.n8n/exports/workflows/
 docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/exports/credentials/
 ```
@@ -194,12 +189,13 @@ docker run -d \
   docker.n8n.io/n8nio/n8n
 ```
 
-然後 clone repo 並 import：
+clone repo 並還原最新備份：
 
 ```bash
 git clone git@github.com:marsen/Marsen.Butler.n8n.Backup.git ~/n8n-backup
-cp -r ~/n8n-backup/backup/workflows /home/user/.n8n/exports/
-cp -r ~/n8n-backup/backup/credentials /home/user/.n8n/exports/
+LATEST=$(ls -d ~/n8n-backup/backup/[0-9]* | sort | tail -1)
+cp -r "${LATEST}/workflows/." /home/user/.n8n/exports/workflows/
+cp -r "${LATEST}/credentials/." /home/user/.n8n/exports/credentials/
 docker exec n8n n8n import:workflow --separate --input=/home/node/.n8n/exports/workflows/
 docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/exports/credentials/
 ```
@@ -222,7 +218,8 @@ docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/export
 ## 小結
 
 - CLI export 是 Community 版可用的最輕量備份方案
-- `git diff` 檢查避免無意義 commit
+- 每次建日期資料夾（`YYYYMMDD-NNN`），保留最近 30 份，超過自動 prune
+- 就算資料夾被刪，git log 還是查得到歷史
 - `git update-index --chmod=+x` 讓腳本執行權限跟著 repo 走
 - `N8N_CONTAINER` 環境變數讓腳本不寫死 container name
 - 還原關鍵：`N8N_ENCRYPTION_KEY` 要另外存好
