@@ -135,6 +135,30 @@ N8N_CONTAINER="${N8N_CONTAINER:-n8n}"
 
 臨時要換：`N8N_CONTAINER=n8n-01 ./backup.sh`，不需要改腳本。
 
+### 備份會把 token 明文存進 git
+
+備份的是 workflow JSON，而 workflow JSON 裡如果 token 是直接寫在節點裡，那備份就等於把 token 存進 git repo。
+
+用文字搜尋就找得到：
+
+```bash
+grep -r "access_token\|IGAA" backup/
+```
+
+**解法：改用 n8n Credential 存 token**
+
+n8n 的 Credential 有獨立加密機制，workflow JSON 裡只會存 Credential 的 ID，不含實際值。這樣備份出來的 workflow 就不會洩漏 token。
+
+```text
+# 不好（硬寫在節點）
+"access_token": "IGAAYLng3..."
+
+# 好（引用 Credential）
+"credentials": { "instagramOAuth2Api": { "id": "xxx", "name": "IG" } }
+```
+
+Credential 本身也可以 export 備份，但它是加密的（用 `N8N_ENCRYPTION_KEY`），只要 Key 沒洩漏，備份裡的 Credential 就是安全的。
+
 ---
 
 ## VM 上安裝步驟
