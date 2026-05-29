@@ -1,0 +1,134 @@
+---
+title: "[實作筆記] 更新自架在 GCP VM 上的 n8n（Docker 版）"
+date: 2026/05/29 00:42:57
+tags:
+  - 實作筆記
+---
+
+## 前情提要
+
+自架 n8n 跑在 GCP VM 的 Docker container，
+某天備份 log 出現這行：
+
+```text
+Error tracking disabled because this release is older than 6 weeks.
+```
+
+意思是 n8n 的 release 超過六週就會關掉錯誤追蹤，提醒你該更新了。
+趁機整理一下 Docker 版 n8n 的更新流程。
+
+---
+
+## 更新前先確認現況
+
+### 確認目前版本
+
+```bash
+docker exec n8n n8n --version
+# 2.16.1
+```
+
+### 確認 container 設定
+
+更新要重建 container，所以要先抓出原本的設定：
+
+```bash
+docker inspect n8n --format '{{json .HostConfig.PortBindings}}'
+# {"5678/tcp":[{"HostIp":"","HostPort":"5678"}]}
+
+docker inspect n8n --format '{{range .Mounts}}{{.Source}}:{{.Destination}}{{end}}'
+# /home/user/.n8n:/home/node/.n8n
+
+docker inspect n8n --format '{{range .Config.Env}}{{println .}}{{end}}'
+# N8N_SECURE_COOKIE=false
+# ...（其他是 image 預設的，不用帶）
+```
+
+重點是找出三個東西：**port**、**bind mount 路徑**、**自己設的 env**。
+
+---
+
+## 更新三步驟
+
+### Step 1：pull 最新 image
+
+```bash
+docker pull docker.n8n.io/n8nio/n8n
+```
+
+### Step 2：停掉舊 container
+
+```bash
+docker stop n8n && docker rm n8n
+```
+
+這時候 n8n 停機，資料不會消失，因為資料在 VM 本地的 bind mount 目錄，
+跟 container 的生命週期完全無關。
+
+### Step 3：用相同設定重新啟動
+
+```bash
+docker run -d \
+  --name n8n \
+  --restart unless-stopped \
+  -p 5678:5678 \
+  -v /home/user/.n8n:/home/node/.n8n \
+  -e N8N_SECURE_COOKIE=false \
+  docker.n8n.io/n8nio/n8n
+```
+
+把 `-v` 的路徑換成你自己的 bind mount 路徑，env 只帶你自己加的就好。
+
+---
+
+## 驗證
+
+```bash
+docker exec n8n n8n --version
+docker ps | grep n8n
+```
+
+確認版本號，確認 container 狀態是 `Up`，完成。
+
+---
+
+## 補充：備份
+
+更新前要不要備份？
+
+如果你有設 bind mount，資料就在 VM 本地，container 停掉不影響。
+但如果更新後 n8n 有 migration 問題，舊 DB 可能回不去。
+
+保險做法是更新前先手動跑一次備份：
+
+```bash
+# 匯出所有 workflow
+docker exec n8n n8n export:workflow --all --pretty \
+  --output=/home/node/.n8n/exports/workflows/
+
+# 匯出所有 credentials
+docker exec n8n n8n export:credentials --all --pretty \
+  --output=/home/node/.n8n/exports/credentials/
+```
+
+或者搭一個 cron job 每天自動備份、git push，就不用每次更新前手動跑：
+
+```bash
+# crontab -e
+0 3 * * * /home/user/n8n-backup/backup.sh >> /var/log/n8n-backup.log 2>&1
+```
+
+---
+
+## 小結
+
+Docker 版 n8n 更新流程：
+
+1. `docker pull` — 拉新 image
+2. `docker stop n8n && docker rm n8n` — 移除舊 container
+3. `docker run` — 用相同設定重建
+
+停機時間大約 30 秒。
+關鍵是 bind mount：資料住在 VM，不住在 container，container 砍掉重練資料不受影響。
+
+(fin)
