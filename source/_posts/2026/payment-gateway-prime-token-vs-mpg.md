@@ -8,10 +8,11 @@ tags:
 ## 前情提要
 
 最近在電商專案要把虛構金流換成真實串接，比較了 TapPay、綠界、藍新三家。
-比著比著發現一件事：與其問「哪家好」，不如先搞懂兩種模式的差別。
+
+比著發現原來存在著兩種金流串接的模式。
 
 - **Prime Token 模式**：TapPay、Stripe、Braintree
-- **MPG 模式**：綠界 ECPay、藍新 NewebPay
+- **MPG(Merchant Payment Gateway) 模式**：綠界 ECPay、藍新 NewebPay
 
 兩種模式選錯，後面整個訂單系統的設計都會錯。
 
@@ -21,67 +22,27 @@ tags:
 
 兩種模式的根本問題只有一個：**敏感卡號（PAN + CVV）的傳遞路徑**。
 
-### Prime Token
+MPG 型金流（綠界、藍新跳轉）對消費者反而更透明——畫面明確跳到金流商的頁面，消費者看得出來自己在哪。
 
-```text
-使用者 → [前端 SDK iframe 直送金流方] → 拿 token
-                                       ↓
-你的 server 用 token + 商家 key → 打金流方 charge API → 同步拿結果
-```
+但是在使用者體驗上，會多一個斷點，以電商來說會有轉換率的問題
 
-### MPG
+Prime 型（TapPay iframe）的取捨是體驗好但透明度低，信任靠的是商家品牌，不是技術可見性。
 
-```text
-你的 server 產表單 + 簽章 → 前端 POST 到金流方頁
-                              ↓
-                  使用者離站填卡號（在金流方頁面）
-                              ↓
-              金流方非同步 callback 回你的 server
-```
-
-Prime Token 把「拿卡號」**SDK 化**，UX 由你掌握。
-MPG 把「拿卡號」**頁面化**，工程量降低但 UX 受限。
+而這是一個取捨。
 
 ---
 
-## 安全性：兩種都不用 PCI-DSS，但風險點不同
-
-兩種模式對開發者都**不需要 PCI-DSS 認證**，因為卡號從未進你的伺服器。
-但要擔心的事情不一樣：
-
-| 風險 | Prime Token | MPG |
-| --- | --- | --- |
-| 前端 SDK 被換掉（供應鏈攻擊、CSP 設錯） | ⚠️ 卡號可能外流 | 不受影響 |
-| Callback 偽造 | 不存在 | ⚠️ 沒驗章就被偽造付款成功 |
-| Replay attack | 不存在 | ⚠️ 需做冪等 |
-| HTTPS 不夠用嗎？ | 夠 | 必須再加簽章 |
-
-MPG 最容易出包的是這三件事：
-
-1. **簽章寫錯**（綠界用 CheckMacValue / 藍新用 AES + SHA256）
-2. **沒做冪等**（同一筆 callback 多次到結果重複出貨）
-3. **相信 ReturnURL 而不等 NotifyURL**（ReturnURL 是給使用者看的，可以被竄改）
-
----
-
-## UX 差異：設計語言會不會中斷
+## 實作細節
 
 Prime Token 的卡號欄位內嵌結帳頁（實際是 iframe，能改邊框字體但限制多）。
-整個結帳流程在你自己的頁面，設計語言一致。
+
+整個結帳流程在你自己的頁面，設計語言、外觀風格一致。
 
 MPG 直接跳到金流方頁面，**你的品牌設計到那一刻全部斷掉**。
+
 但好處也很實際：同一個金流頁面能直接接信用卡 + ATM + 超商代碼 + LINE Pay。
 
-簡單講：
-
-- 想做品牌感、UX 要順 → Prime Token
-- 想接齊台灣常見付款方式 → MPG
-
----
-
-## 工程量反直覺：MPG 比 Prime Token 大
-
-很多人以為「使用者離站填卡號 = 我不用做」，這是錯的。
+兩者的開發量比較
 
 Prime Token 你寫的東西：
 
@@ -100,82 +61,21 @@ MPG 你多寫的東西：
 
 MPG 看似簡單，實際工程量比 Prime Token 大，**主要是 callback 的 edge case 多**。
 
----
+## 補充: PCI DSS 是什麼 ?
 
-## 同步 vs 非同步的訂單狀態機
+Payment Card Industry Data Security Standard，簡稱 PCI DSS。
 
-這是最常被低估的差異。
+信用卡組織（Visa、Mastercard 等）聯合制定的資安標準，規定任何「碰到卡號」的系統都要符合一堆安全要求。
 
-### Prime Token（同步）
+核心概念：碰到卡號的範圍越小，你要過的關越少。
 
-```text
-[pending] --charge API--> [paid] / [failed]
-```
-
-單一請求週期內完成，UI 邏輯簡單。
-
-### MPG（非同步）
-
-```text
-[pending] → [awaiting_payment]
-              ↓
-        使用者離站
-              ↓
-   ┌──────────┼──────────┐
-   ↓          ↓          ↓
-NotifyURL  使用者關頁面  NotifyURL 沒到
-到（驗章 OK）(ReturnURL 沒到) (網路斷)
-   ↓          ↓          ↓
-[paid]/    [awaiting   [awaiting
- [failed]   _payment]   _payment]
-                        ↓
-                    需要對帳補完
-```
-
-`awaiting_payment` 這個狀態在 Prime Token 模式不存在，
-是 MPG 必須補的領域概念。沒處理就會出現「使用者跳走後訂單卡住」的情況。
-
----
-
-## 選擇心法
-
-| 情境 | 建議 |
-| --- | --- |
-| 只賣信用卡、要做品牌感、UX 優先 | Prime Token（TapPay / Stripe） |
-| 台灣 C2C、想接 ATM/超商、客單低 | MPG（綠界 / 藍新） |
-| B2B 大額付款、年費月費 | Prime Token + 卡號 tokenize 存起來定期扣 |
-| 開發者個人專案、要快 | 綠界 MPG（零註冊，公開測試憑證） |
-| 想學金流原理 | 兩個都做一遍 |
-
----
-
-## 混合策略：兩種一起上才是正解
-
-認真的台灣電商常常**兩種都接**：
-
-- **信用卡**走 Prime Token（自家品牌、UX 順）
-- **ATM / 超商 / LINE Pay** 走 MPG（方便、台灣使用者熟悉）
-
-不是因為要備援，而是**不同付款方式天生適合不同模式**。
-
-要做成這樣，金流抽象層的 `PaymentService` port 必須能同時表達兩種流程：
-
-```ts
-type PaymentIntent =
-  | { kind: 'sync-result'; result: PaymentResult }              // Prime Token
-  | { kind: 'redirect'; url: string; formFields: Record }       // MPG
-```
-
-上層 use case 不用知道是哪家，但能正確處理「同步拿結果」與「轉址等 callback」兩種分支。
+實務上只有金流商或大型電商會去取得這種認証，一般而言小型電商還是透過第三方金流來實現交易。
 
 ---
 
 ## 小結
 
 - 兩種模式的本質差異是卡號的傳遞路徑：Prime Token 走 SDK iframe，MPG 走表單轉址
-- 兩種都不需 PCI-DSS，但 MPG 多了驗章、冪等、ReturnURL 不可信三件事要顧
-- 工程量反直覺：MPG 比 Prime Token 大，貴在 callback 的 edge case
-- 訂單狀態機 MPG 多一個 `awaiting_payment`，這個概念漏了就會出包
-- 真正的解法不是二選一，而是設計能同時支撐兩種模式的抽象層
+- 信任是最難的
 
 (fin)
