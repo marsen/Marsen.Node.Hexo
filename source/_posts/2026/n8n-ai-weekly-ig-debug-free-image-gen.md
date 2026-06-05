@@ -102,34 +102,54 @@ IG 兩個原始 bug 修好上線了，但配圖來源出事——這段繞最久
 
 繞一圈結論：**「真正免費、不綁卡、又能讓第三方抓圖」的組合幾乎絕跡。**
 
-### 目前的解（待接）
+### 最終解：Cloudflare Workers AI + GitHub 托管 + 一圖共用
 
-**Cloudflare Workers AI 的 `flux-1-schnell`**：
+先講結論：用 **Cloudflare Workers AI 的 `flux-1-schnell`** 生圖（免費、不綁卡），把圖 **commit 進 Hexo repo**，**文章嵌入它、IG 也用同一張的 raw URL**。
+
+**為什麼是 Cloudflare Workers AI**
 
 - 免費層每天 10,000 neurons，**不用綁信用卡**，只要免費 Cloudflare 帳號
-- 一週才生一張圖，額度永遠用不完 → 實質 $0
-- 回的是圖片 bytes（base64）→ 不是公開 URL
+- 一週一張圖，額度永遠用不完 → 實質 $0
+- 實測 OK：回合法 1024×1024 JPEG（base64）
 
-因為回 bytes，接法是：
+**為什麼一定要自己托管圖（這步躲不掉）**
+
+IG 發「照片」貼文時，是給它一個**公開 URL、它自己伺服器去抓**——不能直接上傳圖片 bytes（只有 Reels／影片能 binary 上傳）。而 flux 回的是 bytes 不是 URL。所以中間一定要有個「把 bytes 變成公開 URL」的托管處。
+
+評估過 R2 / GCS / Imgur / 備份 repo，最後選 **Hexo 的 public repo**：
+
+- GitHub 憑證**早就接在 n8n 裡**、repo 又是 public → 零新帳號、零成本、IG 抓 `raw.githubusercontent.com` 很穩
+- 備份 repo 不能用（private + 內含明文 token，不能公開）
+- 巧合：flux 回 base64、GitHub Contents API 剛好也吃 base64，中間免轉檔
+
+**一圖共用（這次的重點設計）**
+
+原本 Blog 與 IG 是兩條平行分支。為了「文章嵌圖 + IG 用同一張」，把它們**串成一條**：生一次圖 → commit 到該週分支 → 文章 md 嵌入 `![](/images/...)` → IG 用同一張的 raw URL。一次生圖、零重複、圖也進了 blog。
 
 ```text
-生成圖片 Prompt(英文) → Cloudflare flux-1-schnell(base64)
-  → n8n 解碼 → commit 圖檔到 Hexo repo
-  → 用 raw.githubusercontent URL 餵 IG（IG 抓 GitHub 很穩）
+Aggregate → Blog生成 → 文字生成 → 生成圖片Prompt → CF生圖(flux,base64)
+→ 取main SHA → 建分支(weekly/<日期-時間>) → 上傳圖到GitHub
+→ Blog建檔(嵌圖) → Blog Post → 開PR → IG準備發文(同一張raw URL) → Wait → IG發佈
 ```
 
-> TODO：拿到 Cloudflare Account ID + Workers AI token → curl 驗證生圖 → 接 workflow → 驗證 IG 真的發出帶圖的一篇。補圖、補結果。
+代價：兩條從「獨立」變「耦合」（中間任一步失敗，後面不跑）。換來一圖共用。
 
----
+### 接的時候又踩的坑
 
-## 暫定小結
+- **n8n Header Auth 憑證填錯欄位 → 401**：`Name` 要填 `Authorization`（不是憑證用途名），`Value` 要 `Bearer <token>`（不是只貼 token）。
+- **CLI import vs UI 編輯互相蓋**：用 CLI 匯入改的是 DB，但若瀏覽器還開著舊畫布，一存就把匯入蓋掉。改之前先關掉所有編輯分頁、改完再 refresh。
+- **Gemini 503 過載**：`gemini-flash-latest` 遇大尖峰整個 workflow 掛。加 `retryOnFail`（4 次／5 秒）擋小尖峰；大範圍過載只能換模型（換成 `gemini-flash-lite-latest`）。已記成 backlog，想做「多模型自動 fallback」。
+- **Blog CI 競態**：repo 的 `ci.yml` 在 `pull_request` 也跑，會在 PR 的 detached HEAD 上把 `ncu -u` 結果推回 main → 必然 `! [rejected] (fetch first)`，每開一個週報 PR 就失敗一次。修法：拿掉 `pull_request` 觸發 + 加 `concurrency`。
+
+## 小結
 
 - 兩個看似獨立的 bug（發兩篇、圖都動物），根因是**同一條接錯的線**。排查 n8n 先畫連線圖。
-- n8n「同一輸入埠接多條線會重複觸發」，要合併分支用 Merge，別直接併線。
-- 跨節點要共用的值（branch 名），**算一次、其他節點引用**，別每個節點各自用 `$now` 重算。
-- 免費服務會退化：Pollinations 從「免簽免 key」變成 402 + 加密付款。架構別把命脈壓在單一免費服務上。
-- 找來源這段也學到：**動手前先驗證**（列模型 ≠ 生得出來，free tier 可能 limit=0），而且**會花錢的事先問過再做**。
+- n8n「同一輸入埠接多條線會重複觸發」，要合併分支用 Merge、別直接併線。
+- 跨節點共用的值（branch 名）**算一次、其他節點引用**，別各自 `$now` 重算。
+- 免費服務會退化：Pollinations 從「免簽免 key」變 402 + 加密付款；Gemini 圖片免費層 limit=0。架構別把命脈押在單一免費服務上。
+- IG 發照片**一定要公開圖床**（它自己抓 URL），逼你先想清楚托管在哪。
+- **動手前先驗證**（列得出模型 ≠ 生得出圖、free tier 可能 limit=0），而且**會花錢／動到別人系統的事先問過再做**。
 
-待 Cloudflare 接完補完整版。
+（流程已上線並驗證成功：跑出一篇帶圖的 IG 貼文，文章也嵌入同一張圖。之後補上實際成品圖。）
 
 (fin)
