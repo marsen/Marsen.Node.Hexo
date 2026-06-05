@@ -4,14 +4,19 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Triggers the workflow on push to the "main" branch
+  # 注意：刻意不在 pull_request 觸發——這個 job 會把 ncu 升級結果推回 main，
+  # 在 PR 的 detached HEAD 上推 main 一定會失敗（fetch first），且 PR 階段沒有測試需求。
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+# 同一時間只跑一個，避免兩個 run 同時推 main 造成 non-fast-forward 競態
+concurrency:
+  group: ci-main
+  cancel-in-progress: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,10 +29,8 @@ jobs:
     - name: ncu-upgrade
       run: |
         npm i -g npm-check-updates
-        ncu -u 
+        ncu -u
     - name: Commit & Push changes
       uses: actions-js/push@v1.3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-
-
