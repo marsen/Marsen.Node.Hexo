@@ -184,7 +184,6 @@ https://player.vimeo.com/video/VIDEO_ID?background=1&muted=1&autoplay=1&loop=1
 
 這樣早期可以自存 demo、之後無痛換成專業影音 CDN，決策成本最低。
 
-
 ## 小結
 
 - 動態字串型媒體放 `public/`；寫死 import 的才放 `src/assets`。
