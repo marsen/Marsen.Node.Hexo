@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 形象站滿版背景影片：流量、CDN 與播放器選型"
+title: "[實作筆記] 形象站滿版背景影片（二）：流量、CDN 與播放器選型"
 date: 2026/06/08 00:27:00
 tags:
   - 實作筆記
@@ -11,7 +11,7 @@ Hero 要放一支滿版自動播放的背景影片。
 
 > Hero 區塊是網頁最頂部的全版區塊，通常含標題、說明文字與背景，是訪客進站看到的第一眼。
 
-素材要放哪，已在[上一篇：前端靜態資源放哪裡](/2026/frontend-static-assets-public-vs-src-assets/)整理好了，結論是放 `public/`，URL 字串直接用。
+素材要放哪，已在[上一篇](/2026/frontend-static-assets-public-vs-src-assets/)整理好了，結論是放 `public/`，URL 字串直接用。
 
 這篇專注在另外兩個問題：
 
@@ -142,7 +142,7 @@ https://player.vimeo.com/video/VIDEO_ID?background=1&muted=1&autoplay=1&loop=1
 
 ## 參考
 
-- [前端靜態資源放哪裡：public/ vs src/assets](/2026/frontend-static-assets-public-vs-src-assets/)
+- [形象站滿版背景影片（一）：前端靜態資源放哪裡](/2026/frontend-static-assets-public-vs-src-assets/)
 
 ## 小結
 

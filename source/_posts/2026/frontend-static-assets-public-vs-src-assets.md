@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 前端靜態資源放哪裡：public/ vs src/assets"
+title: "[實作筆記] 形象站滿版背景影片（一）：前端靜態資源放哪裡"
 date: 2026/06/12 19:24:23
 tags:
   - 實作筆記
@@ -11,7 +11,7 @@ tags:
 
 這個問題帶出了前端靜態資源的兩種擺法：`public/` 和 `src/assets/`。對一般人看起來只是資料夾名字不同，但對工程師來說，兩者的機制差很多。
 
-> 做形象站 Hero 背景影片的前置研究。完整的流量估算與播放器選型，見[下一篇：形象站滿版背景影片](/2026/hero-background-video-hosting/)。
+> 做形象站 Hero 背景影片的前置研究。完整的流量估算與播放器選型，見[下一篇](/2026/hero-background-video-hosting/)。
 
 ## 素材放哪：public/ vs src/assets
 
@@ -60,7 +60,7 @@ URL 永遠是 `/你放的路徑`，開發時字串直接用不用 `import`：
 
 ## 參考
 
-- [形象站滿版背景影片：流量、CDN 與播放器選型](/2026/hero-background-video-hosting/)
+- [形象站滿版背景影片（二）：流量、CDN 與播放器選型](/2026/hero-background-video-hosting/)
 
 ## 小結
 
