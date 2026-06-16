@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] 用 GitHub Projects + Skills 管理個人 Backlog：踩過的授權坑"
+title: "[踩雷筆記] gh CLI 操作 GitHub Projects 與 Actions 的授權"
 date: 2026/05/11 06:52:14
 tags:
   - 實作筆記
@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-想把個人 idea 清單整合進 GitHub Projects，
+想把個人 PBI 清單整合進 GitHub Projects，
 同時設定 GitHub Actions 讓新 Issue 自動加進 Project 看板。
 過程踩了幾個授權的坑，記錄一下。
 
