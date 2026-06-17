@@ -21,23 +21,28 @@ HTTP Request
      ▼
 ┌─────────────────────────────────────┐
 │  middleware（Edge Runtime）          │  ← auth guard、redirect
-│  出錯 → Next.js 回 500，無 log       │
+│                                     │
+│  出錯 → onRequestError 觸發         │  ← instrumentation 接得住
+│       → 但 Pino logger 在這裡失效   │  ⚠️ Edge Runtime 限制
+│       → Next.js 回 500             │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
 │  API Route / Server Component       │
-│  （Node.js）                        │
+│  （Node.js，完整環境）               │
 │                                     │
 │  ┌─────────────────────────────┐    │
-│  │  業務層 try-catch            │    │ ← 有業務理由才放
+│  │  業務層 try-catch            │    │  ← 有業務理由才放
+│  │  （ECPay→0|FAIL、OAuth→     │    │
+│  │   /login?error=...）        │    │
 │  └──────────────┬──────────────┘    │
 │                 │ 未被接住           │
 │                 ▼                   │
 │  ┌─────────────────────────────┐    │
-│  │  instrumentation.ts         │    │ ← 最終防線，全域自動生效
+│  │  instrumentation.ts         │    │  ← 最終防線，全域自動生效
 │  │  onRequestError             │    │
-│  │  → logger.error             │    │
+│  │  Node.js → Pino logger ✅   │    │
 │  │  → Next.js 回 500           │    │
 │  └─────────────────────────────┘    │
 └─────────────────────────────────────┘
@@ -138,13 +143,44 @@ export const onRequestError: Instrumentation.onRequestError = async (
 
 它不會改變 response（user 還是收到 500），但你起碼有 log 可以查根因。
 
+## 陷阱：middleware 錯誤接得住，但 logger 失效
+
+`onRequestError` 在 Edge Runtime 和 Node.js 都會觸發，包含 middleware 的錯誤（`context.routeType === 'proxy'`）。
+
+但 Pino 是 Node.js 專用的，在 Edge Runtime 下會直接失敗。
+
+要完整處理，需要根據 runtime 分開：
+
+```ts
+export const onRequestError: Instrumentation.onRequestError = async (
+  err,
+  request,
+  context,
+) => {
+  if (process.env.NEXT_RUNTIME === 'nodejs') {
+    // Node.js：用 Pino 正常記 log
+    const { getLoggerService } = await import('@/infrastructure/di/container')
+    getLoggerService().error('Unhandled request error', {
+      error: err.message,
+      path: request.path,
+      routeType: context.routeType,
+    })
+  } else {
+    // Edge Runtime（middleware 錯誤）：只能用 console 或送外部服務
+    console.error('[edge] Unhandled middleware error', err.message, request.path)
+  }
+}
+```
+
+這個專案的 middleware 只做 auth guard，邏輯薄、出錯機率低，目前先用 `console.error` 兜底即可。
+
 ## 三層的職責總結
 
 | 層次 | 位置 | 做什麼 | 限制 |
 |------|------|--------|------|
 | middleware | 請求最前面 | auth guard、redirect | Edge Runtime，無 DB/Logger |
 | try-catch | 各 route 內 | 業務錯誤對應 | 只放有業務理由的 |
-| instrumentation.ts | 全域最後 | 接住所有漏網錯誤、記 log | 只能 log，無法改 response |
+| instrumentation.ts | 全域最後 | 接住所有漏網錯誤、記 log | 無法改 response；Edge 下需另處理 |
 
 ## 小結
 
