@@ -37,21 +37,21 @@ Click Tracking 則是把 email 裡的連結換成中繼 URL，收件人點了之
 
 在 domain 設定頁面找到 **Tracking** 區塊，開啟 Open Tracking 和 Click Tracking。
 
-開啟後 Resend 會給你一筆 CNAME 紀錄要加到 DNS，格式大概長這樣：
+開啟後 Resend 會給你一筆 CNAME 紀錄要加到 DNS：
 
 ```text
 類型：CNAME
-名稱：track（或你自訂的 subdomain 名稱）
-值：track.resend.com（Resend 指定的目標）
+名稱：tracking
+值：links1.resend-dns.com
 ```
 
-最終效果是你的 `track.yourdomain.com` 會指向 Resend 的 tracking endpoint。
+最終效果是你的 `tracking.yourdomain.com` 會指向 Resend 的 tracking endpoint。
 
 ### 3. 在 DNS 加 CNAME 記錄
 
-到你的 DNS 提供商（Cloudflare、GoDaddy 等），加上那筆 CNAME。
+如果 DNS 是用 Cloudflare 管的，Resend 有直接整合——在 Resend 介面授權連結 Cloudflare，它會自動幫你加好那筆 CNAME，不需要手動操作。
 
-Cloudflare 的話記得把 Proxy 關掉（灰色雲），設成 DNS only，CNAME 才能正常傳遞。
+其他 DNS 提供商就要自己去加。Cloudflare 的話記得把 Proxy 設成 DNS only（灰色雲），CNAME 才能正常傳遞。
 
 ### 4. 等 DNS 生效
 
