@@ -25,7 +25,7 @@ Next.js 官方說，`middleware` 這個名字太模糊，
 ## 改了哪些東西
 
 | 項目 | 舊（deprecated） | 新 |
-|---|---|---|
+| --- | --- | --- |
 | 檔名 | `middleware.ts` | `proxy.ts` |
 | export 函式名 | `export function middleware` | `export function proxy` |
 | config export | 不變 | 不變（`matcher` 一樣） |
@@ -35,21 +35,19 @@ Next.js 官方說，`middleware` 這個名字太模糊，
 
 ## 最重要的限制
 
-新的 `proxy` **不支援 edge runtime**，只跑 nodejs。
+新的 `proxy` **只跑 Node.js runtime，不支援 edge**。[官方文件](https://nextjs.org/docs/app/api-reference/file-conventions/proxy#runtime)說得很清楚（截至 Next.js 16 / 2026-06）：
 
-如果你有設定：
+> The `runtime` config option is not available in Proxy files. Setting the `runtime` config option in Proxy will throw an error.
 
-```ts
-export const runtime = 'edge'
-```
+不是暫時限制，是設計決策。官方的方向是讓開發者不依賴 middleware/proxy：
 
-或者用了 `next-intl`、其他依賴 edge runtime 的套件，
-**先不要急著遷移**，繼續用 `middleware.ts` 也沒問題，
-Next.js 官方說後續 minor release 會再補 edge 的支援。
+> Next.js is moving forward to provide better APIs with better ergonomics so that developers can achieve their goals without Middleware.
+
+所以如果你目前的 `middleware.ts` 有設 `export const runtime = 'edge'`，或用了依賴 edge runtime 的套件，**先不要遷移**——繼續用 `middleware.ts` 也能跑，只是會有 deprecation 警告，等官方提供替代方案再說。
 
 ## 怎麼遷移
 
-**方式一：官方 codemod（推薦）**
+### 方式一：官方 codemod（推薦）
 
 ```bash
 npx @next/codemod@latest middleware-to-proxy .
@@ -57,7 +55,7 @@ npx @next/codemod@latest middleware-to-proxy .
 
 自動幫你改檔名和 function 名稱。
 
-**方式二：手動**
+### 方式二：手動
 
 ```bash
 mv src/middleware.ts src/proxy.ts
@@ -79,6 +77,6 @@ export async function proxy(request: NextRequest) { ... }
 
 Next.js 16 把 `middleware` 改名叫 `proxy`，概念一樣，名字更準確。
 遷移很簡單，用 codemod 一行搞定；
-唯一要注意的是 edge runtime 目前不支援，有用到的先等等。
+唯一要注意的是 edge runtime 目前（2026-06）不支援，有用到的先等等。
 
 (fin)
