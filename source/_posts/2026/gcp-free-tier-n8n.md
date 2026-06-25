@@ -57,9 +57,9 @@ GCP Always Free 的條件：
 
 個人用的 n8n 排程任務，這個規格完全夠。
 
-二、在 GCP 的 VM 上安裝 n8n(文章待補)
+二、[個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
 
-三、在 n8n 上設定 pipeline(文章待補)
+三、[個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
 
 ---
 
