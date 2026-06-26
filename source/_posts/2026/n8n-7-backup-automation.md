@@ -230,7 +230,7 @@ docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/export
 
 ## 參考
 
-- [個人自動化平台(一) n8n & GCP VM](/2026/04/17/2026/n8n-1-in-gcp-free-tier-vm/)
+- [個人自動化平台(一) 用 GCP 免費 VM 跑 n8n](/2026/04/17/2026/n8n-1-in-gcp-free-tier-vm/)
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/04/17/2026/n8n-2-cloudflared-and-tunnel/)
 - [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/04/20/2026/n8n-3-pipeline-overview/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/04/18/2026/n8n-3.1-rebuild-infromation/)

@@ -58,12 +58,14 @@ quota exceeded: limit 5 requests/minute (gemini-2.5-flash free tier)
 
 ## 參考
 
-- [個人自動化平台(一) n8n & GCP VM](/2026/04/17/2026/n8n-1-in-gcp-free-tier-vm/)
+- [個人自動化平台(一) 用 GCP 免費 VM 跑 n8n](/2026/04/17/2026/n8n-1-in-gcp-free-tier-vm/)
 - [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/04/17/2026/n8n-2-cloudflared-and-tunnel/)
 - [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/04/20/2026/n8n-3-pipeline-overview/)
 - [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/04/18/2026/n8n-3.1-rebuild-infromation/)
 - [個人自動化平台(四) n8n 實作：收集層，RSS 資料來源](/2026/04/20/2026/n8n-4-pipeline-fetch/)
 - [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
+- [個人自動化平台(番外) Google OAuth redirect_uri_mismatch 除錯記錄](/2026/04/27/2026/n8n-6.1-google-oauth-redirect-uri-debug/)
+- [個人自動化平台(七) n8n 備份自動化：workflow + credentials → GitHub](/2026/04/29/2026/n8n-7-backup-automation/)
 
 ## 小結
 
