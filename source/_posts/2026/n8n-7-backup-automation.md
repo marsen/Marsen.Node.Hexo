@@ -19,7 +19,7 @@ VM 重開機沒問題，但容器砍掉重建、或換 VM，workflow 和 credent
 考慮過幾個方向：
 
 | 方案 | 問題 |
-|---|---|
+| --- | --- |
 | 備份整個 `.n8n` 目錄 | SQLite 每次執行都寫入，幾乎天天變動，太肥 |
 | 只備份 workflow JSON | 沒有 credentials 無法完整還原 |
 | n8n Source Control（GitOps） | Enterprise/Business 付費功能，Community 版不支援 |
@@ -145,7 +145,7 @@ N8N_CONTAINER="${N8N_CONTAINER:-n8n}"
 grep -r "access_token\|IGAA" backup/
 ```
 
-**解法：改用 n8n Credential 存 token**
+### 解法：改用 n8n Credential 存 token
 
 n8n 的 Credential 有獨立加密機制，workflow JSON 裡只會存 Credential 的 ID，不含實際值。這樣備份出來的 workflow 就不會洩漏 token。
 
@@ -238,6 +238,7 @@ docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/export
 - [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/04/27/2026/n8n-5-pipeline-process/)
 - [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
 - [個人自動化平台(番外) Google OAuth redirect_uri_mismatch 除錯記錄](/2026/04/27/2026/n8n-6.1-google-oauth-redirect-uri-debug/)
+- [個人自動化平台(番外) 更新自架在 GCP VM 上的 n8n（Docker 版）](/2026/05/28/2026/n8n-7.1-docker-update-on-gcp-vm/)
 
 ## 小結
 

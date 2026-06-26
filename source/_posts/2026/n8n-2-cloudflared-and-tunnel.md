@@ -283,6 +283,7 @@ n8n 映像檔本來就用非 root 的 `node` 用戶執行，不需要加 `--user
 - [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
 - [個人自動化平台(番外) Google OAuth redirect_uri_mismatch 除錯記錄](/2026/04/27/2026/n8n-6.1-google-oauth-redirect-uri-debug/)
 - [個人自動化平台(七) n8n 備份自動化：workflow + credentials → GitHub](/2026/04/29/2026/n8n-7-backup-automation/)
+- [個人自動化平台(番外) 更新自架在 GCP VM 上的 n8n（Docker 版）](/2026/05/28/2026/n8n-7.1-docker-update-on-gcp-vm/)
 
 ## 小結
 
