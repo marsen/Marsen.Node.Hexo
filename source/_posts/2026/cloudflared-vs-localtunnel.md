@@ -74,31 +74,9 @@ NEXT_PUBLIC_BASE_URL=https://rolled-intro-operator-meat.trycloudflare.com
 每次重新跑 URL 會換，這點跟 localtunnel 一樣，需要重設一次。
 但只要 tunnel 不斷，URL 就是固定的，這點比 localtunnel 好太多。
 
-## 雷點：Port 衝突導致 404
-
-cloudflared 的 tunnel 指向的 port 是靜態設定，
-但 Next.js 如果 3000 被佔用，會自動 fallback 到 3001：
-
-```text
-⚠ Port 3000 is in use by process 65277, using available port 3001 instead.
-```
-
-tunnel 不知道這件事，流量還是打到 3000，金流 callback 就 404。
-
-本機瀏覽器開 `localhost:3001` 完全正常，只有走 tunnel 的路徑壞，很難發現。
-
-解法很簡單，先砍掉佔用 3000 的 process 再重啟：
-
-```bash
-lsof -ti:3000 | xargs kill -9
-pnpm dev
-```
-
 ## 小結
 
 本機測 webhook，直接用 cloudflared，不要碰 localtunnel。
 免安裝、沒有驗證頁擋路、穩定，完全沒有理由繼續用 localtunnel。
-
-測試前記得確認 dev server 跑在哪個 port，tunnel 要對齊。
 
 (fin)

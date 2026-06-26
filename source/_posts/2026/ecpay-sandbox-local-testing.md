@@ -34,7 +34,7 @@ ECPAY_HASH_IV=EkRm7uxTO9nv1tog
 ECPay MPG 有兩個容易搞混的 URL 參數：
 
 | 參數 | 觸發時機 | 方向 |
-|------|---------|------|
+|　------　|　---------　|　------　|
 | `ReturnURL` | 付款完成後 ECPay 主動通知 | ECPay → 你的 server（POST） |
 | `OrderResultURL` | 付款完成後瀏覽器跳回 | ECPay → 使用者瀏覽器（POST redirect） |
 
@@ -69,6 +69,7 @@ ECPay 打來的 webhook 會帶一個 `CheckMacValue`，
 這是用 HASH_KEY 和 HASH_IV 算出來的簽章，用來確認請求是真的來自 ECPay。
 
 驗證流程：
+
 1. 把收到的 POST body 解析成 key-value
 2. 移除 `CheckMacValue` 欄位本身
 3. 依 key 字母排序，組成 `key=value&key=value` 字串
@@ -81,12 +82,7 @@ ECPay 打來的 webhook 會帶一個 `CheckMacValue`，
 
 ## 測試信用卡
 
-沙盒環境可以用以下測試卡：
-
-| 卡號 | 有效月年 | CVV | 說明 |
-|------|---------|-----|------|
-| 4311-9522-2222-2222 | 任意未到期 | 任意 | 成功付款 |
-| 4311-9522-2222-2222 | 任意未到期 | 任意 | 3D 驗證（依設定） |
+測試卡號請參考官方「測試介接資訊」頁面，卡號較多且會更新，不在這裡複製。
 
 ECPay 沙盒付款頁網址：
 
@@ -98,19 +94,20 @@ https://payment-stage.ecpay.com.tw/Cashier/AioCheckout/index
 
 ## 常見錯誤
 
-**付款失敗，訊息代碼 10100058**
+### 付款失敗
 
 通常是 CheckMacValue 算錯。
 確認 HASH_KEY、HASH_IV 正確，URL encode 用的是 `encodeURIComponent` 後轉小寫（不是 `encodeURI`）。
 
-**付款成功但訂單沒更新**
+### 付款成功但訂單沒更新
 
-`ReturnURL` 沒收到 webhook。檢查：
-1. tunnel 有沒有在跑
+`ReturnURL` 沒收到 webhook callback。
+
+1. 地端測試時，可以檢查tunnel 有沒有在跑
 2. `ReturnURL` 有沒有帶到正確的 tunnel URL
 3. dev server log 有沒有收到 POST
 
-**付款完成後使用者停在 ECPay 頁面**
+### 付款完成後使用者停在 ECPay 頁面
 
 `OrderResultURL` 沒設或設錯，ECPay 不知道要跳回哪裡。
 
@@ -122,11 +119,13 @@ cloudflared 會加 `X-Forwarded-Proto: https`，導致 Next.js 認為 origin 是
 
 ## 參考
 
+- [ECPay 官方：測試介接資訊（含測試卡號）](https://developers.ecpay.com.tw/2856/)
 - [本地 webhook 測試：用 cloudflared，不要用 localtunnel](/2026/cloudflared-vs-localtunnel/)
 
 ## 小結
 
 ECPay 沙盒串接的關鍵點：
+
 1. `ReturnURL` 和 `OrderResultURL` 都要設，職責不同
 2. 本機測試一定要用 tunnel，推薦 cloudflared
 3. CheckMacValue 驗證不能省，這是確認 webhook 來源的唯一機制
