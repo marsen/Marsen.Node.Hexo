@@ -7,11 +7,17 @@ tags:
 
 ## 前情提要
 
-在串接 ECPay 金流時，一個 API Route 裡用了 `redirect()`（from `next/navigation`），結果 ECPay 的 callback 打進來之後整個 dev server 直接掛掉。
+在串接 ECPay 金流時，一個 API Route 裡用了 `redirect()`（from `next/navigation`），
 
-沒有 log、沒有提示，user 看到 503。
+結果 ECPay 的 callback 打進來之後整個 dev server 直接掛掉。
 
-這讓我重新想了一遍 Next.js 的錯誤處理應該怎麼設計——中間討論到 middleware、Edge Runtime、instrumentation.ts，整理在這裡。
+通常我會設計成主要的商業邏輯（包含錯誤的商業邏輯）走流程處理，
+
+無法處理的由最終防線（通常會在 middleware 的後面）接住錯誤
+
+主要的商業邏輯，儘可能少一點的 try-catch(原則上不用)
+
+但 Next 還要考慮到 Edge Runtime, 借這個機會深入了解一下 Next 的錯誤處理機制
 
 ## Next.js 請求的三層
 
@@ -55,7 +61,9 @@ HTTP Request
 
 ## 第一層：middleware
 
-Next.js middleware 跑在 **Edge Runtime**——這是一個故意閹割過的 JS 執行環境，只有 Web 標準 API（`fetch`、`Request`、`Response`），沒有 Node.js 的東西。
+Next.js 的 middleware， 跑在 **Edge Runtime**——這是一個故意閹割過的 JS 執行環境，
+
+只有 Web 標準 API（`fetch`、`Request`、`Response`），沒有 Node.js 的東西。
 
 所以 middleware 能做的事很有限：
 
@@ -64,13 +72,17 @@ Next.js middleware 跑在 **Edge Runtime**——這是一個故意閹割過的 J
 // ❌ 不行：連資料庫、用 Pino logger、用大多數 npm 套件
 ```
 
-這不是 Vercel 的限制，是 Next.js 的設計決策——middleware 在每個請求最前面跑，設計目標是輕量、快，所以鎖死在 Edge Runtime。
+這不是 Vercel 的限制，是 Next.js 的設計決策——middleware 在每個請求最前面跑，
+
+設計目標是輕量、快，所以鎖死在 Edge Runtime。
 
 **結論：middleware 只放輕量的守衛邏輯（auth check、redirect），不是錯誤處理的地方。**
 
 ## 第二層：業務層 try-catch
 
-API Route 跑在完整 Node.js 上，可以做任何事。但 try-catch 的原則是：**只有業務理由才放，不要為了「防止 crash」而加**。
+API Route 跑在完整 Node.js 上，可以做任何事。
+
+但 try-catch 的原則是不使用，除非**有業務理由**。
 
 什麼叫業務理由？
 
@@ -177,10 +189,14 @@ export const onRequestError: Instrumentation.onRequestError = async (
 ## 三層的職責總結
 
 | 層次 | 位置 | 做什麼 | 限制 |
-|------|------|--------|------|
+| ------ | ------ | -------- | ------ |
 | middleware | 請求最前面 | auth guard、redirect | Edge Runtime，無 DB/Logger |
 | try-catch | 各 route 內 | 業務錯誤對應 | 只放有業務理由的 |
 | instrumentation.ts | 全域最後 | 接住所有漏網錯誤、記 log | 無法改 response；Edge 下需另處理 |
+
+## 參考
+
+- [Next.js 官方文件：instrumentation.js — onRequestError](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#onrequesterror-optional)
 
 ## 小結
 
