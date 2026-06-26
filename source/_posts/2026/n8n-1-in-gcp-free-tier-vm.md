@@ -219,8 +219,7 @@ log 裡可能有 community packages 的 error，是 n8n 找不到額外套件，
 - [個人自動化平台(四) n8n 實作：收集層，RSS 資料來源](/2026/04/20/2026/n8n-4-pipeline-fetch/)
 - [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/04/27/2026/n8n-5-pipeline-process/)
 - [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
-
----
+- [個人自動化平台(七) n8n 備份自動化：workflow + credentials → GitHub](/2026/04/29/2026/n8n-7-backup-automation/)
 
 ## 小結
 
