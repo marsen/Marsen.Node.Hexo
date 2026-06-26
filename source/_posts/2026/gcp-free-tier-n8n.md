@@ -57,9 +57,9 @@ GCP Always Free 的條件：
 
 個人用的 n8n 排程任務，這個規格完全夠。
 
-二、[個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/n8n-2-cloudflared-and-tunnel/)
+二、在 GCP 的 VM 上設定 Cloudflare Tunnel 對外開放
 
-三、[個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/n8n-3-pipeline-overview/)
+三、在 n8n 上設定 pipeline：三層可插拔管道設計
 
 ---
 
@@ -192,6 +192,16 @@ sudo docker logs n8n --tail 20
 log 裡可能有 community packages 的 error，是 n8n 找不到額外套件，不影響運作，忽略即可。
 
 ---
+
+## 參考
+
+- [個人自動化平台(二) Cloudflare Access & Cloudflare Tunnel](/2026/04/17/2026/n8n-2-cloudflared-and-tunnel/)
+- [個人自動化平台(三) 收集、處理、輸出：三層可插拔管道設計](/2026/04/20/2026/n8n-3-pipeline-overview/)
+- [個人自動化平台(番外) 拆掉重建 GCP VM & Cloudflared Tunnel & Cloudflare Access](/2026/04/18/2026/n8n-3.1-rebuild-infromation/)
+- [個人自動化平台(四) n8n 實作：收集層，RSS 資料來源](/2026/04/20/2026/n8n-4-pipeline-fetch/)
+- [個人自動化平台(五) n8n 實作：處理層，Aggregate + Gemini 週報整理](/2026/04/27/2026/n8n-5-pipeline-process/)
+- [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
+- [個人自動化平台(七) n8n 備份自動化：workflow + credentials → GitHub](/2026/04/29/2026/n8n-7-backup-automation/)
 
 ## 小結
 
