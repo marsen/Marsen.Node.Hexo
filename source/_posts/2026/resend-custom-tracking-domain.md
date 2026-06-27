@@ -7,10 +7,14 @@ tags:
 
 ## 前情提要
 
-在 Arsenal 上做了一個聯絡表單，寄通知 email 用 Resend。
-設定的過程中看到 Open and Click Tracking 這個功能，想開，但開之前要先設定自訂 tracking subdomain。
+**Resend** 是一個以開發者為核心設計的 Email 發送服務，API 乾淨、SDK 齊全，免費層每月 3,000 封，適合個人專案或 SaaS 的交易信（訂單、通知、驗證碼）。
 
-順手記一下為什麼要設、怎麼設。
+Open & Click Tracking 是 email 行銷的基本指標蒐集機制：
+
+- **Open Tracking**：在 email 裡埋一張 1px 透明圖片，收件人開信時瀏覽器會載入它，Resend 藉此記錄「開信率」。
+- **Click Tracking**：把 email 裡的連結換成中繼 URL，點擊後先經過 Resend 記錄，再跳到原始目標，藉此追蹤「點擊率」。
+
+這個功能預設關閉，開啟前必須先設定自訂 tracking subdomain，才能讓追蹤連結掛在你自己的 domain 下，而非 Resend 的共用 domain。
 
 ## 為什麼不能直接用 Resend 預設的 tracking domain
 
