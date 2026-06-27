@@ -239,6 +239,7 @@ docker exec n8n n8n import:credentials --separate --input=/home/node/.n8n/export
 - [個人自動化平台(六) n8n 實作：輸出層，Instagram API 取得 Token 全記錄](/2026/04/22/2026/n8n-6-pipeline-output/)
 - [個人自動化平台(番外) Google OAuth redirect_uri_mismatch 除錯記錄](/2026/04/27/2026/n8n-6.1-google-oauth-redirect-uri-debug/)
 - [個人自動化平台(番外) 更新自架在 GCP VM 上的 n8n（Docker 版）](/2026/05/28/2026/n8n-7.1-docker-update-on-gcp-vm/)
+- [個人自動化平台(番外) n8n AI 週報踩坑記：一條接錯的線，與找免費生圖來源的旅程](/2026/06/05/2026/n8n-ai-weekly-ig-debug-free-image-gen/)
 
 ## 小結
 
