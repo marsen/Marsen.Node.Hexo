@@ -13,15 +13,15 @@ tags:
 ## 沙盒和正式站是兩個獨立網站
 
 | | 正式站 | 沙盒（測試站） |
-|--|--|--|
-| 後台網址 | https://www.newebpay.com | https://cwww.newebpay.com |
-| API endpoint | https://core.newebpay.com/MPG/mpg_gateway | https://ccore.newebpay.com/MPG/mpg_gateway |
+| -- | -- | -- |
+| 後台網址 | <https://www.newebpay.com> | <https://cwww.newebpay.com> |
+| API endpoint | <https://core.newebpay.com/MPG/mpg_gateway> | <https://ccore.newebpay.com/MPG/mpg_gateway> |
 
 帳號、商店、金鑰完全獨立，在正式站申請的帳號無法登入沙盒，反之亦然。
 
 ## 申請流程
 
-1. 去 **https://cwww.newebpay.com** 另外註冊一個帳號
+1. 去 **<https://cwww.newebpay.com>** 另外註冊一個帳號
 2. 審核通過後，到「商店管理」→「開立商店設定」建立測試商店
 3. 進商店後台取得 `MerchantID`、`HashKey`、`HashIV`
 
