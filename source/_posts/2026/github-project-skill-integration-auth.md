@@ -79,10 +79,44 @@ jobs:
 `PROJECT_TOKEN` 需要在 repo settings 裡設定 secret，
 用一個有 `project` scope 的 PAT。
 
+## Fine-grained PAT 不適用
+
+想用 fine-grained PAT 取代 classic PAT？這條路走不通。
+
+`actions/add-to-project` 需要有 `project` scope 的 token。
+Fine-grained PAT 的 Projects 權限在 Account permissions 區塊，
+但 user-level project（`/users/{user}/projects/N`）目前不在支援範圍，
+設定頁面根本找不到對應選項。
+
+直接用 classic PAT，不要浪費時間。
+
+## 私有 Repo 要加 `repo` scope
+
+如果 Issue 所在的 repo 是私有的，光有 `project` scope 還不夠。
+Action 需要讀取 Issue 的 node ID，而私有 repo 的 Issue 沒有 `repo` scope 就讀不到。
+
+錯誤訊息長這樣：
+
+```text
+Error: Request failed due to following response errors:
+ - Could not resolve to a node with the global id of '...'
+```
+
+Classic PAT 沒有「只讀私有 repo」的細粒度選項，
+`repo:status`、`repo_deployment` 這些子 scope 都不夠用，
+只能勾最上層的 `repo`（Full control）。
+
+| Repo 類型 | 需要的 scope |
+|-----------|-------------|
+| 公開 | `project` |
+| 私有 | `project` + `repo` |
+
 ## 小結
 
 - `gh project` 操作要先 `gh auth refresh -s project,read:project`
 - Push `.github/workflows/` 要先 `gh auth refresh -s workflow`
 - 兩個都是 device flow，不能在非互動環境下跑（例如 Claude Code 的 `!` 指令）
+- `actions/add-to-project` + user-level project → 只能用 classic PAT
+- 私有 repo → classic PAT 需同時勾 `project` + `repo`
 
 (fin)

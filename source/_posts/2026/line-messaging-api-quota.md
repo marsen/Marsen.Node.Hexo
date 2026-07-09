@@ -38,8 +38,8 @@ LINE 的用量統計不在 Developers Console，要去 **LINE Official Account M
 可以看到：
 
 | 欄位 | 說明 |
-|---|---|
-| 合計（所有訊息）| Reply + Push 總和 |
+| --- | --- |
+| 合計（所有訊息） | Reply + Push 總和 |
 | Push | 主動推播的則數 |
 | Reply | 回覆訊息的則數 |
 
@@ -79,8 +79,8 @@ Cloudflare Tunnel 的 launchd service 在 5/3 掛掉，LINE 打不到 webhook，
 Telegram 用 **Long Polling** 模式，bot 主動去 Telegram 伺服器拉訊息，不需要對外開放任何 URL。
 
 | | LINE | Telegram |
-|---|---|---|
-| 連線模式 | Webhook（需要 tunnel）| Long Polling（不需要）|
+| --- | --- | --- |
+| 連線模式 | Webhook（需要 tunnel） | Long Polling（不需要） |
 | 斷線風險 | tunnel 掛、IP 變、PORT 未開 | 幾乎沒有 |
 | 免費額度 | 500 則/月 | 無限制 |
 
@@ -91,7 +91,7 @@ Telegram 用 **Long Polling** 模式，bot 主動去 Telegram 伺服器拉訊息
 ## 小結
 
 - LINE 用量在 LINE Official Account Manager → 分析 → 訊息
-- 免費方案 500 則/月，用完靜默失敗
+- 免費方案 200 則/月，用完靜默失敗
 - Webhook 模式依賴 tunnel，tunnel 掛掉通知就停
 - 對穩定性要求高的通知場景，Telegram Long Polling 更適合
 
