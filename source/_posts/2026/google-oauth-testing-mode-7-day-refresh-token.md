@@ -55,4 +55,10 @@ Google Cloud Console 的 OAuth consent screen（新介面叫 **Google Auth Platf
 
 Google OAuth 的 refresh token 過期，第一個該查的不是程式碼、不是網路，是 Cloud Console 裡這個專案的 Publishing status 是不是還卡在 Testing。個人專案很容易忘記這一步——建好 OAuth client 能動就沒再理它，7 天後才發現「怎麼又要重新授權」，一直重複同樣的坑。發布成 Production 一次到位，之後就不會再犯。
 
+發布只解決「以後不會再 7 天過期」，舊的 refresh token 還是死的，要重新拿一組——這部分另外寫在下一篇。
+
+## 參考
+
+- [Desktop 類型的 Google OAuth Client，用 loopback 位址手動換 refresh token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
+
 (fin)
