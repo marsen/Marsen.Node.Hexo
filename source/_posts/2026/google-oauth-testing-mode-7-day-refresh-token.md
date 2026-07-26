@@ -60,5 +60,6 @@ Google OAuth 的 refresh token 過期，第一個該查的不是程式碼、不�
 ## 參考
 
 - [Desktop 類型的 Google OAuth Client，用 loopback 位址手動換 refresh token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
+- [Google OAuth 第三方應用權限——去哪撤銷、refresh token 什麼情況會自動失效](/2026/google-oauth-revoke-third-party-access/)
 
 (fin)
