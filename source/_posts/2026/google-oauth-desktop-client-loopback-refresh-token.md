@@ -74,5 +74,6 @@ Desktop 類型的 OAuth client 拿 refresh token，不能套用 Web app 常見�
 ## 參考
 
 - [Google OAuth Testing 模式，refresh token 只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
+- [Google OAuth 第三方應用權限——去哪撤銷、refresh token 什麼情況會自動失效](/2026/google-oauth-revoke-third-party-access/)
 
 (fin)
