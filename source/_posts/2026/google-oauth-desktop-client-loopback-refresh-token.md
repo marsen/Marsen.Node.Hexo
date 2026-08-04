@@ -7,7 +7,9 @@ tags:
 
 ## 前情提要
 
-AI 私人祕書的 Google refresh token 過期了（見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉），想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果卡住——原因跟 Testing/Production 無關，是另一個坑：**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
+接續[上篇](/2026/google-oauth-testing-mode-7-day-refresh-token/)，想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果又卡住了。
+
+**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
 
 ## 為什麼 OAuth Playground 用不了
 
@@ -16,15 +18,17 @@ OAuth Playground 的做法是把自己的網址（`https://developers.google.com
 問題是：Google Cloud Console 裡的 OAuth client 分兩種類型，能不能自由登記 redirect URI 是不一樣的行為：
 
 | Client 類型 | Redirect URI 規則 |
-|---|---|
+| --- | --- |
 | Web application | 可以登記任意 HTTPS 網址（例如 OAuth Playground 那個） |
 | Desktop app | 只能用 `http://localhost:任意port` 或 `http://127.0.0.1:任意port`，不能登記其他網址 |
 
-AI 私人祕書這個 client 建立時選的是 Desktop app（合理，因為它本來就是跑在自己主機上的背景服務，不是網頁應用），所以沒辦法把 OAuth Playground 的網址加進去。
+AI 私人祕書這個 client 是一個 Desktop app　不是 Web Application，所以沒辦法把 OAuth Playground 的網址加進去。
 
 ## Desktop app 的解法：loopback 位址流程
 
-Google 對 Desktop/CLI 這類「沒有公開伺服器」的程式，設計了專屬流程：redirect_uri 直接指向 `localhost` 的任意 port，不用預先登記，Google 就是允許這樣做。
+Google 對 Desktop/CLI 這類「沒有公開伺服器」的程式，設計了專屬流程：redirect_uri 直接指向 `localhost` 的任意 port，
+
+不用預先登記，Google 就是允許這樣做。
 
 拿到新 refresh token 分三步：
 
@@ -69,10 +73,18 @@ curl -X POST https://oauth2.googleapis.com/token \
 
 ## 小結
 
-Desktop 類型的 OAuth client 拿 refresh token，不能套用 Web app 常見的「拿一個現成的第三方工具（像 OAuth Playground）代勞」這條路，因為 redirect URI 的規則不一樣。老實走一次 loopback 位址流程（開網址 → 從網址列複製 code → curl 換 token）三步就搞定，不需要真的架一個 server 去接那個 redirect。
+Desktop 類型的 OAuth client 拿 refresh token，
+
+不能套用 Web app 常見的「拿一個現成的第三方工具（像 OAuth Playground）代勞」這條路，因為 redirect URI 的規則不一樣。
+
+老實走一次 loopback 位址流程（開網址 → 從網址列複製 code → curl 換 token）三步就搞定，
+
+不需要真的架一個 server 去接那個 redirect。
 
 ## 參考
 
+- [OAuth 2.0 for iOS & Desktop Apps — Loopback IP address（官方文件）](https://developers.google.com/identity/protocols/oauth2/native-app)
+- [RFC 8252: OAuth 2.0 for Native Apps（IETF 標準）](https://www.rfc-editor.org/rfc/rfc8252)
 - [Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
 - [Google OAuth Refresh Token（三）：第三方應用權限撤銷入口與自動失效條件](/2026/google-oauth-revoke-third-party-access/)
 
