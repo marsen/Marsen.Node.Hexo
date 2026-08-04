@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-在測試 AIris（自己做的 LINE 分身秘書）的晨間簡報功能時，撞到 Google Calendar/Gmail 的 API 突然回 `invalid_grant`。本機、正式環境用的都是同一組 `GOOGLE_REFRESH_TOKEN`，前幾天都還好好的，這次是真的過期了。查完發現原因很單純：OAuth consent screen 還停在 Testing 模式，跟有沒有在用完全無關，記錄一下排查過程跟解法。
+在測試 AI 私人祕書（自己做的 LINE 分身）的晨間簡報功能時，撞到 Google Calendar/Gmail 的 API 突然回 `invalid_grant`。本機、正式環境用的都是同一組 `GOOGLE_REFRESH_TOKEN`，前幾天都還好好的，這次是真的過期了。查完發現原因很單純：OAuth consent screen 還停在 Testing 模式，跟有沒有在用完全無關，記錄一下排查過程跟解法。
 
 ## 症狀
 

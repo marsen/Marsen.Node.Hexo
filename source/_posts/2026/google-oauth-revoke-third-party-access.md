@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-AIris（自己做的 LINE 分身秘書）要加「標記信件已讀/封存」的能力，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
+AI 私人祕書（自己做的 LINE 分身）要加「標記信件已讀/封存」的能力，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
 
 這種情況下，「我知道怎麼把這個授權收回來」就變成必要的安全網，不是可有可無。查完順便把 refresh token 什麼時候會自己失效也一起搞清楚，記錄下來。
 
@@ -36,7 +36,7 @@ https://myaccount.google.com/permissions
 | 使用者主動撤銷 | 就是上面那個「移除存取權」按鈕 |
 | 改密碼 | 如果 token 帶 Gmail scope，帳號密碼一改，該 token 就失效 |
 | 超過 100 組上限 | 同一個 OAuth Client 對同一個帳號核發超過 100 組 refresh token，最舊的自動作廢 |
-| OAuth Client 還在 Testing 發布狀態 | 不管有沒有用，7 天強制過期——這個坑之前踩過一次，見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉，AIris 這個專案已經發布成 Production，不會再犯 |
+| OAuth Client 還在 Testing 發布狀態 | 不管有沒有用，7 天強制過期——這個坑之前踩過一次，見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉，AI 私人祕書這個專案已經發布成 Production，不會再犯 |
 
 前三種是正常使用下該知道的行為；後兩種是個人專案容易忽略的邊界情況，尤其 Testing 模式那條——建好 OAuth Client 能動就沒再理它，是最容易中的坑。
 

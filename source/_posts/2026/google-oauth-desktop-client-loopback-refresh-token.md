@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-AIris 的 Google refresh token 過期了（見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉），想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果卡住——原因跟 Testing/Production 無關，是另一個坑：**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
+AI 私人祕書的 Google refresh token 過期了（見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉），想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果卡住——原因跟 Testing/Production 無關，是另一個坑：**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
 
 ## 為什麼 OAuth Playground 用不了
 
@@ -20,7 +20,7 @@ OAuth Playground 的做法是把自己的網址（`https://developers.google.com
 | Web application | 可以登記任意 HTTPS 網址（例如 OAuth Playground 那個） |
 | Desktop app | 只能用 `http://localhost:任意port` 或 `http://127.0.0.1:任意port`，不能登記其他網址 |
 
-AIris 這個 client 建立時選的是 Desktop app（合理，因為它本來就是跑在自己主機上的背景服務，不是網頁應用），所以沒辦法把 OAuth Playground 的網址加進去。
+AI 私人祕書這個 client 建立時選的是 Desktop app（合理，因為它本來就是跑在自己主機上的背景服務，不是網頁應用），所以沒辦法把 OAuth Playground 的網址加進去。
 
 ## Desktop app 的解法：loopback 位址流程
 
