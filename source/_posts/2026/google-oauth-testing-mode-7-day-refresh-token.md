@@ -7,9 +7,13 @@ tags:
 
 ## 前情提要
 
-在測試 AI 私人祕書（自己做的 LINE 分身）的晨間簡報功能時，撞到 Google Calendar/Gmail 的 API 突然回 `invalid_grant`。本機、正式環境用的都是同一組 `GOOGLE_REFRESH_TOKEN`，前幾天都還好好的，這次是真的過期了。查完發現原因很單純：OAuth consent screen 還停在 Testing 模式，跟有沒有在用完全無關，記錄一下排查過程跟解法。
+本來正常 AI 私人祕書晨報功能突然失效了，記錄一下追查的記錄與原因。
 
-## 症狀
+## 檢查過程
+
+查詢 API 的呼叫 logs ，發現是 `invalid_grant`。
+
+簡單說就是 token 失效，但正常情況下不會這麼快失效才對？
 
 直接拿 `.env` 裡的 `GOOGLE_REFRESH_TOKEN` 打 Google 的 token endpoint 測：
 
@@ -32,14 +36,18 @@ curl -s -X POST https://oauth2.googleapis.com/token \
 
 不是網路問題、不是程式碼問題——Google 自己說這把 token 已經過期或被撤銷。
 
-## 為什麼會過期
+## 雷點：過期的原因
 
 Google Cloud Console 的 OAuth consent screen（新介面叫 **Google Auth Platform**）有個「Publishing status」欄位，兩種狀態：
 
 - **Testing**：refresh token 效期固定 **7 天**，不管有沒有呼叫過 API，時間到就是死
 - **In production**：refresh token 效期正常，不會這樣莫名其妙過期
 
-去 `console.cloud.google.com` → 選對的專案 → 左側選單「Google Auth Platform」→「Audience」，就能看到目前的 Publishing status。這個專案果然是 **Testing**——難怪 refresh token 活不過一週。
+去 `console.cloud.google.com` → 選對的專案 → 左側選單「Google Auth Platform」→「Audience」，
+
+就能看到目前的 Publishing status。
+
+檢查後，這個專案果然是 **Testing**——難怪 refresh token 活不過一週。
 
 ## 怎麼解
 

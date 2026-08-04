@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-AI 私人祕書（自己做的 LINE 分身）要加「標記信件已讀/封存」的能力，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
+AI 私人祕書要加「標記信件已讀/封存」的能力，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
 
 這種情況下，「我知道怎麼把這個授權收回來」就變成必要的安全網，不是可有可無。查完順便把 refresh token 什麼時候會自己失效也一起搞清楚，記錄下來。
 
