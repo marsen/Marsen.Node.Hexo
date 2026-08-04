@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Google OAuth 卡在 Testing 模式，refresh token 只活 7 天"
+title: "[實作筆記] Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天"
 date: 2026/07/16 01:37:22
 tags:
   - 實作筆記
@@ -59,7 +59,7 @@ Google OAuth 的 refresh token 過期，第一個該查的不是程式碼、不�
 
 ## 參考
 
-- [Desktop 類型的 Google OAuth Client，用 loopback 位址手動換 refresh token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
-- [Google OAuth 第三方應用權限——去哪撤銷、refresh token 什麼情況會自動失效](/2026/google-oauth-revoke-third-party-access/)
+- [Google OAuth Refresh Token（二）：Desktop Client 用 loopback 位址手動換 token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
+- [Google OAuth Refresh Token（三）：第三方應用權限撤銷入口與自動失效條件](/2026/google-oauth-revoke-third-party-access/)
 
 (fin)

@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Google OAuth 第三方應用權限——去哪撤銷、refresh token 什麼情況會自動失效"
+title: "[實作筆記] Google OAuth Refresh Token（三）：第三方應用權限撤銷入口與自動失效條件"
 date: 2026/07/26 19:23:29
 tags:
   - 實作筆記
@@ -36,7 +36,7 @@ https://myaccount.google.com/permissions
 | 使用者主動撤銷 | 就是上面那個「移除存取權」按鈕 |
 | 改密碼 | 如果 token 帶 Gmail scope，帳號密碼一改，該 token 就失效 |
 | 超過 100 組上限 | 同一個 OAuth Client 對同一個帳號核發超過 100 組 refresh token，最舊的自動作廢 |
-| OAuth Client 還在 Testing 發布狀態 | 不管有沒有用，7 天強制過期——這個坑之前踩過一次，見〈[Google OAuth 卡在 Testing 模式，refresh token 只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉，AIris 這個專案已經發布成 Production，不會再犯 |
+| OAuth Client 還在 Testing 發布狀態 | 不管有沒有用，7 天強制過期——這個坑之前踩過一次，見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉，AIris 這個專案已經發布成 Production，不會再犯 |
 
 前三種是正常使用下該知道的行為；後兩種是個人專案容易忽略的邊界情況，尤其 Testing 模式那條——建好 OAuth Client 能動就沒再理它，是最容易中的坑。
 
@@ -46,7 +46,7 @@ Scope granularity 不夠細（像 Gmail 沒辦法只給改標籤不給寄信）�
 
 ## 參考
 
-- [Google OAuth 卡在 Testing 模式，refresh token 只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
-- [Desktop 類型的 Google OAuth Client，用 loopback 位址手動換 refresh token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
+- [Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
+- [Google OAuth Refresh Token（二）：Desktop Client 用 loopback 位址手動換 token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
 
 (fin)

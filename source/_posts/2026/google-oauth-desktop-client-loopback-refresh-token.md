@@ -1,5 +1,5 @@
 ---
-title: "[實作筆記] Desktop 類型的 Google OAuth Client，用 loopback 位址手動換 refresh token"
+title: "[實作筆記] Google OAuth Refresh Token（二）：Desktop Client 用 loopback 位址手動換 token"
 date: 2026/07/16 01:48:23
 tags:
   - 實作筆記
@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-AIris 的 Google refresh token 過期了（見〈Google OAuth Testing 模式，refresh token 只活 7 天〉那篇），想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果卡住——原因跟 Testing/Production 無關，是另一個坑：**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
+AIris 的 Google refresh token 過期了（見〈[Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)〉），想說最快的方式是用 [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/) 重新走一次授權，結果卡住——原因跟 Testing/Production 無關，是另一個坑：**這個 OAuth client 的類型是 Desktop app，不是 Web application**。記錄一下 Desktop 類型該怎麼手動拿 refresh token。
 
 ## 為什麼 OAuth Playground 用不了
 
@@ -73,7 +73,7 @@ Desktop 類型的 OAuth client 拿 refresh token，不能套用 Web app 常見�
 
 ## 參考
 
-- [Google OAuth Testing 模式，refresh token 只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
-- [Google OAuth 第三方應用權限——去哪撤銷、refresh token 什麼情況會自動失效](/2026/google-oauth-revoke-third-party-access/)
+- [Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
+- [Google OAuth Refresh Token（三）：第三方應用權限撤銷入口與自動失效條件](/2026/google-oauth-revoke-third-party-access/)
 
 (fin)
