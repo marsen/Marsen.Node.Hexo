@@ -59,14 +59,9 @@ Google Cloud Console 的 OAuth consent screen（新介面叫 **Google Auth Platf
 - **要不要走完整審核？** 單一使用者、個人用途，不需要。發布後最多是每次授權畫面多一個「Google hasn't verified this app」的警示，點「Advanced → 繼續前往」就過去了，純粹是多一次點擊，不影響功能。
 - **User cap 100 人的限制會不會卡到？** 那是 Testing 模式底下才有的限制，是「測試使用者清單當下能放幾人」的容量上限，不是整個專案生命週期累計加過的人數——刪一個舊的、補一個新的沒問題。單一使用者用途完全用不到。
 
-## 小結
-
-Google OAuth 的 refresh token 過期，第一個該查的不是程式碼、不是網路，是 Cloud Console 裡這個專案的 Publishing status 是不是還卡在 Testing。個人專案很容易忘記這一步——建好 OAuth client 能動就沒再理它，7 天後才發現「怎麼又要重新授權」，一直重複同樣的坑。發布成 Production 一次到位，之後就不會再犯。
-
-發布只解決「以後不會再 7 天過期」，舊的 refresh token 還是死的，要重新拿一組——這部分另外寫在下一篇。
-
 ## 參考
 
+- [Using OAuth 2.0 to Access Google APIs — Refresh token expiration（官方文件）](https://developers.google.com/identity/protocols/oauth2)
 - [Google OAuth Refresh Token（二）：Desktop Client 用 loopback 位址手動換 token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
 - [Google OAuth Refresh Token（三）：第三方應用權限撤銷入口與自動失效條件](/2026/google-oauth-revoke-third-party-access/)
 
