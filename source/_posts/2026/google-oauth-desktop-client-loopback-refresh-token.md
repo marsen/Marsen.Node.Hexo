@@ -22,9 +22,7 @@ OAuth Playground 的做法是把自己的網址（`https://developers.google.com
 | Web application | 可以登記任意 HTTPS 網址（例如 OAuth Playground 那個） |
 | Desktop app | 只能用 `http://localhost:任意port` 或 `http://127.0.0.1:任意port`，不能登記其他網址 |
 
-**為什麼會有這條規則**：Web app 背後有一台開發者自己控制、別人碰不到的伺服器，網域、HTTPS 憑證都可查證，Google 才敢讓它自由登記任意網址。Desktop app 沒有這個條件——程式裝到使用者自己的電腦上，每一台機器都不一樣，沒有一個「自己控制、別人碰不到」的伺服器可以拿來註冊。
-
-有些 App 會改用自訂 URI scheme（例如 `myapp://callback`）繞過這個限制，但這不安全：某些作業系統上，多個 App 可以搶著註冊同一個 scheme，惡意程式能偷偷登記同樣的 scheme，把授權 code 攔截走。Loopback（`localhost`/`127.0.0.1`）之所以是官方認可的解法，是因為它有別的方式做不到的保證——只有跑在同一台機器上的程式才能監聽這個位址，遠端或別台機器的惡意程式完全碰不到。Desktop app 本來就跑在使用者自己的機器上，暫時開一個本機 port 監聽，剛好卡進這個「只有本機能接」的安全縫隙，不用真實網域也不怕被攔截。
+**為什麼會有這條規則**：Desktop app 沒有一台自己控制的伺服器可以拿來註冊網址，Google 沒辦法驗證這個網址真的屬於這支程式。Loopback（`localhost`/`127.0.0.1`）解決了這個問題：只有跑在同一台機器上的程式才能監聽這個位址，不用註冊網址，也能保證接到重導向的一定是你自己的程式。這是 Google 官方認可的解法，見文件裡的 [Loopback IP address 章節](https://developers.google.com/identity/protocols/oauth2/native-app)。
 
 AI 私人祕書這個 client 是一個 Desktop app，不是 Web Application，所以沒辦法把 OAuth Playground 的網址加進去。
 
