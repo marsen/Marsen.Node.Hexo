@@ -7,7 +7,7 @@ tags:
 
 ## 前情提要
 
-AI 私人祕書要加「標記信件已讀/封存」的能力，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
+我想要為我的 AI 私人祕書加上「標記信件已讀/封存」的功能，查 Gmail API 文件才發現：能改標籤的 `users.messages.modify` 這支 API，只吃 `gmail.modify`（或更寬的 `https://mail.google.com/`）這種級別的 scope，沒有「只能改標籤、不能寄信」這種更細的授權可以選——`gmail.modify` 官方說明白紙黑字寫著「Read, compose, and send emails」，也就是說授權出去的 token，技術上就是有寄信能力，即使我的程式碼永遠不會呼叫寄信的 API。
 
 這種情況下，「我知道怎麼把這個授權收回來」就變成必要的安全網，不是可有可無。查完順便把 refresh token 什麼時候會自己失效也一起搞清楚，記錄下來。
 
@@ -46,6 +46,7 @@ Scope granularity 不夠細（像 Gmail 沒辦法只給改標籤不給寄信）�
 
 ## 參考
 
+- [Using OAuth 2.0 to Access Google APIs — Refresh token expiration（官方文件）](https://developers.google.com/identity/protocols/oauth2)
 - [Google OAuth Refresh Token（一）：Testing 模式卡住，只活 7 天](/2026/google-oauth-testing-mode-7-day-refresh-token/)
 - [Google OAuth Refresh Token（二）：Desktop Client 用 loopback 位址手動換 token](/2026/google-oauth-desktop-client-loopback-refresh-token/)
 
